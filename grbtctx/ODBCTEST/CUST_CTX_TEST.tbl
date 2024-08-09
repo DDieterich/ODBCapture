@@ -1,0 +1,28 @@
+
+--
+--  Create ODBCTEST.CUST_CTX_TEST Table
+--
+
+set define off
+
+
+--DBMS_METADATA:ODBCTEST.CUST_CTX_TEST
+
+  CREATE TABLE "ODBCTEST"."CUST_CTX_TEST" 
+   (	"CUST_ID" NUMBER, 
+	"CUST_NAME" VARCHAR2(80 BYTE), 
+	"CREATE_DATE" DATE
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;
+
+--  Comments
+
+--DBMS_METADATA:ODBCTEST.CUST_CTX_TEST
+
+
+--  Grants
+
+
+--  Synonyms
+
+
+set define on

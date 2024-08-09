@@ -1,0 +1,16 @@
+
+--
+--  Create Indexes for ODBCTEST.SDO_COLA_MARKETS TABLE
+--
+
+set define off
+
+
+--  NOTE: This is a "TARGET" Index
+
+-- The MDSYS Domain Index "ODBCTEST"."COLA_SPATIAL_IDX
+--   installation script is located in the "root" folder because
+--   it must be executed using the "ODBCTEST" database login.
+
+
+set define on

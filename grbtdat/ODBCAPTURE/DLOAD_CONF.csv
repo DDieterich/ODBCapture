@@ -1,0 +1,13 @@
+"USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES"
+"ODBCAPTURE","BUILD_CONF","grbtst","BUILD_SEQ",,,"build_seq between -40 and -1",,
+"ODBCAPTURE","BUILD_PATH","grbtst","PARENT_BUILD_SEQ, BUILD_SEQ",,,"build_seq between -40 and -1",,
+"ODBCAPTURE","DLOAD_CONF","grbtdat","USERNAME, TABLE_NAME, BUILD_TYPE",,,"build_type in ('grbtst','grbtctx','grbtjva','grbtjsn','grbtsdo','grbtend','grbtdat')",,
+"ODBCAPTURE","GRBTST_$NAME","grbtst","ID",,,,,
+"ODBCAPTURE","GRBTST_IMAGE","grbtst","ID",,,,,
+"ODBCAPTURE","GRBTST_JSON","grbtjsn","ID",,,,,
+"ODBCAPTURE","OBJECT_CONF","grbtdat","USERNAME, ELEMENT_NAME, BUILD_TYPE",,,"build_type in ('grbtst','grbtctx','grbtjva','grbtjsn','grbtsdo','grbtend','grbtdat')",,
+"ODBCAPTURE","ROLE_CONF","grbtst","ROLENAME, BUILD_TYPE",,,"build_type in ('grbtst','grbtend','grbtdat')",,
+"ODBCAPTURE","SCHEMA_CONF","grbtst","USERNAME",,,"build_type in ('grbtst','grbtend','grbtdat')",,
+"ODBCAPTURE","TSPACE_CONF","grbtst","USERNAME, TSPACE_NAME",,,"username in (select username from schema_conf where build_type in ('grbtst'))",,
+"ODBCTEST","CUST_CTX_TEST","grbtctx","CUST_ID",,,,,
+"ODBCTEST","SDO_COLA_MARKETS","grbtsdo","MKT_ID",,,,,

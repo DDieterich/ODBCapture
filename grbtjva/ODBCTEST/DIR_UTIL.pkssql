@@ -1,0 +1,29 @@
+
+--
+--  Create ODBCTEST.DIR_UTIL Package
+--
+
+set define off
+
+
+--DBMS_METADATA:ODBCTEST.DIR_UTIL
+
+  CREATE OR REPLACE EDITIONABLE PACKAGE "ODBCTEST"."DIR_UTIL" authid definer as
+
+   procedure cr_dir (p_directory in varchar2);
+
+   procedure clear_dir (p_directory in varchar2);
+
+   function list (p_path  in  varchar2) return varchar2;
+
+end dir_util;
+/
+
+
+--  Grants
+
+
+--  Synonyms
+
+
+set define on
