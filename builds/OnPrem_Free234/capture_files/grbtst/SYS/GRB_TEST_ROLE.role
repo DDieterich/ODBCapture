@@ -1,0 +1,15 @@
+
+--
+--  Create GRB_TEST_ROLE Role
+--
+
+set define off
+
+
+create role GRB_TEST_ROLE;
+
+
+--  Current Grant of YS Objects (but not directories)
+
+
+set define on

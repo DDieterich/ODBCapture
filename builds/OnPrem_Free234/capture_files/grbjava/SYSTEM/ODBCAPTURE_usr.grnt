@@ -1,0 +1,19 @@
+
+
+--
+--  Create ODBCAPTURE Grants
+--
+
+set define off
+
+
+
+--  "sys" BUILD_TYPE Role Grants
+--  "GRANTEE" (delayed) Role Grants
+--  Note: "OBJECT" Schema Object Grants are given during Role creation
+
+grant "JAVASYSPRIV" to "ODBCAPTURE";
+
+
+set define on
+

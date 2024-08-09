@@ -1,0 +1,131 @@
+=== DBI Started: ./installation_prepare.sql
+
+Create Temp Publicly Updateable Table
+
+Table created.
+
+
+Grant succeeded.
+
+
+Synonym created.
+
+
+Check for Prerequisite BUILD_TYPEs
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-07T20:58:42 for a duration of .08 seconds (started at 2024-08-07T20:58:42)
+=== DBI Started: ODBCAPTURE/GRAB_JAVA.pkssql
+
+Package created.
+
+=== DBI Completed at 2024-08-07T20:58:42 for a duration of .05 seconds (started at 2024-08-07T20:58:42)
+=== DBI Started: ODBCAPTURE/ROLE_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."ROLE_CONF" DISABLE constraint "ROLE_CONF_FK1";
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-07T20:58:42 for a duration of .76 seconds (started at 2024-08-07T20:58:42)
+=== DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."SCHEMA_CONF" DISABLE constraint "SCHEMA_CONF_FK1";
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-07T20:58:43 for a duration of .66 seconds (started at 2024-08-07T20:58:42)
+=== DBI Started: ODBCAPTURE/PRIV_OBJ_JAVA_FG_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-08-07T20:58:43 for a duration of .09 seconds (started at 2024-08-07T20:58:43)
+=== DBI Started: ODBCAPTURE/PRIV_SYSOBJ_JAVA_FG_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-08-07T20:58:43 for a duration of .06 seconds (started at 2024-08-07T20:58:43)
+=== DBI Started: ODBCAPTURE/GRAB_JAVA.pkbsql
+
+Package body created.
+
+=== DBI Completed at 2024-08-07T20:58:43 for a duration of .14 seconds (started at 2024-08-07T20:58:43)
+=== DBI Started: ./installation_finalize.sql
+
+Drop Temp Publicly Updateable Table
+
+Synonym dropped.
+
+
+Table dropped.
+
+
+fix_invalid_public_synonyms
+
+Re-create Invalid Public Synonyms
+
+PL/SQL procedure successfully completed.
+
+
+compile_all
+Compile All started
+ODBCAPTURE Compiled.
+Compile All is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_foreign_keys_ENABLE
+Alter Foreign Keys started.
+  ENABLE 'ODBCAPTURE'
+alter table "ODBCAPTURE"."BUILD_PATH" ENABLE constraint "BUILD_PATH_FK1";
+alter table "ODBCAPTURE"."BUILD_PATH" ENABLE constraint "BUILD_PATH_FK2";
+alter table "ODBCAPTURE"."DLOAD_CONF" ENABLE constraint "DLOAD_CONF_FK1";
+alter table "ODBCAPTURE"."DLOAD_CONF" ENABLE constraint "DLOAD_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK1";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK3";
+alter table "ODBCAPTURE"."ROLE_CONF" ENABLE constraint "ROLE_CONF_FK1";
+alter table "ODBCAPTURE"."SCHEMA_CONF" ENABLE constraint "SCHEMA_CONF_FK1";
+alter table "ODBCAPTURE"."TSPACE_CONF" ENABLE constraint "TSPACE_CONF_FK1";
+Alter Foreign Keys is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_triggers_ENABLE
+Alter Triggers started.
+  ENABLE 'ODBCAPTURE'
+Alter Triggers is done.
+
+PL/SQL procedure successfully completed.
+
+
+update_id_sequences
+Update ID Sequences started
+Identity Sequence Updates is done.
+
+PL/SQL procedure successfully completed.
+
+
+Switch Spooling Off

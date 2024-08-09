@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="install_grbtjva.log" tests="4" errors="0" hostname="FREE" id="3" time="4" timestamp="2024-08-09T19:04:33">
+    <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
+    </testcase>
+    <testcase name="./installation_prepare.sql" assertions="9" classname="..sql" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ./installation_prepare.sql
+Create Temp Publicly Updateable Table
+Table created.
+Grant succeeded.
+Synonym created.
+Check for Prerequisite BUILD_TYPEs
+WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2024-08-09T19:04:00 for a duration of .11 seconds (started at 2024-08-09T19:03:59)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCTEST/DIR_UTIL.pkbsql" assertions="3" classname="ODBCTEST.pkbsql" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCTEST/DIR_UTIL.pkbsql
+Package body created.
+=== DBI Completed at 2024-08-09T19:04:04 for a duration of .05 seconds (started at 2024-08-09T19:04:04)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCTEST/DIR_UTIL.pkssql" assertions="3" classname="ODBCTEST.pkssql" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCTEST/DIR_UTIL.pkssql
+Package created.
+=== DBI Completed at 2024-08-09T19:04:00 for a duration of .05 seconds (started at 2024-08-09T19:04:00)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCTEST/DirUtil.pjv" assertions="3" classname="ODBCTEST.pjv" status="PASS" time="4">
+      <system-out>
+=== DBI Started: ODBCTEST/DirUtil.pjv
+Java created.
+=== DBI Completed at 2024-08-09T19:04:04 for a duration of 4.28 seconds (started at 2024-08-09T19:04:00)
+      </system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="install_sys.log" tests="1" errors="0" hostname="FREE" id="1" time="17" timestamp="2024-08-09T19:04:33">
+    <testcase name="SYS/ODBCTEST_usr.sgrnt" assertions="5" classname="SYS.sgrnt" status="PASS" time="17">
+      <system-out>
+=== DBI Started: SYS/ODBCTEST_usr.sgrnt
+PL/SQL procedure successfully completed.
+PL/SQL procedure successfully completed.
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2024-08-09T19:03:59 for a duration of 17.21 seconds (started at 2024-08-09T19:03:42)
+      </system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="install_system.log" tests="1" errors="0" hostname="FREE" id="2" time="0" timestamp="2024-08-09T19:04:33">
+    <testcase name="SYSTEM/ODBCTEST_usr.grnt" assertions="3" classname="SYSTEM.grnt" status="PASS" time="0">
+      <system-out>
+=== DBI Started: SYSTEM/ODBCTEST_usr.grnt
+Grant succeeded.
+=== DBI Completed at 2024-08-09T19:03:59 for a duration of .03 seconds (started at 2024-08-09T19:03:59)
+      </system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

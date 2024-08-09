@@ -1,0 +1,110 @@
+=== DBI Started: ./installation_prepare.sql
+
+Create Temp Publicly Updateable Table
+
+Table created.
+
+
+Grant succeeded.
+
+
+Synonym created.
+
+
+Check for Prerequisite BUILD_TYPEs
+WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+WARNING: Prerequisite BUILD_TYPE "grbtend" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-09T19:05:11 for a duration of .08 seconds (started at 2024-08-09T19:05:10)
+=== DBI Started: ODBCAPTURE/DLOAD_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."DLOAD_CONF" DISABLE constraint "DLOAD_CONF_FK1";
+alter table "ODBCAPTURE"."DLOAD_CONF" DISABLE constraint "DLOAD_CONF_FK2";
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/DLOAD_CONF.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-09T19:05:11 for a duration of .3 seconds (started at 2024-08-09T19:05:11)
+=== DBI Started: ODBCAPTURE/OBJECT_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."OBJECT_CONF" DISABLE constraint "OBJECT_CONF_FK1";
+alter table "ODBCAPTURE"."OBJECT_CONF" DISABLE constraint "OBJECT_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" DISABLE constraint "OBJECT_CONF_FK3";
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/OBJECT_CONF.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-09T19:05:11 for a duration of .33 seconds (started at 2024-08-09T19:05:11)
+=== DBI Started: ./installation_finalize.sql
+
+Drop Temp Publicly Updateable Table
+
+Synonym dropped.
+
+
+Table dropped.
+
+
+fix_invalid_public_synonyms
+
+Re-create Invalid Public Synonyms
+
+PL/SQL procedure successfully completed.
+
+
+compile_all
+Compile All started
+ODBCAPTURE Compiled.
+Compile All is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_foreign_keys_ENABLE
+Alter Foreign Keys started.
+  ENABLE 'ODBCAPTURE'
+alter table "ODBCAPTURE"."BUILD_PATH" ENABLE constraint "BUILD_PATH_FK1";
+alter table "ODBCAPTURE"."BUILD_PATH" ENABLE constraint "BUILD_PATH_FK2";
+alter table "ODBCAPTURE"."DLOAD_CONF" ENABLE constraint "DLOAD_CONF_FK1";
+alter table "ODBCAPTURE"."DLOAD_CONF" ENABLE constraint "DLOAD_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK1";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK3";
+alter table "ODBCAPTURE"."ROLE_CONF" ENABLE constraint "ROLE_CONF_FK1";
+alter table "ODBCAPTURE"."SCHEMA_CONF" ENABLE constraint "SCHEMA_CONF_FK1";
+alter table "ODBCAPTURE"."TSPACE_CONF" ENABLE constraint "TSPACE_CONF_FK1";
+Alter Foreign Keys is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_triggers_ENABLE
+Alter Triggers started.
+  ENABLE 'ODBCAPTURE'
+Alter Triggers is done.
+
+PL/SQL procedure successfully completed.
+
+
+update_id_sequences
+Update ID Sequences started
+Identity Sequence Updates is done.
+
+PL/SQL procedure successfully completed.
+
+
+Switch Spooling Off

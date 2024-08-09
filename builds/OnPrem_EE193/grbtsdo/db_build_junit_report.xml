@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="ODBCTEST_schema_build" tests="15" failures="0" time="0" timestamp="2024-08-08T10:56:54">
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.COLA_SPATIAL_IDX" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.SYS_C007615" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.SYS_IL0000073190C00010$$" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.SYS_IL0000073190C00011$$" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.SYS_IL0000073204C00003$$" time="0"/>
+    <testcase name="JAVA CLASS:db_object_status" classname="ODBCTEST.DirUtil" time="0"/>
+    <testcase name="JAVA SOURCE:db_object_status" classname="ODBCTEST.DirUtil" time="0"/>
+    <testcase name="LOB:db_object_status" classname="ODBCTEST.SYS_LOB0000073190C00010$$" time="0"/>
+    <testcase name="LOB:db_object_status" classname="ODBCTEST.SYS_LOB0000073190C00011$$" time="0"/>
+    <testcase name="LOB:db_object_status" classname="ODBCTEST.SYS_LOB0000073204C00003$$" time="0"/>
+    <testcase name="PACKAGE:db_object_status" classname="ODBCTEST.DIR_UTIL" time="0"/>
+    <testcase name="PACKAGE BODY:db_object_status" classname="ODBCTEST.DIR_UTIL" time="0"/>
+    <testcase name="SEQUENCE:db_object_status" classname="ODBCTEST.MDRS_11DF3$" time="0"/>
+    <testcase name="TABLE:db_object_status" classname="ODBCTEST.MDRT_11DF3$" time="0"/>
+    <testcase name="TABLE:db_object_status" classname="ODBCTEST.SDO_COLA_MARKETS" time="0"/>
+   </testsuite>
+</testsuites>

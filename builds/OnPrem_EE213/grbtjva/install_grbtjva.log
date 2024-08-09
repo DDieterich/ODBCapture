@@ -1,0 +1,84 @@
+=== DBI Started: ./installation_prepare.sql
+
+Create Temp Publicly Updateable Table
+
+Table created.
+
+
+Grant succeeded.
+
+
+Synonym created.
+
+
+Check for Prerequisite BUILD_TYPEs
+WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T02:05:11 for a duration of .21 seconds (started at 2024-08-08T02:05:10)
+=== DBI Started: ODBCTEST/DIR_UTIL.pkssql
+
+Package created.
+
+=== DBI Completed at 2024-08-08T02:05:11 for a duration of .08 seconds (started at 2024-08-08T02:05:11)
+=== DBI Started: ODBCTEST/DirUtil.pjv
+
+Java created.
+
+=== DBI Completed at 2024-08-08T02:05:13 for a duration of 2.45 seconds (started at 2024-08-08T02:05:11)
+=== DBI Started: ODBCTEST/DIR_UTIL.pkbsql
+
+Package body created.
+
+=== DBI Completed at 2024-08-08T02:05:13 for a duration of .17 seconds (started at 2024-08-08T02:05:13)
+=== DBI Started: ./installation_finalize.sql
+
+Drop Temp Publicly Updateable Table
+
+Synonym dropped.
+
+
+Table dropped.
+
+
+fix_invalid_public_synonyms
+
+Re-create Invalid Public Synonyms
+
+PL/SQL procedure successfully completed.
+
+
+compile_all
+Compile All started
+alter java source "ODBCTEST"."DirUtil" compile;
+ODBCTEST Compiled.
+Compile All is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_foreign_keys_ENABLE
+Alter Foreign Keys started.
+  ENABLE 'ODBCTEST'
+Alter Foreign Keys is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_triggers_ENABLE
+Alter Triggers started.
+  ENABLE 'ODBCTEST'
+Alter Triggers is done.
+
+PL/SQL procedure successfully completed.
+
+
+update_id_sequences
+Update ID Sequences started
+Identity Sequence Updates is done.
+
+PL/SQL procedure successfully completed.
+
+
+Switch Spooling Off

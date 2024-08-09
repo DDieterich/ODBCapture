@@ -1,0 +1,5 @@
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/BUILD_CONF.tbl grbsrc/ODBCAPTURE/BUILD_CONF.tbl
+   COMMENT ON COLUMN "ODBCAPTURE"."BUILD_CONF"."BUILD_SEQ" IS 'Unique Sequence of th                                                                                     <
+   COMMENT ON COLUMN "ODBCAPTURE"."BUILD_CONF"."BUILD_TYPE" IS 'Name of the build ty                                                                                     <
+                                                                                     >     COMMENT ON COLUMN "ODBCAPTURE"."BUILD_CONF"."BUILD_SEQ" IS 'Unique Sequence of th
+                                                                                     >     COMMENT ON COLUMN "ODBCAPTURE"."BUILD_CONF"."BUILD_TYPE" IS 'Name of the build ty

@@ -1,0 +1,78 @@
+
+CON_NAME
+------------------------------
+GD339B1D52AB032_DB01
+USER is "ODBCTEST"
+Setup Continue on Error
+Running RAS_Admin_ODBCTEST.racl
+GRB_TEST_ROLE_01.XS_ROLE
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+GRB_TEST_USER_01.XS_USER
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+GRB_TEST_USER_02.XS_USER
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+grant "GRB_TEST_ROLE" to "GRB_TEST_ROLE_01"
+
+Grant succeeded.
+
+Elapsed: 00:00:00.06
+principal grant "GRB_TEST_ROLE_01" to "GRB_TEST_USER_01"
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+principal grant "XSCONNECT" to "GRB_TEST_USER_01"
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+principal grant "XSPUBLIC" to "GRB_TEST_USER_01"
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.06
+principal grant "GRB_TEST_ROLE_01" to "GRB_TEST_USER_02"
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+principal grant "XSCONNECT" to "GRB_TEST_USER_02"
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+principal grant "XSPUBLIC" to "GRB_TEST_USER_02"
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+GRB_TEST_ACL_01.XS_ACL
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.19
+GRB_TEST_ACL_02.XS_ACL
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+GRB_TEST_POLICY_01.XS_DATA_SECURITY
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+
+"RAS_Admin_ODBCTEST.racl" is Done.

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="install_grbtctx.log" tests="4" errors="0" hostname="FREE" id="3" time="9" timestamp="2024-08-09T19:05:09">
+    <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
+    </testcase>
+    <testcase name="./installation_prepare.sql" assertions="9" classname="..sql" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ./installation_prepare.sql
+Create Temp Publicly Updateable Table
+Table created.
+Grant succeeded.
+Synonym created.
+Check for Prerequisite BUILD_TYPEs
+WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2024-08-09T19:04:53 for a duration of .08 seconds (started at 2024-08-09T19:04:53)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCTEST/CUST_CTX_TEST.cldr" assertions="6" classname="ODBCTEST.cldr" status="PASS" time="3">
+      <system-out>
+=== DBI Started: ODBCTEST/CUST_CTX_TEST.cldr
+Disable Triggers and Foreign Keys
+PL/SQL procedure successfully completed.
+sqlldr_control=ODBCTEST/CUST_CTX_TEST.ctl
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2024-08-09T19:04:56 for a duration of 2.9 seconds (started at 2024-08-09T19:04:53)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCTEST/CUST_CTX_TEST.tbl" assertions="3" classname="ODBCTEST.tbl" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCTEST/CUST_CTX_TEST.tbl
+Table created.
+=== DBI Completed at 2024-08-09T19:04:53 for a duration of .03 seconds (started at 2024-08-09T19:04:53)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCTEST/CUST_CTX_TEST.tidx" assertions="3" classname="ODBCTEST.tidx" status="PASS" time="6">
+      <system-out>
+=== DBI Started: ODBCTEST/CUST_CTX_TEST.tidx
+Index created.
+=== DBI Completed at 2024-08-09T19:05:02 for a duration of 6 seconds (started at 2024-08-09T19:04:56)
+      </system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="FREE" id="1" time="0" timestamp="2024-08-09T19:05:09">
+  </testsuite>
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="FREE" id="2" time="0" timestamp="2024-08-09T19:05:09">
+  </testsuite>
+</testsuites>

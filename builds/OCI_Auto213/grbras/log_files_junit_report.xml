@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="install_grbras.log" tests="7" errors="0" hostname="fenu1pod" id="3" time="4" timestamp="2024-08-08T01:47:34">
+    <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
+    </testcase>
+    <testcase name="./installation_prepare.sql" assertions="18" classname="..sql" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ./installation_prepare.sql
+
+Create Temp Publicly Updateable Table
+
+Table created.
+
+
+Grant succeeded.
+
+
+Synonym created.
+
+
+Check for Prerequisite BUILD_TYPEs
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:47:23 for a duration of .33 seconds (started at 2024-08-08T01:47:23)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/EXPORTING_RAS_DATA.tbl" assertions="20" classname="ODBCAPTURE.tbl" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCAPTURE/EXPORTING_RAS_DATA.tbl
+
+Table created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+=== DBI Completed at 2024-08-08T01:47:24 for a duration of .42 seconds (started at 2024-08-08T01:47:23)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/GRAB_RAS.pkbsql" assertions="5" classname="ODBCAPTURE.pkbsql" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCAPTURE/GRAB_RAS.pkbsql
+
+Package body created.
+
+=== DBI Completed at 2024-08-08T01:47:28 for a duration of .22 seconds (started at 2024-08-08T01:47:27)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/GRAB_RAS.pkssql" assertions="5" classname="ODBCAPTURE.pkssql" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCAPTURE/GRAB_RAS.pkssql
+
+Package created.
+
+=== DBI Completed at 2024-08-08T01:47:23 for a duration of .3 seconds (started at 2024-08-08T01:47:23)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw" assertions="8" classname="ODBCAPTURE.vw" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-08-08T01:47:27 for a duration of .21 seconds (started at 2024-08-08T01:47:27)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/ROLE_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="2">
+      <system-out>
+=== DBI Started: ODBCAPTURE/ROLE_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table &quot;ODBCAPTURE&quot;.&quot;ROLE_CONF&quot; DISABLE constraint &quot;ROLE_CONF_FK1&quot;;
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:47:25 for a duration of 1.64 seconds (started at 2024-08-08T01:47:24)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/SCHEMA_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="2">
+      <system-out>
+=== DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table &quot;ODBCAPTURE&quot;.&quot;SCHEMA_CONF&quot; DISABLE constraint &quot;SCHEMA_CONF_FK1&quot;;
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:47:27 for a duration of 1.57 seconds (started at 2024-08-08T01:47:25)
+      </system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="install_sys.log" tests="1" errors="0" hostname="fenu1pod" id="1" time="1" timestamp="2024-08-08T01:47:34">
+    <testcase name="SYS/ODBCAPTURE_usr.sgrnt" assertions="20" classname="SYS.sgrnt" status="PASS" time="1">
+      <system-out>
+=== DBI Started: SYS/ODBCAPTURE_usr.sgrnt
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+=== DBI Completed at 2024-08-08T01:47:22 for a duration of .67 seconds (started at 2024-08-08T01:47:21)
+      </system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="fenu1pod" id="2" time="0" timestamp="2024-08-08T01:47:34">
+  </testsuite>
+</testsuites>

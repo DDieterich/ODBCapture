@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="ODBCTEST_schema_build" tests="32" failures="0" time="0" timestamp="2024-08-07T20:59:43">
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.COLA_SPATIAL_IDX" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.CUST_CTX_TEST_IND" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.DR$CUST_CTX_TEST_IND$H" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.DR$CUST_CTX_TEST_IND$KD" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.DR$CUST_CTX_TEST_IND$KR" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.DR$CUST_CTX_TEST_IND$NI" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.DR$CUST_CTX_TEST_IND$UI" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.DR$CUST_CTX_TEST_IND$X" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.SYS_C007603" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.SYS_IL0000073842C00010$$" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.SYS_IL0000073842C00011$$" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.SYS_IL0000073856C00003$$" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.SYS_IL0000073866C00006$$" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.SYS_IL0000073872C00006$$" time="0"/>
+    <testcase name="JAVA CLASS:db_object_status" classname="ODBCTEST.DirUtil" time="0"/>
+    <testcase name="JAVA SOURCE:db_object_status" classname="ODBCTEST.DirUtil" time="0"/>
+    <testcase name="LOB:db_object_status" classname="ODBCTEST.SYS_LOB0000073842C00010$$" time="0"/>
+    <testcase name="LOB:db_object_status" classname="ODBCTEST.SYS_LOB0000073842C00011$$" time="0"/>
+    <testcase name="LOB:db_object_status" classname="ODBCTEST.SYS_LOB0000073856C00003$$" time="0"/>
+    <testcase name="LOB:db_object_status" classname="ODBCTEST.SYS_LOB0000073866C00006$$" time="0"/>
+    <testcase name="LOB:db_object_status" classname="ODBCTEST.SYS_LOB0000073872C00006$$" time="0"/>
+    <testcase name="PACKAGE:db_object_status" classname="ODBCTEST.DIR_UTIL" time="0"/>
+    <testcase name="PACKAGE BODY:db_object_status" classname="ODBCTEST.DIR_UTIL" time="0"/>
+    <testcase name="SEQUENCE:db_object_status" classname="ODBCTEST.MDRS_1207F$" time="0"/>
+    <testcase name="TABLE:db_object_status" classname="ODBCTEST.CUST_CTX_TEST" time="0"/>
+    <testcase name="TABLE:db_object_status" classname="ODBCTEST.DR$CUST_CTX_TEST_IND$G" time="0"/>
+    <testcase name="TABLE:db_object_status" classname="ODBCTEST.DR$CUST_CTX_TEST_IND$I" time="0"/>
+    <testcase name="TABLE:db_object_status" classname="ODBCTEST.DR$CUST_CTX_TEST_IND$K" time="0"/>
+    <testcase name="TABLE:db_object_status" classname="ODBCTEST.DR$CUST_CTX_TEST_IND$N" time="0"/>
+    <testcase name="TABLE:db_object_status" classname="ODBCTEST.DR$CUST_CTX_TEST_IND$U" time="0"/>
+    <testcase name="TABLE:db_object_status" classname="ODBCTEST.MDRT_1207F$" time="0"/>
+    <testcase name="TABLE:db_object_status" classname="ODBCTEST.SDO_COLA_MARKETS" time="0"/>
+   </testsuite>
+</testsuites>

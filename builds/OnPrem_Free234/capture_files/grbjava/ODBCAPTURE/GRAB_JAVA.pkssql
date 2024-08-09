@@ -1,0 +1,40 @@
+
+--
+--  Create ODBCAPTURE.GRAB_JAVA Package
+--
+
+set define off
+
+
+--DBMS_METADATA:ODBCAPTURE.GRAB_JAVA
+
+  CREATE OR REPLACE EDITIONABLE PACKAGE "ODBCAPTURE"."GRAB_JAVA" 
+   authid current_user
+as
+
+   procedure grb_sysgrnt
+      (fh                 in out nocopy  fh2.sf_ptr_type
+      ,in_grantee         in             varchar2
+      ,in_file_name       in             varchar2
+      ,in_elmnt           in             varchar2
+      ,in_build_timing    in             varchar2);
+
+   procedure grb_grnt
+      (fh            in out nocopy  fh2.sf_ptr_type
+      ,in_grantee    in             varchar2
+      ,in_file_name  in             varchar2
+      ,in_elmnt      in             varchar2);
+
+   procedure grb_pjava;
+
+end grab_java;
+/
+
+
+--  Grants
+
+
+--  Synonyms
+
+
+set define on

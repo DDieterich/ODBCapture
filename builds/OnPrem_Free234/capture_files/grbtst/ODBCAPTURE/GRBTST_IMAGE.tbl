@@ -1,0 +1,27 @@
+
+--
+--  Create ODBCAPTURE.GRBTST_IMAGE Table
+--
+
+set define off
+
+
+--DBMS_METADATA:ODBCAPTURE.GRBTST_IMAGE
+
+  CREATE TABLE "ODBCAPTURE"."GRBTST_IMAGE" 
+   (	"ID" NUMBER(5,0), 
+	"IMAGE" BLOB
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;
+
+--  Comments
+
+--DBMS_METADATA:ODBCAPTURE.GRBTST_IMAGE
+
+
+--  Grants
+
+
+--  Synonyms
+
+
+set define on

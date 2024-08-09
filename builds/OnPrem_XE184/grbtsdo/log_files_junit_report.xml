@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="install_grbtsdo.log" tests="4" errors="0" hostname="XE" id="2" time="2" timestamp="2024-08-07T21:00:12">
+    <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
+    </testcase>
+    <testcase name="./installation_prepare.sql" assertions="19" classname="..sql" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ./installation_prepare.sql
+
+Create Temp Publicly Updateable Table
+
+Table created.
+
+
+Grant succeeded.
+
+
+Synonym created.
+
+
+Check for Prerequisite BUILD_TYPEs
+WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-07T21:00:00 for a duration of .33 seconds (started at 2024-08-07T21:00:00)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCTEST/SDO_COLA_MARKETS.cldr" assertions="13" classname="ODBCTEST.cldr" status="PASS" time="2">
+      <system-out>
+=== DBI Started: ODBCTEST/SDO_COLA_MARKETS.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCTEST/SDO_COLA_MARKETS.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-07T21:00:02 for a duration of 1.97 seconds (started at 2024-08-07T21:00:00)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCTEST/SDO_COLA_MARKETS.tbl" assertions="8" classname="ODBCTEST.tbl" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCTEST/SDO_COLA_MARKETS.tbl
+
+Table created.
+
+
+Table altered.
+
+=== DBI Completed at 2024-08-07T21:00:00 for a duration of .37 seconds (started at 2024-08-07T21:00:00)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCTEST/SDO_COLA_MARKETS.tidx" assertions="2" classname="ODBCTEST.tidx" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCTEST/SDO_COLA_MARKETS.tidx
+=== DBI Completed at 2024-08-07T21:00:02 for a duration of .02 seconds (started at 2024-08-07T21:00:02)
+      </system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="XE" id="1" time="0" timestamp="2024-08-07T21:00:12">
+  </testsuite>
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="XE" id="3" time="0" timestamp="2024-08-07T21:00:12">
+  </testsuite>
+</testsuites>

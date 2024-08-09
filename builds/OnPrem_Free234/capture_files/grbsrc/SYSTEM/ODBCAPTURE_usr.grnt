@@ -1,0 +1,30 @@
+
+
+--
+--  Create ODBCAPTURE Grants
+--
+
+set define off
+
+
+
+--  Database System Privileges
+
+grant CREATE ANY DIRECTORY to "ODBCAPTURE";
+grant CREATE PUBLIC SYNONYM to "ODBCAPTURE";
+grant PURGE DBA_RECYCLEBIN to "ODBCAPTURE";
+grant SELECT ANY TABLE to "ODBCAPTURE";
+grant UNLIMITED TABLESPACE to "ODBCAPTURE";
+
+
+--  "sys" BUILD_TYPE Role Grants
+--  "GRANTEE" (delayed) Role Grants
+--  Note: "OBJECT" Schema Object Grants are given during Role creation
+
+grant "CONNECT" to "ODBCAPTURE";
+grant "RESOURCE" to "ODBCAPTURE";
+grant "SELECT_CATALOG_ROLE" to "ODBCAPTURE";
+
+
+set define on
+

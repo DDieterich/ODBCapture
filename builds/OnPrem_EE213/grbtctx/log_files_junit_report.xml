@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="install_grbtctx.log" tests="4" errors="0" hostname="EE213CDB" id="3" time="11" timestamp="2024-08-08T02:06:12">
+    <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
+    </testcase>
+    <testcase name="./installation_prepare.sql" assertions="19" classname="..sql" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ./installation_prepare.sql
+
+Create Temp Publicly Updateable Table
+
+Table created.
+
+
+Grant succeeded.
+
+
+Synonym created.
+
+
+Check for Prerequisite BUILD_TYPEs
+WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T02:05:56 for a duration of .21 seconds (started at 2024-08-08T02:05:56)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCTEST/CUST_CTX_TEST.cldr" assertions="13" classname="ODBCTEST.cldr" status="PASS" time="4">
+      <system-out>
+=== DBI Started: ODBCTEST/CUST_CTX_TEST.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCTEST/CUST_CTX_TEST.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T02:06:00 for a duration of 3.87 seconds (started at 2024-08-08T02:05:56)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCTEST/CUST_CTX_TEST.tbl" assertions="5" classname="ODBCTEST.tbl" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCTEST/CUST_CTX_TEST.tbl
+
+Table created.
+
+=== DBI Completed at 2024-08-08T02:05:56 for a duration of .07 seconds (started at 2024-08-08T02:05:56)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCTEST/CUST_CTX_TEST.tidx" assertions="5" classname="ODBCTEST.tidx" status="PASS" time="7">
+      <system-out>
+=== DBI Started: ODBCTEST/CUST_CTX_TEST.tidx
+
+Index created.
+
+=== DBI Completed at 2024-08-08T02:06:07 for a duration of 7.31 seconds (started at 2024-08-08T02:06:00)
+      </system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2024-08-08T02:06:12">
+  </testsuite>
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2024-08-08T02:06:12">
+  </testsuite>
+</testsuites>

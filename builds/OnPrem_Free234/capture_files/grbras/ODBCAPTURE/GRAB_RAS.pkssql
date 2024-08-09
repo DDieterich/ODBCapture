@@ -1,0 +1,39 @@
+
+--
+--  Create ODBCAPTURE.GRAB_RAS Package
+--
+
+set define off
+
+
+--DBMS_METADATA:ODBCAPTURE.GRAB_RAS
+
+  CREATE OR REPLACE EDITIONABLE PACKAGE "ODBCAPTURE"."GRAB_RAS" 
+   authid current_user
+as
+
+   procedure grb_usr
+      (fh          in out NOCOPY  fh2.sf_ptr_type
+      ,in_grantee  in             varchar2);
+
+   procedure disable_policy
+      (in_schema  in  varchar2
+      ,in_object  in  varchar2);
+
+   procedure enable_policy
+      (in_schema  in  varchar2
+      ,in_object  in  varchar2);
+
+   procedure grb_racl;
+
+end grab_ras;
+/
+
+
+--  Grants
+
+
+--  Synonyms
+
+
+set define on

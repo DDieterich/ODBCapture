@@ -1,0 +1,34 @@
+
+--
+--  Create Wallet ACL/ACE
+--
+-- Wallet ACLs with the following:
+--    PRINCIPAL_TYPE      = 'DATABASE' (xs_acl.ptype_db)
+--    GRANT_TYPE          = 'GRANT'
+--    INVERTED_PRINICIPAL = 'NO'
+--    PRIVILEGE          is not null
+-- Start Dates and End Dates are ignored (set to NULL).
+--
+
+set define off
+
+
+--
+--  NOTE: This is a "GRANTEE" Wallet ACL
+--
+
+begin
+   DBMS_NETWORK_ACL_ADMIN.APPEND_WALLET_ACE
+      (wallet_path => 'file:/opt/install_files/oracle_wallet'
+      ,ace         => xs$ace_type
+                         (privilege_list   => xs$name_list('USE_PASSWORDS')
+                         ,granted          => TRUE
+                         ,inverted         => FALSE
+                         ,principal_name   => 'ODBCTEST'
+                         ,principal_type   => xs_acl.ptype_db
+                         ,start_date       => NULL
+                         ,end_date         => NULL));
+end;
+/
+
+set define on

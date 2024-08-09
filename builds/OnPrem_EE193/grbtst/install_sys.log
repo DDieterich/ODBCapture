@@ -1,0 +1,54 @@
+=== DBI Started: SYS/GRB_TEST_ROLE.role
+
+Role created.
+
+=== DBI Completed at 2024-08-08T10:56:29 for a duration of .05 seconds (started at 2024-08-08T10:56:29)
+=== DBI Started: SYS/ODBCTEST.user
+
+User created.
+
+XS Admin Grant "ADMIN_ANY_SEC_POLICY" to "ODBCTEST"
+
+PL/SQL procedure successfully completed.
+
+XS Admin Cloud Grant "ADMIN_ANY_SEC_POLICY" to "ODBCTEST"
+
+PL/SQL procedure successfully completed.
+
+XS Admin Grant "PROVISION" to "ODBCTEST"
+
+PL/SQL procedure successfully completed.
+
+XS Admin Cloud Grant "PROVISION" to "ODBCTEST"
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T10:56:29 for a duration of .12 seconds (started at 2024-08-08T10:56:29)
+=== DBI Started: SYS/host1.hacl
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T10:56:30 for a duration of .51 seconds (started at 2024-08-08T10:56:29)
+=== DBI Started: SYS/host2.hacl
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T10:56:30 for a duration of .13 seconds (started at 2024-08-08T10:56:30)
+=== DBI Started: SYS/odbctest_host.hacl
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T10:56:30 for a duration of .04 seconds (started at 2024-08-08T10:56:30)
+=== DBI Started: SYS/_opt_install_files_oracle_wallet.wacl
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T10:56:30 for a duration of .09 seconds (started at 2024-08-08T10:56:30)
+=== DBI Started: SYS/_var_opt_install_files_oracle_wallet.wacl
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T10:56:30 for a duration of .04 seconds (started at 2024-08-08T10:56:30)

@@ -1,0 +1,4990 @@
+build.sh
+Running from /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Setup Variables
+
+Capture Version
+
+build_initialize.sql
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:45:58 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+Last Successful login time: Wed Aug 07 2024 17:18:56 -05:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+New Session
+Connected.
+
+Reset Output Connections
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.04
+
+Show Database Connection
+
+'DB:'||NAME||',CON:'||SYS_CONTEXT('USERENV','CON_NAME')||',TSTMP:'||SYSTIMESTAMP
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+db: FENU1POD, con: GD339B1D52AB032_DB01, tstmp: 08-AUG-24 01.46.02.413893 AM +00:00
+
+Elapsed: 00:00:00.06
+
+Show Schema for DB01
+
+USERNAME
+--------------------------------------------------------------------------------------------------------------------------------
+ODBCAPTURE
+ODBCTEST
+
+Elapsed: 00:00:00.31
+
+delete from "ADMIN"."ODBCAPTURE_INSTALLATION_LOGS"
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+
+Drop Index COLA_SPATIAL_IDX
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:02.53
+
+0 rows deleted.
+
+Elapsed: 00:00:00.04
+
+Drop Principal Roles
+xs_principal.delete_principal "GRB_TEST_USER_02"
+xs_principal.delete_principal "GRB_TEST_USER_01"
+xs_principal.delete_principal "GRB_TEST_ROLE_01"
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.08
+
+Drop Schema
+-- 2024-08-08 01:46:05 --
+drop user "ODBCAPTURE" cascade
+-- 2024-08-08 01:46:08 --
+drop user "ODBCTEST" cascade
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:04.91
+
+Drop Role
+-- 2024-08-08 01:46:10 --
+drop role "GRB_TEST_ROLE"
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.07
+Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Clear old grbsrc logs
+
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbsrc
+
+/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../util/run_build.sql grbsrc
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:46:11 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+Last Successful login time: Wed Aug 07 2024 20:46:02 -05:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+New Session
+Connected.
+
+Reset Output Connections
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.04
+
+Show Database Connection
+
+'DB:'||NAME||',CON:'||SYS_CONTEXT('USERENV','CON_NAME')||',TSTMP:'||SYSTIMESTAMP
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+db: FENU1POD, con: GD339B1D52AB032_DB01, tstmp: 08-AUG-24 01.46.14.304924 AM +00:00
+
+Elapsed: 00:00:00.06
+Identify this Module in V$SESSION
+Setup Abort on Error
+
+**************************
+*  Run SYS Installation  *
+**************************
+
+=== DBI Started: SYS/ODBCAPTURE.user
+
+User created.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+XS Admin Grant "ADMIN_ANY_SEC_POLICY" to "ODBCAPTURE"
+
+PL/SQL procedure successfully completed.
+
+XS Admin Cloud Grant "ADMIN_ANY_SEC_POLICY" to "ODBCAPTURE"
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:46:20 for a duration of 5.57 seconds (started at 2024-08-08T01:46:14)
+Setup Continue on Error
+
+*****************************
+*  Run SYSTEM Installation  *
+*****************************
+
+Connected.
+=== DBI Started: SYSTEM/ODBCAPTURE_usr.grnt
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+=== DBI Completed at 2024-08-08T01:46:21 for a duration of .52 seconds (started at 2024-08-08T01:46:21)
+
+*************************
+*  Install Application	*
+*************************
+
+=== DBI Started: ./installation_prepare.sql
+
+Create Temp Publicly Updateable Table
+
+Table created.
+
+
+Grant succeeded.
+
+
+Synonym created.
+
+=== DBI Completed at 2024-08-08T01:46:22 for a duration of .6 seconds (started at 2024-08-08T01:46:21)
+=== DBI Started: ODBCAPTURE/COMMON_UTIL.pkssql
+
+Warning: Package created with compilation errors.
+
+=== DBI Completed at 2024-08-08T01:46:22 for a duration of .17 seconds (started at 2024-08-08T01:46:22)
+=== DBI Started: ODBCAPTURE/FH2.pkssql
+
+Package created.
+
+=== DBI Completed at 2024-08-08T01:46:22 for a duration of .18 seconds (started at 2024-08-08T01:46:22)
+=== DBI Started: ODBCAPTURE/GRAB_SCRIPTS.pkssql
+
+Warning: Package created with compilation errors.
+
+=== DBI Completed at 2024-08-08T01:46:22 for a duration of .17 seconds (started at 2024-08-08T01:46:22)
+=== DBI Started: ODBCAPTURE/ROOT_SCRIPTS.pkssql
+
+Package created.
+
+=== DBI Completed at 2024-08-08T01:46:23 for a duration of .16 seconds (started at 2024-08-08T01:46:22)
+=== DBI Started: ODBCAPTURE/ZIP_UTIL_PKG.pkssql
+
+Package created.
+
+=== DBI Completed at 2024-08-08T01:46:23 for a duration of .16 seconds (started at 2024-08-08T01:46:23)
+=== DBI Started: ODBCAPTURE/BUILD_CONF.tbl
+
+Table created.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+=== DBI Completed at 2024-08-08T01:46:23 for a duration of .51 seconds (started at 2024-08-08T01:46:23)
+=== DBI Started: ODBCAPTURE/BUILD_PATH.tbl
+
+Table created.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+=== DBI Completed at 2024-08-08T01:46:24 for a duration of .44 seconds (started at 2024-08-08T01:46:23)
+=== DBI Started: ODBCAPTURE/BUILD_TYPE_TIMING.tbl
+
+Table created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+=== DBI Completed at 2024-08-08T01:46:24 for a duration of .35 seconds (started at 2024-08-08T01:46:24)
+=== DBI Started: ODBCAPTURE/DBA_DEPENDENCIES_TAB.tbl
+
+Table created.
+
+=== DBI Completed at 2024-08-08T01:46:24 for a duration of .15 seconds (started at 2024-08-08T01:46:24)
+=== DBI Started: ODBCAPTURE/DBA_OBJECTS_TAB.tbl
+
+Table created.
+
+=== DBI Completed at 2024-08-08T01:46:25 for a duration of .15 seconds (started at 2024-08-08T01:46:25)
+=== DBI Started: ODBCAPTURE/DBA_TAB_PRIVS_TAB.tbl
+
+Table created.
+
+=== DBI Completed at 2024-08-08T01:46:25 for a duration of .15 seconds (started at 2024-08-08T01:46:25)
+=== DBI Started: ODBCAPTURE/DLOAD_CONF.tbl
+
+Table created.
+
+
+Table altered.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+=== DBI Completed at 2024-08-08T01:46:26 for a duration of .73 seconds (started at 2024-08-08T01:46:25)
+=== DBI Started: ODBCAPTURE/ELEMENT_CONF.tbl
+
+Table created.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+=== DBI Completed at 2024-08-08T01:46:26 for a duration of .76 seconds (started at 2024-08-08T01:46:26)
+=== DBI Started: ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl
+
+Table created.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+=== DBI Completed at 2024-08-08T01:46:27 for a duration of .49 seconds (started at 2024-08-08T01:46:26)
+=== DBI Started: ODBCAPTURE/OBJECT_CONF.tbl
+
+Table created.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+=== DBI Completed at 2024-08-08T01:46:28 for a duration of .59 seconds (started at 2024-08-08T01:46:27)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tbl
+
+Table created.
+
+=== DBI Completed at 2024-08-08T01:46:28 for a duration of .15 seconds (started at 2024-08-08T01:46:28)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tbl
+
+Table created.
+
+=== DBI Completed at 2024-08-08T01:46:28 for a duration of .16 seconds (started at 2024-08-08T01:46:28)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tbl
+
+Table created.
+
+=== DBI Completed at 2024-08-08T01:46:28 for a duration of .16 seconds (started at 2024-08-08T01:46:28)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tbl
+
+Table created.
+
+=== DBI Completed at 2024-08-08T01:46:28 for a duration of .16 seconds (started at 2024-08-08T01:46:28)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tbl
+
+Table created.
+
+=== DBI Completed at 2024-08-08T01:46:29 for a duration of .16 seconds (started at 2024-08-08T01:46:28)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tbl
+
+Table created.
+
+=== DBI Completed at 2024-08-08T01:46:29 for a duration of .15 seconds (started at 2024-08-08T01:46:29)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tbl
+
+Table created.
+
+=== DBI Completed at 2024-08-08T01:46:29 for a duration of .15 seconds (started at 2024-08-08T01:46:29)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tbl
+
+Table created.
+
+=== DBI Completed at 2024-08-08T01:46:29 for a duration of .16 seconds (started at 2024-08-08T01:46:29)
+=== DBI Started: ODBCAPTURE/ROLE_CONF.tbl
+
+Table created.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+=== DBI Completed at 2024-08-08T01:46:30 for a duration of .54 seconds (started at 2024-08-08T01:46:29)
+=== DBI Started: ODBCAPTURE/SCHEMA_CONF.tbl
+
+Table created.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+=== DBI Completed at 2024-08-08T01:46:31 for a duration of .82 seconds (started at 2024-08-08T01:46:30)
+=== DBI Started: ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl
+
+Table created.
+
+=== DBI Completed at 2024-08-08T01:46:31 for a duration of .16 seconds (started at 2024-08-08T01:46:31)
+=== DBI Started: ODBCAPTURE/TSPACE_CONF.tbl
+
+Table created.
+
+
+Table altered.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+=== DBI Completed at 2024-08-08T01:46:31 for a duration of .42 seconds (started at 2024-08-08T01:46:31)
+=== DBI Started: ODBCAPTURE/ZIP_FILES.tbl
+
+Table created.
+
+
+Table altered.
+
+=== DBI Completed at 2024-08-08T01:46:32 for a duration of .23 seconds (started at 2024-08-08T01:46:31)
+=== DBI Started: ODBCAPTURE/BUILD_CONF.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/BUILD_CONF.ctl
+
+  8 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:46:35 for a duration of 3.55 seconds (started at 2024-08-08T01:46:32)
+=== DBI Started: ODBCAPTURE/BUILD_PATH.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/BUILD_PATH.ctl
+
+  10 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:46:37 for a duration of 1.99 seconds (started at 2024-08-08T01:46:35)
+=== DBI Started: ODBCAPTURE/ELEMENT_CONF.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/ELEMENT_CONF.ctl
+
+  39 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:46:41 for a duration of 3.72 seconds (started at 2024-08-08T01:46:37)
+=== DBI Started: ODBCAPTURE/METADATA_TRANSFORM_PARAMS.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/METADATA_TRANSFORM_PARAMS.ctl
+
+  14 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:46:43 for a duration of 2.01 seconds (started at 2024-08-08T01:46:41)
+=== DBI Started: ODBCAPTURE/ROLE_CONF.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
+
+  87 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:46:45 for a duration of 2.06 seconds (started at 2024-08-08T01:46:43)
+=== DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
+
+  21 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:46:47 for a duration of 1.94 seconds (started at 2024-08-08T01:46:45)
+=== DBI Started: ODBCAPTURE/TSPACE_CONF.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/TSPACE_CONF.ctl
+
+  0 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:46:49 for a duration of 1.78 seconds (started at 2024-08-08T01:46:47)
+=== DBI Started: ODBCAPTURE/DBA_DEPENDENCIES_TAB.tidx
+
+Index created.
+
+
+Index created.
+
+=== DBI Completed at 2024-08-08T01:46:49 for a duration of .22 seconds (started at 2024-08-08T01:46:49)
+=== DBI Started: ODBCAPTURE/DBA_OBJECTS_TAB.tidx
+
+Index created.
+
+=== DBI Completed at 2024-08-08T01:46:50 for a duration of .16 seconds (started at 2024-08-08T01:46:49)
+=== DBI Started: ODBCAPTURE/DBA_TAB_PRIVS_TAB.tidx
+
+Index created.
+
+=== DBI Completed at 2024-08-08T01:46:50 for a duration of .16 seconds (started at 2024-08-08T01:46:50)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tidx
+
+Index created.
+
+=== DBI Completed at 2024-08-08T01:46:50 for a duration of .44 seconds (started at 2024-08-08T01:46:50)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tidx
+
+Index created.
+
+=== DBI Completed at 2024-08-08T01:46:50 for a duration of .16 seconds (started at 2024-08-08T01:46:50)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tidx
+
+Index created.
+
+=== DBI Completed at 2024-08-08T01:46:51 for a duration of .16 seconds (started at 2024-08-08T01:46:50)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tidx
+
+Index created.
+
+=== DBI Completed at 2024-08-08T01:46:51 for a duration of .16 seconds (started at 2024-08-08T01:46:51)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tidx
+
+Index created.
+
+=== DBI Completed at 2024-08-08T01:46:51 for a duration of .17 seconds (started at 2024-08-08T01:46:51)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tidx
+
+Index created.
+
+=== DBI Completed at 2024-08-08T01:46:51 for a duration of .16 seconds (started at 2024-08-08T01:46:51)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tidx
+
+Index created.
+
+
+Index created.
+
+=== DBI Completed at 2024-08-08T01:46:51 for a duration of .22 seconds (started at 2024-08-08T01:46:51)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tidx
+
+Index created.
+
+
+Index created.
+
+=== DBI Completed at 2024-08-08T01:46:52 for a duration of .21 seconds (started at 2024-08-08T01:46:52)
+=== DBI Started: ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-08-08T01:46:52 for a duration of .24 seconds (started at 2024-08-08T01:46:52)
+=== DBI Started: ODBCAPTURE/BUILD_PATH_REVIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-08-08T01:46:52 for a duration of .21 seconds (started at 2024-08-08T01:46:52)
+=== DBI Started: ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-08-08T01:46:53 for a duration of .23 seconds (started at 2024-08-08T01:46:52)
+=== DBI Started: ODBCAPTURE/DBA_OBJECTS_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-08-08T01:46:53 for a duration of .32 seconds (started at 2024-08-08T01:46:53)
+=== DBI Started: ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-08-08T01:46:53 for a duration of .2 seconds (started at 2024-08-08T01:46:53)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-08-08T01:46:53 for a duration of .22 seconds (started at 2024-08-08T01:46:53)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-08-08T01:46:54 for a duration of .23 seconds (started at 2024-08-08T01:46:54)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-08-08T01:46:54 for a duration of .23 seconds (started at 2024-08-08T01:46:54)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-08-08T01:46:54 for a duration of .24 seconds (started at 2024-08-08T01:46:54)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-08-08T01:46:55 for a duration of .21 seconds (started at 2024-08-08T01:46:54)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-08-08T01:46:55 for a duration of .27 seconds (started at 2024-08-08T01:46:55)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-08-08T01:46:55 for a duration of .21 seconds (started at 2024-08-08T01:46:55)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-08-08T01:46:55 for a duration of .23 seconds (started at 2024-08-08T01:46:55)
+=== DBI Started: ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-08-08T01:46:56 for a duration of .22 seconds (started at 2024-08-08T01:46:55)
+=== DBI Started: ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-08-08T01:46:56 for a duration of .21 seconds (started at 2024-08-08T01:46:56)
+=== DBI Started: ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-08-08T01:46:56 for a duration of .21 seconds (started at 2024-08-08T01:46:56)
+=== DBI Started: ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-08-08T01:46:56 for a duration of .21 seconds (started at 2024-08-08T01:46:56)
+=== DBI Started: ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-08-08T01:46:57 for a duration of .21 seconds (started at 2024-08-08T01:46:57)
+=== DBI Started: ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-08-08T01:46:57 for a duration of .22 seconds (started at 2024-08-08T01:46:57)
+=== DBI Started: ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-08-08T01:46:57 for a duration of .21 seconds (started at 2024-08-08T01:46:57)
+=== DBI Started: ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-08-08T01:46:58 for a duration of .21 seconds (started at 2024-08-08T01:46:57)
+=== DBI Started: ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-08-08T01:46:58 for a duration of .22 seconds (started at 2024-08-08T01:46:58)
+=== DBI Started: ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-08-08T01:46:58 for a duration of .22 seconds (started at 2024-08-08T01:46:58)
+=== DBI Started: ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-08-08T01:46:58 for a duration of .21 seconds (started at 2024-08-08T01:46:58)
+=== DBI Started: ODBCAPTURE/UOR_INSTALL_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-08-08T01:46:59 for a duration of .21 seconds (started at 2024-08-08T01:46:58)
+=== DBI Started: ODBCAPTURE/COMMON_UTIL.pkbsql
+
+Package body created.
+
+=== DBI Completed at 2024-08-08T01:46:59 for a duration of .21 seconds (started at 2024-08-08T01:46:59)
+=== DBI Started: ODBCAPTURE/FH2.pkbsql
+
+Package body created.
+
+=== DBI Completed at 2024-08-08T01:46:59 for a duration of .23 seconds (started at 2024-08-08T01:46:59)
+=== DBI Started: ODBCAPTURE/GRAB_SCRIPTS.pkbsql
+
+Package body created.
+
+=== DBI Completed at 2024-08-08T01:47:00 for a duration of .9 seconds (started at 2024-08-08T01:46:59)
+=== DBI Started: ODBCAPTURE/ROOT_SCRIPTS.pkbsql
+
+Package body created.
+
+=== DBI Completed at 2024-08-08T01:47:00 for a duration of .18 seconds (started at 2024-08-08T01:47:00)
+=== DBI Started: ODBCAPTURE/ZIP_UTIL_PKG.pkbsql
+
+Package body created.
+
+=== DBI Completed at 2024-08-08T01:47:01 for a duration of .21 seconds (started at 2024-08-08T01:47:00)
+=== DBI Started: ODBCAPTURE/BUILD_PATH.tfk
+
+Table altered.
+
+
+Table altered.
+
+=== DBI Completed at 2024-08-08T01:47:01 for a duration of .23 seconds (started at 2024-08-08T01:47:01)
+=== DBI Started: ODBCAPTURE/DLOAD_CONF.tfk
+
+Table altered.
+
+
+Table altered.
+
+=== DBI Completed at 2024-08-08T01:47:01 for a duration of .23 seconds (started at 2024-08-08T01:47:01)
+=== DBI Started: ODBCAPTURE/OBJECT_CONF.tfk
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+=== DBI Completed at 2024-08-08T01:47:01 for a duration of .3 seconds (started at 2024-08-08T01:47:01)
+=== DBI Started: ODBCAPTURE/ROLE_CONF.tfk
+
+Table altered.
+
+=== DBI Completed at 2024-08-08T01:47:02 for a duration of .17 seconds (started at 2024-08-08T01:47:02)
+=== DBI Started: ODBCAPTURE/SCHEMA_CONF.tfk
+
+Table altered.
+
+=== DBI Completed at 2024-08-08T01:47:02 for a duration of .17 seconds (started at 2024-08-08T01:47:02)
+=== DBI Started: ODBCAPTURE/TSPACE_CONF.tfk
+
+Table altered.
+
+=== DBI Completed at 2024-08-08T01:47:02 for a duration of .17 seconds (started at 2024-08-08T01:47:02)
+=== DBI Started: ./installation_finalize.sql
+
+Drop Temp Publicly Updateable Table
+
+Synonym dropped.
+
+
+Table dropped.
+
+
+fix_invalid_public_synonyms
+
+Re-create Invalid Public Synonyms
+
+PL/SQL procedure successfully completed.
+
+
+compile_all
+Compile All started
+ODBCAPTURE Compiled.
+Compile All is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_foreign_keys_ENABLE
+Alter Foreign Keys started.
+  ENABLE 'ODBCAPTURE'
+alter table "ODBCAPTURE"."BUILD_PATH" ENABLE constraint "BUILD_PATH_FK1";
+alter table "ODBCAPTURE"."BUILD_PATH" ENABLE constraint "BUILD_PATH_FK2";
+alter table "ODBCAPTURE"."DLOAD_CONF" ENABLE constraint "DLOAD_CONF_FK1";
+alter table "ODBCAPTURE"."DLOAD_CONF" ENABLE constraint "DLOAD_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK1";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK3";
+alter table "ODBCAPTURE"."ROLE_CONF" ENABLE constraint "ROLE_CONF_FK1";
+alter table "ODBCAPTURE"."SCHEMA_CONF" ENABLE constraint "SCHEMA_CONF_FK1";
+alter table "ODBCAPTURE"."TSPACE_CONF" ENABLE constraint "TSPACE_CONF_FK1";
+Alter Foreign Keys is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_triggers_ENABLE
+Alter Triggers started.
+  ENABLE 'ODBCAPTURE'
+Alter Triggers is done.
+
+PL/SQL procedure successfully completed.
+
+
+update_id_sequences
+Update ID Sequences started
+Identity Sequence Updates is done.
+
+PL/SQL procedure successfully completed.
+
+
+Switch Spooling Off
+=== DBI Completed at 2024-08-08T01:47:06 for a duration of 3.53 seconds (started at 2024-08-08T01:47:02)
+not spooling currently
+
+"grbsrc" Installation is Done.
+
+New Session
+Connected.
+
+Reset Output Connections
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.04
+
+Show Database Connection
+
+'DB:'||NAME||',CON:'||SYS_CONTEXT('USERENV','CON_NAME')||',TSTMP:'||SYSTIMESTAMP
+---------------------------------------------------------------------------------------------------------------------------
+db: FENU1POD, con: GD339B1D52AB032_DB01, tstmp: 08-AUG-24 01.47.07.258783 AM +00:00
+
+1 row selected.
+
+Elapsed: 00:00:00.06
+
+User altered.
+
+Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbsrc
+
+report_status.sql grbsrc
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:47:08 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+Last Successful login time: Wed Aug 07 2024 20:47:06 -05:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+Load Installation Files
+
+Confirm/Create odbcapture_installation_logs Table
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=./odbcapture_installation_logs.ctl
+
+  10 Rows successfully loaded.
+
+old   2:    if '&_RC.' != '0' then
+new   2:    if '0' != '0' then
+old   3:       raise_application_error(-20000, 'Control file "odbcapture_installation_logs.ctl" returned error: &_RC.');
+new   3:       raise_application_error(-20000, 'Control file "odbcapture_installation_logs.ctl" returned error: 0');
+
+PL/SQL procedure successfully completed.
+
+
+Reporting Summary of Build Type Log Errors
+Processing file ODBCAPTURE/BUILD_CONF.log (2024-08-08 01:47:11)
+Processing file ODBCAPTURE/BUILD_PATH.log (2024-08-08 01:47:11)
+Processing file ODBCAPTURE/ELEMENT_CONF.log (2024-08-08 01:47:11)
+Processing file ODBCAPTURE/METADATA_TRANSFORM_PARAMS.log (2024-08-08 01:47:11)
+Processing file ODBCAPTURE/ROLE_CONF.log (2024-08-08 01:47:11)
+Processing file ODBCAPTURE/SCHEMA_CONF.log (2024-08-08 01:47:11)
+Processing file ODBCAPTURE/TSPACE_CONF.log (2024-08-08 01:47:11)
+Processing file install_grbsrc.log (2024-08-08 01:47:11)
+Processing file install_sys.log (2024-08-08 01:47:11)
+Processing file install_system.log (2024-08-08 01:47:11)
+
+PL/SQL procedure successfully completed.
+
+
+Reporting Invalid Objects
+
+Reporting JUnit XML Database Build Status
+
+Reorting JUnit XML Installation Log
+SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Move Log Files to Build Folder
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbsrc
+renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsrc/db_build_junit_report.xml'
+renamed 'install_grbsrc.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsrc/install_grbsrc.log'
+renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsrc/install_sys.log'
+renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsrc/install_system.log'
+renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsrc/log_files_junit_report.xml'
+renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsrc/odbcapture_installation_logs.log'
+renamed 'ODBCAPTURE/BUILD_CONF.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsrc/ODBCAPTURE/BUILD_CONF.log'
+renamed 'ODBCAPTURE/BUILD_PATH.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsrc/ODBCAPTURE/BUILD_PATH.log'
+renamed 'ODBCAPTURE/ELEMENT_CONF.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsrc/ODBCAPTURE/ELEMENT_CONF.log'
+renamed 'ODBCAPTURE/METADATA_TRANSFORM_PARAMS.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.log'
+renamed 'ODBCAPTURE/ROLE_CONF.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsrc/ODBCAPTURE/ROLE_CONF.log'
+renamed 'ODBCAPTURE/SCHEMA_CONF.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsrc/ODBCAPTURE/SCHEMA_CONF.log'
+renamed 'ODBCAPTURE/TSPACE_CONF.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsrc/ODBCAPTURE/TSPACE_CONF.log'
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Clear old grbras logs
+
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbras
+
+/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../util/run_build.sql grbras
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:47:19 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+Last Successful login time: Wed Aug 07 2024 20:47:10 -05:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+New Session
+Connected.
+
+Reset Output Connections
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.04
+
+Show Database Connection
+
+'DB:'||NAME||',CON:'||SYS_CONTEXT('USERENV','CON_NAME')||',TSTMP:'||SYSTIMESTAMP
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+db: FENU1POD, con: GD339B1D52AB032_DB01, tstmp: 08-AUG-24 01.47.21.330613 AM +00:00
+
+Elapsed: 00:00:00.06
+Identify this Module in V$SESSION
+Setup Abort on Error
+
+**************************
+*  Run SYS Installation  *
+**************************
+
+=== DBI Started: SYS/ODBCAPTURE_usr.sgrnt
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+=== DBI Completed at 2024-08-08T01:47:22 for a duration of .67 seconds (started at 2024-08-08T01:47:21)
+Setup Continue on Error
+
+*****************************
+*  Run SYSTEM Installation  *
+*****************************
+
+Connected.
+
+*************************
+*  Install Application	*
+*************************
+
+=== DBI Started: ./installation_prepare.sql
+
+Create Temp Publicly Updateable Table
+
+Table created.
+
+
+Grant succeeded.
+
+
+Synonym created.
+
+
+Check for Prerequisite BUILD_TYPEs
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:47:23 for a duration of .33 seconds (started at 2024-08-08T01:47:23)
+=== DBI Started: ODBCAPTURE/GRAB_RAS.pkssql
+
+Package created.
+
+=== DBI Completed at 2024-08-08T01:47:23 for a duration of .3 seconds (started at 2024-08-08T01:47:23)
+=== DBI Started: ODBCAPTURE/EXPORTING_RAS_DATA.tbl
+
+Table created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+
+Comment created.
+
+=== DBI Completed at 2024-08-08T01:47:24 for a duration of .42 seconds (started at 2024-08-08T01:47:23)
+=== DBI Started: ODBCAPTURE/ROLE_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."ROLE_CONF" DISABLE constraint "ROLE_CONF_FK1";
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
+
+  5 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:47:25 for a duration of 1.64 seconds (started at 2024-08-08T01:47:24)
+=== DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."SCHEMA_CONF" DISABLE constraint "SCHEMA_CONF_FK1";
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
+
+  1 Row successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:47:27 for a duration of 1.57 seconds (started at 2024-08-08T01:47:25)
+=== DBI Started: ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-08-08T01:47:27 for a duration of .21 seconds (started at 2024-08-08T01:47:27)
+=== DBI Started: ODBCAPTURE/GRAB_RAS.pkbsql
+
+Package body created.
+
+=== DBI Completed at 2024-08-08T01:47:28 for a duration of .22 seconds (started at 2024-08-08T01:47:27)
+=== DBI Started: ./installation_finalize.sql
+
+Drop Temp Publicly Updateable Table
+
+Synonym dropped.
+
+
+Table dropped.
+
+
+fix_invalid_public_synonyms
+
+Re-create Invalid Public Synonyms
+
+PL/SQL procedure successfully completed.
+
+
+compile_all
+Compile All started
+ODBCAPTURE Compiled.
+Compile All is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_foreign_keys_ENABLE
+Alter Foreign Keys started.
+  ENABLE 'ODBCAPTURE'
+alter table "ODBCAPTURE"."BUILD_PATH" ENABLE constraint "BUILD_PATH_FK1";
+alter table "ODBCAPTURE"."BUILD_PATH" ENABLE constraint "BUILD_PATH_FK2";
+alter table "ODBCAPTURE"."DLOAD_CONF" ENABLE constraint "DLOAD_CONF_FK1";
+alter table "ODBCAPTURE"."DLOAD_CONF" ENABLE constraint "DLOAD_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK1";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK3";
+alter table "ODBCAPTURE"."ROLE_CONF" ENABLE constraint "ROLE_CONF_FK1";
+alter table "ODBCAPTURE"."SCHEMA_CONF" ENABLE constraint "SCHEMA_CONF_FK1";
+alter table "ODBCAPTURE"."TSPACE_CONF" ENABLE constraint "TSPACE_CONF_FK1";
+Alter Foreign Keys is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_triggers_ENABLE
+Alter Triggers started.
+  ENABLE 'ODBCAPTURE'
+Alter Triggers is done.
+
+PL/SQL procedure successfully completed.
+
+
+update_id_sequences
+Update ID Sequences started
+Identity Sequence Updates is done.
+
+PL/SQL procedure successfully completed.
+
+
+Switch Spooling Off
+=== DBI Completed at 2024-08-08T01:47:30 for a duration of 2.03 seconds (started at 2024-08-08T01:47:28)
+not spooling currently
+
+"grbras" Installation is Done.
+
+New Session
+Connected.
+
+Reset Output Connections
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.04
+
+Show Database Connection
+
+'DB:'||NAME||',CON:'||SYS_CONTEXT('USERENV','CON_NAME')||',TSTMP:'||SYSTIMESTAMP
+---------------------------------------------------------------------------------------------------------------------------
+db: FENU1POD, con: GD339B1D52AB032_DB01, tstmp: 08-AUG-24 01.47.31.374575 AM +00:00
+
+1 row selected.
+
+Elapsed: 00:00:00.06
+Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbras
+
+report_status.sql grbras
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:47:31 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+Last Successful login time: Wed Aug 07 2024 20:47:31 -05:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+Load Installation Files
+
+Confirm/Create odbcapture_installation_logs Table
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=./odbcapture_installation_logs.ctl
+
+  5 Rows successfully loaded.
+
+old   2:    if '&_RC.' != '0' then
+new   2:    if '0' != '0' then
+old   3:       raise_application_error(-20000, 'Control file "odbcapture_installation_logs.ctl" returned error: &_RC.');
+new   3:       raise_application_error(-20000, 'Control file "odbcapture_installation_logs.ctl" returned error: 0');
+
+PL/SQL procedure successfully completed.
+
+
+Reporting Summary of Build Type Log Errors
+Processing file ODBCAPTURE/ROLE_CONF.log (2024-08-08 01:47:34)
+Processing file ODBCAPTURE/SCHEMA_CONF.log (2024-08-08 01:47:34)
+Processing file install_grbras.log (2024-08-08 01:47:34)
+Processing file install_sys.log (2024-08-08 01:47:34)
+Processing file install_system.log (2024-08-08 01:47:34)
+
+PL/SQL procedure successfully completed.
+
+
+Reporting Invalid Objects
+
+Reporting JUnit XML Database Build Status
+
+Reorting JUnit XML Installation Log
+SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Move Log Files to Build Folder
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbras
+renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbras/db_build_junit_report.xml'
+renamed 'install_grbras.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbras/install_grbras.log'
+renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbras/install_sys.log'
+renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbras/install_system.log'
+renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbras/log_files_junit_report.xml'
+renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbras/odbcapture_installation_logs.log'
+renamed 'ODBCAPTURE/ROLE_CONF.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbras/ODBCAPTURE/ROLE_CONF.log'
+renamed 'ODBCAPTURE/SCHEMA_CONF.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbras/ODBCAPTURE/SCHEMA_CONF.log'
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Clear old grbsdo logs
+
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbsdo
+
+/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../util/run_build.sql grbsdo
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:47:37 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+Last Successful login time: Wed Aug 07 2024 20:47:33 -05:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+New Session
+Connected.
+
+Reset Output Connections
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.04
+
+Show Database Connection
+
+'DB:'||NAME||',CON:'||SYS_CONTEXT('USERENV','CON_NAME')||',TSTMP:'||SYSTIMESTAMP
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+db: FENU1POD, con: GD339B1D52AB032_DB01, tstmp: 08-AUG-24 01.47.39.869968 AM +00:00
+
+Elapsed: 00:00:00.06
+Identify this Module in V$SESSION
+Setup Abort on Error
+
+**************************
+*  Run SYS Installation  *
+**************************
+
+Setup Continue on Error
+
+*****************************
+*  Run SYSTEM Installation  *
+*****************************
+
+Connected.
+
+*************************
+*  Install Application	*
+*************************
+
+=== DBI Started: ./installation_prepare.sql
+
+Create Temp Publicly Updateable Table
+
+Table created.
+
+
+Grant succeeded.
+
+
+Synonym created.
+
+
+Check for Prerequisite BUILD_TYPEs
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:47:43 for a duration of .45 seconds (started at 2024-08-08T01:47:42)
+=== DBI Started: ODBCAPTURE/GRAB_SDO.pkssql
+
+Package created.
+
+=== DBI Completed at 2024-08-08T01:47:43 for a duration of .19 seconds (started at 2024-08-08T01:47:43)
+=== DBI Started: ODBCAPTURE/ROLE_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."ROLE_CONF" DISABLE constraint "ROLE_CONF_FK1";
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
+
+  4 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:47:46 for a duration of 2.66 seconds (started at 2024-08-08T01:47:43)
+=== DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."SCHEMA_CONF" DISABLE constraint "SCHEMA_CONF_FK1";
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
+
+  2 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:47:47 for a duration of 1.72 seconds (started at 2024-08-08T01:47:46)
+=== DBI Started: ODBCAPTURE/GRAB_SDO.pkbsql
+
+Package body created.
+
+=== DBI Completed at 2024-08-08T01:47:48 for a duration of .22 seconds (started at 2024-08-08T01:47:47)
+=== DBI Started: ./installation_finalize.sql
+
+Drop Temp Publicly Updateable Table
+
+Synonym dropped.
+
+
+Table dropped.
+
+
+fix_invalid_public_synonyms
+
+Re-create Invalid Public Synonyms
+
+PL/SQL procedure successfully completed.
+
+
+compile_all
+Compile All started
+ODBCAPTURE Compiled.
+Compile All is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_foreign_keys_ENABLE
+Alter Foreign Keys started.
+  ENABLE 'ODBCAPTURE'
+alter table "ODBCAPTURE"."BUILD_PATH" ENABLE constraint "BUILD_PATH_FK1";
+alter table "ODBCAPTURE"."BUILD_PATH" ENABLE constraint "BUILD_PATH_FK2";
+alter table "ODBCAPTURE"."DLOAD_CONF" ENABLE constraint "DLOAD_CONF_FK1";
+alter table "ODBCAPTURE"."DLOAD_CONF" ENABLE constraint "DLOAD_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK1";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK3";
+alter table "ODBCAPTURE"."ROLE_CONF" ENABLE constraint "ROLE_CONF_FK1";
+alter table "ODBCAPTURE"."SCHEMA_CONF" ENABLE constraint "SCHEMA_CONF_FK1";
+alter table "ODBCAPTURE"."TSPACE_CONF" ENABLE constraint "TSPACE_CONF_FK1";
+Alter Foreign Keys is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_triggers_ENABLE
+Alter Triggers started.
+  ENABLE 'ODBCAPTURE'
+Alter Triggers is done.
+
+PL/SQL procedure successfully completed.
+
+
+update_id_sequences
+Update ID Sequences started
+Identity Sequence Updates is done.
+
+PL/SQL procedure successfully completed.
+
+
+Switch Spooling Off
+=== DBI Completed at 2024-08-08T01:47:49 for a duration of 1.78 seconds (started at 2024-08-08T01:47:48)
+not spooling currently
+
+"grbsdo" Installation is Done.
+
+New Session
+Connected.
+
+Reset Output Connections
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.04
+
+Show Database Connection
+
+'DB:'||NAME||',CON:'||SYS_CONTEXT('USERENV','CON_NAME')||',TSTMP:'||SYSTIMESTAMP
+---------------------------------------------------------------------------------------------------------------------------
+db: FENU1POD, con: GD339B1D52AB032_DB01, tstmp: 08-AUG-24 01.47.51.025216 AM +00:00
+
+1 row selected.
+
+Elapsed: 00:00:00.06
+Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbsdo
+
+report_status.sql grbsdo
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:47:51 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+Last Successful login time: Wed Aug 07 2024 20:47:50 -05:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+Load Installation Files
+
+Confirm/Create odbcapture_installation_logs Table
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=./odbcapture_installation_logs.ctl
+
+  5 Rows successfully loaded.
+
+old   2:    if '&_RC.' != '0' then
+new   2:    if '0' != '0' then
+old   3:       raise_application_error(-20000, 'Control file "odbcapture_installation_logs.ctl" returned error: &_RC.');
+new   3:       raise_application_error(-20000, 'Control file "odbcapture_installation_logs.ctl" returned error: 0');
+
+PL/SQL procedure successfully completed.
+
+
+Reporting Summary of Build Type Log Errors
+Processing file ODBCAPTURE/ROLE_CONF.log (2024-08-08 01:47:54)
+Processing file ODBCAPTURE/SCHEMA_CONF.log (2024-08-08 01:47:54)
+Processing file install_grbsdo.log (2024-08-08 01:47:54)
+Processing file install_sys.log (2024-08-08 01:47:54)
+Processing file install_system.log (2024-08-08 01:47:54)
+
+PL/SQL procedure successfully completed.
+
+
+Reporting Invalid Objects
+
+Reporting JUnit XML Database Build Status
+
+Reorting JUnit XML Installation Log
+SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Move Log Files to Build Folder
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbsdo
+renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsdo/db_build_junit_report.xml'
+renamed 'install_grbsdo.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsdo/install_grbsdo.log'
+renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsdo/install_sys.log'
+renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsdo/install_system.log'
+renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsdo/log_files_junit_report.xml'
+renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsdo/odbcapture_installation_logs.log'
+renamed 'ODBCAPTURE/ROLE_CONF.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsdo/ODBCAPTURE/ROLE_CONF.log'
+renamed 'ODBCAPTURE/SCHEMA_CONF.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbsdo/ODBCAPTURE/SCHEMA_CONF.log'
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Clear old grbdat logs
+
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbdat
+
+/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../util/run_build.sql grbdat
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:47:57 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+Last Successful login time: Wed Aug 07 2024 20:47:53 -05:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+New Session
+Connected.
+
+Reset Output Connections
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.04
+
+Show Database Connection
+
+'DB:'||NAME||',CON:'||SYS_CONTEXT('USERENV','CON_NAME')||',TSTMP:'||SYSTIMESTAMP
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+db: FENU1POD, con: GD339B1D52AB032_DB01, tstmp: 08-AUG-24 01.47.58.906957 AM +00:00
+
+Elapsed: 00:00:00.06
+Identify this Module in V$SESSION
+Setup Abort on Error
+
+**************************
+*  Run SYS Installation  *
+**************************
+
+Setup Continue on Error
+
+*****************************
+*  Run SYSTEM Installation  *
+*****************************
+
+Connected.
+
+*************************
+*  Install Application	*
+*************************
+
+=== DBI Started: ./installation_prepare.sql
+
+Create Temp Publicly Updateable Table
+
+Table created.
+
+
+Grant succeeded.
+
+
+Synonym created.
+
+
+Check for Prerequisite BUILD_TYPEs
+WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+WARNING: Prerequisite BUILD_TYPE "grbjava" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:48:00 for a duration of .32 seconds (started at 2024-08-08T01:47:59)
+=== DBI Started: ODBCAPTURE/DLOAD_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."DLOAD_CONF" DISABLE constraint "DLOAD_CONF_FK1";
+alter table "ODBCAPTURE"."DLOAD_CONF" DISABLE constraint "DLOAD_CONF_FK2";
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/DLOAD_CONF.ctl
+
+  15 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:48:03 for a duration of 3.41 seconds (started at 2024-08-08T01:48:00)
+=== DBI Started: ODBCAPTURE/OBJECT_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."OBJECT_CONF" DISABLE constraint "OBJECT_CONF_FK1";
+alter table "ODBCAPTURE"."OBJECT_CONF" DISABLE constraint "OBJECT_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" DISABLE constraint "OBJECT_CONF_FK3";
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/OBJECT_CONF.ctl
+
+  16 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:48:05 for a duration of 1.95 seconds (started at 2024-08-08T01:48:03)
+=== DBI Started: ./installation_finalize.sql
+
+Drop Temp Publicly Updateable Table
+
+Synonym dropped.
+
+
+Table dropped.
+
+
+fix_invalid_public_synonyms
+
+Re-create Invalid Public Synonyms
+
+PL/SQL procedure successfully completed.
+
+
+compile_all
+Compile All started
+ODBCAPTURE Compiled.
+Compile All is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_foreign_keys_ENABLE
+Alter Foreign Keys started.
+  ENABLE 'ODBCAPTURE'
+alter table "ODBCAPTURE"."BUILD_PATH" ENABLE constraint "BUILD_PATH_FK1";
+alter table "ODBCAPTURE"."BUILD_PATH" ENABLE constraint "BUILD_PATH_FK2";
+alter table "ODBCAPTURE"."DLOAD_CONF" ENABLE constraint "DLOAD_CONF_FK1";
+alter table "ODBCAPTURE"."DLOAD_CONF" ENABLE constraint "DLOAD_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK1";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK3";
+alter table "ODBCAPTURE"."ROLE_CONF" ENABLE constraint "ROLE_CONF_FK1";
+alter table "ODBCAPTURE"."SCHEMA_CONF" ENABLE constraint "SCHEMA_CONF_FK1";
+alter table "ODBCAPTURE"."TSPACE_CONF" ENABLE constraint "TSPACE_CONF_FK1";
+Alter Foreign Keys is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_triggers_ENABLE
+Alter Triggers started.
+  ENABLE 'ODBCAPTURE'
+Alter Triggers is done.
+
+PL/SQL procedure successfully completed.
+
+
+update_id_sequences
+Update ID Sequences started
+Identity Sequence Updates is done.
+
+PL/SQL procedure successfully completed.
+
+
+Switch Spooling Off
+=== DBI Completed at 2024-08-08T01:48:07 for a duration of 1.76 seconds (started at 2024-08-08T01:48:05)
+not spooling currently
+
+"grbdat" Installation is Done.
+
+New Session
+Connected.
+
+Reset Output Connections
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.04
+
+Show Database Connection
+
+'DB:'||NAME||',CON:'||SYS_CONTEXT('USERENV','CON_NAME')||',TSTMP:'||SYSTIMESTAMP
+---------------------------------------------------------------------------------------------------------------------------
+db: FENU1POD, con: GD339B1D52AB032_DB01, tstmp: 08-AUG-24 01.48.08.586280 AM +00:00
+
+1 row selected.
+
+Elapsed: 00:00:00.06
+Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbdat
+
+report_status.sql grbdat
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:48:08 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+Last Successful login time: Wed Aug 07 2024 20:48:08 -05:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+Load Installation Files
+
+Confirm/Create odbcapture_installation_logs Table
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=./odbcapture_installation_logs.ctl
+
+  5 Rows successfully loaded.
+
+old   2:    if '&_RC.' != '0' then
+new   2:    if '0' != '0' then
+old   3:       raise_application_error(-20000, 'Control file "odbcapture_installation_logs.ctl" returned error: &_RC.');
+new   3:       raise_application_error(-20000, 'Control file "odbcapture_installation_logs.ctl" returned error: 0');
+
+PL/SQL procedure successfully completed.
+
+
+Reporting Summary of Build Type Log Errors
+Processing file ODBCAPTURE/DLOAD_CONF.log (2024-08-08 01:48:11)
+Processing file ODBCAPTURE/OBJECT_CONF.log (2024-08-08 01:48:11)
+Processing file install_grbdat.log (2024-08-08 01:48:11)
+  1 lines: WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+  1 lines: WARNING: Prerequisite BUILD_TYPE "grbjava" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+Processing file install_sys.log (2024-08-08 01:48:11)
+Processing file install_system.log (2024-08-08 01:48:11)
+
+PL/SQL procedure successfully completed.
+
+
+Reporting Invalid Objects
+
+Reporting JUnit XML Database Build Status
+
+Reorting JUnit XML Installation Log
+SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Move Log Files to Build Folder
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbdat
+renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbdat/db_build_junit_report.xml'
+renamed 'install_grbdat.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbdat/install_grbdat.log'
+renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbdat/install_sys.log'
+renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbdat/install_system.log'
+renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbdat/log_files_junit_report.xml'
+renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbdat/odbcapture_installation_logs.log'
+renamed 'ODBCAPTURE/DLOAD_CONF.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbdat/ODBCAPTURE/DLOAD_CONF.log'
+renamed 'ODBCAPTURE/OBJECT_CONF.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbdat/ODBCAPTURE/OBJECT_CONF.log'
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Clear old grbtst logs
+
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbtst
+
+/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../util/run_build.sql grbtst
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:48:14 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+Last Successful login time: Wed Aug 07 2024 20:48:10 -05:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+New Session
+Connected.
+
+Reset Output Connections
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.04
+
+Show Database Connection
+
+'DB:'||NAME||',CON:'||SYS_CONTEXT('USERENV','CON_NAME')||',TSTMP:'||SYSTIMESTAMP
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+db: FENU1POD, con: GD339B1D52AB032_DB01, tstmp: 08-AUG-24 01.48.15.964475 AM +00:00
+
+Elapsed: 00:00:00.06
+Identify this Module in V$SESSION
+Setup Abort on Error
+
+**************************
+*  Run SYS Installation  *
+**************************
+
+=== DBI Started: SYS/GRB_TEST_ROLE.role
+
+Role created.
+
+=== DBI Completed at 2024-08-08T01:48:16 for a duration of .15 seconds (started at 2024-08-08T01:48:16)
+=== DBI Started: SYS/ODBCTEST.user
+
+User created.
+
+XS Admin Grant "ADMIN_ANY_SEC_POLICY" to "ODBCTEST"
+
+PL/SQL procedure successfully completed.
+
+XS Admin Cloud Grant "ADMIN_ANY_SEC_POLICY" to "ODBCTEST"
+
+PL/SQL procedure successfully completed.
+
+XS Admin Grant "PROVISION" to "ODBCTEST"
+
+PL/SQL procedure successfully completed.
+
+XS Admin Cloud Grant "PROVISION" to "ODBCTEST"
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:48:16 for a duration of .53 seconds (started at 2024-08-08T01:48:16)
+=== DBI Started: SYS/host1.hacl
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:48:17 for a duration of .41 seconds (started at 2024-08-08T01:48:16)
+=== DBI Started: SYS/host2.hacl
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:48:17 for a duration of .2 seconds (started at 2024-08-08T01:48:17)
+=== DBI Started: SYS/odbctest_host.hacl
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:48:17 for a duration of .15 seconds (started at 2024-08-08T01:48:17)
+=== DBI Started: SYS/_opt_install_files_oracle_wallet.wacl
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:48:17 for a duration of .14 seconds (started at 2024-08-08T01:48:17)
+=== DBI Started: SYS/_var_opt_install_files_oracle_wallet.wacl
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:48:18 for a duration of .14 seconds (started at 2024-08-08T01:48:17)
+Setup Continue on Error
+
+*****************************
+*  Run SYSTEM Installation  *
+*****************************
+
+Connected.
+=== DBI Started: SYSTEM/ODBCTEST_usr.grnt
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+=== DBI Completed at 2024-08-08T01:48:19 for a duration of .35 seconds (started at 2024-08-08T01:48:19)
+
+*************************
+*  Install Application	*
+*************************
+
+=== DBI Started: ./installation_prepare.sql
+
+Create Temp Publicly Updateable Table
+
+Table created.
+
+
+Grant succeeded.
+
+
+Synonym created.
+
+
+Check for Prerequisite BUILD_TYPEs
+WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+WARNING: Prerequisite BUILD_TYPE "grbjava" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:48:19 for a duration of .32 seconds (started at 2024-08-08T01:48:19)
+=== DBI Started: ODBCAPTURE/GRBTST__NAME.tbl
+
+Table created.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+=== DBI Completed at 2024-08-08T01:48:20 for a duration of .37 seconds (started at 2024-08-08T01:48:19)
+=== DBI Started: ODBCAPTURE/GRBTST_IMAGE.tbl
+
+Table created.
+
+=== DBI Completed at 2024-08-08T01:48:20 for a duration of .15 seconds (started at 2024-08-08T01:48:20)
+=== DBI Started: ODBCAPTURE/BUILD_CONF.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/BUILD_CONF.ctl
+
+  7 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:48:22 for a duration of 1.53 seconds (started at 2024-08-08T01:48:20)
+=== DBI Started: ODBCAPTURE/BUILD_PATH.cldr
+
+Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."BUILD_PATH" DISABLE constraint "BUILD_PATH_FK1";
+alter table "ODBCAPTURE"."BUILD_PATH" DISABLE constraint "BUILD_PATH_FK2";
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/BUILD_PATH.ctl
+
+  10 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:48:23 for a duration of 1.69 seconds (started at 2024-08-08T01:48:22)
+=== DBI Started: ODBCAPTURE/GRBTST__NAME.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/GRBTST__NAME.ctl
+
+  2 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:48:26 for a duration of 2.49 seconds (started at 2024-08-08T01:48:23)
+=== DBI Started: ODBCAPTURE/GRBTST_IMAGE.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/GRBTST_IMAGE.ctl
+
+  2 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+Commit complete.
+
+=== DBI Completed at 2024-08-08T01:48:28 for a duration of 2.22 seconds (started at 2024-08-08T01:48:26)
+=== DBI Started: ODBCAPTURE/ROLE_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."ROLE_CONF" DISABLE constraint "ROLE_CONF_FK1";
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
+
+  1 Row successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:48:30 for a duration of 1.72 seconds (started at 2024-08-08T01:48:28)
+=== DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."SCHEMA_CONF" DISABLE constraint "SCHEMA_CONF_FK1";
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
+
+  1 Row successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:48:31 for a duration of 1.52 seconds (started at 2024-08-08T01:48:30)
+=== DBI Started: ODBCAPTURE/TSPACE_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."TSPACE_CONF" DISABLE constraint "TSPACE_CONF_FK1";
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/TSPACE_CONF.ctl
+
+  0 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:48:33 for a duration of 1.48 seconds (started at 2024-08-08T01:48:32)
+=== DBI Started: ./installation_finalize.sql
+
+Drop Temp Publicly Updateable Table
+
+Synonym dropped.
+
+
+Table dropped.
+
+
+fix_invalid_public_synonyms
+
+Re-create Invalid Public Synonyms
+
+PL/SQL procedure successfully completed.
+
+
+compile_all
+Compile All started
+ODBCAPTURE Compiled.
+ODBCTEST Compiled.
+Compile All is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_foreign_keys_ENABLE
+Alter Foreign Keys started.
+  ENABLE 'ODBCAPTURE','ODBCTEST'
+alter table "ODBCAPTURE"."BUILD_PATH" ENABLE constraint "BUILD_PATH_FK1";
+alter table "ODBCAPTURE"."BUILD_PATH" ENABLE constraint "BUILD_PATH_FK2";
+alter table "ODBCAPTURE"."DLOAD_CONF" ENABLE constraint "DLOAD_CONF_FK1";
+alter table "ODBCAPTURE"."DLOAD_CONF" ENABLE constraint "DLOAD_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK1";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK3";
+alter table "ODBCAPTURE"."ROLE_CONF" ENABLE constraint "ROLE_CONF_FK1";
+alter table "ODBCAPTURE"."SCHEMA_CONF" ENABLE constraint "SCHEMA_CONF_FK1";
+alter table "ODBCAPTURE"."TSPACE_CONF" ENABLE constraint "TSPACE_CONF_FK1";
+Alter Foreign Keys is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_triggers_ENABLE
+Alter Triggers started.
+  ENABLE 'ODBCAPTURE','ODBCTEST'
+Alter Triggers is done.
+
+PL/SQL procedure successfully completed.
+
+
+update_id_sequences
+Update ID Sequences started
+Identity Sequence Updates is done.
+
+PL/SQL procedure successfully completed.
+
+
+Switch Spooling Off
+=== DBI Completed at 2024-08-08T01:48:36 for a duration of 2.89 seconds (started at 2024-08-08T01:48:33)
+not spooling currently
+
+"grbtst" Installation is Done.
+
+New Session
+Connected.
+
+Reset Output Connections
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.04
+
+Show Database Connection
+
+'DB:'||NAME||',CON:'||SYS_CONTEXT('USERENV','CON_NAME')||',TSTMP:'||SYSTIMESTAMP
+---------------------------------------------------------------------------------------------------------------------------
+db: FENU1POD, con: GD339B1D52AB032_DB01, tstmp: 08-AUG-24 01.48.37.424654 AM +00:00
+
+1 row selected.
+
+Elapsed: 00:00:00.06
+
+User altered.
+
+Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbtst
+
+/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../util/run_script.sql grbtst RAS_Admin_ODBCTEST.racl
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:48:38 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+CON_NAME
+------------------------------
+GD339B1D52AB032_DB01
+USER is "ODBCTEST"
+Setup Continue on Error
+Running RAS_Admin_ODBCTEST.racl
+GRB_TEST_ROLE_01.XS_ROLE
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+GRB_TEST_USER_01.XS_USER
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+GRB_TEST_USER_02.XS_USER
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+grant "GRB_TEST_ROLE" to "GRB_TEST_ROLE_01"
+
+Grant succeeded.
+
+Elapsed: 00:00:00.06
+principal grant "GRB_TEST_ROLE_01" to "GRB_TEST_USER_01"
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+principal grant "XSCONNECT" to "GRB_TEST_USER_01"
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+principal grant "XSPUBLIC" to "GRB_TEST_USER_01"
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.06
+principal grant "GRB_TEST_ROLE_01" to "GRB_TEST_USER_02"
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+principal grant "XSCONNECT" to "GRB_TEST_USER_02"
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+principal grant "XSPUBLIC" to "GRB_TEST_USER_02"
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+GRB_TEST_ACL_01.XS_ACL
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.19
+GRB_TEST_ACL_02.XS_ACL
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+GRB_TEST_POLICY_01.XS_DATA_SECURITY
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+
+"RAS_Admin_ODBCTEST.racl" is Done.
+Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbtst
+
+report_status.sql grbtst
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:48:40 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+Last Successful login time: Wed Aug 07 2024 20:48:37 -05:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+Load Installation Files
+
+Confirm/Create odbcapture_installation_logs Table
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=./odbcapture_installation_logs.ctl
+
+  11 Rows successfully loaded.
+
+old   2:    if '&_RC.' != '0' then
+new   2:    if '0' != '0' then
+old   3:       raise_application_error(-20000, 'Control file "odbcapture_installation_logs.ctl" returned error: &_RC.');
+new   3:       raise_application_error(-20000, 'Control file "odbcapture_installation_logs.ctl" returned error: 0');
+
+PL/SQL procedure successfully completed.
+
+
+Reporting Summary of Build Type Log Errors
+Processing file ODBCAPTURE/BUILD_CONF.log (2024-08-08 01:48:42)
+Processing file ODBCAPTURE/BUILD_PATH.log (2024-08-08 01:48:42)
+Processing file ODBCAPTURE/GRBTST_IMAGE.log (2024-08-08 01:48:42)
+Processing file ODBCAPTURE/GRBTST__NAME.log (2024-08-08 01:48:42)
+Processing file ODBCAPTURE/ROLE_CONF.log (2024-08-08 01:48:42)
+Processing file ODBCAPTURE/SCHEMA_CONF.log (2024-08-08 01:48:42)
+Processing file ODBCAPTURE/TSPACE_CONF.log (2024-08-08 01:48:42)
+Processing file RAS_Admin_ODBCTEST.racl.log (2024-08-08 01:48:42)
+Processing file install_grbtst.log (2024-08-08 01:48:42)
+  1 lines: WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+  1 lines: WARNING: Prerequisite BUILD_TYPE "grbjava" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+Processing file install_sys.log (2024-08-08 01:48:42)
+Processing file install_system.log (2024-08-08 01:48:42)
+
+PL/SQL procedure successfully completed.
+
+
+Reporting Invalid Objects
+
+Reporting JUnit XML Database Build Status
+
+Reorting JUnit XML Installation Log
+SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Move Log Files to Build Folder
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbtst
+renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtst/db_build_junit_report.xml'
+renamed 'install_grbtst.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtst/install_grbtst.log'
+renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtst/install_sys.log'
+renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtst/install_system.log'
+renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtst/log_files_junit_report.xml'
+renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtst/odbcapture_installation_logs.log'
+renamed 'RAS_Admin_ODBCTEST.racl.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtst/RAS_Admin_ODBCTEST.racl.log'
+renamed 'ODBCAPTURE/BUILD_CONF.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtst/ODBCAPTURE/BUILD_CONF.log'
+renamed 'ODBCAPTURE/BUILD_PATH.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtst/ODBCAPTURE/BUILD_PATH.log'
+renamed 'ODBCAPTURE/GRBTST__NAME.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtst/ODBCAPTURE/GRBTST__NAME.log'
+renamed 'ODBCAPTURE/GRBTST_IMAGE.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtst/ODBCAPTURE/GRBTST_IMAGE.log'
+renamed 'ODBCAPTURE/ROLE_CONF.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtst/ODBCAPTURE/ROLE_CONF.log'
+renamed 'ODBCAPTURE/SCHEMA_CONF.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtst/ODBCAPTURE/SCHEMA_CONF.log'
+renamed 'ODBCAPTURE/TSPACE_CONF.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtst/ODBCAPTURE/TSPACE_CONF.log'
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Clear old grbtjsn logs
+
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbtjsn
+
+/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../util/run_build.sql grbtjsn
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:48:47 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+Last Successful login time: Wed Aug 07 2024 20:48:42 -05:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+New Session
+Connected.
+
+Reset Output Connections
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.05
+
+Show Database Connection
+
+'DB:'||NAME||',CON:'||SYS_CONTEXT('USERENV','CON_NAME')||',TSTMP:'||SYSTIMESTAMP
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+db: FENU1POD, con: GD339B1D52AB032_DB01, tstmp: 08-AUG-24 01.48.49.140482 AM +00:00
+
+Elapsed: 00:00:00.06
+Identify this Module in V$SESSION
+Setup Abort on Error
+
+**************************
+*  Run SYS Installation  *
+**************************
+
+Setup Continue on Error
+
+*****************************
+*  Run SYSTEM Installation  *
+*****************************
+
+Connected.
+
+*************************
+*  Install Application	*
+*************************
+
+=== DBI Started: ./installation_prepare.sql
+
+Create Temp Publicly Updateable Table
+
+Table created.
+
+
+Grant succeeded.
+
+
+Synonym created.
+
+
+Check for Prerequisite BUILD_TYPEs
+WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+WARNING: Prerequisite BUILD_TYPE "grbjava" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:48:50 for a duration of .32 seconds (started at 2024-08-08T01:48:50)
+=== DBI Started: ODBCAPTURE/GRBTST_JSON.tbl
+
+Table created.
+
+
+Table altered.
+
+=== DBI Completed at 2024-08-08T01:48:50 for a duration of .23 seconds (started at 2024-08-08T01:48:50)
+=== DBI Started: ODBCAPTURE/GRBTST_JSON.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/GRBTST_JSON.ctl
+
+  3 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:48:53 for a duration of 2.44 seconds (started at 2024-08-08T01:48:50)
+=== DBI Started: ./installation_finalize.sql
+
+Drop Temp Publicly Updateable Table
+
+Synonym dropped.
+
+
+Table dropped.
+
+
+fix_invalid_public_synonyms
+
+Re-create Invalid Public Synonyms
+
+PL/SQL procedure successfully completed.
+
+
+compile_all
+Compile All started
+ODBCAPTURE Compiled.
+Compile All is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_foreign_keys_ENABLE
+Alter Foreign Keys started.
+  ENABLE 'ODBCAPTURE'
+alter table "ODBCAPTURE"."BUILD_PATH" ENABLE constraint "BUILD_PATH_FK1";
+alter table "ODBCAPTURE"."BUILD_PATH" ENABLE constraint "BUILD_PATH_FK2";
+alter table "ODBCAPTURE"."DLOAD_CONF" ENABLE constraint "DLOAD_CONF_FK1";
+alter table "ODBCAPTURE"."DLOAD_CONF" ENABLE constraint "DLOAD_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK1";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK3";
+alter table "ODBCAPTURE"."ROLE_CONF" ENABLE constraint "ROLE_CONF_FK1";
+alter table "ODBCAPTURE"."SCHEMA_CONF" ENABLE constraint "SCHEMA_CONF_FK1";
+alter table "ODBCAPTURE"."TSPACE_CONF" ENABLE constraint "TSPACE_CONF_FK1";
+Alter Foreign Keys is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_triggers_ENABLE
+Alter Triggers started.
+  ENABLE 'ODBCAPTURE'
+Alter Triggers is done.
+
+PL/SQL procedure successfully completed.
+
+
+update_id_sequences
+Update ID Sequences started
+Identity Sequence Updates is done.
+
+PL/SQL procedure successfully completed.
+
+
+Switch Spooling Off
+=== DBI Completed at 2024-08-08T01:48:55 for a duration of 2.04 seconds (started at 2024-08-08T01:48:53)
+not spooling currently
+
+"grbtjsn" Installation is Done.
+
+New Session
+Connected.
+
+Reset Output Connections
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.04
+
+Show Database Connection
+
+'DB:'||NAME||',CON:'||SYS_CONTEXT('USERENV','CON_NAME')||',TSTMP:'||SYSTIMESTAMP
+---------------------------------------------------------------------------------------------------------------------------
+db: FENU1POD, con: GD339B1D52AB032_DB01, tstmp: 08-AUG-24 01.48.56.171125 AM +00:00
+
+1 row selected.
+
+Elapsed: 00:00:00.06
+Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbtjsn
+
+report_status.sql grbtjsn
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:48:56 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+Last Successful login time: Wed Aug 07 2024 20:48:55 -05:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+Load Installation Files
+
+Confirm/Create odbcapture_installation_logs Table
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=./odbcapture_installation_logs.ctl
+
+  4 Rows successfully loaded.
+
+old   2:    if '&_RC.' != '0' then
+new   2:    if '0' != '0' then
+old   3:       raise_application_error(-20000, 'Control file "odbcapture_installation_logs.ctl" returned error: &_RC.');
+new   3:       raise_application_error(-20000, 'Control file "odbcapture_installation_logs.ctl" returned error: 0');
+
+PL/SQL procedure successfully completed.
+
+
+Reporting Summary of Build Type Log Errors
+Processing file ODBCAPTURE/GRBTST_JSON.log (2024-08-08 01:48:59)
+Processing file install_grbtjsn.log (2024-08-08 01:48:59)
+  1 lines: WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+  1 lines: WARNING: Prerequisite BUILD_TYPE "grbjava" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+Processing file install_sys.log (2024-08-08 01:48:59)
+Processing file install_system.log (2024-08-08 01:48:59)
+
+PL/SQL procedure successfully completed.
+
+
+Reporting Invalid Objects
+
+Reporting JUnit XML Database Build Status
+
+Reorting JUnit XML Installation Log
+SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Move Log Files to Build Folder
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbtjsn
+renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtjsn/db_build_junit_report.xml'
+renamed 'install_grbtjsn.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtjsn/install_grbtjsn.log'
+renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtjsn/install_sys.log'
+renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtjsn/install_system.log'
+renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtjsn/log_files_junit_report.xml'
+renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtjsn/odbcapture_installation_logs.log'
+renamed 'ODBCAPTURE/GRBTST_JSON.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtjsn/ODBCAPTURE/GRBTST_JSON.log'
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Clear old grbtsdo logs
+
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbtsdo
+
+/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../util/run_build.sql grbtsdo
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:49:01 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+Last Successful login time: Wed Aug 07 2024 20:48:58 -05:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+New Session
+Connected.
+
+Reset Output Connections
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.04
+
+Show Database Connection
+
+'DB:'||NAME||',CON:'||SYS_CONTEXT('USERENV','CON_NAME')||',TSTMP:'||SYSTIMESTAMP
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+db: FENU1POD, con: GD339B1D52AB032_DB01, tstmp: 08-AUG-24 01.49.03.900971 AM +00:00
+
+Elapsed: 00:00:00.06
+Identify this Module in V$SESSION
+Setup Abort on Error
+
+**************************
+*  Run SYS Installation  *
+**************************
+
+Setup Continue on Error
+
+*****************************
+*  Run SYSTEM Installation  *
+*****************************
+
+Connected.
+
+*************************
+*  Install Application	*
+*************************
+
+=== DBI Started: ./installation_prepare.sql
+
+Create Temp Publicly Updateable Table
+
+Table created.
+
+
+Grant succeeded.
+
+
+Synonym created.
+
+
+Check for Prerequisite BUILD_TYPEs
+WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+WARNING: Prerequisite BUILD_TYPE "grbjava" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:49:05 for a duration of .32 seconds (started at 2024-08-08T01:49:04)
+=== DBI Started: ODBCTEST/SDO_COLA_MARKETS.tbl
+
+Table created.
+
+
+Table altered.
+
+=== DBI Completed at 2024-08-08T01:49:05 for a duration of .41 seconds (started at 2024-08-08T01:49:05)
+=== DBI Started: ODBCTEST/SDO_COLA_MARKETS.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCTEST/SDO_COLA_MARKETS.ctl
+
+  4 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:49:08 for a duration of 2.92 seconds (started at 2024-08-08T01:49:05)
+=== DBI Started: ODBCTEST/SDO_COLA_MARKETS.tidx
+=== DBI Completed at 2024-08-08T01:49:08 for a duration of .1 seconds (started at 2024-08-08T01:49:08)
+=== DBI Started: ./installation_finalize.sql
+
+Drop Temp Publicly Updateable Table
+
+Synonym dropped.
+
+
+Table dropped.
+
+
+fix_invalid_public_synonyms
+
+Re-create Invalid Public Synonyms
+
+PL/SQL procedure successfully completed.
+
+
+compile_all
+Compile All started
+ODBCTEST Compiled.
+Compile All is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_foreign_keys_ENABLE
+Alter Foreign Keys started.
+  ENABLE 'ODBCTEST'
+Alter Foreign Keys is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_triggers_ENABLE
+Alter Triggers started.
+  ENABLE 'ODBCTEST'
+Alter Triggers is done.
+
+PL/SQL procedure successfully completed.
+
+
+update_id_sequences
+Update ID Sequences started
+Identity Sequence Updates is done.
+
+PL/SQL procedure successfully completed.
+
+
+Switch Spooling Off
+=== DBI Completed at 2024-08-08T01:49:11 for a duration of 2.4 seconds (started at 2024-08-08T01:49:08)
+not spooling currently
+
+"grbtsdo" Installation is Done.
+
+New Session
+Connected.
+
+Reset Output Connections
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.04
+
+Show Database Connection
+
+'DB:'||NAME||',CON:'||SYS_CONTEXT('USERENV','CON_NAME')||',TSTMP:'||SYSTIMESTAMP
+---------------------------------------------------------------------------------------------------------------------------
+db: FENU1POD, con: GD339B1D52AB032_DB01, tstmp: 08-AUG-24 01.49.12.213038 AM +00:00
+
+1 row selected.
+
+Elapsed: 00:00:00.06
+Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbtsdo
+
+/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../util/run_script.sql grbtsdo COLA_SPATIAL_IDX.tidx
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:49:12 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+Last Successful login time: Wed Aug 07 2024 20:48:38 -05:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+CON_NAME
+------------------------------
+GD339B1D52AB032_DB01
+USER is "ODBCTEST"
+Setup Continue on Error
+Running COLA_SPATIAL_IDX.tidx
+
+MUST be run as ODBCTEST
+
+1 row created.
+
+Elapsed: 00:00:00.05
+
+Index created.
+
+Elapsed: 00:00:01.01
+
+"COLA_SPATIAL_IDX.tidx" is Done.
+Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbtsdo
+
+report_status.sql grbtsdo
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:49:15 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+Last Successful login time: Wed Aug 07 2024 20:49:11 -05:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+Load Installation Files
+
+Confirm/Create odbcapture_installation_logs Table
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=./odbcapture_installation_logs.ctl
+
+  5 Rows successfully loaded.
+
+old   2:    if '&_RC.' != '0' then
+new   2:    if '0' != '0' then
+old   3:       raise_application_error(-20000, 'Control file "odbcapture_installation_logs.ctl" returned error: &_RC.');
+new   3:       raise_application_error(-20000, 'Control file "odbcapture_installation_logs.ctl" returned error: 0');
+
+PL/SQL procedure successfully completed.
+
+
+Reporting Summary of Build Type Log Errors
+Processing file COLA_SPATIAL_IDX.tidx.log (2024-08-08 01:49:17)
+Processing file ODBCTEST/SDO_COLA_MARKETS.log (2024-08-08 01:49:17)
+Processing file install_grbtsdo.log (2024-08-08 01:49:17)
+  1 lines: WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+  1 lines: WARNING: Prerequisite BUILD_TYPE "grbjava" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+Processing file install_sys.log (2024-08-08 01:49:17)
+Processing file install_system.log (2024-08-08 01:49:17)
+
+PL/SQL procedure successfully completed.
+
+
+Reporting Invalid Objects
+
+Reporting JUnit XML Database Build Status
+
+Reorting JUnit XML Installation Log
+SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Move Log Files to Build Folder
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbtsdo
+renamed 'COLA_SPATIAL_IDX.tidx.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtsdo/COLA_SPATIAL_IDX.tidx.log'
+renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtsdo/db_build_junit_report.xml'
+renamed 'install_grbtsdo.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtsdo/install_grbtsdo.log'
+renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtsdo/install_sys.log'
+renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtsdo/install_system.log'
+renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtsdo/log_files_junit_report.xml'
+renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtsdo/odbcapture_installation_logs.log'
+renamed 'ODBCTEST/SDO_COLA_MARKETS.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtsdo/ODBCTEST/SDO_COLA_MARKETS.log'
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Clear old grbtctx logs
+
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbtctx
+
+/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../util/run_build.sql grbtctx
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:49:20 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+Last Successful login time: Wed Aug 07 2024 20:49:16 -05:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+New Session
+Connected.
+
+Reset Output Connections
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.04
+
+Show Database Connection
+
+'DB:'||NAME||',CON:'||SYS_CONTEXT('USERENV','CON_NAME')||',TSTMP:'||SYSTIMESTAMP
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+db: FENU1POD, con: GD339B1D52AB032_DB01, tstmp: 08-AUG-24 01.49.22.116214 AM +00:00
+
+Elapsed: 00:00:00.06
+Identify this Module in V$SESSION
+Setup Abort on Error
+
+**************************
+*  Run SYS Installation  *
+**************************
+
+Setup Continue on Error
+
+*****************************
+*  Run SYSTEM Installation  *
+*****************************
+
+Connected.
+
+*************************
+*  Install Application	*
+*************************
+
+=== DBI Started: ./installation_prepare.sql
+
+Create Temp Publicly Updateable Table
+
+Table created.
+
+
+Grant succeeded.
+
+
+Synonym created.
+
+
+Check for Prerequisite BUILD_TYPEs
+WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+WARNING: Prerequisite BUILD_TYPE "grbjava" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:49:23 for a duration of .31 seconds (started at 2024-08-08T01:49:23)
+=== DBI Started: ODBCTEST/CUST_CTX_TEST.tbl
+
+Table created.
+
+=== DBI Completed at 2024-08-08T01:49:23 for a duration of .16 seconds (started at 2024-08-08T01:49:23)
+=== DBI Started: ODBCTEST/CUST_CTX_TEST.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCTEST/CUST_CTX_TEST.ctl
+
+  3 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:49:26 for a duration of 2.53 seconds (started at 2024-08-08T01:49:23)
+=== DBI Started: ODBCTEST/CUST_CTX_TEST.tidx
+
+Index created.
+
+=== DBI Completed at 2024-08-08T01:49:29 for a duration of 3.34 seconds (started at 2024-08-08T01:49:26)
+=== DBI Started: ./installation_finalize.sql
+
+Drop Temp Publicly Updateable Table
+
+Synonym dropped.
+
+
+Table dropped.
+
+
+fix_invalid_public_synonyms
+
+Re-create Invalid Public Synonyms
+
+PL/SQL procedure successfully completed.
+
+
+compile_all
+Compile All started
+ODBCTEST Compiled.
+Compile All is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_foreign_keys_ENABLE
+Alter Foreign Keys started.
+  ENABLE 'ODBCTEST'
+Alter Foreign Keys is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_triggers_ENABLE
+Alter Triggers started.
+  ENABLE 'ODBCTEST'
+Alter Triggers is done.
+
+PL/SQL procedure successfully completed.
+
+
+update_id_sequences
+Update ID Sequences started
+Identity Sequence Updates is done.
+
+PL/SQL procedure successfully completed.
+
+
+Switch Spooling Off
+=== DBI Completed at 2024-08-08T01:49:31 for a duration of 1.7 seconds (started at 2024-08-08T01:49:29)
+not spooling currently
+
+"grbtctx" Installation is Done.
+
+New Session
+Connected.
+
+Reset Output Connections
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.04
+
+Show Database Connection
+
+'DB:'||NAME||',CON:'||SYS_CONTEXT('USERENV','CON_NAME')||',TSTMP:'||SYSTIMESTAMP
+---------------------------------------------------------------------------------------------------------------------------
+db: FENU1POD, con: GD339B1D52AB032_DB01, tstmp: 08-AUG-24 01.49.32.228887 AM +00:00
+
+1 row selected.
+
+Elapsed: 00:00:00.06
+Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbtctx
+
+report_status.sql grbtctx
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:49:32 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+Last Successful login time: Wed Aug 07 2024 20:49:31 -05:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+Load Installation Files
+
+Confirm/Create odbcapture_installation_logs Table
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=./odbcapture_installation_logs.ctl
+
+  4 Rows successfully loaded.
+
+old   2:    if '&_RC.' != '0' then
+new   2:    if '0' != '0' then
+old   3:       raise_application_error(-20000, 'Control file "odbcapture_installation_logs.ctl" returned error: &_RC.');
+new   3:       raise_application_error(-20000, 'Control file "odbcapture_installation_logs.ctl" returned error: 0');
+
+PL/SQL procedure successfully completed.
+
+
+Reporting Summary of Build Type Log Errors
+Processing file ODBCTEST/CUST_CTX_TEST.log (2024-08-08 01:49:34)
+Processing file install_grbtctx.log (2024-08-08 01:49:34)
+  1 lines: WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+  1 lines: WARNING: Prerequisite BUILD_TYPE "grbjava" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+Processing file install_sys.log (2024-08-08 01:49:34)
+Processing file install_system.log (2024-08-08 01:49:34)
+
+PL/SQL procedure successfully completed.
+
+
+Reporting Invalid Objects
+
+Reporting JUnit XML Database Build Status
+
+Reorting JUnit XML Installation Log
+SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Move Log Files to Build Folder
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbtctx
+renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtctx/db_build_junit_report.xml'
+renamed 'install_grbtctx.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtctx/install_grbtctx.log'
+renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtctx/install_sys.log'
+renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtctx/install_system.log'
+renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtctx/log_files_junit_report.xml'
+renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtctx/odbcapture_installation_logs.log'
+renamed 'ODBCTEST/CUST_CTX_TEST.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtctx/ODBCTEST/CUST_CTX_TEST.log'
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Clear old grbtdat logs
+
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbtdat
+
+/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../util/run_build.sql grbtdat
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:49:36 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+Last Successful login time: Wed Aug 07 2024 20:49:34 -05:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+New Session
+Connected.
+
+Reset Output Connections
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.04
+
+Show Database Connection
+
+'DB:'||NAME||',CON:'||SYS_CONTEXT('USERENV','CON_NAME')||',TSTMP:'||SYSTIMESTAMP
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+db: FENU1POD, con: GD339B1D52AB032_DB01, tstmp: 08-AUG-24 01.49.38.599870 AM +00:00
+
+Elapsed: 00:00:00.06
+Identify this Module in V$SESSION
+Setup Abort on Error
+
+**************************
+*  Run SYS Installation  *
+**************************
+
+Setup Continue on Error
+
+*****************************
+*  Run SYSTEM Installation  *
+*****************************
+
+Connected.
+
+*************************
+*  Install Application	*
+*************************
+
+=== DBI Started: ./installation_prepare.sql
+
+Create Temp Publicly Updateable Table
+
+Table created.
+
+
+Grant succeeded.
+
+
+Synonym created.
+
+
+Check for Prerequisite BUILD_TYPEs
+WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+WARNING: Prerequisite BUILD_TYPE "grbjava" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+WARNING: Prerequisite BUILD_TYPE "grbtend" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+WARNING: Prerequisite BUILD_TYPE "grbtjva" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:49:40 for a duration of .6 seconds (started at 2024-08-08T01:49:39)
+=== DBI Started: ODBCAPTURE/DLOAD_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."DLOAD_CONF" DISABLE constraint "DLOAD_CONF_FK1";
+alter table "ODBCAPTURE"."DLOAD_CONF" DISABLE constraint "DLOAD_CONF_FK2";
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/DLOAD_CONF.ctl
+
+  12 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:49:42 for a duration of 2.24 seconds (started at 2024-08-08T01:49:40)
+=== DBI Started: ODBCAPTURE/OBJECT_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."OBJECT_CONF" DISABLE constraint "OBJECT_CONF_FK1";
+alter table "ODBCAPTURE"."OBJECT_CONF" DISABLE constraint "OBJECT_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" DISABLE constraint "OBJECT_CONF_FK3";
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/OBJECT_CONF.ctl
+
+  16 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:49:44 for a duration of 1.62 seconds (started at 2024-08-08T01:49:42)
+=== DBI Started: ./installation_finalize.sql
+
+Drop Temp Publicly Updateable Table
+
+Synonym dropped.
+
+
+Table dropped.
+
+
+fix_invalid_public_synonyms
+
+Re-create Invalid Public Synonyms
+
+PL/SQL procedure successfully completed.
+
+
+compile_all
+Compile All started
+ODBCAPTURE Compiled.
+Compile All is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_foreign_keys_ENABLE
+Alter Foreign Keys started.
+  ENABLE 'ODBCAPTURE'
+alter table "ODBCAPTURE"."BUILD_PATH" ENABLE constraint "BUILD_PATH_FK1";
+alter table "ODBCAPTURE"."BUILD_PATH" ENABLE constraint "BUILD_PATH_FK2";
+alter table "ODBCAPTURE"."DLOAD_CONF" ENABLE constraint "DLOAD_CONF_FK1";
+alter table "ODBCAPTURE"."DLOAD_CONF" ENABLE constraint "DLOAD_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK1";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK2";
+alter table "ODBCAPTURE"."OBJECT_CONF" ENABLE constraint "OBJECT_CONF_FK3";
+alter table "ODBCAPTURE"."ROLE_CONF" ENABLE constraint "ROLE_CONF_FK1";
+alter table "ODBCAPTURE"."SCHEMA_CONF" ENABLE constraint "SCHEMA_CONF_FK1";
+alter table "ODBCAPTURE"."TSPACE_CONF" ENABLE constraint "TSPACE_CONF_FK1";
+Alter Foreign Keys is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_triggers_ENABLE
+Alter Triggers started.
+  ENABLE 'ODBCAPTURE'
+Alter Triggers is done.
+
+PL/SQL procedure successfully completed.
+
+
+update_id_sequences
+Update ID Sequences started
+Identity Sequence Updates is done.
+
+PL/SQL procedure successfully completed.
+
+
+Switch Spooling Off
+=== DBI Completed at 2024-08-08T01:49:45 for a duration of 1.83 seconds (started at 2024-08-08T01:49:44)
+not spooling currently
+
+"grbtdat" Installation is Done.
+
+New Session
+Connected.
+
+Reset Output Connections
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.04
+
+Show Database Connection
+
+'DB:'||NAME||',CON:'||SYS_CONTEXT('USERENV','CON_NAME')||',TSTMP:'||SYSTIMESTAMP
+---------------------------------------------------------------------------------------------------------------------------
+db: FENU1POD, con: GD339B1D52AB032_DB01, tstmp: 08-AUG-24 01.49.46.911096 AM +00:00
+
+1 row selected.
+
+Elapsed: 00:00:00.06
+Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbtdat
+
+report_status.sql grbtdat
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:49:47 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+Last Successful login time: Wed Aug 07 2024 20:49:46 -05:00
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+Load Installation Files
+
+Confirm/Create odbcapture_installation_logs Table
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=./odbcapture_installation_logs.ctl
+
+  5 Rows successfully loaded.
+
+old   2:    if '&_RC.' != '0' then
+new   2:    if '0' != '0' then
+old   3:       raise_application_error(-20000, 'Control file "odbcapture_installation_logs.ctl" returned error: &_RC.');
+new   3:       raise_application_error(-20000, 'Control file "odbcapture_installation_logs.ctl" returned error: 0');
+
+PL/SQL procedure successfully completed.
+
+
+Reporting Summary of Build Type Log Errors
+Processing file ODBCAPTURE/DLOAD_CONF.log (2024-08-08 01:49:49)
+Processing file ODBCAPTURE/OBJECT_CONF.log (2024-08-08 01:49:49)
+Processing file install_grbtdat.log (2024-08-08 01:49:49)
+  1 lines: WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+  1 lines: WARNING: Prerequisite BUILD_TYPE "grbjava" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+  1 lines: WARNING: Prerequisite BUILD_TYPE "grbtend" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+  1 lines: WARNING: Prerequisite BUILD_TYPE "grbtjva" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+Processing file install_sys.log (2024-08-08 01:49:49)
+Processing file install_system.log (2024-08-08 01:49:49)
+
+PL/SQL procedure successfully completed.
+
+
+Reporting Invalid Objects
+
+Reporting JUnit XML Database Build Status
+
+Reorting JUnit XML Installation Log
+SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+Move Log Files to Build Folder
+Move to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/../../grbtdat
+renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtdat/db_build_junit_report.xml'
+renamed 'install_grbtdat.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtdat/install_grbtdat.log'
+renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtdat/install_sys.log'
+renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtdat/install_system.log'
+renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtdat/log_files_junit_report.xml'
+renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtdat/odbcapture_installation_logs.log'
+renamed 'ODBCAPTURE/DLOAD_CONF.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtdat/ODBCAPTURE/DLOAD_CONF.log'
+renamed 'ODBCAPTURE/OBJECT_CONF.log' -> '/c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213/grbtdat/ODBCAPTURE/OBJECT_CONF.log'
+
+Move back to /c/DMSTEX_dev/ODBCapture/builds/OCI_Auto213
+
+capture_files.sql
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 7 20:49:52 2024
+Version 19.22.0.0.0
+
+Copyright (c) 1982, 2023, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+
+PL/SQL procedure successfully completed.
+
+Running COMMON_UTIL.update_view_tabs
+SUCCESS(      rows in	   sec): truncate table schema_objects_tab
+SUCCESS(      rows in	   sec): truncate table obj_install_comments_tab
+SUCCESS(      rows in	   sec): truncate table obj_install_trigger_tab
+SUCCESS(      rows in	   sec): truncate table obj_install_synonym_tab
+SUCCESS(      rows in	   sec): truncate table obj_install_data_load_tab
+SUCCESS(      rows in	   sec): truncate table obj_install_index_tab
+SUCCESS(      rows in	   sec): truncate table obj_install_fkey_tab
+SUCCESS(      rows in	   sec): truncate table obj_install_context_tab
+SUCCESS(      rows in	   sec): truncate table obj_install_object_tab
+SUCCESS(      rows in	   sec): truncate table dba_dependencies_tab
+SUCCESS(      rows in	   sec): truncate table dba_tab_privs_tab
+SUCCESS(      rows in	   sec): truncate table dba_objects_tab
+SUCCESS(      rows in	   sec): truncate table build_type_timing
+SUCCESS(  173 rows in	.2 sec): update_build_type_timing
+SUCCESS(  224 rows in 16.9 sec): insert into dba_objects_tab	       select * from dba_objects_view
+SUCCESS(   95 rows in  2.7 sec): insert into dba_tab_privs_tab	       select * from dba_tab_privs_view
+SUCCESS(  302 rows in	.3 sec): insert into dba_dependencies_tab      select * from dba_dependencies_view
+SUCCESS(  218 rows in  1.2 sec): insert into obj_install_object_tab    select * from obj_install_object_view
+SUCCESS(      rows in	   sec): insert into obj_install_context_tab   select * from obj_install_context_view
+SUCCESS(   10 rows in	.3 sec): insert into obj_install_fkey_tab      select * from obj_install_fkey_view
+SUCCESS(   47 rows in	.2 sec): insert into obj_install_index_tab     select * from obj_install_index_view
+SUCCESS(   27 rows in	   sec): insert into obj_install_data_load_tab select * from obj_install_data_load_view
+SUCCESS(      rows in	.1 sec): insert into obj_install_synonym_tab   select * from obj_install_synonym_view
+SUCCESS(      rows in	.4 sec): insert into obj_install_trigger_tab   select * from obj_install_trigger_view
+SUCCESS(   63 rows in	.9 sec): insert into obj_install_comments_tab  select * from obj_install_comments_view
+SUCCESS(      rows in	   sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
+select
+SUCCESS(   10 rows in	   sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
+select
+SUCCESS(    1 rows in	   sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
+select
+SUCCESS(    7 rows in	   sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
+select
+SUCCESS(   17 rows in	   sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
+select
+SUCCESS(      rows in	   sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
+select
+SUCCESS(      rows in	   sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
+select
+SUCCESS(      rows in	.1 sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
+select
+SUCCESS(    2 rows in	.2 sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
+select
+SUCCESS(      rows in	.1 sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
+select
+SUCCESS(      rows in	.1 sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
+select
+SUCCESS(      rows in	.1 sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
+select
+SUCCESS(    1 rows in	   sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
+select
+SUCCESS(    1 rows in	.2 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'DBA_OBJECTS_TAB',
+SUCCESS(    1 rows in	.2 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'DBA_TAB_PRIVS_TAB',
+SUCCESS(    1 rows in	.2 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'DBA_DEPENDENCIES_TAB',
+SUCCESS(    1 rows in	.2 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'OBJ_INSTALL_OBJECT_TAB'
+SUCCESS(    1 rows in	.1 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'OBJ_INSTALL_CONTEXT_TAB
+SUCCESS(    1 rows in	.2 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'OBJ_INSTALL_FKEY_TAB',
+SUCCESS(    1 rows in	.2 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'OBJ_INSTALL_INDEX_TAB',
+SUCCESS(    1 rows in	.2 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'OBJ_INSTALL_DATA_LOAD_T
+SUCCESS(    1 rows in	.1 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'OBJ_INSTALL_SYNONYM_TAB
+SUCCESS(    1 rows in	.1 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'OBJ_INSTALL_TRIGGER_TAB
+SUCCESS(    1 rows in	.2 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'OBJ_INSTALL_COMMENTS_TA
+SUCCESS(    1 rows in	.1 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'SCHEMA_OBJECTS_TAB',
+SUCCESS(      rows in	   sec): purge recyclebin
+
+PL/SQL procedure successfully completed.
+
+Running GRAB_SCRIPTS.all_scripts(in_build_type "grbsrc")
+g_build_type = grbsrc, ODBCapture Source Code Script Generation
+g_schema_name = SYS
+Script Open: grbsrc/SYS/ODBCAPTURE.user
+g_schema_name = SYSTEM
+Script Open: grbsrc/SYSTEM/ODBCAPTURE_usr.grnt
+g_schema_name = PUBLIC
+g_schema_name =
+Script Open: grbsrc//install.sql
+Script Open: grbsrc//dbi.sql
+Script Open: grbsrc//installation_finalize.sql
+Script Open: grbsrc//installation_prepare.sql
+Script Open: grbsrc//odbcapture_installation_logs.cldr
+Script Open: grbsrc//odbcapture_installation_logs.csv
+Script Open: grbsrc//odbcapture_installation_logs.ctl
+Script Open: grbsrc//report_status.sql
+Script Open: grbsrc//list_invalids.csv
+Script Open: grbsrc//set_user_authentication.sql
+Script Open: grbsrc//install_sys.sql
+Script Open: grbsrc//install_system.sql
+g_schema_name = ODBCAPTURE
+Script Open: grbsrc/ODBCAPTURE/BUILD_CONF.ctl
+Script Open: grbsrc/ODBCAPTURE/BUILD_CONF.csv
+Script Open: grbsrc/ODBCAPTURE/BUILD_CONF.cldr
+Script Open: grbsrc/ODBCAPTURE/BUILD_PATH.ctl
+Script Open: grbsrc/ODBCAPTURE/BUILD_PATH.csv
+Script Open: grbsrc/ODBCAPTURE/BUILD_PATH.cldr
+Script Open: grbsrc/ODBCAPTURE/ELEMENT_CONF.ctl
+Script Open: grbsrc/ODBCAPTURE/ELEMENT_CONF.csv
+Script Open: grbsrc/ODBCAPTURE/ELEMENT_CONF.cldr
+Script Open: grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.ctl
+Script Open: grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.csv
+Script Open: grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.cldr
+Script Open: grbsrc/ODBCAPTURE/ROLE_CONF.ctl
+Script Open: grbsrc/ODBCAPTURE/ROLE_CONF.csv
+Script Open: grbsrc/ODBCAPTURE/ROLE_CONF.cldr
+Script Open: grbsrc/ODBCAPTURE/SCHEMA_CONF.ctl
+Script Open: grbsrc/ODBCAPTURE/SCHEMA_CONF.csv
+Script Open: grbsrc/ODBCAPTURE/SCHEMA_CONF.cldr
+Script Open: grbsrc/ODBCAPTURE/TSPACE_CONF.ctl
+Script Open: grbsrc/ODBCAPTURE/TSPACE_CONF.csv
+Script Open: grbsrc/ODBCAPTURE/TSPACE_CONF.cldr
+Script Open: grbsrc/ODBCAPTURE/COMMON_UTIL.pkbsql
+Script Open: grbsrc/ODBCAPTURE/FH2.pkbsql
+Script Open: grbsrc/ODBCAPTURE/GRAB_SCRIPTS.pkbsql
+Script Open: grbsrc/ODBCAPTURE/ROOT_SCRIPTS.pkbsql
+Script Open: grbsrc/ODBCAPTURE/ZIP_UTIL_PKG.pkbsql
+Script Open: grbsrc/ODBCAPTURE/COMMON_UTIL.pkssql
+Script Open: grbsrc/ODBCAPTURE/FH2.pkssql
+Script Open: grbsrc/ODBCAPTURE/GRAB_SCRIPTS.pkssql
+Script Open: grbsrc/ODBCAPTURE/ROOT_SCRIPTS.pkssql
+Script Open: grbsrc/ODBCAPTURE/ZIP_UTIL_PKG.pkssql
+Script Open: grbsrc/ODBCAPTURE/BUILD_PATH.tfk
+Script Open: grbsrc/ODBCAPTURE/DLOAD_CONF.tfk
+Script Open: grbsrc/ODBCAPTURE/OBJECT_CONF.tfk
+Script Open: grbsrc/ODBCAPTURE/ROLE_CONF.tfk
+Script Open: grbsrc/ODBCAPTURE/SCHEMA_CONF.tfk
+Script Open: grbsrc/ODBCAPTURE/TSPACE_CONF.tfk
+Script Open: grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/DBA_OBJECTS_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/BUILD_CONF.tbl
+Script Open: grbsrc/ODBCAPTURE/BUILD_PATH.tbl
+Script Open: grbsrc/ODBCAPTURE/BUILD_TYPE_TIMING.tbl
+Script Open: grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/DBA_OBJECTS_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/DLOAD_CONF.tbl
+Script Open: grbsrc/ODBCAPTURE/ELEMENT_CONF.tbl
+Script Open: grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl
+Script Open: grbsrc/ODBCAPTURE/OBJECT_CONF.tbl
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/ROLE_CONF.tbl
+Script Open: grbsrc/ODBCAPTURE/SCHEMA_CONF.tbl
+Script Open: grbsrc/ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/TSPACE_CONF.tbl
+Script Open: grbsrc/ODBCAPTURE/ZIP_FILES.tbl
+Script Open: grbsrc/ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw
+Script Open: grbsrc/ODBCAPTURE/BUILD_PATH_REVIEW.vw
+Script Open: grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/DBA_OBJECTS_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/UOR_INSTALL_VIEW.vw
+g_schema_name =
+Script Open: grbsrc//install_grbsrc.sql
+Running GRAB_SCRIPTS.all_scripts(in_build_type "grbras")
+g_build_type = grbras, RAS - Real Application Security (XS$NULL)
+g_schema_name = SYS
+Script Open: grbras/SYS/ODBCAPTURE_usr.sgrnt
+g_schema_name = SYSTEM
+g_schema_name = PUBLIC
+g_schema_name =
+Script Open: grbras//install.sql
+Script Open: grbras//dbi.sql
+Script Open: grbras//installation_finalize.sql
+Script Open: grbras//installation_prepare.sql
+Script Open: grbras//odbcapture_installation_logs.cldr
+Script Open: grbras//odbcapture_installation_logs.csv
+Script Open: grbras//odbcapture_installation_logs.ctl
+Script Open: grbras//report_status.sql
+Script Open: grbras//list_invalids.csv
+Script Open: grbras//set_user_authentication.sql
+Script Open: grbras//install_sys.sql
+Script Open: grbras//install_system.sql
+g_schema_name = ODBCAPTURE
+Script Open: grbras/ODBCAPTURE/ROLE_CONF.ctl
+Script Open: grbras/ODBCAPTURE/ROLE_CONF.csv
+Script Open: grbras/ODBCAPTURE/ROLE_CONF.cldr
+Script Open: grbras/ODBCAPTURE/SCHEMA_CONF.ctl
+Script Open: grbras/ODBCAPTURE/SCHEMA_CONF.csv
+Script Open: grbras/ODBCAPTURE/SCHEMA_CONF.cldr
+Script Open: grbras/ODBCAPTURE/GRAB_RAS.pkbsql
+Script Open: grbras/ODBCAPTURE/GRAB_RAS.pkssql
+Script Open: grbras/ODBCAPTURE/EXPORTING_RAS_DATA.tbl
+Script Open: grbras/ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw
+g_schema_name =
+Script Open: grbras//install_grbras.sql
+Running GRAB_SCRIPTS.all_scripts(in_build_type "grbsdo")
+g_build_type = grbsdo, SDO,LCTR (Placeholder) - Spatial - Oracle Locator - Graph (MDSYS, MDDATA)
+g_schema_name = SYS
+g_schema_name = SYSTEM
+g_schema_name = PUBLIC
+g_schema_name =
+Script Open: grbsdo//install.sql
+Script Open: grbsdo//dbi.sql
+Script Open: grbsdo//installation_finalize.sql
+Script Open: grbsdo//installation_prepare.sql
+Script Open: grbsdo//odbcapture_installation_logs.cldr
+Script Open: grbsdo//odbcapture_installation_logs.csv
+Script Open: grbsdo//odbcapture_installation_logs.ctl
+Script Open: grbsdo//report_status.sql
+Script Open: grbsdo//list_invalids.csv
+Script Open: grbsdo//set_user_authentication.sql
+Script Open: grbsdo//install_sys.sql
+Script Open: grbsdo//install_system.sql
+g_schema_name = ODBCAPTURE
+Script Open: grbsdo/ODBCAPTURE/ROLE_CONF.ctl
+Script Open: grbsdo/ODBCAPTURE/ROLE_CONF.csv
+Script Open: grbsdo/ODBCAPTURE/ROLE_CONF.cldr
+Script Open: grbsdo/ODBCAPTURE/SCHEMA_CONF.ctl
+Script Open: grbsdo/ODBCAPTURE/SCHEMA_CONF.csv
+Script Open: grbsdo/ODBCAPTURE/SCHEMA_CONF.cldr
+Script Open: grbsdo/ODBCAPTURE/GRAB_SDO.pkbsql
+Script Open: grbsdo/ODBCAPTURE/GRAB_SDO.pkssql
+g_schema_name =
+Script Open: grbsdo//install_grbsdo.sql
+Running GRAB_SCRIPTS.all_scripts(in_build_type "grbdat")
+g_build_type = grbdat, ODBCapture Self-Capture Configuration Data
+g_schema_name = SYS
+g_schema_name = SYSTEM
+g_schema_name = PUBLIC
+g_schema_name =
+Script Open: grbdat//install.sql
+Script Open: grbdat//dbi.sql
+Script Open: grbdat//installation_finalize.sql
+Script Open: grbdat//installation_prepare.sql
+Script Open: grbdat//odbcapture_installation_logs.cldr
+Script Open: grbdat//odbcapture_installation_logs.csv
+Script Open: grbdat//odbcapture_installation_logs.ctl
+Script Open: grbdat//report_status.sql
+Script Open: grbdat//list_invalids.csv
+Script Open: grbdat//set_user_authentication.sql
+Script Open: grbdat//install_sys.sql
+Script Open: grbdat//install_system.sql
+g_schema_name = ODBCAPTURE
+Script Open: grbdat/ODBCAPTURE/DLOAD_CONF.ctl
+Script Open: grbdat/ODBCAPTURE/DLOAD_CONF.csv
+Script Open: grbdat/ODBCAPTURE/DLOAD_CONF.cldr
+Script Open: grbdat/ODBCAPTURE/OBJECT_CONF.ctl
+Script Open: grbdat/ODBCAPTURE/OBJECT_CONF.csv
+Script Open: grbdat/ODBCAPTURE/OBJECT_CONF.cldr
+g_schema_name =
+Script Open: grbdat//install_grbdat.sql
+Running GRAB_SCRIPTS.all_scripts(in_build_type "grbtst")
+g_build_type = grbtst, ODBCapture and ODBCTest Testing Objects
+g_schema_name = SYS
+Script Open: grbtst/SYS/host1.hacl
+Script Open: grbtst/SYS/host2.hacl
+Script Open: grbtst/SYS/odbctest_host.hacl
+Script Open: grbtst/SYS/GRB_TEST_ROLE.role
+buf1.file_name = GRB_TEST_ROLE.role
+Script Open: grbtst/SYS/ODBCTEST.user
+g_schema_name = SYSTEM
+Script Open: grbtst/SYSTEM/ODBCTEST_usr.grnt
+g_schema_name = PUBLIC
+g_schema_name =
+Script Open: grbtst//install.sql
+Script Open: grbtst//dbi.sql
+Script Open: grbtst//installation_finalize.sql
+Script Open: grbtst//installation_prepare.sql
+Script Open: grbtst//odbcapture_installation_logs.cldr
+Script Open: grbtst//odbcapture_installation_logs.csv
+Script Open: grbtst//odbcapture_installation_logs.ctl
+Script Open: grbtst//report_status.sql
+Script Open: grbtst//list_invalids.csv
+Script Open: grbtst//set_user_authentication.sql
+Script Open: grbtst//RAS_Admin_ODBCTEST.racl
+Script Open: grbtst//odbcapture_installation_logs.csv
+Script Open: grbtst//install_sys.sql
+Script Open: grbtst//install_system.sql
+g_schema_name = ODBCAPTURE
+Script Open: grbtst/ODBCAPTURE/BUILD_CONF.ctl
+Script Open: grbtst/ODBCAPTURE/BUILD_CONF.csv
+Script Open: grbtst/ODBCAPTURE/BUILD_CONF.cldr
+Script Open: grbtst/ODBCAPTURE/BUILD_PATH.ctl
+Script Open: grbtst/ODBCAPTURE/BUILD_PATH.csv
+Script Open: grbtst/ODBCAPTURE/BUILD_PATH.cldr
+Script Open: grbtst/ODBCAPTURE/GRBTST__NAME.ctl
+Script Open: grbtst/ODBCAPTURE/GRBTST__NAME.csv
+Script Open: grbtst/ODBCAPTURE/GRBTST__NAME.cldr
+Script Open: grbtst/ODBCAPTURE/GRBTST_IMAGE.ctl
+Script Open: grbtst/ODBCAPTURE/GRBTST_IMAGE.csv
+Script Open: grbtst/ODBCAPTURE/GRBTST_IMAGE.cldr
+Script Open: grbtst/ODBCAPTURE/ROLE_CONF.ctl
+Script Open: grbtst/ODBCAPTURE/ROLE_CONF.csv
+Script Open: grbtst/ODBCAPTURE/ROLE_CONF.cldr
+Script Open: grbtst/ODBCAPTURE/SCHEMA_CONF.ctl
+Script Open: grbtst/ODBCAPTURE/SCHEMA_CONF.csv
+Script Open: grbtst/ODBCAPTURE/SCHEMA_CONF.cldr
+Script Open: grbtst/ODBCAPTURE/TSPACE_CONF.ctl
+Script Open: grbtst/ODBCAPTURE/TSPACE_CONF.csv
+Script Open: grbtst/ODBCAPTURE/TSPACE_CONF.cldr
+Script Open: grbtst/ODBCAPTURE/GRBTST__NAME.tbl
+Script Open: grbtst/ODBCAPTURE/GRBTST_IMAGE.tbl
+g_schema_name = ODBCTEST
+g_schema_name =
+Script Open: grbtst//install_grbtst.sql
+Running GRAB_SCRIPTS.all_scripts(in_build_type "grbtjsn")
+g_build_type = grbtjsn, ODBCapture JSON Data Type Testing
+g_schema_name = SYS
+g_schema_name = SYSTEM
+g_schema_name = PUBLIC
+g_schema_name =
+Script Open: grbtjsn//install.sql
+Script Open: grbtjsn//dbi.sql
+Script Open: grbtjsn//installation_finalize.sql
+Script Open: grbtjsn//installation_prepare.sql
+Script Open: grbtjsn//odbcapture_installation_logs.cldr
+Script Open: grbtjsn//odbcapture_installation_logs.csv
+Script Open: grbtjsn//odbcapture_installation_logs.ctl
+Script Open: grbtjsn//report_status.sql
+Script Open: grbtjsn//list_invalids.csv
+Script Open: grbtjsn//set_user_authentication.sql
+Script Open: grbtjsn//install_sys.sql
+Script Open: grbtjsn//install_system.sql
+g_schema_name = ODBCAPTURE
+Script Open: grbtjsn/ODBCAPTURE/GRBTST_JSON.ctl
+Script Open: grbtjsn/ODBCAPTURE/GRBTST_JSON.csv
+Script Open: grbtjsn/ODBCAPTURE/GRBTST_JSON.cldr
+Script Open: grbtjsn/ODBCAPTURE/GRBTST_JSON.tbl
+g_schema_name =
+Script Open: grbtjsn//install_grbtjsn.sql
+Running GRAB_SCRIPTS.all_scripts(in_build_type "grbtsdo")
+g_build_type = grbtsdo, ODBCTest Spatial Data Option Testing
+g_schema_name = SYS
+g_schema_name = SYSTEM
+g_schema_name = PUBLIC
+g_schema_name =
+Script Open: grbtsdo//install.sql
+Script Open: grbtsdo//dbi.sql
+Script Open: grbtsdo//installation_finalize.sql
+Script Open: grbtsdo//installation_prepare.sql
+Script Open: grbtsdo//odbcapture_installation_logs.cldr
+Script Open: grbtsdo//odbcapture_installation_logs.csv
+Script Open: grbtsdo//odbcapture_installation_logs.ctl
+Script Open: grbtsdo//report_status.sql
+Script Open: grbtsdo//list_invalids.csv
+Script Open: grbtsdo//set_user_authentication.sql
+Script Open: grbtsdo//install_sys.sql
+Script Open: grbtsdo//install_system.sql
+g_schema_name = ODBCTEST
+Script Open: grbtsdo/ODBCTEST/SDO_COLA_MARKETS.ctl
+Script Open: grbtsdo/ODBCTEST/SDO_COLA_MARKETS.csv
+Script Open: grbtsdo/ODBCTEST/SDO_COLA_MARKETS.cldr
+Script Open: grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tidx
+ODBCTEST, SDO_COLA_MARKETS, TABLE, ODBCTEST, COLA_SPATIAL_IDX, tidx
+Script Open: grbtsdo//COLA_SPATIAL_IDX.tidx
+Script Open: grbtsdo//odbcapture_installation_logs.csv
+Script Open: grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tbl
+g_schema_name =
+Script Open: grbtsdo//install_grbtsdo.sql
+Running GRAB_SCRIPTS.all_scripts(in_build_type "grbtctx")
+g_build_type = grbtctx, ODBCTest Testing of Oracle Text
+g_schema_name = SYS
+g_schema_name = SYSTEM
+g_schema_name = PUBLIC
+g_schema_name =
+Script Open: grbtctx//install.sql
+Script Open: grbtctx//dbi.sql
+Script Open: grbtctx//installation_finalize.sql
+Script Open: grbtctx//installation_prepare.sql
+Script Open: grbtctx//odbcapture_installation_logs.cldr
+Script Open: grbtctx//odbcapture_installation_logs.csv
+Script Open: grbtctx//odbcapture_installation_logs.ctl
+Script Open: grbtctx//report_status.sql
+Script Open: grbtctx//list_invalids.csv
+Script Open: grbtctx//set_user_authentication.sql
+Script Open: grbtctx//install_sys.sql
+Script Open: grbtctx//install_system.sql
+g_schema_name = ODBCTEST
+Script Open: grbtctx/ODBCTEST/CUST_CTX_TEST.ctl
+Script Open: grbtctx/ODBCTEST/CUST_CTX_TEST.csv
+Script Open: grbtctx/ODBCTEST/CUST_CTX_TEST.cldr
+Script Open: grbtctx/ODBCTEST/CUST_CTX_TEST.tidx
+Script Open: grbtctx/ODBCTEST/CUST_CTX_TEST.tbl
+g_schema_name =
+Script Open: grbtctx//install_grbtctx.sql
+Running GRAB_SCRIPTS.all_scripts(in_build_type "grbtdat")
+g_build_type = grbtdat, ODBCapture and ODBCTest Testing Self-Capture Configuration Data
+g_schema_name = SYS
+g_schema_name = SYSTEM
+g_schema_name = PUBLIC
+g_schema_name =
+Script Open: grbtdat//install.sql
+Script Open: grbtdat//dbi.sql
+Script Open: grbtdat//installation_finalize.sql
+Script Open: grbtdat//installation_prepare.sql
+Script Open: grbtdat//odbcapture_installation_logs.cldr
+Script Open: grbtdat//odbcapture_installation_logs.csv
+Script Open: grbtdat//odbcapture_installation_logs.ctl
+Script Open: grbtdat//report_status.sql
+Script Open: grbtdat//list_invalids.csv
+Script Open: grbtdat//set_user_authentication.sql
+Script Open: grbtdat//install_sys.sql
+Script Open: grbtdat//install_system.sql
+g_schema_name = ODBCAPTURE
+Script Open: grbtdat/ODBCAPTURE/DLOAD_CONF.ctl
+Script Open: grbtdat/ODBCAPTURE/DLOAD_CONF.csv
+Script Open: grbtdat/ODBCAPTURE/DLOAD_CONF.cldr
+Script Open: grbtdat/ODBCAPTURE/OBJECT_CONF.ctl
+Script Open: grbtdat/ODBCAPTURE/OBJECT_CONF.csv
+Script Open: grbtdat/ODBCAPTURE/OBJECT_CONF.cldr
+g_schema_name =
+Script Open: grbtdat//install_grbtdat.sql
+
+PL/SQL procedure successfully completed.
+
+old   1: delete from zip_files where file_name = '&FILE_NAME..zip'
+new   1: delete from zip_files where file_name = 'capture_files.zip'
+
+0 rows deleted.
+
+Running FH2.write_scripts(in_zip_file_name "capture_files.zip", in_folder_name "")
+grbdat/install.sql total_bytes: 1821, 1:1821.
+grbdat/dbi.sql total_bytes: 1509, 1:1509.
+grbdat/installation_finalize.sql total_bytes: 1357, 1:1357.
+grbdat/installation_prepare.sql total_bytes: 974, 1:974.
+grbdat/odbcapture_installation_logs.cldr total_bytes: 2714, 1:2393, 2:321.
+grbdat/odbcapture_installation_logs.csv total_bytes: 162, 1:162.
+grbdat/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
+grbdat/report_status.sql total_bytes: 1855, 1:1855.
+grbdat/list_invalids.csv total_bytes: 45, 1:45.
+grbdat/set_user_authentication.sql total_bytes: 120, 1:120.
+grbdat/install_sys.sql total_bytes: 229, 1:229.
+grbdat/install_system.sql total_bytes: 238, 1:238.
+grbdat/install_grbdat.sql total_bytes: 1101, 1:1101.
+grbdat/ODBCAPTURE/DLOAD_CONF.ctl total_bytes: 529, 1:529.
+grbdat/ODBCAPTURE/DLOAD_CONF.csv total_bytes: 1587, 1:1587.
+grbdat/ODBCAPTURE/DLOAD_CONF.cldr total_bytes: 2280, 1:2280.
+grbdat/ODBCAPTURE/OBJECT_CONF.ctl total_bytes: 345, 1:345.
+grbdat/ODBCAPTURE/OBJECT_CONF.csv total_bytes: 1729, 1:1729.
+grbdat/ODBCAPTURE/OBJECT_CONF.cldr total_bytes: 2290, 1:2290.
+grbras/install.sql total_bytes: 1821, 1:1821.
+grbras/dbi.sql total_bytes: 1509, 1:1509.
+grbras/installation_finalize.sql total_bytes: 1357, 1:1357.
+grbras/installation_prepare.sql total_bytes: 892, 1:892.
+grbras/odbcapture_installation_logs.cldr total_bytes: 2714, 1:2393, 2:321.
+grbras/odbcapture_installation_logs.csv total_bytes: 161, 1:161.
+grbras/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
+grbras/report_status.sql total_bytes: 1855, 1:1855.
+grbras/list_invalids.csv total_bytes: 45, 1:45.
+grbras/set_user_authentication.sql total_bytes: 120, 1:120.
+grbras/install_sys.sql total_bytes: 335, 1:335.
+grbras/install_system.sql total_bytes: 238, 1:238.
+grbras/install_grbras.sql total_bytes: 1673, 1:1673.
+grbras/SYS/ODBCAPTURE_usr.sgrnt total_bytes: 473, 1:473.
+grbras/ODBCAPTURE/GRAB_RAS.pkssql total_bytes: 579, 1:579.
+grbras/ODBCAPTURE/EXPORTING_RAS_DATA.tbl total_bytes: 1374, 1:1374.
+grbras/ODBCAPTURE/ROLE_CONF.ctl total_bytes: 296, 1:296.
+grbras/ODBCAPTURE/ROLE_CONF.csv total_bytes: 933, 1:933.
+grbras/ODBCAPTURE/ROLE_CONF.cldr total_bytes: 2270, 1:2270.
+grbras/ODBCAPTURE/SCHEMA_CONF.ctl total_bytes: 475, 1:475.
+grbras/ODBCAPTURE/SCHEMA_CONF.csv total_bytes: 179, 1:179.
+grbras/ODBCAPTURE/SCHEMA_CONF.cldr total_bytes: 2290, 1:2290.
+grbras/ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw total_bytes: 2930, 1:2487, 2:443.
+grbras/ODBCAPTURE/GRAB_RAS.pkbsql total_bytes: 17779, 1:2453, 2:2494, 3:2445, 4:2485, 5:2408, 6:2488, 7:2489, 8:517.
+grbsdo/install.sql total_bytes: 1821, 1:1821.
+grbsdo/dbi.sql total_bytes: 1509, 1:1509.
+grbsdo/installation_finalize.sql total_bytes: 1357, 1:1357.
+grbsdo/installation_prepare.sql total_bytes: 892, 1:892.
+grbsdo/odbcapture_installation_logs.cldr total_bytes: 2714, 1:2393, 2:321.
+grbsdo/odbcapture_installation_logs.csv total_bytes: 161, 1:161.
+grbsdo/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
+grbsdo/report_status.sql total_bytes: 1855, 1:1855.
+grbsdo/list_invalids.csv total_bytes: 45, 1:45.
+grbsdo/set_user_authentication.sql total_bytes: 120, 1:120.
+grbsdo/install_sys.sql total_bytes: 229, 1:229.
+grbsdo/install_system.sql total_bytes: 238, 1:238.
+grbsdo/install_grbsdo.sql total_bytes: 1385, 1:1385.
+grbsdo/ODBCAPTURE/GRAB_SDO.pkssql total_bytes: 2332, 1:2332.
+grbsdo/ODBCAPTURE/ROLE_CONF.ctl total_bytes: 296, 1:296.
+grbsdo/ODBCAPTURE/ROLE_CONF.csv total_bytes: 588, 1:588.
+grbsdo/ODBCAPTURE/ROLE_CONF.cldr total_bytes: 2270, 1:2270.
+grbsdo/ODBCAPTURE/SCHEMA_CONF.ctl total_bytes: 475, 1:475.
+grbsdo/ODBCAPTURE/SCHEMA_CONF.csv total_bytes: 266, 1:266.
+grbsdo/ODBCAPTURE/SCHEMA_CONF.cldr total_bytes: 2290, 1:2290.
+grbsdo/ODBCAPTURE/GRAB_SDO.pkbsql total_bytes: 17452, 1:2474, 2:2466, 3:2471, 4:2455, 5:2476, 6:2420, 7:2415, 8:275.
+grbsrc/install.sql total_bytes: 1821, 1:1821.
+grbsrc/dbi.sql total_bytes: 1509, 1:1509.
+grbsrc/installation_finalize.sql total_bytes: 1357, 1:1357.
+grbsrc/installation_prepare.sql total_bytes: 309, 1:309.
+grbsrc/odbcapture_installation_logs.cldr total_bytes: 2714, 1:2393, 2:321.
+grbsrc/odbcapture_installation_logs.csv total_bytes: 364, 1:364.
+grbsrc/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
+grbsrc/report_status.sql total_bytes: 1855, 1:1855.
+grbsrc/list_invalids.csv total_bytes: 45, 1:45.
+grbsrc/set_user_authentication.sql total_bytes: 172, 1:172.
+grbsrc/install_sys.sql total_bytes: 325, 1:325.
+grbsrc/install_system.sql total_bytes: 342, 1:342.
+grbsrc/install_grbsrc.sql total_bytes: 8248, 1:2410, 2:2478, 3:2491, 4:869.
+grbsrc/SYS/ODBCAPTURE.user total_bytes: 6157, 1:2446, 2:2476, 3:1235.
+grbsrc/SYSTEM/ODBCAPTURE_usr.grnt total_bytes: 577, 1:577.
+grbsrc/ODBCAPTURE/COMMON_UTIL.pkssql total_bytes: 3059, 1:2486, 2:573.
+grbsrc/ODBCAPTURE/FH2.pkssql total_bytes: 3162, 1:2479, 2:683.
+grbsrc/ODBCAPTURE/GRAB_SCRIPTS.pkssql total_bytes: 2357, 1:2357.
+grbsrc/ODBCAPTURE/ROOT_SCRIPTS.pkssql total_bytes: 1104, 1:1104.
+grbsrc/ODBCAPTURE/ZIP_UTIL_PKG.pkssql total_bytes: 1754, 1:1754.
+grbsrc/ODBCAPTURE/BUILD_CONF.tbl total_bytes: 1171, 1:1171.
+grbsrc/ODBCAPTURE/BUILD_PATH.tbl total_bytes: 998, 1:998.
+grbsrc/ODBCAPTURE/BUILD_TYPE_TIMING.tbl total_bytes: 987, 1:987.
+grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_TAB.tbl total_bytes: 1078, 1:1078.
+grbsrc/ODBCAPTURE/DBA_OBJECTS_TAB.tbl total_bytes: 710, 1:710.
+grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_TAB.tbl total_bytes: 1072, 1:1072.
+grbsrc/ODBCAPTURE/DLOAD_CONF.tbl total_bytes: 2573, 1:2409, 2:164.
+grbsrc/ODBCAPTURE/ELEMENT_CONF.tbl total_bytes: 2123, 1:2123.
+grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl total_bytes: 1308, 1:1308.
+grbsrc/ODBCAPTURE/OBJECT_CONF.tbl total_bytes: 1841, 1:1841.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tbl total_bytes: 935, 1:935.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tbl total_bytes: 1381, 1:1381.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tbl total_bytes: 1489, 1:1489.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tbl total_bytes: 1632, 1:1632.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tbl total_bytes: 1602, 1:1602.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tbl total_bytes: 1107, 1:1107.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tbl total_bytes: 1439, 1:1439.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tbl total_bytes: 1387, 1:1387.
+grbsrc/ODBCAPTURE/ROLE_CONF.tbl total_bytes: 1427, 1:1427.
+grbsrc/ODBCAPTURE/SCHEMA_CONF.tbl total_bytes: 2379, 1:2379.
+grbsrc/ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl total_bytes: 703, 1:703.
+grbsrc/ODBCAPTURE/TSPACE_CONF.tbl total_bytes: 1106, 1:1106.
+grbsrc/ODBCAPTURE/ZIP_FILES.tbl total_bytes: 590, 1:590.
+grbsrc/ODBCAPTURE/BUILD_CONF.ctl total_bytes: 259, 1:259.
+grbsrc/ODBCAPTURE/BUILD_CONF.csv total_bytes: 667, 1:667.
+grbsrc/ODBCAPTURE/BUILD_CONF.cldr total_bytes: 2280, 1:2280.
+grbsrc/ODBCAPTURE/BUILD_PATH.ctl total_bytes: 219, 1:219.
+grbsrc/ODBCAPTURE/BUILD_PATH.csv total_bytes: 111, 1:111.
+grbsrc/ODBCAPTURE/BUILD_PATH.cldr total_bytes: 2280, 1:2280.
+grbsrc/ODBCAPTURE/ELEMENT_CONF.ctl total_bytes: 478, 1:478.
+grbsrc/ODBCAPTURE/ELEMENT_CONF.csv total_bytes: 2607, 1:2607.
+grbsrc/ODBCAPTURE/ELEMENT_CONF.cldr total_bytes: 2300, 1:2300.
+grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.ctl total_bytes: 265, 1:265.
+grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.csv total_bytes: 490, 1:490.
+grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.cldr total_bytes: 2430, 1:2430.
+grbsrc/ODBCAPTURE/ROLE_CONF.ctl total_bytes: 296, 1:296.
+grbsrc/ODBCAPTURE/ROLE_CONF.csv total_bytes: 14281, 1:14281.
+grbsrc/ODBCAPTURE/ROLE_CONF.cldr total_bytes: 2270, 1:2270.
+grbsrc/ODBCAPTURE/SCHEMA_CONF.ctl total_bytes: 475, 1:475.
+grbsrc/ODBCAPTURE/SCHEMA_CONF.csv total_bytes: 1800, 1:1800.
+grbsrc/ODBCAPTURE/SCHEMA_CONF.cldr total_bytes: 2290, 1:2290.
+grbsrc/ODBCAPTURE/TSPACE_CONF.ctl total_bytes: 253, 1:253.
+grbsrc/ODBCAPTURE/TSPACE_CONF.csv total_bytes: 36, 1:36.
+grbsrc/ODBCAPTURE/TSPACE_CONF.cldr total_bytes: 2290, 1:2290.
+grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_TAB.tidx total_bytes: 596, 1:596.
+grbsrc/ODBCAPTURE/DBA_OBJECTS_TAB.tidx total_bytes: 327, 1:327.
+grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_TAB.tidx total_bytes: 335, 1:335.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tidx total_bytes: 348, 1:348.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tidx total_bytes: 348, 1:348.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tidx total_bytes: 352, 1:352.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tidx total_bytes: 343, 1:343.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tidx total_bytes: 336, 1:336.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tidx total_bytes: 342, 1:342.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tidx total_bytes: 591, 1:591.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tidx total_bytes: 591, 1:591.
+grbsrc/ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw total_bytes: 1117, 1:1117.
+grbsrc/ODBCAPTURE/BUILD_PATH_REVIEW.vw total_bytes: 1383, 1:1383.
+grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw total_bytes: 1524, 1:1524.
+grbsrc/ODBCAPTURE/DBA_OBJECTS_VIEW.vw total_bytes: 4405, 1:2454, 2:1951.
+grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw total_bytes: 1949, 1:1949.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw total_bytes: 2258, 1:2258.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw total_bytes: 2259, 1:2259.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw total_bytes: 1917, 1:1917.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw total_bytes: 3670, 1:2479, 2:1191.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw total_bytes: 2793, 1:2482, 2:311.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw total_bytes: 6768, 1:2435, 2:2483, 3:1850.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw total_bytes: 3082, 1:2490, 2:592.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw total_bytes: 3191, 1:2427, 2:764.
+grbsrc/ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw total_bytes: 4568, 1:2466, 2:2102.
+grbsrc/ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw total_bytes: 5570, 1:2486, 2:2259, 3:825.
+grbsrc/ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw total_bytes: 2739, 1:2470, 2:269.
+grbsrc/ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw total_bytes: 3008, 1:2455, 2:553.
+grbsrc/ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw total_bytes: 5346, 1:2472, 2:2434, 3:440.
+grbsrc/ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw total_bytes: 3331, 1:2442, 2:889.
+grbsrc/ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw total_bytes: 2378, 1:2378.
+grbsrc/ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw total_bytes: 2639, 1:2477, 2:162.
+grbsrc/ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw total_bytes: 4247, 1:2449, 2:1798.
+grbsrc/ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw total_bytes: 2442, 1:2442.
+grbsrc/ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw total_bytes: 2366, 1:2366.
+grbsrc/ODBCAPTURE/UOR_INSTALL_VIEW.vw total_bytes: 1220, 1:1220.
+grbsrc/ODBCAPTURE/COMMON_UTIL.pkbsql total_bytes: 21518, 1:2444, 2:2493, 3:2472, 4:2448, 5:2421, 6:2378, 7:2425, 8:2377, 9:2060.
+grbsrc/ODBCAPTURE/FH2.pkbsql total_bytes: 21738, 1:2490, 2:2474, 3:2496, 4:2490, 5:2495, 6:2445, 7:2490, 8:2494, 9:1864.
+grbsrc/ODBCAPTURE/GRAB_SCRIPTS.pkbsql total_bytes: 208884, 1:2479, 2:2482, 3:2456, 4:2459, 5:2442, 6:2451, 7:2473, 8:2445, 9:2478, 10:2476, 11:2464, 12:2444, 13:2486, 14:2485, 15:2481, 16:2458, 17:2479, 18:2492, 19:2487, 20:2433, 21:2492, 22:2444, 23:2480, 24:2495, 25:2479, 26:2460, 27:2425, 28:2441, 29:2469, 30:2484, 31:2490, 32:2461, 33:2441, 34:2483, 35:2434, 36:2428, 37:2477, 38:2494, 39:2450, 40:2366, 41:2483, 42:2449, 43:2485, 44:2462, 45:2472, 46:2462, 47:2459, 48:2393, 49:2450, 50:2413, 51:2407, 52:2471, 53:2488, 54:2454, 55:2480, 56:2495, 57:2479, 58:2485, 59:2480, 60:2403, 61:2470, 62:2490, 63:2426, 64:2446, 65:2486, 66:2496, 67:2494, 68:2449, 69:2491, 70:2448, 71:2464, 72:2451, 73:2457, 74:2496, 75:2470, 76:2471, 77:2480, 78:2434, 79:2419, 80:2486, 81:2385, 82:2473, 83:2468, 84:2460, 85:2061.
+grbsrc/ODBCAPTURE/ROOT_SCRIPTS.pkbsql total_bytes: 16466, 1:2481, 2:2495, 3:2477, 4:2473, 5:2491, 6:2491, 7:1558.
+grbsrc/ODBCAPTURE/ZIP_UTIL_PKG.pkbsql total_bytes: 18317, 1:2457, 2:2477, 3:2422, 4:2436, 5:2467, 6:2487, 7:2475, 8:1096.
+grbsrc/ODBCAPTURE/BUILD_PATH.tfk total_bytes: 602, 1:602.
+grbsrc/ODBCAPTURE/DLOAD_CONF.tfk total_bytes: 596, 1:596.
+grbsrc/ODBCAPTURE/OBJECT_CONF.tfk total_bytes: 864, 1:864.
+grbsrc/ODBCAPTURE/ROLE_CONF.tfk total_bytes: 343, 1:343.
+grbsrc/ODBCAPTURE/SCHEMA_CONF.tfk total_bytes: 351, 1:351.
+grbsrc/ODBCAPTURE/TSPACE_CONF.tfk total_bytes: 348, 1:348.
+grbtctx/install.sql total_bytes: 1824, 1:1824.
+grbtctx/dbi.sql total_bytes: 1509, 1:1509.
+grbtctx/installation_finalize.sql total_bytes: 1345, 1:1345.
+grbtctx/installation_prepare.sql total_bytes: 994, 1:994.
+grbtctx/odbcapture_installation_logs.cldr total_bytes: 2714, 1:2393, 2:321.
+grbtctx/odbcapture_installation_logs.csv total_bytes: 130, 1:130.
+grbtctx/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
+grbtctx/report_status.sql total_bytes: 1853, 1:1853.
+grbtctx/list_invalids.csv total_bytes: 45, 1:45.
+grbtctx/set_user_authentication.sql total_bytes: 121, 1:121.
+grbtctx/install_sys.sql total_bytes: 229, 1:229.
+grbtctx/install_system.sql total_bytes: 238, 1:238.
+grbtctx/install_grbtctx.sql total_bytes: 1296, 1:1296.
+grbtctx/ODBCTEST/CUST_CTX_TEST.tbl total_bytes: 426, 1:426.
+grbtctx/ODBCTEST/CUST_CTX_TEST.ctl total_bytes: 279, 1:279.
+grbtctx/ODBCTEST/CUST_CTX_TEST.csv total_bytes: 220, 1:220.
+grbtctx/ODBCTEST/CUST_CTX_TEST.cldr total_bytes: 2290, 1:2290.
+grbtctx/ODBCTEST/CUST_CTX_TEST.tidx total_bytes: 302, 1:302.
+grbtdat/install.sql total_bytes: 1824, 1:1824.
+grbtdat/dbi.sql total_bytes: 1509, 1:1509.
+grbtdat/installation_finalize.sql total_bytes: 1357, 1:1357.
+grbtdat/installation_prepare.sql total_bytes: 1099, 1:1099.
+grbtdat/odbcapture_installation_logs.cldr total_bytes: 2714, 1:2393, 2:321.
+grbtdat/odbcapture_installation_logs.csv total_bytes: 168, 1:168.
+grbtdat/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
+grbtdat/report_status.sql total_bytes: 1857, 1:1857.
+grbtdat/list_invalids.csv total_bytes: 45, 1:45.
+grbtdat/set_user_authentication.sql total_bytes: 121, 1:121.
+grbtdat/install_sys.sql total_bytes: 229, 1:229.
+grbtdat/install_system.sql total_bytes: 238, 1:238.
+grbtdat/install_grbtdat.sql total_bytes: 1103, 1:1103.
+grbtdat/ODBCAPTURE/DLOAD_CONF.ctl total_bytes: 529, 1:529.
+grbtdat/ODBCAPTURE/DLOAD_CONF.csv total_bytes: 1244, 1:1244.
+grbtdat/ODBCAPTURE/DLOAD_CONF.cldr total_bytes: 2280, 1:2280.
+grbtdat/ODBCAPTURE/OBJECT_CONF.ctl total_bytes: 345, 1:345.
+grbtdat/ODBCAPTURE/OBJECT_CONF.csv total_bytes: 1451, 1:1451.
+grbtdat/ODBCAPTURE/OBJECT_CONF.cldr total_bytes: 2290, 1:2290.
+grbtjsn/install.sql total_bytes: 1824, 1:1824.
+grbtjsn/dbi.sql total_bytes: 1509, 1:1509.
+grbtjsn/installation_finalize.sql total_bytes: 1357, 1:1357.
+grbtjsn/installation_prepare.sql total_bytes: 994, 1:994.
+grbtjsn/odbcapture_installation_logs.cldr total_bytes: 2714, 1:2393, 2:321.
+grbtjsn/odbcapture_installation_logs.csv total_bytes: 130, 1:130.
+grbtjsn/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
+grbtjsn/report_status.sql total_bytes: 1857, 1:1857.
+grbtjsn/list_invalids.csv total_bytes: 45, 1:45.
+grbtjsn/set_user_authentication.sql total_bytes: 121, 1:121.
+grbtjsn/install_sys.sql total_bytes: 229, 1:229.
+grbtjsn/install_system.sql total_bytes: 238, 1:238.
+grbtjsn/install_grbtjsn.sql total_bytes: 1163, 1:1163.
+grbtjsn/ODBCAPTURE/GRBTST_JSON.tbl total_bytes: 479, 1:479.
+grbtjsn/ODBCAPTURE/GRBTST_JSON.ctl total_bytes: 219, 1:219.
+grbtjsn/ODBCAPTURE/GRBTST_JSON.csv total_bytes: 1079, 1:1079.
+grbtjsn/ODBCAPTURE/GRBTST_JSON.cldr total_bytes: 2290, 1:2290.
+grbtsdo/install.sql total_bytes: 1824, 1:1824.
+grbtsdo/dbi.sql total_bytes: 1509, 1:1509.
+grbtsdo/installation_finalize.sql total_bytes: 1345, 1:1345.
+grbtsdo/installation_prepare.sql total_bytes: 994, 1:994.
+grbtsdo/odbcapture_installation_logs.cldr total_bytes: 2714, 1:2393, 2:321.
+grbtsdo/odbcapture_installation_logs.csv total_bytes: 171, 1:171.
+grbtsdo/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
+grbtsdo/report_status.sql total_bytes: 1853, 1:1853.
+grbtsdo/list_invalids.csv total_bytes: 45, 1:45.
+grbtsdo/set_user_authentication.sql total_bytes: 121, 1:121.
+grbtsdo/install_sys.sql total_bytes: 229, 1:229.
+grbtsdo/install_system.sql total_bytes: 238, 1:238.
+grbtsdo/COLA_SPATIAL_IDX.tidx total_bytes: 618, 1:618.
+grbtsdo/install_grbtsdo.sql total_bytes: 1305, 1:1305.
+grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tbl total_bytes: 655, 1:655.
+grbtsdo/ODBCTEST/SDO_COLA_MARKETS.ctl total_bytes: 905, 1:905.
+grbtsdo/ODBCTEST/SDO_COLA_MARKETS.csv total_bytes: 206, 1:206.
+grbtsdo/ODBCTEST/SDO_COLA_MARKETS.cldr total_bytes: 2320, 1:2320.
+grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tidx total_bytes: 314, 1:314.
+grbtst/install.sql total_bytes: 1821, 1:1821.
+grbtst/dbi.sql total_bytes: 1509, 1:1509.
+grbtst/installation_finalize.sql total_bytes: 1423, 1:1423.
+grbtst/installation_prepare.sql total_bytes: 974, 1:974.
+grbtst/odbcapture_installation_logs.cldr total_bytes: 2714, 1:2393, 2:321.
+grbtst/odbcapture_installation_logs.csv total_bytes: 390, 1:390.
+grbtst/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
+grbtst/report_status.sql total_bytes: 1877, 1:1877.
+grbtst/list_invalids.csv total_bytes: 45, 1:45.
+grbtst/set_user_authentication.sql total_bytes: 170, 1:170.
+grbtst/install_sys.sql total_bytes: 589, 1:589.
+grbtst/install_system.sql total_bytes: 340, 1:340.
+grbtst/install_grbtst.sql total_bytes: 1713, 1:1713.
+grbtst/RAS_Admin_ODBCTEST.racl total_bytes: 5506, 1:2480, 2:2491, 3:535.
+grbtst/SYS/GRB_TEST_ROLE.role total_bytes: 154, 1:154.
+grbtst/SYS/ODBCTEST.user total_bytes: 2072, 1:2072.
+grbtst/SYS/host1.hacl total_bytes: 993, 1:993.
+grbtst/SYS/host2.hacl total_bytes: 1615, 1:1615.
+grbtst/SYS/odbctest_host.hacl total_bytes: 1055, 1:1055.
+grbtst/SYSTEM/ODBCTEST_usr.grnt total_bytes: 446, 1:446.
+grbtst/ODBCAPTURE/GRBTST__NAME.tbl total_bytes: 652, 1:652.
+grbtst/ODBCAPTURE/GRBTST_IMAGE.tbl total_bytes: 366, 1:366.
+grbtst/ODBCAPTURE/BUILD_CONF.ctl total_bytes: 259, 1:259.
+grbtst/ODBCAPTURE/BUILD_CONF.csv total_bytes: 447, 1:447.
+grbtst/ODBCAPTURE/BUILD_CONF.cldr total_bytes: 2280, 1:2280.
+grbtst/ODBCAPTURE/BUILD_PATH.ctl total_bytes: 219, 1:219.
+grbtst/ODBCAPTURE/BUILD_PATH.csv total_bytes: 110, 1:110.
+grbtst/ODBCAPTURE/BUILD_PATH.cldr total_bytes: 2280, 1:2280.
+grbtst/ODBCAPTURE/GRBTST__NAME.ctl total_bytes: 215, 1:215.
+grbtst/ODBCAPTURE/GRBTST__NAME.csv total_bytes: 24, 1:24.
+grbtst/ODBCAPTURE/GRBTST__NAME.cldr total_bytes: 2300, 1:2300.
+grbtst/ODBCAPTURE/GRBTST_IMAGE.ctl total_bytes: 281, 1:281.
+grbtst/ODBCAPTURE/GRBTST_IMAGE.csv total_bytes: 16817, 1:16817.
+grbtst/ODBCAPTURE/GRBTST_IMAGE.cldr total_bytes: 5295, 1:2416, 2:2461, 3:418.
+grbtst/ODBCAPTURE/ROLE_CONF.ctl total_bytes: 296, 1:296.
+grbtst/ODBCAPTURE/ROLE_CONF.csv total_bytes: 100, 1:100.
+grbtst/ODBCAPTURE/ROLE_CONF.cldr total_bytes: 2270, 1:2270.
+grbtst/ODBCAPTURE/SCHEMA_CONF.ctl total_bytes: 475, 1:475.
+grbtst/ODBCAPTURE/SCHEMA_CONF.csv total_bytes: 161, 1:161.
+grbtst/ODBCAPTURE/SCHEMA_CONF.cldr total_bytes: 2290, 1:2290.
+grbtst/ODBCAPTURE/TSPACE_CONF.ctl total_bytes: 253, 1:253.
+grbtst/ODBCAPTURE/TSPACE_CONF.csv total_bytes: 36, 1:36.
+grbtst/ODBCAPTURE/TSPACE_CONF.cldr total_bytes: 2290, 1:2290.
+
+PL/SQL procedure successfully completed.
+
+
+Commit complete.
+
+
+PL/SQL procedure successfully completed.
+
+SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+Remove Carriage Returns before translating Base64
+Setup and Unzip
+Archive:  ../capture_files.zip
+Implementation by Anton Scheffer
+  inflating: grbdat/install.sql      
+  inflating: grbdat/dbi.sql          
+  inflating: grbdat/installation_finalize.sql  
+  inflating: grbdat/installation_prepare.sql  
+  inflating: grbdat/odbcapture_installation_logs.cldr  
+  inflating: grbdat/odbcapture_installation_logs.csv  
+  inflating: grbdat/odbcapture_installation_logs.ctl  
+  inflating: grbdat/report_status.sql  
+  inflating: grbdat/list_invalids.csv  
+  inflating: grbdat/set_user_authentication.sql  
+  inflating: grbdat/install_sys.sql  
+  inflating: grbdat/install_system.sql  
+  inflating: grbdat/install_grbdat.sql  
+  inflating: grbdat/ODBCAPTURE/DLOAD_CONF.ctl  
+  inflating: grbdat/ODBCAPTURE/DLOAD_CONF.csv  
+  inflating: grbdat/ODBCAPTURE/DLOAD_CONF.cldr  
+  inflating: grbdat/ODBCAPTURE/OBJECT_CONF.ctl  
+  inflating: grbdat/ODBCAPTURE/OBJECT_CONF.csv  
+  inflating: grbdat/ODBCAPTURE/OBJECT_CONF.cldr  
+  inflating: grbras/install.sql      
+  inflating: grbras/dbi.sql          
+  inflating: grbras/installation_finalize.sql  
+  inflating: grbras/installation_prepare.sql  
+  inflating: grbras/odbcapture_installation_logs.cldr  
+  inflating: grbras/odbcapture_installation_logs.csv  
+  inflating: grbras/odbcapture_installation_logs.ctl  
+  inflating: grbras/report_status.sql  
+  inflating: grbras/list_invalids.csv  
+  inflating: grbras/set_user_authentication.sql  
+  inflating: grbras/install_sys.sql  
+  inflating: grbras/install_system.sql  
+  inflating: grbras/install_grbras.sql  
+  inflating: grbras/SYS/ODBCAPTURE_usr.sgrnt  
+  inflating: grbras/ODBCAPTURE/GRAB_RAS.pkssql  
+  inflating: grbras/ODBCAPTURE/EXPORTING_RAS_DATA.tbl  
+  inflating: grbras/ODBCAPTURE/ROLE_CONF.ctl  
+  inflating: grbras/ODBCAPTURE/ROLE_CONF.csv  
+  inflating: grbras/ODBCAPTURE/ROLE_CONF.cldr  
+  inflating: grbras/ODBCAPTURE/SCHEMA_CONF.ctl  
+  inflating: grbras/ODBCAPTURE/SCHEMA_CONF.csv  
+  inflating: grbras/ODBCAPTURE/SCHEMA_CONF.cldr  
+  inflating: grbras/ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw  
+  inflating: grbras/ODBCAPTURE/GRAB_RAS.pkbsql  
+  inflating: grbsdo/install.sql      
+  inflating: grbsdo/dbi.sql          
+  inflating: grbsdo/installation_finalize.sql  
+  inflating: grbsdo/installation_prepare.sql  
+  inflating: grbsdo/odbcapture_installation_logs.cldr  
+  inflating: grbsdo/odbcapture_installation_logs.csv  
+  inflating: grbsdo/odbcapture_installation_logs.ctl  
+  inflating: grbsdo/report_status.sql  
+  inflating: grbsdo/list_invalids.csv  
+  inflating: grbsdo/set_user_authentication.sql  
+  inflating: grbsdo/install_sys.sql  
+  inflating: grbsdo/install_system.sql  
+  inflating: grbsdo/install_grbsdo.sql  
+  inflating: grbsdo/ODBCAPTURE/GRAB_SDO.pkssql  
+  inflating: grbsdo/ODBCAPTURE/ROLE_CONF.ctl  
+  inflating: grbsdo/ODBCAPTURE/ROLE_CONF.csv  
+  inflating: grbsdo/ODBCAPTURE/ROLE_CONF.cldr  
+  inflating: grbsdo/ODBCAPTURE/SCHEMA_CONF.ctl  
+  inflating: grbsdo/ODBCAPTURE/SCHEMA_CONF.csv  
+  inflating: grbsdo/ODBCAPTURE/SCHEMA_CONF.cldr  
+  inflating: grbsdo/ODBCAPTURE/GRAB_SDO.pkbsql  
+  inflating: grbsrc/install.sql      
+  inflating: grbsrc/dbi.sql          
+  inflating: grbsrc/installation_finalize.sql  
+  inflating: grbsrc/installation_prepare.sql  
+  inflating: grbsrc/odbcapture_installation_logs.cldr  
+  inflating: grbsrc/odbcapture_installation_logs.csv  
+  inflating: grbsrc/odbcapture_installation_logs.ctl  
+  inflating: grbsrc/report_status.sql  
+  inflating: grbsrc/list_invalids.csv  
+  inflating: grbsrc/set_user_authentication.sql  
+  inflating: grbsrc/install_sys.sql  
+  inflating: grbsrc/install_system.sql  
+  inflating: grbsrc/install_grbsrc.sql  
+  inflating: grbsrc/SYS/ODBCAPTURE.user  
+  inflating: grbsrc/SYSTEM/ODBCAPTURE_usr.grnt  
+  inflating: grbsrc/ODBCAPTURE/COMMON_UTIL.pkssql  
+  inflating: grbsrc/ODBCAPTURE/FH2.pkssql  
+  inflating: grbsrc/ODBCAPTURE/GRAB_SCRIPTS.pkssql  
+  inflating: grbsrc/ODBCAPTURE/ROOT_SCRIPTS.pkssql  
+  inflating: grbsrc/ODBCAPTURE/ZIP_UTIL_PKG.pkssql  
+  inflating: grbsrc/ODBCAPTURE/BUILD_CONF.tbl  
+  inflating: grbsrc/ODBCAPTURE/BUILD_PATH.tbl  
+  inflating: grbsrc/ODBCAPTURE/BUILD_TYPE_TIMING.tbl  
+  inflating: grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_TAB.tbl  
+  inflating: grbsrc/ODBCAPTURE/DBA_OBJECTS_TAB.tbl  
+  inflating: grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_TAB.tbl  
+  inflating: grbsrc/ODBCAPTURE/DLOAD_CONF.tbl  
+  inflating: grbsrc/ODBCAPTURE/ELEMENT_CONF.tbl  
+  inflating: grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl  
+  inflating: grbsrc/ODBCAPTURE/OBJECT_CONF.tbl  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tbl  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tbl  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tbl  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tbl  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tbl  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tbl  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tbl  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tbl  
+  inflating: grbsrc/ODBCAPTURE/ROLE_CONF.tbl  
+  inflating: grbsrc/ODBCAPTURE/SCHEMA_CONF.tbl  
+  inflating: grbsrc/ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl  
+  inflating: grbsrc/ODBCAPTURE/TSPACE_CONF.tbl  
+  inflating: grbsrc/ODBCAPTURE/ZIP_FILES.tbl  
+  inflating: grbsrc/ODBCAPTURE/BUILD_CONF.ctl  
+  inflating: grbsrc/ODBCAPTURE/BUILD_CONF.csv  
+  inflating: grbsrc/ODBCAPTURE/BUILD_CONF.cldr  
+  inflating: grbsrc/ODBCAPTURE/BUILD_PATH.ctl  
+  inflating: grbsrc/ODBCAPTURE/BUILD_PATH.csv  
+  inflating: grbsrc/ODBCAPTURE/BUILD_PATH.cldr  
+  inflating: grbsrc/ODBCAPTURE/ELEMENT_CONF.ctl  
+  inflating: grbsrc/ODBCAPTURE/ELEMENT_CONF.csv  
+  inflating: grbsrc/ODBCAPTURE/ELEMENT_CONF.cldr  
+  inflating: grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.ctl  
+  inflating: grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.csv  
+  inflating: grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.cldr  
+  inflating: grbsrc/ODBCAPTURE/ROLE_CONF.ctl  
+  inflating: grbsrc/ODBCAPTURE/ROLE_CONF.csv  
+  inflating: grbsrc/ODBCAPTURE/ROLE_CONF.cldr  
+  inflating: grbsrc/ODBCAPTURE/SCHEMA_CONF.ctl  
+  inflating: grbsrc/ODBCAPTURE/SCHEMA_CONF.csv  
+  inflating: grbsrc/ODBCAPTURE/SCHEMA_CONF.cldr  
+  inflating: grbsrc/ODBCAPTURE/TSPACE_CONF.ctl  
+  inflating: grbsrc/ODBCAPTURE/TSPACE_CONF.csv  
+  inflating: grbsrc/ODBCAPTURE/TSPACE_CONF.cldr  
+  inflating: grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_TAB.tidx  
+  inflating: grbsrc/ODBCAPTURE/DBA_OBJECTS_TAB.tidx  
+  inflating: grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_TAB.tidx  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tidx  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tidx  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tidx  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tidx  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tidx  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tidx  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tidx  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tidx  
+  inflating: grbsrc/ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw  
+  inflating: grbsrc/ODBCAPTURE/BUILD_PATH_REVIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/DBA_OBJECTS_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/UOR_INSTALL_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/COMMON_UTIL.pkbsql  
+  inflating: grbsrc/ODBCAPTURE/FH2.pkbsql  
+  inflating: grbsrc/ODBCAPTURE/GRAB_SCRIPTS.pkbsql  
+  inflating: grbsrc/ODBCAPTURE/ROOT_SCRIPTS.pkbsql  
+  inflating: grbsrc/ODBCAPTURE/ZIP_UTIL_PKG.pkbsql  
+  inflating: grbsrc/ODBCAPTURE/BUILD_PATH.tfk  
+  inflating: grbsrc/ODBCAPTURE/DLOAD_CONF.tfk  
+  inflating: grbsrc/ODBCAPTURE/OBJECT_CONF.tfk  
+  inflating: grbsrc/ODBCAPTURE/ROLE_CONF.tfk  
+  inflating: grbsrc/ODBCAPTURE/SCHEMA_CONF.tfk  
+  inflating: grbsrc/ODBCAPTURE/TSPACE_CONF.tfk  
+  inflating: grbtctx/install.sql     
+  inflating: grbtctx/dbi.sql         
+  inflating: grbtctx/installation_finalize.sql  
+  inflating: grbtctx/installation_prepare.sql  
+  inflating: grbtctx/odbcapture_installation_logs.cldr  
+  inflating: grbtctx/odbcapture_installation_logs.csv  
+  inflating: grbtctx/odbcapture_installation_logs.ctl  
+  inflating: grbtctx/report_status.sql  
+  inflating: grbtctx/list_invalids.csv  
+  inflating: grbtctx/set_user_authentication.sql  
+  inflating: grbtctx/install_sys.sql  
+  inflating: grbtctx/install_system.sql  
+  inflating: grbtctx/install_grbtctx.sql  
+  inflating: grbtctx/ODBCTEST/CUST_CTX_TEST.tbl  
+  inflating: grbtctx/ODBCTEST/CUST_CTX_TEST.ctl  
+  inflating: grbtctx/ODBCTEST/CUST_CTX_TEST.csv  
+  inflating: grbtctx/ODBCTEST/CUST_CTX_TEST.cldr  
+  inflating: grbtctx/ODBCTEST/CUST_CTX_TEST.tidx  
+  inflating: grbtdat/install.sql     
+  inflating: grbtdat/dbi.sql         
+  inflating: grbtdat/installation_finalize.sql  
+  inflating: grbtdat/installation_prepare.sql  
+  inflating: grbtdat/odbcapture_installation_logs.cldr  
+  inflating: grbtdat/odbcapture_installation_logs.csv  
+  inflating: grbtdat/odbcapture_installation_logs.ctl  
+  inflating: grbtdat/report_status.sql  
+  inflating: grbtdat/list_invalids.csv  
+  inflating: grbtdat/set_user_authentication.sql  
+  inflating: grbtdat/install_sys.sql  
+  inflating: grbtdat/install_system.sql  
+  inflating: grbtdat/install_grbtdat.sql  
+  inflating: grbtdat/ODBCAPTURE/DLOAD_CONF.ctl  
+  inflating: grbtdat/ODBCAPTURE/DLOAD_CONF.csv  
+  inflating: grbtdat/ODBCAPTURE/DLOAD_CONF.cldr  
+  inflating: grbtdat/ODBCAPTURE/OBJECT_CONF.ctl  
+  inflating: grbtdat/ODBCAPTURE/OBJECT_CONF.csv  
+  inflating: grbtdat/ODBCAPTURE/OBJECT_CONF.cldr  
+  inflating: grbtjsn/install.sql     
+  inflating: grbtjsn/dbi.sql         
+  inflating: grbtjsn/installation_finalize.sql  
+  inflating: grbtjsn/installation_prepare.sql  
+  inflating: grbtjsn/odbcapture_installation_logs.cldr  
+  inflating: grbtjsn/odbcapture_installation_logs.csv  
+  inflating: grbtjsn/odbcapture_installation_logs.ctl  
+  inflating: grbtjsn/report_status.sql  
+  inflating: grbtjsn/list_invalids.csv  
+  inflating: grbtjsn/set_user_authentication.sql  
+  inflating: grbtjsn/install_sys.sql  
+  inflating: grbtjsn/install_system.sql  
+  inflating: grbtjsn/install_grbtjsn.sql  
+  inflating: grbtjsn/ODBCAPTURE/GRBTST_JSON.tbl  
+  inflating: grbtjsn/ODBCAPTURE/GRBTST_JSON.ctl  
+  inflating: grbtjsn/ODBCAPTURE/GRBTST_JSON.csv  
+  inflating: grbtjsn/ODBCAPTURE/GRBTST_JSON.cldr  
+  inflating: grbtsdo/install.sql     
+  inflating: grbtsdo/dbi.sql         
+  inflating: grbtsdo/installation_finalize.sql  
+  inflating: grbtsdo/installation_prepare.sql  
+  inflating: grbtsdo/odbcapture_installation_logs.cldr  
+  inflating: grbtsdo/odbcapture_installation_logs.csv  
+  inflating: grbtsdo/odbcapture_installation_logs.ctl  
+  inflating: grbtsdo/report_status.sql  
+  inflating: grbtsdo/list_invalids.csv  
+  inflating: grbtsdo/set_user_authentication.sql  
+  inflating: grbtsdo/install_sys.sql  
+  inflating: grbtsdo/install_system.sql  
+  inflating: grbtsdo/COLA_SPATIAL_IDX.tidx  
+  inflating: grbtsdo/install_grbtsdo.sql  
+  inflating: grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tbl  
+  inflating: grbtsdo/ODBCTEST/SDO_COLA_MARKETS.ctl  
+  inflating: grbtsdo/ODBCTEST/SDO_COLA_MARKETS.csv  
+  inflating: grbtsdo/ODBCTEST/SDO_COLA_MARKETS.cldr  
+  inflating: grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tidx  
+  inflating: grbtst/install.sql      
+  inflating: grbtst/dbi.sql          
+  inflating: grbtst/installation_finalize.sql  
+  inflating: grbtst/installation_prepare.sql  
+  inflating: grbtst/odbcapture_installation_logs.cldr  
+  inflating: grbtst/odbcapture_installation_logs.csv  
+  inflating: grbtst/odbcapture_installation_logs.ctl  
+  inflating: grbtst/report_status.sql  
+  inflating: grbtst/list_invalids.csv  
+  inflating: grbtst/set_user_authentication.sql  
+  inflating: grbtst/install_sys.sql  
+  inflating: grbtst/install_system.sql  
+  inflating: grbtst/install_grbtst.sql  
+  inflating: grbtst/RAS_Admin_ODBCTEST.racl  
+  inflating: grbtst/SYS/GRB_TEST_ROLE.role  
+  inflating: grbtst/SYS/ODBCTEST.user  
+  inflating: grbtst/SYS/host1.hacl   
+  inflating: grbtst/SYS/host2.hacl   
+  inflating: grbtst/SYS/odbctest_host.hacl  
+  inflating: grbtst/SYSTEM/ODBCTEST_usr.grnt  
+  inflating: grbtst/ODBCAPTURE/GRBTST__NAME.tbl  
+  inflating: grbtst/ODBCAPTURE/GRBTST_IMAGE.tbl  
+  inflating: grbtst/ODBCAPTURE/BUILD_CONF.ctl  
+  inflating: grbtst/ODBCAPTURE/BUILD_CONF.csv  
+  inflating: grbtst/ODBCAPTURE/BUILD_CONF.cldr  
+  inflating: grbtst/ODBCAPTURE/BUILD_PATH.ctl  
+  inflating: grbtst/ODBCAPTURE/BUILD_PATH.csv  
+  inflating: grbtst/ODBCAPTURE/BUILD_PATH.cldr  
+  inflating: grbtst/ODBCAPTURE/GRBTST__NAME.ctl  
+  inflating: grbtst/ODBCAPTURE/GRBTST__NAME.csv  
+  inflating: grbtst/ODBCAPTURE/GRBTST__NAME.cldr  
+  inflating: grbtst/ODBCAPTURE/GRBTST_IMAGE.ctl  
+  inflating: grbtst/ODBCAPTURE/GRBTST_IMAGE.csv  
+  inflating: grbtst/ODBCAPTURE/GRBTST_IMAGE.cldr  
+  inflating: grbtst/ODBCAPTURE/ROLE_CONF.ctl  
+  inflating: grbtst/ODBCAPTURE/ROLE_CONF.csv  
+  inflating: grbtst/ODBCAPTURE/ROLE_CONF.cldr  
+  inflating: grbtst/ODBCAPTURE/SCHEMA_CONF.ctl  
+  inflating: grbtst/ODBCAPTURE/SCHEMA_CONF.csv  
+  inflating: grbtst/ODBCAPTURE/SCHEMA_CONF.cldr  
+  inflating: grbtst/ODBCAPTURE/TSPACE_CONF.ctl  
+  inflating: grbtst/ODBCAPTURE/TSPACE_CONF.csv  
+  inflating: grbtst/ODBCAPTURE/TSPACE_CONF.cldr  
+Compare Source Code
+
+Files that are Different
+grbras/ODBCAPTURE/EXPORTING_RAS_DATA.tbl
+grbras/ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw
+grbsrc/ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw
+grbsrc/ODBCAPTURE/BUILD_CONF.tbl
+grbsrc/ODBCAPTURE/BUILD_PATH.tbl
+grbsrc/ODBCAPTURE/BUILD_PATH_REVIEW.vw
+grbsrc/ODBCAPTURE/BUILD_TYPE_TIMING.tbl
+grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_TAB.tbl
+grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw
+grbsrc/ODBCAPTURE/DBA_OBJECTS_TAB.tbl
+grbsrc/ODBCAPTURE/DBA_OBJECTS_VIEW.vw
+grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_TAB.tbl
+grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw
+grbsrc/ODBCAPTURE/DLOAD_CONF.tbl
+grbsrc/ODBCAPTURE/ELEMENT_CONF.tbl
+grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl
+grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tbl
+grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw
+grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tbl
+grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw
+grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tbl
+grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw
+grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tbl
+grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw
+grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tbl
+grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw
+grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tbl
+grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw
+grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tbl
+grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw
+grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tbl
+grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw
+grbsrc/ODBCAPTURE/OBJECT_CONF.tbl
+grbsrc/ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw
+grbsrc/ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw
+grbsrc/ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw
+grbsrc/ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw
+grbsrc/ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw
+grbsrc/ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw
+grbsrc/ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw
+grbsrc/ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw
+grbsrc/ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw
+grbsrc/ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw
+grbsrc/ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw
+grbsrc/ODBCAPTURE/ROLE_CONF.tbl
+grbsrc/ODBCAPTURE/SCHEMA_CONF.tbl
+grbsrc/ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl
+grbsrc/ODBCAPTURE/TSPACE_CONF.tbl
+grbsrc/ODBCAPTURE/UOR_INSTALL_VIEW.vw
+grbsrc/ODBCAPTURE/ZIP_FILES.tbl
+grbtctx/ODBCTEST/CUST_CTX_TEST.tbl
+grbtjsn/ODBCAPTURE/GRBTST_JSON.tbl
+grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tbl
+grbtst/install_sys.sql
+grbtst/ODBCAPTURE/GRBTST__NAME.tbl
+grbtst/ODBCAPTURE/GRBTST_IMAGE.tbl
+grbtst/SYS/_opt_install_files_oracle_wallet.wacl
+grbtst/SYS/_var_opt_install_files_oracle_wallet.wacl

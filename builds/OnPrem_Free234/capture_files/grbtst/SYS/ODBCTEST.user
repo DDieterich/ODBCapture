@@ -1,0 +1,78 @@
+
+--
+--  Create ODBCTEST Schema
+--
+
+set define off
+
+create user "ODBCTEST"
+   no authentication
+   profile DEFAULT
+   temporary tablespace TEMP
+   default tablespace USERS
+   quota 512M on USERS
+   ;
+
+--  Current Grant of SYS Objects (but not directories)
+
+
+-- Real Application Security System Grants
+
+
+prompt XS Admin Grant "ADMIN_ANY_SEC_POLICY" to "ODBCTEST"
+begin
+   execute immediate 'begin' ||
+                     '  xs_admin_util.grant_system_privilege(''ADMIN_ANY_SEC_POLICY'', ''ODBCTEST''); ' ||
+                     'end;';
+exception when others then
+   if    SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_UTIL.GRANT_SYSTEM_PRIVILEGE'' must be declared%'
+     AND SQLERRM not like '%ORA-01031: insufficient privileges%'
+   then
+      raise;
+   end if;
+end;
+/
+
+prompt XS Admin Cloud Grant "ADMIN_ANY_SEC_POLICY" to "ODBCTEST"
+begin
+   execute immediate 'begin' ||
+                     '  xs_admin_cloud_util.grant_system_privilege(''ADMIN_ANY_SEC_POLICY'', ''ODBCTEST''); ' ||
+                     'end;';
+exception when others then
+   if SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_CLOUD_UTIL.GRANT_SYSTEM_PRIVILEGE'' must be declared%'
+   then
+      raise;
+   end if;
+end;
+/
+
+
+prompt XS Admin Grant "PROVISION" to "ODBCTEST"
+begin
+   execute immediate 'begin' ||
+                     '  xs_admin_util.grant_system_privilege(''PROVISION'', ''ODBCTEST''); ' ||
+                     'end;';
+exception when others then
+   if    SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_UTIL.GRANT_SYSTEM_PRIVILEGE'' must be declared%'
+     AND SQLERRM not like '%ORA-01031: insufficient privileges%'
+   then
+      raise;
+   end if;
+end;
+/
+
+prompt XS Admin Cloud Grant "PROVISION" to "ODBCTEST"
+begin
+   execute immediate 'begin' ||
+                     '  xs_admin_cloud_util.grant_system_privilege(''PROVISION'', ''ODBCTEST''); ' ||
+                     'end;';
+exception when others then
+   if SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_CLOUD_UTIL.GRANT_SYSTEM_PRIVILEGE'' must be declared%'
+   then
+      raise;
+   end if;
+end;
+/
+
+
+set define on

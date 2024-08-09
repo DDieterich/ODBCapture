@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="ODBCTEST_schema_build" tests="11" failures="0" time="0" timestamp="2024-08-08T01:49:05">
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.COLA_SPATIAL_IDX" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.SYS_C0039639" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.SYS_IL0000195894C00010$$" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.SYS_IL0000195894C00011$$" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.SYS_IL0000195908C00003$$" time="0"/>
+    <testcase name="LOB:db_object_status" classname="ODBCTEST.SYS_LOB0000195894C00010$$" time="0"/>
+    <testcase name="LOB:db_object_status" classname="ODBCTEST.SYS_LOB0000195894C00011$$" time="0"/>
+    <testcase name="LOB:db_object_status" classname="ODBCTEST.SYS_LOB0000195908C00003$$" time="0"/>
+    <testcase name="SEQUENCE:db_object_status" classname="ODBCTEST.MDRS_2FD43$" time="0"/>
+    <testcase name="TABLE:db_object_status" classname="ODBCTEST.MDRT_2FD43$" time="0"/>
+    <testcase name="TABLE:db_object_status" classname="ODBCTEST.SDO_COLA_MARKETS" time="0"/>
+   </testsuite>
+</testsuites>

@@ -1,0 +1,92 @@
+=== DBI Started: ./installation_prepare.sql
+
+Create Temp Publicly Updateable Table
+
+Table created.
+
+
+Grant succeeded.
+
+
+Synonym created.
+
+
+Check for Prerequisite BUILD_TYPEs
+WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-09T19:04:40 for a duration of .09 seconds (started at 2024-08-09T19:04:40)
+=== DBI Started: ODBCTEST/SDO_COLA_MARKETS.tbl
+
+Table created.
+
+
+Table altered.
+
+=== DBI Completed at 2024-08-09T19:04:40 for a duration of .3 seconds (started at 2024-08-09T19:04:40)
+=== DBI Started: ODBCTEST/SDO_COLA_MARKETS.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCTEST/SDO_COLA_MARKETS.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-09T19:04:43 for a duration of 2.53 seconds (started at 2024-08-09T19:04:40)
+=== DBI Started: ODBCTEST/SDO_COLA_MARKETS.tidx
+=== DBI Completed at 2024-08-09T19:04:43 for a duration of .01 seconds (started at 2024-08-09T19:04:43)
+=== DBI Started: ./installation_finalize.sql
+
+Drop Temp Publicly Updateable Table
+
+Synonym dropped.
+
+
+Table dropped.
+
+
+fix_invalid_public_synonyms
+
+Re-create Invalid Public Synonyms
+
+PL/SQL procedure successfully completed.
+
+
+compile_all
+Compile All started
+alter java source "ODBCTEST"."DirUtil" compile;
+ODBCTEST Compiled.
+Compile All is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_foreign_keys_ENABLE
+Alter Foreign Keys started.
+  ENABLE 'ODBCTEST'
+Alter Foreign Keys is done.
+
+PL/SQL procedure successfully completed.
+
+
+alter_triggers_ENABLE
+Alter Triggers started.
+  ENABLE 'ODBCTEST'
+Alter Triggers is done.
+
+PL/SQL procedure successfully completed.
+
+
+update_id_sequences
+Update ID Sequences started
+Identity Sequence Updates is done.
+
+PL/SQL procedure successfully completed.
+
+
+Switch Spooling Off

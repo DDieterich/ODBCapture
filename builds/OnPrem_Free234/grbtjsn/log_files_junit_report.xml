@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="install_grbtjsn.log" tests="3" errors="0" hostname="FREE" id="3" time="3" timestamp="2024-08-09T19:04:39">
+    <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
+    </testcase>
+    <testcase name="./installation_prepare.sql" assertions="9" classname="..sql" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ./installation_prepare.sql
+Create Temp Publicly Updateable Table
+Table created.
+Grant succeeded.
+Synonym created.
+Check for Prerequisite BUILD_TYPEs
+WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2024-08-09T19:04:34 for a duration of .13 seconds (started at 2024-08-09T19:04:34)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/GRBTST_JSON.cldr" assertions="6" classname="ODBCAPTURE.cldr" status="PASS" time="3">
+      <system-out>
+=== DBI Started: ODBCAPTURE/GRBTST_JSON.cldr
+Disable Triggers and Foreign Keys
+PL/SQL procedure successfully completed.
+sqlldr_control=ODBCAPTURE/GRBTST_JSON.ctl
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2024-08-09T19:04:37 for a duration of 2.65 seconds (started at 2024-08-09T19:04:35)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/GRBTST_JSON.tbl" assertions="4" classname="ODBCAPTURE.tbl" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCAPTURE/GRBTST_JSON.tbl
+Table created.
+Table altered.
+=== DBI Completed at 2024-08-09T19:04:35 for a duration of .14 seconds (started at 2024-08-09T19:04:34)
+      </system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="FREE" id="1" time="0" timestamp="2024-08-09T19:04:39">
+  </testsuite>
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="FREE" id="2" time="0" timestamp="2024-08-09T19:04:39">
+  </testsuite>
+</testsuites>

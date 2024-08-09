@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="install_grbsdo.log" tests="5" errors="0" hostname="fenu1pod" id="3" time="5" timestamp="2024-08-08T01:47:54">
+    <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
+    </testcase>
+    <testcase name="./installation_prepare.sql" assertions="18" classname="..sql" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ./installation_prepare.sql
+
+Create Temp Publicly Updateable Table
+
+Table created.
+
+
+Grant succeeded.
+
+
+Synonym created.
+
+
+Check for Prerequisite BUILD_TYPEs
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:47:43 for a duration of .45 seconds (started at 2024-08-08T01:47:42)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/GRAB_SDO.pkbsql" assertions="5" classname="ODBCAPTURE.pkbsql" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCAPTURE/GRAB_SDO.pkbsql
+
+Package body created.
+
+=== DBI Completed at 2024-08-08T01:47:48 for a duration of .22 seconds (started at 2024-08-08T01:47:47)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/GRAB_SDO.pkssql" assertions="5" classname="ODBCAPTURE.pkssql" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCAPTURE/GRAB_SDO.pkssql
+
+Package created.
+
+=== DBI Completed at 2024-08-08T01:47:43 for a duration of .19 seconds (started at 2024-08-08T01:47:43)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/ROLE_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="3">
+      <system-out>
+=== DBI Started: ODBCAPTURE/ROLE_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table &quot;ODBCAPTURE&quot;.&quot;ROLE_CONF&quot; DISABLE constraint &quot;ROLE_CONF_FK1&quot;;
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:47:46 for a duration of 2.66 seconds (started at 2024-08-08T01:47:43)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/SCHEMA_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="2">
+      <system-out>
+=== DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table &quot;ODBCAPTURE&quot;.&quot;SCHEMA_CONF&quot; DISABLE constraint &quot;SCHEMA_CONF_FK1&quot;;
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-08-08T01:47:47 for a duration of 1.72 seconds (started at 2024-08-08T01:47:46)
+      </system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="fenu1pod" id="1" time="0" timestamp="2024-08-08T01:47:54">
+  </testsuite>
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="fenu1pod" id="2" time="0" timestamp="2024-08-08T01:47:54">
+  </testsuite>
+</testsuites>

@@ -1,0 +1,37 @@
+diff -drywtNW 172 --suppress-common-lines ../../../grbras/ODBCAPTURE/EXPORTING_RAS_DATA.tbl grbras/ODBCAPTURE/EXPORTING_RAS_DATA.tbl
+   ) ORGANIZATION INDEX NOCOMPRESS ;                                                 |     ) ORGANIZATION INDEX NONE;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl grbsrc/ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl
+   ) ORGANIZATION INDEX NOCOMPRESS ;                                                 |     ) ORGANIZATION INDEX NONE;
+diff -drywtNW 172 --suppress-common-lines ../../../grbtst/RAS_Admin_ODBCTEST.racl grbtst/RAS_Admin_ODBCTEST.racl
+                                                                                     <
+BEGIN                                                                                <
+ xs_principal.create_user(                                                           <
+     name=>'"GRB_TEST_USER_01"',                                                     <
+     schema=>'"ODBCAPTURE"',                                                         <
+     status=>XS_PRINCIPAL.ACTIVE);                                                   <
+ xs_principal.set_profile(                                                           <
+     user => '"GRB_TEST_USER_01"',                                                   <
+     profile => '"DEFAULT"');                                                        <
+ xs_principal.set_verifier(                                                          <
+     user => '"GRB_TEST_USER_01"',                                                   <
+     verifier  => 'T:B1ED28E684D158779DD408B6AB210B0A264CE4F33448BB1450D01DD75FBF730 <
+     type  => XS_PRINCIPAL.XS_SHA512);                                               <
+END;                                                                                 <
+/                                                                                    <
+                                                                                     <
+                                                                                     <
+                                                                                     <
+BEGIN                                                                                <
+ xs_principal.create_user(                                                           <
+     name=>'"GRB_TEST_USER_02"',                                                     <
+     schema=>'"ODBCAPTURE"',                                                         <
+     status=>XS_PRINCIPAL.ACTIVE);                                                   <
+ xs_principal.set_profile(                                                           <
+     user => '"GRB_TEST_USER_02"',                                                   <
+     profile => '"DEFAULT"');                                                        <
+ xs_principal.set_verifier(                                                          <
+     user => '"GRB_TEST_USER_02"',                                                   <
+     verifier  => 'T:12723D051F39576E8847201016CAEC0F96624EACD997A5BF253A8B195D7F363 <
+     type  => XS_PRINCIPAL.XS_SHA512);                                               <
+END;                                                                                 <
+/                                                                                    <

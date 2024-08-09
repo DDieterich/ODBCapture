@@ -1,0 +1,38 @@
+
+--
+--  Create Host ACL/ACE
+--
+-- Host ACLs with the following:
+--    PRINCIPAL_TYPE      = 'DATABASE' (xs_acl.ptype_db)
+--    GRANT_TYPE          = 'GRANT'
+--    INVERTED_PRINICIPAL = 'NO'
+--    PRIVILEGE          is not null
+-- Start Dates and End Dates are ignored (set to NULL).
+--
+
+set define off
+
+
+--
+--  Create Host ACL/ACE for odbctest_host from port 1234 to 5678 
+--  NOTE: This is a "OBJECT_NAME_REGEXP" Host ACL
+--   (OBJECT_NAME_REGEXP: ^odbctest)
+--
+
+begin
+   DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE
+      (host        => 'odbctest_host'
+      ,lower_port  => 1234
+      ,upper_port  => 5678
+      ,ace         => xs$ace_type
+                         (privilege_list   => xs$name_list('CONNECT')
+                         ,granted          => TRUE
+                         ,inverted         => FALSE
+                         ,principal_name   => 'PUBLIC'
+                         ,principal_type   => xs_acl.ptype_db
+                         ,start_date       => NULL
+                         ,end_date         => NULL));
+end;
+/
+
+set define on

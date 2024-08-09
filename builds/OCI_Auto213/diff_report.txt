@@ -1,0 +1,400 @@
+diff -drywtNW 172 --suppress-common-lines ../../../grbras/ODBCAPTURE/EXPORTING_RAS_DATA.tbl grbras/ODBCAPTURE/EXPORTING_RAS_DATA.tbl
+   (    "SCHEMA" VARCHAR2(128 BYTE) NOT NULL ENABLE,                                 |     (    "SCHEMA" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "OBJECT" VARCHAR2(128 BYTE) NOT NULL ENABLE,                                 |          "OBJECT" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "POLICY_OWNER" VARCHAR2(128 BYTE) NOT NULL ENABLE,                           |          "POLICY_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "POLICY" VARCHAR2(128 BYTE) NOT NULL ENABLE,                                 |          "POLICY" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE
+         CONSTRAINT "EXPORTING_RAS_DATA_PK" PRIMARY KEY ("SCHEMA", "OBJECT", "POLICY |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION DEFERRED  LOGGING;
+   ) ORGANIZATION INDEX NOCOMPRESS ;                                                 |  ALTER TABLE "ODBCAPTURE"."EXPORTING_RAS_DATA" ADD CONSTRAINT "EXPORTING_RAS_DATA_PK"
+                                                                                     >    USING INDEX  ENABLE;
+diff -drywtNW 172 --suppress-common-lines ../../../grbras/ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw grbras/ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_OBJ_RACL_VIEW" ("BUILD |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_OBJ_RACL_VIEW" ("BUILD
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw grbsrc/ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."AQ_SYSTEM_PRIVS_VW" ("GRANT |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."AQ_SYSTEM_PRIVS_VW" ("GRANT
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/BUILD_CONF.tbl grbsrc/ODBCAPTURE/BUILD_CONF.tbl
+        "BUILD_TYPE" VARCHAR2(10 BYTE) NOT NULL ENABLE,                              |          "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "NOTES" VARCHAR2(1024 BYTE)                                                  |          "NOTES" VARCHAR2(1024 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/BUILD_PATH.tbl grbsrc/ODBCAPTURE/BUILD_PATH.tbl
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/BUILD_PATH_REVIEW.vw grbsrc/ODBCAPTURE/BUILD_PATH_REVIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."BUILD_PATH_REVIEW" ("PARENT |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."BUILD_PATH_REVIEW" ("PARENT
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/BUILD_TYPE_TIMING.tbl grbsrc/ODBCAPTURE/BUILD_TYPE_TIMING.tbl
+   (    "FROM_BUILD_TYPE" VARCHAR2(10 BYTE),                                         |     (    "FROM_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "BUILD_TIMING" CHAR(7 BYTE),                                                 |          "BUILD_TIMING" CHAR(7 BYTE) COLLATE "USING_NLS_COMP", 
+        "TO_BUILD_TYPE" VARCHAR2(10 BYTE)                                            |          "TO_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_TAB.tbl grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_TAB.tbl
+   (    "OBJECT_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE) NOT NULL ENABLE,                 |     (    "OBJECT_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP" NOT NUL
+        "OBJECT_OWNER" VARCHAR2(128 BYTE) NOT NULL ENABLE,                           |          "OBJECT_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "OBJECT_NAME" VARCHAR2(128 BYTE) NOT NULL ENABLE,                            |          "OBJECT_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "OBJECT_TYPE" VARCHAR2(19 BYTE),                                             |          "OBJECT_TYPE" VARCHAR2(19 BYTE) COLLATE "USING_NLS_COMP", 
+        "REFERENCED_OWNER" VARCHAR2(128 BYTE),                                       |          "REFERENCED_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "REF_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE) NOT NULL ENABLE,                    |          "REF_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP" NOT NULL E
+        "REFERENCED_NAME" VARCHAR2(128 BYTE),                                        |          "REFERENCED_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "REFERENCED_TYPE" VARCHAR2(19 BYTE),                                         |          "REFERENCED_TYPE" VARCHAR2(19 BYTE) COLLATE "USING_NLS_COMP", 
+        "REFERENCED_LINK_NAME" VARCHAR2(128 BYTE),                                   |          "REFERENCED_LINK_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "DEPENDENCY_TYPE" VARCHAR2(4 BYTE)                                           |          "DEPENDENCY_TYPE" VARCHAR2(4 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."DBA_DEPENDENCIES_VIEW" ("OB |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."DBA_DEPENDENCIES_VIEW" ("OB
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/DBA_OBJECTS_TAB.tbl grbsrc/ODBCAPTURE/DBA_OBJECTS_TAB.tbl
+   (    "OBJECT_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE),                                 |     (    "OBJECT_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_OWNER" VARCHAR2(128 BYTE),                                           |          "OBJECT_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_NAME" VARCHAR2(128 BYTE),                                            |          "OBJECT_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_TYPE" VARCHAR2(23 BYTE),                                             |          "OBJECT_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP", 
+        "TABLE_FLAG" VARCHAR2(3 BYTE),                                               |          "TABLE_FLAG" VARCHAR2(3 BYTE) COLLATE "USING_NLS_COMP", 
+        "SELTYPE" VARCHAR2(4 BYTE)                                                   |          "SELTYPE" VARCHAR2(4 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/DBA_OBJECTS_VIEW.vw grbsrc/ODBCAPTURE/DBA_OBJECTS_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."DBA_OBJECTS_VIEW" ("OBJECT_ |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."DBA_OBJECTS_VIEW" ("OBJECT_
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_TAB.tbl grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_TAB.tbl
+   (    "OBJECT_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE),                                 |     (    "OBJECT_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_OWNER" VARCHAR2(128 BYTE),                                           |          "OBJECT_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_TYPE" VARCHAR2(24 BYTE),                                             |          "OBJECT_TYPE" VARCHAR2(24 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_NAME" VARCHAR2(128 BYTE),                                            |          "OBJECT_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "PRIVILEGE" VARCHAR2(40 BYTE),                                               |          "PRIVILEGE" VARCHAR2(40 BYTE) COLLATE "USING_NLS_COMP", 
+        "GRANTEE" VARCHAR2(128 BYTE),                                                |          "GRANTEE" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "GRANTEE_UOR_TYPE" CHAR(4 BYTE),                                             |          "GRANTEE_UOR_TYPE" CHAR(4 BYTE) COLLATE "USING_NLS_COMP", 
+        "GRANTEE_BUILD_TYPE" VARCHAR2(10 BYTE),                                      |          "GRANTEE_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "GRANTABLE" VARCHAR2(3 BYTE),                                                |          "GRANTABLE" VARCHAR2(3 BYTE) COLLATE "USING_NLS_COMP", 
+        "HIERARCHY" VARCHAR2(3 BYTE),                                                |          "HIERARCHY" VARCHAR2(3 BYTE) COLLATE "USING_NLS_COMP", 
+        "COMMON" VARCHAR2(3 BYTE),                                                   |          "COMMON" VARCHAR2(3 BYTE) COLLATE "USING_NLS_COMP", 
+        "INHERITED" VARCHAR2(3 BYTE)                                                 |          "INHERITED" VARCHAR2(3 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."DBA_TAB_PRIVS_VIEW" ("OBJEC |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."DBA_TAB_PRIVS_VIEW" ("OBJEC
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/DLOAD_CONF.tbl grbsrc/ODBCAPTURE/DLOAD_CONF.tbl
+   (    "USERNAME" VARCHAR2(128 BYTE) NOT NULL ENABLE,                               |     (    "USERNAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "TABLE_NAME" VARCHAR2(128 BYTE) NOT NULL ENABLE,                             |          "TABLE_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "BUILD_TYPE" VARCHAR2(10 BYTE) NOT NULL ENABLE,                              |          "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "ORDER_BY_COLUMNS" VARCHAR2(4000 BYTE) NOT NULL ENABLE,                      |          "ORDER_BY_COLUMNS" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENA
+        "BEFORE_SELECT_SQL" VARCHAR2(4000 BYTE),                                     |          "BEFORE_SELECT_SQL" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+        "COLUMNS_REMOVED" VARCHAR2(4000 BYTE),                                       |          "COLUMNS_REMOVED" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+        "WHERE_CLAUSE" VARCHAR2(4000 BYTE),                                          |          "WHERE_CLAUSE" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+        "AFTER_ORDER_BY_SQL" VARCHAR2(4000 BYTE),                                    |          "AFTER_ORDER_BY_SQL" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+        "NOTES" VARCHAR2(4000 BYTE)                                                  |          "NOTES" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/ELEMENT_CONF.tbl grbsrc/ODBCAPTURE/ELEMENT_CONF.tbl
+        "ELEMENT_NAME" VARCHAR2(20 BYTE) NOT NULL ENABLE,                            |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "FILE_EXT1" VARCHAR2(6 BYTE) NOT NULL ENABLE,                                |          "FILE_EXT1" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "FILE_EXT2" VARCHAR2(6 BYTE),                                                |          "FILE_EXT2" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT3" VARCHAR2(6 BYTE),                                                |          "FILE_EXT3" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_TYPE" VARCHAR2(30 BYTE),                                             |          "OBJECT_TYPE" VARCHAR2(30 BYTE) COLLATE "USING_NLS_COMP", 
+        "NAME_CHECK_OBJECT_TYPE" VARCHAR2(30 BYTE),                                  |          "NAME_CHECK_OBJECT_TYPE" VARCHAR2(30 BYTE) COLLATE "USING_NLS_COMP", 
+        "NOTES" VARCHAR2(1024 BYTE)                                                  |          "NOTES" VARCHAR2(1024 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl
+   (    "NAME" VARCHAR2(30 BYTE) NOT NULL ENABLE,                                    |     (    "NAME" VARCHAR2(30 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "VALUE_TYPE" VARCHAR2(8 BYTE) NOT NULL ENABLE,                               |          "VALUE_TYPE" VARCHAR2(8 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "VALUE" VARCHAR2(30 BYTE)                                                    |          "VALUE" VARCHAR2(30 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tbl grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tbl
+   (    "BUILD_TYPE" VARCHAR2(10 BYTE),                                              |     (    "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE),                                 |          "OBJECT_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "TABLE_OWNER" VARCHAR2(128 BYTE),                                            |          "TABLE_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "TABLE_BUILD_TYPE" VARCHAR2(10 BYTE),                                        |          "TABLE_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "TABLE_NAME" VARCHAR2(128 BYTE),                                             |          "TABLE_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "TABLE_TYPE" VARCHAR2(23 BYTE),                                              |          "TABLE_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP", 
+        "ELEMENT_NAME" VARCHAR2(20 BYTE),                                            |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COMP", 
+        "COLUMN_NAME" VARCHAR2(128 BYTE),                                            |          "COLUMN_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "COMMENTS" VARCHAR2(4000 BYTE)                                               |          "COMMENTS" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_INSTALL_COMMENTS_VIEW"  |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_INSTALL_COMMENTS_VIEW" 
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tbl grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tbl
+   (    "BUILD_TYPE" VARCHAR2(10 BYTE),                                              |     (    "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "BUILD_TIMING" CHAR(7 BYTE),                                                 |          "BUILD_TIMING" CHAR(7 BYTE) COLLATE "USING_NLS_COMP", 
+        "CONTEXT_BUILD_TYPE" VARCHAR2(10 BYTE),                                      |          "CONTEXT_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "CONTEXT_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                            |          "CONTEXT_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+        "CONTEXT_OWNER" VARCHAR2(128 BYTE),                                          |          "CONTEXT_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "CONTEXT_NAME" VARCHAR2(128 BYTE),                                           |          "CONTEXT_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "CONTEXT_TYPE" VARCHAR2(22 BYTE),                                            |          "CONTEXT_TYPE" VARCHAR2(22 BYTE) COLLATE "USING_NLS_COMP", 
+        "PACKAGE_BUILD_TYPE" VARCHAR2(10 BYTE),                                      |          "PACKAGE_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "PACKAGE_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                            |          "PACKAGE_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+        "PACKAGE_OWNER" VARCHAR2(128 BYTE),                                          |          "PACKAGE_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "PACKAGE_NAME" VARCHAR2(128 BYTE),                                           |          "PACKAGE_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "PACKAGE_TYPE" VARCHAR2(23 BYTE),                                            |          "PACKAGE_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP", 
+        "ELEMENT_NAME" VARCHAR2(20 BYTE),                                            |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT1" VARCHAR2(6 BYTE),                                                |          "FILE_EXT1" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT2" VARCHAR2(6 BYTE),                                                |          "FILE_EXT2" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT3" VARCHAR2(6 BYTE)                                                 |          "FILE_EXT3" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_INSTALL_CONTEXT_VIEW" ( |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_INSTALL_CONTEXT_VIEW" (
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tbl grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tbl
+   (    "BUILD_TYPE" VARCHAR2(10 BYTE) NOT NULL ENABLE,                              |     (    "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "BUILD_TIMING" CHAR(7 BYTE),                                                 |          "BUILD_TIMING" CHAR(7 BYTE) COLLATE "USING_NLS_COMP", 
+        "TABLE_BUILD_TYPE" VARCHAR2(10 BYTE),                                        |          "TABLE_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "TABLE_BUILD_TIMING" CHAR(7 BYTE),                                           |          "TABLE_BUILD_TIMING" CHAR(7 BYTE) COLLATE "USING_NLS_COMP", 
+        "TABLE_OWNER" VARCHAR2(128 BYTE),                                            |          "TABLE_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "TABLE_NAME" VARCHAR2(128 BYTE),                                             |          "TABLE_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "TABLE_TYPE" VARCHAR2(23 BYTE),                                              |          "TABLE_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP", 
+        "BEFORE_SELECT_SQL" VARCHAR2(4000 BYTE),                                     |          "BEFORE_SELECT_SQL" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+        "COLUMNS_REMOVED" VARCHAR2(4000 BYTE),                                       |          "COLUMNS_REMOVED" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+        "WHERE_CLAUSE" VARCHAR2(4000 BYTE),                                          |          "WHERE_CLAUSE" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+        "ORDER_BY_COLUMNS" VARCHAR2(4000 BYTE) NOT NULL ENABLE,                      |          "ORDER_BY_COLUMNS" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENA
+        "AFTER_ORDER_BY_SQL" VARCHAR2(4000 BYTE),                                    |          "AFTER_ORDER_BY_SQL" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+        "NOTES" VARCHAR2(4000 BYTE),                                                 |          "NOTES" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+        "ELEMENT_NAME" VARCHAR2(20 BYTE) NOT NULL ENABLE,                            |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "FILE_EXT1" VARCHAR2(6 BYTE) NOT NULL ENABLE,                                |          "FILE_EXT1" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "FILE_EXT2" VARCHAR2(6 BYTE),                                                |          "FILE_EXT2" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT3" VARCHAR2(6 BYTE)                                                 |          "FILE_EXT3" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_INSTALL_DATA_LOAD_VIEW" |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_INSTALL_DATA_LOAD_VIEW"
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tbl grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tbl
+   (    "BUILD_TYPE" VARCHAR2(10 BYTE),                                              |     (    "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "BUILD_TYPE_SELECTOR" VARCHAR2(20 BYTE),                                     |          "BUILD_TYPE_SELECTOR" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COMP", 
+        "BASE_TABLE_BUILD_TYPE" VARCHAR2(10 BYTE),                                   |          "BASE_TABLE_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "BASE_TABLE_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                         |          "BASE_TABLE_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP"
+        "BASE_TABLE_OWNER" VARCHAR2(128 BYTE),                                       |          "BASE_TABLE_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "BASE_TABLE_NAME" VARCHAR2(128 BYTE),                                        |          "BASE_TABLE_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "BASE_TABLE_TYPE" VARCHAR2(23 BYTE),                                         |          "BASE_TABLE_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP", 
+        "FOREIGN_KEY_NAME" VARCHAR2(128 BYTE),                                       |          "FOREIGN_KEY_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "UNIQUE_KEY_NAME" VARCHAR2(128 BYTE),                                        |          "UNIQUE_KEY_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "UNIQUE_KEY_TYPE" VARCHAR2(1 BYTE),                                          |          "UNIQUE_KEY_TYPE" VARCHAR2(1 BYTE) COLLATE "USING_NLS_COMP", 
+        "REF_TABLE_BUILD_TYPE" VARCHAR2(10 BYTE),                                    |          "REF_TABLE_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "REF_TABLE_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                          |          "REF_TABLE_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP",
+        "REF_TABLE_OWNER" VARCHAR2(128 BYTE),                                        |          "REF_TABLE_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "REF_TABLE_NAME" VARCHAR2(128 BYTE),                                         |          "REF_TABLE_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "REF_TABLE_TYPE" VARCHAR2(23 BYTE),                                          |          "REF_TABLE_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP", 
+        "ELEMENT_NAME" VARCHAR2(20 BYTE) NOT NULL ENABLE,                            |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "FILE_EXT1" VARCHAR2(6 BYTE) NOT NULL ENABLE,                                |          "FILE_EXT1" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "FILE_EXT2" VARCHAR2(6 BYTE),                                                |          "FILE_EXT2" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT3" VARCHAR2(6 BYTE)                                                 |          "FILE_EXT3" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_INSTALL_FKEY_VIEW" ("BU |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_INSTALL_FKEY_VIEW" ("BU
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tbl grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tbl
+   (    "BUILD_TYPE" VARCHAR2(10 BYTE),                                              |     (    "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "BUILD_TYPE_SELECTOR" VARCHAR2(6 BYTE),                                      |          "BUILD_TYPE_SELECTOR" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "INDEX_BUILD_TYPE" VARCHAR2(10 BYTE),                                        |          "INDEX_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "INDEX_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                              |          "INDEX_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+        "INDEX_OWNER" VARCHAR2(128 BYTE),                                            |          "INDEX_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "INDEX_NAME" VARCHAR2(128 BYTE),                                             |          "INDEX_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_TYPE" VARCHAR2(23 BYTE),                                             |          "OBJECT_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP", 
+        "UNIQUENESS" VARCHAR2(9 BYTE),                                               |          "UNIQUENESS" VARCHAR2(9 BYTE) COLLATE "USING_NLS_COMP", 
+        "INDEX_TYPE" VARCHAR2(27 BYTE),                                              |          "INDEX_TYPE" VARCHAR2(27 BYTE) COLLATE "USING_NLS_COMP", 
+        "ITYP_OWNER" VARCHAR2(128 BYTE),                                             |          "ITYP_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "ITYP_NAME" VARCHAR2(128 BYTE),                                              |          "ITYP_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "TABLE_BUILD_TYPE" VARCHAR2(10 BYTE),                                        |          "TABLE_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "TARGET_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                             |          "TARGET_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+        "TABLE_OWNER" VARCHAR2(128 BYTE),                                            |          "TABLE_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "TABLE_NAME" VARCHAR2(128 BYTE),                                             |          "TABLE_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "TABLE_TYPE" VARCHAR2(23 BYTE),                                              |          "TABLE_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP", 
+        "ELEMENT_NAME" VARCHAR2(20 BYTE),                                            |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT1" VARCHAR2(6 BYTE),                                                |          "FILE_EXT1" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT2" VARCHAR2(6 BYTE),                                                |          "FILE_EXT2" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT3" VARCHAR2(6 BYTE)                                                 |          "FILE_EXT3" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_INSTALL_INDEX_VIEW" ("B |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_INSTALL_INDEX_VIEW" ("B
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tbl grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tbl
+   (    "BUILD_TYPE" VARCHAR2(10 BYTE),                                              |     (    "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "BUILD_TIMING" CHAR(7 BYTE),                                                 |          "BUILD_TIMING" CHAR(7 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                                    |          "OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE),                                 |          "OBJECT_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_OWNER" VARCHAR2(128 BYTE),                                           |          "OBJECT_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_BUILD_TYPE" VARCHAR2(10 BYTE),                                       |          "OBJECT_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_NAME" VARCHAR2(128 BYTE),                                            |          "OBJECT_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_TYPE" VARCHAR2(23 BYTE),                                             |          "OBJECT_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP", 
+        "ELEMENT_NAME" VARCHAR2(20 BYTE),                                            |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT1" VARCHAR2(6 BYTE),                                                |          "FILE_EXT1" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT2" VARCHAR2(6 BYTE),                                                |          "FILE_EXT2" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT3" VARCHAR2(6 BYTE)                                                 |          "FILE_EXT3" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_INSTALL_OBJECT_VIEW" (" |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_INSTALL_OBJECT_VIEW" ("
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tbl grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tbl
+   (    "BUILD_TYPE" VARCHAR2(10 BYTE),                                              |     (    "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "BUILD_TYPE_SELECTOR" VARCHAR2(20 BYTE),                                     |          "BUILD_TYPE_SELECTOR" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COMP", 
+        "SYNONYM_BUILD_TYPE" VARCHAR2(10 BYTE),                                      |          "SYNONYM_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "SYNONYM_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                            |          "SYNONYM_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+        "SYNONYM_OWNER" VARCHAR2(128 BYTE),                                          |          "SYNONYM_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "SYNONYM_NAME" VARCHAR2(128 BYTE),                                           |          "SYNONYM_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_TYPE" CHAR(7 BYTE),                                                  |          "OBJECT_TYPE" CHAR(7 BYTE) COLLATE "USING_NLS_COMP", 
+        "DB_LINK" VARCHAR2(128 BYTE),                                                |          "DB_LINK" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "TARGET_BUILD_TYPE" VARCHAR2(10 BYTE),                                       |          "TARGET_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "TARGET_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                             |          "TARGET_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+        "TARGET_OWNER" VARCHAR2(128 BYTE),                                           |          "TARGET_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "TARGET_NAME" VARCHAR2(128 BYTE),                                            |          "TARGET_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "TARGET_TYPE" VARCHAR2(23 BYTE),                                             |          "TARGET_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP", 
+        "ELEMENT_NAME" VARCHAR2(20 BYTE),                                            |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT1" VARCHAR2(6 BYTE),                                                |          "FILE_EXT1" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT2" VARCHAR2(6 BYTE),                                                |          "FILE_EXT2" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT3" VARCHAR2(6 BYTE)                                                 |          "FILE_EXT3" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_INSTALL_SYNONYM_VIEW" ( |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_INSTALL_SYNONYM_VIEW" (
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tbl grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tbl
+   (    "BUILD_TYPE" VARCHAR2(10 BYTE),                                              |     (    "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "BUILD_TYPE_SELECTOR" VARCHAR2(20 BYTE),                                     |          "BUILD_TYPE_SELECTOR" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COMP", 
+        "TRIGGER_BUILD_TYPE" VARCHAR2(10 BYTE),                                      |          "TRIGGER_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "TRIGGER_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                            |          "TRIGGER_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+        "TRIGGER_OWNER" VARCHAR2(128 BYTE),                                          |          "TRIGGER_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "TRIGGER_NAME" VARCHAR2(128 BYTE),                                           |          "TRIGGER_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_TYPE" VARCHAR2(23 BYTE),                                             |          "OBJECT_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP", 
+        "TARGET_BUILD_TYPE" VARCHAR2(10 BYTE),                                       |          "TARGET_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "TARGET_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                             |          "TARGET_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+        "TARGET_OWNER" VARCHAR2(128 BYTE),                                           |          "TARGET_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "TARGET_NAME" VARCHAR2(128 BYTE),                                            |          "TARGET_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "TARGET_TYPE" VARCHAR2(23 BYTE),                                             |          "TARGET_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP", 
+        "ELEMENT_NAME" VARCHAR2(20 BYTE),                                            |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT1" VARCHAR2(6 BYTE),                                                |          "FILE_EXT1" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT2" VARCHAR2(6 BYTE),                                                |          "FILE_EXT2" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT3" VARCHAR2(6 BYTE)                                                 |          "FILE_EXT3" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_INSTALL_TRIGGER_VIEW" ( |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_INSTALL_TRIGGER_VIEW" (
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJECT_CONF.tbl grbsrc/ODBCAPTURE/OBJECT_CONF.tbl
+   (    "USERNAME" VARCHAR2(128 BYTE) NOT NULL ENABLE,                               |     (    "USERNAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "ELEMENT_NAME" VARCHAR2(20 BYTE) NOT NULL ENABLE,                            |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "BUILD_TYPE" VARCHAR2(10 BYTE) NOT NULL ENABLE,                              |          "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) NOT NULL ENABLE,                    |          "OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP" NOT NULL E
+        "NOTES" VARCHAR2(1024 BYTE)                                                  |          "NOTES" VARCHAR2(1024 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw grbsrc/ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_OBJ_DIR_VIEW" ("BUILD_ |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_OBJ_DIR_VIEW" ("BUILD_
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw grbsrc/ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_OBJ_HACL_VIEW" ("BUILD |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_OBJ_HACL_VIEW" ("BUILD
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw grbsrc/ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_OBJ_INSTALL_VW" ("BUIL |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_OBJ_INSTALL_VW" ("BUIL
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw grbsrc/ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_OBJ_QUEUE_VIEW" ("BUIL |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_OBJ_QUEUE_VIEW" ("BUIL
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw grbsrc/ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_OBJ_WACL_VIEW" ("BUILD |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_OBJ_WACL_VIEW" ("BUILD
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw grbsrc/ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_QUEUE_REGISTER_VIEW" ( |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_QUEUE_REGISTER_VIEW" (
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw grbsrc/ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_QUEUE_SUBSCRIBE_VIEW"  |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_QUEUE_SUBSCRIBE_VIEW" 
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw grbsrc/ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_QUEUE_SYSPRIVS_VIEW" ( |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_QUEUE_SYSPRIVS_VIEW" (
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw grbsrc/ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_ROLE_PRIVILEGES_VIEW"  |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_ROLE_PRIVILEGES_VIEW" 
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw grbsrc/ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_SYSOBJ_PRIVILEGES_VIEW |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_SYSOBJ_PRIVILEGES_VIEW
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw grbsrc/ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_SYSTEM_PRIVILEGES_VIEW |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_SYSTEM_PRIVILEGES_VIEW
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/ROLE_CONF.tbl grbsrc/ODBCAPTURE/ROLE_CONF.tbl
+   (    "ROLENAME" VARCHAR2(128 BYTE) NOT NULL ENABLE,                               |     (    "ROLENAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "BUILD_TYPE" VARCHAR2(10 BYTE) NOT NULL ENABLE,                              |          "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "ORACLE_PROVIDED" VARCHAR2(1 BYTE) NOT NULL ENABLE,                          |          "ORACLE_PROVIDED" VARCHAR2(1 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE,
+        "NOTES" VARCHAR2(1024 BYTE)                                                  |          "NOTES" VARCHAR2(1024 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/SCHEMA_CONF.tbl grbsrc/ODBCAPTURE/SCHEMA_CONF.tbl
+   (    "USERNAME" VARCHAR2(128 BYTE) NOT NULL ENABLE,                               |     (    "USERNAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "BUILD_TYPE" VARCHAR2(10 BYTE) NOT NULL ENABLE,                              |          "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "ORACLE_PROVIDED" VARCHAR2(1 BYTE) NOT NULL ENABLE,                          |          "ORACLE_PROVIDED" VARCHAR2(1 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE,
+        "PROFILE" VARCHAR2(128 BYTE),                                                |          "PROFILE" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "TEMPORARY_TSPACE" VARCHAR2(30 BYTE),                                        |          "TEMPORARY_TSPACE" VARCHAR2(30 BYTE) COLLATE "USING_NLS_COMP", 
+        "DEFAULT_TSPACE" VARCHAR2(30 BYTE),                                          |          "DEFAULT_TSPACE" VARCHAR2(30 BYTE) COLLATE "USING_NLS_COMP", 
+        "TS_QUOTA" VARCHAR2(10 BYTE),                                                |          "TS_QUOTA" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "NOTES" VARCHAR2(1024 BYTE)                                                  |          "NOTES" VARCHAR2(1024 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl grbsrc/ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl
+   (    "BUILD_TYPE" VARCHAR2(10 BYTE),                                              |     (    "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_OWNER" VARCHAR2(128 BYTE),                                           |          "OBJECT_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "ELEMENT_NAME" VARCHAR2(20 BYTE),                                            |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COMP"
+         CONSTRAINT "SCHEMA_OBJECTS_TAB_PK" PRIMARY KEY ("BUILD_TYPE", "OBJECT_OWNER |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+   ) ORGANIZATION INDEX NOCOMPRESS ;                                                 |  ALTER TABLE "ODBCAPTURE"."SCHEMA_OBJECTS_TAB" ADD CONSTRAINT "SCHEMA_OBJECTS_TAB_PK"
+                                                                                     >    USING INDEX  ENABLE;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/TSPACE_CONF.tbl grbsrc/ODBCAPTURE/TSPACE_CONF.tbl
+   (    "USERNAME" VARCHAR2(128 BYTE) NOT NULL ENABLE,                               |     (    "USERNAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "TSPACE_NAME" VARCHAR2(30 BYTE) NOT NULL ENABLE,                             |          "TSPACE_NAME" VARCHAR2(30 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "TS_QUOTA" VARCHAR2(10 BYTE)                                                 |          "TS_QUOTA" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION DEFERRED  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/UOR_INSTALL_VIEW.vw grbsrc/ODBCAPTURE/UOR_INSTALL_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."UOR_INSTALL_VIEW" ("BUILD_T |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."UOR_INSTALL_VIEW" ("BUILD_T
+diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/ZIP_FILES.tbl grbsrc/ODBCAPTURE/ZIP_FILES.tbl
+   (    "FILE_NAME" VARCHAR2(1000 BYTE),                                             |     (    "FILE_NAME" VARCHAR2(1000 BYTE) COLLATE "USING_NLS_COMP", 
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION DEFERRED  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbtctx/ODBCTEST/CUST_CTX_TEST.tbl grbtctx/ODBCTEST/CUST_CTX_TEST.tbl
+        "CUST_NAME" VARCHAR2(80 BYTE),                                               |          "CUST_NAME" VARCHAR2(80 BYTE) COLLATE "USING_NLS_COMP", 
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbtjsn/ODBCAPTURE/GRBTST_JSON.tbl grbtjsn/ODBCAPTURE/GRBTST_JSON.tbl
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tbl grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tbl
+        "NAME" VARCHAR2(32 BYTE),                                                    |          "NAME" VARCHAR2(32 BYTE) COLLATE "USING_NLS_COMP", 
+   ) SEGMENT CREATION IMMEDIATE  LOGGING                                             |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING
+diff -drywtNW 172 --suppress-common-lines ../../../grbtst/install_sys.sql grbtst/install_sys.sql
+-- WALLET_ACL Install                                                                <
+                                                                                     <
+@dbi.sql "SYS/_opt_install_files_oracle_wallet.wacl" "" ""                           <
+@dbi.sql "SYS/_var_opt_install_files_oracle_wallet.wacl" "" ""                       <
+                                                                                     <
+----------------------------------------                                             <
+diff -drywtNW 172 --suppress-common-lines ../../../grbtst/ODBCAPTURE/GRBTST__NAME.tbl grbtst/ODBCAPTURE/GRBTST__NAME.tbl
+   (    "C1" VARCHAR2(20 BYTE),                                                      |     (    "C1" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COMP", 
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbtst/ODBCAPTURE/GRBTST_IMAGE.tbl grbtst/ODBCAPTURE/GRBTST_IMAGE.tbl
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+diff -drywtNW 172 --suppress-common-lines ../../../grbtst/SYS/_opt_install_files_oracle_wallet.wacl grbtst/SYS/_opt_install_files_oracle_wallet.wacl
+                                                                                     <
+--                                                                                   <
+--  Create Wallet ACL/ACE                                                            <
+--                                                                                   <
+-- Wallet ACLs with the following:                                                   <
+--    PRINCIPAL_TYPE      = 'DATABASE' (xs_acl.ptype_db)                             <
+--    GRANT_TYPE          = 'GRANT'                                                  <
+--    INVERTED_PRINICIPAL = 'NO'                                                     <
+--    PRIVILEGE          is not null                                                 <
+-- Start Dates and End Dates are ignored (set to NULL).                              <
+--                                                                                   <
+                                                                                     <
+set define off                                                                       <
+                                                                                     <
+                                                                                     <
+--                                                                                   <
+--  NOTE: This is a "GRANTEE" Wallet ACL                                             <
+--                                                                                   <
+                                                                                     <
+begin                                                                                <
+   DBMS_NETWORK_ACL_ADMIN.APPEND_WALLET_ACE                                          <
+      (wallet_path => 'file:/opt/install_files/oracle_wallet'                        <
+      ,ace         => xs$ace_type                                                    <
+                         (privilege_list   => xs$name_list('USE_PASSWORDS')          <
+                         ,granted          => TRUE                                   <
+                         ,inverted         => FALSE                                  <
+                         ,principal_name   => 'ODBCTEST'                             <
+                         ,principal_type   => xs_acl.ptype_db                        <
+                         ,start_date       => NULL                                   <
+                         ,end_date         => NULL));                                <
+end;                                                                                 <
+/                                                                                    <
+                                                                                     <
+set define on                                                                        <
+diff -drywtNW 172 --suppress-common-lines ../../../grbtst/SYS/_var_opt_install_files_oracle_wallet.wacl grbtst/SYS/_var_opt_install_files_oracle_wallet.wacl
+                                                                                     <
+--                                                                                   <
+--  Create Wallet ACL/ACE                                                            <
+--                                                                                   <
+-- Wallet ACLs with the following:                                                   <
+--    PRINCIPAL_TYPE      = 'DATABASE' (xs_acl.ptype_db)                             <
+--    GRANT_TYPE          = 'GRANT'                                                  <
+--    INVERTED_PRINICIPAL = 'NO'                                                     <
+--    PRIVILEGE          is not null                                                 <
+-- Start Dates and End Dates are ignored (set to NULL).                              <
+--                                                                                   <
+                                                                                     <
+set define off                                                                       <
+                                                                                     <
+                                                                                     <
+--                                                                                   <
+--  NOTE: This is a "GRANTEE" Wallet ACL                                             <
+--                                                                                   <
+                                                                                     <
+begin                                                                                <
+   DBMS_NETWORK_ACL_ADMIN.APPEND_WALLET_ACE                                          <
+      (wallet_path => 'file:/var\opt\install_files/oracle_wallet'                    <
+      ,ace         => xs$ace_type                                                    <
+                         (privilege_list   => xs$name_list('USE_PASSWORDS')          <
+                         ,granted          => TRUE                                   <
+                         ,inverted         => FALSE                                  <
+                         ,principal_name   => 'ODBCTEST'                             <
+                         ,principal_type   => xs_acl.ptype_db                        <
+                         ,start_date       => NULL                                   <
+                         ,end_date         => NULL));                                <
+end;                                                                                 <
+/                                                                                    <
+                                                                                     <
+set define on                                                                        <

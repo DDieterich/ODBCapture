@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="ODBCTEST_schema_build" tests="4" failures="0" time="0" timestamp="2024-08-08T02:05:11">
+    <testcase name="JAVA CLASS:db_object_status" classname="ODBCTEST.DirUtil" time="0"/>
+    <testcase name="JAVA SOURCE:db_object_status" classname="ODBCTEST.DirUtil" time="0"/>
+    <testcase name="PACKAGE:db_object_status" classname="ODBCTEST.DIR_UTIL" time="0"/>
+    <testcase name="PACKAGE BODY:db_object_status" classname="ODBCTEST.DIR_UTIL" time="0"/>
+   </testsuite>
+</testsuites>
