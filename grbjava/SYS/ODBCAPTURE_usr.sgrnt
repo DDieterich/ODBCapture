@@ -1,0 +1,18 @@
+
+
+--
+--  Future Grant SYS Objects (but not directories)
+--
+
+set define off
+
+
+
+--  "SYS" Object Grants
+
+grant SELECT on "SYS"."DBA_JAVA_CLASSES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_JAVA_POLICY" to "ODBCAPTURE";
+
+
+set define on
+

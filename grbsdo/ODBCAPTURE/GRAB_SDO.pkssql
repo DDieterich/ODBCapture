@@ -1,0 +1,96 @@
+
+--
+--  Create ODBCAPTURE.GRAB_SDO Package
+--
+
+set define off
+
+
+--DBMS_METADATA:ODBCAPTURE.GRAB_SDO
+
+  CREATE OR REPLACE EDITIONABLE PACKAGE "ODBCAPTURE"."GRAB_SDO" AUTHID DEFINER
+as
+
+   sdo_elem_info_buff   sdo_elem_info_array;
+   sdo_geometry_buff    sdo_geometry;
+   sdo_ordinate_buff    sdo_ordinate_array;
+   sdo_point_buff       sdo_point_type;
+   st_geometry_buff     st_geometry;
+
+   function sql_sdo_dim_element
+      (in_de  in  sdo_dim_element)
+   return varchar2;
+
+   function sql_sdo_dim_array
+      (in_da      in  sdo_dim_array
+      ,in_spaces  in  varchar2 default '')
+   return varchar2;
+
+   function ctl_sdo_point_type
+      (in_spaces  in  varchar2 default '   ')
+   return varchar2;
+   function dat_sdo_point_type
+      (in_pt  in  sdo_point_type)
+   return varchar2;
+
+   function ctl_sdo_elem_info_array
+   return varchar2;
+   function dat_sdo_elem_info_array
+      (in_eia  in  sdo_elem_info_array)
+   return varchar2;
+
+   function ctl_sdo_ordinate_array
+   return varchar2;
+   function dat_sdo_ordinate_array
+      (in_oa  in  sdo_ordinate_array)
+   return varchar2;
+
+   function ctl_sdo_geometry
+      (in_spaces  in  varchar2 default '   ')
+   return varchar2;
+   function dat_sdo_geometry
+      (in_geo  in  sdo_geometry)
+   return varchar2;
+
+   function ctl_st_geometry
+      (in_spaces  in  varchar2 default '   ')
+   return varchar2;
+   function dat_st_geometry
+      (in_geo  in  st_geometry)
+   return varchar2;
+
+   procedure grb_ind
+      (in_table_owner  in varchar2
+      ,in_table_name   in varchar2
+      ,in_table_type   in varchar2
+      ,in_index_owner  in varchar2
+      ,in_index_name   in varchar2
+      ,in_index_ext    in varchar2
+      ,in_ityp_owner   in varchar2
+      ,in_ityp_name    in varchar2);
+
+   procedure grb_cldr_define
+      (in_dyn_curs  in            integer
+      ,in_position  in            integer
+      ,io_lc        in out nocopy varchar2
+      ,io_fh        in out nocopy fh2.sf_ptr_type
+      ,io_desc_tab3 in out nocopy dbms_sql.desc_tab3);
+
+   procedure grb_cldr_value
+      (in_dyn_curs  in            integer
+      ,in_position  in            integer
+      ,io_lc        in out nocopy varchar2
+      ,io_fh        in out nocopy fh2.sf_ptr_type
+      ,io_desc_tab3 in out nocopy dbms_sql.desc_tab3);
+
+end grab_sdo;
+/
+
+
+--  Grants
+
+
+--  Synonyms
+
+
+set define on

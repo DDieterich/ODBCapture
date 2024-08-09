@@ -1,0 +1,22 @@
+
+
+--
+--  Future Grant SYS Objects (but not directories)
+--
+
+set define off
+
+
+
+--  "SYS" Object Grants
+
+grant SELECT on "SYS"."DBA_XS_ACES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_XS_ACLS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_XS_ACL_PARAMETERS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_XS_APPLIED_POLICIES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_XS_PRINCIPALS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_XS_ROLE_GRANTS" to "ODBCAPTURE";
+
+
+set define on
+

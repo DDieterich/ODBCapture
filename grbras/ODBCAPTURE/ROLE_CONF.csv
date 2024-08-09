@@ -1,0 +1,6 @@
+"ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES"
+"XS_CACHE_ADMIN","grbras","Y","The mid-tier cache. It is required for caching the security policy at the mid-tier level for the checkAcl (authorization) method of the XSAccessController class. Grant this role to the application connection user or the Real Application Security dispatcher."
+"XS_CONNECT","grbras","Y",
+"XS_NAMESPACE_ADMIN","grbras","Y","In Oracle Database Real Application Security, enables the grantee to manage and manipulate the namespace and attribute for a session. Grant this role to the Real Application Security session user."
+"XS_RESOURCE","grbras","Y",
+"XS_SESSION_ADMIN","grbras","Y","In Oracle Database Real Application Security, enables the grantee to manage the life cycle of a session, including the ability to create, attach, detach, and destroy the session. Grant this role to the application connection user or Real Application Security dispatcher."
