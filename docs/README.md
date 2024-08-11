@@ -1,8 +1,6 @@
 
 ### Oracle DB source code Capture
 
-README Page
-
-[Generated-Self-Build]
+[Generated Self-Build Documentation](Generated-Self-Build.md)
 
 Oracle and Java are trademarks of Oracle Corp.
