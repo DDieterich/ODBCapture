@@ -1,0 +1,37 @@
+
+--
+--  Create Host ACL/ACE
+--
+-- Host ACLs with the following:
+--    PRINCIPAL_TYPE      = 'DATABASE' (xs_acl.ptype_db)
+--    GRANT_TYPE          = 'GRANT'
+--    INVERTED_PRINICIPAL = 'NO'
+--    PRIVILEGE          is not null
+-- Start Dates and End Dates are ignored (set to NULL).
+--
+
+set define off
+
+
+--
+--  Create Host ACL/ACE for host1 from port 1100 to 1101 
+--  NOTE: This is a "GRANTEE" Host ACL
+--
+
+begin
+   DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE
+      (host        => 'host1'
+      ,lower_port  => 1100
+      ,upper_port  => 1101
+      ,ace         => xs$ace_type
+                         (privilege_list   => xs$name_list('CONNECT')
+                         ,granted          => TRUE
+                         ,inverted         => FALSE
+                         ,principal_name   => 'ODBCTEST'
+                         ,principal_type   => xs_acl.ptype_db
+                         ,start_date       => NULL
+                         ,end_date         => NULL));
+end;
+/
+
+set define on
