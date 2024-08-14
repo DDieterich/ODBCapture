@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="install_grbtsdo.log" tests="4" errors="0" hostname="SE213CDB" id="3" time="3" timestamp="2024-08-14T17:47:31">
+    <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
+    </testcase>
+    <testcase name="./installation_prepare.sql" assertions="10" classname="..sql" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ./installation_prepare.sql
+Create Temp Publicly Updateable Table
+Table created.
+Grant succeeded.
+Synonym created.
+Check for Prerequisite BUILD_TYPEs
+WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
+WARNING: Prerequisite BUILD_TYPE &quot;grbras&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2024-08-14T17:47:20 for a duration of .08 seconds (started at 2024-08-14T17:47:20)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCTEST/SDO_COLA_MARKETS.cldr" assertions="6" classname="ODBCTEST.cldr" status="PASS" time="3">
+      <system-out>
+=== DBI Started: ODBCTEST/SDO_COLA_MARKETS.cldr
+Disable Triggers and Foreign Keys
+PL/SQL procedure successfully completed.
+sqlldr_control=ODBCTEST/SDO_COLA_MARKETS.ctl
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2024-08-14T17:47:23 for a duration of 3.24 seconds (started at 2024-08-14T17:47:20)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCTEST/SDO_COLA_MARKETS.tbl" assertions="4" classname="ODBCTEST.tbl" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCTEST/SDO_COLA_MARKETS.tbl
+Table created.
+Table altered.
+=== DBI Completed at 2024-08-14T17:47:20 for a duration of .29 seconds (started at 2024-08-14T17:47:20)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCTEST/SDO_COLA_MARKETS.tidx" assertions="2" classname="ODBCTEST.tidx" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCTEST/SDO_COLA_MARKETS.tidx
+=== DBI Completed at 2024-08-14T17:47:23 for a duration of .01 seconds (started at 2024-08-14T17:47:23)
+      </system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="SE213CDB" id="1" time="0" timestamp="2024-08-14T17:47:31">
+  </testsuite>
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="SE213CDB" id="2" time="0" timestamp="2024-08-14T17:47:31">
+  </testsuite>
+</testsuites>

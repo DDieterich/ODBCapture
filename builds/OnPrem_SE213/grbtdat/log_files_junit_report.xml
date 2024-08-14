@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="install_grbtdat.log" tests="3" errors="0" hostname="SE213CDB" id="3" time="0" timestamp="2024-08-14T17:47:57">
+    <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
+    </testcase>
+    <testcase name="./installation_prepare.sql" assertions="11" classname="..sql" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ./installation_prepare.sql
+Create Temp Publicly Updateable Table
+Table created.
+Grant succeeded.
+Synonym created.
+Check for Prerequisite BUILD_TYPEs
+WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
+WARNING: Prerequisite BUILD_TYPE &quot;grbras&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
+WARNING: Prerequisite BUILD_TYPE &quot;grbtend&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2024-08-14T17:47:53 for a duration of .09 seconds (started at 2024-08-14T17:47:53)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/DLOAD_CONF.cldr" assertions="8" classname="ODBCAPTURE.cldr" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCAPTURE/DLOAD_CONF.cldr
+Disable Triggers and Foreign Keys
+alter table &quot;ODBCAPTURE&quot;.&quot;DLOAD_CONF&quot; DISABLE constraint &quot;DLOAD_CONF_FK1&quot;;
+alter table &quot;ODBCAPTURE&quot;.&quot;DLOAD_CONF&quot; DISABLE constraint &quot;DLOAD_CONF_FK2&quot;;
+PL/SQL procedure successfully completed.
+sqlldr_control=ODBCAPTURE/DLOAD_CONF.ctl
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2024-08-14T17:47:53 for a duration of .41 seconds (started at 2024-08-14T17:47:53)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/OBJECT_CONF.cldr" assertions="9" classname="ODBCAPTURE.cldr" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCAPTURE/OBJECT_CONF.cldr
+Disable Triggers and Foreign Keys
+alter table &quot;ODBCAPTURE&quot;.&quot;OBJECT_CONF&quot; DISABLE constraint &quot;OBJECT_CONF_FK1&quot;;
+alter table &quot;ODBCAPTURE&quot;.&quot;OBJECT_CONF&quot; DISABLE constraint &quot;OBJECT_CONF_FK2&quot;;
+alter table &quot;ODBCAPTURE&quot;.&quot;OBJECT_CONF&quot; DISABLE constraint &quot;OBJECT_CONF_FK3&quot;;
+PL/SQL procedure successfully completed.
+sqlldr_control=ODBCAPTURE/OBJECT_CONF.ctl
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2024-08-14T17:47:54 for a duration of .36 seconds (started at 2024-08-14T17:47:53)
+      </system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="SE213CDB" id="1" time="0" timestamp="2024-08-14T17:47:57">
+  </testsuite>
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="SE213CDB" id="2" time="0" timestamp="2024-08-14T17:47:57">
+  </testsuite>
+</testsuites>
