@@ -285,6 +285,8 @@ is
 begin
    dbms_output.put_line('Running ' || $$PLSQL_UNIT || '.update_view_tabs');
    --
+   grab_scripts.set_installed_types;
+   --
    do_it('truncate table schema_objects_tab');
    do_it('truncate table obj_install_comments_tab');
    do_it('truncate table obj_install_trigger_tab');
@@ -367,10 +369,13 @@ begin
    do_it('insert into schema_objects_tab (BUILD_TYPE,     OBJECT_OWNER,     ELEMENT_NAME) ' || CHR(10) ||
          'select DISTINCT                 build_type,          grantee,     element_name  ' || CHR(10) ||
          ' from priv_queue_sysprivs_view' );
-   -- The PRIV_OBJ_RACL_VIEW View might not be available, causing the following to throw an excepttion
-   do_it('insert into schema_objects_tab (BUILD_TYPE,     OBJECT_OWNER,     ELEMENT_NAME) ' || CHR(10) ||
-         'select DISTINCT                 build_type,            owner,     element_name  ' || CHR(10) ||
-         ' from priv_obj_racl_view' );
+   --
+   if grab_scripts.installed_types_aa.EXISTS('grbras')
+   then
+      do_it('insert into schema_objects_tab (BUILD_TYPE,     OBJECT_OWNER,     ELEMENT_NAME) ' || CHR(10) ||
+            'select DISTINCT                 build_type,            owner,     element_name  ' || CHR(10) ||
+            ' from priv_obj_racl_view' );
+   end if;
    --
    commit;
    --

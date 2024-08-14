@@ -3961,6 +3961,7 @@ begin
    then
       raise_application_error(-20000, 'Unable to find "grbsrc" in odbcapture_installation_log');
    end if;
+   dbms_output.put_line($$PLSQL_UNIT || 'set_install_types found ' || installed_types_aa.COUNT || ' entries in odbcapture_installation_log');
 exception when table_does_not_exist then
    null;
 end set_installed_types;

@@ -50,13 +50,11 @@ ZIP_FILE_ROOT="capture_files"
 
 capture_version
 build_init
-for BTYPE in 'grbsrc' 'grbras' 'grbjava' 'grbsdo' 'grbdat' 'grbtst' 'grbtjva' 'grbtjsn' 'grbtsdo' 'grbtctx' 'grbtdat'
+for BTYPE in 'grbsrc' 'grbjava' 'grbsdo' 'grbdat' 'grbtst' 'grbtjva' 'grbtjsn' 'grbtsdo' 'grbtctx' 'grbtdat'
 do
    clear_log_files "${BTYPE}"
    run_build  "${BTYPE}"
    case "${BTYPE}" in
-      "grbtst" )
-         run_script "${BTYPE}" "RAS_Admin_ODBCTEST.racl" "${PDB_ODBCTEST}";;
       "grbtsdo" )
          run_script "${BTYPE}" "COLA_SPATIAL_IDX.tidx" "${PDB_ODBCTEST}";;
    esac

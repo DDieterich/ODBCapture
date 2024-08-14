@@ -91,6 +91,8 @@ as
 
    ----------------------------------------------------
 
+   procedure set_installed_types;
+
    procedure all_scripts
       (in_build_type   in varchar2);
 
