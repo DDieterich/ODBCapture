@@ -3961,7 +3961,7 @@ begin
    then
       raise_application_error(-20000, 'Unable to find "grbsrc" in odbcapture_installation_log');
    end if;
-   dbms_output.put_line($$PLSQL_UNIT || 'set_install_types found ' || installed_types_aa.COUNT || ' entries in odbcapture_installation_log');
+   dbms_output.put_line($$PLSQL_UNIT || '.set_install_types: ' || installed_types_aa.COUNT || ' Build Types in odbcapture_installation_log');
 exception when table_does_not_exist then
    null;
 end set_installed_types;
@@ -3999,7 +3999,6 @@ begin
    g_build_type   := null;
    g_schema_name    := null;
    -- Set Globals
-   set_installed_types;
    set_build_type;
    if fh2.sf_aa.EXISTS(g_build_type) then fh2.sf_aa(g_build_type).DELETE; end if;
    --  Checks and Settings

@@ -285,7 +285,9 @@ is
 begin
    dbms_output.put_line('Running ' || $$PLSQL_UNIT || '.update_view_tabs');
    --
+   dbms_output.put_line('');
    grab_scripts.set_installed_types;
+   dbms_output.put_line('');
    --
    do_it('truncate table schema_objects_tab');
    do_it('truncate table obj_install_comments_tab');
