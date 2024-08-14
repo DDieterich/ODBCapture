@@ -55,6 +55,8 @@ do
    clear_log_files "${BTYPE}"
    run_build  "${BTYPE}"
    case "${BTYPE}" in
+      "grbtst" )
+         echo "Skipping 'RAS_Admin_ODBCTEST.racl' for Standard Edition 21.3" > RAS_Admin_ODBCTEST.racl.log;;
       "grbtsdo" )
          run_script "${BTYPE}" "COLA_SPATIAL_IDX.tidx" "${PDB_ODBCTEST}";;
    esac
