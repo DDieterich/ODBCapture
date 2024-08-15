@@ -9,4 +9,5 @@ Development guides and design documentation can be found in [the wiki](https://g
 
 This is an [introductory white paper](Generated-Self-Build.md) overview of generated self-build scripts for Oracle databases.
 
+---
 Oracle and Java are trademarks of Oracle Corp.

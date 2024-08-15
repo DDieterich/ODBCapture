@@ -35,3 +35,6 @@ grbtst                     | Unit Testing Folder
 2. sqlplus / as sysdba @install.sql
 3. select * from odbcapture_installation_logs;
 4. If problems found: more *.log
+
+---
+Oracle and Java are trademarks of Oracle Corp.
