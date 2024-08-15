@@ -1,5 +1,7 @@
 
-### Oracle DB Capture Home Page
+# Oracle DB Capture Home Page
+
+Native PL/SQL Application to Generate Source Code and Configuration Data
 
 This website is intended for user information and usage documentation.
 

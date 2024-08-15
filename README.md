@@ -1,5 +1,6 @@
-# ODBCapture
-Oracle DB Capture
+# Oracle DB Capture Development
+
+Native PL/SQL Application to Generate Source Code and Configuration Data
 
 This site is intended for development guides and design documentation.
 
