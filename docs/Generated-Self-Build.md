@@ -42,7 +42,7 @@ ODBCapture uses the Oracle database to create complete database build scripts wi
 
 *"Source code (also referred to as source or code) is the version of software as it is originally written (i.e., typed into a computer) by a human in plain text (i.e., human readable alphanumeric characters)."*
 
-[Source Code Definition](https://www.linfo.org/source_code.html)
+[Ref: linfo.org](https://www.linfo.org/source_code.html)
 
 Every Oracle database developer knows what source code looks like.  SQL, PL/SQL, and configuration data are the ongoing fee required to keep a database working well.  However, little attention is paid to accurately capturing this source code.
 
@@ -74,14 +74,15 @@ Accurate and complete database source code can be more fully understood using th
 Use of accurate and complete database source code exposes the need for source code options, or layering, when building a database.  The options/layers include the need for:
 * Basic application configuration data
 * Environment and/or test specific configuration data
-* Source code for unit testing on a development database
+* PL/SQL for unit testing on a development database
 * Test data for unit testing on a development database
-* Source code for QA testing on a QA database
+* PL/SQL for QA testing on a QA database
 * Test data for QA testing on a QA database
 
-Each of these options/layers needs to be assembled in a fassion that allow the resulting database to function correctly.  DDL and DML script generation must account for these options/layers and the inter-dependencies between them.
+Each of these options/layers needs to be assembled in a fassion that allow the resulting database to function correctly.  DDL, DML, and DCL script generation must account for these options/layers and the inter-dependencies between them.
 
-**No easy way to create database source code.**
+
+**Creating database source code.**
 
 While some development teams have created custom utilities to produce accurate and complete database source code, there is no generic tool set available  Technical limitations of commercially available tools include the requirement to use a GUI to select tables and database objects to export.
 
@@ -117,61 +118,43 @@ When a commercial tool is able to create them, build scripts tend to lack all th
 
 ## What is Needed?
 
-As discussed in the previous section, a simple way to create accurate and complete database build scripts (source code) is needed.  Following are the details.
+As discussed in the previous section, a simple way to create accurate and complete database build scripts (source code) is needed.
 
 
 ### Database Self-Build Scripts
 
-Since developers use databases (not text editors) to develop, the database needs the ability to generate build scripts.  These build scripts must be able to re-create the necessary database objects, configuration data, and test data in a newly created (pluggable) database (from scratch).  Without this capability, some portion of a database must already exist, effectively limiting database source code to a change tracking engine.
+Since developers use databases (not text editors) to develop, the database needs the ability to generate its own build scripts.  These build scripts must be able to re-create the necessary database objects, configuration data, and test data in a newly created (pluggable) database (from scratch).  Without this capability, some portion of a database must already exist, effectively limiting database source code to a change tracking engine (a.k.a Liquibase or Flyway).
+
 
 **Oracle Database Specific**
 
 Due to its complex and comprehensive nature, this solution needs to be Oracle Database specific.  A generic tool will be reduced to the lowest common demoninator, making it ineffective.
 
+
 **Comprehensive**
 
-The solution needs to handle multiple integrated users/schemas.  Many large Oracle databases have an entaglement of dependencies between schemas.  Successfully extracting a single, buildable schema from this entaglement can be very difficult.  This solution must be able to successfully install co-dependent schema simultaneously.
+The solution needs to handle multiple integrated users/schemas.  Many large Oracle databases have an entaglement of dependencies between schemas.  Successfully extracting a single, buildable schema from this entaglement can be difficult.  This solution must be able to successfully install co-dependent schema simultaneously.
 
 The solution needs to handle multiple Oracle object types.  Many sophisticated Oracle databases take advantage of the wide range of object types available in the database, like Advanced Queues.  This solution must handle a large list.
 
-The solution needs to handle multiple Oracle data types.  Many sophisticated Oracle database take advantage of the wide range of data types in the database, like XML and BLOB.  This solution must handle a large list.
+The solution needs to handle multiple Oracle data types.  Many sophisticated Oracle databases take advantage of the wide range of data types available in the database, like XML and BLOB.  This solution must handle a large list.
 
 
 ### Source Code Portability
 
-Since the Oracle database is operating system neutral, the build scripts created by the database must be operating system neutral.  No batch or shell scripting should be allowed because each must be tailored to a specific operating system.  Since SQL-Plus and SQL-Loader are included with every database installation, build scripts should be limited to the use of those tools.
+Since the Oracle database runs on several different operating systems, the build scripts created by the database must be portable.  No batch or shell scripting should be allowed because each must be tailored to a specific operating system.  Since SQL-Plus and SQL-Loader are included with every database installation, build scripts should be limited to the use of those tools.
 
-Character translation of build scripts and data files must be handled.  For the purposes of these build scripts, Big Endien (and Little Endien) issues are handled by the operating system.  Character set conversions between ASCII, UTF-8, UTF-16, EBCDIC, other are also handled by the operating system.  Character set conversion of string based files between systems is automatic during transfers.  Oracle database tools also automatically convert character sets during loading and unloading of data between the database and the operating system.
+Character translation of build scripts and data files must be handled.  For the purposes of these build scripts, Big Endien (and Little Endien) issues are handled by the operating systems and automativ conversions during file transfer.  Character set conversions between ASCII, UTF-8, UTF-16, EBCDIC, other are handled by the operating system.  Oracle database tools also automatically convert character sets during loading and unloading of data between the database and the operating system.
 
 Binary data, such as images and encrypted passwords, must be converted to string based files.  There are several standard formats like HEX encoding and Base64 encoding that can be used for this purpose.
-
-
-### Installation Layering
-
-Most sophisticated Oracle databases include a variety of database objects and data.  These can include:
-* Base Application Database Objects
-* Base Application Configuration Data
-* Development Environment Configuration Data
-* Mock Database Objects for Unit Testing
-* Unit Testing Database Objects
-* Unit Test Data
-* QA Environment Configuration Data
-* QA Testing Database Objects
-* QA Test Data
-
-The solution needs to accomodate this variety of database objects and data.  The solution also needs allow for proper sequencing of these objects, including the interdependency between them.
 
 
 ### Source Code Organization
 
 Given these build scripts are going into a source control system like Git, some simple guidelines should apply to the files.
-
-Each database object should have its own script.  This allows easier tracking of changes to database objects in the source control system.
-
-Schemas (database object owners) should have their own folders.  This futher simplifies the tracking of changes by grouping all database object files together that are owned by the same database user.
-
-For ease of deployment security, all SYS related build scripts should be grouped together and separated from SYSTEM build scripts.  This allows database administrators to tightly scrutinize and possible limit highly permissive build scripts that require SYS privileges.
-
+* Each database object should have its own script.  This allows easier tracking of changes to individual database objects in the source control system.
+* Schemas (database object owners) should have their own folders.  This futher simplifies the tracking of changes by grouping all database object files together that are owned by the same database user.
+* For ease of deployment security, all SYS related build scripts should be grouped together and separated from SYSTEM build scripts.  This allows database administrators to tightly scrutinize and possible limit highly permissive build scripts that require SYS privileges.
 
 
 ## ODBCapture Implementation
