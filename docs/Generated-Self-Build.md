@@ -167,56 +167,76 @@ The following is a description of the ODBCapture implementation and how it compl
 
 DBMS_METADATA has become a popular package for creating DDL (and DCL) from an Oracle database.  The ODBCapture implementation uses DBMS_METADATA.get_ddl wherever possible to provde generic functionality for build script generation.
 
-The DBMS_SQL package provides an interface to use dynamic SQL to parse any data manipulation language (DML) or data definition language (DDL) statement using PL/SQL.  The ODBCapture implementation uses DBMS_SQL to create the comprehensive data loader (cldr) script data, typically in CSV files.
+The DBMS_SQL package provides an interface to use dynamic SQL to parse any data query statement using PL/SQL.  The ODBCapture implementation uses DBMS_SQL to create the comprehensive data loader (cldr) script, with SQL*Loader Control File and CSV Database file.  The "cldr" script includes pre-load processing, like dropping specific foreign key constraints, and post-load processing, like translating data loaded in the database.
 
 
 ### Tool Configuration
 
 Configuration of ODBCapture is required to accomplish the needs previously described.
-* **Element** configuration is very specific and should not be modified without a thorough understanding.
+* **Element** configuration is very specific and should not be modified without a thorough understanding of ODBCapture internals.
 * **Build Type**, and **User/Schema** configurations are the minimum required for ODBCapture to work.  At least one Build Type and one User/Schema configuration must be created.
 * **Role**, **Database Object**, and **Data Load** configurations are all optional.
+
 
 **Element Configuration**
 
 The element configuration data should not be changed.  The internal operation of the build script generator relies on certain data items in this configuration.
 
-* ELEMENT_NAME - An internal element designation used to generate build scripts.
 * ELEMENT_SEQ - The sequence these elements appear in the installation build scripts.
+* ELEMENT_NAME - An internal element designation used to generate build scripts.
 * FILE_EXT1, FILE_EXT2, FILE_EXT3 - Build script file name extensions.
-* OBJECT_TYPE - Matching databse object type from DBA_OBJECTS.
+* OBJECT_TYPE - Matching database object type from DBA_OBJECTS.
+
 
 **Build Type Configuration**
 
 At least one Build Type configuration is required to generate build scripts.  These Build Types are used to resolve dependencies between the various installation layers as needed.  It is possible for Build Types to have no relationship (not layered).
 
 * BUILD_TYPE - Name of this Build Type.
-* BUILD_TYPE_PARENT - Parent of this Build Type.  This defines the installation layers.
+* BUILD_SEQ -  Sequence for this Build Type.
+* BUILD_SEQ_PARENT - Parent of this Build Type.  This defines the installation layers.
+
 
 **User/Schema Configuration**
 
 At least one User/Schema configuration is required to generate build scripts.  This configuration defines which database users are included in which Build Types.
 
-* BUILD_TYPE - Name of the Duild Type.
-* USERNAME - Database username.  This is the default Build Type for the user.  By default, all user objects will be generated at this Build Type.
-* TABLESPACE_NAME - Default tablespace to be used when creating this user.
-* TS_SIZE - User quota on the default tablespace.
+* USERNAME - Database username (schema name).
+* BUILD_TYPE - This is the default Build Type for this user.  By default, all user objects will be generated for this Build Type.
+* ORACLE_PROVIDED - Identifies a schema provided by Oracle.  No scripts are generated for these schema.
+* PROFILE - Default profile for this user.
+* TEMPORARY_TSPACE" - Temporary tablespace to be used when creating this user (Default is 'TEMP').
+* DEFAULT_TSPACE - Default tablespace to be used when creating this user.
+* TS_QUOTA - Default tablespace quota for this user (Default is UNLIMITED).
+
+
+**Tablespace Quota Configuration**
+
+This configuration is used when additional Tablespace Quotas are required for a user.
+
+* USERNAME - Database username (schema name).
+* TSPACE_NAME - Name of the tablespace to add quota
+* TS_QUOTA - Size of the quota for this user and tablespace (Default is UNLIMITED).
+
 
 **Role Configuration**
 
 Role configuration is optional.  If the database doesn't have any roles of interest, this configration can remain empty.
 
-* BUILD_TYPE - Name of the Build Type.
 * ROLENAME - Name of the database role to generated build scripts.
+* BUILD_TYPE - This is the default Build Type for this role.
+* ORACLE_PROVIDED - Identifies a role provided by Oracle.  No scripts are generated for these roles.
+
 
 **Database Object Configuration**
 
-Database object configuration is optional.  If all database objects should be included in the default Build Type for a schema, this configuration can remain empty.
+Database object configuration is optional.  Because all database objects are included in the default Build Type for a schema, this configuration is only necessary to move object installation to another Build Type.
 
 * BUILD_TYPE - Name of the Build Type.
-* USERNAME - Database username.
+* USERNAME - Database username (schema owner).
 * ELEMENT_NAME - An internal element designation used to generate build scripts.
-* OBJECT_NAME_REGEXP - Limits which database objects to include in build scripts generated for this Build Type.  Objects that match this filter will not be included in the default Build Type.
+* OBJECT_NAME_REGEXP - Limits which database objects to include in build scripts generated for this Build Type.  Objects that match this Regular Expression will NOT be included in the default Build Type for the user.
+
 
 **Data Load Configuration**
 
@@ -224,10 +244,11 @@ Data load configuration is optional.  If no data should be included in build scr
 
 * BUILD_TYPE - Name of the Build Type.
 * USERNAME - Database username.
-* TABLE_NAME - Database table name with the data to include in the build scripts.
-* BEFORE_SELECT_SQL - The "pre" SQL text included before of the SQL SELECT statement querying this data.
-* WHERE_CLAUSE - The WHERE clause for the SQL SELECT statement querying this data.
+* TABLE_NAME - Database table/view name with the data to include in the build scripts.
+* COLUMNS_REMOVED - Any column names that match this REGEXP Filter will be removes from the Data Load
 * ORDER_BY_COLUMNS - Required list of columns that uniquely identify the data being queried.
+* WHERE_CLAUSE - The WHERE clause for the SQL SELECT statement querying this data.
+* BEFORE_SELECT_SQL - The "pre" SQL text included before of the SQL SELECT statement querying this data.
 * AFTER_ORDER_BY_SQL - The "post" SQL text included after of the SQL ORDER BY clause querying this data.
 
 
@@ -244,14 +265,19 @@ The following lists the database object types supported by ODBCapture.
 * Database Trigger
 * Directory
 * Foreign Key (psuedo-object)
-* Grant (psuedo-object)
-* Function
+* Grant, Database Object (psuedo-object)
+* Grant, System Privilege (psuedo-object)
+* Host ACL (psuedo object)
+* PL/SQL Function
 * Java Source
 * Index
 * Materialized View
+* Materialized View Index
+* Materialized View Foreign Key
+* Materialized View Trigger
 * Package Body
 * Package Specification
-* Procedure
+* PL/SQL Procedure
 * RAS ACL (psuedo-object)
 * Role
 * Scheduler Job
@@ -261,12 +287,18 @@ The following lists the database object types supported by ODBCapture.
 * Schema Trigger
 * Synonym
 * Table
-* Table/View Trigger
+* Table Index
+* Table Foreign Key
+* Table Trigger
 * Type Body
 * Type Specification
 * User
 * View
+* View Foreign Key
+* View Trigger
+* Wallet ACL (psuedo-object)
 * XDB ACL (psuedo-object)
+
 
 **Data Types Supported**
 
@@ -277,6 +309,7 @@ The following lists the data types supported by ODBCapture.
 * CLOB
 * DATE
 * INTERVAL_DAY_TO_SECOND
+* JSON
 * NUMBER
 * RAW
 * TIMESTAMP
@@ -288,6 +321,7 @@ The following lists the data types supported by ODBCapture.
 
 ### Build Script Specifications
 
+
 **ZIP File Creation**
 
 All build scripts are added to a ZIP File created in a BLOB in the "ZIP_FILES" table.  Retreival of that ZIP file can be done using one of the following.
@@ -295,7 +329,8 @@ All build scripts are added to a ZIP File created in a BLOB in the "ZIP_FILES" t
 * UTL_FILE write (using GRAB_SCRIPTS.write_scripts procedure)
 * APEX GUI Application
 * SQL-Developer
-* Other Oracle Database Tool
+* SQL*Plus CLOB Variable (Base 64 Encoded)
+
 
 **Long Line Folding**
 
@@ -305,6 +340,7 @@ There are a variety of line length limitations for generated scripts.  These lin
 * SQL-Plus Script Files
 * Windows Script Files - For Directory Creation
 * Unix/Linux Script Files - For Directory Creation
+
 
 **Handling of System Generated Database Objects**
 
@@ -316,52 +352,52 @@ There are several different database object types that are system generated by t
 * Type Specification/Body Name
 * Advanced Queue View/Type Name
 
+
 **Escape Special Characters**
 
 There are limitations on special characters used for build file generation.  Each of these limitations is handled by ODBCapture.
 
-* SQL-Plus Scripts: "@"
-* Windows File Names: "<", ">", ":", """, "/", "\", "|", "?", "*"
+* SQL-Plus Scripts:
+    ```
+    @
+    ```
+* Windows File Names:
+    ```
+    <, >, :, ", /, \, |, ?, *
+    ```
 
-**Dynamically Created Utility Scripts**
-
-A set of utility scripts with specific lists of schemas and/or database objects is needed for successful and complete installation of database objects and data.  ODBCapture custom generates these scripts as needed in the root folder of the ZIP file.
-
-* alter_foreign_keys
-* alter_queues
-* alter_scheduler_jobs
-* alter_triggers
-* compile_all
-* update_id_sequences
 
 **Dynamically Created Reporting Scripts**
 
-After the database installation is complete, some reporting is needed to determine if evertyhing in the database was loaded successfully.  These custom created reports (in the root folder of the ZIP file) report any problems with database objects that were loaded during installation.
+After the database installation is complete, some reporting is needed to determine if evertyhing in the database was loaded successfully.  These reports created in the root folder of the ZIP file show any problems with database objects that were loaded during installation.
 
 * Invalid Database Object
-* JUnit Report
+* JUnit (XML) Object Status Report
+
 
 **Database Captured Installation Logs**
 
-Log files are captured during database installation.  Almost all installation errors are captured in these log files.  As part of database installation, the installation log files are loaded into the "ODBCAPTURE_INSTALLATION_LOGS" table using the "odbcapture_installation_logs.cdl" script in the root folder of the ZIP file.  The "ODBCAPTURE_INSTALLATION_LOGS" table is dynamically created if necessary and can be pre-created if additional control is required.  The following reports, along with the "odbcapture_installation_logs.cdl" script, are custom generated as required in the root folder of the ZIP file.
+Log files are captured during database installation.  Almost all installation errors are captured in these log files.  As part of database installation, the installation log files are loaded into the "ODBCAPTURE_INSTALLATION_LOGS" table using the "odbcapture_installation_logs.cdl" script in the root folder of the ZIP file.  The "ODBCAPTURE_INSTALLATION_LOGS" table is dynamically created if necessary and can be pre-created if additional control is required.  The following reports, along with the "odbcapture_installation_logs.cdl" script, are generated as required in the root folder of the ZIP file.
 
 * Install Status from Log File
-* JUnit Report
+* JUnit (XML) Script Load Report
 
 
 ### Misc. Specifications
 
 **Filtered Caching of Data Dictionary**
 
-There is considerable querying of the Data Dictionay tables when ODBCapture is generating build scripts.  In order to improve performance, a set of Data Dictionay tables is used to cache filtered data, reducing the taxation on the Data Dictionary tqables in the database.
+There is considerable querying of the Data Dictionay tables when ODBCapture is creating build scripts.  In order to improve performance, a set of tables is used to cache filtered data, reducing the taxation on the Data Dictionary tables in the database.  These tables must be manually refreshed.
+
 
 **Data Capture**
 
-Data capture includes a variety of issues.  One issue is the order of data loading.  Foreign key constraints must be complied with or disabled.  ODBCapture disables the Foreign key constraints.  Table triggers can incorrectly modify data during loading.  ODBCapture disables table triggers.  Binary data cannot be safely stored in build scripts.  HEX encoding is used for RAW data and Base64 encoding is used for BLOB encoding.  The data load build scripts are custom generated to include the HEX and Base64 decoding as required.
+Data loading with Foreign keys, triggers, and/or binary data can create issues.  ODBCapture disables the Foreign key constraints on each table in the corresponding CLDR scripts.  Table triggers can incorrectly modify data during loading.  ODBCapture also disables table triggers.  Binary data cannot be safely stored in character based build scripts.  HEX encoding is used for RAW data and Base64 encoding is used for BLOB encoding.  The data load build scripts are created to include the HEX and Base64 decoding as required.
+
 
 **Avoid errors granting permisions on a view that has errors**
 
-If views are part of a complex depedency network, they can be very difficult to load in the correct sequence.  If view error occur during installation, it may not be possible to install the associated grants.  This problem has been resolved in ODBCapture using the [ORA-01720: "WORKAROUND" at ASK TOM](https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:43253832697675#2653213300346351987)
+If views are part of a complex depedency network, they can be very difficult to load in the correct sequence.  If a view error occurs during installation, it may not be possible to install the associated grants.  This problem has been resolved in ODBCapture using the [ORA-01720: "WORKAROUND" at ASK TOM](https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:43253832697675#2653213300346351987)
 
 
 
