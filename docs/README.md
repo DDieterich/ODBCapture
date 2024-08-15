@@ -6,4 +6,6 @@ This website is intended for user information and usage documentation.  Developm
 This is a [White Paper Overview](Generated-Self-Build.md) of generated self-build scripts for Oracle databases.
 
 ---
+Website formatted with [jekyll-theme-time-machine](https://github.com/pages-themes/time-machine)
+
 Oracle and Java are trademarks of Oracle Corp.
