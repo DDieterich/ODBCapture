@@ -1,1 +1,5 @@
-theme: jekyll-theme-hacker
+title: Oracle DB (source code) Capture
+description: Native PL/SQL application to generate source code
+show_downloads: false
+google_analytics: 349844785
+theme: jekyll-theme-time-machine
