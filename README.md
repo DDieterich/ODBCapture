@@ -1,5 +1,5 @@
 # ODBCapture
-Oracle DB source code Capture
+Oracle DB Capture
 
 See Also http://ODBCapture.org
 
@@ -11,7 +11,6 @@ File Name                  | Description
 ---------------------------|------------
 apex                       | Application Express Scripts Folder
 builds                     | Build/Test Scripts Folder
-capbuff                    | Temporary Capture Buffer for Source Code
 diffs                      | Upgrade/Downgrade Scripts Folder
 docs                       | User Documentation Folder
 grb_linked_install_scripts | Common Scripts Linked to Install Scripts
