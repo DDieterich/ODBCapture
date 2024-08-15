@@ -2,9 +2,7 @@
 
 Native PL/SQL Application to Generate Source Code and Configuration Data
 
-This site is intended for development guides and design documentation.
-
-User information and usage documentation can be found at http://ODBCapture.org.
+This site is intended for development guides and design documentation.  User information and usage documentation can be found at http://ODBCapture.org.
 
 *NOTE:* Issues are tracked in the Wiki.  See: [Issues Summary](https://github.com/DDieterich/ODBCapture/wiki/Z-Issues-Summary)
 
