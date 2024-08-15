@@ -1,7 +1,9 @@
 # ODBCapture
 Oracle DB Capture
 
-See Also http://ODBCapture.org
+This site is intended for development guides and design documentation.
+
+User information and usage documentation can be found at http://ODBCapture.org.
 
 *NOTE:* Issues are tracked in the Wiki.  See: [Issues Summary](https://github.com/DDieterich/ODBCapture/wiki/Z-Issues-Summary)
 
