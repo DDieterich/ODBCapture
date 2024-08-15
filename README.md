@@ -35,4 +35,4 @@ grbtst                     | Unit Testing Folder
 4. If problems found: more *.log
 
 ---
-Oracle and Java are trademarks of Oracle Corp.
+Oracle and Java are trademarks of [Oracle Corp](https://www.oracle.com/).

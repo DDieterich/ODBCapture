@@ -25,7 +25,7 @@ DMSTEX (of Dallas County)
 <br>
 <br>
 <br>
-Oracle and Java are trademarks of Oracle Corp.
+Oracle and Java are trademarks of [Oracle Corp](https://www.oracle.com/).
 
 ## Summary
 

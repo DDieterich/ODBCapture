@@ -8,4 +8,4 @@ Click [here](Generated-Self-Build.md) for a white paper overview of generated se
 ---
 Website formatted with [jekyll-theme-time-machine](https://github.com/pages-themes/time-machine)
 
-Oracle and Java are trademarks of Oracle Corp.
+Oracle and Java are trademarks of [Oracle Corp](https://www.oracle.com/).
