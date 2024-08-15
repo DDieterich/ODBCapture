@@ -366,6 +366,38 @@ There are limitations on special characters used for build file generation.  Eac
     <, >, :, ", /, \, |, ?, *
     ```
 
+**Multi-Version, Multi-Offering Support**
+
+Oracle Database started with Version 2 in 1979.
+
+*"In 1979, RSI introduced Oracle V2 (Version 2) as the first commercially available SQL-based RDBMS, a landmark event in the history of relational databases."*
+
+[Oracle 23ai Database Documentation](https://docs.oracle.com/en/database/oracle/oracle-database/23/cncpt/introduction-to-oracle-database.html#GUID-43F9DD5C-8D8C-4E61-A2B4-5C05907D3CEC)
+
+Oracle Database Version 23ai current includes these [licensed offerings](https://docs.oracle.com/en/database/oracle/oracle-database/23/dblic/Licensing-Information.html#GUID-AB354617-6614-487E-A022-7FC9A5A08472).
+* Database Free - On-Premises
+* Database Standard Edition 2 on Oracle Database Appliance - On-Premises
+* Database Enterprise Edition on Engineered Systems - On-Premises
+* Base Database Service Standard Edition - OCI
+* Base Database Service Enterprise Edition - OCI
+* Base Database Service Enterprise Edition - High Performance - OCI
+* Base Database Service Enterprise Edition - Extreme Performance - OCI
+* Exadata Database Service on Dedicated Infrastructure - OCI
+* Exadata Database Service on Cloud@Customer - OCI
+
+Some care must be taken in supporting source code between these combinations of versions and offerings.
+* The oldest versions do not need to be supported.  Currently, that is considered to be 12R1 and earlier.
+* New database versions include new data types, like JSON.
+* New database versions drop old data types, like DICOM.
+* Standard Edition does not support Oracle RAS (Real Application Security).
+* OCI and On-Premises differ in feature/function support.
+* The APEX specific database service on OCI (not listed above) can't run SQL*loader in the load scripts.
+* Exadata can require major index and other performance changes to database source code.
+
+Some accomodations for this complexity include:
+* Excluding unsupported Build Types during installation
+* PL/SQL Compiler Directives ($IF DBMS_DB_VERSION.VERSION > 19)
+
 
 **Dynamically Created Reporting Scripts**
 
@@ -410,30 +442,30 @@ There are several unexpected roadblocks to implementing accurate and complete da
 
 During initial implementation, learning curves and startup struggles result in longer lead times for database releases.  This is always problematic for project manangers and is an obvious potential roadblock.  However, there are other issues that can be surprising.
 
-Many sophisticated databases contain a large amount of data.  Separating configuration data from other data can be a daunting task.  Project managers may be resistant to start the process of identifying and separating this configuration data.  This difficulty can be compounded in a lack of understanding of environment configurations for development, integration test, and QA.
+Many sophisticated databases contain a large amount of data.  Separating configuration data from "production" (transactional/other) data can be a daunting task.  Project managers may be resistant to start the process of identifying and separating this configuration data.  This difficulty can be compounded by a lack of understanding of environment configurations for development, integration test, and QA.
 
-Successful database release processing can include "fudging" releases when errors are found during the release.  Motivations are high to make the release work, rather than revert the release, find the error, and re-release.  Making the release work often results in missing updates to source control.  The project manager gets no benefit from identifying and removing these "fudges".  The ability to audit source control can expose these shortcomings in a release process that had been accepted as very successful.
+Legacy database release processing can include "fudging" releases when errors are found during the release.  Motivations are high to make the release work, rather than revert the release and find/fix the error later.  Making the release work often results in missing updates to source control.  The project manager gets no benefit from identifying and removing these "fudges".  The ability to audit source control can expose these shortcomings in a legacy release process that had been accepted as a very successful process.
 
-If individual, throw-away, pluggable databases are given to developers, they can practice a great deal of independence.  This independence leads to creativity.  With the increased creativity, more options can be explored and proven by developers.  These additional options can become frustrating for project management due to the many moving parts.  A subtle resistance can begin to push against this newly found developer autonomy.
+Individual, temporary development databases can give a great deal of independence to developers.  This independence leads to creativity.  With the increased creativity, more options can be explored and proven by developers.  These additional options can become frustrating for project management due to the many moving parts.  A subtle resistance can begin to push against this newly discovered developer autonomy.
 
-A more controlled development/delivery process can reduce error injection into production.  This reduction in release errors results in less need for superhuman effort to keep the production system running.  A troubleshooting superstar will have fewer opportunities to be a superstar.  That can result in a push-back against processes that improve the quality of the release process.
+Increased control over the delivery process can reduce error injection into production databases.  This reduction in release errors results in less need for superhuman effort to keep the production system running.  A troubleshooting superstar will have fewer opportunities to be a superstar.  That can result in push-back from a superstar against these processes that improve the quality of the release process.  Project managers tend to be sensitive to these impacts on their superstar.
 
 
 ### Developers
 
-Some of the obvious resisitance to new processes is the difficulty of learning and adjusting to them.  However, there are some other potential roadblocks that developers can have.
+Some of the obvious resisitance to new processes is the difficulty in learning and adjustment.  However, there are some other potential roadblocks that developers can have.
 
-When the "gold standard" for database source control is in the development database, there can be a great resistance to massive database changes, also known as refactoring.  A new development processes that creates them from source code allows development databases to become disposable.  This idea of disposable development databases can me met with deep resistance from the developers.
+When the "gold standard" for database source control is in the development database, there can be a great resistance to massive database changes (also known as refactoring).  A new development processes that creates temporary development databases from source code allows those databases to become disposable.  This idea of disposable development databases can me met with deep resistance from the developers.
 
-When a shared development database is used, developers can get quite good at creating temporary test data for development of specific modules.  These test data sets can create become a unique niche for the developer in the development project.  Developer can be very hesitant to share these test data capabilities for fear of loosing that unique niche.
+When a shared development database is used, developers can get quite good at creating temporary test data for development of specific modules.  These test data sets can become a unique niche for the developer in the development project.  Developers can be very hesitant to share these unique test data capabilities for fear of loosing that unique niche.
 
 
 ### Database Administrators
 
-Possibly the biggest surprise is the push-back from the database administrators (DBAs).  A dialog regarding accurate and complete capture of source code and configuration data in the source code systems can alarm the DBAs.  DBAs are accustomed to cloning databases and masking production data to perpare for a "development system refresh".
+Possibly the biggest surprise is the push-back from the database administrators (DBAs).  A dialog regarding accurate and complete capture of source code and configuration data in the source code systems can alarm a DBA.  DBAs are accustomed to cloning databases and masking production data to perpare for a "development system refresh".
 
 *"..., copying production data for non-production purposes such as test and development is proliferating sensitive data, expanding the security and compliance boundary, and increasing the likelihood of data breaches."* [Oracle Data Masking and Subsetting](https://docs.oracle.com/en/database/oracle/oracle-database/19/dmksb/intro.html)
 
-Cloning and masking can be consistent work on a periodic basis.  Implementation of complete source code and data configuration capture can be viewed and a threat to a steady work stream.
+Cloning and masking can create a consistent work load for DBAs.  Implementation of complete source code and data configuration capture can be viewed and a threat to that steady work load.
 
-Another contentious issue for DBAs is the backup of the development and test systems.  These concerns are strongly supported by developers that consider the development database as the "gold standard" for database source code.  The ability to re-create complete development and test databases from source code negate the need for database backups.  This lack of need for database backups can be very difficult for DBAs to accept.
+Another contentious issue for DBAs is the backup of development and test databases.  These concerns are strongly supported by developers that consider the development database as the "gold standard" for database source code.  The ability to re-create complete development and test databases from source code negate the need for those database backups.  This lack of need for database backups can be upsetting to DBAs.
