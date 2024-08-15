@@ -1,7 +1,5 @@
 
-# Oracle DB Capture Home Page
-
-Native PL/SQL Application to Generate Source Code and Configuration Data
+ODBCapture is a native PL/SQL application that can be used to generate self-building scripts (source code and configuration data) for a database.
 
 This website is intended for user information and usage documentation.
 
