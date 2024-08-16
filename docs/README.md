@@ -5,6 +5,12 @@ This website is intended for user information and usage documentation.  Developm
 
 Click [here](Generated-Self-Build.md) for a white paper overview of generated self-build scripts for Oracle databases.
 
+* ODBCapture Installation (Coming Soon)
+* Application Configuration (Coming Soon)
+* Application Source Code Capture (Coming Soon)
+* Application Build (Coming Soon)
+* Application Source Code Audit (Coming Soon)
+
 ---
 Website formatted with [jekyll-theme-time-machine](https://github.com/pages-themes/time-machine)
 
