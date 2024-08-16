@@ -42,10 +42,14 @@ After configuration is complete, application source code capture is accomplished
 4. execute ODBCAPTURE.FH2.write_scripts('FILE_NAME.zip');
 5. Download and unzip FILE_NAME.zip.
 
+The [capture_files.sql](https://github.com/DDieterich/ODBCapture/blob/main/builds/util/capture_files.sql) SQL script can be used for source code capture if the ODBCAPTURE_INSTALLATION_LOGS table has been created and includes records for all the needed BUILD TYPES.  This SQL script runs correctly in SQL*Plus.
+
 
 ## Application Build
 
-After application source code has been captured by ODBCapture, the installation of the application is the same as the ODBCapture installation.  [Several examples](https://github.com/DDieterich/ODBCapture/tree/main/builds#build-sequence) of build scripts can be found in the "builds" folder on the main page on GitHub.  These build scripts are Linux oriented for several reasons:
+After application source code has been captured by ODBCapture, the installation of the application is the same as the ODBCapture installation.  The `install.sql` script that is captured in each BUILD_TYPE folder is the core of the installation.
+
+[Several examples](https://github.com/DDieterich/ODBCapture/tree/main/builds#build-sequence) of build scripts can be found in the "builds" folder on the main page on GitHub.  These build scripts are Linux oriented for several reasons:
 * Oracle Docker images run Linux internally.
 * Visual Source Code includes a BASH terminal that is Linux compatable.
 * Git Tools are delivered with GitBash, which is Linux compatable.
