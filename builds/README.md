@@ -1,26 +1,26 @@
 
 ### Folder Descriptions
 
-File Name              | Description
------------------------|------------
-OCI_Auto234   (Future) | Oracle Cloud 23.4 Autonomous Database
-OCI_BaseEE234 (Future) | Oracle Cloud Base 23.4 Enterprise Edition
-OCI_BaseSE234 (Future) | Oracle Cloud Base 23.4 Standard Edition
-[OnPrem_Free234]       | Oracle On-Premise 23.4 Free Database
-[OCI_Auto213]          | Oracle Cloud 21.3 Autonomous Database
-OCI_BaseEE213 (Future) | Oracle Cloud Base 21.3 Enterprise Edition
-OCI_BaseSE213 (Future) | Oracle Cloud Base 21.3 Standard Edition
-[OnPrem_EE213]         | Oracle On-Premise 21.3 Enterprise Edition
-[OnPrem_SE213]         | Oracle On-Premise 21.3 Standard Edition
-OnPrem_XE213  (Future) | Oracle On-Premise 21.3 Express Edition
-OCI_Auto193   (Future) | Oracle Cloud 19.3 Autonomous Database
-OCI_BaseEE193 (Future) | Oracle Cloud Base 19.3 Enterprise Edition
-OCI_BaseSE193 (Future) | Oracle Cloud Base 19.3 Standard Edition
-[OnPrem_EE193]         | Oracle On-Premise 19.3 Enterprise Edition
-OnPrem_SE193  (Future) | Oracle On-Premise 19.3 Standard Edition
-[OnPrem_XE184]         | Oracle On-Premise 18.4 Express Edition
-OnPrem_EE122  (Future) | Oracle On-Premise 12.2 Enterprise Edition
-OnPrem_SE122  (Future) | Oracle On-Premise 12.2 Standard Edition
+File Name       | Description
+----------------|------------
+OCI_Auto234     | (Future) Oracle Cloud 23.4 Autonomous Database
+OCI_BaseEE234   | (Future) Oracle Cloud Base 23.4 Enterprise Edition
+OCI_BaseSE234   | (Future) Oracle Cloud Base 23.4 Standard Edition
+OnPrem_Free234  |          Oracle On-Premise 23.4 Free Database
+OCI_Auto213     |          Oracle Cloud 21.3 Autonomous Database
+OCI_BaseEE213   | (Future) Oracle Cloud Base 21.3 Enterprise Edition
+OCI_BaseSE213   | (Future) Oracle Cloud Base 21.3 Standard Edition
+OnPrem_EE213    |          Oracle On-Premise 21.3 Enterprise Edition
+OnPrem_SE213    |          Oracle On-Premise 21.3 Standard Edition
+OnPrem_XE213    | (Future) Oracle On-Premise 21.3 Express Edition
+OCI_Auto193     | (Future) Oracle Cloud 19.3 Autonomous Database
+OCI_BaseEE193   | (Future) Oracle Cloud Base 19.3 Enterprise Edition
+OCI_BaseSE193   | (Future) Oracle Cloud Base 19.3 Standard Edition
+OnPrem_EE193    |          Oracle On-Premise 19.3 Enterprise Edition
+OnPrem_SE193    | (Future) Oracle On-Premise 19.3 Standard Edition
+OnPrem_XE184    |          Oracle On-Premise 18.4 Express Edition
+OnPrem_EE122    | (Future) Oracle On-Premise 12.2 Enterprise Edition
+OnPrem_SE122    | (Future) Oracle On-Premise 12.2 Standard Edition
 
 
 ## Build Results
