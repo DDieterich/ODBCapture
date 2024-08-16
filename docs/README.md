@@ -12,11 +12,6 @@ Click [here](Generated-Self-Build.md) for a white paper overview on generated se
 
 ## Application Configuration
 
-(Coming Soon)
-
-
-## Application Source Code Capture
-
 Configuring ODBCapture can be as simple as adding 2 configuration records.  More complex configurations involve installation layering, object selection/filtering, role identification, and configuration data capture.
 
 Care must be taken to preserve any ODBCapture configurations for an application.  Best practice is to create a configuration data installation layer that keeps ODBCapture configuration data separate from configuration data for a target application.
@@ -26,12 +21,26 @@ Care must be taken to preserve any ODBCapture configurations for an application.
 
 **Add record to BUILD_CONF**
 
+(Coming Soon)
+
 **Add record to SCHEMA_CONF**
+
+(Coming Soon)
 
 
 ### Advanced Configuration
 
 (Coming Soon)
+
+
+## Application Source Code Capture
+
+After configuration is complete, application source code capture is accomplished using the following steps:
+1. execute ODBCAPTURE.FH2.clear_buffers;
+2. execute ODBCAPTURE.COMMON_UTIL.update_view_tabs;
+3. execute ODBCAPTURE.GRAB_SCRIPTS.all_scripts('CONFIGURED_BUILD_TYPE');
+4. execute ODBCAPTURE.FH2.write_scripts('FILE_NAME.zip');
+5. Download and unzip FILE_NAME.zip.
 
 
 ## Application Build
