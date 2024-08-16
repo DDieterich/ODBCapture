@@ -17,6 +17,20 @@ Click [here](Generated-Self-Build.md) for a white paper overview on generated se
 
 ## Application Source Code Capture
 
+Configuring ODBCapture can be as simple as adding 2 configuration records.  More complex configurations involve installation layering, object selection/filtering, role identification, and configuration data capture.
+
+Care must be taken to preserve any ODBCapture configurations for an application.  Best practice is to create a configuration data installation layer that keeps ODBCapture configuration data separate from configuration data for a target application.
+
+
+### Simple Configuration
+
+**Add record to BUILD_CONF**
+
+**Add record to SCHEMA_CONF**
+
+
+### Advanced Configuration
+
 (Coming Soon)
 
 
@@ -33,6 +47,12 @@ After application source code has been captured by ODBCapture, the installation 
 ## Application Source Code Audit
 
 Auditing source code is a simple process.  It is described in the [Build Sequence](https://github.com/DDieterich/ODBCapture/tree/main/builds#build-sequence) listed in the "builds" folder on the main page on GitHub.  The basic idea is to capture application source code from the production database and compare it to the application source code in the source control system (ex. Git).  In the build sequence, the Linux "diff" utility is used to compare the files.
+
+
+## References
+
+* [JUnit_XML_Format.md]
+* [RAS_DBA_Columns.ods]
 
 
 ---
