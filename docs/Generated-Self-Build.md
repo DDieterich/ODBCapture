@@ -89,32 +89,32 @@ Each of these options/layers needs to be assembled in a fassion that allow the r
 
 While some development teams have created custom utilities to produce accurate and complete database source code, there is no generic tool set available  Technical limitations of commercially available tools include the requirement to use a GUI to select tables and database objects to export.
 
-* [What is a DDL Script, and Why It Is Useful](https://blog.toadworld.com/what-is-a-ddl-script-and-why-it-is-useful) (TOAD)
-    * *"The DBAs and Developers must write a script to create DDL objects ..."*
-    * *"The script execution will fail if the user who is executing the script does not have appropriate permission ..."*
-    * *"... make sure that tables are created in the proper sequence."*
-    * *"... select Tables from the Load object type drop-down box ..."*
+[What is a DDL Script, and Why It Is Useful](https://blog.toadworld.com/what-is-a-ddl-script-and-why-it-is-useful) (TOAD)
+* *"The DBAs and Developers must write a script to create DDL objects ..."*
+* *"The script execution will fail if the user who is executing the script does not have appropriate permission ..."*
+* *"... make sure that tables are created in the proper sequence."*
+* *"... select Tables from the Load object type drop-down box ..."*
 
-* [PL/SQL Developer Export User Objects](https://www.allroundautomations.com/products/pl-sql-developer/features/export-user-objects/)
-    * *"After selecting the objects you wish to export ..."*
-    * *"... include the grants of the object privileges to other users and roles ..."*
-    * *"... the output file will contain a series of calls to these object specific files."*
+[PL/SQL Developer Export User Objects](https://www.allroundautomations.com/products/pl-sql-developer/features/export-user-objects/)
+* *"After selecting the objects you wish to export ..."*
+* *"... include the grants of the object privileges to other users and roles ..."*
+* *"... the output file will contain a series of calls to these object specific files."*
 
-* [Generate DDL Script For All Tables of a Schema in SQL Developer](https://creativeme1807.wordpress.com/2019/01/17/generate-ddl-script-for-all-tables-of-a-schema-in-sql-developer/)
-    * *"... Generate DDL scripts for all tables in a schema in SQL developer, without much work."*
-    * *"Go to FILE -> DATA MODELLER -> EXPORT -> DDL FILE"*
-    * *"Select table you want to have DDL scripts"*
+[Generate DDL Script For All Tables of a Schema in SQL Developer](https://creativeme1807.wordpress.com/2019/01/17/generate-ddl-script-for-all-tables-of-a-schema-in-sql-developer/)
+* *"... Generate DDL scripts for all tables in a schema in SQL developer, without much work."*
+* *"Go to FILE -> DATA MODELLER -> EXPORT -> DDL FILE"*
+* *"Select table you want to have DDL scripts"*
 
-* [Source Control for Oracle](https://www.red-gate.com/products/source-control-for-oracle/) (Red-Gate)
-    * *"Source Control for Oracle capabilities will be merging into Flyway"*
+[Source Control for Oracle](https://www.red-gate.com/products/source-control-for-oracle/) (Red-Gate)
+* *"Source Control for Oracle capabilities will be merging into Flyway"*
 
-* [Database source control. Simplified.](https://www.dbmaestro.com/database-source-control) (DB Maestro)
-    * (Unable to get documented details on functionality or pricing)
+[Database source control. Simplified.](https://www.dbmaestro.com/database-source-control) (DB Maestro)
+* (Unable to get documented details on functionality or pricing)
 
-* [Version Control for PL SQL](https://www.youtube.com/watch?v=H4yxDVnzDtc&t=141s) (GitOra)
-    * *"(at 2:02) A lot of people confuse the management of PL/SQL source code with the management of table structures."*
-    * *"(at 2:14) ... Jova developers ... have issues managing their table structures ..."*
-    * *"(at 8:03) Does GitOra manage SQL too, like the table's data changes, does GitOra create versions of them?  No ..."*
+[Version Control for PL SQL](https://www.youtube.com/watch?v=H4yxDVnzDtc&t=141s) (GitOra)
+* *"(at 2:02) A lot of people confuse the management of PL/SQL source code with the management of table structures."*
+* *"(at 2:14) ... Jova developers ... have issues managing their table structures ..."*
+* *"(at 8:03) Does GitOra manage SQL too, like the table's data changes, does GitOra create versions of them?  No ..."*
 
 When a commercial tool is able to create them, build scripts tend to lack all the elements needed to recreate an accurate and complete database.  Also, there is no way to pre-configure these tools to generate the same set of database objects and data into the same set of build scripts without using the GUI.
 
