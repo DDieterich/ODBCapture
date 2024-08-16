@@ -41,61 +41,23 @@ This report shows the differences between the original source code from the main
 
 ## Build Sequence
 
-### build.sh
+Each folder in the "builds" folder contains a "build.sh" script.  This script executes the following sequence.
 1. Setup Variables
-2. util/build_functions.sh
-3. capture_version
-3. build_init
+2. capture_version (from build_functions.sh) - Create "version.txt" file based on Git queries
+3. build_init (from build_functions.sh) - Runs the "build_initialize.sql" script.  This either:
+    * Drops and Recreates the PDB.
+    * Drops ODBCAPTURE Schema and other cleanup.
 4. For Each Build Type
-   1. clear_log_files
-   2. run_build
-   3. If "grbtst" then RAS_Admin_ODBCTEST.racl
-   4. If "grbtsdo" then COLA_SPATIAL_IDX.tidx
-   5. run_report
-   6. move_log_files
-5. update_nonid_sequences
-6. compare_source
-
-### capture_version (from build_functions.sh)
-
-Create "version.txt" file based on Git queries
-
-### build_init (from build_functions.sh)
-
-Runs the "build_initialize.sql" script.  This either:
-* Drops and Recreates the PDB.
-* Drops ODBCAPTURE Schema and other cleanup.
-
-### clear_logs (from build_functions.sh)
-
-Remove "xml", "log", "bad", and "dsc" files
-
-### run_build (from build_functions.sh)
-
-Moves to the BUILD_TYPE folder and run the "run_build.sql" script.
-
-### RAS_Admin_ODBCTEST.racl
-
-Creates Real Application Security configurations while logged in as a specific user.
-
-### COLA_SPATIAL_IDX.tidx
-
-Creates Spatial Data Indexes while logged in as a specific user.
-
-### run_report (from build_functions.sh)
-
-Runs the "report_status.sql" script.
-
-### move_log_files (from build_functions.sh)
-
-Moves "xml", "log", "bad", and "dsc" files from root level source folders to the correct "builds" folder.
-
-### compare_source.sh
-
-This script, in coordination with the "capture_files.sql" script, performs the following:
-1. Setup Variables
-2. Run the "capture_files.sql" script.
-3. Decode the ".zip.b64" file.
-4. Unzip the ".zip" file.
-5. Use "diff" to compare source folders with unzipped folders.
-6. Use "grep" to show filenames from "diff_report.txt"
+    1. clear_log_files (from build_functions.sh) - Remove "xml", "log", "bad", and "dsc" files
+    2. run_build (from build_functions.sh) - Moves to the BUILD_TYPE folder and run the "run_build.sql" script.
+    3. If "grbtst" then RAS_Admin_ODBCTEST.racl - Creates Real Application Security configurations while logged in as a specific user.
+    4. If "grbtsdo" then COLA_SPATIAL_IDX.tidx - Creates Spatial Data Indexes while logged in as a specific user.
+    5. run_report (from build_functions.sh) - Runs the "report_status.sql" script.
+    6. move_log_files (from build_functions.sh) - Moves "xml", "log", "bad", and "dsc" files from root level source folders to the correct "builds" folder.
+6. compare_source - This script, in coordination with the "capture_files.sql" script, performs the following:
+    1. Setup Variables
+    2. Run the "capture_files.sql" script.
+    3. Decode the ".zip.b64" file.
+    4. Unzip the ".zip" file.
+    5. Use "diff" to compare source folders with unzipped folders.
+    6. Use "grep" to show filenames from "diff_report.txt"
