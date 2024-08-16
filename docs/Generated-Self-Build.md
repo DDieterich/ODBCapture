@@ -184,74 +184,74 @@ Configuration of ODBCapture is required to accomplish the needs previously descr
 
 The element configuration data should not be changed.  The internal operation of the build script generator relies on certain data items in this configuration.
 
-* ELEMENT_SEQ - The sequence these elements appear in the installation build scripts.
-* ELEMENT_NAME - An internal element designation used to generate build scripts.
-* FILE_EXT1, FILE_EXT2, FILE_EXT3 - Build script file name extensions.
-* OBJECT_TYPE - Matching database object type from DBA_OBJECTS.
+* **ELEMENT_SEQ** - The sequence these elements appear in the installation build scripts.
+* **ELEMENT_NAME** - An internal element designation used to generate build scripts.
+* **FILE_EXT1, FILE_EXT2, FILE_EXT3** - Build script file name extensions.
+* **OBJECT_TYPE** - Matching database object type from DBA_OBJECTS.
 
 
 **Build Type Configuration**
 
 At least one Build Type configuration is required to generate build scripts.  These Build Types are used to resolve dependencies between the various installation layers as needed.  It is possible for Build Types to have no relationship (not layered).
 
-* BUILD_TYPE - Name of this Build Type.
-* BUILD_SEQ -  Sequence for this Build Type.
-* BUILD_SEQ_PARENT - Parent of this Build Type.  This defines the installation layers.
+* **BUILD_TYPE** - Name of this Build Type.
+* **BUILD_SEQ** -  Sequence for this Build Type.
+* **BUILD_SEQ_PARENT** - Parent of this Build Type.  This defines the installation layers.
 
 
 **User/Schema Configuration**
 
 At least one User/Schema configuration is required to generate build scripts.  This configuration defines which database users are included in which Build Types.
 
-* USERNAME - Database username (schema name).
-* BUILD_TYPE - This is the default Build Type for this user.  By default, all user objects will be generated for this Build Type.
-* ORACLE_PROVIDED - Identifies a schema provided by Oracle.  No scripts are generated for these schema.
-* PROFILE - Default profile for this user.
-* TEMPORARY_TSPACE - Temporary tablespace to be used when creating this user (Default is 'TEMP').
-* DEFAULT_TSPACE - Default tablespace to be used when creating this user.
-* TS_QUOTA - Default tablespace quota for this user (Default is UNLIMITED).
+* **USERNAME** - Database username (schema name).
+* **BUILD_TYPE** - This is the default Build Type for this user.  By default, all user objects will be generated for this Build Type.
+* **ORACLE_PROVIDED** - Identifies a schema provided by Oracle.  No scripts are generated for these schema.
+* **PROFILE** - Default profile for this user.
+* **TEMPORARY_TSPACE** - Temporary tablespace to be used when creating this user (Default is 'TEMP').
+* **DEFAULT_TSPACE** - Default tablespace to be used when creating this user.
+* **TS_QUOTA** - Default tablespace quota for this user (Default is UNLIMITED).
 
 
 **Tablespace Quota Configuration**
 
 This configuration is used when additional Tablespace Quotas are required for a user.
 
-* USERNAME - Database username (schema name).
-* TSPACE_NAME - Name of the tablespace to add quota
-* TS_QUOTA - Size of the quota for this user and tablespace (Default is UNLIMITED).
+* **USERNAME** - Database username (schema name).
+* **TSPACE_NAME** - Name of the tablespace to add quota
+* **TS_QUOTA** - Size of the quota for this user and tablespace (Default is UNLIMITED).
 
 
 **Role Configuration**
 
 Role configuration is optional.  If the database doesn't have any roles of interest, this configration can remain empty.
 
-* ROLENAME - Name of the database role to generated build scripts.
-* BUILD_TYPE - This is the default Build Type for this role.
-* ORACLE_PROVIDED - Identifies a role provided by Oracle.  No scripts are generated for these roles.
+* **ROLENAME** - Name of the database role to generated build scripts.
+* **BUILD_TYPE** - This is the default Build Type for this role.
+* **ORACLE_PROVIDED** - Identifies a role provided by Oracle.  No scripts are generated for these roles.
 
 
 **Database Object Configuration**
 
 Database object configuration is optional.  Because all database objects are included in the default Build Type for a schema, this configuration is only necessary to move object installation to another Build Type.
 
-* BUILD_TYPE - Name of the Build Type.
-* USERNAME - Database username (schema owner).
-* ELEMENT_NAME - An internal element designation used to generate build scripts.
-* OBJECT_NAME_REGEXP - Limits which database objects to include in build scripts generated for this Build Type.  Objects that match this Regular Expression will NOT be included in the default Build Type for the user.
+* **BUILD_TYPE** - Name of the Build Type.
+* **USERNAME** - Database username (schema owner).
+* **ELEMENT_NAME** - An internal element designation used to generate build scripts.
+* **OBJECT_NAME_REGEXP** - Limits which database objects to include in build scripts generated for this Build Type.  Objects that match this Regular Expression will NOT be included in the default Build Type for the user.
 
 
 **Data Load Configuration**
 
 Data load configuration is optional.  If no data should be included in build scripts, this configuration can remain empty.
 
-* BUILD_TYPE - Name of the Build Type.
-* USERNAME - Database username.
-* TABLE_NAME - Database table/view name with the data to include in the build scripts.
-* COLUMNS_REMOVED - Any column names that match this REGEXP Filter will be removes from the Data Load
-* ORDER_BY_COLUMNS - Required list of columns that uniquely identify the data being queried.
-* WHERE_CLAUSE - The WHERE clause for the SQL SELECT statement querying this data.
-* BEFORE_SELECT_SQL - The "pre" SQL text included before of the SQL SELECT statement querying this data.
-* AFTER_ORDER_BY_SQL - The "post" SQL text included after of the SQL ORDER BY clause querying this data.
+* **BUILD_TYPE** - Name of the Build Type.
+* **USERNAME** - Database username.
+* **TABLE_NAME** - Database table/view name with the data to include in the build scripts.
+* **COLUMNS_REMOVED** - Any column names that match this REGEXP Filter will be removes from the Data Load
+* **ORDER_BY_COLUMNS** - Required list of columns that uniquely identify the data being queried.
+* **WHERE_CLAUSE** - The WHERE clause for the SQL SELECT statement querying this data.
+* **BEFORE_SELECT_SQL** - The "pre" SQL text included before of the SQL SELECT statement querying this data.
+* **AFTER_ORDER_BY_SQL** - The "post" SQL text included after of the SQL ORDER BY clause querying this data.
 
 
 ### Database Objects and Data Types
@@ -260,65 +260,69 @@ Data load configuration is optional.  If no data should be included in build scr
 
 The following lists the database object types supported by ODBCapture.
 
-* Advanced Queue
-* Advanced Queue Table
-* Context
-* Database Link
-* Database Trigger
-* Directory
-* Foreign Key (psuedo-object)
-* Grant, Database Object (psuedo-object)
-* Grant, System Privilege (psuedo-object)
-* Host ACL (psuedo object)
-* PL/SQL Function
-* Java Source
-* Index
-* Materialized View
-* Materialized View Index
-* Materialized View Foreign Key
-* Materialized View Trigger
-* Package Body
-* Package Specification
-* PL/SQL Procedure
-* RAS ACL (psuedo-object)
-* Role
-* Scheduler Job
-* Scheduler Program
-* Scheduler Schedule
-* Sequence
-* Schema Trigger
-* Synonym
-* Table
-* Table Index
-* Table Foreign Key
-* Table Trigger
-* Type Body
-* Type Specification
-* User
-* View
-* View Foreign Key
-* View Trigger
-* Wallet ACL (psuedo-object)
-* XDB ACL (psuedo-object)
+```
+Advanced Queue
+Advanced Queue Table
+Context
+Database Link
+Database Trigger
+Directory
+Foreign Key (psuedo-object)
+Grant, Database Object (psuedo-object)
+Grant, System Privilege (psuedo-object)
+Host ACL (psuedo object)
+PL/SQL Function
+Java Source
+Index
+Materialized View
+Materialized View Index
+Materialized View Foreign Key
+Materialized View Trigger
+Package Body
+Package Specification
+PL/SQL Procedure
+RAS ACL (psuedo-object)
+Role
+Scheduler Job
+Scheduler Program
+Scheduler Schedule
+Sequence
+Schema Trigger
+Synonym
+Table
+Table Index
+Table Foreign Key
+Table Trigger
+Type Body
+Type Specification
+User
+View
+View Foreign Key
+View Trigger
+Wallet ACL (psuedo-object)
+XDB ACL (psuedo-object)
+```
 
 
 **Data Types Supported**
 
 The following lists the data types supported by ODBCapture.
 
-* BLOB
-* CHAR
-* CLOB
-* DATE
-* INTERVAL_DAY_TO_SECOND
-* JSON
-* NUMBER
-* RAW
-* TIMESTAMP
-* TIMESTAMP_WITH_LOCAL_TZ
-* TIMESTAMP_WITH_TZ
-* VARCHAR2
-* XMLTYPE
+```
+BLOB
+CHAR
+CLOB
+DATE
+INTERVAL_DAY_TO_SECOND
+JSON
+NUMBER
+RAW
+TIMESTAMP
+TIMESTAMP_WITH_LOCAL_TZ
+TIMESTAMP_WITH_TZ
+VARCHAR2
+XMLTYPE
+```
 
 
 ### Build Script Specifications
