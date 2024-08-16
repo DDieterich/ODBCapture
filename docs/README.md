@@ -42,11 +42,13 @@ See the [Advanced Configuration](Advanced_Configuration.md) page for more detail
 ## Application Source Code Capture
 
 After configuration is complete, application source code capture is accomplished using the following steps:
-1. execute ODBCAPTURE.FH2.clear_buffers;
-2. execute ODBCAPTURE.COMMON_UTIL.update_view_tabs;
-3. execute ODBCAPTURE.GRAB_SCRIPTS.all_scripts('CONFIGURED_BUILD_TYPE');
-4. execute ODBCAPTURE.FH2.write_scripts('FILE_NAME.zip');
-5. Download and unzip FILE_NAME.zip.
+```
+execute ODBCAPTURE.FH2.clear_buffers;
+execute ODBCAPTURE.COMMON_UTIL.update_view_tabs;
+execute ODBCAPTURE.GRAB_SCRIPTS.all_scripts('CONFIGURED_BUILD_TYPE');
+execute ODBCAPTURE.FH2.write_scripts('FILE_NAME.zip');
+```
+Then, download and unzip FILE_NAME.zip.
 
 The [capture_files.sql](https://github.com/DDieterich/ODBCapture/blob/main/builds/util/capture_files.sql) SQL script can be used for source code capture if the ODBCAPTURE_INSTALLATION_LOGS table has been created and includes records for all the needed BUILD TYPES.  This SQL script runs correctly in SQL*Plus.
 
@@ -56,11 +58,13 @@ The [capture_files.sql](https://github.com/DDieterich/ODBCapture/blob/main/build
 After application source code has been captured by ODBCapture, the installation of the application is the same as the ODBCapture installation.  The `install.sql` script that is captured in each BUILD_TYPE folder is the core of the installation.
 
 [Several examples](https://github.com/DDieterich/ODBCapture/tree/main/builds#build-sequence) of build scripts can be found in the "builds" folder on the main page on GitHub.  These build scripts are Linux oriented for several reasons:
-* Oracle Docker images run Linux internally.
-* Visual Source Code includes a BASH terminal that is Linux compatable.
-* Git Tools are delivered with GitBash, which is Linux compatable.
-* Windows Subsystem for Linux (WSL) is Linux compatable.
-* Apple's MacOS is Linux compatable.
+```
+Oracle Docker images run Linux internally.
+Visual Source Code includes a BASH terminal that is Linux compatable.
+Git Tools are delivered with GitBash, which is Linux compatable.
+Windows Subsystem for Linux (WSL) is Linux compatable.
+Apple's MacOS is Linux compatable.
+```
 
 
 ## Application Source Code Audit
