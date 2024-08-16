@@ -77,6 +77,6 @@ Auditing source code is a simple process.  It is described in the [Build Sequenc
 
 
 ---
-Website formatted with [jekyll-theme-time-machine](https://github.com/pages-themes/time-machine)
+Website formatted with [jekyll-theme-minimal](https://github.com/pages-themes/minimal)
 
 Oracle and Java are trademarks of [Oracle Corp](https://www.oracle.com/).
