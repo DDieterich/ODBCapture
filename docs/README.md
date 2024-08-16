@@ -21,16 +21,22 @@ Care must be taken to preserve any ODBCapture configurations for an application.
 
 **Add record to BUILD_CONF**
 
-(Coming Soon)
+There are 2 columns that require data in the BUILD_CONF table:
+* **BUILD_SEQ** is the Unique Sequence of the build type
+* **BUILD_TYPE** is the Name of the build type
+
 
 **Add record to SCHEMA_CONF**
 
-(Coming Soon)
+There are 3 columns that require data in the SCHEMA_CONF table:
+* **USERNAME** is the Name of the database schema
+* **BUILD_TYPE** is the Build Type from the BUILD_CONF record above.
+* **ORACLE_PROVIDED** should always be set to 'N'
 
 
 ### Advanced Configuration
 
-(Coming Soon)
+See the [Advanced Configuration](Advanced_Configuration.md) page for more details.
 
 
 ## Application Source Code Capture
@@ -59,13 +65,13 @@ After application source code has been captured by ODBCapture, the installation 
 
 ## Application Source Code Audit
 
-Auditing source code is a simple process.  It is described in the [Build Sequence](https://github.com/DDieterich/ODBCapture/tree/main/builds#build-sequence) listed in the "builds" folder on the main page on GitHub.  The basic idea is to capture application source code from the production database and compare it to the application source code in the source control system (ex. Git).  In the build sequence, the Linux "diff" utility is used to compare the files.
+Auditing source code is a simple process.  It is described in the [Build Sequence](https://github.com/DDieterich/ODBCapture/tree/main/builds#build-sequence) listed in the "builds" folder on the main page on GitHub.  The basic idea is to capture application source code from the production database and compare it to the application source code in the source control system (ex. Git).  In the build sequence from the "builds" folder, the Linux "diff" utility is used to compare the 2 sets of files.
 
 
 ## References
 
-* [JUnit_XML_Format.md]
-* [RAS_DBA_Columns.ods]
+* [JUnit_XML_Format.md](JUnit_XML_Format.md)
+* [RAS_DBA_Columns.ods](RAS_DBA_Columns.ods)
 
 
 ---
