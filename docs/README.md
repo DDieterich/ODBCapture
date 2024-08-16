@@ -58,13 +58,11 @@ The [capture_files.sql](https://github.com/DDieterich/ODBCapture/blob/main/build
 After application source code has been captured by ODBCapture, the installation of the application is the same as the ODBCapture installation.  The `install.sql` script that is captured in each BUILD_TYPE folder is the core of the installation.
 
 [Several examples](https://github.com/DDieterich/ODBCapture/tree/main/builds#build-sequence) of build scripts can be found in the "builds" folder on the main page on GitHub.  These build scripts are Linux oriented for several reasons:
-```
-Oracle Docker images run Linux internally.
-Visual Source Code includes a BASH terminal that is Linux compatable.
-Git Tools are delivered with GitBash, which is Linux compatable.
-Windows Subsystem for Linux (WSL) is Linux compatable.
-Apple's MacOS is Linux compatable.
-```
+* Oracle Docker images run Linux internally.
+* Visual Source Code includes a BASH terminal that is Linux compatable.
+* Git Tools are delivered with GitBash, which is Linux compatable.
+* Windows Subsystem for Linux (WSL) is Linux compatable.
+* Apple's MacOS is Linux compatable.
 
 
 ## Application Source Code Audit

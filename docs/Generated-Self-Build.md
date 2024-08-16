@@ -45,7 +45,7 @@ ODBCapture uses the Oracle database to create complete database build scripts wi
 
 > Source code (also referred to as source or code) is the version of software as it is originally written (i.e., typed into a computer) by a human in plain text (i.e., human readable alphanumeric characters).
 
-[Ref: linfo.org](https://www.linfo.org/source_code.html)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Ref: linfo.org](https://www.linfo.org/source_code.html)
 
 Every Oracle database developer knows what source code looks like.  SQL, PL/SQL, and configuration data are the ongoing fee required to keep a database working well.  However, little attention is paid to accurately capturing this source code.
 
@@ -373,18 +373,21 @@ Oracle Database started with Version 2 in 1979.
 
 > In 1979, RSI introduced Oracle V2 (Version 2) as the first commercially available SQL-based RDBMS, a landmark event in the history of relational databases.
 
-[Oracle 23ai Database Documentation](https://docs.oracle.com/en/database/oracle/oracle-database/23/cncpt/introduction-to-oracle-database.html#GUID-43F9DD5C-8D8C-4E61-A2B4-5C05907D3CEC)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Ref: Oracle 23ai Database Documentation](https://docs.oracle.com/en/database/oracle/oracle-database/23/cncpt/introduction-to-oracle-database.html#GUID-43F9DD5C-8D8C-4E61-A2B4-5C05907D3CEC)
 
 Oracle Database Version 23ai current includes these [licensed offerings](https://docs.oracle.com/en/database/oracle/oracle-database/23/dblic/Licensing-Information.html#GUID-AB354617-6614-487E-A022-7FC9A5A08472).
-* Database Free - On-Premises
-* Database Standard Edition 2 on Oracle Database Appliance - On-Premises
-* Database Enterprise Edition on Engineered Systems - On-Premises
-* Base Database Service Standard Edition - OCI
-* Base Database Service Enterprise Edition - OCI
-* Base Database Service Enterprise Edition - High Performance - OCI
-* Base Database Service Enterprise Edition - Extreme Performance - OCI
-* Exadata Database Service on Dedicated Infrastructure - OCI
-* Exadata Database Service on Cloud@Customer - OCI
+
+```
+Database Free - On-Premises
+Database Standard Edition 2 on Oracle Database Appliance - On-Premises
+Database Enterprise Edition on Engineered Systems - On-Premises
+Base Database Service Standard Edition - OCI
+Base Database Service Enterprise Edition - OCI
+Base Database Service Enterprise Edition - High Performance - OCI
+Base Database Service Enterprise Edition - Extreme Performance - OCI
+Exadata Database Service on Dedicated Infrastructure - OCI
+Exadata Database Service on Cloud@Customer - OCI
+```
 
 Some care must be taken in supporting source code between these combinations of versions and offerings.
 * The oldest versions do not need to be supported.  Currently, that is considered to be 12R1 and earlier.
@@ -467,7 +470,7 @@ Possibly the biggest surprise is the push-back from the database administrators 
 
 > ..., copying production data for non-production purposes such as test and development is proliferating sensitive data, expanding the security and compliance boundary, and increasing the likelihood of data breaches.
 
-[Oracle Data Masking and Subsetting](https://docs.oracle.com/en/database/oracle/oracle-database/19/dmksb/intro.html)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Ref: Oracle Data Masking and Subsetting](https://docs.oracle.com/en/database/oracle/oracle-database/19/dmksb/intro.html)
 
 Cloning and masking can create a consistent work load for DBAs.  Implementation of complete source code and data configuration capture can be viewed and a threat to that steady work load.
 
