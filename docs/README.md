@@ -3,13 +3,37 @@ ODBCapture is a native PL/SQL application that can be used to generate self-buil
 
 This website is intended for user information and usage documentation.  Development guides and design documentation can be found in [the wiki](https://github.com/DDieterich/ODBCapture/wiki)
 
-Click [here](Generated-Self-Build.md) for a white paper overview of generated self-build scripts for Oracle databases.
+Click [here](Generated-Self-Build.md) for a white paper overview on generated self-build scripts for Oracle databases.
 
-* ODBCapture Installation (Coming Soon)
-* Application Configuration (Coming Soon)
-* Application Source Code Capture (Coming Soon)
-* Application Build (Coming Soon)
-* Application Source Code Audit (Coming Soon)
+## ODBCapture Installation
+
+[Installation instructions](https://github.com/DDieterich/ODBCapture?tab=readme-ov-file#main-odbcapture-installation) are on the main page on GitHub.  This is the same location as the "View Oracle DB Capture on GitHub" link above.
+
+
+## Application Configuration
+
+(Coming Soon)
+
+
+## Application Source Code Capture
+
+(Coming Soon)
+
+
+## Application Build
+
+After application source code has been captured by ODBCapture, the installation of the application is the same as the ODBCapture installation.  [Several examples](https://github.com/DDieterich/ODBCapture/tree/main/builds#build-sequence) of build scripts can be found in the "builds" folder on the main page on GitHub.  These build scripts are Linux oriented for several reasons:
+* Oracle Docker images run Linux internally.
+* Visual Source Code includes a BASH terminal that is Linux compatable.
+* Git Tools are delivered with GitBash, which is Linux compatable.
+* Windows Subsystem for Linux (WSL) is Linux compatable.
+* Apple's MacOS is Linux compatable.
+
+
+## Application Source Code Audit
+
+Auditing source code is a simple process.  It is described in the [Build Sequence](https://github.com/DDieterich/ODBCapture/tree/main/builds#build-sequence) listed in the "builds" folder on the main page on GitHub.  The basic idea is to capture application source code from the production database and compare it to the application source code in the source control system (ex. Git).  In the build sequence, the Linux "diff" utility is used to compare the files.
+
 
 ---
 Website formatted with [jekyll-theme-time-machine](https://github.com/pages-themes/time-machine)
