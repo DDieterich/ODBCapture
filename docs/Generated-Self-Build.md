@@ -43,7 +43,7 @@ ODBCapture uses the Oracle database to create complete database build scripts wi
 
 **What is Source Code?**
 
-*"Source code (also referred to as source or code) is the version of software as it is originally written (i.e., typed into a computer) by a human in plain text (i.e., human readable alphanumeric characters)."*
+> Source code (also referred to as source or code) is the version of software as it is originally written (i.e., typed into a computer) by a human in plain text (i.e., human readable alphanumeric characters).
 
 [Ref: linfo.org](https://www.linfo.org/source_code.html)
 
@@ -60,7 +60,7 @@ A lack of perceived importance for complete and acurate database source code has
 
 [Yalim Gerger](https://www.linkedin.com/in/yalimgerger/), Founder of Gitora, describes this situation clearly in his [Version Control for PL SQL](https://www.youtube.com/watch?v=H4yxDVnzDtc&t=141s) video (starting at 0:18).  Anecdotal evidence largely supports Yalim's experience.
 
-   *"... version control is a difficult topic to talk about in the PL/SQL community.  Most of the time, when I open this topic, people go like 'what problem, there's no problem with version control ...'"*
+> ... version control is a difficult topic to talk about in the PL/SQL community.  Most of the time, when I open this topic, people go like 'what problem, there's no problem with version control ...'
 
 
 **Define the Problem**
@@ -207,7 +207,7 @@ At least one User/Schema configuration is required to generate build scripts.  T
 * BUILD_TYPE - This is the default Build Type for this user.  By default, all user objects will be generated for this Build Type.
 * ORACLE_PROVIDED - Identifies a schema provided by Oracle.  No scripts are generated for these schema.
 * PROFILE - Default profile for this user.
-* TEMPORARY_TSPACE" - Temporary tablespace to be used when creating this user (Default is 'TEMP').
+* TEMPORARY_TSPACE - Temporary tablespace to be used when creating this user (Default is 'TEMP').
 * DEFAULT_TSPACE - Default tablespace to be used when creating this user.
 * TS_QUOTA - Default tablespace quota for this user (Default is UNLIMITED).
 
@@ -367,7 +367,7 @@ There are limitations on special characters used for build file generation.  Eac
 
 Oracle Database started with Version 2 in 1979.
 
-*"In 1979, RSI introduced Oracle V2 (Version 2) as the first commercially available SQL-based RDBMS, a landmark event in the history of relational databases."*
+> In 1979, RSI introduced Oracle V2 (Version 2) as the first commercially available SQL-based RDBMS, a landmark event in the history of relational databases.
 
 [Oracle 23ai Database Documentation](https://docs.oracle.com/en/database/oracle/oracle-database/23/cncpt/introduction-to-oracle-database.html#GUID-43F9DD5C-8D8C-4E61-A2B4-5C05907D3CEC)
 
@@ -461,7 +461,9 @@ When a shared development database is used, developers can get quite good at cre
 
 Possibly the biggest surprise is the push-back from the database administrators (DBAs).  A dialog regarding accurate and complete capture of source code and configuration data in the source code systems can alarm a DBA.  DBAs are accustomed to cloning databases and masking production data to perpare for a "development system refresh".
 
-*"..., copying production data for non-production purposes such as test and development is proliferating sensitive data, expanding the security and compliance boundary, and increasing the likelihood of data breaches."* [Oracle Data Masking and Subsetting](https://docs.oracle.com/en/database/oracle/oracle-database/19/dmksb/intro.html)
+> ..., copying production data for non-production purposes such as test and development is proliferating sensitive data, expanding the security and compliance boundary, and increasing the likelihood of data breaches.
+
+[Oracle Data Masking and Subsetting](https://docs.oracle.com/en/database/oracle/oracle-database/19/dmksb/intro.html)
 
 Cloning and masking can create a consistent work load for DBAs.  Implementation of complete source code and data configuration capture can be viewed and a threat to that steady work load.
 
