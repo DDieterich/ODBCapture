@@ -21,6 +21,7 @@ OnPrem_SE193    | (Future) Oracle On-Premise 19.3 Standard Edition
 OnPrem_XE184    |          Oracle On-Premise 18.4 Express Edition
 OnPrem_EE122    | (Future) Oracle On-Premise 12.2 Enterprise Edition
 OnPrem_SE122    | (Future) Oracle On-Premise 12.2 Standard Edition
+util            | Common utility scripts for builds.
 
 
 ## Build Results
@@ -44,9 +45,9 @@ This report shows the differences between the original source code from the main
 Each folder in the "builds" folder contains a "build.sh" script.  This script executes the following sequence.
 1. Setup Variables
 2. capture_version (from build_functions.sh) - Create "version.txt" file based on Git queries
-3. build_init (from build_functions.sh) - Runs the "build_initialize.sql" script.  This either:
-    * Drops and Recreates the PDB.
-    * Drops ODBCAPTURE Schema and other cleanup.
+3. build_init (from build_functions.sh) - Runs the "build_initialize.sql" script.  This will either:
+    * Drop and Recreate the PDB.
+    * Drop the ODBCAPTURE Schema and perform other cleanup.
 4. For Each Build Type
     1. clear_log_files (from build_functions.sh) - Remove "xml", "log", "bad", and "dsc" files
     2. run_build (from build_functions.sh) - Moves to the BUILD_TYPE folder and run the "run_build.sql" script.
@@ -54,7 +55,7 @@ Each folder in the "builds" folder contains a "build.sh" script.  This script ex
     4. If "grbtsdo" then COLA_SPATIAL_IDX.tidx - Creates Spatial Data Indexes while logged in as a specific user.
     5. run_report (from build_functions.sh) - Runs the "report_status.sql" script.
     6. move_log_files (from build_functions.sh) - Moves "xml", "log", "bad", and "dsc" files from root level source folders to the correct "builds" folder.
-6. compare_source - This script, in coordination with the "capture_files.sql" script, performs the following:
+6. compare_source.sh - This script, in coordination with the "capture_files.sql" script, performs the following:
     1. Setup Variables
     2. Run the "capture_files.sql" script.
     3. Decode the ".zip.b64" file.
