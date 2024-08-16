@@ -36,7 +36,15 @@ There are 3 columns that require data in the SCHEMA_CONF table:
 
 ### Advanced Configuration
 
-See the [Advanced Configuration](Advanced_Configuration.md) page for more details.
+Advanced configuration is entirely related to Build Script Layering.  Build Script Layering allows configuration of:
+* Basic application configuration data
+* Environment and/or test specific configuration data
+* PL/SQL for unit testing on a development database
+* Test data for unit testing on a development database
+* PL/SQL for QA testing on a QA database
+* Test data for QA testing on a QA database
+
+See the [Build Script Layering](Build_Script_Layering.md) page for more details.
 
 
 ## Application Source Code Capture
