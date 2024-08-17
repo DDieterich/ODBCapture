@@ -3,6 +3,7 @@
 
 File Name       | Status | Location     | Ver  | Description
 ----------------|--------|--------------|------|-------------
+OCI_APEX236     |        | Oracle Cloud | 23.6 | APEX Service/Instance
 OCI_Auto234     | Future | Oracle Cloud | 23.4 | Autonomous Database
 OCI_BaseEE234   | Future | Oracle Cloud | 23.4 | Base Enterprise Edition
 OCI_BaseSE234   | Future | Oracle Cloud | 23.4 | Base Standard Edition
@@ -21,7 +22,7 @@ OnPrem_SE193    | Future | On-Premise   | 19.3 | Standard Edition
 OnPrem_XE184    |        | On-Premise   | 18.4 | Express Edition
 OnPrem_EE122    | Future | On-Premise   | 12.2 | Enterprise Edition
 OnPrem_SE122    | Future | On-Premise   | 12.2 | Standard Edition
-util            |        |              |      | Common utility scripts for builds.
+util            |        |              |      | Common utility scripts for builds
 
 
 ## Build Results
@@ -40,7 +41,7 @@ The "build.log" file includes all output from the build script.  Several searche
 This report shows the differences between the original source code from the main folder and the source code captured after the build.  An empty report shows a perfect build and capture.
 
 
-## Build Sequence
+## Build Sequence[^1]
 
 Each folder in the "builds" folder contains a "build.sh" script.  This script executes the following sequence.
 1. Setup Variables
@@ -62,3 +63,5 @@ Each folder in the "builds" folder contains a "build.sh" script.  This script ex
     4. Unzip the ".zip" file.
     5. Use "diff" to compare source folders with unzipped folders.
     6. Use "grep" to show filenames from "diff_report.txt"
+
+[^1]: APEX Service/Instance does not allow Oracle client connections. All build scripts are adapted for use in APEX web pages.
