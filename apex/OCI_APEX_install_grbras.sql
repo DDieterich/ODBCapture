@@ -1,5 +1,53 @@
 
 --
+--  SYS Installation Script
+--
+--  Must be run as SYS
+--
+
+
+
+----------------------------------------
+-- SYS_GRANT Install
+
+
+
+--
+--  Future Grant SYS Objects (but not directories)
+--
+
+
+
+
+--  "SYS" Object Grants
+
+grant SELECT on "SYS"."DBA_XS_ACES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_XS_ACLS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_XS_ACL_PARAMETERS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_XS_APPLIED_POLICIES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_XS_PRINCIPALS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_XS_ROLE_GRANTS" to "ODBCAPTURE";
+
+
+
+
+----------------------------------------
+
+
+
+--
+--  SYSTEM Installation Script
+--
+--  Must be run as SYSTEM
+--
+
+
+
+----------------------------------------
+
+
+
+--
 --  grbras Installation Script
 --
 --  Must be run as a SYSTEM User (DBA)

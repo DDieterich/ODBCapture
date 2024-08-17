@@ -1,5 +1,349 @@
 
 --
+--  SYS Installation Script
+--
+--  Must be run as SYS
+--
+
+
+
+----------------------------------------
+-- ROLE Install
+
+
+--
+--  Create GRB_TEST_ROLE Role
+--
+
+
+
+create role GRB_TEST_ROLE;
+
+
+--  Current Grant of YS Objects (but not directories)
+
+
+
+----------------------------------------
+-- USER Install
+
+
+--
+--  Create ODBCTEST Schema
+--
+
+
+create user "ODBCTEST"
+   no authentication
+   profile DEFAULT
+   temporary tablespace TEMP
+   default tablespace USERS
+   quota 512M on USERS
+   ;
+
+--  Current Grant of SYS Objects (but not directories)
+
+
+-- Real Application Security System Grants
+
+
+begin
+   execute immediate 'begin' ||
+                     '  xs_admin_util.grant_system_privilege(''ADMIN_ANY_SEC_POLICY'', ''ODBCTEST''); ' ||
+                     'end;';
+exception when others then
+   if    SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_UTIL.GRANT_SYSTEM_PRIVILEGE'' must be declared%'
+     AND SQLERRM not like '%ORA-01031: insufficient privileges%'
+   then
+      raise;
+   end if;
+end;
+/
+
+begin
+   execute immediate 'begin' ||
+                     '  xs_admin_cloud_util.grant_system_privilege(''ADMIN_ANY_SEC_POLICY'', ''ODBCTEST''); ' ||
+                     'end;';
+exception when others then
+   if SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_CLOUD_UTIL.GRANT_SYSTEM_PRIVILEGE'' must be declared%'
+   then
+      raise;
+   end if;
+end;
+/
+
+
+begin
+   execute immediate 'begin' ||
+                     '  xs_admin_util.grant_system_privilege(''PROVISION'', ''ODBCTEST''); ' ||
+                     'end;';
+exception when others then
+   if    SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_UTIL.GRANT_SYSTEM_PRIVILEGE'' must be declared%'
+     AND SQLERRM not like '%ORA-01031: insufficient privileges%'
+   then
+      raise;
+   end if;
+end;
+/
+
+begin
+   execute immediate 'begin' ||
+                     '  xs_admin_cloud_util.grant_system_privilege(''PROVISION'', ''ODBCTEST''); ' ||
+                     'end;';
+exception when others then
+   if SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_CLOUD_UTIL.GRANT_SYSTEM_PRIVILEGE'' must be declared%'
+   then
+      raise;
+   end if;
+end;
+/
+
+
+
+----------------------------------------
+-- HOST_ACL Install
+
+
+--
+--  Create Host ACL/ACE
+--
+-- Host ACLs with the following:
+--    PRINCIPAL_TYPE      = 'DATABASE' (xs_acl.ptype_db)
+--    GRANT_TYPE          = 'GRANT'
+--    INVERTED_PRINICIPAL = 'NO'
+--    PRIVILEGE          is not null
+-- Start Dates and End Dates are ignored (set to NULL).
+--
+
+
+
+--
+--  Create Host ACL/ACE for host1 from port 1100 to 1101 
+--  NOTE: This is a "GRANTEE" Host ACL
+--
+
+begin
+   DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE
+      (host        => 'host1'
+      ,lower_port  => 1100
+      ,upper_port  => 1101
+      ,ace         => xs$ace_type
+                         (privilege_list   => xs$name_list('CONNECT')
+                         ,granted          => TRUE
+                         ,inverted         => FALSE
+                         ,principal_name   => 'ODBCTEST'
+                         ,principal_type   => xs_acl.ptype_db
+                         ,start_date       => NULL
+                         ,end_date         => NULL));
+end;
+/
+
+
+--
+--  Create Host ACL/ACE
+--
+-- Host ACLs with the following:
+--    PRINCIPAL_TYPE      = 'DATABASE' (xs_acl.ptype_db)
+--    GRANT_TYPE          = 'GRANT'
+--    INVERTED_PRINICIPAL = 'NO'
+--    PRIVILEGE          is not null
+-- Start Dates and End Dates are ignored (set to NULL).
+--
+
+
+
+--
+--  Create Host ACL/ACE for host2 from port NULL to NULL 
+--  NOTE: This is a "GRANTEE" Host ACL
+--
+
+begin
+   DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE
+      (host        => 'host2'
+      ,lower_port  => NULL
+      ,upper_port  => NULL
+      ,ace         => xs$ace_type
+                         (privilege_list   => xs$name_list('CONNECT')
+                         ,granted          => TRUE
+                         ,inverted         => FALSE
+                         ,principal_name   => 'ODBCTEST'
+                         ,principal_type   => xs_acl.ptype_db
+                         ,start_date       => NULL
+                         ,end_date         => NULL));
+end;
+/
+
+
+--
+--  Create Host ACL/ACE for host2 from port NULL to NULL 
+--  NOTE: This is a "GRANTEE" Host ACL
+--
+
+begin
+   DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE
+      (host        => 'host2'
+      ,ace         => xs$ace_type
+                         (privilege_list   => xs$name_list('RESOLVE')
+                         ,granted          => TRUE
+                         ,inverted         => FALSE
+                         ,principal_name   => 'ODBCTEST'
+                         ,principal_type   => xs_acl.ptype_db
+                         ,start_date       => NULL
+                         ,end_date         => NULL));
+end;
+/
+
+
+--
+--  Create Host ACL/ACE
+--
+-- Host ACLs with the following:
+--    PRINCIPAL_TYPE      = 'DATABASE' (xs_acl.ptype_db)
+--    GRANT_TYPE          = 'GRANT'
+--    INVERTED_PRINICIPAL = 'NO'
+--    PRIVILEGE          is not null
+-- Start Dates and End Dates are ignored (set to NULL).
+--
+
+
+
+--
+--  Create Host ACL/ACE for odbctest_host from port 1234 to 5678 
+--  NOTE: This is a "OBJECT_NAME_REGEXP" Host ACL
+--   (OBJECT_NAME_REGEXP: ^odbctest)
+--
+
+begin
+   DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE
+      (host        => 'odbctest_host'
+      ,lower_port  => 1234
+      ,upper_port  => 5678
+      ,ace         => xs$ace_type
+                         (privilege_list   => xs$name_list('CONNECT')
+                         ,granted          => TRUE
+                         ,inverted         => FALSE
+                         ,principal_name   => 'PUBLIC'
+                         ,principal_type   => xs_acl.ptype_db
+                         ,start_date       => NULL
+                         ,end_date         => NULL));
+end;
+/
+
+
+----------------------------------------
+-- WALLET_ACL Install
+
+
+--
+--  Create Wallet ACL/ACE
+--
+-- Wallet ACLs with the following:
+--    PRINCIPAL_TYPE      = 'DATABASE' (xs_acl.ptype_db)
+--    GRANT_TYPE          = 'GRANT'
+--    INVERTED_PRINICIPAL = 'NO'
+--    PRIVILEGE          is not null
+-- Start Dates and End Dates are ignored (set to NULL).
+--
+
+
+
+--
+--  NOTE: This is a "GRANTEE" Wallet ACL
+--
+
+begin
+   DBMS_NETWORK_ACL_ADMIN.APPEND_WALLET_ACE
+      (wallet_path => 'file:/opt/install_files/oracle_wallet'
+      ,ace         => xs$ace_type
+                         (privilege_list   => xs$name_list('USE_PASSWORDS')
+                         ,granted          => TRUE
+                         ,inverted         => FALSE
+                         ,principal_name   => 'ODBCTEST'
+                         ,principal_type   => xs_acl.ptype_db
+                         ,start_date       => NULL
+                         ,end_date         => NULL));
+end;
+/
+
+
+--
+--  Create Wallet ACL/ACE
+--
+-- Wallet ACLs with the following:
+--    PRINCIPAL_TYPE      = 'DATABASE' (xs_acl.ptype_db)
+--    GRANT_TYPE          = 'GRANT'
+--    INVERTED_PRINICIPAL = 'NO'
+--    PRIVILEGE          is not null
+-- Start Dates and End Dates are ignored (set to NULL).
+--
+
+
+
+--
+--  NOTE: This is a "GRANTEE" Wallet ACL
+--
+
+begin
+   DBMS_NETWORK_ACL_ADMIN.APPEND_WALLET_ACE
+      (wallet_path => 'file:/var\opt\install_files/oracle_wallet'
+      ,ace         => xs$ace_type
+                         (privilege_list   => xs$name_list('USE_PASSWORDS')
+                         ,granted          => TRUE
+                         ,inverted         => FALSE
+                         ,principal_name   => 'ODBCTEST'
+                         ,principal_type   => xs_acl.ptype_db
+                         ,start_date       => NULL
+                         ,end_date         => NULL));
+end;
+/
+
+
+----------------------------------------
+
+
+
+--
+--  SYSTEM Installation Script
+--
+--  Must be run as SYSTEM
+--
+
+
+
+----------------------------------------
+-- GRANT Install
+
+
+
+--
+--  Create ODBCTEST Grants
+--
+
+
+
+
+--  Database System Privileges
+
+grant CREATE PROCEDURE to "ODBCTEST";
+grant CREATE SEQUENCE to "ODBCTEST";
+grant CREATE SESSION to "ODBCTEST";
+grant CREATE TABLE to "ODBCTEST";
+
+
+--  "sys" BUILD_TYPE Role Grants
+--  "GRANTEE" (delayed) Role Grants
+--  Note: "OBJECT" Schema Object Grants are given during Role creation
+
+grant "GRB_TEST_ROLE" to "ODBCTEST" with admin option;
+
+
+
+
+----------------------------------------
+
+
+
+--
 --  grbtst Installation Script
 --
 --  Must be run as a SYSTEM User (DBA)

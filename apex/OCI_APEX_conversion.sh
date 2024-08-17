@@ -7,7 +7,10 @@ then
 fi
 INSTALL_FILE_NAME="${1}"
 
-while read buff
+cat "../${INSTALL_FILE_NAME}/install_sys.sql" \
+    "../${INSTALL_FILE_NAME}/install_SYSTEM.sql" \
+    "../${INSTALL_FILE_NAME}/install_${INSTALL_FILE_NAME}.sql" |
+   while read buff
 do
    if [ "${buff:0:9}" = '@dbi.sql ' ]
    then
@@ -25,7 +28,7 @@ do
    else
       echo "${buff}" 
    fi
-done < "../${INSTALL_FILE_NAME}/install_${INSTALL_FILE_NAME}.sql" |
-     grep -Ev -e '^(set |define |spool |prompt)' |
-     sed -e '1,$s/^[@]/--@/1' \
-     > "OCI_APEX_install_${INSTALL_FILE_NAME}.sql"
+done |
+   grep -Ev -e '^(set |define |spool |prompt)' |
+   sed -e '1,$s/^[@]/--@/1' \
+   > "OCI_APEX_install_${INSTALL_FILE_NAME}.sql"

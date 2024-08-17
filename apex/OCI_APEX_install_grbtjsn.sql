@@ -1,5 +1,29 @@
 
 --
+--  SYS Installation Script
+--
+--  Must be run as SYS
+--
+
+
+
+----------------------------------------
+
+
+
+--
+--  SYSTEM Installation Script
+--
+--  Must be run as SYSTEM
+--
+
+
+
+----------------------------------------
+
+
+
+--
 --  grbtjsn Installation Script
 --
 --  Must be run as a SYSTEM User (DBA)

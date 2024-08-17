@@ -1,5 +1,70 @@
 
 --
+--  SYS Installation Script
+--
+--  Must be run as SYS
+--
+
+
+
+----------------------------------------
+-- SYS_GRANT Install
+
+
+
+--
+--  Future Grant SYS Objects (but not directories)
+--
+
+
+
+
+--  "SYS" Object Grants
+
+grant SELECT on "SYS"."DBA_JAVA_CLASSES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_JAVA_POLICY" to "ODBCAPTURE";
+
+
+
+
+----------------------------------------
+
+
+
+--
+--  SYSTEM Installation Script
+--
+--  Must be run as SYSTEM
+--
+
+
+
+----------------------------------------
+-- GRANT Install
+
+
+
+--
+--  Create ODBCAPTURE Grants
+--
+
+
+
+
+--  "sys" BUILD_TYPE Role Grants
+--  "GRANTEE" (delayed) Role Grants
+--  Note: "OBJECT" Schema Object Grants are given during Role creation
+
+grant "JAVASYSPRIV" to "ODBCAPTURE";
+
+
+
+
+----------------------------------------
+
+
+
+--
 --  grbjava Installation Script
 --
 --  Must be run as a SYSTEM User (DBA)

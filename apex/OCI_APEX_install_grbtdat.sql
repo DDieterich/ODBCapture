@@ -1,5 +1,29 @@
 
 --
+--  SYS Installation Script
+--
+--  Must be run as SYS
+--
+
+
+
+----------------------------------------
+
+
+
+--
+--  SYSTEM Installation Script
+--
+--  Must be run as SYSTEM
+--
+
+
+
+----------------------------------------
+
+
+
+--
 --  grbtdat Installation Script
 --
 --  Must be run as a SYSTEM User (DBA)

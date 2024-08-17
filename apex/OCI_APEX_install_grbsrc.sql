@@ -1,5 +1,196 @@
 
 --
+--  SYS Installation Script
+--
+--  Must be run as SYS
+--
+
+
+
+----------------------------------------
+-- USER Install
+
+
+--
+--  Create ODBCAPTURE Schema
+--
+
+
+create user "ODBCAPTURE"
+   no authentication
+   profile DEFAULT
+   temporary tablespace TEMP
+   default tablespace USERS
+   quota 512M on USERS
+   ;
+
+--  Current Grant of SYS Objects (but not directories)
+
+grant SELECT on "SYS"."DBA_ALL_TABLES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_ASSOCIATIONS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_AUDIT_POLICIES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_AUDIT_TRAIL" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_CLUSTERS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_COL_COMMENTS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_CONSTRAINTS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_CONS_COLUMNS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_CONTEXT" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_CUBES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_CUBE_BUILD_PROCESSES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_CUBE_DIMENSIONS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_DB_LINKS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_DEPENDENCIES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_DIMENSIONS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_DIRECTORIES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_EDITIONS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_EDITION_COMMENTS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_EVALUATION_CONTEXTS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_HOST_ACES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_INDEXES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_INDEXTYPES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_INDEXTYPE_COMMENTS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_IND_COLUMNS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_IND_PARTITIONS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_IND_SUBPARTITIONS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_LIBRARIES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_LOBS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_LOB_PARTITIONS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_LOB_SUBPARTITIONS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_MEASURE_FOLDERS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_MINING_MODELS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_MVIEWS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_MVIEW_COMMENTS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_MVIEW_LOGS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_NESTED_TABLES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_OBJECTS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_OPERATORS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_OPERATOR_COMMENTS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_PDBS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_PDB_HISTORY" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_PROCEDURES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_PROFILES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_QUEUES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_QUEUE_SCHEDULES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_QUEUE_SUBSCRIBERS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_QUEUE_TABLES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_REWRITE_EQUIVALENCES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_ROLES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_ROLE_PRIVS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_RSRC_CONSUMER_GROUPS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_RSRC_PLANS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_RULES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_RULE_SETS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_SCHEDULER_CHAINS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_SCHEDULER_CREDENTIALS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_SCHEDULER_DESTS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_SCHEDULER_FILE_WATCHERS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_SCHEDULER_GROUPS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_SCHEDULER_JOBS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_SCHEDULER_JOB_CLASSES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_SCHEDULER_PROGRAMS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_SCHEDULER_PROGRAM_ARGS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_SCHEDULER_SCHEDULES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_SCHEDULER_WINDOWS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_SEQUENCES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_SOURCE" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_SUBSCR_REGISTRATIONS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_SYNONYMS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_SYS_PRIVS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_TABLES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_TAB_COLS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_TAB_COLUMNS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_TAB_COMMENTS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_TAB_IDENTITY_COLS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_TAB_PARTITIONS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_TAB_PRIVS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_TAB_SUBPARTITIONS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_TRIGGERS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_TS_QUOTAS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_TYPES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_USERS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_VIEWS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_WALLET_ACES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_XML_TABLES" to "ODBCAPTURE";
+
+-- Real Application Security System Grants
+
+
+begin
+   execute immediate 'begin' ||
+                     '  xs_admin_util.grant_system_privilege(''ADMIN_ANY_SEC_POLICY'', ''ODBCAPTURE''); ' ||
+                     'end;';
+exception when others then
+   if    SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_UTIL.GRANT_SYSTEM_PRIVILEGE'' must be declared%'
+     AND SQLERRM not like '%ORA-01031: insufficient privileges%'
+   then
+      raise;
+   end if;
+end;
+/
+
+begin
+   execute immediate 'begin' ||
+                     '  xs_admin_cloud_util.grant_system_privilege(''ADMIN_ANY_SEC_POLICY'', ''ODBCAPTURE''); ' ||
+                     'end;';
+exception when others then
+   if SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_CLOUD_UTIL.GRANT_SYSTEM_PRIVILEGE'' must be declared%'
+   then
+      raise;
+   end if;
+end;
+/
+
+
+
+----------------------------------------
+
+
+
+--
+--  SYSTEM Installation Script
+--
+--  Must be run as SYSTEM
+--
+
+
+
+----------------------------------------
+-- GRANT Install
+
+
+
+--
+--  Create ODBCAPTURE Grants
+--
+
+
+
+
+--  Database System Privileges
+
+grant CREATE ANY DIRECTORY to "ODBCAPTURE";
+grant CREATE PUBLIC SYNONYM to "ODBCAPTURE";
+grant PURGE DBA_RECYCLEBIN to "ODBCAPTURE";
+grant SELECT ANY TABLE to "ODBCAPTURE";
+grant UNLIMITED TABLESPACE to "ODBCAPTURE";
+
+
+--  "sys" BUILD_TYPE Role Grants
+--  "GRANTEE" (delayed) Role Grants
+--  Note: "OBJECT" Schema Object Grants are given during Role creation
+
+grant "CONNECT" to "ODBCAPTURE";
+grant "RESOURCE" to "ODBCAPTURE";
+grant "SELECT_CATALOG_ROLE" to "ODBCAPTURE";
+
+
+
+
+----------------------------------------
+
+
+
+--
 --  grbsrc Installation Script
 --
 --  Must be run as a SYSTEM User (DBA)
@@ -322,6 +513,8 @@ as
       ,in_max_len        in            number);
 
    ----------------------------------------------------
+
+   procedure set_installed_types;
 
    procedure all_scripts
       (in_build_type   in varchar2);
@@ -3857,6 +4050,10 @@ is
 begin
    dbms_output.put_line('Running ' || $$PLSQL_UNIT || '.update_view_tabs');
    --
+   dbms_output.put_line('');
+   grab_scripts.set_installed_types;
+   dbms_output.put_line('');
+   --
    do_it('truncate table schema_objects_tab');
    do_it('truncate table obj_install_comments_tab');
    do_it('truncate table obj_install_trigger_tab');
@@ -3939,10 +4136,13 @@ begin
    do_it('insert into schema_objects_tab (BUILD_TYPE,     OBJECT_OWNER,     ELEMENT_NAME) ' || CHR(10) ||
          'select DISTINCT                 build_type,          grantee,     element_name  ' || CHR(10) ||
          ' from priv_queue_sysprivs_view' );
-   -- The PRIV_OBJ_RACL_VIEW View might not be available, causing the following to throw an excepttion
-   do_it('insert into schema_objects_tab (BUILD_TYPE,     OBJECT_OWNER,     ELEMENT_NAME) ' || CHR(10) ||
-         'select DISTINCT                 build_type,            owner,     element_name  ' || CHR(10) ||
-         ' from priv_obj_racl_view' );
+   --
+   if grab_scripts.installed_types_aa.EXISTS('grbras')
+   then
+      do_it('insert into schema_objects_tab (BUILD_TYPE,     OBJECT_OWNER,     ELEMENT_NAME) ' || CHR(10) ||
+            'select DISTINCT                 build_type,            owner,     element_name  ' || CHR(10) ||
+            ' from priv_obj_racl_view' );
+   end if;
    --
    commit;
    --
@@ -8549,6 +8749,7 @@ begin
    then
       raise_application_error(-20000, 'Unable to find "grbsrc" in odbcapture_installation_log');
    end if;
+   dbms_output.put_line($$PLSQL_UNIT || '.set_installed_types: ' || installed_types_aa.COUNT || ' Build Types in ODBCAPTURE_INSTALLATION_LOG');
 exception when table_does_not_exist then
    null;
 end set_installed_types;
@@ -8586,7 +8787,6 @@ begin
    g_build_type   := null;
    g_schema_name    := null;
    -- Set Globals
-   set_installed_types;
    set_build_type;
    if fh2.sf_aa.EXISTS(g_build_type) then fh2.sf_aa(g_build_type).DELETE; end if;
    --  Checks and Settings
