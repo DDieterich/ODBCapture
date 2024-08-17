@@ -1,6 +1,6 @@
 [Home](README.md)
 
-# Oracle DB Capture
+# Generating Self-Build Scripts
 
 Native PL/SQL Application to Generate Source Code and Configuration Data
 
