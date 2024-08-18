@@ -51,3 +51,16 @@ Run OCI_APEX_conversion.sh
 ### Installation
 
 Repeat the above steps for OCI_APEX_install_grbsrc.sql
+
+
+### Notes
+
+```
+The only configuration commands that persist during a session in Database Actions are:
+
+SET DEF[INE] <ON|OFF|prefix_character>
+SET ESC[APE] <ON|OFF|escape_character>
+SET TIMI[NG] <ON|OFF>
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Ref: Using Guide for Oracle Cloud](https://docs.oracle.com/en/database/oracle/sql-developer-web/sdwad/sql-page.html#GUID-3B651F54-DE41-42BD-B643-19741A25213A
