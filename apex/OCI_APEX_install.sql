@@ -1,4 +1,6 @@
-set define off
+
+prompt Converted/Consolidated SQL Script for APEX Instance on OCI
+
 
 --
 --  SYS Installation Script
@@ -7,15 +9,19 @@ set define off
 --
 
 
+set blockterminator off
+set sqlblanklines on
 
 ----------------------------------------
 -- USER Install
 
+prompt grbsrc SYS/ODBCAPTURE.user
 
 --
 --  Create ODBCAPTURE Schema
 --
 
+set define off
 
 create user "ODBCAPTURE"
    no authentication
@@ -116,6 +122,7 @@ grant SELECT on "SYS"."DBA_XML_TABLES" to "ODBCAPTURE";
 -- Real Application Security System Grants
 
 
+prompt XS Admin Grant "ADMIN_ANY_SEC_POLICY" to "ODBCAPTURE"
 begin
    execute immediate 'begin' ||
                      '  xs_admin_util.grant_system_privilege(''ADMIN_ANY_SEC_POLICY'', ''ODBCAPTURE''); ' ||
@@ -129,6 +136,7 @@ exception when others then
 end;
 /
 
+prompt XS Admin Cloud Grant "ADMIN_ANY_SEC_POLICY" to "ODBCAPTURE"
 begin
    execute immediate 'begin' ||
                      '  xs_admin_cloud_util.grant_system_privilege(''ADMIN_ANY_SEC_POLICY'', ''ODBCAPTURE''); ' ||
@@ -142,8 +150,11 @@ end;
 /
 
 
+set define on
 
 ----------------------------------------
+set sqlblanklines off
+set blockterminator on
 
 
 
@@ -154,16 +165,20 @@ end;
 --
 
 
+set blockterminator off
+set sqlblanklines on
 
 ----------------------------------------
 -- GRANT Install
 
+prompt grbsrc SYSTEM/ODBCAPTURE_usr.grnt
 
 
 --
 --  Create ODBCAPTURE Grants
 --
 
+set define off
 
 
 
@@ -185,9 +200,12 @@ grant "RESOURCE" to "ODBCAPTURE";
 grant "SELECT_CATALOG_ROLE" to "ODBCAPTURE";
 
 
+set define on
 
 
 ----------------------------------------
+set sqlblanklines off
+set blockterminator on
 
 
 
@@ -204,18 +222,25 @@ grant "SELECT_CATALOG_ROLE" to "ODBCAPTURE";
 --
 
 
+define INSTALL_SYSTEM_CONNECT="&1."
 
 -- For Oracle Change Data Capture (CDC) packages
+set sqlprefix "~"
 
 -- Escape character: "^P", CHR(16), DLE
+set escape OFF
+set escape ""
 
 ----------------------------------------
 --  Prepare for Install
+prompt grbsrc ./installation_prepare.sql
 
 --
 --  Prepare for View Install
 --
 
+prompt
+prompt Create Temp Publicly Updateable Table
 create table TEMP_PUBLICLY_UPDATEABLE_TABLE (c1 number);
 grant all on TEMP_PUBLICLY_UPDATEABLE_TABLE to PUBLIC with grant option;
 create public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE for TEMP_PUBLICLY_UPDATEABLE_TABLE;
@@ -224,11 +249,13 @@ create public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE for TEMP_PUBLICLY_UPDATEABL
 ----------------------------------------
 -- PACKAGE Install
 
+prompt grbsrc ODBCAPTURE/COMMON_UTIL.pkssql
 
 --
 --  Create ODBCAPTURE.COMMON_UTIL Package
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.COMMON_UTIL
@@ -306,11 +333,14 @@ end common_util;
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/FH2.pkssql
 
 --
 --  Create ODBCAPTURE.FH2 Package
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.FH2
@@ -423,11 +453,14 @@ end fh2;
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/GRAB_SCRIPTS.pkssql
 
 --
 --  Create ODBCAPTURE.GRAB_SCRIPTS Package
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.GRAB_SCRIPTS
@@ -533,11 +566,14 @@ end grab_scripts;
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/ROOT_SCRIPTS.pkssql
 
 --
 --  Create ODBCAPTURE.ROOT_SCRIPTS Package
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.ROOT_SCRIPTS
@@ -592,11 +628,14 @@ end root_scripts;
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/ZIP_UTIL_PKG.pkssql
 
 --
 --  Create ODBCAPTURE.ZIP_UTIL_PKG Package
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.ZIP_UTIL_PKG
@@ -675,15 +714,18 @@ end zip_util_pkg;
 --  Synonyms
 
 
+set define on
 
 ----------------------------------------
 -- TABLE Install
 
+prompt grbsrc ODBCAPTURE/BUILD_CONF.tbl
 
 --
 --  Create ODBCAPTURE.BUILD_CONF Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.BUILD_CONF
@@ -714,11 +756,14 @@ ALTER TABLE "ODBCAPTURE"."BUILD_CONF" ADD CONSTRAINT "BUILD_CONF_NK1" UNIQUE ("B
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/BUILD_PATH.tbl
 
 --
 --  Create ODBCAPTURE.BUILD_PATH Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.BUILD_PATH
@@ -746,11 +791,14 @@ ALTER TABLE "ODBCAPTURE"."BUILD_PATH" ADD CONSTRAINT "BUILD_PATH_CK1" CHECK (par
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/BUILD_TYPE_TIMING.tbl
 
 --
 --  Create ODBCAPTURE.BUILD_TYPE_TIMING Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.BUILD_TYPE_TIMING
@@ -777,11 +825,14 @@ ALTER TABLE "ODBCAPTURE"."BUILD_PATH" ADD CONSTRAINT "BUILD_PATH_CK1" CHECK (par
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/DBA_DEPENDENCIES_TAB.tbl
 
 --
 --  Create ODBCAPTURE.DBA_DEPENDENCIES_TAB Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.DBA_DEPENDENCIES_TAB
@@ -810,11 +861,14 @@ ALTER TABLE "ODBCAPTURE"."BUILD_PATH" ADD CONSTRAINT "BUILD_PATH_CK1" CHECK (par
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/DBA_OBJECTS_TAB.tbl
 
 --
 --  Create ODBCAPTURE.DBA_OBJECTS_TAB Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.DBA_OBJECTS_TAB
@@ -839,11 +893,14 @@ ALTER TABLE "ODBCAPTURE"."BUILD_PATH" ADD CONSTRAINT "BUILD_PATH_CK1" CHECK (par
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/DBA_TAB_PRIVS_TAB.tbl
 
 --
 --  Create ODBCAPTURE.DBA_TAB_PRIVS_TAB Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.DBA_TAB_PRIVS_TAB
@@ -874,11 +931,14 @@ ALTER TABLE "ODBCAPTURE"."BUILD_PATH" ADD CONSTRAINT "BUILD_PATH_CK1" CHECK (par
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/DLOAD_CONF.tbl
 
 --
 --  Create ODBCAPTURE.DLOAD_CONF Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.DLOAD_CONF
@@ -919,11 +979,14 @@ ALTER TABLE "ODBCAPTURE"."DLOAD_CONF" ADD CONSTRAINT "DLOAD_CONF_PK" PRIMARY KEY
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/ELEMENT_CONF.tbl
 
 --
 --  Create ODBCAPTURE.ELEMENT_CONF Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.ELEMENT_CONF
@@ -964,11 +1027,14 @@ ALTER TABLE "ODBCAPTURE"."ELEMENT_CONF" ADD CONSTRAINT "ELEMENT_CONF_UK1" UNIQUE
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl
 
 --
 --  Create ODBCAPTURE.METADATA_TRANSFORM_PARAMS Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.METADATA_TRANSFORM_PARAMS
@@ -998,11 +1064,14 @@ ALTER TABLE "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" ADD CONSTRAINT "METADATA_TR
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJECT_CONF.tbl
 
 --
 --  Create ODBCAPTURE.OBJECT_CONF Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.OBJECT_CONF
@@ -1036,11 +1105,14 @@ ALTER TABLE "ODBCAPTURE"."OBJECT_CONF" ADD CONSTRAINT "OBJECT_CONF_CK1" CHECK (e
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tbl
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_COMMENTS_TAB Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.OBJ_INSTALL_COMMENTS_TAB
@@ -1068,11 +1140,14 @@ ALTER TABLE "ODBCAPTURE"."OBJECT_CONF" ADD CONSTRAINT "OBJECT_CONF_CK1" CHECK (e
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tbl
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_CONTEXT_TAB Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.OBJ_INSTALL_CONTEXT_TAB
@@ -1107,11 +1182,14 @@ ALTER TABLE "ODBCAPTURE"."OBJECT_CONF" ADD CONSTRAINT "OBJECT_CONF_CK1" CHECK (e
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tbl
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_DATA_LOAD_TAB Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.OBJ_INSTALL_DATA_LOAD_TAB
@@ -1147,11 +1225,14 @@ ALTER TABLE "ODBCAPTURE"."OBJECT_CONF" ADD CONSTRAINT "OBJECT_CONF_CK1" CHECK (e
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tbl
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_FKEY_TAB Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.OBJ_INSTALL_FKEY_TAB
@@ -1189,11 +1270,14 @@ ALTER TABLE "ODBCAPTURE"."OBJECT_CONF" ADD CONSTRAINT "OBJECT_CONF_CK1" CHECK (e
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tbl
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_INDEX_TAB Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.OBJ_INSTALL_INDEX_TAB
@@ -1232,11 +1316,14 @@ ALTER TABLE "ODBCAPTURE"."OBJECT_CONF" ADD CONSTRAINT "OBJECT_CONF_CK1" CHECK (e
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tbl
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_OBJECT_TAB Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.OBJ_INSTALL_OBJECT_TAB
@@ -1267,11 +1354,14 @@ ALTER TABLE "ODBCAPTURE"."OBJECT_CONF" ADD CONSTRAINT "OBJECT_CONF_CK1" CHECK (e
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tbl
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_SYNONYM_TAB Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.OBJ_INSTALL_SYNONYM_TAB
@@ -1307,11 +1397,14 @@ ALTER TABLE "ODBCAPTURE"."OBJECT_CONF" ADD CONSTRAINT "OBJECT_CONF_CK1" CHECK (e
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tbl
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_TRIGGER_TAB Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.OBJ_INSTALL_TRIGGER_TAB
@@ -1346,11 +1439,14 @@ ALTER TABLE "ODBCAPTURE"."OBJECT_CONF" ADD CONSTRAINT "OBJECT_CONF_CK1" CHECK (e
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/ROLE_CONF.tbl
 
 --
 --  Create ODBCAPTURE.ROLE_CONF Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.ROLE_CONF
@@ -1382,11 +1478,14 @@ ALTER TABLE "ODBCAPTURE"."ROLE_CONF" ADD CONSTRAINT "ROLE_CONF_CK1" CHECK ("ORAC
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/SCHEMA_CONF.tbl
 
 --
 --  Create ODBCAPTURE.SCHEMA_CONF Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.SCHEMA_CONF
@@ -1427,11 +1526,14 @@ ALTER TABLE "ODBCAPTURE"."SCHEMA_CONF" ADD CONSTRAINT "SCHEMA_CONF_CK2" CHECK (o
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl
 
 --
 --  Create ODBCAPTURE.SCHEMA_OBJECTS_TAB Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.SCHEMA_OBJECTS_TAB
@@ -1454,11 +1556,14 @@ ALTER TABLE "ODBCAPTURE"."SCHEMA_CONF" ADD CONSTRAINT "SCHEMA_CONF_CK2" CHECK (o
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/TSPACE_CONF.tbl
 
 --
 --  Create ODBCAPTURE.TSPACE_CONF Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.TSPACE_CONF
@@ -1487,11 +1592,14 @@ ALTER TABLE "ODBCAPTURE"."TSPACE_CONF" ADD CONSTRAINT "TSPACE_CONF_PK" PRIMARY K
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/ZIP_FILES.tbl
 
 --
 --  Create ODBCAPTURE.ZIP_FILES Table
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.ZIP_FILES
@@ -1516,54 +1624,57 @@ ALTER TABLE "ODBCAPTURE"."ZIP_FILES" ADD CONSTRAINT "ZIP_FILES_PK" PRIMARY KEY (
 --  Synonyms
 
 
+set define on
 
 ----------------------------------------
 -- DATA_LOAD Install
 
 
-------------------------------------------------------------
-NOTE: DATA LOADING for "ODBCAPTURE/BUILD_CONF.cldr" NOT IMPLEMENTED
-------------------------------------------------------------
+prompt ------------------------------------------------------------
+prompt NOTE: DATA LOADING for "ODBCAPTURE/BUILD_CONF.cldr" NOT IMPLEMENTED
+prompt ------------------------------------------------------------
 
 
-------------------------------------------------------------
-NOTE: DATA LOADING for "ODBCAPTURE/BUILD_PATH.cldr" NOT IMPLEMENTED
-------------------------------------------------------------
+prompt ------------------------------------------------------------
+prompt NOTE: DATA LOADING for "ODBCAPTURE/BUILD_PATH.cldr" NOT IMPLEMENTED
+prompt ------------------------------------------------------------
 
 
-------------------------------------------------------------
-NOTE: DATA LOADING for "ODBCAPTURE/ELEMENT_CONF.cldr" NOT IMPLEMENTED
-------------------------------------------------------------
+prompt ------------------------------------------------------------
+prompt NOTE: DATA LOADING for "ODBCAPTURE/ELEMENT_CONF.cldr" NOT IMPLEMENTED
+prompt ------------------------------------------------------------
 
 
-------------------------------------------------------------
-NOTE: DATA LOADING for "ODBCAPTURE/METADATA_TRANSFORM_PARAMS.cldr" NOT IMPLEMENTED
-------------------------------------------------------------
+prompt ------------------------------------------------------------
+prompt NOTE: DATA LOADING for "ODBCAPTURE/METADATA_TRANSFORM_PARAMS.cldr" NOT IMPLEMENTED
+prompt ------------------------------------------------------------
 
 
-------------------------------------------------------------
-NOTE: DATA LOADING for "ODBCAPTURE/ROLE_CONF.cldr" NOT IMPLEMENTED
-------------------------------------------------------------
+prompt ------------------------------------------------------------
+prompt NOTE: DATA LOADING for "ODBCAPTURE/ROLE_CONF.cldr" NOT IMPLEMENTED
+prompt ------------------------------------------------------------
 
 
-------------------------------------------------------------
-NOTE: DATA LOADING for "ODBCAPTURE/SCHEMA_CONF.cldr" NOT IMPLEMENTED
-------------------------------------------------------------
+prompt ------------------------------------------------------------
+prompt NOTE: DATA LOADING for "ODBCAPTURE/SCHEMA_CONF.cldr" NOT IMPLEMENTED
+prompt ------------------------------------------------------------
 
 
-------------------------------------------------------------
-NOTE: DATA LOADING for "ODBCAPTURE/TSPACE_CONF.cldr" NOT IMPLEMENTED
-------------------------------------------------------------
+prompt ------------------------------------------------------------
+prompt NOTE: DATA LOADING for "ODBCAPTURE/TSPACE_CONF.cldr" NOT IMPLEMENTED
+prompt ------------------------------------------------------------
 
 
 ----------------------------------------
 -- INDEX Install
 
+prompt grbsrc ODBCAPTURE/DBA_DEPENDENCIES_TAB.tidx
 
 --
 --  Create Indexes for ODBCAPTURE.DBA_DEPENDENCIES_TAB TABLE
 --
 
+set define off
 
 
 --  NOTE: This is a "INDEX" Index
@@ -1580,11 +1691,14 @@ NOTE: DATA LOADING for "ODBCAPTURE/TSPACE_CONF.cldr" NOT IMPLEMENTED
   CREATE INDEX "ODBCAPTURE"."DBA_DEPENDENCIES_TAB_IX1" ON "ODBCAPTURE"."DBA_DEPENDENCIES_TAB" ("OBJECT_OWNER_BUILD_TYPE", "OBJECT_OWNER", "OBJECT_NAME") 
   ;
 
+set define on
+prompt grbsrc ODBCAPTURE/DBA_OBJECTS_TAB.tidx
 
 --
 --  Create Indexes for ODBCAPTURE.DBA_OBJECTS_TAB TABLE
 --
 
+set define off
 
 
 --  NOTE: This is a "INDEX" Index
@@ -1594,11 +1708,14 @@ NOTE: DATA LOADING for "ODBCAPTURE/TSPACE_CONF.cldr" NOT IMPLEMENTED
   CREATE INDEX "ODBCAPTURE"."DBA_OBJECTS_TAB_IX1" ON "ODBCAPTURE"."DBA_OBJECTS_TAB" ("OBJECT_OWNER_BUILD_TYPE", "OBJECT_OWNER", "OBJECT_NAME") 
   ;
 
+set define on
+prompt grbsrc ODBCAPTURE/DBA_TAB_PRIVS_TAB.tidx
 
 --
 --  Create Indexes for ODBCAPTURE.DBA_TAB_PRIVS_TAB TABLE
 --
 
+set define off
 
 
 --  NOTE: This is a "INDEX" Index
@@ -1608,11 +1725,14 @@ NOTE: DATA LOADING for "ODBCAPTURE/TSPACE_CONF.cldr" NOT IMPLEMENTED
   CREATE INDEX "ODBCAPTURE"."DBA_TAB_PRIVS_TAB_IX1" ON "ODBCAPTURE"."DBA_TAB_PRIVS_TAB" ("OBJECT_OWNER_BUILD_TYPE", "OBJECT_OWNER", "OBJECT_NAME") 
   ;
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tidx
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_COMMENTS_TAB TABLE
 --
 
+set define off
 
 
 --  NOTE: This is a "INDEX" Index
@@ -1622,11 +1742,14 @@ NOTE: DATA LOADING for "ODBCAPTURE/TSPACE_CONF.cldr" NOT IMPLEMENTED
   CREATE INDEX "ODBCAPTURE"."OBJ_INSTALL_COMMENTS_TAB_IX1" ON "ODBCAPTURE"."OBJ_INSTALL_COMMENTS_TAB" ("BUILD_TYPE", "TABLE_OWNER", "TABLE_NAME") 
   ;
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tidx
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_CONTEXT_TAB TABLE
 --
 
+set define off
 
 
 --  NOTE: This is a "INDEX" Index
@@ -1636,11 +1759,14 @@ NOTE: DATA LOADING for "ODBCAPTURE/TSPACE_CONF.cldr" NOT IMPLEMENTED
   CREATE INDEX "ODBCAPTURE"."OBJ_INSTALL_CONTEXT_TAB_IX1" ON "ODBCAPTURE"."OBJ_INSTALL_CONTEXT_TAB" ("BUILD_TYPE", "CONTEXT_OWNER", "CONTEXT_NAME") 
   ;
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tidx
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_DATA_LOAD_TAB TABLE
 --
 
+set define off
 
 
 --  NOTE: This is a "INDEX" Index
@@ -1650,11 +1776,14 @@ NOTE: DATA LOADING for "ODBCAPTURE/TSPACE_CONF.cldr" NOT IMPLEMENTED
   CREATE INDEX "ODBCAPTURE"."OBJ_INSTALL_DATA_LOAD_TAB_IX1" ON "ODBCAPTURE"."OBJ_INSTALL_DATA_LOAD_TAB" ("BUILD_TYPE", "TABLE_OWNER", "TABLE_NAME") 
   ;
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tidx
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_FKEY_TAB TABLE
 --
 
+set define off
 
 
 --  NOTE: This is a "INDEX" Index
@@ -1664,11 +1793,14 @@ NOTE: DATA LOADING for "ODBCAPTURE/TSPACE_CONF.cldr" NOT IMPLEMENTED
   CREATE INDEX "ODBCAPTURE"."OBJ_INSTALL_FKEY_TAB_IX1" ON "ODBCAPTURE"."OBJ_INSTALL_FKEY_TAB" ("BUILD_TYPE", "BASE_TABLE_OWNER", "FOREIGN_KEY_NAME") 
   ;
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tidx
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_INDEX_TAB TABLE
 --
 
+set define off
 
 
 --  NOTE: This is a "INDEX" Index
@@ -1678,11 +1810,14 @@ NOTE: DATA LOADING for "ODBCAPTURE/TSPACE_CONF.cldr" NOT IMPLEMENTED
   CREATE INDEX "ODBCAPTURE"."OBJ_INSTALL_INDEX_TAB_IX1" ON "ODBCAPTURE"."OBJ_INSTALL_INDEX_TAB" ("BUILD_TYPE", "TABLE_OWNER", "TABLE_NAME") 
   ;
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tidx
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_OBJECT_TAB TABLE
 --
 
+set define off
 
 
 --  NOTE: This is a "INDEX" Index
@@ -1692,11 +1827,14 @@ NOTE: DATA LOADING for "ODBCAPTURE/TSPACE_CONF.cldr" NOT IMPLEMENTED
   CREATE INDEX "ODBCAPTURE"."OBJ_INSTALL_OBJECT_TAB_IX1" ON "ODBCAPTURE"."OBJ_INSTALL_OBJECT_TAB" ("BUILD_TYPE", "OBJECT_OWNER", "OBJECT_NAME") 
   ;
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tidx
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_SYNONYM_TAB TABLE
 --
 
+set define off
 
 
 --  NOTE: This is a "INDEX" Index
@@ -1713,11 +1851,14 @@ NOTE: DATA LOADING for "ODBCAPTURE/TSPACE_CONF.cldr" NOT IMPLEMENTED
   CREATE INDEX "ODBCAPTURE"."OBJ_INSTALL_SYNONYM_TAB_IX2" ON "ODBCAPTURE"."OBJ_INSTALL_SYNONYM_TAB" ("BUILD_TYPE", "TARGET_OWNER", "TARGET_NAME") 
   ;
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tidx
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_TRIGGER_TAB TABLE
 --
 
+set define off
 
 
 --  NOTE: This is a "INDEX" Index
@@ -1734,15 +1875,18 @@ NOTE: DATA LOADING for "ODBCAPTURE/TSPACE_CONF.cldr" NOT IMPLEMENTED
   CREATE INDEX "ODBCAPTURE"."OBJ_INSTALL_TRIGGER_TAB_IX2" ON "ODBCAPTURE"."OBJ_INSTALL_TRIGGER_TAB" ("BUILD_TYPE", "TARGET_OWNER", "TARGET_NAME") 
   ;
 
+set define on
 
 ----------------------------------------
 -- VIEW Install
 
+prompt grbsrc ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw
 
 --
 --  Create ODBCAPTURE.AQ_SYSTEM_PRIVS_VW view
 --
 
+set define off
 
 
 --
@@ -1783,11 +1927,14 @@ create view "ODBCAPTURE"."AQ_SYSTEM_PRIVS_VW"
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/BUILD_PATH_REVIEW.vw
 
 --
 --  Create ODBCAPTURE.BUILD_PATH_REVIEW view
 --
 
+set define off
 
 
 --
@@ -1837,11 +1984,14 @@ select NULL                  parent_build_seq
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw
 
 --
 --  Create ODBCAPTURE.DBA_DEPENDENCIES_VIEW view
 --
 
+set define off
 
 
 --
@@ -1886,11 +2036,14 @@ create view "ODBCAPTURE"."DBA_DEPENDENCIES_VIEW"
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/DBA_OBJECTS_VIEW.vw
 
 --
 --  Create ODBCAPTURE.DBA_OBJECTS_VIEW view
 --
 
+set define off
 
 
 --
@@ -2006,11 +2159,14 @@ select sco.build_type            OBJECT_OWNER_BUILD_TYPE
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw
 
 --
 --  Create ODBCAPTURE.DBA_TAB_PRIVS_VIEW view
 --
 
+set define off
 
 
 --
@@ -2064,11 +2220,14 @@ create view "ODBCAPTURE"."DBA_TAB_PRIVS_VIEW"
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_COMMENTS_VIEW view
 --
 
+set define off
 
 
 --
@@ -2135,11 +2294,14 @@ select d.build_type
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_CONTEXT_VIEW view
 --
 
+set define off
 
 
 --
@@ -2197,11 +2359,14 @@ create view "ODBCAPTURE"."OBJ_INSTALL_CONTEXT_VIEW"
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_DATA_LOAD_VIEW view
 --
 
+set define off
 
 
 --
@@ -2256,11 +2421,14 @@ create view "ODBCAPTURE"."OBJ_INSTALL_DATA_LOAD_VIEW"
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_FKEY_VIEW view
 --
 
+set define off
 
 
 --
@@ -2342,11 +2510,14 @@ create view "ODBCAPTURE"."OBJ_INSTALL_FKEY_VIEW"
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_INDEX_VIEW view
 --
 
+set define off
 
 
 --
@@ -2419,11 +2590,14 @@ create view "ODBCAPTURE"."OBJ_INSTALL_INDEX_VIEW"
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_OBJECT_VIEW view
 --
 
+set define off
 
 
 --
@@ -2562,11 +2736,14 @@ select "BUILD_TYPE","BUILD_TIMING","OBJECT_NAME_REGEXP","OBJECT_OWNER_BUILD_TYPE
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_SYNONYM_VIEW view
 --
 
+set define off
 
 
 --
@@ -2639,11 +2816,14 @@ create view "ODBCAPTURE"."OBJ_INSTALL_SYNONYM_VIEW"
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_TRIGGER_VIEW view
 --
 
+set define off
 
 
 --
@@ -2718,11 +2898,14 @@ create view "ODBCAPTURE"."OBJ_INSTALL_TRIGGER_VIEW"
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw
 
 --
 --  Create ODBCAPTURE.PRIV_OBJ_DIR_VIEW view
 --
 
+set define off
 
 
 --
@@ -2829,11 +3012,14 @@ select "BUILD_TYPE","BUILD_TIMING","OBJECT_NAME_REGEXP","DIRECTORY_BUILD_TYPE","
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw
 
 --
 --  Create ODBCAPTURE.PRIV_OBJ_HACL_VIEW view
 --
 
+set define off
 
 
 --
@@ -2955,11 +3141,14 @@ select "BUILD_TYPE","BUILD_TIMING","BUILD_TYPE_SELECTOR","OBJECT_NAME_REGEXP","H
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw
 
 --
 --  Create ODBCAPTURE.PRIV_OBJ_INSTALL_VW view
 --
 
+set define off
 
 
 --
@@ -3034,11 +3223,14 @@ create view "ODBCAPTURE"."PRIV_OBJ_INSTALL_VW"
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw
 
 --
 --  Create ODBCAPTURE.PRIV_OBJ_QUEUE_VIEW view
 --
 
+set define off
 
 
 --
@@ -3119,11 +3311,14 @@ create view "ODBCAPTURE"."PRIV_OBJ_QUEUE_VIEW"
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw
 
 --
 --  Create ODBCAPTURE.PRIV_OBJ_WACL_VIEW view
 --
 
+set define off
 
 
 --
@@ -3243,11 +3438,14 @@ select "BUILD_TYPE","BUILD_TIMING","BUILD_TYPE_SELECTOR","OBJECT_NAME_REGEXP","W
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw
 
 --
 --  Create ODBCAPTURE.PRIV_QUEUE_REGISTER_VIEW view
 --
 
+set define off
 
 
 --
@@ -3326,11 +3524,14 @@ create view "ODBCAPTURE"."PRIV_QUEUE_REGISTER_VIEW"
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw
 
 --
 --  Create ODBCAPTURE.PRIV_QUEUE_SUBSCRIBE_VIEW view
 --
 
+set define off
 
 
 --
@@ -3396,11 +3597,14 @@ create view "ODBCAPTURE"."PRIV_QUEUE_SUBSCRIBE_VIEW"
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw
 
 --
 --  Create ODBCAPTURE.PRIV_QUEUE_SYSPRIVS_VIEW view
 --
 
+set define off
 
 
 --
@@ -3468,11 +3672,14 @@ create view "ODBCAPTURE"."PRIV_QUEUE_SYSPRIVS_VIEW"
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw
 
 --
 --  Create ODBCAPTURE.PRIV_ROLE_PRIVILEGES_VIEW view
 --
 
+set define off
 
 
 --
@@ -3574,11 +3781,14 @@ UNION ALL
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw
 
 --
 --  Create ODBCAPTURE.PRIV_SYSOBJ_PRIVILEGES_VIEW view
 --
 
+set define off
 
 
 --
@@ -3645,11 +3855,14 @@ create view "ODBCAPTURE"."PRIV_SYSOBJ_PRIVILEGES_VIEW"
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw
 
 --
 --  Create ODBCAPTURE.PRIV_SYSTEM_PRIVILEGES_VIEW view
 --
 
+set define off
 
 
 --
@@ -3710,11 +3923,14 @@ create view "ODBCAPTURE"."PRIV_SYSTEM_PRIVILEGES_VIEW"
 --  Synonyms
 
 
+set define on
+prompt grbsrc ODBCAPTURE/UOR_INSTALL_VIEW.vw
 
 --
 --  Create ODBCAPTURE.UOR_INSTALL_VIEW view
 --
 
+set define off
 
 
 --
@@ -3761,15 +3977,18 @@ select rl.build_type
 --  Synonyms
 
 
+set define on
 
 ----------------------------------------
 -- PACKAGE BODY Install
 
+prompt grbsrc ODBCAPTURE/COMMON_UTIL.pkbsql
 
 --
 --  Create ODBCAPTURE.COMMON_UTIL Package Body
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.COMMON_UTIL
@@ -4204,11 +4423,14 @@ end b64_encode;
 end common_util;
 /
 
+set define on
+prompt grbsrc ODBCAPTURE/FH2.pkbsql
 
 --
 --  Create ODBCAPTURE.FH2 Package Body
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.FH2
@@ -4788,11 +5010,14 @@ end clear_buffers;
 end fh2;
 /
 
+set define on
+prompt grbsrc ODBCAPTURE/GRAB_SCRIPTS.pkbsql
 
 --
 --  Create ODBCAPTURE.GRAB_SCRIPTS Package Body
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.GRAB_SCRIPTS
@@ -8925,11 +9150,14 @@ end get_version;
 end grab_scripts;
 /
 
+set define on
+prompt grbsrc ODBCAPTURE/ROOT_SCRIPTS.pkbsql
 
 --
 --  Create ODBCAPTURE.ROOT_SCRIPTS Package Body
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.ROOT_SCRIPTS
@@ -8978,11 +9206,16 @@ begin
 --   2) Schema Name
 --   3) System Connect String
 
+prompt === DBI Started: &1.
 
+define DBI_SCRIPT_NAME="&1."
+define DBI_SCHEMA_NAME="&2."
+define DBI_SYSTEM_CONNECT="&3."
 
 variable dbi_beg_dtm varchar2(40)
 variable dbi_beg_secs number
 
+set feedback off
 begin
    -- Initialize Timer
    :dbi_beg_dtm  := to_char(systimestamp,'YYYY-MM-DD') || 'T' ||
@@ -8997,11 +9230,18 @@ end;
 }';
    -- Can't have string declaration with a "/" on a line by itself
    ret_txt := ret_txt || '/' || CHR(10) || q'{
+set feedback on
+set blockterminator off
+set sqlblanklines on
 
 }';
    -- Can't start a line with an "@"
    ret_txt := ret_txt || q'{@"&DBI_SCRIPT_NAME." "&DBI_SYSTEM_CONNECT." "" ""
+set serveroutput on size unlimited format wrapped
 
+set sqlblanklines off
+set blockterminator on
+set feedback off
 begin
    -- Reset Current Schema
    if length('&DBI_SCHEMA_NAME.') > 0
@@ -9017,6 +9257,8 @@ end;
 }';
    -- Can't have string declaration with a "/" on a line by itself
    ret_txt := ret_txt || '/' || CHR(10) || q'{
+set feedback on
+}';
    return ret_txt;
 end dbi_sql;
 
@@ -9040,33 +9282,46 @@ begin
 --       The Data Load installation requires this connection information.
 --
 
+define FINAL_SYSTEM_CONNECT="&1."
 
+prompt
+prompt Drop Temp Publicly Updateable Table
 drop public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE;
 drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
 
+prompt
+prompt fix_invalid_public_synonyms
 }';
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                           q'{/fix_invalid_public_synonyms.sql" "" "" ""
 
+prompt
+prompt compile_all
 }';
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/compile_all.sql" "' || get_schema_list(in_build_type) ||
                           q'{" "" ""
 
+prompt
+prompt alter_foreign_keys_ENABLE
 }';
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/alter_foreign_keys.sql" "ENABLE" "' || get_schema_list(in_build_type) ||
                           q'{" ""
 
+prompt
+prompt alter_triggers_ENABLE
 }';
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/alter_triggers.sql" "ENABLE" "' || get_schema_list(in_build_type) ||
                           q'{" ""
 
+prompt
+prompt update_id_sequences
 }';
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
@@ -9089,6 +9344,8 @@ drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
                          '/alter_scheduler_jobs.sql" "ENABLE" "' || get_schema_list(in_build_type) ||
                           q'{" ""
 
+prompt
+prompt Switch Spooling Off
 
 }';
    return ret_txt;
@@ -9110,6 +9367,8 @@ begin
 --  Prepare for View Install
 --
 
+prompt
+prompt Create Temp Publicly Updateable Table
 create table TEMP_PUBLICLY_UPDATEABLE_TABLE (c1 number);
 grant all on TEMP_PUBLICLY_UPDATEABLE_TABLE to PUBLIC with grant option;
 create public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE for TEMP_PUBLICLY_UPDATEABLE_TABLE;
@@ -9124,6 +9383,8 @@ create public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE for TEMP_PUBLICLY_UPDATEABL
    if btype_nt.COUNT > 0
    then
       ret_txt := ret_txt || q'{
+prompt
+prompt Check for Prerequisite BUILD_TYPEs
 declare
    procedure do_it (in_btype varchar2) is
       cursor c_main is
@@ -9173,6 +9434,8 @@ begin
 --       The Data Load installation requires this connection information.
 --
 
+prompt
+prompt Confirm/Create odbcapture_installation_logs Table
 declare
    jnk  number := 0;
    procedure run_sql (in_sql in varchar2) is begin
@@ -9219,6 +9482,8 @@ end;
 --   .dsc - Discard Records
 --   .log - Log File
 
+prompt
+prompt sqlldr_control=./odbcapture_installation_logs.ctl
 host sqlldr '&1.' control=odbcapture_installation_logs.ctl data=odbcapture_installation_logs.csv log=odbcapture_installation_logs.log silent=HEADER,FEEDBACK
 
 begin
@@ -9306,6 +9571,8 @@ begin
 --
 
 ----------------------------------------
+prompt
+prompt Load Installation Files
 }';
    -- Can't start a line with an "@"
    ret_txt := ret_txt || q'{@"odbcapture_installation_logs.cldr" "&1."}' ||
@@ -9313,8 +9580,13 @@ begin
 
 ----------------------------------------
 -- Setup for Reports
+set echo off
+set verify off
+set serveroutput on size unlimited format wrapped
 
 ----------------------------------------
+prompt
+prompt Reporting Summary of Build Type Log Errors
 }';
    -- Can't have string declaration with a "/" on a line by itself
    ret_txt := ret_txt || '@"' || utl_dir ||
@@ -9322,28 +9594,41 @@ begin
                           q'{" "" ""
 
 ----------------------------------------
+prompt
+prompt Reporting Invalid Objects
+set feedback off
 }';
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/list_invalids.sql" "' || get_schema_list(in_build_type) ||
                           q'{" "" ""
+set feedback on
 
 ----------------------------------------
+prompt
+prompt Reporting JUnit XML Database Build Status
+set feedback off
 }';
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/db_build_junit_report.sql" "' || get_schema_list(in_build_type) ||
                           q'{" "" ""
+set feedback on
 
 ----------------------------------------
+prompt
+prompt Reorting JUnit XML Installation Log
+set feedback off
 }';
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/log_files_junit_report.sql" "' || in_build_type ||
                           q'{" "" ""
+set feedback on
 
 ----------------------------------------
 -- Done with Reports
+set verify on}';
    return ret_txt;
 end report_status_sql;
 
@@ -9375,6 +9660,7 @@ begin
 --   1 - Password Key
 --
 
+define PASSKEY="&1."
 
 }';
    for sch in (select sl.username
@@ -9394,11 +9680,14 @@ end set_user_authentication_sql;
 end root_scripts;
 /
 
+set define on
+prompt grbsrc ODBCAPTURE/ZIP_UTIL_PKG.pkbsql
 
 --
 --  Create ODBCAPTURE.ZIP_UTIL_PKG Package Body
 --
 
+set define off
 
 
 --DBMS_METADATA:ODBCAPTURE.ZIP_UTIL_PKG
@@ -9931,15 +10220,18 @@ is
 end zip_util_pkg;
 /
 
+set define on
 
 ----------------------------------------
 -- TABLE_FOREIGN_KEY Install
 
+prompt grbsrc ODBCAPTURE/BUILD_PATH.tfk
 
 --
 --  Create Foreign Keys for ODBCAPTURE.BUILD_PATH TABLE
 --
 
+set define off
 
 
 --  NOTE: This is a "BASE TABLE" Foreign Key
@@ -9956,11 +10248,14 @@ end zip_util_pkg;
   ALTER TABLE "ODBCAPTURE"."BUILD_PATH" ADD CONSTRAINT "BUILD_PATH_FK2" FOREIGN KEY ("BUILD_SEQ")
 	  REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ") ENABLE;
 
+set define on
+prompt grbsrc ODBCAPTURE/DLOAD_CONF.tfk
 
 --
 --  Create Foreign Keys for ODBCAPTURE.DLOAD_CONF TABLE
 --
 
+set define off
 
 
 --  NOTE: This is a "BASE TABLE" Foreign Key
@@ -9977,11 +10272,14 @@ end zip_util_pkg;
   ALTER TABLE "ODBCAPTURE"."DLOAD_CONF" ADD CONSTRAINT "DLOAD_CONF_FK2" FOREIGN KEY ("BUILD_TYPE")
 	  REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_TYPE") ENABLE;
 
+set define on
+prompt grbsrc ODBCAPTURE/OBJECT_CONF.tfk
 
 --
 --  Create Foreign Keys for ODBCAPTURE.OBJECT_CONF TABLE
 --
 
+set define off
 
 
 --  NOTE: This is a "BASE TABLE" Foreign Key
@@ -10005,11 +10303,14 @@ end zip_util_pkg;
   ALTER TABLE "ODBCAPTURE"."OBJECT_CONF" ADD CONSTRAINT "OBJECT_CONF_FK3" FOREIGN KEY ("BUILD_TYPE")
 	  REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_TYPE") ENABLE;
 
+set define on
+prompt grbsrc ODBCAPTURE/ROLE_CONF.tfk
 
 --
 --  Create Foreign Keys for ODBCAPTURE.ROLE_CONF TABLE
 --
 
+set define off
 
 
 --  NOTE: This is a "BASE TABLE" Foreign Key
@@ -10019,11 +10320,14 @@ end zip_util_pkg;
   ALTER TABLE "ODBCAPTURE"."ROLE_CONF" ADD CONSTRAINT "ROLE_CONF_FK1" FOREIGN KEY ("BUILD_TYPE")
 	  REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_TYPE") ENABLE;
 
+set define on
+prompt grbsrc ODBCAPTURE/SCHEMA_CONF.tfk
 
 --
 --  Create Foreign Keys for ODBCAPTURE.SCHEMA_CONF TABLE
 --
 
+set define off
 
 
 --  NOTE: This is a "BASE TABLE" Foreign Key
@@ -10033,11 +10337,14 @@ end zip_util_pkg;
   ALTER TABLE "ODBCAPTURE"."SCHEMA_CONF" ADD CONSTRAINT "SCHEMA_CONF_FK1" FOREIGN KEY ("BUILD_TYPE")
 	  REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_TYPE") ENABLE;
 
+set define on
+prompt grbsrc ODBCAPTURE/TSPACE_CONF.tfk
 
 --
 --  Create Foreign Keys for ODBCAPTURE.TSPACE_CONF TABLE
 --
 
+set define off
 
 
 --  NOTE: This is a "BASE TABLE" Foreign Key
@@ -10047,9 +10354,11 @@ end zip_util_pkg;
   ALTER TABLE "ODBCAPTURE"."TSPACE_CONF" ADD CONSTRAINT "TSPACE_CONF_FK1" FOREIGN KEY ("USERNAME")
 	  REFERENCES "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME") ENABLE;
 
+set define on
 
 ----------------------------------------
 -- Finalize Installation (Includes SPOOL OFF)
+prompt grbsrc ./installation_finalize.sql
 
 --
 --  Finalize Installation
@@ -10061,18 +10370,31 @@ end zip_util_pkg;
 --       The Data Load installation requires this connection information.
 --
 
+define FINAL_SYSTEM_CONNECT="&1."
 
+prompt
+prompt Drop Temp Publicly Updateable Table
 drop public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE;
 drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
 
+prompt
+prompt fix_invalid_public_synonyms
 --@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql" "" "" ""
 
+prompt
+prompt compile_all
 --@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE'" "" ""
 
+prompt
+prompt alter_foreign_keys_ENABLE
 --@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE'" ""
 
+prompt
+prompt alter_triggers_ENABLE
 --@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE'" ""
 
+prompt
+prompt update_id_sequences
 --@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE'" "" ""
 
 --prompt
@@ -10083,6 +10405,8 @@ drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
 --prompt alter_scheduler_jobs_ENABLE
 --@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE'" ""
 
+prompt
+prompt Switch Spooling Off
 
 
 

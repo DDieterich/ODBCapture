@@ -2,9 +2,11 @@
 
 SQL_SCRIPT="OCI_APEX_install.sql"
 
-echo "set define off" > "${SQL_SCRIPT}"
+echo "
+prompt Converted/Consolidated SQL Script for APEX Instance on OCI
+" > "${SQL_SCRIPT}"
 
-for INSTALL_SELECT in 'grbsrc' 'grbras' 'grbsdo' 'grbdat' 'grbtst' 'grbtjsn' 'grbtsdo' 'grbtctx' 'grbtdat'
+for INSTALL_SELECT in 'grbsrc' #'grbras' 'grbsdo' 'grbdat' 'grbtst' 'grbtjsn' 'grbtsdo' 'grbtctx' 'grbtdat'
 do
    cat "../${INSTALL_SELECT}/install_sys.sql" \
        "../${INSTALL_SELECT}/install_SYSTEM.sql" \
@@ -28,6 +30,7 @@ do
       else
          echo "${buff}" 
       fi
-   done grep -Ev -e '^(set |define |spool |prompt)' |
-        sed -e '1,$s/^[@]/--@/1' >> "${SQL_SCRIPT}"
+   done |
+      grep -Ev -e '^(spool |set linesize |set trimspool |set termout )' |
+      sed -e '1,$s/^[@]/--@/1' >> "${SQL_SCRIPT}"
 done
