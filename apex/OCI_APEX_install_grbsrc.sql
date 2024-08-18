@@ -1,3 +1,4 @@
+set define off
 
 --
 --  SYS Installation Script

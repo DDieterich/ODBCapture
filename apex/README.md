@@ -25,21 +25,29 @@ OCI_APEX_install_grbtst.sql  | Converted Source Code Script for APEX OCI
 
 ## Installation
 
-### Login
+### Update OCI APEX Scripts
+
+Run OCI_APEX_conversion.sh
+
+### Login to APX01 Database Actions on Oracle Cloud
 1. Go to [Oracle MyCloud](https://myservices-ddieterich.console.oraclecloud.com/mycloud/cloudportal/gettingStarted)
 2. Set Tenancy to `DDieterich`
 3. Set Identity Domain to `OracleIdentityCloudService`
 4. Enter `User Name` and `Password`
 5. Enter `Passcode` from Google Authentication
 6. Go to `APEX Instances`
-7. Click on `APEX01`
+7. Click on `APX01`
 8. Click on `Launch Database Actions`
 9. Under the `Development` tab, click on `SQL`
 
-### Run build_intiailize.sql
-1. Open `build_initialize.sql`
+### Initialize APX01
+1. Open `../builds/OCI_APEX235/build_initialize.sql`
 2. Click on `Run script`
 3. Click on `Download Script Output`
-4. Save to file `build_initialize.sql`
+4. Save to file `../builds/OCI_APEX235/build_initialize.sql`
 
 ![Icons used to Open, Run, and Download the build script.](build_initialize.PNG)
+
+### Installation
+
+Repeat the above steps for OCI_APEX_install_grbsrc.sql
