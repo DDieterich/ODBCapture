@@ -15,7 +15,9 @@ set sqlblanklines on
 ----------------------------------------
 -- USER Install
 
-prompt grbsrc SYS/ODBCAPTURE.user
+prompt ------------------------------------------------------------
+prompt Running: grbsrc SYS/ODBCAPTURE.user
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE Schema
@@ -171,7 +173,9 @@ set sqlblanklines on
 ----------------------------------------
 -- GRANT Install
 
-prompt grbsrc SYSTEM/ODBCAPTURE_usr.grnt
+prompt ------------------------------------------------------------
+prompt Running: grbsrc SYSTEM/ODBCAPTURE_usr.grnt
+prompt ------------------------------------------------------------
 
 
 --
@@ -233,7 +237,9 @@ set escape ""
 
 ----------------------------------------
 --  Prepare for Install
-prompt grbsrc ./installation_prepare.sql
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ./installation_prepare.sql
+prompt ------------------------------------------------------------
 
 --
 --  Prepare for View Install
@@ -249,7 +255,9 @@ create public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE for TEMP_PUBLICLY_UPDATEABL
 ----------------------------------------
 -- PACKAGE Install
 
-prompt grbsrc ODBCAPTURE/COMMON_UTIL.pkssql
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/COMMON_UTIL.pkssql
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.COMMON_UTIL Package
@@ -334,7 +342,9 @@ end common_util;
 
 
 set define on
-prompt grbsrc ODBCAPTURE/FH2.pkssql
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/FH2.pkssql
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.FH2 Package
@@ -454,7 +464,9 @@ end fh2;
 
 
 set define on
-prompt grbsrc ODBCAPTURE/GRAB_SCRIPTS.pkssql
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/GRAB_SCRIPTS.pkssql
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.GRAB_SCRIPTS Package
@@ -567,7 +579,9 @@ end grab_scripts;
 
 
 set define on
-prompt grbsrc ODBCAPTURE/ROOT_SCRIPTS.pkssql
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/ROOT_SCRIPTS.pkssql
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.ROOT_SCRIPTS Package
@@ -629,7 +643,9 @@ end root_scripts;
 
 
 set define on
-prompt grbsrc ODBCAPTURE/ZIP_UTIL_PKG.pkssql
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/ZIP_UTIL_PKG.pkssql
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.ZIP_UTIL_PKG Package
@@ -719,7 +735,9 @@ set define on
 ----------------------------------------
 -- TABLE Install
 
-prompt grbsrc ODBCAPTURE/BUILD_CONF.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/BUILD_CONF.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.BUILD_CONF Table
@@ -757,7 +775,9 @@ ALTER TABLE "ODBCAPTURE"."BUILD_CONF" ADD CONSTRAINT "BUILD_CONF_NK1" UNIQUE ("B
 
 
 set define on
-prompt grbsrc ODBCAPTURE/BUILD_PATH.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/BUILD_PATH.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.BUILD_PATH Table
@@ -792,7 +812,9 @@ ALTER TABLE "ODBCAPTURE"."BUILD_PATH" ADD CONSTRAINT "BUILD_PATH_CK1" CHECK (par
 
 
 set define on
-prompt grbsrc ODBCAPTURE/BUILD_TYPE_TIMING.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/BUILD_TYPE_TIMING.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.BUILD_TYPE_TIMING Table
@@ -826,7 +848,9 @@ set define off
 
 
 set define on
-prompt grbsrc ODBCAPTURE/DBA_DEPENDENCIES_TAB.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/DBA_DEPENDENCIES_TAB.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.DBA_DEPENDENCIES_TAB Table
@@ -862,7 +886,9 @@ set define off
 
 
 set define on
-prompt grbsrc ODBCAPTURE/DBA_OBJECTS_TAB.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/DBA_OBJECTS_TAB.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.DBA_OBJECTS_TAB Table
@@ -894,7 +920,9 @@ set define off
 
 
 set define on
-prompt grbsrc ODBCAPTURE/DBA_TAB_PRIVS_TAB.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/DBA_TAB_PRIVS_TAB.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.DBA_TAB_PRIVS_TAB Table
@@ -932,7 +960,9 @@ set define off
 
 
 set define on
-prompt grbsrc ODBCAPTURE/DLOAD_CONF.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/DLOAD_CONF.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.DLOAD_CONF Table
@@ -980,7 +1010,9 @@ ALTER TABLE "ODBCAPTURE"."DLOAD_CONF" ADD CONSTRAINT "DLOAD_CONF_PK" PRIMARY KEY
 
 
 set define on
-prompt grbsrc ODBCAPTURE/ELEMENT_CONF.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/ELEMENT_CONF.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.ELEMENT_CONF Table
@@ -1028,7 +1060,9 @@ ALTER TABLE "ODBCAPTURE"."ELEMENT_CONF" ADD CONSTRAINT "ELEMENT_CONF_UK1" UNIQUE
 
 
 set define on
-prompt grbsrc ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.METADATA_TRANSFORM_PARAMS Table
@@ -1065,7 +1099,9 @@ ALTER TABLE "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" ADD CONSTRAINT "METADATA_TR
 
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJECT_CONF.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJECT_CONF.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.OBJECT_CONF Table
@@ -1106,7 +1142,9 @@ ALTER TABLE "ODBCAPTURE"."OBJECT_CONF" ADD CONSTRAINT "OBJECT_CONF_CK1" CHECK (e
 
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_COMMENTS_TAB Table
@@ -1141,7 +1179,9 @@ set define off
 
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_CONTEXT_TAB Table
@@ -1183,7 +1223,9 @@ set define off
 
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_DATA_LOAD_TAB Table
@@ -1226,7 +1268,9 @@ set define off
 
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_FKEY_TAB Table
@@ -1271,7 +1315,9 @@ set define off
 
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_INDEX_TAB Table
@@ -1317,7 +1363,9 @@ set define off
 
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_OBJECT_TAB Table
@@ -1355,7 +1403,9 @@ set define off
 
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_SYNONYM_TAB Table
@@ -1398,7 +1448,9 @@ set define off
 
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_TRIGGER_TAB Table
@@ -1440,7 +1492,9 @@ set define off
 
 
 set define on
-prompt grbsrc ODBCAPTURE/ROLE_CONF.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/ROLE_CONF.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.ROLE_CONF Table
@@ -1479,7 +1533,9 @@ ALTER TABLE "ODBCAPTURE"."ROLE_CONF" ADD CONSTRAINT "ROLE_CONF_CK1" CHECK ("ORAC
 
 
 set define on
-prompt grbsrc ODBCAPTURE/SCHEMA_CONF.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/SCHEMA_CONF.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.SCHEMA_CONF Table
@@ -1527,7 +1583,9 @@ ALTER TABLE "ODBCAPTURE"."SCHEMA_CONF" ADD CONSTRAINT "SCHEMA_CONF_CK2" CHECK (o
 
 
 set define on
-prompt grbsrc ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.SCHEMA_OBJECTS_TAB Table
@@ -1557,7 +1615,9 @@ set define off
 
 
 set define on
-prompt grbsrc ODBCAPTURE/TSPACE_CONF.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/TSPACE_CONF.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.TSPACE_CONF Table
@@ -1593,7 +1653,9 @@ ALTER TABLE "ODBCAPTURE"."TSPACE_CONF" ADD CONSTRAINT "TSPACE_CONF_PK" PRIMARY K
 
 
 set define on
-prompt grbsrc ODBCAPTURE/ZIP_FILES.tbl
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/ZIP_FILES.tbl
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.ZIP_FILES Table
@@ -1668,7 +1730,9 @@ prompt ------------------------------------------------------------
 ----------------------------------------
 -- INDEX Install
 
-prompt grbsrc ODBCAPTURE/DBA_DEPENDENCIES_TAB.tidx
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/DBA_DEPENDENCIES_TAB.tidx
+prompt ------------------------------------------------------------
 
 --
 --  Create Indexes for ODBCAPTURE.DBA_DEPENDENCIES_TAB TABLE
@@ -1692,7 +1756,9 @@ set define off
   ;
 
 set define on
-prompt grbsrc ODBCAPTURE/DBA_OBJECTS_TAB.tidx
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/DBA_OBJECTS_TAB.tidx
+prompt ------------------------------------------------------------
 
 --
 --  Create Indexes for ODBCAPTURE.DBA_OBJECTS_TAB TABLE
@@ -1709,7 +1775,9 @@ set define off
   ;
 
 set define on
-prompt grbsrc ODBCAPTURE/DBA_TAB_PRIVS_TAB.tidx
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/DBA_TAB_PRIVS_TAB.tidx
+prompt ------------------------------------------------------------
 
 --
 --  Create Indexes for ODBCAPTURE.DBA_TAB_PRIVS_TAB TABLE
@@ -1726,7 +1794,9 @@ set define off
   ;
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tidx
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tidx
+prompt ------------------------------------------------------------
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_COMMENTS_TAB TABLE
@@ -1743,7 +1813,9 @@ set define off
   ;
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tidx
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tidx
+prompt ------------------------------------------------------------
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_CONTEXT_TAB TABLE
@@ -1760,7 +1832,9 @@ set define off
   ;
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tidx
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tidx
+prompt ------------------------------------------------------------
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_DATA_LOAD_TAB TABLE
@@ -1777,7 +1851,9 @@ set define off
   ;
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tidx
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tidx
+prompt ------------------------------------------------------------
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_FKEY_TAB TABLE
@@ -1794,7 +1870,9 @@ set define off
   ;
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tidx
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tidx
+prompt ------------------------------------------------------------
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_INDEX_TAB TABLE
@@ -1811,7 +1889,9 @@ set define off
   ;
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tidx
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tidx
+prompt ------------------------------------------------------------
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_OBJECT_TAB TABLE
@@ -1828,7 +1908,9 @@ set define off
   ;
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tidx
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tidx
+prompt ------------------------------------------------------------
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_SYNONYM_TAB TABLE
@@ -1852,7 +1934,9 @@ set define off
   ;
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tidx
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tidx
+prompt ------------------------------------------------------------
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_TRIGGER_TAB TABLE
@@ -1880,7 +1964,9 @@ set define on
 ----------------------------------------
 -- VIEW Install
 
-prompt grbsrc ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.AQ_SYSTEM_PRIVS_VW view
@@ -1928,7 +2014,9 @@ create view "ODBCAPTURE"."AQ_SYSTEM_PRIVS_VW"
 
 
 set define on
-prompt grbsrc ODBCAPTURE/BUILD_PATH_REVIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/BUILD_PATH_REVIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.BUILD_PATH_REVIEW view
@@ -1985,7 +2073,9 @@ select NULL                  parent_build_seq
 
 
 set define on
-prompt grbsrc ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.DBA_DEPENDENCIES_VIEW view
@@ -2037,7 +2127,9 @@ create view "ODBCAPTURE"."DBA_DEPENDENCIES_VIEW"
 
 
 set define on
-prompt grbsrc ODBCAPTURE/DBA_OBJECTS_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/DBA_OBJECTS_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.DBA_OBJECTS_VIEW view
@@ -2160,7 +2252,9 @@ select sco.build_type            OBJECT_OWNER_BUILD_TYPE
 
 
 set define on
-prompt grbsrc ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.DBA_TAB_PRIVS_VIEW view
@@ -2221,7 +2315,9 @@ create view "ODBCAPTURE"."DBA_TAB_PRIVS_VIEW"
 
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_COMMENTS_VIEW view
@@ -2295,7 +2391,9 @@ select d.build_type
 
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_CONTEXT_VIEW view
@@ -2360,7 +2458,9 @@ create view "ODBCAPTURE"."OBJ_INSTALL_CONTEXT_VIEW"
 
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_DATA_LOAD_VIEW view
@@ -2422,7 +2522,9 @@ create view "ODBCAPTURE"."OBJ_INSTALL_DATA_LOAD_VIEW"
 
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_FKEY_VIEW view
@@ -2511,7 +2613,9 @@ create view "ODBCAPTURE"."OBJ_INSTALL_FKEY_VIEW"
 
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_INDEX_VIEW view
@@ -2591,7 +2695,9 @@ create view "ODBCAPTURE"."OBJ_INSTALL_INDEX_VIEW"
 
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_OBJECT_VIEW view
@@ -2737,7 +2843,9 @@ select "BUILD_TYPE","BUILD_TIMING","OBJECT_NAME_REGEXP","OBJECT_OWNER_BUILD_TYPE
 
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_SYNONYM_VIEW view
@@ -2817,7 +2925,9 @@ create view "ODBCAPTURE"."OBJ_INSTALL_SYNONYM_VIEW"
 
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_TRIGGER_VIEW view
@@ -2899,7 +3009,9 @@ create view "ODBCAPTURE"."OBJ_INSTALL_TRIGGER_VIEW"
 
 
 set define on
-prompt grbsrc ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.PRIV_OBJ_DIR_VIEW view
@@ -3013,7 +3125,9 @@ select "BUILD_TYPE","BUILD_TIMING","OBJECT_NAME_REGEXP","DIRECTORY_BUILD_TYPE","
 
 
 set define on
-prompt grbsrc ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.PRIV_OBJ_HACL_VIEW view
@@ -3142,7 +3256,9 @@ select "BUILD_TYPE","BUILD_TIMING","BUILD_TYPE_SELECTOR","OBJECT_NAME_REGEXP","H
 
 
 set define on
-prompt grbsrc ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.PRIV_OBJ_INSTALL_VW view
@@ -3224,7 +3340,9 @@ create view "ODBCAPTURE"."PRIV_OBJ_INSTALL_VW"
 
 
 set define on
-prompt grbsrc ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.PRIV_OBJ_QUEUE_VIEW view
@@ -3312,7 +3430,9 @@ create view "ODBCAPTURE"."PRIV_OBJ_QUEUE_VIEW"
 
 
 set define on
-prompt grbsrc ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.PRIV_OBJ_WACL_VIEW view
@@ -3439,7 +3559,9 @@ select "BUILD_TYPE","BUILD_TIMING","BUILD_TYPE_SELECTOR","OBJECT_NAME_REGEXP","W
 
 
 set define on
-prompt grbsrc ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.PRIV_QUEUE_REGISTER_VIEW view
@@ -3525,7 +3647,9 @@ create view "ODBCAPTURE"."PRIV_QUEUE_REGISTER_VIEW"
 
 
 set define on
-prompt grbsrc ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.PRIV_QUEUE_SUBSCRIBE_VIEW view
@@ -3598,7 +3722,9 @@ create view "ODBCAPTURE"."PRIV_QUEUE_SUBSCRIBE_VIEW"
 
 
 set define on
-prompt grbsrc ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.PRIV_QUEUE_SYSPRIVS_VIEW view
@@ -3673,7 +3799,9 @@ create view "ODBCAPTURE"."PRIV_QUEUE_SYSPRIVS_VIEW"
 
 
 set define on
-prompt grbsrc ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.PRIV_ROLE_PRIVILEGES_VIEW view
@@ -3782,7 +3910,9 @@ UNION ALL
 
 
 set define on
-prompt grbsrc ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.PRIV_SYSOBJ_PRIVILEGES_VIEW view
@@ -3856,7 +3986,9 @@ create view "ODBCAPTURE"."PRIV_SYSOBJ_PRIVILEGES_VIEW"
 
 
 set define on
-prompt grbsrc ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.PRIV_SYSTEM_PRIVILEGES_VIEW view
@@ -3924,7 +4056,9 @@ create view "ODBCAPTURE"."PRIV_SYSTEM_PRIVILEGES_VIEW"
 
 
 set define on
-prompt grbsrc ODBCAPTURE/UOR_INSTALL_VIEW.vw
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/UOR_INSTALL_VIEW.vw
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.UOR_INSTALL_VIEW view
@@ -3982,7 +4116,9 @@ set define on
 ----------------------------------------
 -- PACKAGE BODY Install
 
-prompt grbsrc ODBCAPTURE/COMMON_UTIL.pkbsql
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/COMMON_UTIL.pkbsql
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.COMMON_UTIL Package Body
@@ -4424,7 +4560,9 @@ end common_util;
 /
 
 set define on
-prompt grbsrc ODBCAPTURE/FH2.pkbsql
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/FH2.pkbsql
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.FH2 Package Body
@@ -5011,7 +5149,9 @@ end fh2;
 /
 
 set define on
-prompt grbsrc ODBCAPTURE/GRAB_SCRIPTS.pkbsql
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/GRAB_SCRIPTS.pkbsql
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.GRAB_SCRIPTS Package Body
@@ -9151,7 +9291,9 @@ end grab_scripts;
 /
 
 set define on
-prompt grbsrc ODBCAPTURE/ROOT_SCRIPTS.pkbsql
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/ROOT_SCRIPTS.pkbsql
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.ROOT_SCRIPTS Package Body
@@ -9681,7 +9823,9 @@ end root_scripts;
 /
 
 set define on
-prompt grbsrc ODBCAPTURE/ZIP_UTIL_PKG.pkbsql
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/ZIP_UTIL_PKG.pkbsql
+prompt ------------------------------------------------------------
 
 --
 --  Create ODBCAPTURE.ZIP_UTIL_PKG Package Body
@@ -10225,7 +10369,9 @@ set define on
 ----------------------------------------
 -- TABLE_FOREIGN_KEY Install
 
-prompt grbsrc ODBCAPTURE/BUILD_PATH.tfk
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/BUILD_PATH.tfk
+prompt ------------------------------------------------------------
 
 --
 --  Create Foreign Keys for ODBCAPTURE.BUILD_PATH TABLE
@@ -10249,7 +10395,9 @@ set define off
 	  REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ") ENABLE;
 
 set define on
-prompt grbsrc ODBCAPTURE/DLOAD_CONF.tfk
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/DLOAD_CONF.tfk
+prompt ------------------------------------------------------------
 
 --
 --  Create Foreign Keys for ODBCAPTURE.DLOAD_CONF TABLE
@@ -10273,7 +10421,9 @@ set define off
 	  REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_TYPE") ENABLE;
 
 set define on
-prompt grbsrc ODBCAPTURE/OBJECT_CONF.tfk
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/OBJECT_CONF.tfk
+prompt ------------------------------------------------------------
 
 --
 --  Create Foreign Keys for ODBCAPTURE.OBJECT_CONF TABLE
@@ -10304,7 +10454,9 @@ set define off
 	  REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_TYPE") ENABLE;
 
 set define on
-prompt grbsrc ODBCAPTURE/ROLE_CONF.tfk
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/ROLE_CONF.tfk
+prompt ------------------------------------------------------------
 
 --
 --  Create Foreign Keys for ODBCAPTURE.ROLE_CONF TABLE
@@ -10321,7 +10473,9 @@ set define off
 	  REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_TYPE") ENABLE;
 
 set define on
-prompt grbsrc ODBCAPTURE/SCHEMA_CONF.tfk
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/SCHEMA_CONF.tfk
+prompt ------------------------------------------------------------
 
 --
 --  Create Foreign Keys for ODBCAPTURE.SCHEMA_CONF TABLE
@@ -10338,7 +10492,9 @@ set define off
 	  REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_TYPE") ENABLE;
 
 set define on
-prompt grbsrc ODBCAPTURE/TSPACE_CONF.tfk
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ODBCAPTURE/TSPACE_CONF.tfk
+prompt ------------------------------------------------------------
 
 --
 --  Create Foreign Keys for ODBCAPTURE.TSPACE_CONF TABLE
@@ -10358,7 +10514,9 @@ set define on
 
 ----------------------------------------
 -- Finalize Installation (Includes SPOOL OFF)
-prompt grbsrc ./installation_finalize.sql
+prompt ------------------------------------------------------------
+prompt Running: grbsrc ./installation_finalize.sql
+prompt ------------------------------------------------------------
 
 --
 --  Finalize Installation

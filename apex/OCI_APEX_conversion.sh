@@ -24,7 +24,9 @@ do
             echo "prompt ------------------------------------------------------------"
             echo ""
          else
-            echo "prompt ${INSTALL_SELECT} ${2//\"/}"
+            echo "prompt ------------------------------------------------------------"
+            echo "prompt Running: ${INSTALL_SELECT} ${2//\"/}"
+            echo "prompt ------------------------------------------------------------"
             cat "../${INSTALL_SELECT}/${2//\"/}"
          fi
       else
