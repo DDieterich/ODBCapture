@@ -2,14 +2,6 @@
 --
 --  Finalize Installation
 --
--- Command Line Parameters:
---   1 - SYSTEM/password@TNSALIAS
---       i.e. pass the username and password for the SYSTEM user
---            and the TNSALIAS for the connection to the database.
---       The Data Load installation requires this connection information.
---
-
-define FINAL_SYSTEM_CONNECT="&1."
 
 prompt
 prompt Drop Temp Publicly Updateable Table

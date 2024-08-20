@@ -1,21 +1,13 @@
 
 
 
-No data found
+USERNAME   
+---------- 
+ODBCAPTURE 
 
 
-
-
-
-delete from "ADMIN"."ODBCAPTURE_INSTALLATION_LOGS"
-
-
-ORA-00942: table or view "ADMIN"."ODBCAPTURE_INSTALLATION_LOGS" does not exist
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.036
+1 rows selected.
 
 
 
@@ -29,12 +21,12 @@ ORA-01418: specified index does not exist
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.007
 
 
 0 rows deleted.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.002
 
 
 
@@ -56,7 +48,7 @@ ORA-46215: The Real Application Security (RAS or XS) object by the name
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.019
+Elapsed: 00:00:00.014
 
 
 
@@ -65,9 +57,13 @@ Elapsed: 00:00:00.019
 Drop Schema
 
 
+-- 2024-08-20 04:19:48 --
+drop user "ODBCAPTURE" cascade
+
+
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.046
+Elapsed: 00:00:01.431
 
 
 
@@ -78,4 +74,4 @@ Drop Role
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.016
+Elapsed: 00:00:00.018

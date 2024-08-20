@@ -6,6 +6,4 @@
 --   1 - Password Key
 --
 
-define PASSKEY="&1."
-
 

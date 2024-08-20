@@ -7,27 +7,20 @@ This folder includes ODBCapture installation scripts for Oracle's APEX Service/I
 
 ## File/Folder List
 
-File Name                    | Description
------------------------------|-------------
-OCI_APEX_convall.sh          | Bash Script to Convert all Source Code Folders
-OCI_APEX_conversion.sh*      | Bash Script to Convert one Source Code Folder
-OCI_APEX_install_grbdat.sql  | Converted Source Code Script for APEX OCI
-OCI_APEX_install_grbjava.sql | Converted Source Code Script for APEX OCI
-OCI_APEX_install_grbras.sql  | Converted Source Code Script for APEX OCI
-OCI_APEX_install_grbsdo.sql  | Converted Source Code Script for APEX OCI
-OCI_APEX_install_grbsrc.sql  | Converted Source Code Script for APEX OCI
-OCI_APEX_install_grbtctx.sql | Converted Source Code Script for APEX OCI
-OCI_APEX_install_grbtdat.sql | Converted Source Code Script for APEX OCI
-OCI_APEX_install_grbtjsn.sql | Converted Source Code Script for APEX OCI
-OCI_APEX_install_grbtjva.sql | Converted Source Code Script for APEX OCI
-OCI_APEX_install_grbtsdo.sql | Converted Source Code Script for APEX OCI
-OCI_APEX_install_grbtst.sql  | Converted Source Code Script for APEX OCI
+File Name               | Description
+------------------------|-------------
+build_initialize.PNG    | Screen shot for documentation
+OCI_APEX_conversion.sh  | Bash Script to Convert one Source Code Folder
+OCI_APEX_install.sql    | Converted Source Code Script
+
 
 ## Installation
 
-### Update OCI APEX Scripts
-
-Run OCI_APEX_conversion.sh
+### Run OCI_APEX_conversion.sh
+1. Run BASH
+2. "cd" to this folder
+3. ./OCI_APEX_conversion.sh
+4. Review OCI_APEX_install.sql
 
 ### Login to APX01 Database Actions on Oracle Cloud
 1. Go to [Oracle MyCloud](https://myservices-ddieterich.console.oraclecloud.com/mycloud/cloudportal/gettingStarted)
@@ -44,14 +37,17 @@ Run OCI_APEX_conversion.sh
 1. Open `../builds/OCI_APEX235/build_initialize.sql`
 2. Click on `Run script`
 3. Click on `Download Script Output`
-4. Save to file `../builds/OCI_APEX235/build_initialize.sql`
+4. Save to file `../builds/OCI_APEX235/build_initialize.txt`
+5. Review `../builds/OCI_APEX235/build_initialize.txt`
 
 ![Icons used to Open, Run, and Download the build script.](build_initialize.PNG)
 
 ### Installation
-
-Repeat the above steps for OCI_APEX_install_grbsrc.sql
-
+1. Open `OCI_APEX_install.sql`
+2. Click on `Run script`
+3. Click on `Download Script Output`
+4. Save to file `../builds/OCI_APEX235/OCI_APEX_install.txt`
+5. Review `../builds/OCI_APEX235/OCI_APEX_install.txt`
 
 ### Notes
 

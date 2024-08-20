@@ -15,7 +15,6 @@
 --  NOTE: If running in a Linux based Docker Container from a Windows FileSystem Mount, run this first:
 --    dos2unix -f -o ../install/*/*.csv ../install/*/*/*.csv
 
-define TOP_PDB_SYSTEM="&1."
 set serveroutput on size unlimited format wrapped
 
 ----------------------------------------
@@ -46,7 +45,7 @@ prompt *****************************
 prompt *  Run SYSTEM Installation  *
 prompt *****************************
 prompt
-connect &TOP_PDB_SYSTEM.
+connect &1.
 set serveroutput on size unlimited format wrapped
 @install_system.sql "" "" ""
 
@@ -56,7 +55,7 @@ prompt *************************
 prompt *  Install Application  *
 prompt *************************
 prompt
-@install_grbtjsn.sql "&TOP_PDB_SYSTEM." "" ""
+@install_grbtjsn.sql "&1." "" ""
 
 ----------------------------------------
 set appinfo "Null"

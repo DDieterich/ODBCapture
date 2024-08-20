@@ -16,23 +16,42 @@ do
       if [ "${buff:0:9}" = '@dbi.sql ' ]
       then
          set ${buff}    # Parses "buff" into command line parameters like $1
-         if [ "${2: -6}" = '.cldr"' -o "${2: -5}" = '.cldr' ]
+         DBI_FILENAME="${2//\"/}"
+         echo ""
+         echo "prompt ============================================================"
+         echo "prompt Running: ${INSTALL_SELECT} ${DBI_FILENAME}"
+         echo "prompt ============================================================"
+         if [ "${DBI_FILENAME: -5}" = '.cldr' ]
          then
+            SCHEMA_NAME="$(dirname "${DBI_FILENAME}")"
+            TABLE_NAME="$(basename "${DBI_FILENAME/[.]cldr/}")"
+            CSV_FILENAME="../${INSTALL_SELECT}/${DBI_FILENAME/[.]cldr/.csv}"
+            echo "prompt Translating ${CSV_FILENAME} to 'INSERT INTO'"
             echo ""
-            echo "prompt ------------------------------------------------------------"
-            echo "prompt NOTE: DATA LOADING for ${2} NOT IMPLEMENTED"
-            echo "prompt ------------------------------------------------------------"
-            echo ""
+            sed -e '1d' \
+                -e '1,$s/\r$//1' \
+                -e "1,\$s/'/''/g" \
+                -e '1,$s/""/||/g' \
+                -e "1,\$s/\"/'/g" \
+                -e '1,$s/[|][|]/"/g' \
+                -e '1,$s/^,/NULL,/1' \
+                -e '1,$s/[,][,]/,NULL,/g' \
+                -e '1,$s/[,][,]/,NULL,/g' \
+                -e '1,$s/,$/,NULL/1' \
+                 < "${CSV_FILENAME}" |
+                while read CSV_LINE
+            do
+               echo "insert into \"${SCHEMA_NAME}\".\"${TABLE_NAME}\" ($(head -1 "${CSV_FILENAME}"))"
+               echo "  values (${CSV_LINE});"
+               echo ""
+            done
          else
-            echo "prompt ------------------------------------------------------------"
-            echo "prompt Running: ${INSTALL_SELECT} ${2//\"/}"
-            echo "prompt ------------------------------------------------------------"
-            cat "../${INSTALL_SELECT}/${2//\"/}"
+            cat "../${INSTALL_SELECT}/${DBI_FILENAME}"
          fi
       else
          echo "${buff}" 
       fi
    done |
-      grep -Ev -e '^(spool |set linesize |set trimspool |set termout )' |
+      grep -Ev -e '^(spool |set linesize |set trimspool |set termout |set sqlprefix |define INSTALL_SYSTEM_CONNECT[ =])' |
       sed -e '1,$s/^[@]/--@/1' >> "${SQL_SCRIPT}"
 done

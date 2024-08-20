@@ -2891,7 +2891,6 @@ begin
    fh2.script_put_line(fh, '--  NOTE: If running in a Linux based Docker Container from a Windows FileSystem Mount, run this first:');
    fh2.script_put_line(fh, '--    dos2unix -f -o ../install/*/*.csv ../install/*/*/*.csv');
    fh2.script_put_line(fh, '');
-   fh2.script_put_line(fh, 'define TOP_PDB_SYSTEM="&1."');
    fh2.script_put_line(fh, 'set serveroutput on size unlimited format wrapped');
    fh2.script_put_line(fh, '');
    fh2.script_put_line(fh, '----------------------------------------');
@@ -2922,7 +2921,7 @@ begin
    fh2.script_put_line(fh, 'prompt *  Run SYSTEM Installation  *');
    fh2.script_put_line(fh, 'prompt *****************************');
    fh2.script_put_line(fh, 'prompt');
-   fh2.script_put_line(fh, 'connect &TOP_PDB_SYSTEM.');
+   fh2.script_put_line(fh, 'connect &1.');
    fh2.script_put_line(fh, 'set serveroutput on size unlimited format wrapped');
    fh2.script_put_line(fh, '@install_system.sql "" "" ""');
    fh2.script_put_line(fh, '');
@@ -2932,7 +2931,7 @@ begin
    fh2.script_put_line(fh, 'prompt *  Install Application  *');
    fh2.script_put_line(fh, 'prompt *************************');
    fh2.script_put_line(fh, 'prompt');
-   fh2.script_put_line(fh, '@install_' || g_build_type || '.sql "&TOP_PDB_SYSTEM." "" ""');
+   fh2.script_put_line(fh, '@install_' || g_build_type || '.sql "&1." "" ""');
    fh2.script_put_line(fh, '');
    fh2.script_put_line(fh, '----------------------------------------');
    fh2.script_put_line(fh, 'set appinfo "Null"');

@@ -6,6 +6,4 @@
 --   1 - Password Key
 --
 
-define PASSKEY="&1."
-
-alter user "ODBCAPTURE" identified by "67&PASSKEY.";
+alter user "ODBCAPTURE" identified by "67&1.";

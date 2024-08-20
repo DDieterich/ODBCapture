@@ -15,9 +15,10 @@ set sqlblanklines on
 ----------------------------------------
 -- USER Install
 
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc SYS/ODBCAPTURE.user
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE Schema
@@ -173,9 +174,10 @@ set sqlblanklines on
 ----------------------------------------
 -- GRANT Install
 
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc SYSTEM/ODBCAPTURE_usr.grnt
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 
 --
@@ -226,10 +228,8 @@ set blockterminator on
 --
 
 
-define INSTALL_SYSTEM_CONNECT="&1."
 
 -- For Oracle Change Data Capture (CDC) packages
-set sqlprefix "~"
 
 -- Escape character: "^P", CHR(16), DLE
 set escape OFF
@@ -237,9 +237,10 @@ set escape ""
 
 ----------------------------------------
 --  Prepare for Install
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ./installation_prepare.sql
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Prepare for View Install
@@ -255,9 +256,10 @@ create public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE for TEMP_PUBLICLY_UPDATEABL
 ----------------------------------------
 -- PACKAGE Install
 
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/COMMON_UTIL.pkssql
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.COMMON_UTIL Package
@@ -342,9 +344,10 @@ end common_util;
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/FH2.pkssql
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.FH2 Package
@@ -464,9 +467,10 @@ end fh2;
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/GRAB_SCRIPTS.pkssql
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.GRAB_SCRIPTS Package
@@ -579,9 +583,10 @@ end grab_scripts;
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/ROOT_SCRIPTS.pkssql
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.ROOT_SCRIPTS Package
@@ -643,9 +648,10 @@ end root_scripts;
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/ZIP_UTIL_PKG.pkssql
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.ZIP_UTIL_PKG Package
@@ -735,9 +741,10 @@ set define on
 ----------------------------------------
 -- TABLE Install
 
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/BUILD_CONF.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.BUILD_CONF Table
@@ -775,9 +782,10 @@ ALTER TABLE "ODBCAPTURE"."BUILD_CONF" ADD CONSTRAINT "BUILD_CONF_NK1" UNIQUE ("B
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/BUILD_PATH.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.BUILD_PATH Table
@@ -812,9 +820,10 @@ ALTER TABLE "ODBCAPTURE"."BUILD_PATH" ADD CONSTRAINT "BUILD_PATH_CK1" CHECK (par
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/BUILD_TYPE_TIMING.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.BUILD_TYPE_TIMING Table
@@ -848,9 +857,10 @@ set define off
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/DBA_DEPENDENCIES_TAB.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.DBA_DEPENDENCIES_TAB Table
@@ -886,9 +896,10 @@ set define off
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/DBA_OBJECTS_TAB.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.DBA_OBJECTS_TAB Table
@@ -920,9 +931,10 @@ set define off
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/DBA_TAB_PRIVS_TAB.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.DBA_TAB_PRIVS_TAB Table
@@ -960,9 +972,10 @@ set define off
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/DLOAD_CONF.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.DLOAD_CONF Table
@@ -1010,9 +1023,10 @@ ALTER TABLE "ODBCAPTURE"."DLOAD_CONF" ADD CONSTRAINT "DLOAD_CONF_PK" PRIMARY KEY
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/ELEMENT_CONF.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.ELEMENT_CONF Table
@@ -1060,9 +1074,10 @@ ALTER TABLE "ODBCAPTURE"."ELEMENT_CONF" ADD CONSTRAINT "ELEMENT_CONF_UK1" UNIQUE
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.METADATA_TRANSFORM_PARAMS Table
@@ -1099,9 +1114,10 @@ ALTER TABLE "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" ADD CONSTRAINT "METADATA_TR
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJECT_CONF.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.OBJECT_CONF Table
@@ -1142,9 +1158,10 @@ ALTER TABLE "ODBCAPTURE"."OBJECT_CONF" ADD CONSTRAINT "OBJECT_CONF_CK1" CHECK (e
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_COMMENTS_TAB Table
@@ -1179,9 +1196,10 @@ set define off
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_CONTEXT_TAB Table
@@ -1223,9 +1241,10 @@ set define off
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_DATA_LOAD_TAB Table
@@ -1268,9 +1287,10 @@ set define off
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_FKEY_TAB Table
@@ -1315,9 +1335,10 @@ set define off
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_INDEX_TAB Table
@@ -1363,9 +1384,10 @@ set define off
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_OBJECT_TAB Table
@@ -1403,9 +1425,10 @@ set define off
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_SYNONYM_TAB Table
@@ -1448,9 +1471,10 @@ set define off
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_TRIGGER_TAB Table
@@ -1492,9 +1516,10 @@ set define off
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/ROLE_CONF.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.ROLE_CONF Table
@@ -1533,9 +1558,10 @@ ALTER TABLE "ODBCAPTURE"."ROLE_CONF" ADD CONSTRAINT "ROLE_CONF_CK1" CHECK ("ORAC
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/SCHEMA_CONF.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.SCHEMA_CONF Table
@@ -1583,9 +1609,10 @@ ALTER TABLE "ODBCAPTURE"."SCHEMA_CONF" ADD CONSTRAINT "SCHEMA_CONF_CK2" CHECK (o
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.SCHEMA_OBJECTS_TAB Table
@@ -1615,9 +1642,10 @@ set define off
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/TSPACE_CONF.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.TSPACE_CONF Table
@@ -1653,9 +1681,10 @@ ALTER TABLE "ODBCAPTURE"."TSPACE_CONF" ADD CONSTRAINT "TSPACE_CONF_PK" PRIMARY K
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/ZIP_FILES.tbl
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.ZIP_FILES Table
@@ -1692,47 +1721,592 @@ set define on
 -- DATA_LOAD Install
 
 
-prompt ------------------------------------------------------------
-prompt NOTE: DATA LOADING for "ODBCAPTURE/BUILD_CONF.cldr" NOT IMPLEMENTED
-prompt ------------------------------------------------------------
+prompt ============================================================
+prompt Running: grbsrc ODBCAPTURE/BUILD_CONF.cldr
+prompt ============================================================
+prompt Translating ../grbsrc/ODBCAPTURE/BUILD_CONF.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ","BUILD_TYPE","NOTES")
+  values (-99,'sys','N/A System Users.  (Not Installed, Always available for Grants and Synonyms)');
+
+insert into "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ","BUILD_TYPE","NOTES")
+  values (-95,'pub','N/A PUBLIC.  (Not Installed, Always available for Grants and Synonyms)');
+
+insert into "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ","BUILD_TYPE","NOTES")
+  values (-90,'grbsrc','ODBCapture Source Code Script Generation');
+
+insert into "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ","BUILD_TYPE","NOTES")
+  values (-85,'grbras','RAS - Real Application Security (XS$NULL)');
+
+insert into "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ","BUILD_TYPE","NOTES")
+  values (-82,'grbjava','JAVAVM,CATJAVA,XML - JServer JAVA Virtual Machine, Oracle Database Java Packages (OJVMSYS), Oracle XDK');
+
+insert into "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ","BUILD_TYPE","NOTES")
+  values (-78,'grbsdo','SDO,LCTR (Placeholder) - Spatial - Oracle Locator - Graph (MDSYS, MDDATA)');
+
+insert into "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ","BUILD_TYPE","NOTES")
+  values (-50,'grbendp','ODBCapture Common Endpoint for Hierarchy and Non-Generated Objects');
+
+insert into "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ","BUILD_TYPE","NOTES")
+  values (-48,'grbdat','ODBCapture Self-Capture Configuration Data');
 
 
-prompt ------------------------------------------------------------
-prompt NOTE: DATA LOADING for "ODBCAPTURE/BUILD_PATH.cldr" NOT IMPLEMENTED
-prompt ------------------------------------------------------------
+prompt ============================================================
+prompt Running: grbsrc ODBCAPTURE/BUILD_PATH.cldr
+prompt ============================================================
+prompt Translating ../grbsrc/ODBCAPTURE/BUILD_PATH.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
+  values (-99,-95);
+
+insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
+  values (-95,-90);
+
+insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
+  values (-90,-85);
+
+insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
+  values (-90,-82);
+
+insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
+  values (-90,-78);
+
+insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
+  values (-90,-50);
+
+insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
+  values (-85,-50);
+
+insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
+  values (-82,-50);
+
+insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
+  values (-78,-50);
+
+insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
+  values (-50,-48);
 
 
-prompt ------------------------------------------------------------
-prompt NOTE: DATA LOADING for "ODBCAPTURE/ELEMENT_CONF.cldr" NOT IMPLEMENTED
-prompt ------------------------------------------------------------
+prompt ============================================================
+prompt Running: grbsrc ODBCAPTURE/ELEMENT_CONF.cldr
+prompt ============================================================
+prompt Translating ../grbsrc/ODBCAPTURE/ELEMENT_CONF.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (-999,'INSTALL_SCRIPT','N/A',NULL,NULL,NULL,NULL,'Non-Schema Installation Script (The "EXT" is Not Applicable)');
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (-990,'RAS_ACL','racl',NULL,NULL,NULL,NULL,'Real Application Security (RAS) Access Control List (ACL) and supporting metadata');
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (-150,'ROLE','role',NULL,NULL,NULL,NULL,'SYS Only, Includes SYS Grants');
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (-140,'USER','user',NULL,NULL,NULL,NULL,'SYS Only, Includes SYS Grants');
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (-130,'SYS_GRANT','sgrnt',NULL,NULL,NULL,NULL,'SYS Only, FUTURE Grants on OBJECT_NAME_REGEXP for Grants to SYS Objects');
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (-125,'HOST_ACL','hacl',NULL,NULL,NULL,NULL,'SYS Only. Host Access Control Lists');
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (-120,'WALLET_ACL','wacl',NULL,NULL,NULL,NULL,'SYS Only. Wallet Access Control Lists');
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (-110,'DATABASE_TRIGGER','dbtrg',NULL,NULL,'TRIGGER',NULL,'System Triggers "ON DATABASE"');
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (-20,'DIRECTORY','dir','sh','bat','DIRECTORY','DIRECTORY','SYSTEM Only, FUTURE Directories and used in OBJECT_NAME_REGEXP');
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (-10,'GRANT','grnt',NULL,NULL,NULL,NULL,'SYSTEM Only, FUTURE Grants on OBJECT_NAME_REGEXP for SYSTEM Objects and System Priveleges');
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (10,'SYNONYM','syn',NULL,NULL,'SYNONYM',NULL,'FUTURE Synonyms.');
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (30,'DB_LINK','dblnk',NULL,NULL,'DATABASE LINK','DATABASE LINK',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (40,'SEQUENCE','seq',NULL,NULL,'SEQUENCE','SEQUENCE',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (110,'TYPE_SPEC','tps',NULL,NULL,'TYPE','TYPE',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (130,'FUNCTION','func',NULL,NULL,'FUNCTION','FUNCTION',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (140,'PROCEDURE','proc',NULL,NULL,'PROCEDURE','PROCEDURE',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (150,'PACKAGE_SPEC','pkssql',NULL,NULL,'PACKAGE','PACKAGE',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (210,'QUEUE_TABLE','aqt',NULL,NULL,NULL,'TABLE',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (220,'QUEUE','aq',NULL,NULL,'QUEUE','QUEUE',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (310,'TABLE','tbl',NULL,NULL,'TABLE','TABLE',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (320,'DATA_LOAD','cldr','ctl','csv',NULL,'TABLE','DATA_LOAD references are not allowed in OBJECT_CONF.  Also disables Foreign Keys and Triggers');
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (330,'TABLE_INDEX','tidx',NULL,NULL,'INDEX',NULL,'FUTURE Indexes. CURRENT Indexes are included with object creation');
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (350,'MVIEW_INDEX','mvidx',NULL,NULL,'INDEX',NULL,NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (360,'VIEW','vw',NULL,NULL,'VIEW','VIEW',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (370,'MVIEW','mvw',NULL,NULL,'MATERIALIZED VIEW','MATERIALIZED VIEW',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (410,'TYPE_BODY','tpb',NULL,NULL,'TYPE BODY','TYPE',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (420,'JAVA_SOURCE','pjv',NULL,NULL,'JAVA SOURCE','JAVA SOURCE',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (450,'PACKAGE_BODY','pkbsql',NULL,NULL,'PACKAGE BODY','PACKAGE',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (510,'TABLE_FOREIGN_KEY','tfk',NULL,NULL,NULL,'TABLE',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (520,'VIEW_FOREIGN_KEY','vfk',NULL,NULL,NULL,'VIEW',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (530,'MVIEW_FOREIGN_KEY','mvfk',NULL,NULL,NULL,'MATERIALIZED VIEW',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (540,'TABLE_TRIGGER','ttrg',NULL,NULL,'TRIGGER','TABLE',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (550,'VIEW_TRIGGER','vtrg',NULL,NULL,'TRIGGER','VIEW',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (560,'MVIEW_TRIGGER','mvtrg',NULL,NULL,'TRIGGER','MATERIALIZED VIEW',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (570,'SCHEMA_TRIGGER','utrg',NULL,NULL,'TRIGGER',NULL,'System Triggers "ON SCHEMA"');
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (610,'SCHEDULER_SCHEDULE','schdsd',NULL,NULL,'SCHEDULE','SCHEDULE',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (620,'SCHEDULER_PROGRAM','schdpg',NULL,NULL,'PROGRAM','PROGRAM',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (630,'SCHEDULER_JOB','schdjb',NULL,NULL,'JOB','JOB',NULL);
+
+insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
+  values (710,'CONTEXT','ctxt',NULL,NULL,'CONTEXT','CONTEXT','Memory Based Application Context (NOT Oracle Text) (Don''t match OBJECT_TYPE)');
 
 
-prompt ------------------------------------------------------------
-prompt NOTE: DATA LOADING for "ODBCAPTURE/METADATA_TRANSFORM_PARAMS.cldr" NOT IMPLEMENTED
-prompt ------------------------------------------------------------
+prompt ============================================================
+prompt Running: grbsrc ODBCAPTURE/METADATA_TRANSFORM_PARAMS.cldr
+prompt ============================================================
+prompt Translating ../grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" ("NAME","VALUE_TYPE","VALUE")
+  values ('CONSTRAINTS','BOOLEAN','TRUE');
+
+insert into "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" ("NAME","VALUE_TYPE","VALUE")
+  values ('CONSTRAINTS_AS_ALTER','BOOLEAN','TRUE');
+
+insert into "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" ("NAME","VALUE_TYPE","VALUE")
+  values ('FORCE','BOOLEAN','TRUE');
+
+insert into "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" ("NAME","VALUE_TYPE","VALUE")
+  values ('LOB_STORAGE','VARCHAR','NO_CHANGE');
+
+insert into "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" ("NAME","VALUE_TYPE","VALUE")
+  values ('OID','BOOLEAN','TRUE');
+
+insert into "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" ("NAME","VALUE_TYPE","VALUE")
+  values ('PARTITIONING','BOOLEAN','FALSE');
+
+insert into "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" ("NAME","VALUE_TYPE","VALUE")
+  values ('PRETTY','BOOLEAN','TRUE');
+
+insert into "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" ("NAME","VALUE_TYPE","VALUE")
+  values ('REF_CONSTRAINTS','BOOLEAN','FALSE');
+
+insert into "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" ("NAME","VALUE_TYPE","VALUE")
+  values ('SEGMENT_ATTRIBUTES','BOOLEAN','FALSE');
+
+insert into "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" ("NAME","VALUE_TYPE","VALUE")
+  values ('SIZE_BYTE_KEYWORD','BOOLEAN','TRUE');
+
+insert into "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" ("NAME","VALUE_TYPE","VALUE")
+  values ('SQLTERMINATOR','BOOLEAN','TRUE');
+
+insert into "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" ("NAME","VALUE_TYPE","VALUE")
+  values ('STORAGE','BOOLEAN','FALSE');
+
+insert into "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" ("NAME","VALUE_TYPE","VALUE")
+  values ('TABLESPACE','BOOLEAN','FALSE');
+
+insert into "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" ("NAME","VALUE_TYPE","VALUE")
+  values ('TABLE_COMPRESSION_CLAUSE','VARCHAR','NONE');
 
 
-prompt ------------------------------------------------------------
-prompt NOTE: DATA LOADING for "ODBCAPTURE/ROLE_CONF.cldr" NOT IMPLEMENTED
-prompt ------------------------------------------------------------
+prompt ============================================================
+prompt Running: grbsrc ODBCAPTURE/ROLE_CONF.cldr
+prompt ============================================================
+prompt Translating ../grbsrc/ODBCAPTURE/ROLE_CONF.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('ACCHK_READ','sys','Y','Allows users with no administrative privileges to query the DBA_ACCHK_STATISTICS view');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('ADM_PARALLEL_EXECUTE_TASK','sys','Y','Perform administrative routines (qualified by the prefix ADM_ in DBMS_PARALLEL_EXECUTE) and access the DBA_PARALLEL_EXECUTE_CHUNKS and DBA_PARALLEL_EXECUTE_TASKS views');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('APEX_ADMINISTRATOR_ROLE','sys','Y','(grbapex) APEX/REST/ORDS Role');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('APEX_GRANTS_FOR_NEW_USERS_ROLE','sys','Y','(grbapex) APEX/REST/ORDS Role');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('APPLICATION_TRACE_VIEWER','sys','Y',NULL);
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('AQ_ADMINISTRATOR_ROLE','sys','Y','Privilege to administer Advanced Queuing.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('AQ_USER_ROLE','sys','Y','De-supported but maintained for backward compatibility to version 8.0.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('AUDIT_ADMIN','sys','Y','Provides privileges to create unified and fine-grained audit policies, use the AUDIT and NOAUDIT SQL statements, view audit data, and manage the audit trail administration.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('AUDIT_VIEWER','sys','Y','Provides privileges to view and analyze audit data.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('AUTHENTICATEDUSER','sys','Y','(grbxrep) Used by the XDB protocols to define any user who has logged in to the system.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('AVTUNE_PKG_ROLE','sys','Y','Utility functions for Analytic View auto cache auto tune.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('BDSQL_ADMIN','sys','Y','Big Data SQL Admin Role.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('BDSQL_USER','sys','Y','Big Data SQL User Role.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('CAPTURE_ADMIN','sys','Y','Provides the privileges necessary to create and manage privilege analysis policies.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('CDB_DBA','sys','Y','Provides the privileges required for administering a CDB, such as SET CONTAINER, SELECT ON PDB_PLUG_IN_VIOLATIONS, and SELECT ON CDB_LOCAL_ADMIN_PRIVS. If your site requires additional privileges, then you can create a role (either common or local) to cover these privileges, and then grant this role to the CDB_DBA role.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('CONNECT','sys','Y','Contains the CREATE SESSION and SET CONTAINER system privileges.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('CTXAPP','sys','Y','(grbctx) Enables developers create Oracle Text indexes and index preferences, and to use PL/SQL packages.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DATAPATCH_ROLE','sys','Y','Access to DBMS_QOPATCH package which will give details of Oracle Patches applied on the database.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DATAPUMP_EXP_FULL_DATABASE','sys','Y','Granted EXP_FULL_DATABASE role.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DATAPUMP_IMP_FULL_DATABASE','sys','Y','Granted EXP_FULL_DATABASE and IMP_FULL_DATABASE roles.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DBA','sys','Y','Example Database Administrator role.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DBFS_ROLE','sys','Y','Provides access to the DBFS (the Database Filesystem) packages and objects.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DBMS_MDX_INTERNAL','sys','Y',NULL);
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DELETE_CATALOG_ROLE','sys','Y','Grant this role to allow users to delete records from the system audit tables SYS.AUD$ and SYS.FGA_LOG$.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DV_ACCTMGR','sys','Y','(grbsec) Use the DV_ACCTMGR role to create and maintain database accounts and database profiles. In this manual, the example DV_ACCTMGR role is assigned to a user named amalcolm_dvacctmgr.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DV_ADMIN','sys','Y','(grbsec) The DV_ADMIN role controls the Oracle Database Vault PL/SQL packages.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DV_AUDIT_CLEANUP','sys','Y','(grbsec) Grant to any user who is responsible for purging the Database Vault auit trail in a non-unified auditing environment.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DV_DATAPUMP_NETWORK_LINK','sys','Y','(grbsec) Needed by any user who is responsible for conducting the NETWORK_LINK transportable Data Pump import operation in an Oracle Database Vault environment. Enables the management of the Oracle Data Pump NETWORK_LINK transportable import processes to be tightly controlled by Database Vault, but does not change or restrict the way you would normally conduct Oracle Data Pump operations.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DV_GOLDENGATE_ADMIN','sys','Y','Intended for any user with responsibility for GoldenGate configuration by default it contains no privileges.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DV_GOLDENGATE_REDO_ACCESS','sys','Y','(grbsec) For any user who is responsible for using the Oracle GoldenGate TRANLOGOPTIONS DBLOGREADER method to access redo logs in an Oracle Database Vault environment.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DV_MONITOR','sys','Y','(grbsec) Enables the Oracle Enterprise Manager Grid Control agent to monitor Oracle Database Vault for attempted violations and configuration issues with realm or command rule definitions. This enables Grid Control to read and propagate realm definitions and command rule definitions between databases.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DV_OWNER','sys','Y','(grbsec) The DV_OWNER role has the administrative capabilities that the DV_ADMIN role provides, and the reporting capabilities the DV_SECANALYST role provides.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DV_PATCH_ADMIN','sys','Y','(grbsec) Temporarily grant the DV_PATCH_ADMIN role to any database administrator who is responsible for performing database patching or adding languages to Database Vault. After the patch operation or language addition is complete, you should immediately revoke this role. The role does not provide access to any secured data.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DV_POLICY_OWNER','sys','Y','(grbsec) Enables database users to manage to a limited degree Oracle Database Vault policies.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DV_PUBLIC','sys','Y','(grbsec) Oracle Database Vault does not enable you to directly grant object privileges in the DVSYS schema to PUBLIC. You must grant the object privilege on the DVSYS schema object the DV_PUBLIC role, and then grant DV_PUBLIC to PUBLIC.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DV_REALM_OWNER','sys','Y','(grbsec) Use the DV_REALM_OWNER role to manage database objects in multiple schemas that define a realm. Grant this role to the database account owner who is responsible for managing one or more schema database accounts within a realm and the roles associated with the realm.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DV_REALM_RESOURCE','sys','Y','(grbsec) Use the DV_REALM_RESOURCE role for operations such as creating tables, views, triggers, synonyms, and other objects that a realm would typically use.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DV_SECANALYST','sys','Y','(grbsec) DV_SECANALYST can query DVSYS schema objects through Oracle Database Vault-supplied views only.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DV_STREAMS_ADMIN','sys','Y','(grbsec) Grant to a user who is responsible for configuring Streams replication in an Oracle Database Vault environment.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('DV_XSTREAM_ADMIN','sys','Y','(grbsec) Grant to a user who is responsible for configuring XStreams replication in an Oracle Database Vault environment.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('EM_EXPRESS_ALL','sys','Y','(grbemdc) Enables users to connect to Oracle Enterprise Manager (EM) Express and use all the functionality provided by EM Express (read and write access to all EM Express features). The EM_EXPRESS_ALL role includes the EM_EXPRESS_BASIC role.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('EM_EXPRESS_BASIC','sys','Y','(grbemdc) Enables users to connect to EM Express and to view the pages in read-only mode. The EM_EXPRESS_BASIC role includes the SELECT_CATALOG_ROLE role.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('EXECUTE_CATALOG_ROLE','sys','Y','Allow users EXECUTE privileges for packages and procedures in the data dictionary. Granted HS_ADMIN_EXECUTE_ROLE role.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('EXP_FULL_DATABASE','sys','Y','Provides the privileges required to perform full and incremental database export. Granted EXECUTE_CATALOG_ROLE and SELECT_CATALOG_ROLE roles.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('GATHER_SYSTEM_STATISTICS','sys','Y','To update the dictionary system statistics a user must have DBA privileges or the GATHER_SYSTEM_STATISTICS role.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('GDS_CATALOG_SELECT','sys','Y','(grbrac) Provides access to 10 objects owned by GSMADMIN_INTERNAL.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('GGSYS_ROLE','sys','Y','Golden Gate Administrator Privileges.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('GLOBAL_AQ_USER_ROLE','sys','Y','Required to register through LDAP using JDBC connection parameters as this requires the ability to write access to the connection factory entries in the LDAP server (which requires the LDAP user to be either the database itself or be granted GLOBAL_AQ_USER_ROLE).');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('GSMADMIN_ROLE','sys','Y','(grbrac) Granted AQ_ADMINISTRATOR_ROLE and CONNECT roles: Inlcudes EXECUTE on DBMS_GSM_UTILITY and related resources.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('GSMROOTUSER_ROLE','sys','Y','(grbrac) GSMROOTUSER is a database account specific to Oracle Sharding that is only used when pluggable database (PDB) shards are present. The account is used by GDSCTL and global service managers to connect to the root container of container databases (CDBs) to perform administrative tasks.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('GSMUSER_ROLE','sys','Y','(grbrac) Granted CONNECT role: Includes EXECUTE on DBMS_GSM_DBADMIN.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('GSM_POOLADMIN_ROLE','sys','Y','(grbrac) Granted CONNECT role: Inlcudes EXECUTE on DBMS_GSM_POOLADMIN.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('HS_ADMIN_EXECUTE_ROLE','sys','Y','Provides the EXECUTE privilege for users who want to use the Heterogeneous Services (HS) PL/SQL packages.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('HS_ADMIN_ROLE','sys','Y','Provides privileges for DBAs who need to use the DBA role using Oracle Database Heterogeneous Services to access appropriate tables in the data dictionary. Used to protect access to the Heterogeneous Services (HS) data dictionary tables (grants SELECT) and packages (grants EXECUTE). It is granted to SELECT_CATALOG_ROLE and EXECUTE_CATALOG_ROLE such that users with generic data dictionary access also can access the HS data dictionary.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('HS_ADMIN_SELECT_ROLE','sys','Y','Provides privileges to query the Heterogeneous Services data dictionary views.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('IMP_FULL_DATABASE','sys','Y','Provides the privileges required to perform full database imports. Includes an extensive list of system privileges (use view DBA_SYS_PRIVS to view privileges) and the following roles: EXECUTE_CATALOG_ROLE and SELECT_CATALOG_ROLE. This role is provided for convenience in using the export and import utilities.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('LBAC_DBA','sys','Y','Provides permissions to use the SA_SYSDBA PL/SQL package.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('LOGSTDBY_ADMINISTRATOR','sys','Y','A prototype role created by default with the RESOURCE role.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('MAINTPLAN_APP','sys','Y','A maintenance plan can be queried in a PDB via the DB_NOTIFICATIONS view by a user that has the MAINTPLAN_APP system privilege.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('MGMT_USER','sys','Y','(grbemdc) Enterprise Manager Database Control');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('OEM_ADVISOR','sys','Y','(grbemdc) Provides privileges to create, drop, select (read), load (write), and delete a SQL tuning set through the DBMS_SQLTUNE PL/SQL package, and to access to the Advisor framework using the ADVISOR PL/SQL package.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('OEM_MONITOR','sys','Y','(grbemdc) Provides privileges needed by the Management Agent component of Oracle Enterprise Manager to monitor and manage a database.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('OLAP_DBA','sys','Y','(grbolap) Provides privileges needed by the Management Agent component of Oracle Enterprise Manager to monitor and manage the database.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('OLAP_USER','sys','Y','(grbolap) Provides application developers privileges to create dimensional objects in their own schemas for Oracle OLAP.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('OLAP_XS_ADMIN','sys','Y','(grbolap) Administer OLAP data security. Granted the XS_RESOURCE role.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('OPTIMIZER_PROCESSING_RATE','sys','Y','Provides privileges to execute the GATHER_PROCESSING_RATE, SET_PROCESSING_RATE, and DELETE_PROCESSING_RATE procedures in the DBMS_STATS package. These procedures manage the processing rate of a system for automatic degree of parallelism (Auto DOP). Auto DOP uses these processing rates to determine the optimal degree of parallelism for a SQL statement.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('ORDS_ADMINISTRATOR_ROLE','sys','Y','(grbapex) APEX/REST/ORDS Role');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('ORDS_RUNTIME_ROLE','sys','Y','(grbapex) APEX/REST/ORDS Role');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('PDB_DBA','sys','Y','Granted automatically to the local user that is created when you create a new pluggable database (PDB) from the seed PDB. No privileges are provided with this role.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('PLUSTRACE','sys','Y','Grants privlileges on V$ views required to use AUTOTRACE. Can be created in a PDB but not in the CDB.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('PPLB_ROLE','sys','Y',NULL);
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('PROVISIONER','sys','Y','Provides privileges to register and update global callbacks for Oracle Database Real Application sessions and to provision principals.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('RDFCTX_ADMIN','sys','Y','Privileges required to add a new extractor type in the schema RDFCTXU for Oracle Database Semantic Technologies.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('RECOVERY_CATALOG_OWNER','sys','Y','Must be granted to the recovery catalog owner for RMAN.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('RECOVERY_CATALOG_OWNER_VPD','sys','Y',NULL);
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('RECOVERY_CATALOG_USER','sys','Y','Prerequisite for Adding Data Collectors (Oracle Recovery Manager - RMAN)');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('RESOURCE','sys','Y','Provides the following system privileges: CREATE CLUSTER, CREATE INDEXTYPE, CREATE OPERATOR, CREATE PROCEDURE, CREATE SEQUENCE, CREATE TABLE, CREATE TRIGGER, CREATE TYPE. This role is provided for compatibility with previous releases of Oracle Database. You can determine the privileges encompassed by this role by querying the DBA_SYS_PRIVS data dictionary view.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('SCHEDULER_ADMIN','sys','Y','Allows the grantee to execute the procedures of the DBMS_SCHEDULER package. It includes all of the job scheduler system privileges and is included in the DBA role.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('SELECT_CATALOG_ROLE','sys','Y','Provides SELECT privilege on objects in the data dictionary. Granted the HS_ADMIN_SELECT_ROLE role.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('SODA_APP','sys','Y','Simple Oracle Document Access (SODA) permissions in PL/SQL for a SODA User.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('SYSUMF_ROLE','sys','Y','Permission needed for Universal Message Format, UMF, which provides an interface for deploying Remote Management Framework (RMF) topology');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('WM_ADMIN_ROLE','sys','Y','(grbowm) Contains all Workspace Manager privileges with the grant option. By default, the database administrator (DBA role) is granted the WM_ADMIN_ROLE role.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('XDBADMIN','sys','Y','(grbxrep) Allows the grantee to register an XML schema globally, as opposed to registering it for use or access only by its owner. It also lets the grantee bypass access control list (ACL) checks when accessing Oracle XML DB Repository.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('XDB_SET_INVOKER','sys','Y','(grbxrep) Allows the grantee to define invoker''s rights handlers and to create or update the resource configuration for XML repository triggers. By default, Oracle Database grants this role to the DBA role but not to the XDBADMIN role.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('XDB_WEBSERVICES','sys','Y','(grbxrep) Allows the grantee to access Oracle Database Web services over HTTPS. However, it does not provide the user access to objects in the database that are public. To allow public access, you need to grant the user the XDB_WEBSERVICES_WITH_PUBLIC role. For a user to use these Web services, SYS must enable the Web service servlets.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('XDB_WEBSERVICES_OVER_HTTP','sys','Y','(grbxrep) Allows the grantee to access Oracle Database Web services over HTTP. However, it does not provide the user access to objects in the database that are public. To allow public access, you need to grant the user the XDB_WEBSERVICES_WITH_PUBLIC role.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('XDB_WEBSERVICES_WITH_PUBLIC','sys','Y','(grbxrep) Allows the grantee access to public objects through Oracle Database Web services.');
 
 
-prompt ------------------------------------------------------------
-prompt NOTE: DATA LOADING for "ODBCAPTURE/SCHEMA_CONF.cldr" NOT IMPLEMENTED
-prompt ------------------------------------------------------------
+prompt ============================================================
+prompt Running: grbsrc ODBCAPTURE/SCHEMA_CONF.cldr
+prompt ============================================================
+prompt Translating ../grbsrc/ODBCAPTURE/SCHEMA_CONF.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('ANONYMOUS','sys','Y',NULL,NULL,NULL,NULL,'(grbxrep) XDB - XML Database Repository (XDB,ANONYMOUS)');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('APEX_220100','sys','Y',NULL,NULL,NULL,NULL,'(grbapex) Oracle Application Express Version 22.1');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('APEX_220200','sys','Y',NULL,NULL,NULL,NULL,'(grbapex) Oracle Application Express Version 22.2');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('APEX_230100','sys','Y',NULL,NULL,NULL,NULL,'(grbapex) Oracle Application Express Version 23.1');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('APEX_230200','sys','Y',NULL,NULL,NULL,NULL,'(grbapex) Oracle Application Express Version 23.2');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('APPQOSSYS','sys','Y',NULL,NULL,NULL,NULL,'Storing and Managing All Data and Metadata Required by Oracle Quality of Service Management');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('CTXSYS','sys','Y',NULL,NULL,NULL,NULL,'(grbctx) CONTEXT - Oracle Text (CTXSYS)');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('DIP','sys','Y',NULL,NULL,NULL,NULL,'Directory Integration and Provisioning Account');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('DVF','sys','Y',NULL,NULL,NULL,NULL,'(grbsec) OLS,DV - Oracle Label Security (LBACSYS), Oracle Database Vault (DVSYS, DVF)');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('DVSYS','sys','Y',NULL,NULL,NULL,NULL,'(grbsec) OLS,DV - Oracle Label Security (LBACSYS), Oracle Database Vault (DVSYS, DVF)');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('LBACSYS','sys','Y',NULL,NULL,NULL,NULL,'(grbsec) OLS,DV - Oracle Label Security (LBACSYS), Oracle Database Vault (DVSYS, DVF)');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('MGMT_VIEW','sys','Y',NULL,NULL,NULL,NULL,'(grbemdc) Enterprise Manager Grid Control Schema Name');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('ODBCAPTURE','grbsrc','N',NULL,NULL,'USERS','512M','Oracle Database Source Code Capture Application');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('OLAPSYS','sys','Y',NULL,NULL,NULL,NULL,'(grbolap) XOQ,APS,AMD - OLAP API, OLAP Analytic Workspace (OLAPSYS), OLAP Catalog');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('OUTLN','sys','Y',NULL,NULL,NULL,NULL,'Stored Outlines');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('PUBLIC','pub','Y',NULL,NULL,NULL,NULL,'Public Grants and Synonyms');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('SYS','sys','Y',NULL,NULL,NULL,NULL,'Database Owner');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('SYSMAN','sys','Y',NULL,NULL,NULL,NULL,'(grbemdc) Enterprise Manager Grid Control Schema Name');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('SYSTEM','sys','Y',NULL,NULL,NULL,NULL,'Default Database Administrator Account');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('WMSYS','sys','Y',NULL,NULL,NULL,NULL,'(grbowm) OWM - Oracle Workspace Manager (WMSYS)');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('XDB','sys','Y',NULL,NULL,NULL,NULL,'(grbxrep) XDB - XML Database Repository (XDB,ANONYMOUS)');
 
 
-prompt ------------------------------------------------------------
-prompt NOTE: DATA LOADING for "ODBCAPTURE/TSPACE_CONF.cldr" NOT IMPLEMENTED
-prompt ------------------------------------------------------------
+prompt ============================================================
+prompt Running: grbsrc ODBCAPTURE/TSPACE_CONF.cldr
+prompt ============================================================
+prompt Translating ../grbsrc/ODBCAPTURE/TSPACE_CONF.csv to 'INSERT INTO'
 
 
 ----------------------------------------
 -- INDEX Install
 
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/DBA_DEPENDENCIES_TAB.tidx
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create Indexes for ODBCAPTURE.DBA_DEPENDENCIES_TAB TABLE
@@ -1756,9 +2330,10 @@ set define off
   ;
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/DBA_OBJECTS_TAB.tidx
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create Indexes for ODBCAPTURE.DBA_OBJECTS_TAB TABLE
@@ -1775,9 +2350,10 @@ set define off
   ;
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/DBA_TAB_PRIVS_TAB.tidx
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create Indexes for ODBCAPTURE.DBA_TAB_PRIVS_TAB TABLE
@@ -1794,9 +2370,10 @@ set define off
   ;
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tidx
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_COMMENTS_TAB TABLE
@@ -1813,9 +2390,10 @@ set define off
   ;
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tidx
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_CONTEXT_TAB TABLE
@@ -1832,9 +2410,10 @@ set define off
   ;
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tidx
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_DATA_LOAD_TAB TABLE
@@ -1851,9 +2430,10 @@ set define off
   ;
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tidx
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_FKEY_TAB TABLE
@@ -1870,9 +2450,10 @@ set define off
   ;
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tidx
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_INDEX_TAB TABLE
@@ -1889,9 +2470,10 @@ set define off
   ;
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tidx
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_OBJECT_TAB TABLE
@@ -1908,9 +2490,10 @@ set define off
   ;
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tidx
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_SYNONYM_TAB TABLE
@@ -1934,9 +2517,10 @@ set define off
   ;
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tidx
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create Indexes for ODBCAPTURE.OBJ_INSTALL_TRIGGER_TAB TABLE
@@ -1964,9 +2548,10 @@ set define on
 ----------------------------------------
 -- VIEW Install
 
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.AQ_SYSTEM_PRIVS_VW view
@@ -2014,9 +2599,10 @@ create view "ODBCAPTURE"."AQ_SYSTEM_PRIVS_VW"
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/BUILD_PATH_REVIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.BUILD_PATH_REVIEW view
@@ -2073,9 +2659,10 @@ select NULL                  parent_build_seq
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.DBA_DEPENDENCIES_VIEW view
@@ -2127,9 +2714,10 @@ create view "ODBCAPTURE"."DBA_DEPENDENCIES_VIEW"
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/DBA_OBJECTS_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.DBA_OBJECTS_VIEW view
@@ -2252,9 +2840,10 @@ select sco.build_type            OBJECT_OWNER_BUILD_TYPE
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.DBA_TAB_PRIVS_VIEW view
@@ -2315,9 +2904,10 @@ create view "ODBCAPTURE"."DBA_TAB_PRIVS_VIEW"
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_COMMENTS_VIEW view
@@ -2391,9 +2981,10 @@ select d.build_type
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_CONTEXT_VIEW view
@@ -2458,9 +3049,10 @@ create view "ODBCAPTURE"."OBJ_INSTALL_CONTEXT_VIEW"
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_DATA_LOAD_VIEW view
@@ -2522,9 +3114,10 @@ create view "ODBCAPTURE"."OBJ_INSTALL_DATA_LOAD_VIEW"
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_FKEY_VIEW view
@@ -2613,9 +3206,10 @@ create view "ODBCAPTURE"."OBJ_INSTALL_FKEY_VIEW"
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_INDEX_VIEW view
@@ -2695,9 +3289,10 @@ create view "ODBCAPTURE"."OBJ_INSTALL_INDEX_VIEW"
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_OBJECT_VIEW view
@@ -2843,9 +3438,10 @@ select "BUILD_TYPE","BUILD_TIMING","OBJECT_NAME_REGEXP","OBJECT_OWNER_BUILD_TYPE
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_SYNONYM_VIEW view
@@ -2925,9 +3521,10 @@ create view "ODBCAPTURE"."OBJ_INSTALL_SYNONYM_VIEW"
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.OBJ_INSTALL_TRIGGER_VIEW view
@@ -3009,9 +3606,10 @@ create view "ODBCAPTURE"."OBJ_INSTALL_TRIGGER_VIEW"
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.PRIV_OBJ_DIR_VIEW view
@@ -3125,9 +3723,10 @@ select "BUILD_TYPE","BUILD_TIMING","OBJECT_NAME_REGEXP","DIRECTORY_BUILD_TYPE","
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.PRIV_OBJ_HACL_VIEW view
@@ -3256,9 +3855,10 @@ select "BUILD_TYPE","BUILD_TIMING","BUILD_TYPE_SELECTOR","OBJECT_NAME_REGEXP","H
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.PRIV_OBJ_INSTALL_VW view
@@ -3340,9 +3940,10 @@ create view "ODBCAPTURE"."PRIV_OBJ_INSTALL_VW"
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.PRIV_OBJ_QUEUE_VIEW view
@@ -3430,9 +4031,10 @@ create view "ODBCAPTURE"."PRIV_OBJ_QUEUE_VIEW"
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.PRIV_OBJ_WACL_VIEW view
@@ -3559,9 +4161,10 @@ select "BUILD_TYPE","BUILD_TIMING","BUILD_TYPE_SELECTOR","OBJECT_NAME_REGEXP","W
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.PRIV_QUEUE_REGISTER_VIEW view
@@ -3647,9 +4250,10 @@ create view "ODBCAPTURE"."PRIV_QUEUE_REGISTER_VIEW"
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.PRIV_QUEUE_SUBSCRIBE_VIEW view
@@ -3722,9 +4326,10 @@ create view "ODBCAPTURE"."PRIV_QUEUE_SUBSCRIBE_VIEW"
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.PRIV_QUEUE_SYSPRIVS_VIEW view
@@ -3799,9 +4404,10 @@ create view "ODBCAPTURE"."PRIV_QUEUE_SYSPRIVS_VIEW"
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.PRIV_ROLE_PRIVILEGES_VIEW view
@@ -3910,9 +4516,10 @@ UNION ALL
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.PRIV_SYSOBJ_PRIVILEGES_VIEW view
@@ -3986,9 +4593,10 @@ create view "ODBCAPTURE"."PRIV_SYSOBJ_PRIVILEGES_VIEW"
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.PRIV_SYSTEM_PRIVILEGES_VIEW view
@@ -4056,9 +4664,10 @@ create view "ODBCAPTURE"."PRIV_SYSTEM_PRIVILEGES_VIEW"
 
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/UOR_INSTALL_VIEW.vw
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.UOR_INSTALL_VIEW view
@@ -4116,9 +4725,10 @@ set define on
 ----------------------------------------
 -- PACKAGE BODY Install
 
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/COMMON_UTIL.pkbsql
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.COMMON_UTIL Package Body
@@ -4560,9 +5170,10 @@ end common_util;
 /
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/FH2.pkbsql
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.FH2 Package Body
@@ -5149,9 +5760,10 @@ end fh2;
 /
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/GRAB_SCRIPTS.pkbsql
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.GRAB_SCRIPTS Package Body
@@ -8045,7 +8657,6 @@ begin
    fh2.script_put_line(fh, '--  NOTE: If running in a Linux based Docker Container from a Windows FileSystem Mount, run this first:');
    fh2.script_put_line(fh, '--    dos2unix -f -o ../install/*/*.csv ../install/*/*/*.csv');
    fh2.script_put_line(fh, '');
-   fh2.script_put_line(fh, 'define TOP_PDB_SYSTEM="&1."');
    fh2.script_put_line(fh, 'set serveroutput on size unlimited format wrapped');
    fh2.script_put_line(fh, '');
    fh2.script_put_line(fh, '----------------------------------------');
@@ -8076,7 +8687,7 @@ begin
    fh2.script_put_line(fh, 'prompt *  Run SYSTEM Installation  *');
    fh2.script_put_line(fh, 'prompt *****************************');
    fh2.script_put_line(fh, 'prompt');
-   fh2.script_put_line(fh, 'connect &TOP_PDB_SYSTEM.');
+   fh2.script_put_line(fh, 'connect &1.');
    fh2.script_put_line(fh, 'set serveroutput on size unlimited format wrapped');
    fh2.script_put_line(fh, '@install_system.sql "" "" ""');
    fh2.script_put_line(fh, '');
@@ -8086,7 +8697,7 @@ begin
    fh2.script_put_line(fh, 'prompt *  Install Application  *');
    fh2.script_put_line(fh, 'prompt *************************');
    fh2.script_put_line(fh, 'prompt');
-   fh2.script_put_line(fh, '@install_' || g_build_type || '.sql "&TOP_PDB_SYSTEM." "" ""');
+   fh2.script_put_line(fh, '@install_' || g_build_type || '.sql "&1." "" ""');
    fh2.script_put_line(fh, '');
    fh2.script_put_line(fh, '----------------------------------------');
    fh2.script_put_line(fh, 'set appinfo "Null"');
@@ -9291,9 +9902,10 @@ end grab_scripts;
 /
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/ROOT_SCRIPTS.pkbsql
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.ROOT_SCRIPTS Package Body
@@ -9417,14 +10029,6 @@ begin
 --
 --  Finalize Installation
 --
--- Command Line Parameters:
---   1 - SYSTEM/password@TNSALIAS
---       i.e. pass the username and password for the SYSTEM user
---            and the TNSALIAS for the connection to the database.
---       The Data Load installation requires this connection information.
---
-
-define FINAL_SYSTEM_CONNECT="&1."
 
 prompt
 prompt Drop Temp Publicly Updateable Table
@@ -9802,8 +10406,6 @@ begin
 --   1 - Password Key
 --
 
-define PASSKEY="&1."
-
 }';
    for sch in (select sl.username
                      ,trim(to_char(ora_hash(username,99),'09'))   HASH_VALUE
@@ -9813,7 +10415,7 @@ define PASSKEY="&1."
                 order by sl.username)
    loop
       ret_txt := ret_txt || 'alter user "' || sch.username   ||
-                       '" identified by "' || sch.hash_value || '&PASSKEY.";' ;
+                       '" identified by "' || sch.hash_value || '&1.";' ;
    end loop;
    return ret_txt;
 end set_user_authentication_sql;
@@ -9823,9 +10425,10 @@ end root_scripts;
 /
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/ZIP_UTIL_PKG.pkbsql
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create ODBCAPTURE.ZIP_UTIL_PKG Package Body
@@ -10369,9 +10972,10 @@ set define on
 ----------------------------------------
 -- TABLE_FOREIGN_KEY Install
 
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/BUILD_PATH.tfk
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create Foreign Keys for ODBCAPTURE.BUILD_PATH TABLE
@@ -10395,9 +10999,10 @@ set define off
 	  REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ") ENABLE;
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/DLOAD_CONF.tfk
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create Foreign Keys for ODBCAPTURE.DLOAD_CONF TABLE
@@ -10421,9 +11026,10 @@ set define off
 	  REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_TYPE") ENABLE;
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/OBJECT_CONF.tfk
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create Foreign Keys for ODBCAPTURE.OBJECT_CONF TABLE
@@ -10454,9 +11060,10 @@ set define off
 	  REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_TYPE") ENABLE;
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/ROLE_CONF.tfk
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create Foreign Keys for ODBCAPTURE.ROLE_CONF TABLE
@@ -10473,9 +11080,10 @@ set define off
 	  REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_TYPE") ENABLE;
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/SCHEMA_CONF.tfk
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create Foreign Keys for ODBCAPTURE.SCHEMA_CONF TABLE
@@ -10492,9 +11100,10 @@ set define off
 	  REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_TYPE") ENABLE;
 
 set define on
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/TSPACE_CONF.tfk
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Create Foreign Keys for ODBCAPTURE.TSPACE_CONF TABLE
@@ -10514,21 +11123,14 @@ set define on
 
 ----------------------------------------
 -- Finalize Installation (Includes SPOOL OFF)
-prompt ------------------------------------------------------------
+
+prompt ============================================================
 prompt Running: grbsrc ./installation_finalize.sql
-prompt ------------------------------------------------------------
+prompt ============================================================
 
 --
 --  Finalize Installation
 --
--- Command Line Parameters:
---   1 - SYSTEM/password@TNSALIAS
---       i.e. pass the username and password for the SYSTEM user
---            and the TNSALIAS for the connection to the database.
---       The Data Load installation requires this connection information.
---
-
-define FINAL_SYSTEM_CONNECT="&1."
 
 prompt
 prompt Drop Temp Publicly Updateable Table

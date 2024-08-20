@@ -121,14 +121,6 @@ begin
 --
 --  Finalize Installation
 --
--- Command Line Parameters:
---   1 - SYSTEM/password@TNSALIAS
---       i.e. pass the username and password for the SYSTEM user
---            and the TNSALIAS for the connection to the database.
---       The Data Load installation requires this connection information.
---
-
-define FINAL_SYSTEM_CONNECT="&1."
 
 prompt
 prompt Drop Temp Publicly Updateable Table
@@ -523,8 +515,6 @@ begin
 --   1 - Password Key
 --
 
-define PASSKEY="&1."
-
 }';
    for sch in (select sl.username
                      ,trim(to_char(ora_hash(username,99),'09'))   HASH_VALUE
@@ -534,7 +524,7 @@ define PASSKEY="&1."
                 order by sl.username)
    loop
       ret_txt := ret_txt || 'alter user "' || sch.username   ||
-                       '" identified by "' || sch.hash_value || '&PASSKEY.";' ;
+                       '" identified by "' || sch.hash_value || '&1.";' ;
    end loop;
    return ret_txt;
 end set_user_authentication_sql;
