@@ -11171,3 +11171,3606 @@ prompt Switch Spooling Off
 
 
 
+
+--
+--  SYS Installation Script
+--
+--  Must be run as SYS
+--
+
+
+set blockterminator off
+set sqlblanklines on
+
+----------------------------------------
+-- SYS_GRANT Install
+
+
+prompt ============================================================
+prompt Running: grbras SYS/ODBCAPTURE_usr.sgrnt
+prompt ============================================================
+
+
+--
+--  Future Grant SYS Objects (but not directories)
+--
+
+set define off
+
+
+
+--  "SYS" Object Grants
+
+grant SELECT on "SYS"."DBA_XS_ACES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_XS_ACLS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_XS_ACL_PARAMETERS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_XS_APPLIED_POLICIES" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_XS_PRINCIPALS" to "ODBCAPTURE";
+grant SELECT on "SYS"."DBA_XS_ROLE_GRANTS" to "ODBCAPTURE";
+
+
+set define on
+
+
+----------------------------------------
+set sqlblanklines off
+set blockterminator on
+
+
+
+--
+--  SYSTEM Installation Script
+--
+--  Must be run as SYSTEM
+--
+
+
+set blockterminator off
+set sqlblanklines on
+
+----------------------------------------
+set sqlblanklines off
+set blockterminator on
+
+
+
+--
+--  grbras Installation Script
+--
+--  Must be run as a SYSTEM User (DBA)
+--
+-- Command Line Parameters:
+--   1 - INSTALL_SYSTEM_CONNECT: SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+
+
+-- For Oracle Change Data Capture (CDC) packages
+
+-- Escape character: "^P", CHR(16), DLE
+set escape OFF
+set escape ""
+
+----------------------------------------
+--  Prepare for Install
+
+prompt ============================================================
+prompt Running: grbras ./installation_prepare.sql
+prompt ============================================================
+
+--
+--  Prepare for View Install
+--
+
+prompt
+prompt Create Temp Publicly Updateable Table
+create table TEMP_PUBLICLY_UPDATEABLE_TABLE (c1 number);
+grant all on TEMP_PUBLICLY_UPDATEABLE_TABLE to PUBLIC with grant option;
+create public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE for TEMP_PUBLICLY_UPDATEABLE_TABLE;
+
+prompt
+prompt Check for Prerequisite BUILD_TYPEs
+declare
+   procedure do_it (in_btype varchar2) is
+      cursor c_main is
+         select * from ODBCAPTURE_INSTALLATION_LOGS
+          where build_type = in_btype;
+      b_main   c_main%ROWTYPE;
+   begin
+      open c_main;
+      fetch c_main into b_main;
+      if c_main%NOTFOUND
+      then
+         dbms_output.put_line('WARNING: Prerequisite BUILD_TYPE "' || in_btype ||
+                              '" not found in ODBCAPTURE_INSTALLATION_LOGS table.');
+      end if;
+      close c_main;
+   end;
+begin
+   do_it('grbsrc');
+end;
+/
+
+
+----------------------------------------
+-- PACKAGE Install
+
+
+prompt ============================================================
+prompt Running: grbras ODBCAPTURE/GRAB_RAS.pkssql
+prompt ============================================================
+
+--
+--  Create ODBCAPTURE.GRAB_RAS Package
+--
+
+set define off
+
+
+--DBMS_METADATA:ODBCAPTURE.GRAB_RAS
+
+  CREATE OR REPLACE EDITIONABLE PACKAGE "ODBCAPTURE"."GRAB_RAS" 
+   authid current_user
+as
+
+   procedure grb_usr
+      (fh          in out NOCOPY  fh2.sf_ptr_type
+      ,in_grantee  in             varchar2);
+
+   procedure disable_policy
+      (in_schema  in  varchar2
+      ,in_object  in  varchar2);
+
+   procedure enable_policy
+      (in_schema  in  varchar2
+      ,in_object  in  varchar2);
+
+   procedure grb_racl;
+
+end grab_ras;
+/
+
+
+--  Grants
+
+
+--  Synonyms
+
+
+set define on
+
+----------------------------------------
+-- TABLE Install
+
+
+prompt ============================================================
+prompt Running: grbras ODBCAPTURE/EXPORTING_RAS_DATA.tbl
+prompt ============================================================
+
+--
+--  Create ODBCAPTURE.EXPORTING_RAS_DATA Table
+--
+
+set define off
+
+
+--DBMS_METADATA:ODBCAPTURE.EXPORTING_RAS_DATA
+
+  CREATE TABLE "ODBCAPTURE"."EXPORTING_RAS_DATA" 
+   (	"SCHEMA" VARCHAR2(128 BYTE) NOT NULL ENABLE, 
+	"OBJECT" VARCHAR2(128 BYTE) NOT NULL ENABLE, 
+	"POLICY_OWNER" VARCHAR2(128 BYTE) NOT NULL ENABLE, 
+	"POLICY" VARCHAR2(128 BYTE) NOT NULL ENABLE, 
+	 CONSTRAINT "EXPORTING_RAS_DATA_PK" PRIMARY KEY ("SCHEMA", "OBJECT", "POLICY_OWNER", "POLICY") ENABLE
+   ) ORGANIZATION INDEX NOCOMPRESS ;
+
+--  Comments
+
+--DBMS_METADATA:ODBCAPTURE.EXPORTING_RAS_DATA
+
+   COMMENT ON COLUMN "ODBCAPTURE"."EXPORTING_RAS_DATA"."SCHEMA" IS 'Owner of object containing data being exported';
+   COMMENT ON COLUMN "ODBCAPTURE"."EXPORTING_RAS_DATA"."OBJECT" IS 'Object containing data being exported';
+   COMMENT ON COLUMN "ODBCAPTURE"."EXPORTING_RAS_DATA"."POLICY_OWNER" IS 'Owner of temporarily disabled RAS Policy';
+   COMMENT ON COLUMN "ODBCAPTURE"."EXPORTING_RAS_DATA"."POLICY" IS 'Temporarily disabled RAS Policy';
+   COMMENT ON TABLE "ODBCAPTURE"."EXPORTING_RAS_DATA"  IS 'RAS Policies temporarily disabled during data exports';
+
+
+--  Grants
+
+
+--  Synonyms
+
+
+set define on
+
+----------------------------------------
+-- DATA_LOAD Install
+
+
+prompt ============================================================
+prompt Running: grbras ODBCAPTURE/ROLE_CONF.cldr
+prompt ============================================================
+prompt Translating ../grbras/ODBCAPTURE/ROLE_CONF.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('XS_CACHE_ADMIN','grbras','Y','The mid-tier cache. It is required for caching the security policy at the mid-tier level for the checkAcl (authorization) method of the XSAccessController class. Grant this role to the application connection user or the Real Application Security dispatcher.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('XS_CONNECT','grbras','Y',NULL);
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('XS_NAMESPACE_ADMIN','grbras','Y','In Oracle Database Real Application Security, enables the grantee to manage and manipulate the namespace and attribute for a session. Grant this role to the Real Application Security session user.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('XS_RESOURCE','grbras','Y',NULL);
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('XS_SESSION_ADMIN','grbras','Y','In Oracle Database Real Application Security, enables the grantee to manage the life cycle of a session, including the ability to create, attach, detach, and destroy the session. Grant this role to the application connection user or Real Application Security dispatcher.');
+
+
+prompt ============================================================
+prompt Running: grbras ODBCAPTURE/SCHEMA_CONF.cldr
+prompt ============================================================
+prompt Translating ../grbras/ODBCAPTURE/SCHEMA_CONF.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('XS$NULL','grbras','Y',NULL,NULL,NULL,NULL,'RAS - Real Application Security NULL Login');
+
+
+----------------------------------------
+-- VIEW Install
+
+
+prompt ============================================================
+prompt Running: grbras ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw
+prompt ============================================================
+
+--
+--  Create ODBCAPTURE.PRIV_OBJ_RACL_VIEW view
+--
+
+set define off
+
+
+--
+--  Cannot grant permisions on a view with an error
+--  https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:43253832697675#2653213300346351987
+create view "ODBCAPTURE"."PRIV_OBJ_RACL_VIEW"
+  as   select * from TEMP_PUBLICLY_UPDATEABLE_TABLE;
+
+--  Grants
+
+
+
+--DBMS_METADATA:ODBCAPTURE.PRIV_OBJ_RACL_VIEW
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_OBJ_RACL_VIEW" ("BUILD_TYPE", "BUILD_TIMING", "BUILD_TYPE_SELECTOR", "OBJECT_NAME_REGEXP", "RACL_BUILD_TYPE", "OWNER_BUILD_TYPE", "OWNER", "OWNER_UOR_TYPE", "ELEMENT_NAME", "FILE_EXT1", "FILE_EXT2", "FILE_EXT3") AS 
+  select case t.build_timing
+          when 'FUTURE' then ol.build_type
+                        else uor.build_type
+       end                              BUILD_TYPE
+      ,case t.build_timing
+          when 'FUTURE' then 'FUTURE'
+                        else 'CURRENT'
+       end                              BUILD_TIMING
+      ,case t.build_timing
+          when 'FUTURE' then 'OBJECT_NAME_REGEXP'
+                        else 'GRANTEE'
+       end                              BUILD_TYPE_SELECTOR
+      ,ol.object_name_regexp
+      ,ol.build_type                    RACL_BUILD_TYPE
+      ,uor.build_type                   OWNER_BUILD_TYPE
+      ,uor.user_or_role                 OWNER
+      ,uor.uor_type                     OWNER_UOR_TYPE
+      ,ec.element_name
+      ,ec.file_ext1
+      ,ec.file_ext2
+      ,ec.file_ext3
+ from  uor_install_view  uor
+       join element_conf  ec
+            on  ec.element_name = 'RAS_ACL'
+  left join object_conf  ol
+            on  ol.username     = uor.user_or_role
+            and ol.build_type  != uor.build_type
+            and ol.element_name = ec.element_name
+          --  and ol.object_name_regexp is not null  Don't Care About the Filter Contents
+  left join build_type_timing  t
+            -- Ensure the Grantee is available when the RACL is installed
+            on  t.from_build_type = ol.build_type
+            and t.to_build_type   = uor.build_type
+ where uor.user_or_role in (select distinct a.owner from dba_xs_acls a)
+  and  uor.oracle_provided = 'N'    -- Exclude Oracle Provided Grantees
+ group by case t.build_timing
+          when 'FUTURE' then ol.build_type
+                        else uor.build_type
+       end
+      ,case t.build_timing
+          when 'FUTURE' then 'FUTURE'
+                        else 'CURRENT'
+       end
+      ,case t.build_timing
+          when 'FUTURE' then 'OBJECT_NAME_REGEXP'
+                        else 'GRANTEE'
+       end
+      ,ol.object_name_regexp
+      ,ol.build_type
+      ,uor.build_type
+      ,uor.user_or_role
+      ,uor.uor_type
+      ,ec.element_name
+      ,ec.file_ext1
+      ,ec.file_ext2
+      ,ec.file_ext3;
+
+--  Comments
+
+--DBMS_METADATA:ODBCAPTURE.PRIV_OBJ_RACL_VIEW
+
+
+--  Grants
+
+
+--  Synonyms
+
+
+set define on
+
+----------------------------------------
+-- PACKAGE BODY Install
+
+
+prompt ============================================================
+prompt Running: grbras ODBCAPTURE/GRAB_RAS.pkbsql
+prompt ============================================================
+
+--
+--  Create ODBCAPTURE.GRAB_RAS Package Body
+--
+
+set define off
+
+
+--DBMS_METADATA:ODBCAPTURE.GRAB_RAS
+
+  CREATE OR REPLACE EDITIONABLE PACKAGE BODY "ODBCAPTURE"."GRAB_RAS" 
+as
+
+
+------------------------------------------------------------
+-- Grant Real Application Security (RAS) Administrative Permissions
+--
+--  Note1: This created source code may or may not be running in the Oracle Cloud
+--  Note2: RAS may or may not be installed in the database running this source code.
+--
+procedure grb_usr
+      (fh          in out NOCOPY  fh2.sf_ptr_type
+      ,in_grantee  in             varchar2)
+as
+   first_pass  boolean := TRUE;
+begin
+   for buff in (select privilege
+                 from  dba_xs_aces
+                 where acl       = 'SYSTEMACL'
+                  and  principal = in_grantee
+                 order by privilege)
+   loop
+      if first_pass
+      then
+         first_pass := FALSE;
+         fh2.script_put_line(fh, q'{}');
+         fh2.script_put_line(fh, q'{-- Real Application Security System Grants}');
+         fh2.script_put_line(fh, q'{}');
+      end if;
+      fh2.script_put_line(fh, q'{}');
+      fh2.script_put_line(fh, q'{prompt XS Admin Grant "}' || buff.privilege || q'{" to "}' || in_grantee || q'{"}');
+      fh2.script_put_line(fh, q'{begin}');
+      fh2.script_put_line(fh, q'{   execute immediate 'begin' ||}');
+      fh2.script_put_line(fh, q'{                     '  xs_admin_util.grant_system_privilege(''}' ||
+                                                            buff.privilege || q'{'', ''}' || in_grantee || q'{''); ' ||}');
+      fh2.script_put_line(fh, q'{                     'end;';}');
+      fh2.script_put_line(fh, q'{exception when others then}');
+      fh2.script_put_line(fh, q'{   if    SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_UTIL.GRANT_SYSTEM_PRIVILEGE'' must be declared%'}');
+      fh2.script_put_line(fh, q'{     AND SQLERRM not like '%ORA-01031: insufficient privileges%'}');
+      fh2.script_put_line(fh, q'{   then}');
+      fh2.script_put_line(fh, q'{      raise;}');
+      fh2.script_put_line(fh, q'{   end if;}');
+      fh2.script_put_line(fh, q'{end;}');
+      fh2.script_put_line(fh, q'{/}');
+      fh2.script_put_line(fh, q'{}');
+      fh2.script_put_line(fh, q'{prompt XS Admin Cloud Grant "}' || buff.privilege || q'{" to "}' || in_grantee || q'{"}');
+      fh2.script_put_line(fh, q'{begin}');
+      fh2.script_put_line(fh, q'{   execute immediate 'begin' ||}');
+      fh2.script_put_line(fh, q'{                     '  xs_admin_cloud_util.grant_system_privilege(''}' ||
+                                                            buff.privilege || q'{'', ''}' || in_grantee || q'{''); ' ||}');
+      fh2.script_put_line(fh, q'{                     'end;';}');
+      fh2.script_put_line(fh, q'{exception when others then}');
+      fh2.script_put_line(fh, q'{   if SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_CLOUD_UTIL.GRANT_SYSTEM_PRIVILEGE'' must be declared%'}');
+      fh2.script_put_line(fh, q'{   then}');
+      fh2.script_put_line(fh, q'{      raise;}');
+      fh2.script_put_line(fh, q'{   end if;}');
+      fh2.script_put_line(fh, q'{end;}');
+      fh2.script_put_line(fh, q'{/}');
+      fh2.script_put_line(fh, q'{}');
+   end loop;
+end grb_usr;
+
+
+------------------------------------------------------------
+-- Disable Real Application Security (RAS) Enforcement
+procedure disable_policy
+      (in_schema  in  varchar2
+      ,in_object  in  varchar2)
+is
+begin
+   for buff in (select t.policy_owner, t.policy
+                 from  dba_xs_applied_policies t
+                 where t.schema = in_schema
+                  and  t.object = in_object
+                  and  t.status = 'ENABLED'
+                 order by t.policy_owner, t.policy)
+   loop
+      begin
+         insert into exporting_ras_data
+               (   schema,    object,      policy_owner,      policy)
+            values
+               (in_schema, in_object, buff.policy_owner, buff.policy);
+         commit;
+      exception when DUP_VAL_ON_INDEX then
+         null;  -- Ignore this exception
+      end;
+      xs_data_security.disable_object_policy
+         (schema => in_schema
+         ,object => in_object
+         ,policy => '"' || buff.policy_owner || '"."' ||
+                           buff.policy       || '"'   );
+   end loop;
+end disable_policy;
+
+
+------------------------------------------------------------
+-- Enable Real Application Security (RAS) Enforcement
+procedure enable_policy
+      (in_schema  in  varchar2
+      ,in_object  in  varchar2)
+is
+begin
+   for buff in (select t.policy_owner, t.policy
+                 from  exporting_ras_data t
+                 where t.schema = in_schema
+                  and  t.object = in_object
+                 order by t.policy_owner, t.policy)
+   loop
+      xs_data_security.enable_object_policy
+         (schema => in_schema
+         ,object => in_object
+         ,policy => '"' || buff.policy_owner || '"."' ||
+                           buff.policy       || '"'   );
+      delete from exporting_ras_data t
+       where t.schema       = in_schema
+        and  t.object       = in_object
+        and  t.policy_owner = buff.policy_owner
+        and  t.policy       = buff.policy;
+      commit;
+   end loop;
+end enable_policy;
+
+
+------------------------------------------------------------
+-- Create Real Application Security (RAS) Access Control Lists
+procedure grb_racl
+as
+   ELMNT           CONSTANT varchar2(100) := 'RAS_ACL';
+   fh              fh2.sf_ptr_type;  -- object script file handle
+   l_DDL_handle    NUMBER;
+   l_XForm_handle  NUMBER;
+   old_file        varchar2(1000) := 'This is not a real file name !@#$%^';
+   ----------------------------------------
+   procedure l_close_file as
+      l_file_name  varchar2(1000) :=
+                   fh2.sf_aa(fh.bld_type)(fh.bld_ord)(fh.file_id).filename;
+   begin
+      --
+      fh2.script_put_line(fh, 'set define on');
+      fh2.script_close(fh);
+      --
+      fh := fh2.script_open(in_filename     => 'odbcapture_installation_logs.csv'
+                           ,in_elmnt        => 'INSTALL_SCRIPT'
+                           ,in_max_linesize => common_util.MAXIMUM_SQL_LENGTH);
+      fh2.script_put_line(fh, '"' || grab_scripts.g_build_type ||
+                            '","' || l_file_name || '.log"' );
+      fh2.script_close(fh);
+      --
+   end l_close_file;
+   ----------------------------------------
+begin
+   --ELMNT: RAS_ACL, g_build_type: grbtst, g_schema_name: SYS, RAS_ACL
+   --dbms_output.put_line('ELMNT: ' || ELMNT || ', g_build_type: ' || grab_scripts.g_build_type ||
+   --                     ', g_schema_name: ' || grab_scripts.g_schema_name || ', ' || ELMNT);
+   for buf1 in (select 'RAS_Admin_' ||owner || '.' || file_ext1    FILE_NAME
+                      ,owner
+                      ,build_type_selector
+                 from  priv_obj_racl_view
+                 where build_type = grab_scripts.g_build_type
+                 -- and  owner        = grab_scripts.g_schema_name  (All Schema)
+                 order by owner
+                      ,build_type_selector)
+   loop
+      if old_file != buf1.file_name
+      then
+         old_file := buf1.file_name;
+         if fh2.script_is_open(fh)
+         then
+            l_close_file;
+         end if;
+         fh := fh2.script_open(in_filename     => buf1.file_name
+                              ,in_elmnt        => ELMNT
+                              ,in_max_linesize => common_util.MAXIMUM_SQL_LENGTH);
+         fh2.script_put_line(fh, '');
+         fh2.script_put_line(fh, '--');
+         fh2.script_put_line(fh, '-- Create RAS ACLs for RAS Administrator ' || buf1.owner);
+         fh2.script_put_line(fh, '--  NOTE: This is a "' || buf1.build_type_selector || '" RAS ACL');
+         fh2.script_put_line(fh, '--');
+         fh2.script_put_line(fh, '-- To disable RAS ACLs for data loading/unloading, use:');
+         for buf2 in (select t.schema, t.policy, t.object
+                       from  dba_xs_applied_policies t
+                       where t.policy_owner = buf1.owner
+                       order by t.policy_owner, t.policy, t.object)
+         loop
+            fh2.script_put_line(fh, '--begin');
+            fh2.script_put_line(fh, '--   xs_data_security.disable_object_policy'          );
+            fh2.script_put_line(fh, '--      (policy  => ''"' || buf1.owner  ||
+                                                        '"."' || buf2.policy || '"''');
+            fh2.script_put_line(fh, '--      ,schema  => '''  || buf2.schema ||  '''');
+            fh2.script_put_line(fh, '--      ,object  => '''  || buf2.object ||  '''');
+            fh2.script_put_line(fh, '--      );' );
+            fh2.script_put_line(fh, '--end;');
+            fh2.script_put_line(fh, '--/');
+         end loop;
+         fh2.script_put_line(fh, '--');
+         fh2.script_put_line(fh, '');
+         fh2.script_put_line(fh, 'set define off');
+         fh2.script_put_line(fh, '');
+         fh2.script_put_line(fh, '');
+      end if;
+      fh2.script_put_line(fh, '-- RAS Defined Roles');
+      fh2.script_put_line(fh, '');
+      for buf2 in (select t.name from dba_xs_principals t
+                    where t.type = 'ROLE'
+                     and  t.name not like 'XS%'
+                    order by t.name)
+      loop
+         fh2.script_put_line(fh, 'prompt ' || buf2.name || '.XS_ROLE');
+         fh2.script_put_line(fh, '--DBMS_METADATA:' || buf2.name || '.XS_ROLE');
+         fh2.put_big_line(fh, buf1.owner || '.' || buf2.name || ' XS_ROLE'
+                             ,DBMS_METADATA.get_ddl(object_type => 'XS_ROLE'
+                                                   ,name        => buf2.name)
+                             ,common_util.MAXIMUM_SQL_LENGTH);
+         fh2.script_put_line(fh, '');
+      end loop;
+      fh2.script_put_line(fh, '');
+      fh2.script_put_line(fh, '-- RAS Defined Users');
+      fh2.script_put_line(fh, '');
+      for buf2 in (select t.name from dba_xs_principals t
+                    where t.type = 'USER'
+                     and  t.name not like 'XS%'
+                    order by t.name)
+      loop
+         fh2.script_put_line(fh, 'prompt ' || buf2.name || '.XS_USER');
+         fh2.script_put_line(fh, '--DBMS_METADATA:' || buf2.name || '.XS_USER');
+         -- Need to catch this failure:
+         -- ORA-31603: object "GRB_TEST_USER_01" of type XS_USER not found in schema "ODBCAPTURE"
+         begin
+            fh2.put_big_line(fh, buf1.owner || '.' || buf2.name || ' XS_USER'
+                                ,DBMS_METADATA.get_ddl(object_type => 'XS_USER'
+                                                      ,name        => buf2.name)
+                                ,common_util.MAXIMUM_SQL_LENGTH);
+         exception when others then
+            if SQLCODE = -31603
+            then
+               dbms_output.put_line(SQLERRM || CHR(10) ||
+                                    dbms_utility.format_error_backtrace ||
+                                    dbms_utility.format_call_stack);
+            else
+               raise;
+            end if;
+         end;
+         fh2.script_put_line(fh, '');
+      end loop;
+      fh2.script_put_line(fh, '');
+      fh2.script_put_line(fh, '-- Database Role Grants to RAS Principals');
+      fh2.script_put_line(fh, '-- DBMS_METADATA: "XS_ROLE_GRANT" doesn''t do this');
+      fh2.script_put_line(fh, '');
+      for buf2 in (select t.granted_role, t.grantee from dba_xs_role_grants t
+                    where t.granted_role_type = 'DATABASE'
+                     and  t.granted_role not like 'XS%'
+                    order by t.granted_role, t.grantee)
+      loop
+         fh2.script_put_line(fh, 'prompt grant "' || buf2.granted_role ||
+                                         '" to "' || buf2.grantee || '";');
+         fh2.script_put_line(fh, 'grant "' || buf2.granted_role ||
+                                           '" to "' || buf2.grantee || '";');
+         fh2.script_put_line(fh, '');
+      end loop;
+      fh2.script_put_line(fh, '');
+      fh2.script_put_line(fh, '-- RAS Role Grants to RAS Principals');
+      fh2.script_put_line(fh, '-- Note: DBMS_METADATA XS_ROLE_GRANT won''t work with multiple users per role');
+      fh2.script_put_line(fh, '');
+      for buf2 in (select t.grantee, t.granted_role from dba_xs_role_grants t
+                    where t.grantee in (select distinct t2.principal from dba_xs_aces t2
+                                         where t2.owner = buf1.owner)
+                    order by t.grantee, t.granted_role)
+      loop
+         --fh2.script_put_line(fh, '-- DBMS_METADATA: ' || buf2.granted_role || '.XS_ROLE_GRANT');
+         --fh2.put_big_line(fh, buf1.owner || '.' || buf2.granted_role || ' XS_ROLE_GRANT'
+         --                         ,dbms_metadata.get_ddl(object_type => 'XS_ROLE_GRANT'
+         --                                               ,name        => buf2.granted_role)
+         --                         ,common_util.MAXIMUM_SQL_LENGTH);
+         fh2.script_put_line(fh, 'prompt principal grant "' || buf2.granted_role ||
+                                                   '" to "' || buf2.grantee || '";');
+         fh2.script_put_line(fh, 'BEGIN');
+         fh2.script_put_line(fh, '  xs_principal.grant_roles(grantee => ''"' || buf2.grantee || '"'', ');
+         fh2.script_put_line(fh, '     role => ''"' || buf2.granted_role || '"'');');
+         fh2.script_put_line(fh, 'END;');
+         fh2.script_put_line(fh, '/');
+         fh2.script_put_line(fh, '');
+      end loop;
+      fh2.script_put_line(fh, '');
+      fh2.script_put_line(fh, '--------------------------------------');
+      fh2.script_put_line(fh, '-- RAS ACLs Owned by RAS Administrator');
+      fh2.script_put_line(fh, '--------------------------------------');
+      fh2.script_put_line(fh, '');
+      fh2.script_put_line(fh, '');
+      for buf2 in (select t.name from dba_xs_acls t
+                    where t.owner = buf1.owner
+                    order by t.name)
+      loop
+         fh2.script_put_line(fh, 'prompt ' || buf2.name || '.XS_ACL');
+         fh2.script_put_line(fh, '--DBMS_METADATA:' || buf2.name || '.XS_ACL');
+         fh2.put_big_line(fh, buf1.owner || '.' || buf2.name || ' XS_ACL'
+                             ,DBMS_METADATA.get_ddl(object_type => 'XS_ACL'
+                                                   ,name        => buf2.name
+                                                   ,schema      => buf1.owner)
+                             ,common_util.MAXIMUM_SQL_LENGTH);
+         for buf3 in (select distinct t.acl from dba_xs_acl_parameters t
+                       where t.acl       = buf2.name
+                        and  t.acl_owner = buf1.owner
+                       order by t.acl)
+         loop
+            fh2.script_put_line(fh, 'prompt ' || buf3.acl || '.XS_ACL_PARAM');
+            fh2.script_put_line(fh, '--DBMS_METADATA:' || buf3.acl || '.XS_ACL_PARAM');
+            fh2.put_big_line(fh, buf1.owner || '.' || buf3.acl || ' XS_ACL_PARAM'
+                                ,DBMS_METADATA.get_ddl(object_type => 'XS_ACL_PARAM'
+                                                      ,name        => buf3.ACL
+                                                      ,schema      => buf1.owner)
+                                ,common_util.MAXIMUM_SQL_LENGTH);
+         end loop;
+         fh2.script_put_line(fh, '');
+      end loop;
+      fh2.script_put_line(fh, '');
+      fh2.script_put_line(fh, '----------------------------------------------------');
+      fh2.script_put_line(fh, '-- Policies for RAS Admininistrator (includes REALM)');
+      fh2.script_put_line(fh, '----------------------------------------------------');
+      fh2.script_put_line(fh, '');
+      fh2.script_put_line(fh, '');
+      for buf2 in (select t.policy from dba_xs_applied_policies t
+                    where t.POLICY_OWNER = buf1.owner
+                    order by t.policy)
+      loop
+         fh2.script_put_line(fh, 'prompt ' || buf2.policy || '.XS_DATA_SECURITY');
+         fh2.script_put_line(fh, '--DBMS_METADATA:' || buf2.policy || '.XS_DATA_SECURITY');
+         fh2.script_put_line(fh, '--  For UNKNOWN reasons: Need to change from this:');
+         fh2.script_put_line(fh, '--    dbms_xds.enable_xds(');
+         fh2.script_put_line(fh, '--       object_schema => ''ODBCAPTURE'',');
+         fh2.script_put_line(fh, '--       object_name => ''GRBTST_$NAME'',');
+         fh2.script_put_line(fh, '--       policy_name => ''"ODBCTEST"."GRB_TEST_POLICY_01"'');');
+         fh2.script_put_line(fh, '--  To this for use with Autonomous Database Service in Oracle Cloud:');
+         fh2.script_put_line(fh, '--    xs_data_security.apply_object_policy(');
+         fh2.script_put_line(fh, '--       schema => ''ODBCAPTURE'',');
+         fh2.script_put_line(fh, '--       object => ''GRBTST_$NAME'',');
+         fh2.script_put_line(fh, '--       policy => ''"ODBCTEST"."GRB_TEST_POLICY_01"'');');
+         fh2.put_big_line(fh, buf1.owner || '.' || buf2.policy || ' XS_DATA_SECURITY'
+                                  ,replace
+                                      (replace
+                                         (replace
+                                            (replace
+                                               (DBMS_METADATA.get_ddl(object_type => 'XS_DATA_SECURITY'
+                                                                     ,name        => buf2.policy
+                                                                     ,schema      => buf1.owner )
+                                               ,' dbms_xds.enable_xds('
+                                               ,' xs_data_security.apply_object_policy(' )
+                                            ,' object_schema => '
+                                            ,' schema => ' )
+                                         ,' object_name => '
+                                         ,' object => ' )
+                                      ,' policy_name => '
+                                      ,' policy => ' )
+                                  ,common_util.MAXIMUM_SQL_LENGTH);
+         fh2.script_put_line(fh, '');
+      end loop;
+      fh2.script_put_line(fh, '');
+   end loop;
+   if fh2.script_is_open(fh)
+   then
+      l_close_file;
+   end if;
+end grb_racl;
+
+
+end grab_ras;
+/
+
+set define on
+
+----------------------------------------
+-- Finalize Installation (Includes SPOOL OFF)
+
+prompt ============================================================
+prompt Running: grbras ./installation_finalize.sql
+prompt ============================================================
+
+--
+--  Finalize Installation
+--
+
+prompt
+prompt Drop Temp Publicly Updateable Table
+drop public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE;
+drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
+
+prompt
+prompt fix_invalid_public_synonyms
+--@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql" "" "" ""
+
+prompt
+prompt compile_all
+--@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE'" "" ""
+
+prompt
+prompt alter_foreign_keys_ENABLE
+--@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE'" ""
+
+prompt
+prompt alter_triggers_ENABLE
+--@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE'" ""
+
+prompt
+prompt update_id_sequences
+--@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE'" "" ""
+
+--prompt
+--prompt alter_queues_ENABLE
+--@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE'" ""
+
+--prompt
+--prompt alter_scheduler_jobs_ENABLE
+--@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE'" ""
+
+prompt
+prompt Switch Spooling Off
+
+
+
+
+
+--
+--  SYS Installation Script
+--
+--  Must be run as SYS
+--
+
+
+set blockterminator off
+set sqlblanklines on
+
+----------------------------------------
+set sqlblanklines off
+set blockterminator on
+
+
+
+--
+--  SYSTEM Installation Script
+--
+--  Must be run as SYSTEM
+--
+
+
+set blockterminator off
+set sqlblanklines on
+
+----------------------------------------
+set sqlblanklines off
+set blockterminator on
+
+
+
+--
+--  grbsdo Installation Script
+--
+--  Must be run as a SYSTEM User (DBA)
+--
+-- Command Line Parameters:
+--   1 - INSTALL_SYSTEM_CONNECT: SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+
+
+-- For Oracle Change Data Capture (CDC) packages
+
+-- Escape character: "^P", CHR(16), DLE
+set escape OFF
+set escape ""
+
+----------------------------------------
+--  Prepare for Install
+
+prompt ============================================================
+prompt Running: grbsdo ./installation_prepare.sql
+prompt ============================================================
+
+--
+--  Prepare for View Install
+--
+
+prompt
+prompt Create Temp Publicly Updateable Table
+create table TEMP_PUBLICLY_UPDATEABLE_TABLE (c1 number);
+grant all on TEMP_PUBLICLY_UPDATEABLE_TABLE to PUBLIC with grant option;
+create public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE for TEMP_PUBLICLY_UPDATEABLE_TABLE;
+
+prompt
+prompt Check for Prerequisite BUILD_TYPEs
+declare
+   procedure do_it (in_btype varchar2) is
+      cursor c_main is
+         select * from ODBCAPTURE_INSTALLATION_LOGS
+          where build_type = in_btype;
+      b_main   c_main%ROWTYPE;
+   begin
+      open c_main;
+      fetch c_main into b_main;
+      if c_main%NOTFOUND
+      then
+         dbms_output.put_line('WARNING: Prerequisite BUILD_TYPE "' || in_btype ||
+                              '" not found in ODBCAPTURE_INSTALLATION_LOGS table.');
+      end if;
+      close c_main;
+   end;
+begin
+   do_it('grbsrc');
+end;
+/
+
+
+----------------------------------------
+-- PACKAGE Install
+
+
+prompt ============================================================
+prompt Running: grbsdo ODBCAPTURE/GRAB_SDO.pkssql
+prompt ============================================================
+
+--
+--  Create ODBCAPTURE.GRAB_SDO Package
+--
+
+set define off
+
+
+--DBMS_METADATA:ODBCAPTURE.GRAB_SDO
+
+  CREATE OR REPLACE EDITIONABLE PACKAGE "ODBCAPTURE"."GRAB_SDO" AUTHID DEFINER
+as
+
+   sdo_elem_info_buff   sdo_elem_info_array;
+   sdo_geometry_buff    sdo_geometry;
+   sdo_ordinate_buff    sdo_ordinate_array;
+   sdo_point_buff       sdo_point_type;
+   st_geometry_buff     st_geometry;
+
+   function sql_sdo_dim_element
+      (in_de  in  sdo_dim_element)
+   return varchar2;
+
+   function sql_sdo_dim_array
+      (in_da      in  sdo_dim_array
+      ,in_spaces  in  varchar2 default '')
+   return varchar2;
+
+   function ctl_sdo_point_type
+      (in_spaces  in  varchar2 default '   ')
+   return varchar2;
+   function dat_sdo_point_type
+      (in_pt  in  sdo_point_type)
+   return varchar2;
+
+   function ctl_sdo_elem_info_array
+   return varchar2;
+   function dat_sdo_elem_info_array
+      (in_eia  in  sdo_elem_info_array)
+   return varchar2;
+
+   function ctl_sdo_ordinate_array
+   return varchar2;
+   function dat_sdo_ordinate_array
+      (in_oa  in  sdo_ordinate_array)
+   return varchar2;
+
+   function ctl_sdo_geometry
+      (in_spaces  in  varchar2 default '   ')
+   return varchar2;
+   function dat_sdo_geometry
+      (in_geo  in  sdo_geometry)
+   return varchar2;
+
+   function ctl_st_geometry
+      (in_spaces  in  varchar2 default '   ')
+   return varchar2;
+   function dat_st_geometry
+      (in_geo  in  st_geometry)
+   return varchar2;
+
+   procedure grb_ind
+      (in_table_owner  in varchar2
+      ,in_table_name   in varchar2
+      ,in_table_type   in varchar2
+      ,in_index_owner  in varchar2
+      ,in_index_name   in varchar2
+      ,in_index_ext    in varchar2
+      ,in_ityp_owner   in varchar2
+      ,in_ityp_name    in varchar2);
+
+   procedure grb_cldr_define
+      (in_dyn_curs  in            integer
+      ,in_position  in            integer
+      ,io_lc        in out nocopy varchar2
+      ,io_fh        in out nocopy fh2.sf_ptr_type
+      ,io_desc_tab3 in out nocopy dbms_sql.desc_tab3);
+
+   procedure grb_cldr_value
+      (in_dyn_curs  in            integer
+      ,in_position  in            integer
+      ,io_lc        in out nocopy varchar2
+      ,io_fh        in out nocopy fh2.sf_ptr_type
+      ,io_desc_tab3 in out nocopy dbms_sql.desc_tab3);
+
+end grab_sdo;
+/
+
+
+--  Grants
+
+
+--  Synonyms
+
+
+set define on
+
+----------------------------------------
+-- DATA_LOAD Install
+
+
+prompt ============================================================
+prompt Running: grbsdo ODBCAPTURE/ROLE_CONF.cldr
+prompt ============================================================
+prompt Translating ../grbsdo/ODBCAPTURE/ROLE_CONF.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('CSW_USR_ROLE','grbsdo','Y','Provides user privileges to manage the Catalog Services for the Web (CSW) component of Oracle Spatial.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('SPATIAL_CSW_ADMIN','grbsdo','Y','Provides administrative privileges to manage the Catalog Services for the Web (CSW) component of Oracle Spatial.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('SPATIAL_WFS_ADMIN','grbsdo','Y','Provides administrative privileges to manage the Web Feature Service (WFS) component of Oracle Spatial.');
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('WFS_USR_ROLE','grbsdo','Y','Provides user privileges for the Web Feature Service (WFS) component of Oracle Spatial.');
+
+
+prompt ============================================================
+prompt Running: grbsdo ODBCAPTURE/SCHEMA_CONF.cldr
+prompt ============================================================
+prompt Translating ../grbsdo/ODBCAPTURE/SCHEMA_CONF.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('MDDATA','grbsdo','Y',NULL,NULL,NULL,NULL,'SDO,LCTR - Spatial - Oracle Locator (MDSYS, MDDATA)');
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('MDSYS','grbsdo','Y',NULL,NULL,NULL,NULL,'SDO,LCTR - Spatial - Oracle Locator (MDSYS, MDDATA)');
+
+
+----------------------------------------
+-- PACKAGE BODY Install
+
+
+prompt ============================================================
+prompt Running: grbsdo ODBCAPTURE/GRAB_SDO.pkbsql
+prompt ============================================================
+
+--
+--  Create ODBCAPTURE.GRAB_SDO Package Body
+--
+
+set define off
+
+
+--DBMS_METADATA:ODBCAPTURE.GRAB_SDO
+
+  CREATE OR REPLACE EDITIONABLE PACKAGE BODY "ODBCAPTURE"."GRAB_SDO" as
+
+
+------------------------------------------------------------
+-- Report the SQL Script Values of the SDO DIM Element
+function sql_sdo_dim_element
+      (in_de  in  sdo_dim_element)
+   return varchar2
+as
+begin
+   return 'sdo_dim_element(''' ||             in_de.sdo_dimname            ||
+                        ''', ' || nvl(to_char(in_de.sdo_lb       ),'NULL') ||
+                          ', ' || nvl(to_char(in_de.sdo_ub       ),'NULL') ||
+                          ', ' || nvl(to_char(in_de.sdo_tolerance),'NULL') ||
+                           ')' ;
+end sql_sdo_dim_element;
+
+
+------------------------------------------------------------
+-- Report the SQL Script Values of the SDO DIM Array
+function sql_sdo_dim_array
+      (in_da      in  sdo_dim_array
+      ,in_spaces  in  varchar2 default '')
+   return varchar2
+as
+   ret_txt  varchar2(32767);
+begin
+   if in_da.EXISTS(1)
+   then
+      ret_txt := 'sdo_dim_array(' || grab_sdo.sql_sdo_dim_element(in_da(1));
+      for i in 2 .. in_da.COUNT
+      loop
+         ret_txt := ret_txt || CHR(10) || in_spaces ||
+                    '             ,' || grab_sdo.sql_sdo_dim_element(in_da(i));
+      end loop;
+      ret_txt := ret_txt || CHR(10) || in_spaces ||
+                 '             )';
+   end if;
+   return ret_txt;
+end sql_sdo_dim_array;
+
+
+------------------------------------------------------------
+-- Report the Control File Specification of the SDO POINT
+function ctl_sdo_point_type
+      (in_spaces  in  varchar2 default '   ')
+   return varchar2
+as
+begin
+    return 'COLUMN OBJECT TREAT AS SDO_POINT_TYPE'      || CHR(10) || in_spaces ||
+           '   (X   FLOAT EXTERNAL TERMINATED BY '';''' || CHR(10) || in_spaces ||
+           '   ,Y   FLOAT EXTERNAL TERMINATED BY '';''' || CHR(10) || in_spaces ||
+           '   ,Z   FLOAT EXTERNAL TERMINATED BY '';''' || CHR(10) || in_spaces ||
+           '   )';
+end ctl_sdo_point_type;
+
+
+------------------------------------------------------------
+-- Report the Data Contents of the SDO POINT
+function dat_sdo_point_type
+      (in_pt  in  sdo_point_type)
+   return varchar2
+as
+begin
+    return to_char(in_pt.x) || ';' ||
+           to_char(in_pt.y) || ';' ||
+           to_char(in_pt.z) || ';' ;
+end dat_sdo_point_type;
+
+
+------------------------------------------------------------
+-- Report the Control File Specification of the SDO_ELEM_INFO_ARRAY
+function ctl_sdo_elem_info_array
+   return varchar2
+as
+   delim  varchar2(1);
+begin
+   grab_scripts.grb_cldr_array_lvl := grab_scripts.grb_cldr_array_lvl + 1;
+   delim                           := grab_scripts.grb_cldr_delim_nt(grab_scripts.grb_cldr_array_lvl);
+   return 'VARRAY TERMINATED BY ''' || delim || ''' (SDO_ELEM_INFO_ARRAY  FLOAT EXTERNAL TERMINATED BY '';'')';
+end ctl_sdo_elem_info_array;
+
+
+------------------------------------------------------------
+-- Report the Data Contents of the SDO_ELEM_INFO_ARRAY
+function dat_sdo_elem_info_array
+      (in_eia  in  sdo_elem_info_array)
+   return varchar2
+as
+   delim     varchar2(1);
+   ret_txt   varchar2(32767);
+begin
+   grab_scripts.grb_cldr_array_lvl := grab_scripts.grb_cldr_array_lvl + 1;
+   delim                           := grab_scripts.grb_cldr_delim_nt(grab_scripts.grb_cldr_array_lvl);
+   if in_eia.EXISTS(1)
+   then
+      ret_txt := to_char(in_eia(1));
+      for i in 2 .. in_eia.COUNT
+      loop
+         ret_txt := ret_txt || ';' || to_char(in_eia(i));
+      end loop;
+   else
+      ret_txt := '';
+   end if;
+   return ret_txt || delim;
+end dat_sdo_elem_info_array;
+
+
+------------------------------------------------------------
+-- Report the Control File Specification of the SDO_ORDINATE_ARRAY
+function ctl_sdo_ordinate_array
+   return varchar2
+as
+   delim  varchar2(1);
+begin
+   grab_scripts.grb_cldr_array_lvl := grab_scripts.grb_cldr_array_lvl + 1;
+   delim                           := grab_scripts.grb_cldr_delim_nt(grab_scripts.grb_cldr_array_lvl);
+   return 'VARRAY TERMINATED BY ''' || delim || ''' (SDO_ORDINATE_ARRAY  FLOAT EXTERNAL TERMINATED BY '';'')';
+end ctl_sdo_ordinate_array;
+
+
+------------------------------------------------------------
+-- Report the Data Contents of the SDO_ORDINATE_ARRAY
+function dat_sdo_ordinate_array
+      (in_oa  in  sdo_ordinate_array)
+   return varchar2
+as
+   delim     varchar2(1);
+   ret_txt   varchar2(32767);
+begin
+   grab_scripts.grb_cldr_array_lvl := grab_scripts.grb_cldr_array_lvl + 1;
+   delim                           := grab_scripts.grb_cldr_delim_nt(grab_scripts.grb_cldr_array_lvl);
+   if in_oa.EXISTS(1)
+   then
+      ret_txt := to_char(in_oa(1));
+      for i in 2 .. in_oa.COUNT
+      loop
+         ret_txt := ret_txt || ';' || to_char(in_oa(i));
+      end loop;
+   else
+      ret_txt := '';
+   end if;
+   return ret_txt || delim;
+end dat_sdo_ordinate_array;
+
+
+------------------------------------------------------------
+-- Report the Control File Specification of the SDO_GEOMETRY
+function ctl_sdo_geometry
+      (in_spaces  in  varchar2 default '   ')
+   return varchar2
+as
+begin
+   return 'COLUMN OBJECT TREAT AS SDO_GEOMETRY'                                 || CHR(10) || in_spaces ||
+          '   (SDO_GTYPE     FLOAT EXTERNAL TERMINATED BY '';'''                || CHR(10) || in_spaces ||
+          '   ,SDO_SRID      FLOAT EXTERNAL TERMINATED BY '';'''                || CHR(10) || in_spaces ||
+          '   ,SDO_POINT     ' || grab_sdo.ctl_sdo_point_type(in_spaces||'   ') || CHR(10) || in_spaces ||
+          '   ,SDO_ELEM_INFO ' || grab_sdo.ctl_sdo_elem_info_array              || CHR(10) || in_spaces ||
+          '   ,SDO_ORDINATES ' || grab_sdo.ctl_sdo_ordinate_array               || CHR(10) || in_spaces ||
+          '   )';
+end ctl_sdo_geometry;
+
+
+------------------------------------------------------------
+-- Report the Data Contents of the SDO_GEOMETRY
+function dat_sdo_geometry
+      (in_geo  in  sdo_geometry)
+   return varchar2
+as
+begin
+   return to_char(in_geo.sdo_gtype)                              || ';' ||
+          to_char(in_geo.sdo_srid)                               || ';' ||
+          grab_sdo.dat_sdo_point_type(in_geo.sdo_point)          ||
+          grab_sdo.dat_sdo_elem_info_array(in_geo.sdo_elem_info) ||
+          grab_sdo.dat_sdo_ordinate_array(in_geo.sdo_ordinates)  ;
+end dat_sdo_geometry;
+
+
+------------------------------------------------------------
+-- Report the Control File Specification of the SDO_GEOMETRY
+function ctl_st_geometry
+      (in_spaces  in  varchar2 default '   ')
+   return varchar2
+as
+begin
+   return 'COLUMN OBJECT TREAT AS ST_GEOMETRY'                         || CHR(10) || in_spaces ||
+          '   (GEOM   ' || grab_sdo.ctl_sdo_geometry(in_spaces||'   ') || CHR(10) || in_spaces ||
+          '   )';
+end ctl_st_geometry;
+
+
+------------------------------------------------------------
+-- Report the Data Contents of the SDO_GEOMETRY
+function dat_st_geometry
+      (in_geo  in  st_geometry)
+   return varchar2
+as
+begin
+   return grab_sdo.dat_sdo_geometry(in_geo.geom);
+end dat_st_geometry;
+
+
+------------------------------------------------------------
+-- Report the Data Contents of the SDO_GEOMETRY
+procedure grb_ind
+      (in_table_owner  in varchar2
+      ,in_table_name   in varchar2
+      ,in_table_type   in varchar2
+      ,in_index_owner  in varchar2
+      ,in_index_name   in varchar2
+      ,in_index_ext    in varchar2
+      ,in_ityp_owner   in varchar2
+      ,in_ityp_name    in varchar2)
+is
+   fh                fh2.sf_ptr_type;  -- Domain Index file handler
+   old_schema_name   varchar2(1000) := grab_scripts.g_schema_name;
+   ----------------------------------------
+   procedure l_close_file as
+      l_file_name  varchar2(1000) :=
+                   fh2.sf_aa(fh.bld_type)(fh.bld_ord)(fh.file_id).filename;
+   begin
+      --
+      fh2.script_put_line(fh, '');
+      fh2.script_put_line(fh, 'set define on');
+      fh2.script_close(fh);
+      --
+      grab_scripts.g_schema_name  := '';
+      fh := fh2.script_open(in_filename     => 'odbcapture_installation_logs.csv'
+                           ,in_elmnt        => 'INSTALL_SCRIPT'
+                           ,in_max_linesize => common_util.MAXIMUM_SQL_LENGTH);
+      grab_scripts.g_schema_name  := old_schema_name;
+      --
+      fh2.script_put_line(fh, '"' || grab_scripts.g_build_type ||
+                            '","' || l_file_name || '.log"' );
+      fh2.script_close(fh);
+      --
+   end l_close_file;
+begin
+   dbms_output.put_line(in_table_owner || ', ' ||
+                        in_table_name  || ', ' ||
+                        in_table_type  || ', ' ||
+                        in_index_owner || ', ' ||
+                        in_index_name  || ', ' ||
+                        in_index_ext   );
+   --
+   grab_scripts.g_schema_name  := '';
+   fh := fh2.script_open(in_filename     => replace(replace(in_index_name ,'$','_'),'%','_')
+                                                   || '.' || in_index_ext
+                               ,in_elmnt        => 'INSTALL_SCRIPT'
+                               ,in_max_linesize => common_util.MAXIMUM_SQL_LENGTH);
+   grab_scripts.g_schema_name  := old_schema_name;
+   --
+   fh2.script_put_line(fh, '');
+   fh2.script_put_line(fh, '--');
+   fh2.script_put_line(fh, '--  Create Indexes for ' || in_table_owner ||
+                                                        '.' || in_table_name  ||
+                                                        ' ' || in_table_type  );
+   fh2.script_put_line(fh, '--');
+   fh2.script_put_line(fh, '');
+   fh2.script_put_line(fh, 'set define off');
+   fh2.script_put_line(fh, '');
+   for buf1 in (select column_name from dba_ind_columns
+                 where table_owner = grab_scripts.g_schema_name
+                  and  table_name  = in_table_name
+                  and  index_owner = in_index_owner
+                  and  index_name  = in_index_name
+                 order by column_position )
+   loop
+      for buf2 in (select diminfo, srid
+                    from  MDSYS.all_sdo_geom_metadata
+                    where owner       = grab_scripts.g_schema_name
+                     and  table_name  = in_table_name
+                     and  column_name = buf1.column_name)
+      loop
+         fh2.script_put_line(fh, '----------------------------------------');
+         fh2.script_put_line(fh, 'prompt');
+         fh2.script_put_line(fh, 'prompt MUST be run as ' || grab_scripts.g_schema_name);
+         fh2.script_put_line(fh, 'insert into MDSYS.user_sdo_geom_metadata');
+         fh2.script_put_line(fh, '      (table_name');
+         fh2.script_put_line(fh, '      ,column_name');
+         fh2.script_put_line(fh, '      ,diminfo');
+         fh2.script_put_line(fh, '      ,srid)');
+         fh2.script_put_line(fh, '   values');
+         fh2.script_put_line(fh, '      (''' || in_table_name  || '''');
+         fh2.script_put_line(fh, '      ,''' || buf1.column_name || '''');
+         fh2.script_put_line(fh, '      ,' || grab_sdo.sql_sdo_dim_array(buf2.diminfo, '       '));
+         fh2.script_put_line(fh, '      ,' || nvl(to_char(buf2.srid),'NULL'));
+         fh2.script_put_line(fh, '      );');
+         fh2.script_put_line(fh, '');
+      end loop;
+      fh2.script_put_line(fh, 'CREATE INDEX "' || in_index_owner || '"."' || in_index_name || '"' || CHR(10) ||
+                                     '   ON "' || in_table_owner || '"."' || in_table_name || '" ("' || buf1.column_name || '")' || CHR(10) ||
+                                     '   INDEXTYPE IS "' || in_ityp_owner || '"."' || in_ityp_name || '";');
+      fh2.script_put_line(fh, '');
+   end loop;
+   --
+   --fh2.script_put_line(fh, '--DBMS_METADATA:' || in_index_owner ||
+   --                                              '.' || in_index_name);
+   --fh2.put_big_line(fh, grab_scripts.g_schema_name || '.' || in_table_name || ' ' || in_table_type
+   --                ,dbms_metadata.get_ddl(object_type => 'INDEX'
+   --                                      ,name        => in_index_name
+   --                                      ,schema      => in_index_owner)
+   --                ,common_util.MAXIMUM_SQL_LENGTH);
+   --
+   l_close_file;
+end grb_ind;
+
+
+------------------------------------------------------------
+-- Define Dynamic SQL Column
+procedure grb_cldr_define
+      (in_dyn_curs  in            integer
+      ,in_position  in            integer
+      ,io_lc        in out nocopy varchar2
+      ,io_fh        in out nocopy fh2.sf_ptr_type
+      ,io_desc_tab3 in out nocopy dbms_sql.desc_tab3)
+is
+begin
+   case
+      when io_desc_tab3(in_position).col_type_name = 'SDO_ELEM_INFO_ARRAY'
+      then
+         fh2.script_put_line(io_fh, io_lc || common_util.old_rpad(io_desc_tab3(in_position).col_name,30) ||
+                 ' ' || ctl_sdo_elem_info_array );
+         dbms_sql.define_column(c         => in_dyn_curs
+                               ,position  => in_position
+                               ,column    => sdo_elem_info_buff);
+         --
+      when io_desc_tab3(in_position).col_type_name = 'SDO_GEOMETRY'
+      then
+         fh2.script_put_line(io_fh, io_lc || common_util.old_rpad(io_desc_tab3(in_position).col_name,30) ||
+                 ' ' || ctl_sdo_geometry );
+         dbms_sql.define_column(c         => in_dyn_curs
+                               ,position  => in_position
+                               ,column    => sdo_geometry_buff);
+         --
+      when io_desc_tab3(in_position).col_type_name = 'SDO_ORDINATE_ARRAY'
+      then
+         fh2.script_put_line(io_fh, io_lc || common_util.old_rpad(io_desc_tab3(in_position).col_name,30) ||
+                 ' ' || ctl_sdo_ordinate_array );
+         dbms_sql.define_column(c         => in_dyn_curs
+                               ,position  => in_position
+                               ,column    => sdo_ordinate_buff);
+         --
+      when io_desc_tab3(in_position).col_type_name = 'SDO_POINT_TYPE'
+      then
+         fh2.script_put_line(io_fh, io_lc || common_util.old_rpad(io_desc_tab3(in_position).col_name,30) ||
+                 ' ' || ctl_sdo_point_type );
+         dbms_sql.define_column(c         => in_dyn_curs
+                               ,position  => in_position
+                               ,column    => sdo_point_buff);
+         --
+      when io_desc_tab3(in_position).col_type_name = 'ST_GEOMETRY'
+      then
+         fh2.script_put_line(io_fh, io_lc || common_util.old_rpad(io_desc_tab3(in_position).col_name,30) ||
+                 ' ' || ctl_st_geometry );
+         dbms_sql.define_column(c         => in_dyn_curs
+                               ,position  => in_position
+                               ,column    => st_geometry_buff);
+         --
+      else
+         raise_application_error(-20000, 'Bad Column Type "' || io_desc_tab3(in_position).col_type ||
+                                                     '" in io_desc_tab3(' || in_position || ').col_type');
+   end case;
+end grb_cldr_define;
+
+
+------------------------------------------------------------
+-- Value from Dynamic SQL Column
+procedure grb_cldr_value
+      (in_dyn_curs  in            integer
+      ,in_position  in            integer
+      ,io_lc        in out nocopy varchar2
+      ,io_fh        in out nocopy fh2.sf_ptr_type
+      ,io_desc_tab3 in out nocopy dbms_sql.desc_tab3)
+is
+begin
+   case
+      when io_desc_tab3(in_position).col_type_name = 'SDO_ELEM_INFO_ARRAY'
+      then
+         dbms_sql.column_value(c         => in_dyn_curs
+                              ,position  => in_position
+                              ,value     => sdo_elem_info_buff);
+         fh2.script_put(io_fh, io_lc || grab_sdo.dat_sdo_elem_info_array(sdo_elem_info_buff));
+         --
+      when io_desc_tab3(in_position).col_type_name = 'SDO_GEOMETRY'
+      then
+         dbms_sql.column_value(c         => in_dyn_curs
+                              ,position  => in_position
+                              ,value     => sdo_geometry_buff);
+         fh2.script_put(io_fh, io_lc || grab_sdo.dat_sdo_geometry(sdo_geometry_buff));
+         --
+      when io_desc_tab3(in_position).col_type_name = 'SDO_ORDINATE_ARRAY'
+      then
+         dbms_sql.column_value(c         => in_dyn_curs
+                              ,position  => in_position
+                              ,value     => sdo_ordinate_buff);
+         fh2.script_put(io_fh, io_lc || grab_sdo.dat_sdo_ordinate_array(sdo_ordinate_buff));
+         --
+      when io_desc_tab3(in_position).col_type_name = 'SDO_POINT_TYPE'
+      then
+         dbms_sql.column_value(c         => in_dyn_curs
+                              ,position  => in_position
+                              ,value     => sdo_point_buff);
+         fh2.script_put(io_fh, io_lc || grab_sdo.dat_sdo_point_type(sdo_point_buff));
+         --
+      when io_desc_tab3(in_position).col_type_name = 'ST_GEOMETRY'
+      then
+         dbms_sql.column_value(c         => in_dyn_curs
+                              ,position  => in_position
+                              ,value     => st_geometry_buff);
+         fh2.script_put(io_fh, io_lc || grab_sdo.dat_st_geometry(st_geometry_buff));
+         --
+      else
+         raise_application_error(-20000, 'Bad Column Type "' || io_desc_tab3(in_position).col_type ||
+                                                     '" in io_desc_tab3(' || in_position || ').col_type');
+   end case;
+end grb_cldr_value;
+
+
+end grab_sdo;
+/
+
+set define on
+
+----------------------------------------
+-- Finalize Installation (Includes SPOOL OFF)
+
+prompt ============================================================
+prompt Running: grbsdo ./installation_finalize.sql
+prompt ============================================================
+
+--
+--  Finalize Installation
+--
+
+prompt
+prompt Drop Temp Publicly Updateable Table
+drop public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE;
+drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
+
+prompt
+prompt fix_invalid_public_synonyms
+--@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql" "" "" ""
+
+prompt
+prompt compile_all
+--@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE'" "" ""
+
+prompt
+prompt alter_foreign_keys_ENABLE
+--@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE'" ""
+
+prompt
+prompt alter_triggers_ENABLE
+--@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE'" ""
+
+prompt
+prompt update_id_sequences
+--@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE'" "" ""
+
+--prompt
+--prompt alter_queues_ENABLE
+--@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE'" ""
+
+--prompt
+--prompt alter_scheduler_jobs_ENABLE
+--@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE'" ""
+
+prompt
+prompt Switch Spooling Off
+
+
+
+
+
+--
+--  SYS Installation Script
+--
+--  Must be run as SYS
+--
+
+
+set blockterminator off
+set sqlblanklines on
+
+----------------------------------------
+set sqlblanklines off
+set blockterminator on
+
+
+
+--
+--  SYSTEM Installation Script
+--
+--  Must be run as SYSTEM
+--
+
+
+set blockterminator off
+set sqlblanklines on
+
+----------------------------------------
+set sqlblanklines off
+set blockterminator on
+
+
+
+--
+--  grbdat Installation Script
+--
+--  Must be run as a SYSTEM User (DBA)
+--
+-- Command Line Parameters:
+--   1 - INSTALL_SYSTEM_CONNECT: SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+
+
+-- For Oracle Change Data Capture (CDC) packages
+
+-- Escape character: "^P", CHR(16), DLE
+set escape OFF
+set escape ""
+
+----------------------------------------
+--  Prepare for Install
+
+prompt ============================================================
+prompt Running: grbdat ./installation_prepare.sql
+prompt ============================================================
+
+--
+--  Prepare for View Install
+--
+
+prompt
+prompt Create Temp Publicly Updateable Table
+create table TEMP_PUBLICLY_UPDATEABLE_TABLE (c1 number);
+grant all on TEMP_PUBLICLY_UPDATEABLE_TABLE to PUBLIC with grant option;
+create public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE for TEMP_PUBLICLY_UPDATEABLE_TABLE;
+
+prompt
+prompt Check for Prerequisite BUILD_TYPEs
+declare
+   procedure do_it (in_btype varchar2) is
+      cursor c_main is
+         select * from ODBCAPTURE_INSTALLATION_LOGS
+          where build_type = in_btype;
+      b_main   c_main%ROWTYPE;
+   begin
+      open c_main;
+      fetch c_main into b_main;
+      if c_main%NOTFOUND
+      then
+         dbms_output.put_line('WARNING: Prerequisite BUILD_TYPE "' || in_btype ||
+                              '" not found in ODBCAPTURE_INSTALLATION_LOGS table.');
+      end if;
+      close c_main;
+   end;
+begin
+   do_it('grbendp');
+   do_it('grbjava');
+   do_it('grbras');
+   do_it('grbsdo');
+   do_it('grbsrc');
+end;
+/
+
+
+----------------------------------------
+-- DATA_LOAD Install
+
+
+prompt ============================================================
+prompt Running: grbdat ODBCAPTURE/DLOAD_CONF.cldr
+prompt ============================================================
+prompt Translating ../grbdat/ODBCAPTURE/DLOAD_CONF.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','BUILD_CONF','grbsrc','BUILD_SEQ',NULL,NULL,'build_seq <= -41',NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','BUILD_PATH','grbsrc','PARENT_BUILD_SEQ, BUILD_SEQ',NULL,NULL,'build_seq <= -41',NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','DLOAD_CONF','grbdat','USERNAME, TABLE_NAME, BUILD_TYPE',NULL,NULL,'build_type in (''grbsrc'',''grbjava'',''grbras'',''grbsdo'',''grbendp'',''grbdat'')',NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','ELEMENT_CONF','grbsrc','ELEMENT_SEQ',NULL,NULL,NULL,NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','METADATA_TRANSFORM_PARAMS','grbsrc','NAME',NULL,NULL,NULL,NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','OBJECT_CONF','grbdat','USERNAME, ELEMENT_NAME, BUILD_TYPE',NULL,NULL,'build_type in (''grbsrc'',''grbjava'',''grbras'',''grbsdo'',''grbendp'',''grbdat'')',NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','ROLE_CONF','grbjava','ROLENAME, BUILD_TYPE',NULL,NULL,'build_type in (''grbjava'')',NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','ROLE_CONF','grbras','ROLENAME, BUILD_TYPE',NULL,NULL,'build_type in (''grbras'')',NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','ROLE_CONF','grbsdo','ROLENAME, BUILD_TYPE',NULL,NULL,'build_type in (''grbsdo'')',NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','ROLE_CONF','grbsrc','ROLENAME, BUILD_TYPE',NULL,NULL,'build_type in (''sys'',''pub'',''grbsrc'',''grbendp'',''grpdat'')',NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','SCHEMA_CONF','grbjava','USERNAME',NULL,NULL,'build_type in (''grbjava'')',NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','SCHEMA_CONF','grbras','USERNAME',NULL,NULL,'build_type in (''grbras'')',NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','SCHEMA_CONF','grbsdo','USERNAME',NULL,NULL,'build_type in (''grbsdo'')',NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','SCHEMA_CONF','grbsrc','USERNAME',NULL,NULL,'build_type in (''sys'',''pub'',''grbsrc'',''grbendp'',''grpdat'')',NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','TSPACE_CONF','grbsrc','USERNAME, TSPACE_NAME',NULL,NULL,'username in (select username from schema_conf where build_type in (''grbsrc''))',NULL,NULL);
+
+
+prompt ============================================================
+prompt Running: grbdat ODBCAPTURE/OBJECT_CONF.cldr
+prompt ============================================================
+prompt Translating ../grbdat/ODBCAPTURE/OBJECT_CONF.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCAPTURE','DIRECTORY','grbendp','^GRAB_SCRIPTS_DIR$','Do Not Capture. GRAB_SCRIPTS.write_scripts creates this directory when needed');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCAPTURE','GRANT','grbjava','JAVA','Any Oracle Provided Grant with JAVA in the Name (Oracle Provided Objects, System Priveleges, and Queue SysPrivs)');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCAPTURE','JAVA_SOURCE','grbjava','.*','All Java Source');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCAPTURE','PACKAGE_BODY','grbjava','GRAB_JAVA','Any Package Body with GRAB_JAVA in the Name');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCAPTURE','PACKAGE_BODY','grbras','GRAB_RAS','Any Package Body with GRAB_RAS in the Name');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCAPTURE','PACKAGE_BODY','grbsdo','GRAB_SDO','Any Package Body with GRAB_SDO in the Name');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCAPTURE','PACKAGE_SPEC','grbjava','GRAB_JAVA','Any Package Specification with GRAB_JAVA in the Name');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCAPTURE','PACKAGE_SPEC','grbras','GRAB_RAS','Any Package Specification with GRAB_RAS in the Name');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCAPTURE','PACKAGE_SPEC','grbsdo','GRAB_SDO','Any Package Specification with GRAB_SDO in the Name');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCAPTURE','ROLE','grbjava','JAVA','Any Oracle Provided Role Grant with JAVA in the Name');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCAPTURE','SYS_GRANT','grbjava','JAVA','Any SYS Grants on objects with "JAVA" in the Name');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCAPTURE','SYS_GRANT','grbras','^DBA_XS_','Any SYS Grants on objects with "DBA_XS_" (Real Application Security Views)');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCAPTURE','TABLE','grbendp','^ODBCAPTURE_INSTALLATION_LOGS$','Do Not Capture. ODBCapture should never own the ODBCAPTURE_INSTALLATION_LOGS table.');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCAPTURE','TABLE','grbras','EXPORTING_RAS_DATA','Only Valid with Real Application Security');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCAPTURE','VIEW','grbjava','JAVA','Any View with JAVA in the Name');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCAPTURE','VIEW','grbras','PRIV_OBJ_RACL_VIEW','Only Valid with Real Application Security');
+
+
+----------------------------------------
+-- Finalize Installation (Includes SPOOL OFF)
+
+prompt ============================================================
+prompt Running: grbdat ./installation_finalize.sql
+prompt ============================================================
+
+--
+--  Finalize Installation
+--
+
+prompt
+prompt Drop Temp Publicly Updateable Table
+drop public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE;
+drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
+
+prompt
+prompt fix_invalid_public_synonyms
+--@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql" "" "" ""
+
+prompt
+prompt compile_all
+--@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE'" "" ""
+
+prompt
+prompt alter_foreign_keys_ENABLE
+--@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE'" ""
+
+prompt
+prompt alter_triggers_ENABLE
+--@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE'" ""
+
+prompt
+prompt update_id_sequences
+--@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE'" "" ""
+
+--prompt
+--prompt alter_queues_ENABLE
+--@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE'" ""
+
+--prompt
+--prompt alter_scheduler_jobs_ENABLE
+--@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE'" ""
+
+prompt
+prompt Switch Spooling Off
+
+
+
+
+
+--
+--  SYS Installation Script
+--
+--  Must be run as SYS
+--
+
+
+set blockterminator off
+set sqlblanklines on
+
+----------------------------------------
+-- ROLE Install
+
+
+prompt ============================================================
+prompt Running: grbtst SYS/GRB_TEST_ROLE.role
+prompt ============================================================
+
+--
+--  Create GRB_TEST_ROLE Role
+--
+
+set define off
+
+
+create role GRB_TEST_ROLE;
+
+
+--  Current Grant of YS Objects (but not directories)
+
+
+set define on
+
+----------------------------------------
+-- USER Install
+
+
+prompt ============================================================
+prompt Running: grbtst SYS/ODBCTEST.user
+prompt ============================================================
+
+--
+--  Create ODBCTEST Schema
+--
+
+set define off
+
+create user "ODBCTEST"
+   no authentication
+   profile DEFAULT
+   temporary tablespace TEMP
+   default tablespace USERS
+   quota 512M on USERS
+   ;
+
+--  Current Grant of SYS Objects (but not directories)
+
+
+-- Real Application Security System Grants
+
+
+prompt XS Admin Grant "ADMIN_ANY_SEC_POLICY" to "ODBCTEST"
+begin
+   execute immediate 'begin' ||
+                     '  xs_admin_util.grant_system_privilege(''ADMIN_ANY_SEC_POLICY'', ''ODBCTEST''); ' ||
+                     'end;';
+exception when others then
+   if    SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_UTIL.GRANT_SYSTEM_PRIVILEGE'' must be declared%'
+     AND SQLERRM not like '%ORA-01031: insufficient privileges%'
+   then
+      raise;
+   end if;
+end;
+/
+
+prompt XS Admin Cloud Grant "ADMIN_ANY_SEC_POLICY" to "ODBCTEST"
+begin
+   execute immediate 'begin' ||
+                     '  xs_admin_cloud_util.grant_system_privilege(''ADMIN_ANY_SEC_POLICY'', ''ODBCTEST''); ' ||
+                     'end;';
+exception when others then
+   if SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_CLOUD_UTIL.GRANT_SYSTEM_PRIVILEGE'' must be declared%'
+   then
+      raise;
+   end if;
+end;
+/
+
+
+prompt XS Admin Grant "PROVISION" to "ODBCTEST"
+begin
+   execute immediate 'begin' ||
+                     '  xs_admin_util.grant_system_privilege(''PROVISION'', ''ODBCTEST''); ' ||
+                     'end;';
+exception when others then
+   if    SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_UTIL.GRANT_SYSTEM_PRIVILEGE'' must be declared%'
+     AND SQLERRM not like '%ORA-01031: insufficient privileges%'
+   then
+      raise;
+   end if;
+end;
+/
+
+prompt XS Admin Cloud Grant "PROVISION" to "ODBCTEST"
+begin
+   execute immediate 'begin' ||
+                     '  xs_admin_cloud_util.grant_system_privilege(''PROVISION'', ''ODBCTEST''); ' ||
+                     'end;';
+exception when others then
+   if SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_CLOUD_UTIL.GRANT_SYSTEM_PRIVILEGE'' must be declared%'
+   then
+      raise;
+   end if;
+end;
+/
+
+
+set define on
+
+----------------------------------------
+-- HOST_ACL Install
+
+
+prompt ============================================================
+prompt Running: grbtst SYS/host1.hacl
+prompt ============================================================
+
+--
+--  Create Host ACL/ACE
+--
+-- Host ACLs with the following:
+--    PRINCIPAL_TYPE      = 'DATABASE' (xs_acl.ptype_db)
+--    GRANT_TYPE          = 'GRANT'
+--    INVERTED_PRINICIPAL = 'NO'
+--    PRIVILEGE          is not null
+-- Start Dates and End Dates are ignored (set to NULL).
+--
+
+set define off
+
+
+--
+--  Create Host ACL/ACE for host1 from port 1100 to 1101 
+--  NOTE: This is a "GRANTEE" Host ACL
+--
+
+begin
+   DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE
+      (host        => 'host1'
+      ,lower_port  => 1100
+      ,upper_port  => 1101
+      ,ace         => xs$ace_type
+                         (privilege_list   => xs$name_list('CONNECT')
+                         ,granted          => TRUE
+                         ,inverted         => FALSE
+                         ,principal_name   => 'ODBCTEST'
+                         ,principal_type   => xs_acl.ptype_db
+                         ,start_date       => NULL
+                         ,end_date         => NULL));
+end;
+/
+
+set define on
+
+prompt ============================================================
+prompt Running: grbtst SYS/host2.hacl
+prompt ============================================================
+
+--
+--  Create Host ACL/ACE
+--
+-- Host ACLs with the following:
+--    PRINCIPAL_TYPE      = 'DATABASE' (xs_acl.ptype_db)
+--    GRANT_TYPE          = 'GRANT'
+--    INVERTED_PRINICIPAL = 'NO'
+--    PRIVILEGE          is not null
+-- Start Dates and End Dates are ignored (set to NULL).
+--
+
+set define off
+
+
+--
+--  Create Host ACL/ACE for host2 from port NULL to NULL 
+--  NOTE: This is a "GRANTEE" Host ACL
+--
+
+begin
+   DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE
+      (host        => 'host2'
+      ,lower_port  => NULL
+      ,upper_port  => NULL
+      ,ace         => xs$ace_type
+                         (privilege_list   => xs$name_list('CONNECT')
+                         ,granted          => TRUE
+                         ,inverted         => FALSE
+                         ,principal_name   => 'ODBCTEST'
+                         ,principal_type   => xs_acl.ptype_db
+                         ,start_date       => NULL
+                         ,end_date         => NULL));
+end;
+/
+
+
+--
+--  Create Host ACL/ACE for host2 from port NULL to NULL 
+--  NOTE: This is a "GRANTEE" Host ACL
+--
+
+begin
+   DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE
+      (host        => 'host2'
+      ,ace         => xs$ace_type
+                         (privilege_list   => xs$name_list('RESOLVE')
+                         ,granted          => TRUE
+                         ,inverted         => FALSE
+                         ,principal_name   => 'ODBCTEST'
+                         ,principal_type   => xs_acl.ptype_db
+                         ,start_date       => NULL
+                         ,end_date         => NULL));
+end;
+/
+
+set define on
+
+prompt ============================================================
+prompt Running: grbtst SYS/odbctest_host.hacl
+prompt ============================================================
+
+--
+--  Create Host ACL/ACE
+--
+-- Host ACLs with the following:
+--    PRINCIPAL_TYPE      = 'DATABASE' (xs_acl.ptype_db)
+--    GRANT_TYPE          = 'GRANT'
+--    INVERTED_PRINICIPAL = 'NO'
+--    PRIVILEGE          is not null
+-- Start Dates and End Dates are ignored (set to NULL).
+--
+
+set define off
+
+
+--
+--  Create Host ACL/ACE for odbctest_host from port 1234 to 5678 
+--  NOTE: This is a "OBJECT_NAME_REGEXP" Host ACL
+--   (OBJECT_NAME_REGEXP: ^odbctest)
+--
+
+begin
+   DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE
+      (host        => 'odbctest_host'
+      ,lower_port  => 1234
+      ,upper_port  => 5678
+      ,ace         => xs$ace_type
+                         (privilege_list   => xs$name_list('CONNECT')
+                         ,granted          => TRUE
+                         ,inverted         => FALSE
+                         ,principal_name   => 'PUBLIC'
+                         ,principal_type   => xs_acl.ptype_db
+                         ,start_date       => NULL
+                         ,end_date         => NULL));
+end;
+/
+
+set define on
+
+----------------------------------------
+-- WALLET_ACL Install
+
+
+prompt ============================================================
+prompt Running: grbtst SYS/_opt_install_files_oracle_wallet.wacl
+prompt ============================================================
+
+--
+--  Create Wallet ACL/ACE
+--
+-- Wallet ACLs with the following:
+--    PRINCIPAL_TYPE      = 'DATABASE' (xs_acl.ptype_db)
+--    GRANT_TYPE          = 'GRANT'
+--    INVERTED_PRINICIPAL = 'NO'
+--    PRIVILEGE          is not null
+-- Start Dates and End Dates are ignored (set to NULL).
+--
+
+set define off
+
+
+--
+--  NOTE: This is a "GRANTEE" Wallet ACL
+--
+
+begin
+   DBMS_NETWORK_ACL_ADMIN.APPEND_WALLET_ACE
+      (wallet_path => 'file:/opt/install_files/oracle_wallet'
+      ,ace         => xs$ace_type
+                         (privilege_list   => xs$name_list('USE_PASSWORDS')
+                         ,granted          => TRUE
+                         ,inverted         => FALSE
+                         ,principal_name   => 'ODBCTEST'
+                         ,principal_type   => xs_acl.ptype_db
+                         ,start_date       => NULL
+                         ,end_date         => NULL));
+end;
+/
+
+set define on
+
+prompt ============================================================
+prompt Running: grbtst SYS/_var_opt_install_files_oracle_wallet.wacl
+prompt ============================================================
+
+--
+--  Create Wallet ACL/ACE
+--
+-- Wallet ACLs with the following:
+--    PRINCIPAL_TYPE      = 'DATABASE' (xs_acl.ptype_db)
+--    GRANT_TYPE          = 'GRANT'
+--    INVERTED_PRINICIPAL = 'NO'
+--    PRIVILEGE          is not null
+-- Start Dates and End Dates are ignored (set to NULL).
+--
+
+set define off
+
+
+--
+--  NOTE: This is a "GRANTEE" Wallet ACL
+--
+
+begin
+   DBMS_NETWORK_ACL_ADMIN.APPEND_WALLET_ACE
+      (wallet_path => 'file:/var\opt\install_files/oracle_wallet'
+      ,ace         => xs$ace_type
+                         (privilege_list   => xs$name_list('USE_PASSWORDS')
+                         ,granted          => TRUE
+                         ,inverted         => FALSE
+                         ,principal_name   => 'ODBCTEST'
+                         ,principal_type   => xs_acl.ptype_db
+                         ,start_date       => NULL
+                         ,end_date         => NULL));
+end;
+/
+
+set define on
+
+----------------------------------------
+set sqlblanklines off
+set blockterminator on
+
+
+
+--
+--  SYSTEM Installation Script
+--
+--  Must be run as SYSTEM
+--
+
+
+set blockterminator off
+set sqlblanklines on
+
+----------------------------------------
+-- GRANT Install
+
+
+prompt ============================================================
+prompt Running: grbtst SYSTEM/ODBCTEST_usr.grnt
+prompt ============================================================
+
+
+--
+--  Create ODBCTEST Grants
+--
+
+set define off
+
+
+
+--  Database System Privileges
+
+grant CREATE PROCEDURE to "ODBCTEST";
+grant CREATE SEQUENCE to "ODBCTEST";
+grant CREATE SESSION to "ODBCTEST";
+grant CREATE TABLE to "ODBCTEST";
+
+
+--  "sys" BUILD_TYPE Role Grants
+--  "GRANTEE" (delayed) Role Grants
+--  Note: "OBJECT" Schema Object Grants are given during Role creation
+
+grant "GRB_TEST_ROLE" to "ODBCTEST" with admin option;
+
+
+set define on
+
+
+----------------------------------------
+set sqlblanklines off
+set blockterminator on
+
+
+
+--
+--  grbtst Installation Script
+--
+--  Must be run as a SYSTEM User (DBA)
+--
+-- Command Line Parameters:
+--   1 - INSTALL_SYSTEM_CONNECT: SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+
+
+-- For Oracle Change Data Capture (CDC) packages
+
+-- Escape character: "^P", CHR(16), DLE
+set escape OFF
+set escape ""
+
+----------------------------------------
+--  Prepare for Install
+
+prompt ============================================================
+prompt Running: grbtst ./installation_prepare.sql
+prompt ============================================================
+
+--
+--  Prepare for View Install
+--
+
+prompt
+prompt Create Temp Publicly Updateable Table
+create table TEMP_PUBLICLY_UPDATEABLE_TABLE (c1 number);
+grant all on TEMP_PUBLICLY_UPDATEABLE_TABLE to PUBLIC with grant option;
+create public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE for TEMP_PUBLICLY_UPDATEABLE_TABLE;
+
+prompt
+prompt Check for Prerequisite BUILD_TYPEs
+declare
+   procedure do_it (in_btype varchar2) is
+      cursor c_main is
+         select * from ODBCAPTURE_INSTALLATION_LOGS
+          where build_type = in_btype;
+      b_main   c_main%ROWTYPE;
+   begin
+      open c_main;
+      fetch c_main into b_main;
+      if c_main%NOTFOUND
+      then
+         dbms_output.put_line('WARNING: Prerequisite BUILD_TYPE "' || in_btype ||
+                              '" not found in ODBCAPTURE_INSTALLATION_LOGS table.');
+      end if;
+      close c_main;
+   end;
+begin
+   do_it('grbendp');
+   do_it('grbjava');
+   do_it('grbras');
+   do_it('grbsdo');
+   do_it('grbsrc');
+end;
+/
+
+
+----------------------------------------
+-- TABLE Install
+
+
+prompt ============================================================
+prompt Running: grbtst ODBCAPTURE/GRBTST__NAME.tbl
+prompt ============================================================
+
+--
+--  Create ODBCAPTURE.GRBTST_$NAME Table
+--
+
+set define off
+
+
+--DBMS_METADATA:ODBCAPTURE.GRBTST_$NAME
+
+  CREATE TABLE "ODBCAPTURE"."GRBTST_$NAME" 
+   (	"C1" VARCHAR2(20 BYTE), 
+	"ID" NUMBER
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;
+
+--  Comments
+
+--DBMS_METADATA:ODBCAPTURE.GRBTST_$NAME
+
+
+--  Grants
+grant DELETE on "ODBCAPTURE"."GRBTST_$NAME" to "GRB_TEST_ROLE";
+grant INSERT on "ODBCAPTURE"."GRBTST_$NAME" to "GRB_TEST_ROLE";
+grant SELECT on "ODBCAPTURE"."GRBTST_$NAME" to "GRB_TEST_ROLE";
+grant UPDATE on "ODBCAPTURE"."GRBTST_$NAME" to "GRB_TEST_ROLE";
+
+
+--  Synonyms
+
+
+set define on
+
+prompt ============================================================
+prompt Running: grbtst ODBCAPTURE/GRBTST_IMAGE.tbl
+prompt ============================================================
+
+--
+--  Create ODBCAPTURE.GRBTST_IMAGE Table
+--
+
+set define off
+
+
+--DBMS_METADATA:ODBCAPTURE.GRBTST_IMAGE
+
+  CREATE TABLE "ODBCAPTURE"."GRBTST_IMAGE" 
+   (	"ID" NUMBER(5,0), 
+	"IMAGE" BLOB
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;
+
+--  Comments
+
+--DBMS_METADATA:ODBCAPTURE.GRBTST_IMAGE
+
+
+--  Grants
+
+
+--  Synonyms
+
+
+set define on
+
+----------------------------------------
+-- DATA_LOAD Install
+
+
+prompt ============================================================
+prompt Running: grbtst ODBCAPTURE/BUILD_CONF.cldr
+prompt ============================================================
+prompt Translating ../grbtst/ODBCAPTURE/BUILD_CONF.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ","BUILD_TYPE","NOTES")
+  values (-40,'grbtst','ODBCapture and ODBCTest Testing Objects');
+
+insert into "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ","BUILD_TYPE","NOTES")
+  values (-38,'grbtjva','ODBCTest Java Testing');
+
+insert into "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ","BUILD_TYPE","NOTES")
+  values (-35,'grbtjsn','ODBCapture JSON Data Type Testing');
+
+insert into "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ","BUILD_TYPE","NOTES")
+  values (-33,'grbtsdo','ODBCTest Spatial Data Option Testing');
+
+insert into "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ","BUILD_TYPE","NOTES")
+  values (-30,'grbtctx','ODBCTest Testing of Oracle Text');
+
+insert into "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ","BUILD_TYPE","NOTES")
+  values (-10,'grbtend','ODBCapture and ODBCTest Testing Objects Endpoint and Non-Generated Objects');
+
+insert into "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ","BUILD_TYPE","NOTES")
+  values (-8,'grbtdat','ODBCapture and ODBCTest Testing Self-Capture Configuration Data');
+
+
+prompt ============================================================
+prompt Running: grbtst ODBCAPTURE/BUILD_PATH.cldr
+prompt ============================================================
+prompt Translating ../grbtst/ODBCAPTURE/BUILD_PATH.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
+  values (-50,-40);
+
+insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
+  values (-40,-38);
+
+insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
+  values (-40,-35);
+
+insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
+  values (-40,-33);
+
+insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
+  values (-40,-30);
+
+insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
+  values (-38,-10);
+
+insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
+  values (-35,-10);
+
+insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
+  values (-33,-10);
+
+insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
+  values (-30,-10);
+
+insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
+  values (-10,-8);
+
+
+prompt ============================================================
+prompt Running: grbtst ODBCAPTURE/GRBTST__NAME.cldr
+prompt ============================================================
+prompt Translating ../grbtst/ODBCAPTURE/GRBTST__NAME.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."GRBTST__NAME" ("C1","ID")
+  values ('5',5);
+
+insert into "ODBCAPTURE"."GRBTST__NAME" ("C1","ID")
+  values ('15',15);
+
+
+prompt ============================================================
+prompt Running: grbtst ODBCAPTURE/GRBTST_IMAGE.cldr
+prompt ============================================================
+prompt Translating ../grbtst/ODBCAPTURE/GRBTST_IMAGE.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."GRBTST_IMAGE" ("ID","IMAGE")
+  values (1,'(Base64 with Linefeeds));
+
+insert into "ODBCAPTURE"."GRBTST_IMAGE" ("ID","IMAGE")
+  values (iVBORw0KGgoAAAANSUhEUgAAAY0AAAFTCAMAAADyTaC8AAAAA3NCSVQICAjb4U/gAAABtlBMVEUAAAD7+O1/sn8AAP9QUFCurq6ZMzOGhoaZAJkAZgCpUlLq1ZXUqSfMmQAnJydpaf/Vqqp+fn5YWP9CRT9wemLDh4frzevevFhja1jMzMypKanX1/+JCIknfScnJ/+OnHnjueOlpaWxv53Jeclre2PX19f379cHBwebrIM9iz1Ym1i8eXnt9O19iWyVv5V1dXU9PT3v39+Ojo7dq93mzc3lzH/v7++3xKTMmZmVlf+rq/+zQLOxZGTX59f79furzasHagecOTnV3coREf9YWFjB2sFqamoRERHz5sFLT0Xt7f/UlNQ9Pf9ppWnf39/Bwf/PoBF/f//dvLz39/eGk3Ln5+fu3atocFsHB/+kG6RfZlX8+fnYsT2enp6ltY66UrqgQUERcBFQVUnz4fPhw2nnwuf48fGSoXy9yKu+vr5bYlLNnAf9/PdjY2PJ07v39/+VlZX57/lER0ARABHn6+HMf8xsdV+tMq28WLyRBJHXnNf15/VMUEfDzrTx2/Hqy+rt8OhYXk+rupVJTURTWUzP2MPPhs/////b4tL39+/lveWwOrDgsuC/YL/Zodm2SLbb4dGnI6eFtRMPAAAACXBIWXMAAAsSAAALEgHS3X78AAAAFnRFWHRDcmVhdGlvbiBUaW1lADAxLzIzLzA3TruF+QAAAB90RVh0U29mdHdhcmUATWFjcm9tZWRpYSBGaXJld29ya3MgOLVo0ngAABW6SURBVHic7Z0LWxvXmYAFqhRGloRFTKFWpXabR8hg4kpZI2MWFQgCeTHUgGJCjWtD7OBwSY2bi7Ob7iZptzlbb9rs/uM915kzoxlJI43Qh/heP5bmcmbmzPfqXGbQ0YQIAodQrzOAaKANSKANSKANSKANSKANSKANSKANSKANSECxkRm0pjcMo+yZcGEqM7lC38sbGX2b/gCgjRWjRoinj8Vb5QWD6pjcKK8cZM4nc+cGKBu1MvVABlmMG5QOWnikhbLR/YydK5BsbBgZY4qG2DAyGfriXQ8pG4NYNroDtbGySN+NaWfZMAS6G2OBvW4sTp5zJrsOIBuTk+Vy+WCweU0lm4vp8uTU+WTu3ABkI7OYoSw4bZQFNSvpgTlJS1JfAcjG5IaYdNjICBbUvN6RatjWX0AA2Vhg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);
+
+insert into "ODBCAPTURE"."GRBTST_IMAGE" ("ID","IMAGE")
+  values (');
+
+insert into "ODBCAPTURE"."GRBTST_IMAGE" ("ID","IMAGE")
+  values (2,'(Base64 with Linefeeds));
+
+insert into "ODBCAPTURE"."GRBTST_IMAGE" ("ID","IMAGE")
+  values (iVBORw0KGgoAAAANSUhEUgAAAY0AAAFTCAMAAADyTaC8AAAAA3NCSVQICAjb4U/gAAABtlBMVEUAAAD7+O1/sn8AAP9QUFCurq6ZMzOGhoaZAJkAZgCpUlLq1ZXUqSfMmQAnJydpaf/Vqqp+fn5YWP9CRT9wemLDh4frzevevFhja1jMzMypKanX1/+JCIknfScnJ/+OnHnjueOlpaWxv53Jeclre2PX19f379cHBwebrIM9iz1Ym1i8eXnt9O19iWyVv5V1dXU9PT3v39+Ojo7dq93mzc3lzH/v7++3xKTMmZmVlf+rq/+zQLOxZGTX59f79furzasHagecOTnV3coREf9YWFjB2sFqamoRERHz5sFLT0Xt7f/UlNQ9Pf9ppWnf39/Bwf/PoBF/f//dvLz39/eGk3Ln5+fu3atocFsHB/+kG6RfZlX8+fnYsT2enp6ltY66UrqgQUERcBFQVUnz4fPhw2nnwuf48fGSoXy9yKu+vr5bYlLNnAf9/PdjY2PJ07v39/+VlZX57/lER0ARABHn6+HMf8xsdV+tMq28WLyRBJHXnNf15/VMUEfDzrTx2/Hqy+rt8OhYXk+rupVJTURTWUzP2MPPhs/////b4tL39+/lveWwOrDgsuC/YL/Zodm2SLbb4dGnI6eFtRMPAAAACXBIWXMAAAsSAAALEgHS3X78AAAAFnRFWHRDcmVhdGlvbiBUaW1lADAxLzIzLzA3TruF+QAAAB90RVh0U29mdHdhcmUATWFjcm9tZWRpYSBGaXJld29ya3MgOLVo0ngAABW6SURBVHic7Z0LWxvXmYAFqhRGloRFTKFWpXabR8hg4kpZI2MWFQgCeTHUgGJCjWtD7OBwSY2bi7Ob7iZptzlbb9rs/uM915kzoxlJI43Qh/heP5bmcmbmzPfqXGbQ0YQIAodQrzOAaKANSKANSKANSKANSKANSKANSKANSKANSECxkRm0pjcMo+yZcGEqM7lC38sbGX2b/gCgjRWjRoinj8Vb5QWD6pjcKK8cZM4nc+cGKBu1MvVABlmMG5QOWnikhbLR/YydK5BsbBgZY4qG2DAyGfriXQ8pG4NYNroDtbGySN+NaWfZMAS6G2OBvW4sTp5zJrsOIBuTk+Vy+WCweU0lm4vp8uTU+WTu3ABkI7OYoSw4bZQFNSvpgTlJS1JfAcjG5IaYdNjICBbUvN6RatjWX0AA2Vhg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);
+
+insert into "ODBCAPTURE"."GRBTST_IMAGE" ("ID","IMAGE")
+  values (');
+
+
+prompt ============================================================
+prompt Running: grbtst ODBCAPTURE/ROLE_CONF.cldr
+prompt ============================================================
+prompt Translating ../grbtst/ODBCAPTURE/ROLE_CONF.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
+  values ('GRB_TEST_ROLE','grbtst','N','ODBCapture Testing');
+
+
+prompt ============================================================
+prompt Running: grbtst ODBCAPTURE/SCHEMA_CONF.cldr
+prompt ============================================================
+prompt Translating ../grbtst/ODBCAPTURE/SCHEMA_CONF.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
+  values ('ODBCTEST','grbtst','N',NULL,NULL,'USERS','512M','Test Account');
+
+
+prompt ============================================================
+prompt Running: grbtst ODBCAPTURE/TSPACE_CONF.cldr
+prompt ============================================================
+prompt Translating ../grbtst/ODBCAPTURE/TSPACE_CONF.csv to 'INSERT INTO'
+
+
+----------------------------------------
+-- Finalize Installation (Includes SPOOL OFF)
+
+prompt ============================================================
+prompt Running: grbtst ./installation_finalize.sql
+prompt ============================================================
+
+--
+--  Finalize Installation
+--
+
+prompt
+prompt Drop Temp Publicly Updateable Table
+drop public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE;
+drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
+
+prompt
+prompt fix_invalid_public_synonyms
+--@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql" "" "" ""
+
+prompt
+prompt compile_all
+--@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE','ODBCTEST'" "" ""
+
+prompt
+prompt alter_foreign_keys_ENABLE
+--@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE','ODBCTEST'" ""
+
+prompt
+prompt alter_triggers_ENABLE
+--@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE','ODBCTEST'" ""
+
+prompt
+prompt update_id_sequences
+--@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE','ODBCTEST'" "" ""
+
+--prompt
+--prompt alter_queues_ENABLE
+--@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE','ODBCTEST'" ""
+
+--prompt
+--prompt alter_scheduler_jobs_ENABLE
+--@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE','ODBCTEST'" ""
+
+prompt
+prompt Switch Spooling Off
+
+
+
+
+
+--
+--  SYS Installation Script
+--
+--  Must be run as SYS
+--
+
+
+set blockterminator off
+set sqlblanklines on
+
+----------------------------------------
+set sqlblanklines off
+set blockterminator on
+
+
+
+--
+--  SYSTEM Installation Script
+--
+--  Must be run as SYSTEM
+--
+
+
+set blockterminator off
+set sqlblanklines on
+
+----------------------------------------
+set sqlblanklines off
+set blockterminator on
+
+
+
+--
+--  grbtjsn Installation Script
+--
+--  Must be run as a SYSTEM User (DBA)
+--
+-- Command Line Parameters:
+--   1 - INSTALL_SYSTEM_CONNECT: SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+
+
+-- For Oracle Change Data Capture (CDC) packages
+
+-- Escape character: "^P", CHR(16), DLE
+set escape OFF
+set escape ""
+
+----------------------------------------
+--  Prepare for Install
+
+prompt ============================================================
+prompt Running: grbtjsn ./installation_prepare.sql
+prompt ============================================================
+
+--
+--  Prepare for View Install
+--
+
+prompt
+prompt Create Temp Publicly Updateable Table
+create table TEMP_PUBLICLY_UPDATEABLE_TABLE (c1 number);
+grant all on TEMP_PUBLICLY_UPDATEABLE_TABLE to PUBLIC with grant option;
+create public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE for TEMP_PUBLICLY_UPDATEABLE_TABLE;
+
+prompt
+prompt Check for Prerequisite BUILD_TYPEs
+declare
+   procedure do_it (in_btype varchar2) is
+      cursor c_main is
+         select * from ODBCAPTURE_INSTALLATION_LOGS
+          where build_type = in_btype;
+      b_main   c_main%ROWTYPE;
+   begin
+      open c_main;
+      fetch c_main into b_main;
+      if c_main%NOTFOUND
+      then
+         dbms_output.put_line('WARNING: Prerequisite BUILD_TYPE "' || in_btype ||
+                              '" not found in ODBCAPTURE_INSTALLATION_LOGS table.');
+      end if;
+      close c_main;
+   end;
+begin
+   do_it('grbendp');
+   do_it('grbjava');
+   do_it('grbras');
+   do_it('grbsdo');
+   do_it('grbsrc');
+   do_it('grbtst');
+end;
+/
+
+
+----------------------------------------
+-- TABLE Install
+
+
+prompt ============================================================
+prompt Running: grbtjsn ODBCAPTURE/GRBTST_JSON.tbl
+prompt ============================================================
+
+--
+--  Create ODBCAPTURE.GRBTST_JSON Table
+--
+
+set define off
+
+
+--DBMS_METADATA:ODBCAPTURE.GRBTST_JSON
+
+  CREATE TABLE "ODBCAPTURE"."GRBTST_JSON" 
+   (	"ID" NUMBER(5,0), 
+	"JSON_DATA" JSON
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;
+ALTER TABLE "ODBCAPTURE"."GRBTST_JSON" ADD CONSTRAINT "GRBTST_JSON_PK" PRIMARY KEY ("ID")
+  USING INDEX  ENABLE;
+
+--  Comments
+
+--DBMS_METADATA:ODBCAPTURE.GRBTST_JSON
+
+
+--  Grants
+
+
+--  Synonyms
+
+
+set define on
+
+----------------------------------------
+-- DATA_LOAD Install
+
+
+prompt ============================================================
+prompt Running: grbtjsn ODBCAPTURE/GRBTST_JSON.cldr
+prompt ============================================================
+prompt Translating ../grbtjsn/ODBCAPTURE/GRBTST_JSON.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (1,'[);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (100,NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (500,NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (300,NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (200,NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (400);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (]');
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (2,'{);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("color" : "red",NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("value" : "#f00");
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (}');
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (3,'{);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("id" : "0001",NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("type" : "donut",NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("name" : "Cake",NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("ppu" : 0.55,NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("batters" :);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ({);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("batter" :);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ([);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ({);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("id" : "1001",NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("type" : "Regular");
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (},NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ({);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("id" : "1002",NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("type" : "Chocolate");
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (},NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ({);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("id" : "1003",NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("type" : "Blueberry");
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (},NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ({);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("id" : "1004",NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("type" : "Devil''s Food");
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (});
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (]);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (},NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("topping" :);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ([);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ({);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("id" : "5001",NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("type" : "None");
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (},NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ({);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("id" : "5002",NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("type" : "Glazed");
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (},NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ({);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("id" : "5005",NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("type" : "Sugar");
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (},NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ({);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("id" : "5007",NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("type" : "Powdered Sugar");
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (},NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ({);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("id" : "5006",NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("type" : "Chocolate with Sprinkles");
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (},NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ({);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("id" : "5003",NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("type" : "Chocolate");
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (},NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ({);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("id" : "5004",NULL);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values ("type" : "Maple");
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (});
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (]);
+
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (}');
+
+
+----------------------------------------
+-- Finalize Installation (Includes SPOOL OFF)
+
+prompt ============================================================
+prompt Running: grbtjsn ./installation_finalize.sql
+prompt ============================================================
+
+--
+--  Finalize Installation
+--
+
+prompt
+prompt Drop Temp Publicly Updateable Table
+drop public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE;
+drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
+
+prompt
+prompt fix_invalid_public_synonyms
+--@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql" "" "" ""
+
+prompt
+prompt compile_all
+--@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE'" "" ""
+
+prompt
+prompt alter_foreign_keys_ENABLE
+--@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE'" ""
+
+prompt
+prompt alter_triggers_ENABLE
+--@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE'" ""
+
+prompt
+prompt update_id_sequences
+--@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE'" "" ""
+
+--prompt
+--prompt alter_queues_ENABLE
+--@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE'" ""
+
+--prompt
+--prompt alter_scheduler_jobs_ENABLE
+--@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE'" ""
+
+prompt
+prompt Switch Spooling Off
+
+
+
+
+
+--
+--  SYS Installation Script
+--
+--  Must be run as SYS
+--
+
+
+set blockterminator off
+set sqlblanklines on
+
+----------------------------------------
+set sqlblanklines off
+set blockterminator on
+
+
+
+--
+--  SYSTEM Installation Script
+--
+--  Must be run as SYSTEM
+--
+
+
+set blockterminator off
+set sqlblanklines on
+
+----------------------------------------
+set sqlblanklines off
+set blockterminator on
+
+
+
+--
+--  grbtsdo Installation Script
+--
+--  Must be run as a SYSTEM User (DBA)
+--
+-- Command Line Parameters:
+--   1 - INSTALL_SYSTEM_CONNECT: SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+
+
+-- For Oracle Change Data Capture (CDC) packages
+
+-- Escape character: "^P", CHR(16), DLE
+set escape OFF
+set escape ""
+
+----------------------------------------
+--  Prepare for Install
+
+prompt ============================================================
+prompt Running: grbtsdo ./installation_prepare.sql
+prompt ============================================================
+
+--
+--  Prepare for View Install
+--
+
+prompt
+prompt Create Temp Publicly Updateable Table
+create table TEMP_PUBLICLY_UPDATEABLE_TABLE (c1 number);
+grant all on TEMP_PUBLICLY_UPDATEABLE_TABLE to PUBLIC with grant option;
+create public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE for TEMP_PUBLICLY_UPDATEABLE_TABLE;
+
+prompt
+prompt Check for Prerequisite BUILD_TYPEs
+declare
+   procedure do_it (in_btype varchar2) is
+      cursor c_main is
+         select * from ODBCAPTURE_INSTALLATION_LOGS
+          where build_type = in_btype;
+      b_main   c_main%ROWTYPE;
+   begin
+      open c_main;
+      fetch c_main into b_main;
+      if c_main%NOTFOUND
+      then
+         dbms_output.put_line('WARNING: Prerequisite BUILD_TYPE "' || in_btype ||
+                              '" not found in ODBCAPTURE_INSTALLATION_LOGS table.');
+      end if;
+      close c_main;
+   end;
+begin
+   do_it('grbendp');
+   do_it('grbjava');
+   do_it('grbras');
+   do_it('grbsdo');
+   do_it('grbsrc');
+   do_it('grbtst');
+end;
+/
+
+
+----------------------------------------
+-- TABLE Install
+
+
+prompt ============================================================
+prompt Running: grbtsdo ODBCTEST/SDO_COLA_MARKETS.tbl
+prompt ============================================================
+
+--
+--  Create ODBCTEST.SDO_COLA_MARKETS Table
+--
+
+set define off
+
+
+--DBMS_METADATA:ODBCTEST.SDO_COLA_MARKETS
+
+  CREATE TABLE "ODBCTEST"."SDO_COLA_MARKETS" 
+   (	"MKT_ID" NUMBER, 
+	"NAME" VARCHAR2(32 BYTE), 
+	"SHAPE" "ST_GEOMETRY"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING
+ VARRAY "SHAPE"."GEOM"."SDO_ELEM_INFO" STORE AS SECUREFILE LOB 
+ VARRAY "SHAPE"."GEOM"."SDO_ORDINATES" STORE AS SECUREFILE LOB ;
+ALTER TABLE "ODBCTEST"."SDO_COLA_MARKETS" ADD PRIMARY KEY ("MKT_ID")
+  USING INDEX  ENABLE;
+
+--  Comments
+
+--DBMS_METADATA:ODBCTEST.SDO_COLA_MARKETS
+
+
+--  Grants
+
+
+--  Synonyms
+
+
+set define on
+
+----------------------------------------
+-- DATA_LOAD Install
+
+
+prompt ============================================================
+prompt Running: grbtsdo ODBCTEST/SDO_COLA_MARKETS.cldr
+prompt ============================================================
+prompt Translating ../grbtsdo/ODBCTEST/SDO_COLA_MARKETS.csv to 'INSERT INTO'
+
+insert into "ODBCTEST"."SDO_COLA_MARKETS" ("MKT_ID","NAME","SHAPE")
+  values (1,'cola_a',2003;;;;;1;1003;31;1;5;7);
+
+insert into "ODBCTEST"."SDO_COLA_MARKETS" ("MKT_ID","NAME","SHAPE")
+  values (2,'cola_b',2003;;;;;1;1003;15;1;8;1;8;6;5;7;5;1);
+
+insert into "ODBCTEST"."SDO_COLA_MARKETS" ("MKT_ID","NAME","SHAPE")
+  values (3,'cola_c',2003;;;;;1;1003;13;3;6;3;6;5;4;5;3;3);
+
+insert into "ODBCTEST"."SDO_COLA_MARKETS" ("MKT_ID","NAME","SHAPE")
+  values (4,'cola_d',2003;;;;;1;1003;48;7;10;9;8;11);
+
+
+----------------------------------------
+-- INDEX Install
+
+
+prompt ============================================================
+prompt Running: grbtsdo ODBCTEST/SDO_COLA_MARKETS.tidx
+prompt ============================================================
+
+--
+--  Create Indexes for ODBCTEST.SDO_COLA_MARKETS TABLE
+--
+
+set define off
+
+
+--  NOTE: This is a "TARGET" Index
+
+-- The MDSYS Domain Index "ODBCTEST"."COLA_SPATIAL_IDX
+--   installation script is located in the "root" folder because
+--   it must be executed using the "ODBCTEST" database login.
+
+
+set define on
+
+----------------------------------------
+-- Finalize Installation (Includes SPOOL OFF)
+
+prompt ============================================================
+prompt Running: grbtsdo ./installation_finalize.sql
+prompt ============================================================
+
+--
+--  Finalize Installation
+--
+
+prompt
+prompt Drop Temp Publicly Updateable Table
+drop public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE;
+drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
+
+prompt
+prompt fix_invalid_public_synonyms
+--@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql" "" "" ""
+
+prompt
+prompt compile_all
+--@"../grb_linked_install_scripts/compile_all.sql" "'ODBCTEST'" "" ""
+
+prompt
+prompt alter_foreign_keys_ENABLE
+--@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCTEST'" ""
+
+prompt
+prompt alter_triggers_ENABLE
+--@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCTEST'" ""
+
+prompt
+prompt update_id_sequences
+--@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCTEST'" "" ""
+
+--prompt
+--prompt alter_queues_ENABLE
+--@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCTEST'" ""
+
+--prompt
+--prompt alter_scheduler_jobs_ENABLE
+--@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCTEST'" ""
+
+prompt
+prompt Switch Spooling Off
+
+
+
+
+
+--
+--  SYS Installation Script
+--
+--  Must be run as SYS
+--
+
+
+set blockterminator off
+set sqlblanklines on
+
+----------------------------------------
+set sqlblanklines off
+set blockterminator on
+
+
+
+--
+--  SYSTEM Installation Script
+--
+--  Must be run as SYSTEM
+--
+
+
+set blockterminator off
+set sqlblanklines on
+
+----------------------------------------
+set sqlblanklines off
+set blockterminator on
+
+
+
+--
+--  grbtctx Installation Script
+--
+--  Must be run as a SYSTEM User (DBA)
+--
+-- Command Line Parameters:
+--   1 - INSTALL_SYSTEM_CONNECT: SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+
+
+-- For Oracle Change Data Capture (CDC) packages
+
+-- Escape character: "^P", CHR(16), DLE
+set escape OFF
+set escape ""
+
+----------------------------------------
+--  Prepare for Install
+
+prompt ============================================================
+prompt Running: grbtctx ./installation_prepare.sql
+prompt ============================================================
+
+--
+--  Prepare for View Install
+--
+
+prompt
+prompt Create Temp Publicly Updateable Table
+create table TEMP_PUBLICLY_UPDATEABLE_TABLE (c1 number);
+grant all on TEMP_PUBLICLY_UPDATEABLE_TABLE to PUBLIC with grant option;
+create public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE for TEMP_PUBLICLY_UPDATEABLE_TABLE;
+
+prompt
+prompt Check for Prerequisite BUILD_TYPEs
+declare
+   procedure do_it (in_btype varchar2) is
+      cursor c_main is
+         select * from ODBCAPTURE_INSTALLATION_LOGS
+          where build_type = in_btype;
+      b_main   c_main%ROWTYPE;
+   begin
+      open c_main;
+      fetch c_main into b_main;
+      if c_main%NOTFOUND
+      then
+         dbms_output.put_line('WARNING: Prerequisite BUILD_TYPE "' || in_btype ||
+                              '" not found in ODBCAPTURE_INSTALLATION_LOGS table.');
+      end if;
+      close c_main;
+   end;
+begin
+   do_it('grbendp');
+   do_it('grbjava');
+   do_it('grbras');
+   do_it('grbsdo');
+   do_it('grbsrc');
+   do_it('grbtst');
+end;
+/
+
+
+----------------------------------------
+-- TABLE Install
+
+
+prompt ============================================================
+prompt Running: grbtctx ODBCTEST/CUST_CTX_TEST.tbl
+prompt ============================================================
+
+--
+--  Create ODBCTEST.CUST_CTX_TEST Table
+--
+
+set define off
+
+
+--DBMS_METADATA:ODBCTEST.CUST_CTX_TEST
+
+  CREATE TABLE "ODBCTEST"."CUST_CTX_TEST" 
+   (	"CUST_ID" NUMBER, 
+	"CUST_NAME" VARCHAR2(80 BYTE), 
+	"CREATE_DATE" DATE
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;
+
+--  Comments
+
+--DBMS_METADATA:ODBCTEST.CUST_CTX_TEST
+
+
+--  Grants
+
+
+--  Synonyms
+
+
+set define on
+
+----------------------------------------
+-- DATA_LOAD Install
+
+
+prompt ============================================================
+prompt Running: grbtctx ODBCTEST/CUST_CTX_TEST.cldr
+prompt ============================================================
+prompt Translating ../grbtctx/ODBCTEST/CUST_CTX_TEST.csv to 'INSERT INTO'
+
+insert into "ODBCTEST"."CUST_CTX_TEST" ("CUST_ID","CUST_NAME","CREATE_DATE")
+  values (1,'The Acme Manufacturing Company, Inc.','14-MAY-2024 16:40:54');
+
+insert into "ODBCTEST"."CUST_CTX_TEST" ("CUST_ID","CUST_NAME","CREATE_DATE")
+  values (2,'Coyote Trap Construction GMBH','14-MAY-2024 16:40:58');
+
+insert into "ODBCTEST"."CUST_CTX_TEST" ("CUST_ID","CUST_NAME","CREATE_DATE")
+  values (3,'Trapezium and Trappist Developments','14-MAY-2024 16:41:28');
+
+
+----------------------------------------
+-- INDEX Install
+
+
+prompt ============================================================
+prompt Running: grbtctx ODBCTEST/CUST_CTX_TEST.tidx
+prompt ============================================================
+
+--
+--  Create Indexes for ODBCTEST.CUST_CTX_TEST TABLE
+--
+
+set define off
+
+
+--  NOTE: This is a "INDEX" Index
+
+--DBMS_METADATA:ODBCTEST.CUST_CTX_TEST_IND
+
+  CREATE INDEX "ODBCTEST"."CUST_CTX_TEST_IND" ON "ODBCTEST"."CUST_CTX_TEST" ("CUST_NAME") 
+   INDEXTYPE IS "CTXSYS"."CONTEXT_V2" ;
+
+set define on
+
+----------------------------------------
+-- Finalize Installation (Includes SPOOL OFF)
+
+prompt ============================================================
+prompt Running: grbtctx ./installation_finalize.sql
+prompt ============================================================
+
+--
+--  Finalize Installation
+--
+
+prompt
+prompt Drop Temp Publicly Updateable Table
+drop public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE;
+drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
+
+prompt
+prompt fix_invalid_public_synonyms
+--@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql" "" "" ""
+
+prompt
+prompt compile_all
+--@"../grb_linked_install_scripts/compile_all.sql" "'ODBCTEST'" "" ""
+
+prompt
+prompt alter_foreign_keys_ENABLE
+--@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCTEST'" ""
+
+prompt
+prompt alter_triggers_ENABLE
+--@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCTEST'" ""
+
+prompt
+prompt update_id_sequences
+--@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCTEST'" "" ""
+
+--prompt
+--prompt alter_queues_ENABLE
+--@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCTEST'" ""
+
+--prompt
+--prompt alter_scheduler_jobs_ENABLE
+--@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCTEST'" ""
+
+prompt
+prompt Switch Spooling Off
+
+
+
+
+
+--
+--  SYS Installation Script
+--
+--  Must be run as SYS
+--
+
+
+set blockterminator off
+set sqlblanklines on
+
+----------------------------------------
+set sqlblanklines off
+set blockterminator on
+
+
+
+--
+--  SYSTEM Installation Script
+--
+--  Must be run as SYSTEM
+--
+
+
+set blockterminator off
+set sqlblanklines on
+
+----------------------------------------
+set sqlblanklines off
+set blockterminator on
+
+
+
+--
+--  grbtdat Installation Script
+--
+--  Must be run as a SYSTEM User (DBA)
+--
+-- Command Line Parameters:
+--   1 - INSTALL_SYSTEM_CONNECT: SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+
+
+-- For Oracle Change Data Capture (CDC) packages
+
+-- Escape character: "^P", CHR(16), DLE
+set escape OFF
+set escape ""
+
+----------------------------------------
+--  Prepare for Install
+
+prompt ============================================================
+prompt Running: grbtdat ./installation_prepare.sql
+prompt ============================================================
+
+--
+--  Prepare for View Install
+--
+
+prompt
+prompt Create Temp Publicly Updateable Table
+create table TEMP_PUBLICLY_UPDATEABLE_TABLE (c1 number);
+grant all on TEMP_PUBLICLY_UPDATEABLE_TABLE to PUBLIC with grant option;
+create public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE for TEMP_PUBLICLY_UPDATEABLE_TABLE;
+
+prompt
+prompt Check for Prerequisite BUILD_TYPEs
+declare
+   procedure do_it (in_btype varchar2) is
+      cursor c_main is
+         select * from ODBCAPTURE_INSTALLATION_LOGS
+          where build_type = in_btype;
+      b_main   c_main%ROWTYPE;
+   begin
+      open c_main;
+      fetch c_main into b_main;
+      if c_main%NOTFOUND
+      then
+         dbms_output.put_line('WARNING: Prerequisite BUILD_TYPE "' || in_btype ||
+                              '" not found in ODBCAPTURE_INSTALLATION_LOGS table.');
+      end if;
+      close c_main;
+   end;
+begin
+   do_it('grbendp');
+   do_it('grbjava');
+   do_it('grbras');
+   do_it('grbsdo');
+   do_it('grbsrc');
+   do_it('grbtctx');
+   do_it('grbtend');
+   do_it('grbtjsn');
+   do_it('grbtjva');
+   do_it('grbtsdo');
+   do_it('grbtst');
+end;
+/
+
+
+----------------------------------------
+-- DATA_LOAD Install
+
+
+prompt ============================================================
+prompt Running: grbtdat ODBCAPTURE/DLOAD_CONF.cldr
+prompt ============================================================
+prompt Translating ../grbtdat/ODBCAPTURE/DLOAD_CONF.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','BUILD_CONF','grbtst','BUILD_SEQ',NULL,NULL,'build_seq between -40 and -1',NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','BUILD_PATH','grbtst','PARENT_BUILD_SEQ, BUILD_SEQ',NULL,NULL,'build_seq between -40 and -1',NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','DLOAD_CONF','grbtdat','USERNAME, TABLE_NAME, BUILD_TYPE',NULL,NULL,'build_type in (''grbtst'',''grbtctx'',''grbtjva'',''grbtjsn'',''grbtsdo'',''grbtend'',''grbtdat'')',NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','GRBTST_$NAME','grbtst','ID',NULL,NULL,NULL,NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','GRBTST_IMAGE','grbtst','ID',NULL,NULL,NULL,NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','GRBTST_JSON','grbtjsn','ID',NULL,NULL,NULL,NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','OBJECT_CONF','grbtdat','USERNAME, ELEMENT_NAME, BUILD_TYPE',NULL,NULL,'build_type in (''grbtst'',''grbtctx'',''grbtjva'',''grbtjsn'',''grbtsdo'',''grbtend'',''grbtdat'')',NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','ROLE_CONF','grbtst','ROLENAME, BUILD_TYPE',NULL,NULL,'build_type in (''grbtst'',''grbtend'',''grbtdat'')',NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','SCHEMA_CONF','grbtst','USERNAME',NULL,NULL,'build_type in (''grbtst'',''grbtend'',''grbtdat'')',NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCAPTURE','TSPACE_CONF','grbtst','USERNAME, TSPACE_NAME',NULL,NULL,'username in (select username from schema_conf where build_type in (''grbtst''))',NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCTEST','CUST_CTX_TEST','grbtctx','CUST_ID',NULL,NULL,NULL,NULL,NULL);
+
+insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
+  values ('ODBCTEST','SDO_COLA_MARKETS','grbtsdo','MKT_ID',NULL,NULL,NULL,NULL,NULL);
+
+
+prompt ============================================================
+prompt Running: grbtdat ODBCAPTURE/OBJECT_CONF.cldr
+prompt ============================================================
+prompt Translating ../grbtdat/ODBCAPTURE/OBJECT_CONF.csv to 'INSERT INTO'
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCAPTURE','TABLE','grbtjsn','GRBTST_JSON','ODBCapture JSON Datatype Testing');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCAPTURE','TABLE','grbtst','^(GRBTST_IMAGE|GRBTST_[$]NAME)$','ODBCatpure Test Tables');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCTEST','GRANT','grbtjva','[Jj][Aa][Vv][Aa]','Any permission with JAVA in the name');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCTEST','JAVA_SOURCE','grbtjva','^DirUtil$','Any Java Source called "DirUtil"');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCTEST','PACKAGE_BODY','grbtjva','^DIR_UTIL$','Any Package Body called "DIRUTIL"');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCTEST','PACKAGE_SPEC','grbtjva','^DIR_UTIL$','Any Package Specification called DIRUTIL');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCTEST','ROLE','grbtjva','JAVA','Any Oracle Provided Role Grant with JAVA in the Name');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCTEST','SEQUENCE','grbtend','^MDRS_','Any Sequences Starting with MDRT_');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCTEST','SEQUENCE','grbtsdo','^MDRS_','Any Sequence Starting with MDRS_');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCTEST','SYS_GRANT','grbtjva','[Jj][Aa][Vv][Aa]','Any permission with JAVA in the name');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCTEST','TABLE','grbtctx','CUST_CTX_TEST','Any Table with CUST_CTX_TEST in the Name');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCTEST','TABLE','grbtend','^MDRT_','Any Tables Starting with MDRT_');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCTEST','TABLE','grbtsdo','^(SDO_|MDRT_)','Any Table Name Starting with SDO_ or MDRT_');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCTEST','TABLE_INDEX','grbtctx','CUST_CTX_TEST','Any Index with CUST_CTX_TEST in the Name');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('ODBCTEST','TABLE_INDEX','grbtsdo','^SDO_','Any Table Index Starting with SDO_');
+
+insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
+  values ('PUBLIC','HOST_ACL','grbtst','^odbctest','Any Public Host ACLs with a Hostname starting with "ODBCTEST"');
+
+
+----------------------------------------
+-- Finalize Installation (Includes SPOOL OFF)
+
+prompt ============================================================
+prompt Running: grbtdat ./installation_finalize.sql
+prompt ============================================================
+
+--
+--  Finalize Installation
+--
+
+prompt
+prompt Drop Temp Publicly Updateable Table
+drop public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE;
+drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
+
+prompt
+prompt fix_invalid_public_synonyms
+--@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql" "" "" ""
+
+prompt
+prompt compile_all
+--@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE'" "" ""
+
+prompt
+prompt alter_foreign_keys_ENABLE
+--@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE'" ""
+
+prompt
+prompt alter_triggers_ENABLE
+--@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE'" ""
+
+prompt
+prompt update_id_sequences
+--@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE'" "" ""
+
+--prompt
+--prompt alter_queues_ENABLE
+--@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE'" ""
+
+--prompt
+--prompt alter_scheduler_jobs_ENABLE
+--@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE'" ""
+
+prompt
+prompt Switch Spooling Off
+
+
+
+

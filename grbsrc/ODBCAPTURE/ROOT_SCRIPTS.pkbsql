@@ -201,6 +201,13 @@ is
    btype_nt    btype_nt_type;
    ret_txt     varchar2(32767);
 begin
+   select to_build_type
+    bulk collect into btype_nt
+    from  build_type_timing
+    where from_build_type = in_build_type
+     and  build_timing = 'CURRENT'
+     and  to_build_type not in (in_build_type, 'sys','pub')
+    order by to_build_type;
    ret_txt := q'{
 --
 --  Prepare for View Install
@@ -211,43 +218,44 @@ prompt Create Temp Publicly Updateable Table
 create table TEMP_PUBLICLY_UPDATEABLE_TABLE (c1 number);
 grant all on TEMP_PUBLICLY_UPDATEABLE_TABLE to PUBLIC with grant option;
 create public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE for TEMP_PUBLICLY_UPDATEABLE_TABLE;
-}';
-   select to_build_type
-    bulk collect into btype_nt
-    from  build_type_timing
-    where from_build_type = in_build_type
-     and  build_timing = 'CURRENT'
-     and  to_build_type not in (in_build_type, 'sys','pub')
-    order by to_build_type;
-   if btype_nt.COUNT > 0
-   then
-      ret_txt := ret_txt || q'{
+
 prompt
 prompt Check for Prerequisite BUILD_TYPEs
 declare
    procedure do_it (in_btype varchar2) is
-      cursor c_main is
-         select * from ODBCAPTURE_INSTALLATION_LOGS
-          where build_type = in_btype;
-      b_main   c_main%ROWTYPE;
+      TYPE c_main_ref_cur is REF CURSOR;
+      c_main   c_main_ref_cur;
+      b_main   date;
    begin
-      open c_main;
+      open c_main for 'select max(load_dtm) max_load_dtm'  ||
+                      ' from ODBCAPTURE_INSTALLATION_LOGS' ||
+                      ' where build_type = ''' || in_btype || '''';
       fetch c_main into b_main;
       if c_main%NOTFOUND
       then
          dbms_output.put_line('WARNING: Prerequisite BUILD_TYPE "' || in_btype ||
                               '" not found in ODBCAPTURE_INSTALLATION_LOGS table.');
+      else
+         dbms_output.put_line(' -) "' || in_btype || '" last loaded on ' ||
+                               to_char(b_main, 'DD-Mon-YYYY HH24:MI:SS') );
+      end if;
+      close c_main;
+   exception when others then
+      if SQLERRM = 'ORA-00942: table or view does not exist'
+      then
+         dbms_output.put_line('ODBCAPTURE_INSTALLATION_LOGS table not available.');
       end if;
       close c_main;
    end;
 begin
 }';
-      for i in 1 .. btype_nt.COUNT
-      loop
-         ret_txt := ret_txt || '   do_it(''' || btype_nt(i) || ''');' || CHR(10);
-      end loop;
-      ret_txt := ret_txt || 'end;' || CHR(10) || '/' || CHR(10);
-   end if;
+   ret_txt := ret_txt || '   dbms_output.put_line(''Prerequisite BUILD_TYPEs for: ''' ||
+                                                    in_build_type || ''');';
+   for i in 1 .. btype_nt.COUNT
+   loop
+      ret_txt := ret_txt || '   do_it(''' || btype_nt(i) || ''');' || CHR(10);
+   end loop;
+   ret_txt := ret_txt || 'end;' || CHR(10) || '/' || CHR(10);
    return ret_txt;
 end installation_prepare_sql;
 

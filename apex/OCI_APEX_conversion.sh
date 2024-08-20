@@ -6,7 +6,7 @@ echo "
 prompt Converted/Consolidated SQL Script for APEX Instance on OCI
 " > "${SQL_SCRIPT}"
 
-for INSTALL_SELECT in 'grbsrc' #'grbras' 'grbsdo' 'grbdat' 'grbtst' 'grbtjsn' 'grbtsdo' 'grbtctx' 'grbtdat'
+for INSTALL_SELECT in 'grbsrc' 'grbras' 'grbsdo' 'grbdat' 'grbtst' 'grbtjsn' 'grbtsdo' 'grbtctx' 'grbtdat'
 do
    cat "../${INSTALL_SELECT}/install_sys.sql" \
        "../${INSTALL_SELECT}/install_SYSTEM.sql" \

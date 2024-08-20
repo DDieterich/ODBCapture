@@ -1,13 +1,7 @@
 
 
 
-USERNAME   
----------- 
-ODBCAPTURE 
-
-
-Elapsed: 00:00:00.036
-1 rows selected.
+No data found
 
 
 
@@ -21,12 +15,12 @@ ORA-01418: specified index does not exist
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.010
 
 
 0 rows deleted.
 
-Elapsed: 00:00:00.002
+Elapsed: 00:00:00.005
 
 
 
@@ -48,7 +42,7 @@ ORA-46215: The Real Application Security (RAS or XS) object by the name
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.014
+Elapsed: 00:00:00.016
 
 
 
@@ -57,13 +51,9 @@ Elapsed: 00:00:00.014
 Drop Schema
 
 
--- 2024-08-20 04:19:48 --
-drop user "ODBCAPTURE" cascade
-
-
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:01.431
+Elapsed: 00:00:00.015
 
 
 
@@ -74,4 +64,4 @@ Drop Role
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.018
+Elapsed: 00:00:00.013
