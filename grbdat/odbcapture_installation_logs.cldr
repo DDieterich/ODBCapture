@@ -28,7 +28,7 @@ begin
       rollback;
       jnk := 1;
    exception when others then
-      if SQLERRM != 'ORA-00942: table or view does not exist'
+      if SQLCODE != -942
       then
          dbms_output.put_line('odbcapture_installation_logs table: ' || SQLERRM);
       end if;

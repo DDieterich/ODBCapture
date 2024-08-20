@@ -251,7 +251,7 @@ declare
 begin
 }';
    ret_txt := ret_txt || '   dbms_output.put_line(''Prerequisite BUILD_TYPEs for "' ||
-                                                    in_build_type || '"'');';
+                                                    in_build_type || '"'');' || CHR(10);
    for i in 1 .. btype_nt.COUNT
    loop
       ret_txt := ret_txt || '   do_it(''' || btype_nt(i) || ''');' || CHR(10);

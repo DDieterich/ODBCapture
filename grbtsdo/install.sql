@@ -41,7 +41,7 @@ prompt **************************
 prompt *  Run SYS Installation  *
 prompt **************************
 prompt
-@install_sys.sql "" "" ""
+@install_sys.sql
 
 ----------------------------------------
 prompt Setup Continue on Error
