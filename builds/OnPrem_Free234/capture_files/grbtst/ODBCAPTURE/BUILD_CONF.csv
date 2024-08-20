@@ -1,8 +1,0 @@
-"BUILD_SEQ","BUILD_TYPE","NOTES"
--40,"grbtst","ODBCapture and ODBCTest Testing Objects"
--38,"grbtjva","ODBCTest Java Testing"
--35,"grbtjsn","ODBCapture JSON Data Type Testing"
--33,"grbtsdo","ODBCTest Spatial Data Option Testing"
--30,"grbtctx","ODBCTest Testing of Oracle Text"
--10,"grbtend","ODBCapture and ODBCTest Testing Objects Endpoint and Non-Generated Objects"
--8,"grbtdat","ODBCapture and ODBCTest Testing Self-Capture Configuration Data"

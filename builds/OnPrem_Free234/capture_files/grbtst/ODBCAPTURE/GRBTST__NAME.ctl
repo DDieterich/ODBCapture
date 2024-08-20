@@ -1,8 +1,0 @@
-OPTIONS (SKIP=1)
-LOAD DATA
-APPEND INTO TABLE "ODBCAPTURE"."GRBTST_$NAME"
-FIELDS CSV WITH EMBEDDED
-TRAILING NULLCOLS
-   (C1                             CHAR(20)
-   ,ID                             FLOAT EXTERNAL
-   )

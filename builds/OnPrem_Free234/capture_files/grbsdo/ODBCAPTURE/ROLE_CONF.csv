@@ -1,5 +1,0 @@
-"ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES"
-"CSW_USR_ROLE","grbsdo","Y","Provides user privileges to manage the Catalog Services for the Web (CSW) component of Oracle Spatial."
-"SPATIAL_CSW_ADMIN","grbsdo","Y","Provides administrative privileges to manage the Catalog Services for the Web (CSW) component of Oracle Spatial."
-"SPATIAL_WFS_ADMIN","grbsdo","Y","Provides administrative privileges to manage the Web Feature Service (WFS) component of Oracle Spatial."
-"WFS_USR_ROLE","grbsdo","Y","Provides user privileges for the Web Feature Service (WFS) component of Oracle Spatial."
