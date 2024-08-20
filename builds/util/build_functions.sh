@@ -21,7 +21,7 @@ function capture_version {
 function build_init {
    echo ""
    echo "build_initialize.sql"
-   sqlplus "${SYS_LOGIN}" "@build_initialize.sql" "${PDB_NAME}" "${SYS_LOGIN}"
+   sqlplus "${SYS_LOGIN}" "@build_initialize.sql" "${PDB_NAME}"
    retcd="${?}"
    if [ "${retcd}" != "0" ]
    then
@@ -52,7 +52,7 @@ function run_build {
    cd "${HOME_DIR}/../../${BUILD_TYPE}"
    echo ""
    echo "${BUTIL_PATH}/run_build.sql ${BUILD_TYPE}"
-   sqlplus "${PDB_SYS}" "@${BUTIL_PATH}/run_build.sql" "${BUTIL_PATH}" "${PDB_SYS}" "${PDB_SYSTEM}" "${USR_PASS}"
+   sqlplus "${PDB_SYS}" "@${BUTIL_PATH}/run_build.sql" "${PDB_SYSTEM}" "${USR_PASS}"
    retcd="${?}"
    if [ "${retcd}" != "0" ]
    then

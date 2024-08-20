@@ -2,16 +2,9 @@
 --
 --  Initialize Database for Build
 --
--- Command Line Parameters:
---   1 - PDB_NAME: Name of the Pluggable Database on OCI
---   2 - DB_LOGIN: Connect String for administrator on OCI
---
 
 WHENEVER SQLERROR EXIT SQL.SQLCODE
 WHENEVER OSERROR EXIT
-
-define PDB_NAME="&1."
-define DB_LOGIN="&2."
 
 set linesize 2499
 set trimspool on
@@ -20,12 +13,13 @@ set verify off
 set echo off
 set timing on
 
-@"../util/new_session.sql" "&DB_LOGIN." "" ""
-
-----------------------------------------
-prompt
-prompt Show Schema for &PDB_NAME.
-select username from dba_users where username in ('ODBCAPTURE', 'ODBCTEST');
+set serveroutput on size unlimited format wrapped
+select 'user: ' || u.username ||
+       ', db: ' || d.name ||
+       ', con: ' || sys_context('USERENV', 'CON_NAME') ||
+       ', tstmp: ' || systimestamp   CONNECTION
+ from  v$database d
+ cross join user_users u;
 
 ----------------------------------------
 prompt
