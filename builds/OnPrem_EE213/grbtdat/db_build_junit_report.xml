@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="ODBCAPTURE_schema_build" tests="106" failures="0" time="0" timestamp="2024-08-08T02:02:47">
+  <testsuite name="ODBCAPTURE_schema_build" tests="106" failures="0" time="0" timestamp="2024-08-20T22:24:18">
     <testcase name="INDEX:db_object_status" classname="ODBCAPTURE.BUILD_CONF_NK1" time="0"/>
     <testcase name="INDEX:db_object_status" classname="ODBCAPTURE.BUILD_CONF_PK" time="0"/>
     <testcase name="INDEX:db_object_status" classname="ODBCAPTURE.BUILD_PATH_PK" time="0"/>
@@ -30,12 +30,12 @@
     <testcase name="INDEX:db_object_status" classname="ODBCAPTURE.SCHEMA_OBJECTS_TAB_PK" time="0"/>
     <testcase name="INDEX:db_object_status" classname="ODBCAPTURE.SYS_IL0000075773C00004$$" time="0"/>
     <testcase name="INDEX:db_object_status" classname="ODBCAPTURE.SYS_IL0000075889C00002$$" time="0"/>
-    <testcase name="INDEX:db_object_status" classname="ODBCAPTURE.SYS_IL0000075924C00002$$" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCAPTURE.SYS_IL0000075922C00002$$" time="0"/>
     <testcase name="INDEX:db_object_status" classname="ODBCAPTURE.TSPACE_CONF_PK" time="0"/>
     <testcase name="INDEX:db_object_status" classname="ODBCAPTURE.ZIP_FILES_PK" time="0"/>
     <testcase name="LOB:db_object_status" classname="ODBCAPTURE.SYS_LOB0000075773C00004$$" time="0"/>
     <testcase name="LOB:db_object_status" classname="ODBCAPTURE.SYS_LOB0000075889C00002$$" time="0"/>
-    <testcase name="LOB:db_object_status" classname="ODBCAPTURE.SYS_LOB0000075924C00002$$" time="0"/>
+    <testcase name="LOB:db_object_status" classname="ODBCAPTURE.SYS_LOB0000075922C00002$$" time="0"/>
     <testcase name="PACKAGE:db_object_status" classname="ODBCAPTURE.COMMON_UTIL" time="0"/>
     <testcase name="PACKAGE:db_object_status" classname="ODBCAPTURE.FH2" time="0"/>
     <testcase name="PACKAGE:db_object_status" classname="ODBCAPTURE.GRAB_JAVA" time="0"/>

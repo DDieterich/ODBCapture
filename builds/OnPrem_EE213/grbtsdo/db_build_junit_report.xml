@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="ODBCTEST_schema_build" tests="15" failures="0" time="0" timestamp="2024-08-08T02:05:11">
+  <testsuite name="ODBCTEST_schema_build" tests="15" failures="0" time="0" timestamp="2024-08-20T22:26:31">
     <testcase name="INDEX:db_object_status" classname="ODBCTEST.COLA_SPATIAL_IDX" time="0"/>
     <testcase name="INDEX:db_object_status" classname="ODBCTEST.SYS_C008290" time="0"/>
     <testcase name="INDEX:db_object_status" classname="ODBCTEST.SYS_IL0000075937C00010$$" time="0"/>

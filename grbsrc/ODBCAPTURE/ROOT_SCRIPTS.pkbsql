@@ -102,7 +102,7 @@ begin
 end;
 }';
    -- Can't have string declaration with a "/" on a line by itself
-   ret_txt := ret_txt || '/' || CHR(10) || 'set feedback on' || CHR(10);
+   ret_txt := ret_txt || '/' || CHR(10) || CHR(10) || 'set feedback on';
    return ret_txt;
 end dbi_sql;
 

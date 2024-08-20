@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbsdo.log" tests="5" errors="0" hostname="EE213CDB" id="3" time="2" timestamp="2024-08-08T02:04:18">
+  <testsuite name="install_grbsdo.log" tests="5" errors="0" hostname="EE213CDB" id="3" time="2" timestamp="2024-08-20T22:25:37">
     <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
-    <testcase name="./installation_prepare.sql" assertions="18" classname="..sql" status="PASS" time="0">
+    <testcase name="./installation_prepare.sql" assertions="20" classname="..sql" status="PASS" time="0">
       <system-out>
 === DBI Started: ./installation_prepare.sql
 
@@ -19,10 +19,12 @@ Synonym created.
 
 
 Check for Prerequisite BUILD_TYPEs
+Prerequisite BUILD_TYPEs for &quot;grbsdo&quot;
+ -) &quot;grbsrc&quot; last loaded on 20-Aug-2024 22:25:12
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-08T02:04:13 for a duration of .15 seconds (started at 2024-08-08T02:04:13)
+=== DBI Completed at 2024-08-20T22:25:33 for a duration of .22 seconds (started at 2024-08-20T22:25:32)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/GRAB_SDO.pkbsql" assertions="5" classname="ODBCAPTURE.pkbsql" status="PASS" time="0">
@@ -31,7 +33,7 @@ PL/SQL procedure successfully completed.
 
 Package body created.
 
-=== DBI Completed at 2024-08-08T02:04:15 for a duration of .18 seconds (started at 2024-08-08T02:04:14)
+=== DBI Completed at 2024-08-20T22:25:34 for a duration of .16 seconds (started at 2024-08-20T22:25:34)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/GRAB_SDO.pkssql" assertions="5" classname="ODBCAPTURE.pkssql" status="PASS" time="0">
@@ -40,7 +42,7 @@ Package body created.
 
 Package created.
 
-=== DBI Completed at 2024-08-08T02:04:13 for a duration of .14 seconds (started at 2024-08-08T02:04:13)
+=== DBI Completed at 2024-08-20T22:25:33 for a duration of .15 seconds (started at 2024-08-20T22:25:33)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/ROLE_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="1">
@@ -58,7 +60,7 @@ sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-08T02:04:14 for a duration of .71 seconds (started at 2024-08-08T02:04:13)
+=== DBI Completed at 2024-08-20T22:25:34 for a duration of .74 seconds (started at 2024-08-20T22:25:33)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/SCHEMA_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="1">
@@ -76,12 +78,12 @@ sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-08T02:04:14 for a duration of .69 seconds (started at 2024-08-08T02:04:14)
+=== DBI Completed at 2024-08-20T22:25:34 for a duration of .62 seconds (started at 2024-08-20T22:25:34)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_sys.log" tests="0" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2024-08-08T02:04:18">
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2024-08-20T22:25:37">
   </testsuite>
-  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2024-08-08T02:04:18">
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2024-08-20T22:25:37">
   </testsuite>
 </testsuites>
