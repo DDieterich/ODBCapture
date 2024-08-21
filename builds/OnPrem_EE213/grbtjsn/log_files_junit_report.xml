@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbtjsn.log" tests="3" errors="0" hostname="EE213CDB" id="3" time="3" timestamp="2024-08-20T22:26:50">
+  <testsuite name="install_grbtjsn.log" tests="3" errors="0" hostname="EE213CDB" id="3" time="3" timestamp="2024-08-21T20:42:35">
     <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
     <testcase name="./installation_prepare.sql" assertions="25" classname="..sql" status="PASS" time="0">
@@ -21,15 +21,15 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for &quot;grbtjsn&quot;
 WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) &quot;grbjava&quot; last loaded on 20-Aug-2024 22:25:30
- -) &quot;grbras&quot; last loaded on 20-Aug-2024 22:25:21
- -) &quot;grbsdo&quot; last loaded on 20-Aug-2024 22:25:37
- -) &quot;grbsrc&quot; last loaded on 20-Aug-2024 22:25:12
- -) &quot;grbtst&quot; last loaded on 20-Aug-2024 22:26:15
+ -) &quot;grbjava&quot; last loaded on 21-Aug-2024 20:41:18
+ -) &quot;grbras&quot; last loaded on 21-Aug-2024 20:41:10
+ -) &quot;grbsdo&quot; last loaded on 21-Aug-2024 20:41:26
+ -) &quot;grbsrc&quot; last loaded on 21-Aug-2024 20:41:01
+ -) &quot;grbtst&quot; last loaded on 21-Aug-2024 20:42:01
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-20T22:26:44 for a duration of .18 seconds (started at 2024-08-20T22:26:44)
+=== DBI Completed at 2024-08-21T20:42:28 for a duration of .22 seconds (started at 2024-08-21T20:42:28)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/GRBTST_JSON.cldr" assertions="13" classname="ODBCAPTURE.cldr" status="PASS" time="3">
@@ -46,7 +46,7 @@ sqlldr_control=ODBCAPTURE/GRBTST_JSON.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-20T22:26:47 for a duration of 3.02 seconds (started at 2024-08-20T22:26:44)
+=== DBI Completed at 2024-08-21T20:42:32 for a duration of 3.21 seconds (started at 2024-08-21T20:42:28)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/GRBTST_JSON.tbl" assertions="8" classname="ODBCAPTURE.tbl" status="PASS" time="0">
@@ -58,12 +58,12 @@ Table created.
 
 Table altered.
 
-=== DBI Completed at 2024-08-20T22:26:44 for a duration of .15 seconds (started at 2024-08-20T22:26:44)
+=== DBI Completed at 2024-08-21T20:42:28 for a duration of .14 seconds (started at 2024-08-21T20:42:28)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_sys.log" tests="0" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2024-08-20T22:26:50">
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2024-08-21T20:42:35">
   </testsuite>
-  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2024-08-20T22:26:50">
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2024-08-21T20:42:35">
   </testsuite>
 </testsuites>

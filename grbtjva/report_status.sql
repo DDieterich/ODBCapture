@@ -31,7 +31,7 @@ set serveroutput on size unlimited format wrapped
 ----------------------------------------
 prompt
 prompt Reporting Summary of Build Type Log Errors
-@"../grb_linked_install_scripts/summarize_install_log.sql" "grbtjva" "" ""
+@"../grb_linked_install_scripts/summarize_install_log.sql" "grbtjva"
 
 ----------------------------------------
 prompt
@@ -39,7 +39,7 @@ prompt Reporting Invalid Objects
 set feedback off
 set termout off
 spool list_invalids.csv
-@"../grb_linked_install_scripts/list_invalids.sql" "'ODBCTEST'" "" ""
+@"../grb_linked_install_scripts/list_invalids.sql" "'ODBCTEST'"
 spool off
 set termout on
 set feedback on
@@ -50,7 +50,7 @@ prompt Reporting JUnit XML Database Build Status
 set feedback off
 set termout off
 spool db_build_junit_report.xml
-@"../grb_linked_install_scripts/db_build_junit_report.sql" "'ODBCTEST'" "" ""
+@"../grb_linked_install_scripts/db_build_junit_report.sql" "'ODBCTEST'"
 spool off
 set termout on
 set feedback on
@@ -61,7 +61,7 @@ prompt Reorting JUnit XML Installation Log
 set feedback off
 set termout off
 spool log_files_junit_report.xml
-@"../grb_linked_install_scripts/log_files_junit_report.sql" "grbtjva" "" ""
+@"../grb_linked_install_scripts/log_files_junit_report.sql" "grbtjva"
 spool off
 set termout on
 set feedback on

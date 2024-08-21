@@ -1,1 +1,1 @@
-Branch main at b0c1e68e461170cf7035b6dd7e7a92a23ccadddc - https://github.com/DDieterich/ODBCapture.git
+Branch main at 95b897a5ebf611fb42a96ac8a0050ba0a498b524 - https://github.com/DDieterich/ODBCapture.git

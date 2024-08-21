@@ -31,12 +31,14 @@ declare
       end if;
       close c_main;
    exception when others then
-      if SQLCODE = -942
+      if SQLCODE = -942    -- Table or view does not exist
       then
          dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
                               in_btype || '".');
+         close c_main;
+      else
+         raise;
       end if;
-      close c_main;
    end;
 begin
    dbms_output.put_line('Prerequisite BUILD_TYPEs for "grbtsdo"');

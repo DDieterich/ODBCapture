@@ -13,16 +13,16 @@ Synonym created.
 
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbsdo"
- -) "grbsrc" last loaded on 20-Aug-2024 22:25:12
+ -) "grbsrc" last loaded on 21-Aug-2024 20:41:01
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-20T22:25:33 for a duration of .22 seconds (started at 2024-08-20T22:25:32)
+=== DBI Completed at 2024-08-21T20:41:21 for a duration of .17 seconds (started at 2024-08-21T20:41:21)
 === DBI Started: ODBCAPTURE/GRAB_SDO.pkssql
 
 Package created.
 
-=== DBI Completed at 2024-08-20T22:25:33 for a duration of .15 seconds (started at 2024-08-20T22:25:33)
+=== DBI Completed at 2024-08-21T20:41:21 for a duration of .1 seconds (started at 2024-08-21T20:41:21)
 === DBI Started: ODBCAPTURE/ROLE_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -36,7 +36,7 @@ sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-20T22:25:34 for a duration of .74 seconds (started at 2024-08-20T22:25:33)
+=== DBI Completed at 2024-08-21T20:41:22 for a duration of .63 seconds (started at 2024-08-21T20:41:21)
 === DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -50,12 +50,12 @@ sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-20T22:25:34 for a duration of .62 seconds (started at 2024-08-20T22:25:34)
+=== DBI Completed at 2024-08-21T20:41:22 for a duration of .74 seconds (started at 2024-08-21T20:41:22)
 === DBI Started: ODBCAPTURE/GRAB_SDO.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2024-08-20T22:25:34 for a duration of .16 seconds (started at 2024-08-20T22:25:34)
+=== DBI Completed at 2024-08-21T20:41:23 for a duration of .14 seconds (started at 2024-08-21T20:41:22)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table

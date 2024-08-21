@@ -34,7 +34,7 @@ set feedback on
 set blockterminator off
 set sqlblanklines on
 
-@"&DBI_SCRIPT_NAME." "&DBI_SYSTEM_CONNECT." "" ""
+@"&DBI_SCRIPT_NAME." "&DBI_SYSTEM_CONNECT."
 set serveroutput on size unlimited format wrapped
 
 set sqlblanklines off

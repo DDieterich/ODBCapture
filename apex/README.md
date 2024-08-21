@@ -44,6 +44,7 @@ OCI_APEX_install.sql    | Converted Source Code Script
 3. Click on `Download Script Output`
 4. Save to file `../builds/OCI_APEX235/build_initialize.txt`
 5. Review `../builds/OCI_APEX235/build_initialize.txt`
+    * REGEXP Search: `(ORA-|SQL-|SP2-|PLS-|PL2-|TNS-|(object|mmap) failed|WARNING: Prerequisite BUILD_TYPE)`
 
 ![Icons used to Open, Run, and Download the build script.](build_initialize.PNG)
 
@@ -53,6 +54,7 @@ OCI_APEX_install.sql    | Converted Source Code Script
 3. Click on `Download Script Output`
 4. Save to file `../builds/OCI_APEX235/OCI_APEX_install.txt`
 5. Review `../builds/OCI_APEX235/OCI_APEX_install.txt`
+    * REGEXP Search: `(ORA-|SQL-|SP2-|PLS-|PL2-|TNS-|(object|mmap) failed|WARNING: Prerequisite BUILD_TYPE)`
 6. Manually Run Final Processing as "ADMIN"
     * alter user "ODBCAPTURE" identified by "PASSWORD1";
     * alter user "ODBCTEST" identified by "PASSWORD2";
@@ -87,6 +89,7 @@ OCI_APEX_install.sql    | Converted Source Code Script
 ### Example DB Capture After Installation
 1. Run these in an SQL Worksheet as "ODBCAPTURE"
     ```
+    set linesize 200
     execute FH2.clear_buffers;
     execute COMMON_UTIL.update_view_tabs;
     execute GRAB_SCRIPTS.all_scripts('grbsrc');

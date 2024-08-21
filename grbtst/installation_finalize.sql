@@ -10,31 +10,31 @@ drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
 
 prompt
 prompt fix_invalid_public_synonyms
-@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql" "" "" ""
+@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql"
 
 prompt
 prompt compile_all
-@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE','ODBCTEST'" "" ""
+@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE','ODBCTEST'"
 
 prompt
 prompt alter_foreign_keys_ENABLE
-@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE','ODBCTEST'" ""
+@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE','ODBCTEST'"
 
 prompt
 prompt alter_triggers_ENABLE
-@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE','ODBCTEST'" ""
+@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE','ODBCTEST'"
 
 prompt
 prompt update_id_sequences
-@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE','ODBCTEST'" "" ""
+@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE','ODBCTEST'"
 
 --prompt
 --prompt alter_queues_ENABLE
---@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE','ODBCTEST'" ""
+--@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE','ODBCTEST'"
 
 --prompt
 --prompt alter_scheduler_jobs_ENABLE
---@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE','ODBCTEST'" ""
+--@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE','ODBCTEST'"
 
 prompt
 prompt Switch Spooling Off

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbras.log" tests="7" errors="0" hostname="EE213CDB" id="3" time="2" timestamp="2024-08-20T22:25:21">
+  <testsuite name="install_grbras.log" tests="7" errors="0" hostname="EE213CDB" id="3" time="2" timestamp="2024-08-21T20:41:10">
     <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
     <testcase name="./installation_prepare.sql" assertions="20" classname="..sql" status="PASS" time="0">
@@ -20,11 +20,11 @@ Synonym created.
 
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for &quot;grbras&quot;
- -) &quot;grbsrc&quot; last loaded on 20-Aug-2024 22:25:12
+ -) &quot;grbsrc&quot; last loaded on 21-Aug-2024 20:41:01
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-20T22:25:16 for a duration of .18 seconds (started at 2024-08-20T22:25:16)
+=== DBI Completed at 2024-08-21T20:41:05 for a duration of .22 seconds (started at 2024-08-21T20:41:05)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/EXPORTING_RAS_DATA.tbl" assertions="20" classname="ODBCAPTURE.tbl" status="PASS" time="0">
@@ -48,7 +48,7 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2024-08-20T22:25:16 for a duration of .24 seconds (started at 2024-08-20T22:25:16)
+=== DBI Completed at 2024-08-21T20:41:06 for a duration of .23 seconds (started at 2024-08-21T20:41:05)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/GRAB_RAS.pkbsql" assertions="5" classname="ODBCAPTURE.pkbsql" status="PASS" time="0">
@@ -57,7 +57,7 @@ Comment created.
 
 Package body created.
 
-=== DBI Completed at 2024-08-20T22:25:18 for a duration of .16 seconds (started at 2024-08-20T22:25:18)
+=== DBI Completed at 2024-08-21T20:41:07 for a duration of .17 seconds (started at 2024-08-21T20:41:07)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/GRAB_RAS.pkssql" assertions="5" classname="ODBCAPTURE.pkssql" status="PASS" time="0">
@@ -66,7 +66,7 @@ Package body created.
 
 Package created.
 
-=== DBI Completed at 2024-08-20T22:25:16 for a duration of .06 seconds (started at 2024-08-20T22:25:16)
+=== DBI Completed at 2024-08-21T20:41:05 for a duration of .06 seconds (started at 2024-08-21T20:41:05)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw" assertions="8" classname="ODBCAPTURE.vw" status="PASS" time="0">
@@ -78,7 +78,7 @@ View created.
 
 View created.
 
-=== DBI Completed at 2024-08-20T22:25:18 for a duration of .13 seconds (started at 2024-08-20T22:25:18)
+=== DBI Completed at 2024-08-21T20:41:07 for a duration of .1 seconds (started at 2024-08-21T20:41:07)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/ROLE_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="1">
@@ -96,7 +96,7 @@ sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-20T22:25:17 for a duration of .59 seconds (started at 2024-08-20T22:25:16)
+=== DBI Completed at 2024-08-21T20:41:06 for a duration of .57 seconds (started at 2024-08-21T20:41:06)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/SCHEMA_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="1">
@@ -114,11 +114,11 @@ sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-20T22:25:18 for a duration of .56 seconds (started at 2024-08-20T22:25:17)
+=== DBI Completed at 2024-08-21T20:41:07 for a duration of .53 seconds (started at 2024-08-21T20:41:06)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_sys.log" tests="1" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2024-08-20T22:25:21">
+  <testsuite name="install_sys.log" tests="1" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2024-08-21T20:41:10">
     <testcase name="SYS/ODBCAPTURE_usr.sgrnt" assertions="20" classname="SYS.sgrnt" status="PASS" time="0">
       <system-out>
 === DBI Started: SYS/ODBCAPTURE_usr.sgrnt
@@ -140,10 +140,10 @@ Grant succeeded.
 
 Grant succeeded.
 
-=== DBI Completed at 2024-08-20T22:25:15 for a duration of .28 seconds (started at 2024-08-20T22:25:15)
+=== DBI Completed at 2024-08-21T20:41:05 for a duration of .28 seconds (started at 2024-08-21T20:41:04)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2024-08-20T22:25:21">
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2024-08-21T20:41:10">
   </testsuite>
 </testsuites>

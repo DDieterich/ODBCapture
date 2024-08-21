@@ -2,7 +2,7 @@
 
 Role created.
 
-=== DBI Completed at 2024-08-20T22:25:55 for a duration of .09 seconds (started at 2024-08-20T22:25:55)
+=== DBI Completed at 2024-08-21T20:41:38 for a duration of .08 seconds (started at 2024-08-21T20:41:38)
 === DBI Started: SYS/ODBCTEST.user
 
 User created.
@@ -23,12 +23,12 @@ XS Admin Cloud Grant "PROVISION" to "ODBCTEST"
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-20T22:25:55 for a duration of .29 seconds (started at 2024-08-20T22:25:55)
+=== DBI Completed at 2024-08-21T20:41:38 for a duration of .24 seconds (started at 2024-08-21T20:41:38)
 === DBI Started: SYS/host1.hacl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-20T22:25:55 for a duration of .2 seconds (started at 2024-08-20T22:25:55)
+=== DBI Completed at 2024-08-21T20:41:38 for a duration of .16 seconds (started at 2024-08-21T20:41:38)
 === DBI Started: SYS/host2.hacl
 
 PL/SQL procedure successfully completed.
@@ -36,19 +36,19 @@ PL/SQL procedure successfully completed.
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-20T22:25:55 for a duration of .19 seconds (started at 2024-08-20T22:25:55)
+=== DBI Completed at 2024-08-21T20:41:39 for a duration of .14 seconds (started at 2024-08-21T20:41:38)
 === DBI Started: SYS/odbctest_host.hacl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-20T22:25:55 for a duration of .1 seconds (started at 2024-08-20T22:25:55)
+=== DBI Completed at 2024-08-21T20:41:39 for a duration of .11 seconds (started at 2024-08-21T20:41:39)
 === DBI Started: SYS/_opt_install_files_oracle_wallet.wacl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-20T22:25:56 for a duration of .1 seconds (started at 2024-08-20T22:25:55)
+=== DBI Completed at 2024-08-21T20:41:39 for a duration of .08 seconds (started at 2024-08-21T20:41:39)
 === DBI Started: SYS/_var_opt_install_files_oracle_wallet.wacl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-20T22:25:56 for a duration of .12 seconds (started at 2024-08-20T22:25:56)
+=== DBI Completed at 2024-08-21T20:41:39 for a duration of .13 seconds (started at 2024-08-21T20:41:39)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbjava.log" tests="7" errors="0" hostname="EE213CDB" id="3" time="2" timestamp="2024-08-20T22:25:30">
+  <testsuite name="install_grbjava.log" tests="7" errors="0" hostname="EE213CDB" id="3" time="2" timestamp="2024-08-21T20:41:18">
     <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
     <testcase name="./installation_prepare.sql" assertions="20" classname="..sql" status="PASS" time="0">
@@ -20,11 +20,11 @@ Synonym created.
 
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for &quot;grbjava&quot;
- -) &quot;grbsrc&quot; last loaded on 20-Aug-2024 22:25:12
+ -) &quot;grbsrc&quot; last loaded on 21-Aug-2024 20:41:01
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-20T22:25:25 for a duration of .19 seconds (started at 2024-08-20T22:25:25)
+=== DBI Completed at 2024-08-21T20:41:13 for a duration of .16 seconds (started at 2024-08-21T20:41:13)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/GRAB_JAVA.pkbsql" assertions="5" classname="ODBCAPTURE.pkbsql" status="PASS" time="0">
@@ -33,7 +33,7 @@ PL/SQL procedure successfully completed.
 
 Package body created.
 
-=== DBI Completed at 2024-08-20T22:25:27 for a duration of .12 seconds (started at 2024-08-20T22:25:27)
+=== DBI Completed at 2024-08-21T20:41:15 for a duration of .12 seconds (started at 2024-08-21T20:41:14)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/GRAB_JAVA.pkssql" assertions="5" classname="ODBCAPTURE.pkssql" status="PASS" time="0">
@@ -42,7 +42,7 @@ Package body created.
 
 Package created.
 
-=== DBI Completed at 2024-08-20T22:25:25 for a duration of .09 seconds (started at 2024-08-20T22:25:25)
+=== DBI Completed at 2024-08-21T20:41:13 for a duration of .06 seconds (started at 2024-08-21T20:41:13)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/PRIV_OBJ_JAVA_FG_VIEW.vw" assertions="8" classname="ODBCAPTURE.vw" status="PASS" time="0">
@@ -54,7 +54,7 @@ View created.
 
 View created.
 
-=== DBI Completed at 2024-08-20T22:25:26 for a duration of .13 seconds (started at 2024-08-20T22:25:26)
+=== DBI Completed at 2024-08-21T20:41:14 for a duration of .16 seconds (started at 2024-08-21T20:41:14)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/PRIV_SYSOBJ_JAVA_FG_VIEW.vw" assertions="8" classname="ODBCAPTURE.vw" status="PASS" time="0">
@@ -66,7 +66,7 @@ View created.
 
 View created.
 
-=== DBI Completed at 2024-08-20T22:25:27 for a duration of .09 seconds (started at 2024-08-20T22:25:26)
+=== DBI Completed at 2024-08-21T20:41:14 for a duration of .09 seconds (started at 2024-08-21T20:41:14)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/ROLE_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="1">
@@ -84,7 +84,7 @@ sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-20T22:25:26 for a duration of .73 seconds (started at 2024-08-20T22:25:25)
+=== DBI Completed at 2024-08-21T20:41:14 for a duration of .61 seconds (started at 2024-08-21T20:41:13)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/SCHEMA_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="1">
@@ -102,11 +102,11 @@ sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-20T22:25:26 for a duration of .63 seconds (started at 2024-08-20T22:25:26)
+=== DBI Completed at 2024-08-21T20:41:14 for a duration of .61 seconds (started at 2024-08-21T20:41:14)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_sys.log" tests="1" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2024-08-20T22:25:30">
+  <testsuite name="install_sys.log" tests="1" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2024-08-21T20:41:18">
     <testcase name="SYS/ODBCAPTURE_usr.sgrnt" assertions="8" classname="SYS.sgrnt" status="PASS" time="0">
       <system-out>
 === DBI Started: SYS/ODBCAPTURE_usr.sgrnt
@@ -116,18 +116,18 @@ Grant succeeded.
 
 Grant succeeded.
 
-=== DBI Completed at 2024-08-20T22:25:24 for a duration of .17 seconds (started at 2024-08-20T22:25:24)
+=== DBI Completed at 2024-08-21T20:41:13 for a duration of .09 seconds (started at 2024-08-21T20:41:12)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_system.log" tests="1" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2024-08-20T22:25:30">
+  <testsuite name="install_system.log" tests="1" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2024-08-21T20:41:18">
     <testcase name="SYSTEM/ODBCAPTURE_usr.grnt" assertions="5" classname="SYSTEM.grnt" status="PASS" time="0">
       <system-out>
 === DBI Started: SYSTEM/ODBCAPTURE_usr.grnt
 
 Grant succeeded.
 
-=== DBI Completed at 2024-08-20T22:25:25 for a duration of .05 seconds (started at 2024-08-20T22:25:25)
+=== DBI Completed at 2024-08-21T20:41:13 for a duration of .05 seconds (started at 2024-08-21T20:41:13)
       </system-out>
     </testcase>
   </testsuite>
