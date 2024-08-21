@@ -56,7 +56,7 @@ execute ODBCAPTURE.COMMON_UTIL.update_view_tabs;
 execute ODBCAPTURE.GRAB_SCRIPTS.all_scripts('CONFIGURED_BUILD_TYPE');
 execute ODBCAPTURE.FH2.write_scripts('FILE_NAME.zip');
 ```
-Then, download and unzip FILE_NAME.zip.
+Then, download and unzip "FILE_NAME.zip" from the "ZIP_FILES" table.
 
 The [capture_files.sql](https://github.com/DDieterich/ODBCapture/blob/main/builds/util/capture_files.sql) SQL script can be used for source code capture if the ODBCAPTURE_INSTALLATION_LOGS table has been created and includes records for all the needed BUILD TYPES.  This SQL script runs correctly in SQL*Plus.
 

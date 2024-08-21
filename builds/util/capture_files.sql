@@ -2,6 +2,8 @@
 --
 -- Capture Source Code Files
 --
+--  Must be run as ODBCAPTURE
+--
 --  Command Line Parameters:
 --    -) 1: FILE_NAME    - Zip File Name Root
 --
@@ -19,8 +21,8 @@ whenever sqlerror exit sql.sqlcode rollback
 set serveroutput on size unlimited format word_wrapped
 
 -- Setup for Source Code Capture
-execute ODBCAPTURE.FH2.clear_buffers;
-execute ODBCAPTURE.COMMON_UTIL.update_view_tabs;
+execute FH2.clear_buffers;
+execute COMMON_UTIL.update_view_tabs;
 
 -- Capture Source Code
 BEGIN
@@ -29,14 +31,14 @@ BEGIN
                  group by build_type
                  order by max(load_dtm))
    loop
-      ODBCAPTURE.GRAB_SCRIPTS.all_scripts(buff.build_type);
+      GRAB_SCRIPTS.all_scripts(buff.build_type);
    end loop;
 end;
 /
 
 -- Generate/Save Zip File
 delete from zip_files where file_name = '&FILE_NAME..zip';
-execute ODBCAPTURE.FH2.write_scripts('&FILE_NAME..zip');
+execute FH2.write_scripts('&FILE_NAME..zip');
 commit;
 
 -- https://ogobrecht.com/posts/2020-01-01-download-blobs-with-sqlplus/

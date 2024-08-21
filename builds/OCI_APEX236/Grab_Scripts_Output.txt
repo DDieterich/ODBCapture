@@ -1,0 +1,868 @@
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.012
+
+
+Running COMMON_UTIL.update_view_tabs
+
+
+SUCCESS(      rows in      sec): truncate table schema_objects_tab
+SUCCESS(      rows in      sec): truncate table obj_install_comments_tab
+SUCCESS(      rows in      sec): truncate table obj_install_trigger_tab
+SUCCESS(      rows in      sec): truncate table obj_install_synonym_tab
+SUCCESS(      rows in      sec): truncate table obj_install_data_load_tab
+SUCCESS(      rows in      sec): truncate table obj_install_index_tab
+SUCCESS(      rows in      sec): truncate table obj_install_fkey_tab
+SUCCESS(      rows in      sec): truncate table obj_install_context_tab
+SUCCESS(      rows in      sec): truncate table obj_install_object_tab
+SUCCESS(      rows in      sec): truncate table dba_dependencies_tab
+SUCCESS(      rows in      sec): truncate table dba_tab_privs_tab
+SUCCESS(      rows in      sec): truncate table dba_objects_tab
+SUCCESS(      rows in      sec): truncate table build_type_timing
+SUCCESS(  173 rows in   .2 sec): update_build_type_timing
+SUCCESS(  226 rows in  8.5 sec): insert into dba_objects_tab           select *
+from dba_objects_view
+SUCCESS(   95 rows in  1.6 sec): insert into dba_tab_privs_tab         select *
+from dba_tab_privs_view
+SUCCESS(  305 rows in   .1 sec): insert into dba_dependencies_tab      select *
+from dba_dependencies_view
+SUCCESS(  217 rows in   .8 sec): insert into obj_install_object_tab    select *
+from obj_install_object_view
+SUCCESS(      rows in   .1 sec): insert into obj_install_context_tab   select *
+from obj_install_context_view
+SUCCESS(   10 rows in   .3 sec): insert into obj_install_fkey_tab      select *
+from obj_install_fkey_view
+SUCCESS(   47 rows in   .2 sec): insert into obj_install_index_tab     select *
+from obj_install_index_view
+SUCCESS(   27 rows in   .1 sec): insert into obj_install_data_load_tab select *
+from obj_install_data_load_view
+SUCCESS(      rows in   .1 sec): insert into obj_install_synonym_tab   select *
+from obj_install_synonym_view
+SUCCESS(      rows in   .4 sec): insert into obj_install_trigger_tab   select *
+from obj_install_trigger_view
+SUCCESS(   63 rows in   .2 sec): insert into obj_install_comments_tab  select *
+from obj_install_comments_view
+SUCCESS(      rows in      sec): insert into schema_objects_tab (BUILD_TYPE,    
+OBJECT_OWNER,     ELEMENT_NAME) 
+select DISTINCT    
+SUCCESS(   10 rows in      sec): insert into schema_objects_tab (BUILD_TYPE,    
+OBJECT_OWNER,     ELEMENT_NAME) 
+select DISTINCT    
+SUCCESS(    1 rows in      sec): insert into schema_objects_tab (BUILD_TYPE,    
+OBJECT_OWNER,     ELEMENT_NAME) 
+select DISTINCT    
+SUCCESS(    6 rows in      sec): insert into schema_objects_tab (BUILD_TYPE,    
+OBJECT_OWNER,     ELEMENT_NAME) 
+select DISTINCT    
+SUCCESS(   15 rows in      sec): insert into schema_objects_tab (BUILD_TYPE,    
+OBJECT_OWNER,     ELEMENT_NAME) 
+select DISTINCT    
+SUCCESS(      rows in      sec): insert into schema_objects_tab (BUILD_TYPE,    
+OBJECT_OWNER,     ELEMENT_NAME) 
+select DISTINCT    
+SUCCESS(      rows in      sec): insert into schema_objects_tab (BUILD_TYPE,    
+OBJECT_OWNER,     ELEMENT_NAME) 
+select DISTINCT    
+SUCCESS(      rows in   .1 sec): insert into schema_objects_tab (BUILD_TYPE,    
+OBJECT_OWNER,     ELEMENT_NAME) 
+select DISTINCT    
+SUCCESS(    2 rows in   .1 sec): insert into schema_objects_tab (BUILD_TYPE,    
+OBJECT_OWNER,     ELEMENT_NAME) 
+select DISTINCT    
+SUCCESS(      rows in   .1 sec): insert into schema_objects_tab (BUILD_TYPE,    
+OBJECT_OWNER,     ELEMENT_NAME) 
+select DISTINCT    
+SUCCESS(      rows in   .1 sec): insert into schema_objects_tab (BUILD_TYPE,    
+OBJECT_OWNER,     ELEMENT_NAME) 
+select DISTINCT    
+SUCCESS(      rows in      sec): insert into schema_objects_tab (BUILD_TYPE,    
+OBJECT_OWNER,     ELEMENT_NAME) 
+select DISTINCT    
+SUCCESS(    1 rows in   .1 sec): begin sys.dbms_stats.gather_table_stats(ownname
+=> 'ODBCAPTURE', tabname => 'DBA_OBJECTS_TAB',      
+SUCCESS(    1 rows in   .1 sec): begin sys.dbms_stats.gather_table_stats(ownname
+=> 'ODBCAPTURE', tabname => 'DBA_TAB_PRIVS_TAB',    
+SUCCESS(    1 rows in   .1 sec): begin sys.dbms_stats.gather_table_stats(ownname
+=> 'ODBCAPTURE', tabname => 'DBA_DEPENDENCIES_TAB', 
+SUCCESS(    1 rows in   .1 sec): begin sys.dbms_stats.gather_table_stats(ownname
+=> 'ODBCAPTURE', tabname => 'OBJ_INSTALL_OBJECT_TAB'
+SUCCESS(    1 rows in      sec): begin sys.dbms_stats.gather_table_stats(ownname
+=> 'ODBCAPTURE', tabname => 'OBJ_INSTALL_CONTEXT_TAB
+SUCCESS(    1 rows in   .1 sec): begin sys.dbms_stats.gather_table_stats(ownname
+=> 'ODBCAPTURE', tabname => 'OBJ_INSTALL_FKEY_TAB', 
+SUCCESS(    1 rows in   .1 sec): begin sys.dbms_stats.gather_table_stats(ownname
+=> 'ODBCAPTURE', tabname => 'OBJ_INSTALL_INDEX_TAB',
+SUCCESS(    1 rows in   .1 sec): begin sys.dbms_stats.gather_table_stats(ownname
+=> 'ODBCAPTURE', tabname => 'OBJ_INSTALL_DATA_LOAD_T
+SUCCESS(    1 rows in      sec): begin sys.dbms_stats.gather_table_stats(ownname
+=> 'ODBCAPTURE', tabname => 'OBJ_INSTALL_SYNONYM_TAB
+SUCCESS(    1 rows in      sec): begin sys.dbms_stats.gather_table_stats(ownname
+=> 'ODBCAPTURE', tabname => 'OBJ_INSTALL_TRIGGER_TAB
+SUCCESS(    1 rows in   .1 sec): begin sys.dbms_stats.gather_table_stats(ownname
+=> 'ODBCAPTURE', tabname => 'OBJ_INSTALL_COMMENTS_TA
+SUCCESS(    1 rows in   .1 sec): begin sys.dbms_stats.gather_table_stats(ownname
+=> 'ODBCAPTURE', tabname => 'SCHEMA_OBJECTS_TAB',   
+SUCCESS(      rows in   .2 sec): purge recyclebin
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:14.278
+
+
+Running GRAB_SCRIPTS.all_scripts(in_build_type "grbsrc")
+g_build_type = grbsrc, ODBCapture Source Code Script Generation
+g_schema_name = SYS
+Script Open: grbsrc/SYS/ODBCAPTURE.user
+g_schema_name = SYSTEM
+Script Open: grbsrc/SYSTEM/ODBCAPTURE_usr.grnt
+g_schema_name = PUBLIC
+g_schema_name = 
+Script Open: grbsrc//install.sql
+Script Open: grbsrc//dbi.sql
+Script Open: grbsrc//installation_finalize.sql
+Script Open: grbsrc//installation_prepare.sql
+Script Open: grbsrc//odbcapture_installation_logs.cldr
+Script Open: grbsrc//odbcapture_installation_logs.csv
+Script Open: grbsrc//odbcapture_installation_logs.ctl
+Script Open: grbsrc//report_status.sql
+Script Open: grbsrc//list_invalids.csv
+Script Open: grbsrc//set_user_authentication.sql
+Script Open: grbsrc//install_sys.sql
+Script Open: grbsrc//install_system.sql
+g_schema_name = ODBCAPTURE
+Script Open: grbsrc/ODBCAPTURE/BUILD_CONF.ctl
+Script Open: grbsrc/ODBCAPTURE/BUILD_CONF.csv
+Script Open: grbsrc/ODBCAPTURE/BUILD_CONF.cldr
+Script Open: grbsrc/ODBCAPTURE/BUILD_PATH.ctl
+Script Open: grbsrc/ODBCAPTURE/BUILD_PATH.csv
+Script Open: grbsrc/ODBCAPTURE/BUILD_PATH.cldr
+Script Open: grbsrc/ODBCAPTURE/ELEMENT_CONF.ctl
+Script Open: grbsrc/ODBCAPTURE/ELEMENT_CONF.csv
+Script Open: grbsrc/ODBCAPTURE/ELEMENT_CONF.cldr
+Script Open: grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.ctl
+Script Open: grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.csv
+Script Open: grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.cldr
+Script Open: grbsrc/ODBCAPTURE/ROLE_CONF.ctl
+Script Open: grbsrc/ODBCAPTURE/ROLE_CONF.csv
+Script Open: grbsrc/ODBCAPTURE/ROLE_CONF.cldr
+Script Open: grbsrc/ODBCAPTURE/SCHEMA_CONF.ctl
+Script Open: grbsrc/ODBCAPTURE/SCHEMA_CONF.csv
+Script Open: grbsrc/ODBCAPTURE/SCHEMA_CONF.cldr
+Script Open: grbsrc/ODBCAPTURE/TSPACE_CONF.ctl
+Script Open: grbsrc/ODBCAPTURE/TSPACE_CONF.csv
+Script Open: grbsrc/ODBCAPTURE/TSPACE_CONF.cldr
+Script Open: grbsrc/ODBCAPTURE/COMMON_UTIL.pkbsql
+Script Open: grbsrc/ODBCAPTURE/FH2.pkbsql
+Script Open: grbsrc/ODBCAPTURE/GRAB_SCRIPTS.pkbsql
+Script Open: grbsrc/ODBCAPTURE/ROOT_SCRIPTS.pkbsql
+Script Open: grbsrc/ODBCAPTURE/ZIP_UTIL_PKG.pkbsql
+Script Open: grbsrc/ODBCAPTURE/COMMON_UTIL.pkssql
+Script Open: grbsrc/ODBCAPTURE/FH2.pkssql
+Script Open: grbsrc/ODBCAPTURE/GRAB_SCRIPTS.pkssql
+Script Open: grbsrc/ODBCAPTURE/ROOT_SCRIPTS.pkssql
+Script Open: grbsrc/ODBCAPTURE/ZIP_UTIL_PKG.pkssql
+Script Open: grbsrc/ODBCAPTURE/DBTOOLS_EXECUTION_HISTORY_SEQ.seq
+Script Open: grbsrc/ODBCAPTURE/BUILD_PATH.tfk
+Script Open: grbsrc/ODBCAPTURE/DLOAD_CONF.tfk
+Script Open: grbsrc/ODBCAPTURE/OBJECT_CONF.tfk
+Script Open: grbsrc/ODBCAPTURE/ROLE_CONF.tfk
+Script Open: grbsrc/ODBCAPTURE/SCHEMA_CONF.tfk
+Script Open: grbsrc/ODBCAPTURE/TSPACE_CONF.tfk
+Script Open: grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/DBA_OBJECTS_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tidx
+Script Open: grbsrc/ODBCAPTURE/BUILD_CONF.tbl
+Script Open: grbsrc/ODBCAPTURE/BUILD_PATH.tbl
+Script Open: grbsrc/ODBCAPTURE/BUILD_TYPE_TIMING.tbl
+Script Open: grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/DBA_OBJECTS_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/DBTOOLS_EXECUTION_HISTORY.tbl
+Script Open: grbsrc/ODBCAPTURE/DLOAD_CONF.tbl
+Script Open: grbsrc/ODBCAPTURE/ELEMENT_CONF.tbl
+Script Open: grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl
+Script Open: grbsrc/ODBCAPTURE/OBJECT_CONF.tbl
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/ROLE_CONF.tbl
+Script Open: grbsrc/ODBCAPTURE/SCHEMA_CONF.tbl
+Script Open: grbsrc/ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl
+Script Open: grbsrc/ODBCAPTURE/TSPACE_CONF.tbl
+Script Open: grbsrc/ODBCAPTURE/ZIP_FILES.tbl
+Script Open: grbsrc/ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw
+Script Open: grbsrc/ODBCAPTURE/BUILD_PATH_REVIEW.vw
+Script Open: grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/DBA_OBJECTS_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw
+Script Open: grbsrc/ODBCAPTURE/UOR_INSTALL_VIEW.vw
+g_schema_name = 
+Script Open: grbsrc//install_grbsrc.sql
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:52.933
+
+
+Running GRAB_SCRIPTS.all_scripts(in_build_type "grbras")
+g_build_type = grbras, RAS - Real Application Security (XS$NULL)
+g_schema_name = SYS
+Script Open: grbras/SYS/ODBCAPTURE_usr.sgrnt
+g_schema_name = SYSTEM
+g_schema_name = PUBLIC
+g_schema_name = 
+Script Open: grbras//install.sql
+Script Open: grbras//dbi.sql
+Script Open: grbras//installation_finalize.sql
+Script Open: grbras//installation_prepare.sql
+Script Open: grbras//odbcapture_installation_logs.cldr
+Script Open: grbras//odbcapture_installation_logs.csv
+Script Open: grbras//odbcapture_installation_logs.ctl
+Script Open: grbras//report_status.sql
+Script Open: grbras//list_invalids.csv
+Script Open: grbras//set_user_authentication.sql
+Script Open: grbras//install_sys.sql
+Script Open: grbras//install_system.sql
+g_schema_name = ODBCAPTURE
+Script Open: grbras/ODBCAPTURE/ROLE_CONF.ctl
+Script Open: grbras/ODBCAPTURE/ROLE_CONF.csv
+Script Open: grbras/ODBCAPTURE/ROLE_CONF.cldr
+Script Open: grbras/ODBCAPTURE/SCHEMA_CONF.ctl
+Script Open: grbras/ODBCAPTURE/SCHEMA_CONF.csv
+Script Open: grbras/ODBCAPTURE/SCHEMA_CONF.cldr
+Script Open: grbras/ODBCAPTURE/GRAB_RAS.pkbsql
+Script Open: grbras/ODBCAPTURE/GRAB_RAS.pkssql
+Script Open: grbras/ODBCAPTURE/EXPORTING_RAS_DATA.tbl
+Script Open: grbras/ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw
+g_schema_name = 
+Script Open: grbras//install_grbras.sql
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:01.429
+
+
+Running GRAB_SCRIPTS.all_scripts(in_build_type "grbsdo")
+g_build_type = grbsdo, SDO,LCTR (Placeholder) - Spatial - Oracle Locator - Graph
+(MDSYS, MDDATA)
+g_schema_name = SYS
+g_schema_name = SYSTEM
+g_schema_name = PUBLIC
+g_schema_name = 
+Script Open: grbsdo//install.sql
+Script Open: grbsdo//dbi.sql
+Script Open: grbsdo//installation_finalize.sql
+Script Open: grbsdo//installation_prepare.sql
+Script Open: grbsdo//odbcapture_installation_logs.cldr
+Script Open: grbsdo//odbcapture_installation_logs.csv
+Script Open: grbsdo//odbcapture_installation_logs.ctl
+Script Open: grbsdo//report_status.sql
+Script Open: grbsdo//list_invalids.csv
+Script Open: grbsdo//set_user_authentication.sql
+Script Open: grbsdo//install_sys.sql
+Script Open: grbsdo//install_system.sql
+g_schema_name = ODBCAPTURE
+Script Open: grbsdo/ODBCAPTURE/ROLE_CONF.ctl
+Script Open: grbsdo/ODBCAPTURE/ROLE_CONF.csv
+Script Open: grbsdo/ODBCAPTURE/ROLE_CONF.cldr
+Script Open: grbsdo/ODBCAPTURE/SCHEMA_CONF.ctl
+Script Open: grbsdo/ODBCAPTURE/SCHEMA_CONF.csv
+Script Open: grbsdo/ODBCAPTURE/SCHEMA_CONF.cldr
+Script Open: grbsdo/ODBCAPTURE/GRAB_SDO.pkbsql
+Script Open: grbsdo/ODBCAPTURE/GRAB_SDO.pkssql
+g_schema_name = 
+Script Open: grbsdo//install_grbsdo.sql
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.417
+
+
+Running GRAB_SCRIPTS.all_scripts(in_build_type "grbdat")
+g_build_type = grbdat, ODBCapture Self-Capture Configuration Data
+g_schema_name = SYS
+g_schema_name = SYSTEM
+g_schema_name = PUBLIC
+g_schema_name = 
+Script Open: grbdat//install.sql
+Script Open: grbdat//dbi.sql
+Script Open: grbdat//installation_finalize.sql
+Script Open: grbdat//installation_prepare.sql
+Script Open: grbdat//odbcapture_installation_logs.cldr
+Script Open: grbdat//odbcapture_installation_logs.csv
+Script Open: grbdat//odbcapture_installation_logs.ctl
+Script Open: grbdat//report_status.sql
+Script Open: grbdat//list_invalids.csv
+Script Open: grbdat//set_user_authentication.sql
+Script Open: grbdat//install_sys.sql
+Script Open: grbdat//install_system.sql
+g_schema_name = ODBCAPTURE
+Script Open: grbdat/ODBCAPTURE/DLOAD_CONF.ctl
+Script Open: grbdat/ODBCAPTURE/DLOAD_CONF.csv
+Script Open: grbdat/ODBCAPTURE/DLOAD_CONF.cldr
+Script Open: grbdat/ODBCAPTURE/OBJECT_CONF.ctl
+Script Open: grbdat/ODBCAPTURE/OBJECT_CONF.csv
+Script Open: grbdat/ODBCAPTURE/OBJECT_CONF.cldr
+g_schema_name = 
+Script Open: grbdat//install_grbdat.sql
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.047
+
+
+Running GRAB_SCRIPTS.all_scripts(in_build_type "grbtst")
+g_build_type = grbtst, ODBCapture and ODBCTest Testing Objects
+g_schema_name = SYS
+Script Open: grbtst/SYS/host1.hacl
+Script Open: grbtst/SYS/host2.hacl
+Script Open: grbtst/SYS/odbctest_host.hacl
+Script Open: grbtst/SYS/GRB_TEST_ROLE.role
+buf1.file_name = GRB_TEST_ROLE.role
+Script Open: grbtst/SYS/ODBCTEST.user
+g_schema_name = SYSTEM
+Script Open: grbtst/SYSTEM/ODBCTEST_usr.grnt
+g_schema_name = PUBLIC
+g_schema_name = 
+Script Open: grbtst//install.sql
+Script Open: grbtst//dbi.sql
+Script Open: grbtst//installation_finalize.sql
+Script Open: grbtst//installation_prepare.sql
+Script Open: grbtst//odbcapture_installation_logs.cldr
+Script Open: grbtst//odbcapture_installation_logs.csv
+Script Open: grbtst//odbcapture_installation_logs.ctl
+Script Open: grbtst//report_status.sql
+Script Open: grbtst//list_invalids.csv
+Script Open: grbtst//set_user_authentication.sql
+Script Open: grbtst//install_sys.sql
+Script Open: grbtst//install_system.sql
+g_schema_name = ODBCAPTURE
+Script Open: grbtst/ODBCAPTURE/BUILD_CONF.ctl
+Script Open: grbtst/ODBCAPTURE/BUILD_CONF.csv
+Script Open: grbtst/ODBCAPTURE/BUILD_CONF.cldr
+Script Open: grbtst/ODBCAPTURE/BUILD_PATH.ctl
+Script Open: grbtst/ODBCAPTURE/BUILD_PATH.csv
+Script Open: grbtst/ODBCAPTURE/BUILD_PATH.cldr
+Script Open: grbtst/ODBCAPTURE/GRBTST__NAME.ctl
+Script Open: grbtst/ODBCAPTURE/GRBTST__NAME.csv
+Script Open: grbtst/ODBCAPTURE/GRBTST__NAME.cldr
+Script Open: grbtst/ODBCAPTURE/GRBTST_IMAGE.ctl
+Script Open: grbtst/ODBCAPTURE/GRBTST_IMAGE.csv
+Script Open: grbtst/ODBCAPTURE/GRBTST_IMAGE.cldr
+Script Open: grbtst/ODBCAPTURE/ROLE_CONF.ctl
+Script Open: grbtst/ODBCAPTURE/ROLE_CONF.csv
+Script Open: grbtst/ODBCAPTURE/ROLE_CONF.cldr
+Script Open: grbtst/ODBCAPTURE/SCHEMA_CONF.ctl
+Script Open: grbtst/ODBCAPTURE/SCHEMA_CONF.csv
+Script Open: grbtst/ODBCAPTURE/SCHEMA_CONF.cldr
+Script Open: grbtst/ODBCAPTURE/TSPACE_CONF.ctl
+Script Open: grbtst/ODBCAPTURE/TSPACE_CONF.csv
+Script Open: grbtst/ODBCAPTURE/TSPACE_CONF.cldr
+Script Open: grbtst/ODBCAPTURE/GRBTST__NAME.tbl
+Script Open: grbtst/ODBCAPTURE/GRBTST_IMAGE.tbl
+g_schema_name = ODBCTEST
+g_schema_name = 
+Script Open: grbtst//install_grbtst.sql
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.883
+
+
+Running GRAB_SCRIPTS.all_scripts(in_build_type "grbtjsn")
+g_build_type = grbtjsn, ODBCapture JSON Data Type Testing
+g_schema_name = SYS
+g_schema_name = SYSTEM
+g_schema_name = PUBLIC
+g_schema_name = 
+Script Open: grbtjsn//install.sql
+Script Open: grbtjsn//dbi.sql
+Script Open: grbtjsn//installation_finalize.sql
+Script Open: grbtjsn//installation_prepare.sql
+Script Open: grbtjsn//odbcapture_installation_logs.cldr
+Script Open: grbtjsn//odbcapture_installation_logs.csv
+Script Open: grbtjsn//odbcapture_installation_logs.ctl
+Script Open: grbtjsn//report_status.sql
+Script Open: grbtjsn//list_invalids.csv
+Script Open: grbtjsn//set_user_authentication.sql
+Script Open: grbtjsn//install_sys.sql
+Script Open: grbtjsn//install_system.sql
+g_schema_name = ODBCAPTURE
+Script Open: grbtjsn/ODBCAPTURE/GRBTST_JSON.ctl
+Script Open: grbtjsn/ODBCAPTURE/GRBTST_JSON.csv
+Script Open: grbtjsn/ODBCAPTURE/GRBTST_JSON.cldr
+Script Open: grbtjsn/ODBCAPTURE/GRBTST_JSON.tbl
+g_schema_name = 
+Script Open: grbtjsn//install_grbtjsn.sql
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.532
+
+
+Running GRAB_SCRIPTS.all_scripts(in_build_type "grbtsdo")
+g_build_type = grbtsdo, ODBCTest Spatial Data Option Testing
+g_schema_name = SYS
+g_schema_name = SYSTEM
+g_schema_name = PUBLIC
+g_schema_name = 
+Script Open: grbtsdo//install.sql
+Script Open: grbtsdo//dbi.sql
+Script Open: grbtsdo//installation_finalize.sql
+Script Open: grbtsdo//installation_prepare.sql
+Script Open: grbtsdo//odbcapture_installation_logs.cldr
+Script Open: grbtsdo//odbcapture_installation_logs.csv
+Script Open: grbtsdo//odbcapture_installation_logs.ctl
+Script Open: grbtsdo//report_status.sql
+Script Open: grbtsdo//list_invalids.csv
+Script Open: grbtsdo//set_user_authentication.sql
+Script Open: grbtsdo//install_sys.sql
+Script Open: grbtsdo//install_system.sql
+g_schema_name = ODBCTEST
+Script Open: grbtsdo/ODBCTEST/SDO_COLA_MARKETS.ctl
+Script Open: grbtsdo/ODBCTEST/SDO_COLA_MARKETS.csv
+Script Open: grbtsdo/ODBCTEST/SDO_COLA_MARKETS.cldr
+Script Open: grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tbl
+g_schema_name = 
+Script Open: grbtsdo//install_grbtsdo.sql
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.612
+
+
+Running GRAB_SCRIPTS.all_scripts(in_build_type "grbtctx")
+g_build_type = grbtctx, ODBCTest Testing of Oracle Text
+g_schema_name = SYS
+g_schema_name = SYSTEM
+g_schema_name = PUBLIC
+g_schema_name = 
+Script Open: grbtctx//install.sql
+Script Open: grbtctx//dbi.sql
+Script Open: grbtctx//installation_finalize.sql
+Script Open: grbtctx//installation_prepare.sql
+Script Open: grbtctx//odbcapture_installation_logs.cldr
+Script Open: grbtctx//odbcapture_installation_logs.csv
+Script Open: grbtctx//odbcapture_installation_logs.ctl
+Script Open: grbtctx//report_status.sql
+Script Open: grbtctx//list_invalids.csv
+Script Open: grbtctx//set_user_authentication.sql
+Script Open: grbtctx//install_sys.sql
+Script Open: grbtctx//install_system.sql
+g_schema_name = ODBCTEST
+Script Open: grbtctx/ODBCTEST/CUST_CTX_TEST.ctl
+Script Open: grbtctx/ODBCTEST/CUST_CTX_TEST.csv
+Script Open: grbtctx/ODBCTEST/CUST_CTX_TEST.cldr
+Script Open: grbtctx/ODBCTEST/CUST_CTX_TEST.tidx
+Script Open: grbtctx/ODBCTEST/CUST_CTX_TEST.tbl
+g_schema_name = 
+Script Open: grbtctx//install_grbtctx.sql
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:01.476
+
+
+Running GRAB_SCRIPTS.all_scripts(in_build_type "grbtdat")
+g_build_type = grbtdat, ODBCapture and ODBCTest Testing Self-Capture
+Configuration Data
+g_schema_name = SYS
+g_schema_name = SYSTEM
+g_schema_name = PUBLIC
+g_schema_name = 
+Script Open: grbtdat//install.sql
+Script Open: grbtdat//dbi.sql
+Script Open: grbtdat//installation_finalize.sql
+Script Open: grbtdat//installation_prepare.sql
+Script Open: grbtdat//odbcapture_installation_logs.cldr
+Script Open: grbtdat//odbcapture_installation_logs.csv
+Script Open: grbtdat//odbcapture_installation_logs.ctl
+Script Open: grbtdat//report_status.sql
+Script Open: grbtdat//list_invalids.csv
+Script Open: grbtdat//set_user_authentication.sql
+Script Open: grbtdat//install_sys.sql
+Script Open: grbtdat//install_system.sql
+g_schema_name = ODBCAPTURE
+Script Open: grbtdat/ODBCAPTURE/DLOAD_CONF.ctl
+Script Open: grbtdat/ODBCAPTURE/DLOAD_CONF.csv
+Script Open: grbtdat/ODBCAPTURE/DLOAD_CONF.cldr
+Script Open: grbtdat/ODBCAPTURE/OBJECT_CONF.ctl
+Script Open: grbtdat/ODBCAPTURE/OBJECT_CONF.csv
+Script Open: grbtdat/ODBCAPTURE/OBJECT_CONF.cldr
+g_schema_name = 
+Script Open: grbtdat//install_grbtdat.sql
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.046
+
+
+0 rows deleted.
+
+Elapsed: 00:00:00.011
+
+
+Running FH2.write_scripts(in_zip_file_name "capture_files.zip", in_folder_name
+"")
+grbdat/install.sql total_bytes: 2270, 1:2270.
+grbdat/dbi.sql total_bytes: 1509, 1:1509.
+grbdat/installation_finalize.sql total_bytes: 1041, 1:1041.
+grbdat/installation_prepare.sql total_bytes: 1612, 1:1612.
+grbdat/odbcapture_installation_logs.cldr total_bytes: 2677, 1:2356, 2:321.
+grbdat/odbcapture_installation_logs.csv total_bytes: 162, 1:162.
+grbdat/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
+grbdat/report_status.sql total_bytes: 1577, 1:1577.
+grbdat/list_invalids.csv total_bytes: 45, 1:45.
+grbdat/set_user_authentication.sql total_bytes: 98, 1:98.
+grbdat/install_sys.sql total_bytes: 229, 1:229.
+grbdat/install_system.sql total_bytes: 238, 1:238.
+grbdat/install_grbdat.sql total_bytes: 1101, 1:1101.
+grbdat/ODBCAPTURE/DLOAD_CONF.ctl total_bytes: 529, 1:529.
+grbdat/ODBCAPTURE/DLOAD_CONF.csv total_bytes: 1587, 1:1587.
+grbdat/ODBCAPTURE/DLOAD_CONF.cldr total_bytes: 2280, 1:2280.
+grbdat/ODBCAPTURE/OBJECT_CONF.ctl total_bytes: 345, 1:345.
+grbdat/ODBCAPTURE/OBJECT_CONF.csv total_bytes: 1729, 1:1729.
+grbdat/ODBCAPTURE/OBJECT_CONF.cldr total_bytes: 2290, 1:2290.
+grbras/install.sql total_bytes: 2270, 1:2270.
+grbras/dbi.sql total_bytes: 1509, 1:1509.
+grbras/installation_finalize.sql total_bytes: 1041, 1:1041.
+grbras/installation_prepare.sql total_bytes: 1530, 1:1530.
+grbras/odbcapture_installation_logs.cldr total_bytes: 2677, 1:2356, 2:321.
+grbras/odbcapture_installation_logs.csv total_bytes: 161, 1:161.
+grbras/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
+grbras/report_status.sql total_bytes: 1577, 1:1577.
+grbras/list_invalids.csv total_bytes: 45, 1:45.
+grbras/set_user_authentication.sql total_bytes: 98, 1:98.
+grbras/install_sys.sql total_bytes: 335, 1:335.
+grbras/install_system.sql total_bytes: 238, 1:238.
+grbras/install_grbras.sql total_bytes: 1673, 1:1673.
+grbras/SYS/ODBCAPTURE_usr.sgrnt total_bytes: 473, 1:473.
+grbras/ODBCAPTURE/GRAB_RAS.pkssql total_bytes: 579, 1:579.
+grbras/ODBCAPTURE/EXPORTING_RAS_DATA.tbl total_bytes: 1374, 1:1374.
+grbras/ODBCAPTURE/ROLE_CONF.ctl total_bytes: 296, 1:296.
+grbras/ODBCAPTURE/ROLE_CONF.csv total_bytes: 933, 1:933.
+grbras/ODBCAPTURE/ROLE_CONF.cldr total_bytes: 2270, 1:2270.
+grbras/ODBCAPTURE/SCHEMA_CONF.ctl total_bytes: 475, 1:475.
+grbras/ODBCAPTURE/SCHEMA_CONF.csv total_bytes: 179, 1:179.
+grbras/ODBCAPTURE/SCHEMA_CONF.cldr total_bytes: 2290, 1:2290.
+grbras/ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw total_bytes: 2930, 1:2487, 2:443.
+grbras/ODBCAPTURE/GRAB_RAS.pkbsql total_bytes: 18304, 1:2453, 2:2494, 3:2445,
+4:2485, 5:2427, 6:2433, 7:2461, 8:1106.
+grbsdo/install.sql total_bytes: 2270, 1:2270.
+grbsdo/dbi.sql total_bytes: 1509, 1:1509.
+grbsdo/installation_finalize.sql total_bytes: 1041, 1:1041.
+grbsdo/installation_prepare.sql total_bytes: 1530, 1:1530.
+grbsdo/odbcapture_installation_logs.cldr total_bytes: 2677, 1:2356, 2:321.
+grbsdo/odbcapture_installation_logs.csv total_bytes: 161, 1:161.
+grbsdo/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
+grbsdo/report_status.sql total_bytes: 1577, 1:1577.
+grbsdo/list_invalids.csv total_bytes: 45, 1:45.
+grbsdo/set_user_authentication.sql total_bytes: 98, 1:98.
+grbsdo/install_sys.sql total_bytes: 229, 1:229.
+grbsdo/install_system.sql total_bytes: 238, 1:238.
+grbsdo/install_grbsdo.sql total_bytes: 1385, 1:1385.
+grbsdo/ODBCAPTURE/GRAB_SDO.pkssql total_bytes: 2332, 1:2332.
+grbsdo/ODBCAPTURE/ROLE_CONF.ctl total_bytes: 296, 1:296.
+grbsdo/ODBCAPTURE/ROLE_CONF.csv total_bytes: 588, 1:588.
+grbsdo/ODBCAPTURE/ROLE_CONF.cldr total_bytes: 2270, 1:2270.
+grbsdo/ODBCAPTURE/SCHEMA_CONF.ctl total_bytes: 475, 1:475.
+grbsdo/ODBCAPTURE/SCHEMA_CONF.csv total_bytes: 266, 1:266.
+grbsdo/ODBCAPTURE/SCHEMA_CONF.cldr total_bytes: 2290, 1:2290.
+grbsdo/ODBCAPTURE/GRAB_SDO.pkbsql total_bytes: 17452, 1:2474, 2:2466, 3:2471,
+4:2455, 5:2476, 6:2420, 7:2415, 8:275.
+grbsrc/install.sql total_bytes: 2270, 1:2270.
+grbsrc/dbi.sql total_bytes: 1509, 1:1509.
+grbsrc/installation_finalize.sql total_bytes: 1041, 1:1041.
+grbsrc/installation_prepare.sql total_bytes: 1510, 1:1510.
+grbsrc/odbcapture_installation_logs.cldr total_bytes: 2677, 1:2356, 2:321.
+grbsrc/odbcapture_installation_logs.csv total_bytes: 364, 1:364.
+grbsrc/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
+grbsrc/report_status.sql total_bytes: 1577, 1:1577.
+grbsrc/list_invalids.csv total_bytes: 45, 1:45.
+grbsrc/set_user_authentication.sql total_bytes: 144, 1:144.
+grbsrc/install_sys.sql total_bytes: 325, 1:325.
+grbsrc/install_system.sql total_bytes: 342, 1:342.
+grbsrc/install_grbsrc.sql total_bytes: 8499, 1:2482, 2:2416, 3:2496, 4:1105.
+grbsrc/SYS/ODBCAPTURE.user total_bytes: 5203, 1:2446, 2:2476, 3:281.
+grbsrc/SYSTEM/ODBCAPTURE_usr.grnt total_bytes: 577, 1:577.
+grbsrc/ODBCAPTURE/DBTOOLS_EXECUTION_HISTORY_SEQ.seq total_bytes: 384, 1:384.
+grbsrc/ODBCAPTURE/COMMON_UTIL.pkssql total_bytes: 3059, 1:2486, 2:573.
+grbsrc/ODBCAPTURE/FH2.pkssql total_bytes: 3162, 1:2479, 2:683.
+grbsrc/ODBCAPTURE/GRAB_SCRIPTS.pkssql total_bytes: 2392, 1:2392.
+grbsrc/ODBCAPTURE/ROOT_SCRIPTS.pkssql total_bytes: 1104, 1:1104.
+grbsrc/ODBCAPTURE/ZIP_UTIL_PKG.pkssql total_bytes: 1754, 1:1754.
+grbsrc/ODBCAPTURE/BUILD_CONF.tbl total_bytes: 1171, 1:1171.
+grbsrc/ODBCAPTURE/BUILD_PATH.tbl total_bytes: 998, 1:998.
+grbsrc/ODBCAPTURE/BUILD_TYPE_TIMING.tbl total_bytes: 987, 1:987.
+grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_TAB.tbl total_bytes: 1078, 1:1078.
+grbsrc/ODBCAPTURE/DBA_OBJECTS_TAB.tbl total_bytes: 710, 1:710.
+grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_TAB.tbl total_bytes: 1072, 1:1072.
+grbsrc/ODBCAPTURE/DBTOOLS_EXECUTION_HISTORY.tbl total_bytes: 866, 1:866.
+grbsrc/ODBCAPTURE/DLOAD_CONF.tbl total_bytes: 2573, 1:2409, 2:164.
+grbsrc/ODBCAPTURE/ELEMENT_CONF.tbl total_bytes: 2123, 1:2123.
+grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl total_bytes: 1308, 1:1308.
+grbsrc/ODBCAPTURE/OBJECT_CONF.tbl total_bytes: 1841, 1:1841.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tbl total_bytes: 935, 1:935.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tbl total_bytes: 1381, 1:1381.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tbl total_bytes: 1489, 1:1489.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tbl total_bytes: 1632, 1:1632.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tbl total_bytes: 1602, 1:1602.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tbl total_bytes: 1107, 1:1107.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tbl total_bytes: 1439, 1:1439.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tbl total_bytes: 1387, 1:1387.
+grbsrc/ODBCAPTURE/ROLE_CONF.tbl total_bytes: 1427, 1:1427.
+grbsrc/ODBCAPTURE/SCHEMA_CONF.tbl total_bytes: 2379, 1:2379.
+grbsrc/ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl total_bytes: 703, 1:703.
+grbsrc/ODBCAPTURE/TSPACE_CONF.tbl total_bytes: 1106, 1:1106.
+grbsrc/ODBCAPTURE/ZIP_FILES.tbl total_bytes: 590, 1:590.
+grbsrc/ODBCAPTURE/BUILD_CONF.ctl total_bytes: 259, 1:259.
+grbsrc/ODBCAPTURE/BUILD_CONF.csv total_bytes: 667, 1:667.
+grbsrc/ODBCAPTURE/BUILD_CONF.cldr total_bytes: 2280, 1:2280.
+grbsrc/ODBCAPTURE/BUILD_PATH.ctl total_bytes: 219, 1:219.
+grbsrc/ODBCAPTURE/BUILD_PATH.csv total_bytes: 111, 1:111.
+grbsrc/ODBCAPTURE/BUILD_PATH.cldr total_bytes: 2280, 1:2280.
+grbsrc/ODBCAPTURE/ELEMENT_CONF.ctl total_bytes: 478, 1:478.
+grbsrc/ODBCAPTURE/ELEMENT_CONF.csv total_bytes: 2607, 1:2607.
+grbsrc/ODBCAPTURE/ELEMENT_CONF.cldr total_bytes: 2300, 1:2300.
+grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.ctl total_bytes: 265, 1:265.
+grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.csv total_bytes: 490, 1:490.
+grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.cldr total_bytes: 2430, 1:2430.
+grbsrc/ODBCAPTURE/ROLE_CONF.ctl total_bytes: 296, 1:296.
+grbsrc/ODBCAPTURE/ROLE_CONF.csv total_bytes: 14281, 1:14281.
+grbsrc/ODBCAPTURE/ROLE_CONF.cldr total_bytes: 2270, 1:2270.
+grbsrc/ODBCAPTURE/SCHEMA_CONF.ctl total_bytes: 475, 1:475.
+grbsrc/ODBCAPTURE/SCHEMA_CONF.csv total_bytes: 1800, 1:1800.
+grbsrc/ODBCAPTURE/SCHEMA_CONF.cldr total_bytes: 2290, 1:2290.
+grbsrc/ODBCAPTURE/TSPACE_CONF.ctl total_bytes: 253, 1:253.
+grbsrc/ODBCAPTURE/TSPACE_CONF.csv total_bytes: 36, 1:36.
+grbsrc/ODBCAPTURE/TSPACE_CONF.cldr total_bytes: 2290, 1:2290.
+grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_TAB.tidx total_bytes: 596, 1:596.
+grbsrc/ODBCAPTURE/DBA_OBJECTS_TAB.tidx total_bytes: 327, 1:327.
+grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_TAB.tidx total_bytes: 335, 1:335.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tidx total_bytes: 348, 1:348.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tidx total_bytes: 348, 1:348.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tidx total_bytes: 352, 1:352.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tidx total_bytes: 343, 1:343.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tidx total_bytes: 336, 1:336.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tidx total_bytes: 342, 1:342.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tidx total_bytes: 591, 1:591.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tidx total_bytes: 591, 1:591.
+grbsrc/ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw total_bytes: 1117, 1:1117.
+grbsrc/ODBCAPTURE/BUILD_PATH_REVIEW.vw total_bytes: 1383, 1:1383.
+grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw total_bytes: 1524, 1:1524.
+grbsrc/ODBCAPTURE/DBA_OBJECTS_VIEW.vw total_bytes: 4405, 1:2454, 2:1951.
+grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw total_bytes: 1949, 1:1949.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw total_bytes: 2258, 1:2258.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw total_bytes: 2259, 1:2259.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw total_bytes: 1917, 1:1917.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw total_bytes: 3670, 1:2479, 2:1191.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw total_bytes: 2793, 1:2482, 2:311.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw total_bytes: 6768, 1:2435, 2:2483,
+3:1850.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw total_bytes: 3082, 1:2490, 2:592.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw total_bytes: 3191, 1:2427, 2:764.
+grbsrc/ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw total_bytes: 4568, 1:2466, 2:2102.
+grbsrc/ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw total_bytes: 5570, 1:2486, 2:2259,
+3:825.
+grbsrc/ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw total_bytes: 2739, 1:2470, 2:269.
+grbsrc/ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw total_bytes: 3008, 1:2455, 2:553.
+grbsrc/ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw total_bytes: 5346, 1:2472, 2:2434,
+3:440.
+grbsrc/ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw total_bytes: 3331, 1:2442, 2:889.
+grbsrc/ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw total_bytes: 2378, 1:2378.
+grbsrc/ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw total_bytes: 2639, 1:2477, 2:162.
+grbsrc/ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw total_bytes: 4247, 1:2449,
+2:1798.
+grbsrc/ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw total_bytes: 2442, 1:2442.
+grbsrc/ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw total_bytes: 2366, 1:2366.
+grbsrc/ODBCAPTURE/UOR_INSTALL_VIEW.vw total_bytes: 1220, 1:1220.
+grbsrc/ODBCAPTURE/COMMON_UTIL.pkbsql total_bytes: 19784, 1:2444, 2:2493, 3:2472,
+4:2448, 5:2432, 6:2460, 7:2395, 8:2467, 9:173.
+grbsrc/ODBCAPTURE/FH2.pkbsql total_bytes: 21738, 1:2490, 2:2474, 3:2496, 4:2490,
+5:2495, 6:2445, 7:2490, 8:2494, 9:1864.
+grbsrc/ODBCAPTURE/GRAB_SCRIPTS.pkbsql total_bytes: 209973, 1:2479, 2:2482,
+3:2456, 4:2459, 5:2442, 6:2451, 7:2473, 8:2445, 9:2478, 10:2476, 11:2464,
+12:2444, 13:2486, 14:2485, 15:2481, 16:2458, 17:2479, 18:2492, 19:2487, 20:2433,
+21:2492, 22:2444, 23:2480, 24:2495, 25:2479, 26:2460, 27:2425, 28:2441, 29:2469,
+30:2484, 31:2490, 32:2461, 33:2441, 34:2483, 35:2434, 36:2428, 37:2477, 38:2494,
+39:2450, 40:2366, 41:2483, 42:2449, 43:2485, 44:2462, 45:2472, 46:2462, 47:2459,
+48:2393, 49:2450, 50:2413, 51:2407, 52:2471, 53:2488, 54:2454, 55:2480, 56:2495,
+57:2479, 58:2485, 59:2480, 60:2403, 61:2470, 62:2437, 63:2475, 64:2433, 65:2460,
+66:2455, 67:2447, 68:2446, 69:2486, 70:2486, 71:2433, 72:2413, 73:2474, 74:2448,
+75:2482, 76:2485, 77:2442, 78:2439, 79:2492, 80:2478, 81:2493, 82:2478, 83:2419,
+84:2448, 85:2455, 86:786.
+grbsrc/ODBCAPTURE/ROOT_SCRIPTS.pkbsql total_bytes: 16468, 1:2481, 2:2462,
+3:2440, 4:2483, 5:2495, 6:2469, 7:1638.
+grbsrc/ODBCAPTURE/ZIP_UTIL_PKG.pkbsql total_bytes: 18317, 1:2457, 2:2477,
+3:2422, 4:2436, 5:2467, 6:2487, 7:2475, 8:1096.
+grbsrc/ODBCAPTURE/BUILD_PATH.tfk total_bytes: 602, 1:602.
+grbsrc/ODBCAPTURE/DLOAD_CONF.tfk total_bytes: 596, 1:596.
+grbsrc/ODBCAPTURE/OBJECT_CONF.tfk total_bytes: 864, 1:864.
+grbsrc/ODBCAPTURE/ROLE_CONF.tfk total_bytes: 343, 1:343.
+grbsrc/ODBCAPTURE/SCHEMA_CONF.tfk total_bytes: 351, 1:351.
+grbsrc/ODBCAPTURE/TSPACE_CONF.tfk total_bytes: 348, 1:348.
+grbtctx/install.sql total_bytes: 2273, 1:2273.
+grbtctx/dbi.sql total_bytes: 1509, 1:1509.
+grbtctx/installation_finalize.sql total_bytes: 1029, 1:1029.
+grbtctx/installation_prepare.sql total_bytes: 1633, 1:1633.
+grbtctx/odbcapture_installation_logs.cldr total_bytes: 2677, 1:2356, 2:321.
+grbtctx/odbcapture_installation_logs.csv total_bytes: 130, 1:130.
+grbtctx/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
+grbtctx/report_status.sql total_bytes: 1575, 1:1575.
+grbtctx/list_invalids.csv total_bytes: 45, 1:45.
+grbtctx/set_user_authentication.sql total_bytes: 99, 1:99.
+grbtctx/install_sys.sql total_bytes: 229, 1:229.
+grbtctx/install_system.sql total_bytes: 238, 1:238.
+grbtctx/install_grbtctx.sql total_bytes: 1296, 1:1296.
+grbtctx/ODBCTEST/CUST_CTX_TEST.tbl total_bytes: 426, 1:426.
+grbtctx/ODBCTEST/CUST_CTX_TEST.ctl total_bytes: 279, 1:279.
+grbtctx/ODBCTEST/CUST_CTX_TEST.csv total_bytes: 220, 1:220.
+grbtctx/ODBCTEST/CUST_CTX_TEST.cldr total_bytes: 2290, 1:2290.
+grbtctx/ODBCTEST/CUST_CTX_TEST.tidx total_bytes: 302, 1:302.
+grbtdat/install.sql total_bytes: 2273, 1:2273.
+grbtdat/dbi.sql total_bytes: 1509, 1:1509.
+grbtdat/installation_finalize.sql total_bytes: 1041, 1:1041.
+grbtdat/installation_prepare.sql total_bytes: 1738, 1:1738.
+grbtdat/odbcapture_installation_logs.cldr total_bytes: 2677, 1:2356, 2:321.
+grbtdat/odbcapture_installation_logs.csv total_bytes: 168, 1:168.
+grbtdat/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
+grbtdat/report_status.sql total_bytes: 1579, 1:1579.
+grbtdat/list_invalids.csv total_bytes: 45, 1:45.
+grbtdat/set_user_authentication.sql total_bytes: 99, 1:99.
+grbtdat/install_sys.sql total_bytes: 229, 1:229.
+grbtdat/install_system.sql total_bytes: 238, 1:238.
+grbtdat/install_grbtdat.sql total_bytes: 1103, 1:1103.
+grbtdat/ODBCAPTURE/DLOAD_CONF.ctl total_bytes: 529, 1:529.
+grbtdat/ODBCAPTURE/DLOAD_CONF.csv total_bytes: 1244, 1:1244.
+grbtdat/ODBCAPTURE/DLOAD_CONF.cldr total_bytes: 2280, 1:2280.
+grbtdat/ODBCAPTURE/OBJECT_CONF.ctl total_bytes: 345, 1:345.
+grbtdat/ODBCAPTURE/OBJECT_CONF.csv total_bytes: 1451, 1:1451.
+grbtdat/ODBCAPTURE/OBJECT_CONF.cldr total_bytes: 2290, 1:2290.
+grbtjsn/install.sql total_bytes: 2273, 1:2273.
+grbtjsn/dbi.sql total_bytes: 1509, 1:1509.
+grbtjsn/installation_finalize.sql total_bytes: 1041, 1:1041.
+grbtjsn/installation_prepare.sql total_bytes: 1633, 1:1633.
+grbtjsn/odbcapture_installation_logs.cldr total_bytes: 2677, 1:2356, 2:321.
+grbtjsn/odbcapture_installation_logs.csv total_bytes: 130, 1:130.
+grbtjsn/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
+grbtjsn/report_status.sql total_bytes: 1579, 1:1579.
+grbtjsn/list_invalids.csv total_bytes: 45, 1:45.
+grbtjsn/set_user_authentication.sql total_bytes: 99, 1:99.
+grbtjsn/install_sys.sql total_bytes: 229, 1:229.
+grbtjsn/install_system.sql total_bytes: 238, 1:238.
+grbtjsn/install_grbtjsn.sql total_bytes: 1163, 1:1163.
+grbtjsn/ODBCAPTURE/GRBTST_JSON.tbl total_bytes: 479, 1:479.
+grbtjsn/ODBCAPTURE/GRBTST_JSON.ctl total_bytes: 219, 1:219.
+grbtjsn/ODBCAPTURE/GRBTST_JSON.csv total_bytes: 1079, 1:1079.
+grbtjsn/ODBCAPTURE/GRBTST_JSON.cldr total_bytes: 2290, 1:2290.
+grbtsdo/install.sql total_bytes: 2273, 1:2273.
+grbtsdo/dbi.sql total_bytes: 1509, 1:1509.
+grbtsdo/installation_finalize.sql total_bytes: 1029, 1:1029.
+grbtsdo/installation_prepare.sql total_bytes: 1633, 1:1633.
+grbtsdo/odbcapture_installation_logs.cldr total_bytes: 2677, 1:2356, 2:321.
+grbtsdo/odbcapture_installation_logs.csv total_bytes: 133, 1:133.
+grbtsdo/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
+grbtsdo/report_status.sql total_bytes: 1575, 1:1575.
+grbtsdo/list_invalids.csv total_bytes: 45, 1:45.
+grbtsdo/set_user_authentication.sql total_bytes: 99, 1:99.
+grbtsdo/install_sys.sql total_bytes: 229, 1:229.
+grbtsdo/install_system.sql total_bytes: 238, 1:238.
+grbtsdo/install_grbtsdo.sql total_bytes: 1165, 1:1165.
+grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tbl total_bytes: 654, 1:654.
+grbtsdo/ODBCTEST/SDO_COLA_MARKETS.ctl total_bytes: 217, 1:217.
+grbtsdo/ODBCTEST/SDO_COLA_MARKETS.csv total_bytes: 24, 1:24.
+grbtsdo/ODBCTEST/SDO_COLA_MARKETS.cldr total_bytes: 2320, 1:2320.
+grbtst/install.sql total_bytes: 2270, 1:2270.
+grbtst/dbi.sql total_bytes: 1509, 1:1509.
+grbtst/installation_finalize.sql total_bytes: 1107, 1:1107.
+grbtst/installation_prepare.sql total_bytes: 1612, 1:1612.
+grbtst/odbcapture_installation_logs.cldr total_bytes: 2677, 1:2356, 2:321.
+grbtst/odbcapture_installation_logs.csv total_bytes: 351, 1:351.
+grbtst/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
+grbtst/report_status.sql total_bytes: 1599, 1:1599.
+grbtst/list_invalids.csv total_bytes: 45, 1:45.
+grbtst/set_user_authentication.sql total_bytes: 142, 1:142.
+grbtst/install_sys.sql total_bytes: 589, 1:589.
+grbtst/install_system.sql total_bytes: 340, 1:340.
+grbtst/install_grbtst.sql total_bytes: 1713, 1:1713.
+grbtst/SYS/GRB_TEST_ROLE.role total_bytes: 154, 1:154.
+grbtst/SYS/ODBCTEST.user total_bytes: 271, 1:271.
+grbtst/SYS/host1.hacl total_bytes: 993, 1:993.
+grbtst/SYS/host2.hacl total_bytes: 1615, 1:1615.
+grbtst/SYS/odbctest_host.hacl total_bytes: 1055, 1:1055.
+grbtst/SYSTEM/ODBCTEST_usr.grnt total_bytes: 446, 1:446.
+grbtst/ODBCAPTURE/GRBTST__NAME.tbl total_bytes: 652, 1:652.
+grbtst/ODBCAPTURE/GRBTST_IMAGE.tbl total_bytes: 366, 1:366.
+grbtst/ODBCAPTURE/BUILD_CONF.ctl total_bytes: 259, 1:259.
+grbtst/ODBCAPTURE/BUILD_CONF.csv total_bytes: 447, 1:447.
+grbtst/ODBCAPTURE/BUILD_CONF.cldr total_bytes: 2280, 1:2280.
+grbtst/ODBCAPTURE/BUILD_PATH.ctl total_bytes: 219, 1:219.
+grbtst/ODBCAPTURE/BUILD_PATH.csv total_bytes: 110, 1:110.
+grbtst/ODBCAPTURE/BUILD_PATH.cldr total_bytes: 2280, 1:2280.
+grbtst/ODBCAPTURE/GRBTST__NAME.ctl total_bytes: 215, 1:215.
+grbtst/ODBCAPTURE/GRBTST__NAME.csv total_bytes: 24, 1:24.
+grbtst/ODBCAPTURE/GRBTST__NAME.cldr total_bytes: 2300, 1:2300.
+grbtst/ODBCAPTURE/GRBTST_IMAGE.ctl total_bytes: 281, 1:281.
+grbtst/ODBCAPTURE/GRBTST_IMAGE.csv total_bytes: 13, 1:13.
+grbtst/ODBCAPTURE/GRBTST_IMAGE.cldr total_bytes: 5295, 1:2416, 2:2461, 3:418.
+grbtst/ODBCAPTURE/ROLE_CONF.ctl total_bytes: 296, 1:296.
+grbtst/ODBCAPTURE/ROLE_CONF.csv total_bytes: 100, 1:100.
+grbtst/ODBCAPTURE/ROLE_CONF.cldr total_bytes: 2270, 1:2270.
+grbtst/ODBCAPTURE/SCHEMA_CONF.ctl total_bytes: 475, 1:475.
+grbtst/ODBCAPTURE/SCHEMA_CONF.csv total_bytes: 163, 1:163.
+grbtst/ODBCAPTURE/SCHEMA_CONF.cldr total_bytes: 2290, 1:2290.
+grbtst/ODBCAPTURE/TSPACE_CONF.ctl total_bytes: 253, 1:253.
+grbtst/ODBCAPTURE/TSPACE_CONF.csv total_bytes: 36, 1:36.
+grbtst/ODBCAPTURE/TSPACE_CONF.cldr total_bytes: 2290, 1:2290.
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.801
+
+
+Commit complete.
+
+Elapsed: 00:00:00.006

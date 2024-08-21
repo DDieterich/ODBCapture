@@ -3,6 +3,9 @@
 # Compare Source
 #
 # "${BUTIL_PATH}/compare_source.sh" "${PDB_ODBCAPTURE}" "${ZIP_FILE_ROOT}"
+#   0) ${BUTIL_PATH} - "builds/util" path
+#   1) ${PDB_ODBCAPTURE} - OCBCAPTURE/Password@TNS_ALIAS
+#   2) ${ZIP_FILE_ROOT} - Root name of Zip file (ex. "capture_files")
 #
 # https://ogobrecht.com/posts/2020-01-01-download-blobs-with-sqlplus/
 # Download BLOBs with SQL*Plus
