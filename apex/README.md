@@ -64,11 +64,17 @@ OCI_APEX_install.sql    | Converted Source Code Script
 
 ### REST Enable "ODBCAPTURE" and "ODBCTEST"
 1. Navigate to Database Users Page
+    
     ![Navigate to Database Users Page](Database_Users_Page.PNG)
+
 2. Select a User to Rest Enable
+    
     ![Select User to REST Enable](Select_User.PNG)
+
 3. Rest Enable User
+    
     ![REST Enable Database User](REST_Enable_User.PNG)
+    
 
 ### Manually Run Final Processing
 1. Open SQL Worksheet as "ODBCAPTURE"
@@ -101,9 +107,13 @@ OCI_APEX_install.sql    | Converted Source Code Script
 3. Run the Query
     * `Select "FILE_BLOB" from "ZIP_FILES" where "FILE_NAME" = 'capture_files.zip';`
 4. Select the BLOB from the Query Results
+    
     ![Select BLOB from ZIP_FILES](Select_Zip_File.PNG)
-5. Download data from "FILE_BLOB" to "capture_files.zip".
+
+5. Download data from "FILE_BLOB" to "capture_files.zip"
+    
     ![Download Zip File](Download_Zip_File.PNG)
+
 6. Run `./compare_zip.sh capture_files` using BASH
 
 ### Notes
