@@ -82,7 +82,7 @@ set sqlblanklines on
 
 }';
    -- Can't start a line with an "@"
-   ret_txt := ret_txt || q'{@"&DBI_SCRIPT_NAME." "&DBI_SYSTEM_CONNECT." "" ""
+   ret_txt := ret_txt || q'{@"&DBI_SCRIPT_NAME." "&DBI_SYSTEM_CONNECT."
 set serveroutput on size unlimited format wrapped
 
 set sqlblanklines off
@@ -130,7 +130,7 @@ prompt fix_invalid_public_synonyms
 }';
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
-                          q'{/fix_invalid_public_synonyms.sql" "" "" ""
+                          q'{/fix_invalid_public_synonyms.sql"
 
 prompt
 prompt compile_all
@@ -138,7 +138,7 @@ prompt compile_all
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/compile_all.sql" "' || get_schema_list(in_build_type) ||
-                          q'{" "" ""
+                          q'{"
 
 prompt
 prompt alter_foreign_keys_ENABLE
@@ -146,7 +146,7 @@ prompt alter_foreign_keys_ENABLE
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/alter_foreign_keys.sql" "ENABLE" "' || get_schema_list(in_build_type) ||
-                          q'{" ""
+                          q'{"
 
 prompt
 prompt alter_triggers_ENABLE
@@ -154,7 +154,7 @@ prompt alter_triggers_ENABLE
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/alter_triggers.sql" "ENABLE" "' || get_schema_list(in_build_type) ||
-                          q'{" ""
+                          q'{"
 
 prompt
 prompt update_id_sequences
@@ -162,7 +162,7 @@ prompt update_id_sequences
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/update_id_sequences.sql" "' || get_schema_list(in_build_type) ||
-                          q'{" "" ""
+                          q'{"
 
 --prompt
 --prompt alter_queues_ENABLE
@@ -170,7 +170,7 @@ prompt update_id_sequences
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '--@"' || utl_dir ||
                          '/alter_queues.sql" "ENABLE" "' || get_schema_list(in_build_type) ||
-                          q'{" ""
+                          q'{"
 
 --prompt
 --prompt alter_scheduler_jobs_ENABLE
@@ -178,7 +178,7 @@ prompt update_id_sequences
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '--@"' || utl_dir ||
                          '/alter_scheduler_jobs.sql" "ENABLE" "' || get_schema_list(in_build_type) ||
-                          q'{" ""
+                          q'{"
 
 prompt
 prompt Switch Spooling Off
@@ -440,7 +440,7 @@ prompt Reporting Summary of Build Type Log Errors
    -- Can't have string declaration with a "/" on a line by itself
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/summarize_install_log.sql" "' || in_build_type ||
-                          q'{" "" ""
+                          q'{"
 
 ----------------------------------------
 prompt
@@ -452,7 +452,7 @@ spool list_invalids.csv
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/list_invalids.sql" "' || get_schema_list(in_build_type) ||
-                          q'{" "" ""
+                          q'{"
 spool off
 set termout on
 set feedback on
@@ -467,7 +467,7 @@ spool db_build_junit_report.xml
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/db_build_junit_report.sql" "' || get_schema_list(in_build_type) ||
-                          q'{" "" ""
+                          q'{"
 spool off
 set termout on
 set feedback on
@@ -482,7 +482,7 @@ spool log_files_junit_report.xml
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/log_files_junit_report.sql" "' || in_build_type ||
-                          q'{" "" ""
+                          q'{"
 spool off
 set termout on
 set feedback on

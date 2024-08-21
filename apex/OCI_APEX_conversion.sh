@@ -4,6 +4,7 @@ SQL_SCRIPT="OCI_APEX_install.sql"
 
 echo "
 prompt Converted/Consolidated SQL Script for APEX Instance on OCI
+ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MON-YYYY HH24:MI:SS';
 " > "${SQL_SCRIPT}"
 
 for INSTALL_SELECT in 'grbsrc' 'grbras' 'grbsdo' 'grbdat' 'grbtst' 'grbtjsn' 'grbtsdo' 'grbtctx' 'grbtdat'
@@ -52,6 +53,12 @@ do
          echo "${buff}" 
       fi
    done |
-      grep -Ev -e '^(spool |set linesize |set trimspool |set termout |set sqlprefix |define INSTALL_SYSTEM_CONNECT[ =])' |
+      grep -Ev -e '^spool ' \
+               -e '^set linesize ' \
+               -e '^set trimspool ' \
+               -e '^set termout ' \
+               -e '^set sqlprefix ' \
+               -e '^define INSTALL_SYSTEM_CONNECT[ =]' \
+               -e '^define TOP_PDB_SYSTEM[ =]' |
       sed -e '1,$s/^[@]/--@/1' >> "${SQL_SCRIPT}"
 done

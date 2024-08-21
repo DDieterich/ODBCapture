@@ -1,5 +1,6 @@
 
 prompt Converted/Consolidated SQL Script for APEX Instance on OCI
+ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MON-YYYY HH24:MI:SS';
 
 
 --
@@ -251,6 +252,40 @@ prompt Create Temp Publicly Updateable Table
 create table TEMP_PUBLICLY_UPDATEABLE_TABLE (c1 number);
 grant all on TEMP_PUBLICLY_UPDATEABLE_TABLE to PUBLIC with grant option;
 create public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE for TEMP_PUBLICLY_UPDATEABLE_TABLE;
+
+prompt
+prompt Check for Prerequisite BUILD_TYPEs
+declare
+   procedure do_it (in_btype varchar2) is
+      TYPE c_main_ref_cur is REF CURSOR;
+      c_main           c_main_ref_cur;
+      b_max_load_dtm   date;
+   begin
+      open c_main for 'select max(load_dtm) max_load_dtm'  ||
+                      ' from ODBCAPTURE_INSTALLATION_LOGS' ||
+                      ' where build_type = ''' || in_btype || '''';
+      fetch c_main into b_max_load_dtm;
+      if b_max_load_dtm IS NULL
+      then
+         dbms_output.put_line('WARNING: Prerequisite BUILD_TYPE "' || in_btype ||
+                              '" not found in ODBCAPTURE_INSTALLATION_LOGS table.');
+      else
+         dbms_output.put_line(' -) "' || in_btype || '" last loaded on ' ||
+                               to_char(b_max_load_dtm, 'DD-Mon-YYYY HH24:MI:SS') );
+      end if;
+      close c_main;
+   exception when others then
+      if SQLCODE = -942
+      then
+         dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
+                              in_btype || '".');
+      end if;
+      close c_main;
+   end;
+begin
+   dbms_output.put_line('Prerequisite BUILD_TYPEs for "grbsrc"');
+end;
+/
 
 
 ----------------------------------------
@@ -8648,7 +8683,7 @@ begin
    fh2.script_put_line(fh, '--  Must be run as SYS');
    fh2.script_put_line(fh, '--');
    fh2.script_put_line(fh, '-- Command Line Parameters:');
-   fh2.script_put_line(fh, '--   1 - TO_PDB_SYSTEM: SYSTEM/password@TNSALIAS');
+   fh2.script_put_line(fh, '--   1 - TOP_PDB_SYSTEM: SYSTEM/password@TNSALIAS');
    fh2.script_put_line(fh, '--       i.e. pass the username and password for the SYSTEM user');
    fh2.script_put_line(fh, '--            and the TNSALIAS for the connection to the pluggable database.');
    fh2.script_put_line(fh, '--       The Data Load installation requires this connection information.');
@@ -8657,11 +8692,7 @@ begin
    fh2.script_put_line(fh, '--  NOTE: If running in a Linux based Docker Container from a Windows FileSystem Mount, run this first:');
    fh2.script_put_line(fh, '--    dos2unix -f -o ../install/*/*.csv ../install/*/*/*.csv');
    fh2.script_put_line(fh, '');
-   fh2.script_put_line(fh, 'set serveroutput on size unlimited format wrapped');
-   fh2.script_put_line(fh, '');
-   fh2.script_put_line(fh, '----------------------------------------');
-   fh2.script_put_line(fh, 'prompt Identify this Module in V$SESSION');
-   fh2.script_put_line(fh, 'set appinfo "' || g_build_type || ' Installation"');
+   fh2.script_put_line(fh, 'define TOP_PDB_SYSTEM="&1."');
    fh2.script_put_line(fh, '');
    fh2.script_put_line(fh, '----------------------------------------');
    fh2.script_put_line(fh, 'prompt Setup Abort on Error');
@@ -8669,12 +8700,25 @@ begin
    fh2.script_put_line(fh, 'WHENEVER OSERROR EXIT');
    fh2.script_put_line(fh, '');
    fh2.script_put_line(fh, '----------------------------------------');
+   fh2.script_put_line(fh, 'set serveroutput on size unlimited format wrapped');
+   fh2.script_put_line(fh, 'select ''user: '' || u.username ||');
+   fh2.script_put_line(fh, '       '', db: '' || d.name ||');
+   fh2.script_put_line(fh, '       '', con: '' || sys_context(''USERENV'', ''CON_NAME'') ||');
+   fh2.script_put_line(fh, '       '', tstmp: '' || systimestamp   CONNECTION');
+   fh2.script_put_line(fh, ' from  v$database d');
+   fh2.script_put_line(fh, ' cross join user_users u;');
+   fh2.script_put_line(fh, '');
+   fh2.script_put_line(fh, '----------------------------------------');
+   fh2.script_put_line(fh, 'prompt Identify this Module in V$SESSION');
+   fh2.script_put_line(fh, 'set appinfo "' || g_build_type || ' Installation"');
+   fh2.script_put_line(fh, '');
+   fh2.script_put_line(fh, '----------------------------------------');
    fh2.script_put_line(fh, 'prompt');
    fh2.script_put_line(fh, 'prompt **************************');
    fh2.script_put_line(fh, 'prompt *  Run SYS Installation  *');
    fh2.script_put_line(fh, 'prompt **************************');
    fh2.script_put_line(fh, 'prompt');
-   fh2.script_put_line(fh, '@install_sys.sql "" "" ""');
+   fh2.script_put_line(fh, '@install_sys.sql');
    fh2.script_put_line(fh, '');
    fh2.script_put_line(fh, '----------------------------------------');
    fh2.script_put_line(fh, 'prompt Setup Continue on Error');
@@ -8687,9 +8731,17 @@ begin
    fh2.script_put_line(fh, 'prompt *  Run SYSTEM Installation  *');
    fh2.script_put_line(fh, 'prompt *****************************');
    fh2.script_put_line(fh, 'prompt');
-   fh2.script_put_line(fh, 'connect &1.');
+   fh2.script_put_line(fh, '');
+   fh2.script_put_line(fh, 'connect &TOP_PDB_SYSTEM.');
    fh2.script_put_line(fh, 'set serveroutput on size unlimited format wrapped');
-   fh2.script_put_line(fh, '@install_system.sql "" "" ""');
+   fh2.script_put_line(fh, 'select ''user: '' || u.username ||');
+   fh2.script_put_line(fh, '       '', db: '' || d.name ||');
+   fh2.script_put_line(fh, '       '', con: '' || sys_context(''USERENV'', ''CON_NAME'') ||');
+   fh2.script_put_line(fh, '       '', tstmp: '' || systimestamp   CONNECTION');
+   fh2.script_put_line(fh, ' from  v$database d');
+   fh2.script_put_line(fh, ' cross join user_users u;');
+   fh2.script_put_line(fh, '');
+   fh2.script_put_line(fh, '@install_system.sql');
    fh2.script_put_line(fh, '');
    fh2.script_put_line(fh, '----------------------------------------');
    fh2.script_put_line(fh, 'prompt');
@@ -8697,7 +8749,7 @@ begin
    fh2.script_put_line(fh, 'prompt *  Install Application  *');
    fh2.script_put_line(fh, 'prompt *************************');
    fh2.script_put_line(fh, 'prompt');
-   fh2.script_put_line(fh, '@install_' || g_build_type || '.sql "&1." "" ""');
+   fh2.script_put_line(fh, '@install_' || g_build_type || '.sql "&TOP_PDB_SYSTEM."');
    fh2.script_put_line(fh, '');
    fh2.script_put_line(fh, '----------------------------------------');
    fh2.script_put_line(fh, 'set appinfo "Null"');
@@ -10010,9 +10062,7 @@ begin
 end;
 }';
    -- Can't have string declaration with a "/" on a line by itself
-   ret_txt := ret_txt || '/' || CHR(10) || q'{
-set feedback on
-}';
+   ret_txt := ret_txt || '/' || CHR(10) || CHR(10) || 'set feedback on';
    return ret_txt;
 end dbi_sql;
 
@@ -10108,6 +10158,13 @@ is
    btype_nt    btype_nt_type;
    ret_txt     varchar2(32767);
 begin
+   select to_build_type
+    bulk collect into btype_nt
+    from  build_type_timing
+    where from_build_type = in_build_type
+     and  build_timing = 'CURRENT'
+     and  to_build_type not in (in_build_type, 'sys','pub')
+    order by to_build_type;
    ret_txt := q'{
 --
 --  Prepare for View Install
@@ -10118,43 +10175,45 @@ prompt Create Temp Publicly Updateable Table
 create table TEMP_PUBLICLY_UPDATEABLE_TABLE (c1 number);
 grant all on TEMP_PUBLICLY_UPDATEABLE_TABLE to PUBLIC with grant option;
 create public synonym TEMP_PUBLICLY_UPDATEABLE_TABLE for TEMP_PUBLICLY_UPDATEABLE_TABLE;
-}';
-   select to_build_type
-    bulk collect into btype_nt
-    from  build_type_timing
-    where from_build_type = in_build_type
-     and  build_timing = 'CURRENT'
-     and  to_build_type not in (in_build_type, 'sys','pub')
-    order by to_build_type;
-   if btype_nt.COUNT > 0
-   then
-      ret_txt := ret_txt || q'{
+
 prompt
 prompt Check for Prerequisite BUILD_TYPEs
 declare
    procedure do_it (in_btype varchar2) is
-      cursor c_main is
-         select * from ODBCAPTURE_INSTALLATION_LOGS
-          where build_type = in_btype;
-      b_main   c_main%ROWTYPE;
+      TYPE c_main_ref_cur is REF CURSOR;
+      c_main           c_main_ref_cur;
+      b_max_load_dtm   date;
    begin
-      open c_main;
-      fetch c_main into b_main;
-      if c_main%NOTFOUND
+      open c_main for 'select max(load_dtm) max_load_dtm'  ||
+                      ' from ODBCAPTURE_INSTALLATION_LOGS' ||
+                      ' where build_type = ''' || in_btype || '''';
+      fetch c_main into b_max_load_dtm;
+      if b_max_load_dtm IS NULL
       then
          dbms_output.put_line('WARNING: Prerequisite BUILD_TYPE "' || in_btype ||
                               '" not found in ODBCAPTURE_INSTALLATION_LOGS table.');
+      else
+         dbms_output.put_line(' -) "' || in_btype || '" last loaded on ' ||
+                               to_char(b_max_load_dtm, 'DD-Mon-YYYY HH24:MI:SS') );
+      end if;
+      close c_main;
+   exception when others then
+      if SQLCODE = -942
+      then
+         dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
+                              in_btype || '".');
       end if;
       close c_main;
    end;
 begin
 }';
-      for i in 1 .. btype_nt.COUNT
-      loop
-         ret_txt := ret_txt || '   do_it(''' || btype_nt(i) || ''');' || CHR(10);
-      end loop;
-      ret_txt := ret_txt || 'end;' || CHR(10) || '/' || CHR(10);
-   end if;
+   ret_txt := ret_txt || '   dbms_output.put_line(''Prerequisite BUILD_TYPEs for "' ||
+                                                    in_build_type || '"'');' || CHR(10);
+   for i in 1 .. btype_nt.COUNT
+   loop
+      ret_txt := ret_txt || '   do_it(''' || btype_nt(i) || ''');' || CHR(10);
+   end loop;
+   ret_txt := ret_txt || 'end;' || CHR(10) || '/' || CHR(10);
    return ret_txt;
 end installation_prepare_sql;
 
@@ -10197,7 +10256,7 @@ begin
       rollback;
       jnk := 1;
    exception when others then
-      if SQLERRM != 'ORA-00942: table or view does not exist'
+      if SQLCODE != -942
       then
          dbms_output.put_line('odbcapture_installation_logs table: ' || SQLERRM);
       end if;
@@ -11275,21 +11334,33 @@ prompt
 prompt Check for Prerequisite BUILD_TYPEs
 declare
    procedure do_it (in_btype varchar2) is
-      cursor c_main is
-         select * from ODBCAPTURE_INSTALLATION_LOGS
-          where build_type = in_btype;
-      b_main   c_main%ROWTYPE;
+      TYPE c_main_ref_cur is REF CURSOR;
+      c_main           c_main_ref_cur;
+      b_max_load_dtm   date;
    begin
-      open c_main;
-      fetch c_main into b_main;
-      if c_main%NOTFOUND
+      open c_main for 'select max(load_dtm) max_load_dtm'  ||
+                      ' from ODBCAPTURE_INSTALLATION_LOGS' ||
+                      ' where build_type = ''' || in_btype || '''';
+      fetch c_main into b_max_load_dtm;
+      if b_max_load_dtm IS NULL
       then
          dbms_output.put_line('WARNING: Prerequisite BUILD_TYPE "' || in_btype ||
                               '" not found in ODBCAPTURE_INSTALLATION_LOGS table.');
+      else
+         dbms_output.put_line(' -) "' || in_btype || '" last loaded on ' ||
+                               to_char(b_max_load_dtm, 'DD-Mon-YYYY HH24:MI:SS') );
+      end if;
+      close c_main;
+   exception when others then
+      if SQLCODE = -942
+      then
+         dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
+                              in_btype || '".');
       end if;
       close c_main;
    end;
 begin
+   dbms_output.put_line('Prerequisite BUILD_TYPEs for "grbras"');
    do_it('grbsrc');
 end;
 /
@@ -12028,21 +12099,33 @@ prompt
 prompt Check for Prerequisite BUILD_TYPEs
 declare
    procedure do_it (in_btype varchar2) is
-      cursor c_main is
-         select * from ODBCAPTURE_INSTALLATION_LOGS
-          where build_type = in_btype;
-      b_main   c_main%ROWTYPE;
+      TYPE c_main_ref_cur is REF CURSOR;
+      c_main           c_main_ref_cur;
+      b_max_load_dtm   date;
    begin
-      open c_main;
-      fetch c_main into b_main;
-      if c_main%NOTFOUND
+      open c_main for 'select max(load_dtm) max_load_dtm'  ||
+                      ' from ODBCAPTURE_INSTALLATION_LOGS' ||
+                      ' where build_type = ''' || in_btype || '''';
+      fetch c_main into b_max_load_dtm;
+      if b_max_load_dtm IS NULL
       then
          dbms_output.put_line('WARNING: Prerequisite BUILD_TYPE "' || in_btype ||
                               '" not found in ODBCAPTURE_INSTALLATION_LOGS table.');
+      else
+         dbms_output.put_line(' -) "' || in_btype || '" last loaded on ' ||
+                               to_char(b_max_load_dtm, 'DD-Mon-YYYY HH24:MI:SS') );
+      end if;
+      close c_main;
+   exception when others then
+      if SQLCODE = -942
+      then
+         dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
+                              in_btype || '".');
       end if;
       close c_main;
    end;
 begin
+   dbms_output.put_line('Prerequisite BUILD_TYPEs for "grbsdo"');
    do_it('grbsrc');
 end;
 /
@@ -12751,21 +12834,33 @@ prompt
 prompt Check for Prerequisite BUILD_TYPEs
 declare
    procedure do_it (in_btype varchar2) is
-      cursor c_main is
-         select * from ODBCAPTURE_INSTALLATION_LOGS
-          where build_type = in_btype;
-      b_main   c_main%ROWTYPE;
+      TYPE c_main_ref_cur is REF CURSOR;
+      c_main           c_main_ref_cur;
+      b_max_load_dtm   date;
    begin
-      open c_main;
-      fetch c_main into b_main;
-      if c_main%NOTFOUND
+      open c_main for 'select max(load_dtm) max_load_dtm'  ||
+                      ' from ODBCAPTURE_INSTALLATION_LOGS' ||
+                      ' where build_type = ''' || in_btype || '''';
+      fetch c_main into b_max_load_dtm;
+      if b_max_load_dtm IS NULL
       then
          dbms_output.put_line('WARNING: Prerequisite BUILD_TYPE "' || in_btype ||
                               '" not found in ODBCAPTURE_INSTALLATION_LOGS table.');
+      else
+         dbms_output.put_line(' -) "' || in_btype || '" last loaded on ' ||
+                               to_char(b_max_load_dtm, 'DD-Mon-YYYY HH24:MI:SS') );
+      end if;
+      close c_main;
+   exception when others then
+      if SQLCODE = -942
+      then
+         dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
+                              in_btype || '".');
       end if;
       close c_main;
    end;
 begin
+   dbms_output.put_line('Prerequisite BUILD_TYPEs for "grbdat"');
    do_it('grbendp');
    do_it('grbjava');
    do_it('grbras');
@@ -13380,21 +13475,33 @@ prompt
 prompt Check for Prerequisite BUILD_TYPEs
 declare
    procedure do_it (in_btype varchar2) is
-      cursor c_main is
-         select * from ODBCAPTURE_INSTALLATION_LOGS
-          where build_type = in_btype;
-      b_main   c_main%ROWTYPE;
+      TYPE c_main_ref_cur is REF CURSOR;
+      c_main           c_main_ref_cur;
+      b_max_load_dtm   date;
    begin
-      open c_main;
-      fetch c_main into b_main;
-      if c_main%NOTFOUND
+      open c_main for 'select max(load_dtm) max_load_dtm'  ||
+                      ' from ODBCAPTURE_INSTALLATION_LOGS' ||
+                      ' where build_type = ''' || in_btype || '''';
+      fetch c_main into b_max_load_dtm;
+      if b_max_load_dtm IS NULL
       then
          dbms_output.put_line('WARNING: Prerequisite BUILD_TYPE "' || in_btype ||
                               '" not found in ODBCAPTURE_INSTALLATION_LOGS table.');
+      else
+         dbms_output.put_line(' -) "' || in_btype || '" last loaded on ' ||
+                               to_char(b_max_load_dtm, 'DD-Mon-YYYY HH24:MI:SS') );
+      end if;
+      close c_main;
+   exception when others then
+      if SQLCODE = -942
+      then
+         dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
+                              in_btype || '".');
       end if;
       close c_main;
    end;
 begin
+   dbms_output.put_line('Prerequisite BUILD_TYPEs for "grbtst"');
    do_it('grbendp');
    do_it('grbjava');
    do_it('grbras');
@@ -13546,10 +13653,12 @@ prompt Running: grbtst ODBCAPTURE/GRBTST__NAME.cldr
 prompt ============================================================
 prompt Translating ../grbtst/ODBCAPTURE/GRBTST__NAME.csv to 'INSERT INTO'
 
-insert into "ODBCAPTURE"."GRBTST__NAME" ("C1","ID")
+-- Manually Fixed by DDieterich
+insert into "ODBCAPTURE"."GRBTST_$NAME" ("C1","ID")
   values ('5',5);
 
-insert into "ODBCAPTURE"."GRBTST__NAME" ("C1","ID")
+-- Manually Fixed by DDieterich
+insert into "ODBCAPTURE"."GRBTST_$NAME" ("C1","ID")
   values ('15',15);
 
 
@@ -13558,23 +13667,273 @@ prompt Running: grbtst ODBCAPTURE/GRBTST_IMAGE.cldr
 prompt ============================================================
 prompt Translating ../grbtst/ODBCAPTURE/GRBTST_IMAGE.csv to 'INSERT INTO'
 
+-- Manually Fixed by DDieterich
 insert into "ODBCAPTURE"."GRBTST_IMAGE" ("ID","IMAGE")
-  values (1,'(Base64 with Linefeeds));
+  values (1,'(Base64 with Linefeeds)
+iVBORw0KGgoAAAANSUhEUgAAAY0AAAFTCAMAAADyTaC8AAAAA3NCSVQICAjb4U/g
+AAABtlBMVEUAAAD7+O1/sn8AAP9QUFCurq6ZMzOGhoaZAJkAZgCpUlLq1ZXUqSfM
+mQAnJydpaf/Vqqp+fn5YWP9CRT9wemLDh4frzevevFhja1jMzMypKanX1/+JCIkn
+fScnJ/+OnHnjueOlpaWxv53Jeclre2PX19f379cHBwebrIM9iz1Ym1i8eXnt9O19
+iWyVv5V1dXU9PT3v39+Ojo7dq93mzc3lzH/v7++3xKTMmZmVlf+rq/+zQLOxZGTX
+59f79furzasHagecOTnV3coREf9YWFjB2sFqamoRERHz5sFLT0Xt7f/UlNQ9Pf9p
+pWnf39/Bwf/PoBF/f//dvLz39/eGk3Ln5+fu3atocFsHB/+kG6RfZlX8+fnYsT2e
+np6ltY66UrqgQUERcBFQVUnz4fPhw2nnwuf48fGSoXy9yKu+vr5bYlLNnAf9/Pdj
+Y2PJ07v39/+VlZX57/lER0ARABHn6+HMf8xsdV+tMq28WLyRBJHXnNf15/VMUEfD
+zrTx2/Hqy+rt8OhYXk+rupVJTURTWUzP2MPPhs/////b4tL39+/lveWwOrDgsuC/
+YL/Zodm2SLbb4dGnI6eFtRMPAAAACXBIWXMAAAsSAAALEgHS3X78AAAAFnRFWHRD
+cmVhdGlvbiBUaW1lADAxLzIzLzA3TruF+QAAAB90RVh0U29mdHdhcmUATWFjcm9t
+ZWRpYSBGaXJld29ya3MgOLVo0ngAABW6SURBVHic7Z0LWxvXmYAFqhRGloRFTKFW
+pXabR8hg4kpZI2MWFQgCeTHUgGJCjWtD7OBwSY2bi7Ob7iZptzlbb9rs/uM915kz
+oxlJI43Qh/heP5bmcmbmzPfqXGbQ0YQIAodQrzOAaKANSKANSKANSKANSKANSKAN
+SKANSKANSECxkRm0pjcMo+yZcGEqM7lC38sbGX2b/gCgjRWjRoinj8Vb5QWD6pjc
+KK8cZM4nc+cGKBu1MvVABlmMG5QOWnikhbLR/YydK5BsbBgZY4qG2DAyGfriXQ8p
+G4NYNroDtbGySN+NaWfZMAS6G2OBvW4sTp5zJrsOIBuTk+Vy+WCweU0lm4vp8uTU
++WTu3ABkI7OYoSw4bZQFNSvpgTlJS1JfAcjG5IaYdNjICBbUvN6RatjWX0AA2Vhg
+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
+');
 
+-- Manually Fixed by DDieterich
 insert into "ODBCAPTURE"."GRBTST_IMAGE" ("ID","IMAGE")
-  values (iVBORw0KGgoAAAANSUhEUgAAAY0AAAFTCAMAAADyTaC8AAAAA3NCSVQICAjb4U/gAAABtlBMVEUAAAD7+O1/sn8AAP9QUFCurq6ZMzOGhoaZAJkAZgCpUlLq1ZXUqSfMmQAnJydpaf/Vqqp+fn5YWP9CRT9wemLDh4frzevevFhja1jMzMypKanX1/+JCIknfScnJ/+OnHnjueOlpaWxv53Jeclre2PX19f379cHBwebrIM9iz1Ym1i8eXnt9O19iWyVv5V1dXU9PT3v39+Ojo7dq93mzc3lzH/v7++3xKTMmZmVlf+rq/+zQLOxZGTX59f79furzasHagecOTnV3coREf9YWFjB2sFqamoRERHz5sFLT0Xt7f/UlNQ9Pf9ppWnf39/Bwf/PoBF/f//dvLz39/eGk3Ln5+fu3atocFsHB/+kG6RfZlX8+fnYsT2enp6ltY66UrqgQUERcBFQVUnz4fPhw2nnwuf48fGSoXy9yKu+vr5bYlLNnAf9/PdjY2PJ07v39/+VlZX57/lER0ARABHn6+HMf8xsdV+tMq28WLyRBJHXnNf15/VMUEfDzrTx2/Hqy+rt8OhYXk+rupVJTURTWUzP2MPPhs/////b4tL39+/lveWwOrDgsuC/YL/Zodm2SLbb4dGnI6eFtRMPAAAACXBIWXMAAAsSAAALEgHS3X78AAAAFnRFWHRDcmVhdGlvbiBUaW1lADAxLzIzLzA3TruF+QAAAB90RVh0U29mdHdhcmUATWFjcm9tZWRpYSBGaXJld29ya3MgOLVo0ngAABW6SURBVHic7Z0LWxvXmYAFqhRGloRFTKFWpXabR8hg4kpZI2MWFQgCeTHUgGJCjWtD7OBwSY2bi7Ob7iZptzlbb9rs/uM915kzoxlJI43Qh/heP5bmcmbmzPfqXGbQ0YQIAodQrzOAaKANSKANSKANSKANSKANSKANSKANSKANSECxkRm0pjcMo+yZcGEqM7lC38sbGX2b/gCgjRWjRoinj8Vb5QWD6pjcKK8cZM4nc+cGKBu1MvVABlmMG5QOWnikhbLR/YydK5BsbBgZY4qG2DAyGfriXQ8pG4NYNroDtbGySN+NaWfZMAS6G2OBvW4sTp5zJrsOIBuTk+Vy+WCweU0lm4vp8uTU+WTu3ABkI7OYoSw4bZQFNSvpgTlJS1JfAcjG5IaYdNjICBbUvN6RatjWX0AA2Vhg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);
-
-insert into "ODBCAPTURE"."GRBTST_IMAGE" ("ID","IMAGE")
-  values (');
-
-insert into "ODBCAPTURE"."GRBTST_IMAGE" ("ID","IMAGE")
-  values (2,'(Base64 with Linefeeds));
-
-insert into "ODBCAPTURE"."GRBTST_IMAGE" ("ID","IMAGE")
-  values (iVBORw0KGgoAAAANSUhEUgAAAY0AAAFTCAMAAADyTaC8AAAAA3NCSVQICAjb4U/gAAABtlBMVEUAAAD7+O1/sn8AAP9QUFCurq6ZMzOGhoaZAJkAZgCpUlLq1ZXUqSfMmQAnJydpaf/Vqqp+fn5YWP9CRT9wemLDh4frzevevFhja1jMzMypKanX1/+JCIknfScnJ/+OnHnjueOlpaWxv53Jeclre2PX19f379cHBwebrIM9iz1Ym1i8eXnt9O19iWyVv5V1dXU9PT3v39+Ojo7dq93mzc3lzH/v7++3xKTMmZmVlf+rq/+zQLOxZGTX59f79furzasHagecOTnV3coREf9YWFjB2sFqamoRERHz5sFLT0Xt7f/UlNQ9Pf9ppWnf39/Bwf/PoBF/f//dvLz39/eGk3Ln5+fu3atocFsHB/+kG6RfZlX8+fnYsT2enp6ltY66UrqgQUERcBFQVUnz4fPhw2nnwuf48fGSoXy9yKu+vr5bYlLNnAf9/PdjY2PJ07v39/+VlZX57/lER0ARABHn6+HMf8xsdV+tMq28WLyRBJHXnNf15/VMUEfDzrTx2/Hqy+rt8OhYXk+rupVJTURTWUzP2MPPhs/////b4tL39+/lveWwOrDgsuC/YL/Zodm2SLbb4dGnI6eFtRMPAAAACXBIWXMAAAsSAAALEgHS3X78AAAAFnRFWHRDcmVhdGlvbiBUaW1lADAxLzIzLzA3TruF+QAAAB90RVh0U29mdHdhcmUATWFjcm9tZWRpYSBGaXJld29ya3MgOLVo0ngAABW6SURBVHic7Z0LWxvXmYAFqhRGloRFTKFWpXabR8hg4kpZI2MWFQgCeTHUgGJCjWtD7OBwSY2bi7Ob7iZptzlbb9rs/uM915kzoxlJI43Qh/heP5bmcmbmzPfqXGbQ0YQIAodQrzOAaKANSKANSKANSKANSKANSKANSKANSKANSECxkRm0pjcMo+yZcGEqM7lC38sbGX2b/gCgjRWjRoinj8Vb5QWD6pjcKK8cZM4nc+cGKBu1MvVABlmMG5QOWnikhbLR/YydK5BsbBgZY4qG2DAyGfriXQ8pG4NYNroDtbGySN+NaWfZMAS6G2OBvW4sTp5zJrsOIBuTk+Vy+WCweU0lm4vp8uTU+WTu3ABkI7OYoSw4bZQFNSvpgTlJS1JfAcjG5IaYdNjICBbUvN6RatjWX0AA2Vhg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);
-
-insert into "ODBCAPTURE"."GRBTST_IMAGE" ("ID","IMAGE")
-  values (');
+  values (2,'(Base64 with Linefeeds)
+iVBORw0KGgoAAAANSUhEUgAAAY0AAAFTCAMAAADyTaC8AAAAA3NCSVQICAjb4U/g
+AAABtlBMVEUAAAD7+O1/sn8AAP9QUFCurq6ZMzOGhoaZAJkAZgCpUlLq1ZXUqSfM
+mQAnJydpaf/Vqqp+fn5YWP9CRT9wemLDh4frzevevFhja1jMzMypKanX1/+JCIkn
+fScnJ/+OnHnjueOlpaWxv53Jeclre2PX19f379cHBwebrIM9iz1Ym1i8eXnt9O19
+iWyVv5V1dXU9PT3v39+Ojo7dq93mzc3lzH/v7++3xKTMmZmVlf+rq/+zQLOxZGTX
+59f79furzasHagecOTnV3coREf9YWFjB2sFqamoRERHz5sFLT0Xt7f/UlNQ9Pf9p
+pWnf39/Bwf/PoBF/f//dvLz39/eGk3Ln5+fu3atocFsHB/+kG6RfZlX8+fnYsT2e
+np6ltY66UrqgQUERcBFQVUnz4fPhw2nnwuf48fGSoXy9yKu+vr5bYlLNnAf9/Pdj
+Y2PJ07v39/+VlZX57/lER0ARABHn6+HMf8xsdV+tMq28WLyRBJHXnNf15/VMUEfD
+zrTx2/Hqy+rt8OhYXk+rupVJTURTWUzP2MPPhs/////b4tL39+/lveWwOrDgsuC/
+YL/Zodm2SLbb4dGnI6eFtRMPAAAACXBIWXMAAAsSAAALEgHS3X78AAAAFnRFWHRD
+cmVhdGlvbiBUaW1lADAxLzIzLzA3TruF+QAAAB90RVh0U29mdHdhcmUATWFjcm9t
+ZWRpYSBGaXJld29ya3MgOLVo0ngAABW6SURBVHic7Z0LWxvXmYAFqhRGloRFTKFW
+pXabR8hg4kpZI2MWFQgCeTHUgGJCjWtD7OBwSY2bi7Ob7iZptzlbb9rs/uM915kz
+oxlJI43Qh/heP5bmcmbmzPfqXGbQ0YQIAodQrzOAaKANSKANSKANSKANSKANSKAN
+SKANSKANSECxkRm0pjcMo+yZcGEqM7lC38sbGX2b/gCgjRWjRoinj8Vb5QWD6pjc
+KK8cZM4nc+cGKBu1MvVABlmMG5QOWnikhbLR/YydK5BsbBgZY4qG2DAyGfriXQ8p
+G4NYNroDtbGySN+NaWfZMAS6G2OBvW4sTp5zJrsOIBuTk+Vy+WCweU0lm4vp8uTU
++WTu3ABkI7OYoSw4bZQFNSvpgTlJS1JfAcjG5IaYdNjICBbUvN6RatjWX0AA2Vhg
+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
+');
 
 
 prompt ============================================================
@@ -13725,21 +14084,33 @@ prompt
 prompt Check for Prerequisite BUILD_TYPEs
 declare
    procedure do_it (in_btype varchar2) is
-      cursor c_main is
-         select * from ODBCAPTURE_INSTALLATION_LOGS
-          where build_type = in_btype;
-      b_main   c_main%ROWTYPE;
+      TYPE c_main_ref_cur is REF CURSOR;
+      c_main           c_main_ref_cur;
+      b_max_load_dtm   date;
    begin
-      open c_main;
-      fetch c_main into b_main;
-      if c_main%NOTFOUND
+      open c_main for 'select max(load_dtm) max_load_dtm'  ||
+                      ' from ODBCAPTURE_INSTALLATION_LOGS' ||
+                      ' where build_type = ''' || in_btype || '''';
+      fetch c_main into b_max_load_dtm;
+      if b_max_load_dtm IS NULL
       then
          dbms_output.put_line('WARNING: Prerequisite BUILD_TYPE "' || in_btype ||
                               '" not found in ODBCAPTURE_INSTALLATION_LOGS table.');
+      else
+         dbms_output.put_line(' -) "' || in_btype || '" last loaded on ' ||
+                               to_char(b_max_load_dtm, 'DD-Mon-YYYY HH24:MI:SS') );
+      end if;
+      close c_main;
+   exception when others then
+      if SQLCODE = -942
+      then
+         dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
+                              in_btype || '".');
       end if;
       close c_main;
    end;
 begin
+   dbms_output.put_line('Prerequisite BUILD_TYPEs for "grbtjsn"');
    do_it('grbendp');
    do_it('grbjava');
    do_it('grbras');
@@ -13796,215 +14167,84 @@ prompt Running: grbtjsn ODBCAPTURE/GRBTST_JSON.cldr
 prompt ============================================================
 prompt Translating ../grbtjsn/ODBCAPTURE/GRBTST_JSON.csv to 'INSERT INTO'
 
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (1,'[);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (100,NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (500,NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (300,NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (200,NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (400);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (]');
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (2,'{);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("color" : "red",NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("value" : "#f00");
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (}');
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (3,'{);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("id" : "0001",NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("type" : "donut",NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("name" : "Cake",NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("ppu" : 0.55,NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("batters" :);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ({);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("batter" :);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ([);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ({);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("id" : "1001",NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("type" : "Regular");
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (},NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ({);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("id" : "1002",NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("type" : "Chocolate");
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (},NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ({);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("id" : "1003",NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("type" : "Blueberry");
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (},NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ({);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("id" : "1004",NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("type" : "Devil''s Food");
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (});
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (]);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (},NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("topping" :);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ([);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ({);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("id" : "5001",NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("type" : "None");
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (},NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ({);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("id" : "5002",NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("type" : "Glazed");
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (},NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ({);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("id" : "5005",NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("type" : "Sugar");
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (},NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ({);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("id" : "5007",NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("type" : "Powdered Sugar");
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (},NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ({);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("id" : "5006",NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("type" : "Chocolate with Sprinkles");
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (},NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ({);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("id" : "5003",NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("type" : "Chocolate");
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (},NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ({);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("id" : "5004",NULL);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values ("type" : "Maple");
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (});
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (]);
-
-insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (}');
+-- Manually Fixed by DDieterich
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (1,'"[
+  100,
+  500,
+  300,
+  200,
+  400
+]');
+
+-- Manually Fixed by DDieterich
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (2,'{
+  "color" : "red",
+  "value" : "#f00"
+}');
+
+-- Manually Fixed by DDieterich
+insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
+  values (3,'{
+  "id" : "0001",
+  "type" : "donut",
+  "name" : "Cake",
+  "ppu" : 0.55,
+  "batters" :
+  {
+    "batter" :
+    [
+      {
+        "id" : "1001",
+        "type" : "Regular"
+      },
+      {
+        "id" : "1002",
+        "type" : "Chocolate"
+      },
+      {
+        "id" : "1003",
+        "type" : "Blueberry"
+      },
+      {
+        "id" : "1004",
+        "type" : "Devil''s Food"
+      }
+    ]
+  },
+  "topping" :
+  [
+    {
+      "id" : "5001",
+      "type" : "None"
+    },
+    {
+      "id" : "5002",
+      "type" : "Glazed"
+    },
+    {
+      "id" : "5005",
+      "type" : "Sugar"
+    },
+    {
+      "id" : "5007",
+      "type" : "Powdered Sugar"
+    },
+    {
+      "id" : "5006",
+      "type" : "Chocolate with Sprinkles"
+    },
+    {
+      "id" : "5003",
+      "type" : "Chocolate"
+    },
+    {
+      "id" : "5004",
+      "type" : "Maple"
+    }
+  ]
+}');
 
 
 ----------------------------------------
@@ -14131,21 +14371,33 @@ prompt
 prompt Check for Prerequisite BUILD_TYPEs
 declare
    procedure do_it (in_btype varchar2) is
-      cursor c_main is
-         select * from ODBCAPTURE_INSTALLATION_LOGS
-          where build_type = in_btype;
-      b_main   c_main%ROWTYPE;
+      TYPE c_main_ref_cur is REF CURSOR;
+      c_main           c_main_ref_cur;
+      b_max_load_dtm   date;
    begin
-      open c_main;
-      fetch c_main into b_main;
-      if c_main%NOTFOUND
+      open c_main for 'select max(load_dtm) max_load_dtm'  ||
+                      ' from ODBCAPTURE_INSTALLATION_LOGS' ||
+                      ' where build_type = ''' || in_btype || '''';
+      fetch c_main into b_max_load_dtm;
+      if b_max_load_dtm IS NULL
       then
          dbms_output.put_line('WARNING: Prerequisite BUILD_TYPE "' || in_btype ||
                               '" not found in ODBCAPTURE_INSTALLATION_LOGS table.');
+      else
+         dbms_output.put_line(' -) "' || in_btype || '" last loaded on ' ||
+                               to_char(b_max_load_dtm, 'DD-Mon-YYYY HH24:MI:SS') );
+      end if;
+      close c_main;
+   exception when others then
+      if SQLCODE = -942
+      then
+         dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
+                              in_btype || '".');
       end if;
       close c_main;
    end;
 begin
+   dbms_output.put_line('Prerequisite BUILD_TYPEs for "grbtsdo"');
    do_it('grbendp');
    do_it('grbjava');
    do_it('grbras');
@@ -14366,21 +14618,33 @@ prompt
 prompt Check for Prerequisite BUILD_TYPEs
 declare
    procedure do_it (in_btype varchar2) is
-      cursor c_main is
-         select * from ODBCAPTURE_INSTALLATION_LOGS
-          where build_type = in_btype;
-      b_main   c_main%ROWTYPE;
+      TYPE c_main_ref_cur is REF CURSOR;
+      c_main           c_main_ref_cur;
+      b_max_load_dtm   date;
    begin
-      open c_main;
-      fetch c_main into b_main;
-      if c_main%NOTFOUND
+      open c_main for 'select max(load_dtm) max_load_dtm'  ||
+                      ' from ODBCAPTURE_INSTALLATION_LOGS' ||
+                      ' where build_type = ''' || in_btype || '''';
+      fetch c_main into b_max_load_dtm;
+      if b_max_load_dtm IS NULL
       then
          dbms_output.put_line('WARNING: Prerequisite BUILD_TYPE "' || in_btype ||
                               '" not found in ODBCAPTURE_INSTALLATION_LOGS table.');
+      else
+         dbms_output.put_line(' -) "' || in_btype || '" last loaded on ' ||
+                               to_char(b_max_load_dtm, 'DD-Mon-YYYY HH24:MI:SS') );
+      end if;
+      close c_main;
+   exception when others then
+      if SQLCODE = -942
+      then
+         dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
+                              in_btype || '".');
       end if;
       close c_main;
    end;
 begin
+   dbms_output.put_line('Prerequisite BUILD_TYPEs for "grbtctx"');
    do_it('grbendp');
    do_it('grbjava');
    do_it('grbras');
@@ -14594,21 +14858,33 @@ prompt
 prompt Check for Prerequisite BUILD_TYPEs
 declare
    procedure do_it (in_btype varchar2) is
-      cursor c_main is
-         select * from ODBCAPTURE_INSTALLATION_LOGS
-          where build_type = in_btype;
-      b_main   c_main%ROWTYPE;
+      TYPE c_main_ref_cur is REF CURSOR;
+      c_main           c_main_ref_cur;
+      b_max_load_dtm   date;
    begin
-      open c_main;
-      fetch c_main into b_main;
-      if c_main%NOTFOUND
+      open c_main for 'select max(load_dtm) max_load_dtm'  ||
+                      ' from ODBCAPTURE_INSTALLATION_LOGS' ||
+                      ' where build_type = ''' || in_btype || '''';
+      fetch c_main into b_max_load_dtm;
+      if b_max_load_dtm IS NULL
       then
          dbms_output.put_line('WARNING: Prerequisite BUILD_TYPE "' || in_btype ||
                               '" not found in ODBCAPTURE_INSTALLATION_LOGS table.');
+      else
+         dbms_output.put_line(' -) "' || in_btype || '" last loaded on ' ||
+                               to_char(b_max_load_dtm, 'DD-Mon-YYYY HH24:MI:SS') );
+      end if;
+      close c_main;
+   exception when others then
+      if SQLCODE = -942
+      then
+         dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
+                              in_btype || '".');
       end if;
       close c_main;
    end;
 begin
+   dbms_output.put_line('Prerequisite BUILD_TYPEs for "grbtdat"');
    do_it('grbendp');
    do_it('grbjava');
    do_it('grbras');

@@ -3169,8 +3169,7 @@ begin
             then
                fh2.script_put_line(fh,
                   '@dbi.sql "' || fh2.sf_aa(g_build_type)(buff.element_seq)(file_id).schema_name ||
-                           '/' || fh2.sf_aa(g_build_type)(buff.element_seq)(file_id).filename    ||
-                           '" "" ""'                                                             );
+                           '/' || fh2.sf_aa(g_build_type)(buff.element_seq)(file_id).filename    || '"' );
             end if;
             exit when file_id = fh2.sf_aa(g_build_type)(buff.element_seq).LAST;
             file_id := fh2.sf_aa(g_build_type)(buff.element_seq).NEXT(file_id);
@@ -3234,8 +3233,7 @@ begin
             then
                fh2.script_put_line(fh,
                   '@dbi.sql "' || fh2.sf_aa(g_build_type)(buff.element_seq)(file_id).schema_name ||
-                           '/' || fh2.sf_aa(g_build_type)(buff.element_seq)(file_id).filename    ||
-                           '" "" ""'                                                             );
+                           '/' || fh2.sf_aa(g_build_type)(buff.element_seq)(file_id).filename    || '"' );
             end if;
             exit when file_id = fh2.sf_aa(g_build_type)(buff.element_seq).LAST;
             file_id := fh2.sf_aa(g_build_type)(buff.element_seq).NEXT(file_id);
