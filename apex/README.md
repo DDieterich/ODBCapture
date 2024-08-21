@@ -20,7 +20,11 @@ OCI_APEX_install.sql    | Converted Source Code Script
 1. Run BASH
 2. "cd" to this folder
 3. ./OCI_APEX_conversion.sh
-4. Review OCI_APEX_install.sql
+4. Review/Modify `OCI_APEX_install.sql`:
+    * Translating ../grbtst/ODBCAPTURE/GRBTST__NAME.csv
+    * Translating ../grbtst/ODBCAPTURE/GRBTST_IMAGE.csv
+    * Translating ../grbtjsn/ODBCAPTURE/GRBTST_JSON.csv
+    * Translating ../grbtsdo/ODBCTEST/SDO_COLA_MARKETS.csv
 
 ### Login to APX01 Database Actions on Oracle Cloud
 1. Go to [Oracle MyCloud](https://myservices-ddieterich.console.oraclecloud.com/mycloud/cloudportal/gettingStarted)
@@ -48,6 +52,17 @@ OCI_APEX_install.sql    | Converted Source Code Script
 3. Click on `Download Script Output`
 4. Save to file `../builds/OCI_APEX235/OCI_APEX_install.txt`
 5. Review `../builds/OCI_APEX235/OCI_APEX_install.txt`
+6. Manually Run Final Processing
+    * ../grbsrc/set_user_authentication.sql
+    * ../grbtst/RAS_Admin_ODBCTEST.racl
+    * ../grbtst/set_user_authentication.sql
+    * ../grbtsdo/COLA_SPATIAL_IDX.tidx
+    * ../grb_linked_install_scripts/fix_invalid_public_synonyms.sql
+    * ../grb_linked_install_scripts/compile_all.sql
+    * ../grb_linked_install_scripts/alter_foreign_keys.sql ENABLE
+    * ../grb_linked_install_scripts/alter_triggers.sql ENABLE
+    * ../grb_linked_install_scripts/update_id_sequences.sql
+
 
 ### Notes
 

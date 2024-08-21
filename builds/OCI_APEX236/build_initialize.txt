@@ -58,15 +58,15 @@ Elapsed: 00:00:00.036
 Drop Schema
 
 
--- 2024-08-20 23:22:35 --
+-- 2024-08-21 03:08:00 --
 drop user "ODBCAPTURE" cascade
--- 2024-08-20 23:22:38 --
+-- 2024-08-21 03:08:02 --
 drop user "ODBCTEST" cascade
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:04.136
+Elapsed: 00:00:02.587
 
 
 
@@ -75,10 +75,10 @@ Elapsed: 00:00:04.136
 Drop Role
 
 
--- 2024-08-20 23:22:39 --
+-- 2024-08-21 03:08:03 --
 drop role "GRB_TEST_ROLE"
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.064
+Elapsed: 00:00:00.031

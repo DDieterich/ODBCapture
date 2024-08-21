@@ -13667,7 +13667,7 @@ prompt Running: grbtst ODBCAPTURE/GRBTST_IMAGE.cldr
 prompt ============================================================
 prompt Translating ../grbtst/ODBCAPTURE/GRBTST_IMAGE.csv to 'INSERT INTO'
 
--- Manually Fixed by DDieterich
+-- Need to Use "DBMS_LOB.CONVERTTOBLOB" on IMAGE data
 insert into "ODBCAPTURE"."GRBTST_IMAGE" ("ID","IMAGE")
   values (1,'(Base64 with Linefeeds)
 iVBORw0KGgoAAAANSUhEUgAAAY0AAAFTCAMAAADyTaC8AAAAA3NCSVQICAjb4U/g
@@ -13801,7 +13801,7 @@ CbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQB
 CbQBCbQBCbQBCbQBCbQBif8HPdLWAOwjtc0AAAAASUVORK5CYII=
 ');
 
--- Manually Fixed by DDieterich
+-- Need to Use "DBMS_LOB.CONVERTTOBLOB" on IMAGE data
 insert into "ODBCAPTURE"."GRBTST_IMAGE" ("ID","IMAGE")
   values (2,'(Base64 with Linefeeds)
 iVBORw0KGgoAAAANSUhEUgAAAY0AAAFTCAMAAADyTaC8AAAAA3NCSVQICAjb4U/g
@@ -14169,7 +14169,7 @@ prompt Translating ../grbtjsn/ODBCAPTURE/GRBTST_JSON.csv to 'INSERT INTO'
 
 -- Manually Fixed by DDieterich
 insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
-  values (1,'"[
+  values (1,'[
   100,
   500,
   300,
@@ -14457,17 +14457,21 @@ prompt Running: grbtsdo ODBCTEST/SDO_COLA_MARKETS.cldr
 prompt ============================================================
 prompt Translating ../grbtsdo/ODBCTEST/SDO_COLA_MARKETS.csv to 'INSERT INTO'
 
+-- The SHAPE column loads data as COLUMN "OBJECT TREAT AS ST_GEOMETRY"
 insert into "ODBCTEST"."SDO_COLA_MARKETS" ("MKT_ID","NAME","SHAPE")
-  values (1,'cola_a',2003;;;;;1;1003;31;1;5;7);
+  values (1,'cola_a','2003;;;;;1;1003;31;1;5;7');
 
+-- The SHAPE column loads data as COLUMN "OBJECT TREAT AS ST_GEOMETRY"
 insert into "ODBCTEST"."SDO_COLA_MARKETS" ("MKT_ID","NAME","SHAPE")
-  values (2,'cola_b',2003;;;;;1;1003;15;1;8;1;8;6;5;7;5;1);
+  values (2,'cola_b','2003;;;;;1;1003;15;1;8;1;8;6;5;7;5;1');
 
+-- The SHAPE column loads data as COLUMN "OBJECT TREAT AS ST_GEOMETRY"
 insert into "ODBCTEST"."SDO_COLA_MARKETS" ("MKT_ID","NAME","SHAPE")
-  values (3,'cola_c',2003;;;;;1;1003;13;3;6;3;6;5;4;5;3;3);
+  values (3,'cola_c','2003;;;;;1;1003;13;3;6;3;6;5;4;5;3;3');
 
+-- The SHAPE column loads data as COLUMN "OBJECT TREAT AS ST_GEOMETRY"
 insert into "ODBCTEST"."SDO_COLA_MARKETS" ("MKT_ID","NAME","SHAPE")
-  values (4,'cola_d',2003;;;;;1;1003;48;7;10;9;8;11);
+  values (4,'cola_d','2003;;;;;1;1003;48;7;10;9;8;11');
 
 
 ----------------------------------------

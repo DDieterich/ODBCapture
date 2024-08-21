@@ -64,4 +64,4 @@ Each folder in the "builds" folder contains a "build.sh" script.  This script ex
     5. Use "diff" to compare source folders with unzipped folders.
     6. Use "grep" to show filenames from "diff_report.txt"
 
-[^1]: APEX Service/Instance does not allow Oracle client connections. All build scripts are adapted for use in APEX web pages.
+[^1]: APEX Service/Instance does not allow Oracle client connections. Use the build script utility in the "apex" folder that is adapted for use in Oracle's APEX Service/Instance on OCI.
