@@ -6,7 +6,7 @@
 #   1) ${ZIP_FILE_ROOT} - Root name of Zip file (ex. "capture_files")
 #
 
-ZIP_FILE_ROOT="${2:-temp_files}"
+ZIP_FILE_ROOT="${1:-temp_files}"
 echo ""
 
 echo "Setup and Unzip"

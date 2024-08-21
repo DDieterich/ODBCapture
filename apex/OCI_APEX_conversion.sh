@@ -46,19 +46,28 @@ do
                echo "  values (${CSV_LINE});"
                echo ""
             done
+         elif [ "${DBI_FILENAME: -4}" = '.sql' ]
+         then
+            grep -Ev -e '^spool ' \
+                     -e '^set linesize ' \
+                     -e '^set trimspool ' \
+                     -e '^set termout ' \
+                     -e '^set sqlprefix ' \
+                     -e '^define INSTALL_SYSTEM_CONNECT[ =]' \
+                     -e '^define TOP_PDB_SYSTEM[ =]' \
+               < "../${INSTALL_SELECT}/${DBI_FILENAME}"
          else
-            cat "../${INSTALL_SELECT}/${DBI_FILENAME}"
+            cat < "../${INSTALL_SELECT}/${DBI_FILENAME}"
          fi
       else
-         echo "${buff}" 
+         echo "${buff}" |
+            grep -Ev -e '^spool ' \
+                     -e '^set linesize ' \
+                     -e '^set trimspool ' \
+                     -e '^set termout ' \
+                     -e '^set sqlprefix ' \
+                     -e '^define INSTALL_SYSTEM_CONNECT[ =]' \
+                     -e '^define TOP_PDB_SYSTEM[ =]'
       fi
-   done |
-      grep -Ev -e '^spool ' \
-               -e '^set linesize ' \
-               -e '^set trimspool ' \
-               -e '^set termout ' \
-               -e '^set sqlprefix ' \
-               -e '^define INSTALL_SYSTEM_CONNECT[ =]' \
-               -e '^define TOP_PDB_SYSTEM[ =]' |
-      sed -e '1,$s/^[@]/--@/1' >> "${SQL_SCRIPT}"
+   done | sed -e '1,$s/^[@]/--@/1' >> "${SQL_SCRIPT}"
 done
