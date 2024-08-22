@@ -7,7 +7,7 @@ ODBCAPTURE
 ODBCTEST   
 
 
-Elapsed: 00:00:00.039
+Elapsed: 00:00:00.042
 2 rows selected.
 
 
@@ -27,7 +27,7 @@ Elapsed: 00:00:00.013
 
 0 rows deleted.
 
-Elapsed: 00:00:00.041
+Elapsed: 00:00:00.037
 
 
 
@@ -49,7 +49,7 @@ ORA-46215: The Real Application Security (RAS or XS) object by the name
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.036
+Elapsed: 00:00:00.040
 
 
 
@@ -58,15 +58,15 @@ Elapsed: 00:00:00.036
 Drop Schema
 
 
--- 2024-08-21 03:08:00 --
+-- 2024-08-21 21:23:35 --
 drop user "ODBCAPTURE" cascade
--- 2024-08-21 03:08:02 --
+-- 2024-08-21 21:23:38 --
 drop user "ODBCTEST" cascade
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:02.587
+Elapsed: 00:00:04.319
 
 
 
@@ -75,10 +75,10 @@ Elapsed: 00:00:02.587
 Drop Role
 
 
--- 2024-08-21 03:08:03 --
+-- 2024-08-21 21:23:39 --
 drop role "GRB_TEST_ROLE"
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.031
+Elapsed: 00:00:00.069

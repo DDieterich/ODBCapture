@@ -1,0 +1,14 @@
+
+
+
+MUST be run as ODBCTEST
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.123
+
+
+Index "ODBCTEST"."COLA_SPATIAL_IDX" created.
+
+Elapsed: 00:00:00.706

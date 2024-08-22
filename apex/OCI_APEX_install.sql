@@ -275,12 +275,14 @@ declare
       end if;
       close c_main;
    exception when others then
-      if SQLCODE = -942
+      if SQLCODE = -942    -- Table or view does not exist
       then
          dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
                               in_btype || '".');
+         close c_main;
+      else
+         raise;
       end if;
-      close c_main;
    end;
 begin
    dbms_output.put_line('Prerequisite BUILD_TYPEs for "grbsrc"');
@@ -8970,8 +8972,7 @@ begin
             then
                fh2.script_put_line(fh,
                   '@dbi.sql "' || fh2.sf_aa(g_build_type)(buff.element_seq)(file_id).schema_name ||
-                           '/' || fh2.sf_aa(g_build_type)(buff.element_seq)(file_id).filename    ||
-                           '" "" ""'                                                             );
+                           '/' || fh2.sf_aa(g_build_type)(buff.element_seq)(file_id).filename    || '" "" ""' );
             end if;
             exit when file_id = fh2.sf_aa(g_build_type)(buff.element_seq).LAST;
             file_id := fh2.sf_aa(g_build_type)(buff.element_seq).NEXT(file_id);
@@ -9035,8 +9036,7 @@ begin
             then
                fh2.script_put_line(fh,
                   '@dbi.sql "' || fh2.sf_aa(g_build_type)(buff.element_seq)(file_id).schema_name ||
-                           '/' || fh2.sf_aa(g_build_type)(buff.element_seq)(file_id).filename    ||
-                           '" "" ""'                                                             );
+                           '/' || fh2.sf_aa(g_build_type)(buff.element_seq)(file_id).filename    || '" "" ""' );
             end if;
             exit when file_id = fh2.sf_aa(g_build_type)(buff.element_seq).LAST;
             file_id := fh2.sf_aa(g_build_type)(buff.element_seq).NEXT(file_id);
@@ -10042,7 +10042,7 @@ set sqlblanklines on
 
 }';
    -- Can't start a line with an "@"
-   ret_txt := ret_txt || q'{@"&DBI_SCRIPT_NAME." "&DBI_SYSTEM_CONNECT." "" ""
+   ret_txt := ret_txt || q'{@"&DBI_SCRIPT_NAME." "&DBI_SYSTEM_CONNECT."
 set serveroutput on size unlimited format wrapped
 
 set sqlblanklines off
@@ -10090,7 +10090,7 @@ prompt fix_invalid_public_synonyms
 }';
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
-                          q'{/fix_invalid_public_synonyms.sql" "" "" ""
+                          q'{/fix_invalid_public_synonyms.sql"
 
 prompt
 prompt compile_all
@@ -10098,7 +10098,7 @@ prompt compile_all
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/compile_all.sql" "' || get_schema_list(in_build_type) ||
-                          q'{" "" ""
+                          q'{"
 
 prompt
 prompt alter_foreign_keys_ENABLE
@@ -10106,7 +10106,7 @@ prompt alter_foreign_keys_ENABLE
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/alter_foreign_keys.sql" "ENABLE" "' || get_schema_list(in_build_type) ||
-                          q'{" ""
+                          q'{"
 
 prompt
 prompt alter_triggers_ENABLE
@@ -10114,7 +10114,7 @@ prompt alter_triggers_ENABLE
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/alter_triggers.sql" "ENABLE" "' || get_schema_list(in_build_type) ||
-                          q'{" ""
+                          q'{"
 
 prompt
 prompt update_id_sequences
@@ -10122,7 +10122,7 @@ prompt update_id_sequences
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/update_id_sequences.sql" "' || get_schema_list(in_build_type) ||
-                          q'{" "" ""
+                          q'{"
 
 --prompt
 --prompt alter_queues_ENABLE
@@ -10130,7 +10130,7 @@ prompt update_id_sequences
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '--@"' || utl_dir ||
                          '/alter_queues.sql" "ENABLE" "' || get_schema_list(in_build_type) ||
-                          q'{" ""
+                          q'{"
 
 --prompt
 --prompt alter_scheduler_jobs_ENABLE
@@ -10138,10 +10138,11 @@ prompt update_id_sequences
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '--@"' || utl_dir ||
                          '/alter_scheduler_jobs.sql" "ENABLE" "' || get_schema_list(in_build_type) ||
-                          q'{" ""
+                          q'{"
 
 prompt
 prompt Switch Spooling Off
+spool off
 
 }';
    return ret_txt;
@@ -10198,12 +10199,14 @@ declare
       end if;
       close c_main;
    exception when others then
-      if SQLCODE = -942
+      if SQLCODE = -942    -- Table or view does not exist
       then
          dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
                               in_btype || '".');
+         close c_main;
+      else
+         raise;
       end if;
-      close c_main;
    end;
 begin
 }';
@@ -10256,7 +10259,7 @@ begin
       rollback;
       jnk := 1;
    exception when others then
-      if SQLCODE != -942
+      if SQLCODE != -942    -- Table or view does not exist
       then
          dbms_output.put_line('odbcapture_installation_logs table: ' || SQLERRM);
       end if;
@@ -10385,8 +10388,11 @@ prompt Load Installation Files
 
 ----------------------------------------
 -- Setup for Reports
+set linesize 2499
+set trimspool on
 set echo off
 set verify off
+set termout on
 set serveroutput on size unlimited format wrapped
 
 ----------------------------------------
@@ -10396,43 +10402,56 @@ prompt Reporting Summary of Build Type Log Errors
    -- Can't have string declaration with a "/" on a line by itself
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/summarize_install_log.sql" "' || in_build_type ||
-                          q'{" "" ""
+                          q'{"
 
 ----------------------------------------
 prompt
 prompt Reporting Invalid Objects
 set feedback off
+set termout off
+spool list_invalids.csv
 }';
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/list_invalids.sql" "' || get_schema_list(in_build_type) ||
-                          q'{" "" ""
+                          q'{"
+spool off
+set termout on
 set feedback on
 
 ----------------------------------------
 prompt
 prompt Reporting JUnit XML Database Build Status
 set feedback off
+set termout off
+spool db_build_junit_report.xml
 }';
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/db_build_junit_report.sql" "' || get_schema_list(in_build_type) ||
-                          q'{" "" ""
+                          q'{"
+spool off
+set termout on
 set feedback on
 
 ----------------------------------------
 prompt
 prompt Reorting JUnit XML Installation Log
 set feedback off
+set termout off
+spool log_files_junit_report.xml
 }';
    -- Can't start a line with an "@"
    ret_txt := ret_txt || '@"' || utl_dir ||
                          '/log_files_junit_report.sql" "' || in_build_type ||
-                          q'{" "" ""
+                          q'{"
+spool off
+set termout on
 set feedback on
 
 ----------------------------------------
 -- Done with Reports
+set linesize 80
 set verify on}';
    return ret_txt;
 end report_status_sql;
@@ -11198,31 +11217,31 @@ drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
 
 prompt
 prompt fix_invalid_public_synonyms
---@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql" "" "" ""
+--@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql"
 
 prompt
 prompt compile_all
---@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE'" "" ""
+--@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE'"
 
 prompt
 prompt alter_foreign_keys_ENABLE
---@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE'"
 
 prompt
 prompt alter_triggers_ENABLE
---@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE'"
 
 prompt
 prompt update_id_sequences
---@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE'" "" ""
+--@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE'"
 
 --prompt
 --prompt alter_queues_ENABLE
---@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE'"
 
 --prompt
 --prompt alter_scheduler_jobs_ENABLE
---@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE'"
 
 prompt
 prompt Switch Spooling Off
@@ -11352,12 +11371,14 @@ declare
       end if;
       close c_main;
    exception when others then
-      if SQLCODE = -942
+      if SQLCODE = -942    -- Table or view does not exist
       then
          dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
                               in_btype || '".');
+         close c_main;
+      else
+         raise;
       end if;
-      close c_main;
    end;
 begin
    dbms_output.put_line('Prerequisite BUILD_TYPEs for "grbras"');
@@ -11993,31 +12014,31 @@ drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
 
 prompt
 prompt fix_invalid_public_synonyms
---@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql" "" "" ""
+--@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql"
 
 prompt
 prompt compile_all
---@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE'" "" ""
+--@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE'"
 
 prompt
 prompt alter_foreign_keys_ENABLE
---@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE'"
 
 prompt
 prompt alter_triggers_ENABLE
---@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE'"
 
 prompt
 prompt update_id_sequences
---@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE'" "" ""
+--@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE'"
 
 --prompt
 --prompt alter_queues_ENABLE
---@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE'"
 
 --prompt
 --prompt alter_scheduler_jobs_ENABLE
---@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE'"
 
 prompt
 prompt Switch Spooling Off
@@ -12117,12 +12138,14 @@ declare
       end if;
       close c_main;
    exception when others then
-      if SQLCODE = -942
+      if SQLCODE = -942    -- Table or view does not exist
       then
          dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
                               in_btype || '".');
+         close c_main;
+      else
+         raise;
       end if;
-      close c_main;
    end;
 begin
    dbms_output.put_line('Prerequisite BUILD_TYPEs for "grbsdo"');
@@ -12728,31 +12751,31 @@ drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
 
 prompt
 prompt fix_invalid_public_synonyms
---@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql" "" "" ""
+--@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql"
 
 prompt
 prompt compile_all
---@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE'" "" ""
+--@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE'"
 
 prompt
 prompt alter_foreign_keys_ENABLE
---@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE'"
 
 prompt
 prompt alter_triggers_ENABLE
---@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE'"
 
 prompt
 prompt update_id_sequences
---@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE'" "" ""
+--@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE'"
 
 --prompt
 --prompt alter_queues_ENABLE
---@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE'"
 
 --prompt
 --prompt alter_scheduler_jobs_ENABLE
---@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE'"
 
 prompt
 prompt Switch Spooling Off
@@ -12852,12 +12875,14 @@ declare
       end if;
       close c_main;
    exception when others then
-      if SQLCODE = -942
+      if SQLCODE = -942    -- Table or view does not exist
       then
          dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
                               in_btype || '".');
+         close c_main;
+      else
+         raise;
       end if;
-      close c_main;
    end;
 begin
    dbms_output.put_line('Prerequisite BUILD_TYPEs for "grbdat"');
@@ -12997,31 +13022,31 @@ drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
 
 prompt
 prompt fix_invalid_public_synonyms
---@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql" "" "" ""
+--@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql"
 
 prompt
 prompt compile_all
---@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE'" "" ""
+--@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE'"
 
 prompt
 prompt alter_foreign_keys_ENABLE
---@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE'"
 
 prompt
 prompt alter_triggers_ENABLE
---@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE'"
 
 prompt
 prompt update_id_sequences
---@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE'" "" ""
+--@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE'"
 
 --prompt
 --prompt alter_queues_ENABLE
---@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE'"
 
 --prompt
 --prompt alter_scheduler_jobs_ENABLE
---@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE'"
 
 prompt
 prompt Switch Spooling Off
@@ -13493,12 +13518,14 @@ declare
       end if;
       close c_main;
    exception when others then
-      if SQLCODE = -942
+      if SQLCODE = -942    -- Table or view does not exist
       then
          dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
                               in_btype || '".');
+         close c_main;
+      else
+         raise;
       end if;
-      close c_main;
    end;
 begin
    dbms_output.put_line('Prerequisite BUILD_TYPEs for "grbtst"');
@@ -13978,31 +14005,31 @@ drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
 
 prompt
 prompt fix_invalid_public_synonyms
---@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql" "" "" ""
+--@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql"
 
 prompt
 prompt compile_all
---@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE','ODBCTEST'" "" ""
+--@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE','ODBCTEST'"
 
 prompt
 prompt alter_foreign_keys_ENABLE
---@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE','ODBCTEST'" ""
+--@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE','ODBCTEST'"
 
 prompt
 prompt alter_triggers_ENABLE
---@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE','ODBCTEST'" ""
+--@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE','ODBCTEST'"
 
 prompt
 prompt update_id_sequences
---@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE','ODBCTEST'" "" ""
+--@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE','ODBCTEST'"
 
 --prompt
 --prompt alter_queues_ENABLE
---@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE','ODBCTEST'" ""
+--@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE','ODBCTEST'"
 
 --prompt
 --prompt alter_scheduler_jobs_ENABLE
---@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE','ODBCTEST'" ""
+--@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE','ODBCTEST'"
 
 prompt
 prompt Switch Spooling Off
@@ -14102,12 +14129,14 @@ declare
       end if;
       close c_main;
    exception when others then
-      if SQLCODE = -942
+      if SQLCODE = -942    -- Table or view does not exist
       then
          dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
                               in_btype || '".');
+         close c_main;
+      else
+         raise;
       end if;
-      close c_main;
    end;
 begin
    dbms_output.put_line('Prerequisite BUILD_TYPEs for "grbtjsn"');
@@ -14265,31 +14294,31 @@ drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
 
 prompt
 prompt fix_invalid_public_synonyms
---@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql" "" "" ""
+--@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql"
 
 prompt
 prompt compile_all
---@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE'" "" ""
+--@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE'"
 
 prompt
 prompt alter_foreign_keys_ENABLE
---@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE'"
 
 prompt
 prompt alter_triggers_ENABLE
---@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE'"
 
 prompt
 prompt update_id_sequences
---@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE'" "" ""
+--@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE'"
 
 --prompt
 --prompt alter_queues_ENABLE
---@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE'"
 
 --prompt
 --prompt alter_scheduler_jobs_ENABLE
---@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE'"
 
 prompt
 prompt Switch Spooling Off
@@ -14389,12 +14418,14 @@ declare
       end if;
       close c_main;
    exception when others then
-      if SQLCODE = -942
+      if SQLCODE = -942    -- Table or view does not exist
       then
          dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
                               in_btype || '".');
+         close c_main;
+      else
+         raise;
       end if;
-      close c_main;
    end;
 begin
    dbms_output.put_line('Prerequisite BUILD_TYPEs for "grbtsdo"');
@@ -14516,31 +14547,31 @@ drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
 
 prompt
 prompt fix_invalid_public_synonyms
---@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql" "" "" ""
+--@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql"
 
 prompt
 prompt compile_all
---@"../grb_linked_install_scripts/compile_all.sql" "'ODBCTEST'" "" ""
+--@"../grb_linked_install_scripts/compile_all.sql" "'ODBCTEST'"
 
 prompt
 prompt alter_foreign_keys_ENABLE
---@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCTEST'" ""
+--@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCTEST'"
 
 prompt
 prompt alter_triggers_ENABLE
---@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCTEST'" ""
+--@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCTEST'"
 
 prompt
 prompt update_id_sequences
---@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCTEST'" "" ""
+--@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCTEST'"
 
 --prompt
 --prompt alter_queues_ENABLE
---@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCTEST'" ""
+--@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCTEST'"
 
 --prompt
 --prompt alter_scheduler_jobs_ENABLE
---@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCTEST'" ""
+--@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCTEST'"
 
 prompt
 prompt Switch Spooling Off
@@ -14640,12 +14671,14 @@ declare
       end if;
       close c_main;
    exception when others then
-      if SQLCODE = -942
+      if SQLCODE = -942    -- Table or view does not exist
       then
          dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
                               in_btype || '".');
+         close c_main;
+      else
+         raise;
       end if;
-      close c_main;
    end;
 begin
    dbms_output.put_line('Prerequisite BUILD_TYPEs for "grbtctx"');
@@ -14756,31 +14789,31 @@ drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
 
 prompt
 prompt fix_invalid_public_synonyms
---@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql" "" "" ""
+--@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql"
 
 prompt
 prompt compile_all
---@"../grb_linked_install_scripts/compile_all.sql" "'ODBCTEST'" "" ""
+--@"../grb_linked_install_scripts/compile_all.sql" "'ODBCTEST'"
 
 prompt
 prompt alter_foreign_keys_ENABLE
---@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCTEST'" ""
+--@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCTEST'"
 
 prompt
 prompt alter_triggers_ENABLE
---@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCTEST'" ""
+--@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCTEST'"
 
 prompt
 prompt update_id_sequences
---@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCTEST'" "" ""
+--@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCTEST'"
 
 --prompt
 --prompt alter_queues_ENABLE
---@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCTEST'" ""
+--@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCTEST'"
 
 --prompt
 --prompt alter_scheduler_jobs_ENABLE
---@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCTEST'" ""
+--@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCTEST'"
 
 prompt
 prompt Switch Spooling Off
@@ -14880,12 +14913,14 @@ declare
       end if;
       close c_main;
    exception when others then
-      if SQLCODE = -942
+      if SQLCODE = -942    -- Table or view does not exist
       then
          dbms_output.put_line('NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "' ||
                               in_btype || '".');
+         close c_main;
+      else
+         raise;
       end if;
-      close c_main;
    end;
 begin
    dbms_output.put_line('Prerequisite BUILD_TYPEs for "grbtdat"');
@@ -15022,31 +15057,31 @@ drop table TEMP_PUBLICLY_UPDATEABLE_TABLE purge;
 
 prompt
 prompt fix_invalid_public_synonyms
---@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql" "" "" ""
+--@"../grb_linked_install_scripts/fix_invalid_public_synonyms.sql"
 
 prompt
 prompt compile_all
---@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE'" "" ""
+--@"../grb_linked_install_scripts/compile_all.sql" "'ODBCAPTURE'"
 
 prompt
 prompt alter_foreign_keys_ENABLE
---@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_foreign_keys.sql" "ENABLE" "'ODBCAPTURE'"
 
 prompt
 prompt alter_triggers_ENABLE
---@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_triggers.sql" "ENABLE" "'ODBCAPTURE'"
 
 prompt
 prompt update_id_sequences
---@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE'" "" ""
+--@"../grb_linked_install_scripts/update_id_sequences.sql" "'ODBCAPTURE'"
 
 --prompt
 --prompt alter_queues_ENABLE
---@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_queues.sql" "ENABLE" "'ODBCAPTURE'"
 
 --prompt
 --prompt alter_scheduler_jobs_ENABLE
---@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE'" ""
+--@"../grb_linked_install_scripts/alter_scheduler_jobs.sql" "ENABLE" "'ODBCAPTURE'"
 
 prompt
 prompt Switch Spooling Off

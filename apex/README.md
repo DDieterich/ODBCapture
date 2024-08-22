@@ -79,17 +79,14 @@ OCI_APEX_install.sql    | Converted Source Code Script
     
 
 ### Manually Run Final Processing
-1. Open SQL Worksheet as "ODBCAPTURE"
-2. Open and Run Final Processing
+1. Open SQL Worksheet as "ODBCTEST"
+2. Manually Run Final Processing
     * ../grbtst/RAS_Admin_ODBCTEST.racl
-3. Open SQL Worksheet as "ODBCTEST"
-4. Manually Run Final Processing
     * ../grbtsdo/COLA_SPATIAL_IDX.tidx
 
 ### Example DB Capture After Installation
 1. Run these in an SQL Worksheet as "ODBCAPTURE"
     ```
-    set linesize 200
     execute FH2.clear_buffers;
     execute COMMON_UTIL.update_view_tabs;
     execute GRAB_SCRIPTS.all_scripts('grbsrc');

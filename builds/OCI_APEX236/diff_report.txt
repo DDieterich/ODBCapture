@@ -1,0 +1,907 @@
+diff -drywtNW 130 --suppress-common-lines ../../../grbras/ODBCAPTURE/EXPORTING_RAS_DATA.tbl grbras/ODBCAPTURE/EXPORTING_RAS_DATA.tbl
+   (    "SCHEMA" VARCHAR2(128 BYTE) NOT NULL ENABLE,                                                                 |     (    "SCHEMA" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" NO
+        "OBJECT" VARCHAR2(128 BYTE) NOT NULL ENABLE,                                                                 |          "OBJECT" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" NO
+        "POLICY_OWNER" VARCHAR2(128 BYTE) NOT NULL ENABLE,                                                                 |          "POLICY_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_CO
+        "POLICY" VARCHAR2(128 BYTE) NOT NULL ENABLE,                                                                 |          "POLICY" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" NO
+         CONSTRAINT "EXPORTING_RAS_DATA_PK" PRIMARY KEY ("SCHEM                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION DEFER
+   ) ORGANIZATION INDEX NOCOMPRESS ;                                                                |  ALTER TABLE "ODBCAPTURE"."EXPORTING_RAS_DATA" ADD CONSTRAINT "E
+                                                                >    USING INDEX  ENABLE;
+diff -drywtNW 130 --suppress-common-lines ../../../grbras/ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw grbras/ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_O                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_O
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/install_grbsrc.sql grbsrc/install_grbsrc.sql
+                                                                >  -- SEQUENCE Install
+                                                                >
+                                                                >  @dbi.sql "ODBCAPTURE/DBTOOLS_EXECUTION_HISTORY_SEQ.seq" "ODBCAP
+                                                                >
+                                                                >  ----------------------------------------
+                                                                >  @dbi.sql "ODBCAPTURE/DBTOOLS_EXECUTION_HISTORY.tbl" "ODBCAPTURE
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw grbsrc/ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."AQ_SYS                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."AQ_SYS
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/BUILD_CONF.tbl grbsrc/ODBCAPTURE/BUILD_CONF.tbl
+        "BUILD_TYPE" VARCHAR2(10 BYTE) NOT NULL ENABLE,                                                                 |          "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP"
+        "NOTES" VARCHAR2(1024 BYTE)                                                                |          "NOTES" VARCHAR2(1024 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/BUILD_PATH.tbl grbsrc/ODBCAPTURE/BUILD_PATH.tbl
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/BUILD_PATH_REVIEW.vw grbsrc/ODBCAPTURE/BUILD_PATH_REVIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."BUILD_                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."BUILD_
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/BUILD_TYPE_TIMING.tbl grbsrc/ODBCAPTURE/BUILD_TYPE_TIMING.tbl
+   (    "FROM_BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |     (    "FROM_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_
+        "BUILD_TIMING" CHAR(7 BYTE),                                                                 |          "BUILD_TIMING" CHAR(7 BYTE) COLLATE "USING_NLS_COMP", 
+        "TO_BUILD_TYPE" VARCHAR2(10 BYTE)                                                                |          "TO_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_CO
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_TAB.tbl grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_TAB.tbl
+   (    "OBJECT_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE) NOT NULL EN                                                                |     (    "OBJECT_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "US
+        "OBJECT_OWNER" VARCHAR2(128 BYTE) NOT NULL ENABLE,                                                                 |          "OBJECT_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_CO
+        "OBJECT_NAME" VARCHAR2(128 BYTE) NOT NULL ENABLE,                                                                 |          "OBJECT_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COM
+        "OBJECT_TYPE" VARCHAR2(19 BYTE),                                                                 |          "OBJECT_TYPE" VARCHAR2(19 BYTE) COLLATE "USING_NLS_COMP
+        "REFERENCED_OWNER" VARCHAR2(128 BYTE),                                                                 |          "REFERENCED_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NL
+        "REF_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE) NOT NULL ENABL                                                                |          "REF_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING
+        "REFERENCED_NAME" VARCHAR2(128 BYTE),                                                                 |          "REFERENCED_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS
+        "REFERENCED_TYPE" VARCHAR2(19 BYTE),                                                                 |          "REFERENCED_TYPE" VARCHAR2(19 BYTE) COLLATE "USING_NLS_
+        "REFERENCED_LINK_NAME" VARCHAR2(128 BYTE),                                                                 |          "REFERENCED_LINK_NAME" VARCHAR2(128 BYTE) COLLATE "USIN
+        "DEPENDENCY_TYPE" VARCHAR2(4 BYTE)                                                                |          "DEPENDENCY_TYPE" VARCHAR2(4 BYTE) COLLATE "USING_NLS_C
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."DBA_DE                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."DBA_DE
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/DBA_OBJECTS_TAB.tbl grbsrc/ODBCAPTURE/DBA_OBJECTS_TAB.tbl
+   (    "OBJECT_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |     (    "OBJECT_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "US
+        "OBJECT_OWNER" VARCHAR2(128 BYTE),                                                                 |          "OBJECT_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_CO
+        "OBJECT_NAME" VARCHAR2(128 BYTE),                                                                 |          "OBJECT_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COM
+        "OBJECT_TYPE" VARCHAR2(23 BYTE),                                                                 |          "OBJECT_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP
+        "TABLE_FLAG" VARCHAR2(3 BYTE),                                                                 |          "TABLE_FLAG" VARCHAR2(3 BYTE) COLLATE "USING_NLS_COMP",
+        "SELTYPE" VARCHAR2(4 BYTE)                                                                |          "SELTYPE" VARCHAR2(4 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/DBA_OBJECTS_VIEW.vw grbsrc/ODBCAPTURE/DBA_OBJECTS_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."DBA_OB                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."DBA_OB
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_TAB.tbl grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_TAB.tbl
+   (    "OBJECT_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |     (    "OBJECT_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "US
+        "OBJECT_OWNER" VARCHAR2(128 BYTE),                                                                 |          "OBJECT_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_CO
+        "OBJECT_TYPE" VARCHAR2(24 BYTE),                                                                 |          "OBJECT_TYPE" VARCHAR2(24 BYTE) COLLATE "USING_NLS_COMP
+        "OBJECT_NAME" VARCHAR2(128 BYTE),                                                                 |          "OBJECT_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COM
+        "PRIVILEGE" VARCHAR2(40 BYTE),                                                                 |          "PRIVILEGE" VARCHAR2(40 BYTE) COLLATE "USING_NLS_COMP",
+        "GRANTEE" VARCHAR2(128 BYTE),                                                                 |          "GRANTEE" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "GRANTEE_UOR_TYPE" CHAR(4 BYTE),                                                                 |          "GRANTEE_UOR_TYPE" CHAR(4 BYTE) COLLATE "USING_NLS_COMP
+        "GRANTEE_BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |          "GRANTEE_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_N
+        "GRANTABLE" VARCHAR2(3 BYTE),                                                                 |          "GRANTABLE" VARCHAR2(3 BYTE) COLLATE "USING_NLS_COMP", 
+        "HIERARCHY" VARCHAR2(3 BYTE),                                                                 |          "HIERARCHY" VARCHAR2(3 BYTE) COLLATE "USING_NLS_COMP", 
+        "COMMON" VARCHAR2(3 BYTE),                                                                 |          "COMMON" VARCHAR2(3 BYTE) COLLATE "USING_NLS_COMP", 
+        "INHERITED" VARCHAR2(3 BYTE)                                                                |          "INHERITED" VARCHAR2(3 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."DBA_TA                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."DBA_TA
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/DBTOOLS_EXECUTION_HISTORY.tbl grbsrc/ODBCAPTURE/DBTOOLS_EXECUTION_HISTORY.tbl
+                                                                >
+                                                                >  --
+                                                                >  --  Create ODBCAPTURE.DBTOOLS$EXECUTION_HISTORY Table
+                                                                >  --
+                                                                >
+                                                                >  set define off
+                                                                >
+                                                                >
+                                                                >  --DBMS_METADATA:ODBCAPTURE.DBTOOLS$EXECUTION_HISTORY
+                                                                >
+                                                                >    CREATE TABLE "ODBCAPTURE"."DBTOOLS$EXECUTION_HISTORY" 
+                                                                >     (    "ID" NUMBER NOT NULL ENABLE, 
+                                                                >          "HASH" CLOB COLLATE "USING_NLS_COMP", 
+                                                                >          "CREATED_BY" VARCHAR2(255 BYTE) COLLATE "USING_NLS_COMP
+                                                                >          "CREATED_ON" TIMESTAMP (6) WITH TIME ZONE, 
+                                                                >          "UPDATED_BY" VARCHAR2(255 BYTE) COLLATE "USING_NLS_COMP
+                                                                >          "UPDATED_ON" TIMESTAMP (6) WITH TIME ZONE, 
+                                                                >          "STATEMENT" CLOB COLLATE "USING_NLS_COMP", 
+                                                                >          "TIMES" NUMBER
+                                                                >     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+                                                                >  ALTER TABLE "ODBCAPTURE"."DBTOOLS$EXECUTION_HISTORY" ADD CONSTR
+                                                                >    USING INDEX  ENABLE;
+                                                                >
+                                                                >  --  Comments
+                                                                >
+                                                                >  --DBMS_METADATA:ODBCAPTURE.DBTOOLS$EXECUTION_HISTORY
+                                                                >
+                                                                >
+                                                                >  --  Grants
+                                                                >
+                                                                >
+                                                                >  --  Synonyms
+                                                                >
+                                                                >
+                                                                >  set define on
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/DBTOOLS_EXECUTION_HISTORY_SEQ.seq grbsrc/ODBCAPTURE/DBTOOLS_EXECUTION_HISTORY_SEQ.seq
+                                                                >
+                                                                >  --
+                                                                >  --  Create ODBCAPTURE.DBTOOLS$EXECUTION_HISTORY_SEQ Sequence
+                                                                >  --
+                                                                >
+                                                                >  set define off
+                                                                >
+                                                                >
+                                                                >  --DBMS_METADATA:ODBCAPTURE.DBTOOLS$EXECUTION_HISTORY_SEQ
+                                                                >
+                                                                >     CREATE SEQUENCE  "ODBCAPTURE"."DBTOOLS$EXECUTION_HISTORY_SEQ
+                                                                >
+                                                                >
+                                                                >  --  Grants
+                                                                >
+                                                                >
+                                                                >  --  Synonyms
+                                                                >
+                                                                >
+                                                                >  set define on
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/DLOAD_CONF.tbl grbsrc/ODBCAPTURE/DLOAD_CONF.tbl
+   (    "USERNAME" VARCHAR2(128 BYTE) NOT NULL ENABLE,                                                                 |     (    "USERNAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" 
+        "TABLE_NAME" VARCHAR2(128 BYTE) NOT NULL ENABLE,                                                                 |          "TABLE_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP
+        "BUILD_TYPE" VARCHAR2(10 BYTE) NOT NULL ENABLE,                                                                 |          "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP"
+        "ORDER_BY_COLUMNS" VARCHAR2(4000 BYTE) NOT NULL ENABLE,                                                                |          "ORDER_BY_COLUMNS" VARCHAR2(4000 BYTE) COLLATE "USING_N
+        "BEFORE_SELECT_SQL" VARCHAR2(4000 BYTE),                                                                 |          "BEFORE_SELECT_SQL" VARCHAR2(4000 BYTE) COLLATE "USING_
+        "COLUMNS_REMOVED" VARCHAR2(4000 BYTE),                                                                 |          "COLUMNS_REMOVED" VARCHAR2(4000 BYTE) COLLATE "USING_NL
+        "WHERE_CLAUSE" VARCHAR2(4000 BYTE),                                                                 |          "WHERE_CLAUSE" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_C
+        "AFTER_ORDER_BY_SQL" VARCHAR2(4000 BYTE),                                                                 |          "AFTER_ORDER_BY_SQL" VARCHAR2(4000 BYTE) COLLATE "USING
+        "NOTES" VARCHAR2(4000 BYTE)                                                                |          "NOTES" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/ELEMENT_CONF.tbl grbsrc/ODBCAPTURE/ELEMENT_CONF.tbl
+        "ELEMENT_NAME" VARCHAR2(20 BYTE) NOT NULL ENABLE,                                                                 |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COM
+        "FILE_EXT1" VARCHAR2(6 BYTE) NOT NULL ENABLE,                                                                 |          "FILE_EXT1" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP" N
+        "FILE_EXT2" VARCHAR2(6 BYTE),                                                                 |          "FILE_EXT2" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT3" VARCHAR2(6 BYTE),                                                                 |          "FILE_EXT3" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_TYPE" VARCHAR2(30 BYTE),                                                                 |          "OBJECT_TYPE" VARCHAR2(30 BYTE) COLLATE "USING_NLS_COMP
+        "NAME_CHECK_OBJECT_TYPE" VARCHAR2(30 BYTE),                                                                 |          "NAME_CHECK_OBJECT_TYPE" VARCHAR2(30 BYTE) COLLATE "USI
+        "NOTES" VARCHAR2(1024 BYTE)                                                                |          "NOTES" VARCHAR2(1024 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl
+   (    "NAME" VARCHAR2(30 BYTE) NOT NULL ENABLE,                                                                 |     (    "NAME" VARCHAR2(30 BYTE) COLLATE "USING_NLS_COMP" NOT N
+        "VALUE_TYPE" VARCHAR2(8 BYTE) NOT NULL ENABLE,                                                                 |          "VALUE_TYPE" VARCHAR2(8 BYTE) COLLATE "USING_NLS_COMP" 
+        "VALUE" VARCHAR2(30 BYTE)                                                                |          "VALUE" VARCHAR2(30 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tbl grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tbl
+   (    "BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |     (    "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP"
+        "OBJECT_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |          "OBJECT_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "US
+        "TABLE_OWNER" VARCHAR2(128 BYTE),                                                                 |          "TABLE_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COM
+        "TABLE_BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |          "TABLE_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS
+        "TABLE_NAME" VARCHAR2(128 BYTE),                                                                 |          "TABLE_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP
+        "TABLE_TYPE" VARCHAR2(23 BYTE),                                                                 |          "TABLE_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP"
+        "ELEMENT_NAME" VARCHAR2(20 BYTE),                                                                 |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COM
+        "COLUMN_NAME" VARCHAR2(128 BYTE),                                                                 |          "COLUMN_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COM
+        "COMMENTS" VARCHAR2(4000 BYTE)                                                                |          "COMMENTS" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_IN                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_IN
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tbl grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tbl
+   (    "BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |     (    "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP"
+        "BUILD_TIMING" CHAR(7 BYTE),                                                                 |          "BUILD_TIMING" CHAR(7 BYTE) COLLATE "USING_NLS_COMP", 
+        "CONTEXT_BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |          "CONTEXT_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_N
+        "CONTEXT_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                                                                 |          "CONTEXT_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLAT
+        "CONTEXT_OWNER" VARCHAR2(128 BYTE),                                                                 |          "CONTEXT_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_C
+        "CONTEXT_NAME" VARCHAR2(128 BYTE),                                                                 |          "CONTEXT_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_CO
+        "CONTEXT_TYPE" VARCHAR2(22 BYTE),                                                                 |          "CONTEXT_TYPE" VARCHAR2(22 BYTE) COLLATE "USING_NLS_COM
+        "PACKAGE_BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |          "PACKAGE_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_N
+        "PACKAGE_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                                                                 |          "PACKAGE_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLAT
+        "PACKAGE_OWNER" VARCHAR2(128 BYTE),                                                                 |          "PACKAGE_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_C
+        "PACKAGE_NAME" VARCHAR2(128 BYTE),                                                                 |          "PACKAGE_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_CO
+        "PACKAGE_TYPE" VARCHAR2(23 BYTE),                                                                 |          "PACKAGE_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COM
+        "ELEMENT_NAME" VARCHAR2(20 BYTE),                                                                 |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COM
+        "FILE_EXT1" VARCHAR2(6 BYTE),                                                                 |          "FILE_EXT1" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT2" VARCHAR2(6 BYTE),                                                                 |          "FILE_EXT2" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT3" VARCHAR2(6 BYTE)                                                                |          "FILE_EXT3" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_IN                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_IN
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tbl grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tbl
+   (    "BUILD_TYPE" VARCHAR2(10 BYTE) NOT NULL ENABLE,                                                                 |     (    "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP"
+        "BUILD_TIMING" CHAR(7 BYTE),                                                                 |          "BUILD_TIMING" CHAR(7 BYTE) COLLATE "USING_NLS_COMP", 
+        "TABLE_BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |          "TABLE_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS
+        "TABLE_BUILD_TIMING" CHAR(7 BYTE),                                                                 |          "TABLE_BUILD_TIMING" CHAR(7 BYTE) COLLATE "USING_NLS_CO
+        "TABLE_OWNER" VARCHAR2(128 BYTE),                                                                 |          "TABLE_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COM
+        "TABLE_NAME" VARCHAR2(128 BYTE),                                                                 |          "TABLE_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP
+        "TABLE_TYPE" VARCHAR2(23 BYTE),                                                                 |          "TABLE_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP"
+        "BEFORE_SELECT_SQL" VARCHAR2(4000 BYTE),                                                                 |          "BEFORE_SELECT_SQL" VARCHAR2(4000 BYTE) COLLATE "USING_
+        "COLUMNS_REMOVED" VARCHAR2(4000 BYTE),                                                                 |          "COLUMNS_REMOVED" VARCHAR2(4000 BYTE) COLLATE "USING_NL
+        "WHERE_CLAUSE" VARCHAR2(4000 BYTE),                                                                 |          "WHERE_CLAUSE" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_C
+        "ORDER_BY_COLUMNS" VARCHAR2(4000 BYTE) NOT NULL ENABLE,                                                                |          "ORDER_BY_COLUMNS" VARCHAR2(4000 BYTE) COLLATE "USING_N
+        "AFTER_ORDER_BY_SQL" VARCHAR2(4000 BYTE),                                                                 |          "AFTER_ORDER_BY_SQL" VARCHAR2(4000 BYTE) COLLATE "USING
+        "NOTES" VARCHAR2(4000 BYTE),                                                                 |          "NOTES" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP", 
+        "ELEMENT_NAME" VARCHAR2(20 BYTE) NOT NULL ENABLE,                                                                 |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COM
+        "FILE_EXT1" VARCHAR2(6 BYTE) NOT NULL ENABLE,                                                                 |          "FILE_EXT1" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP" N
+        "FILE_EXT2" VARCHAR2(6 BYTE),                                                                 |          "FILE_EXT2" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT3" VARCHAR2(6 BYTE)                                                                |          "FILE_EXT3" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_IN                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_IN
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tbl grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tbl
+   (    "BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |     (    "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP"
+        "BUILD_TYPE_SELECTOR" VARCHAR2(20 BYTE),                                                                 |          "BUILD_TYPE_SELECTOR" VARCHAR2(20 BYTE) COLLATE "USING_
+        "BASE_TABLE_BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |          "BASE_TABLE_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USIN
+        "BASE_TABLE_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                                                                 |          "BASE_TABLE_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COL
+        "BASE_TABLE_OWNER" VARCHAR2(128 BYTE),                                                                 |          "BASE_TABLE_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NL
+        "BASE_TABLE_NAME" VARCHAR2(128 BYTE),                                                                 |          "BASE_TABLE_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS
+        "BASE_TABLE_TYPE" VARCHAR2(23 BYTE),                                                                 |          "BASE_TABLE_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_
+        "FOREIGN_KEY_NAME" VARCHAR2(128 BYTE),                                                                 |          "FOREIGN_KEY_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NL
+        "UNIQUE_KEY_NAME" VARCHAR2(128 BYTE),                                                                 |          "UNIQUE_KEY_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS
+        "UNIQUE_KEY_TYPE" VARCHAR2(1 BYTE),                                                                 |          "UNIQUE_KEY_TYPE" VARCHAR2(1 BYTE) COLLATE "USING_NLS_C
+        "REF_TABLE_BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |          "REF_TABLE_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING
+        "REF_TABLE_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                                                                 |          "REF_TABLE_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLL
+        "REF_TABLE_OWNER" VARCHAR2(128 BYTE),                                                                 |          "REF_TABLE_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS
+        "REF_TABLE_NAME" VARCHAR2(128 BYTE),                                                                 |          "REF_TABLE_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_
+        "REF_TABLE_TYPE" VARCHAR2(23 BYTE),                                                                 |          "REF_TABLE_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_C
+        "ELEMENT_NAME" VARCHAR2(20 BYTE) NOT NULL ENABLE,                                                                 |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COM
+        "FILE_EXT1" VARCHAR2(6 BYTE) NOT NULL ENABLE,                                                                 |          "FILE_EXT1" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP" N
+        "FILE_EXT2" VARCHAR2(6 BYTE),                                                                 |          "FILE_EXT2" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT3" VARCHAR2(6 BYTE)                                                                |          "FILE_EXT3" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_IN                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_IN
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tbl grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tbl
+   (    "BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |     (    "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP"
+        "BUILD_TYPE_SELECTOR" VARCHAR2(6 BYTE),                                                                 |          "BUILD_TYPE_SELECTOR" VARCHAR2(6 BYTE) COLLATE "USING_N
+        "INDEX_BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |          "INDEX_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS
+        "INDEX_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                                                                 |          "INDEX_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLATE 
+        "INDEX_OWNER" VARCHAR2(128 BYTE),                                                                 |          "INDEX_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COM
+        "INDEX_NAME" VARCHAR2(128 BYTE),                                                                 |          "INDEX_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP
+        "OBJECT_TYPE" VARCHAR2(23 BYTE),                                                                 |          "OBJECT_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP
+        "UNIQUENESS" VARCHAR2(9 BYTE),                                                                 |          "UNIQUENESS" VARCHAR2(9 BYTE) COLLATE "USING_NLS_COMP",
+        "INDEX_TYPE" VARCHAR2(27 BYTE),                                                                 |          "INDEX_TYPE" VARCHAR2(27 BYTE) COLLATE "USING_NLS_COMP"
+        "ITYP_OWNER" VARCHAR2(128 BYTE),                                                                 |          "ITYP_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP
+        "ITYP_NAME" VARCHAR2(128 BYTE),                                                                 |          "ITYP_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP"
+        "TABLE_BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |          "TABLE_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS
+        "TARGET_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                                                                 |          "TARGET_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLATE
+        "TABLE_OWNER" VARCHAR2(128 BYTE),                                                                 |          "TABLE_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COM
+        "TABLE_NAME" VARCHAR2(128 BYTE),                                                                 |          "TABLE_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP
+        "TABLE_TYPE" VARCHAR2(23 BYTE),                                                                 |          "TABLE_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP"
+        "ELEMENT_NAME" VARCHAR2(20 BYTE),                                                                 |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COM
+        "FILE_EXT1" VARCHAR2(6 BYTE),                                                                 |          "FILE_EXT1" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT2" VARCHAR2(6 BYTE),                                                                 |          "FILE_EXT2" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT3" VARCHAR2(6 BYTE)                                                                |          "FILE_EXT3" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_IN                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_IN
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tbl grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tbl
+   (    "BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |     (    "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP"
+        "BUILD_TIMING" CHAR(7 BYTE),                                                                 |          "BUILD_TIMING" CHAR(7 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                                                                 |          "OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLATE "USING
+        "OBJECT_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |          "OBJECT_OWNER_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "US
+        "OBJECT_OWNER" VARCHAR2(128 BYTE),                                                                 |          "OBJECT_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_CO
+        "OBJECT_BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |          "OBJECT_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NL
+        "OBJECT_NAME" VARCHAR2(128 BYTE),                                                                 |          "OBJECT_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COM
+        "OBJECT_TYPE" VARCHAR2(23 BYTE),                                                                 |          "OBJECT_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP
+        "ELEMENT_NAME" VARCHAR2(20 BYTE),                                                                 |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COM
+        "FILE_EXT1" VARCHAR2(6 BYTE),                                                                 |          "FILE_EXT1" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT2" VARCHAR2(6 BYTE),                                                                 |          "FILE_EXT2" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT3" VARCHAR2(6 BYTE)                                                                |          "FILE_EXT3" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_IN                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_IN
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tbl grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tbl
+   (    "BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |     (    "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP"
+        "BUILD_TYPE_SELECTOR" VARCHAR2(20 BYTE),                                                                 |          "BUILD_TYPE_SELECTOR" VARCHAR2(20 BYTE) COLLATE "USING_
+        "SYNONYM_BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |          "SYNONYM_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_N
+        "SYNONYM_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                                                                 |          "SYNONYM_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLAT
+        "SYNONYM_OWNER" VARCHAR2(128 BYTE),                                                                 |          "SYNONYM_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_C
+        "SYNONYM_NAME" VARCHAR2(128 BYTE),                                                                 |          "SYNONYM_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_CO
+        "OBJECT_TYPE" CHAR(7 BYTE),                                                                 |          "OBJECT_TYPE" CHAR(7 BYTE) COLLATE "USING_NLS_COMP", 
+        "DB_LINK" VARCHAR2(128 BYTE),                                                                 |          "DB_LINK" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "TARGET_BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |          "TARGET_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NL
+        "TARGET_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                                                                 |          "TARGET_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLATE
+        "TARGET_OWNER" VARCHAR2(128 BYTE),                                                                 |          "TARGET_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_CO
+        "TARGET_NAME" VARCHAR2(128 BYTE),                                                                 |          "TARGET_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COM
+        "TARGET_TYPE" VARCHAR2(23 BYTE),                                                                 |          "TARGET_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP
+        "ELEMENT_NAME" VARCHAR2(20 BYTE),                                                                 |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COM
+        "FILE_EXT1" VARCHAR2(6 BYTE),                                                                 |          "FILE_EXT1" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT2" VARCHAR2(6 BYTE),                                                                 |          "FILE_EXT2" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT3" VARCHAR2(6 BYTE)                                                                |          "FILE_EXT3" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_IN                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_IN
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tbl grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tbl
+   (    "BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |     (    "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP"
+        "BUILD_TYPE_SELECTOR" VARCHAR2(20 BYTE),                                                                 |          "BUILD_TYPE_SELECTOR" VARCHAR2(20 BYTE) COLLATE "USING_
+        "TRIGGER_BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |          "TRIGGER_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_N
+        "TRIGGER_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                                                                 |          "TRIGGER_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLAT
+        "TRIGGER_OWNER" VARCHAR2(128 BYTE),                                                                 |          "TRIGGER_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_C
+        "TRIGGER_NAME" VARCHAR2(128 BYTE),                                                                 |          "TRIGGER_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_CO
+        "OBJECT_TYPE" VARCHAR2(23 BYTE),                                                                 |          "OBJECT_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP
+        "TARGET_BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |          "TARGET_BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NL
+        "TARGET_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE),                                                                 |          "TARGET_OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLATE
+        "TARGET_OWNER" VARCHAR2(128 BYTE),                                                                 |          "TARGET_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_CO
+        "TARGET_NAME" VARCHAR2(128 BYTE),                                                                 |          "TARGET_NAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COM
+        "TARGET_TYPE" VARCHAR2(23 BYTE),                                                                 |          "TARGET_TYPE" VARCHAR2(23 BYTE) COLLATE "USING_NLS_COMP
+        "ELEMENT_NAME" VARCHAR2(20 BYTE),                                                                 |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COM
+        "FILE_EXT1" VARCHAR2(6 BYTE),                                                                 |          "FILE_EXT1" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT2" VARCHAR2(6 BYTE),                                                                 |          "FILE_EXT2" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT3" VARCHAR2(6 BYTE)                                                                |          "FILE_EXT3" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_IN                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_IN
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJECT_CONF.tbl grbsrc/ODBCAPTURE/OBJECT_CONF.tbl
+   (    "USERNAME" VARCHAR2(128 BYTE) NOT NULL ENABLE,                                                                 |     (    "USERNAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" 
+        "ELEMENT_NAME" VARCHAR2(20 BYTE) NOT NULL ENABLE,                                                                 |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COM
+        "BUILD_TYPE" VARCHAR2(10 BYTE) NOT NULL ENABLE,                                                                 |          "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP"
+        "OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) NOT NULL ENABL                                                                |          "OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLATE "USING
+        "NOTES" VARCHAR2(1024 BYTE)                                                                |          "NOTES" VARCHAR2(1024 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw grbsrc/ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_O                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_O
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw grbsrc/ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_O                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_O
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw grbsrc/ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_O                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_O
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw grbsrc/ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_O                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_O
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw grbsrc/ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_O                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_O
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw grbsrc/ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_Q                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_Q
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw grbsrc/ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_Q                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_Q
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw grbsrc/ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_Q                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_Q
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw grbsrc/ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_R                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_R
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw grbsrc/ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_S                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_S
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw grbsrc/ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_S                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_S
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/ROLE_CONF.tbl grbsrc/ODBCAPTURE/ROLE_CONF.tbl
+   (    "ROLENAME" VARCHAR2(128 BYTE) NOT NULL ENABLE,                                                                 |     (    "ROLENAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" 
+        "BUILD_TYPE" VARCHAR2(10 BYTE) NOT NULL ENABLE,                                                                 |          "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP"
+        "ORACLE_PROVIDED" VARCHAR2(1 BYTE) NOT NULL ENABLE,                                                                 |          "ORACLE_PROVIDED" VARCHAR2(1 BYTE) COLLATE "USING_NLS_C
+        "NOTES" VARCHAR2(1024 BYTE)                                                                |          "NOTES" VARCHAR2(1024 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/SCHEMA_CONF.tbl grbsrc/ODBCAPTURE/SCHEMA_CONF.tbl
+   (    "USERNAME" VARCHAR2(128 BYTE) NOT NULL ENABLE,                                                                 |     (    "USERNAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" 
+        "BUILD_TYPE" VARCHAR2(10 BYTE) NOT NULL ENABLE,                                                                 |          "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP"
+        "ORACLE_PROVIDED" VARCHAR2(1 BYTE) NOT NULL ENABLE,                                                                 |          "ORACLE_PROVIDED" VARCHAR2(1 BYTE) COLLATE "USING_NLS_C
+        "PROFILE" VARCHAR2(128 BYTE),                                                                 |          "PROFILE" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP", 
+        "TEMPORARY_TSPACE" VARCHAR2(30 BYTE),                                                                 |          "TEMPORARY_TSPACE" VARCHAR2(30 BYTE) COLLATE "USING_NLS
+        "DEFAULT_TSPACE" VARCHAR2(30 BYTE),                                                                 |          "DEFAULT_TSPACE" VARCHAR2(30 BYTE) COLLATE "USING_NLS_C
+        "TS_QUOTA" VARCHAR2(10 BYTE),                                                                 |          "TS_QUOTA" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
+        "NOTES" VARCHAR2(1024 BYTE)                                                                |          "NOTES" VARCHAR2(1024 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl grbsrc/ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl
+   (    "BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |     (    "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP"
+        "OBJECT_OWNER" VARCHAR2(128 BYTE),                                                                 |          "OBJECT_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_CO
+        "ELEMENT_NAME" VARCHAR2(20 BYTE),                                                                 |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COM
+         CONSTRAINT "SCHEMA_OBJECTS_TAB_PK" PRIMARY KEY ("BUILD                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+   ) ORGANIZATION INDEX NOCOMPRESS ;                                                                |  ALTER TABLE "ODBCAPTURE"."SCHEMA_OBJECTS_TAB" ADD CONSTRAINT "S
+                                                                >    USING INDEX  ENABLE;
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/TSPACE_CONF.tbl grbsrc/ODBCAPTURE/TSPACE_CONF.tbl
+   (    "USERNAME" VARCHAR2(128 BYTE) NOT NULL ENABLE,                                                                 |     (    "USERNAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" 
+        "TSPACE_NAME" VARCHAR2(30 BYTE) NOT NULL ENABLE,                                                                 |          "TSPACE_NAME" VARCHAR2(30 BYTE) COLLATE "USING_NLS_COMP
+        "TS_QUOTA" VARCHAR2(10 BYTE)                                                                |          "TS_QUOTA" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION DEFER
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/UOR_INSTALL_VIEW.vw grbsrc/ODBCAPTURE/UOR_INSTALL_VIEW.vw
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."UOR_IN                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."UOR_IN
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/ZIP_FILES.tbl grbsrc/ODBCAPTURE/ZIP_FILES.tbl
+   (    "FILE_NAME" VARCHAR2(1000 BYTE),                                                                 |     (    "FILE_NAME" VARCHAR2(1000 BYTE) COLLATE "USING_NLS_COMP
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/SYS/ODBCAPTURE.user grbsrc/SYS/ODBCAPTURE.user
+-- Real Application Security System Grants                                                                <
+                                                                <
+                                                                <
+prompt XS Admin Grant "ADMIN_ANY_SEC_POLICY" to "ODBCAPTURE"                                                                <
+begin                                                                <
+   execute immediate 'begin' ||                                                                <
+                     '  xs_admin_util.grant_system_privilege(''                                                                <
+                     'end;';                                                                <
+exception when others then                                                                <
+   if    SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_UT                                                                <
+     AND SQLERRM not like '%ORA-01031: insufficient privileges%                                                                <
+   then                                                                <
+      raise;                                                                <
+   end if;                                                                <
+end;                                                                <
+/                                                                <
+                                                                <
+prompt XS Admin Cloud Grant "ADMIN_ANY_SEC_POLICY" to "ODBCAPTU                                                                <
+begin                                                                <
+   execute immediate 'begin' ||                                                                <
+                     '  xs_admin_cloud_util.grant_system_privil                                                                <
+                     'end;';                                                                <
+exception when others then                                                                <
+   if SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_CLOUD                                                                <
+   then                                                                <
+      raise;                                                                <
+   end if;                                                                <
+end;                                                                <
+/                                                                <
+                                                                <
+                                                                <
+diff -drywtNW 130 --suppress-common-lines ../../../grbtctx/ODBCTEST/CUST_CTX_TEST.tbl grbtctx/ODBCTEST/CUST_CTX_TEST.tbl
+        "CUST_NAME" VARCHAR2(80 BYTE),                                                                 |          "CUST_NAME" VARCHAR2(80 BYTE) COLLATE "USING_NLS_COMP",
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbtjsn/ODBCAPTURE/GRBTST_JSON.tbl grbtjsn/ODBCAPTURE/GRBTST_JSON.tbl
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbtsdo/COLA_SPATIAL_IDX.tidx grbtsdo/COLA_SPATIAL_IDX.tidx
+                                                                <
+--                                                                <
+--  Create Indexes for ODBCTEST.SDO_COLA_MARKETS TABLE                                                                <
+--                                                                <
+                                                                <
+set define off                                                                <
+                                                                <
+----------------------------------------                                                                <
+prompt                                                                <
+prompt MUST be run as ODBCTEST                                                                <
+insert into MDSYS.user_sdo_geom_metadata                                                                <
+      (table_name                                                                <
+      ,column_name                                                                <
+      ,diminfo                                                                <
+      ,srid)                                                                <
+   values                                                                <
+      ('SDO_COLA_MARKETS'                                                                <
+      ,'SHAPE'                                                                <
+      ,sdo_dim_array(sdo_dim_element('X', 0, 20, .005)                                                                <
+                    ,sdo_dim_element('Y', 0, 20, .005)                                                                <
+                    )                                                                <
+      ,NULL                                                                <
+      );                                                                <
+                                                                <
+CREATE INDEX "ODBCTEST"."COLA_SPATIAL_IDX"                                                                <
+   ON "ODBCTEST"."SDO_COLA_MARKETS" ("SHAPE")                                                                <
+   INDEXTYPE IS "MDSYS"."SPATIAL_INDEX_V2";                                                                <
+                                                                <
+                                                                <
+set define on                                                                <
+diff -drywtNW 130 --suppress-common-lines ../../../grbtsdo/odbcapture_installation_logs.csv grbtsdo/odbcapture_installation_logs.csv
+"grbtsdo","COLA_SPATIAL_IDX.tidx.log"                                                                <
+diff -drywtNW 130 --suppress-common-lines ../../../grbtsdo/ODBCTEST/SDO_COLA_MARKETS.csv grbtsdo/ODBCTEST/SDO_COLA_MARKETS.csv
+1,"cola_a",2003;;;;;1;1003;31;1;5;7                             <
+2,"cola_b",2003;;;;;1;1003;15;1;8;1;8;6;5;7;5;1                 <
+3,"cola_c",2003;;;;;1;1003;13;3;6;3;6;5;4;5;3;3                 <
+4,"cola_d",2003;;;;;1;1003;48;7;10;9;8;11                       <
+diff -drywtNW 130 --suppress-common-lines ../../../grbtsdo/ODBCTEST/SDO_COLA_MARKETS.ctl grbtsdo/ODBCTEST/SDO_COLA_MARKETS.ctl
+   ,SHAPE                          COLUMN OBJECT TREAT AS ST_GE                                                                <
+      (GEOM   COLUMN OBJECT TREAT AS SDO_GEOMETRY                                                                <
+         (SDO_GTYPE     FLOAT EXTERNAL TERMINATED BY ';'                                                                <
+         ,SDO_SRID      FLOAT EXTERNAL TERMINATED BY ';'                                                                <
+         ,SDO_POINT     COLUMN OBJECT TREAT AS SDO_POINT_TYPE                                                                <
+            (X   FLOAT EXTERNAL TERMINATED BY ';'                                                                <
+            ,Y   FLOAT EXTERNAL TERMINATED BY ';'                                                                <
+            ,Z   FLOAT EXTERNAL TERMINATED BY ';'                                                                <
+            )                                                                <
+         ,SDO_ELEM_INFO VARRAY TERMINATED BY '' (SDO_ELEM_INFO_                                                                <
+         ,SDO_ORDINATES VARRAY TERMINATED BY '' (SDO_ORDINATE_A                                                                <
+         )                                                                <
+      )                                                                <
+diff -drywtNW 130 --suppress-common-lines ../../../grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tbl grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tbl
+        "NAME" VARCHAR2(32 BYTE),                                                                 |          "NAME" VARCHAR2(32 BYTE) COLLATE "USING_NLS_COMP", 
+   ) SEGMENT CREATION IMMEDIATE  LOGGING                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION DEFER
+diff -drywtNW 130 --suppress-common-lines ../../../grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tidx grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tidx
+-- The MDSYS Domain Index "ODBCTEST"."COLA_SPATIAL_IDX                                                                |  --DBMS_METADATA:ODBCTEST.COLA_SPATIAL_IDX
+--   installation script is located in the "root" folder becaus                                                                <
+--   it must be executed using the "ODBCTEST" database login.                                                                <
+                                                                >    CREATE INDEX "ODBCTEST"."COLA_SPATIAL_IDX" ON "ODBCTEST"."SDO
+                                                                >     INDEXTYPE IS "MDSYS"."SPATIAL_INDEX_V2" ;
+diff -drywtNW 130 --suppress-common-lines ../../../grbtst/install_grbtst.sql grbtst/install_grbtst.sql
+                                                                >  -- SEQUENCE Install
+                                                                >
+                                                                >  @dbi.sql "ODBCTEST/DBTOOLS_EXECUTION_HISTORY_SEQ.seq" "ODBCTEST
+                                                                >
+                                                                >  ----------------------------------------
+                                                                >  @dbi.sql "ODBCTEST/DBTOOLS_EXECUTION_HISTORY.tbl" "ODBCTEST" "&
+diff -drywtNW 130 --suppress-common-lines ../../../grbtst/install_sys.sql grbtst/install_sys.sql
+-- WALLET_ACL Install                                                                <
+                                                                <
+@dbi.sql "SYS/_opt_install_files_oracle_wallet.wacl" "" ""                                                                <
+@dbi.sql "SYS/_var_opt_install_files_oracle_wallet.wacl" "" ""                                                                <
+                                                                <
+----------------------------------------                                                                <
+diff -drywtNW 130 --suppress-common-lines ../../../grbtst/ODBCAPTURE/GRBTST__NAME.csv grbtst/ODBCAPTURE/GRBTST__NAME.csv
+"5",5                                                                <
+"15",15                                                                <
+diff -drywtNW 130 --suppress-common-lines ../../../grbtst/ODBCAPTURE/GRBTST__NAME.tbl grbtst/ODBCAPTURE/GRBTST__NAME.tbl
+   (    "C1" VARCHAR2(20 BYTE),                                                                 |     (    "C1" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COMP", 
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbtst/ODBCAPTURE/GRBTST_IMAGE.csv grbtst/ODBCAPTURE/GRBTST_IMAGE.csv
+1,"(Base64 with Linefeeds)                                      <
+iVBORw0KGgoAAAANSUhEUgAAAY0AAAFTCAMAAADyTaC8AAAAA3NCSVQICAjb4U/AAABtlBMVEUAAAD7+O1/sn8AAP9QUFCurq6ZMzOGhoaZAJkAZgCpUlLq1ZXUqSfmQAnJydpaf/Vqqp+fn5YWP9CRT9wemLDh4frzevevFhja1jMzMypKanX1/+JCIkfScnJ/+OnHnjueOlpaWxv53Jeclre2PX19f379cHBwebrIM9iz1Ym1i8eXnt9O1iWyVv5V1dXU9PT3v39+Ojo7dq93mzc3lzH/v7++3xKTMmZmVlf+rq/+zQLOxZGT59f79furzasHagecOTnV3coREf9YWFjB2sFqamoRERHz5sFLT0Xt7f/UlNQ9Pf9pWnf39/Bwf/PoBF/f//dvLz39/eGk3Ln5+fu3atocFsHB/+kG6RfZlX8+fnYsT2np6ltY66UrqgQUERcBFQVUnz4fPhw2nnwuf48fGSoXy9yKu+vr5bYlLNnAf9/PdY2PJ07v39/+VlZX57/lER0ARABHn6+HMf8xsdV+tMq28WLyRBJHXnNf15/VMUEfzrTx2/Hqy+rt8OhYXk+rupVJTURTWUzP2MPPhs/////b4tL39+/lveWwOrDgsuCYL/Zodm2SLbb4dGnI6eFtRMPAAAACXBIWXMAAAsSAAALEgHS3X78AAAAFnRFWHRcmVhdGlvbiBUaW1lADAxLzIzLzA3TruF+QAAAB90RVh0U29mdHdhcmUATWFjcm9ZWRpYSBGaXJld29ya3MgOLVo0ngAABW6SURBVHic7Z0LWxvXmYAFqhRGloRFTKFpXabR8hg4kpZI2MWFQgCeTHUgGJCjWtD7OBwSY2bi7Ob7iZptzlbb9rs/uM915koxlJI43Qh/heP5bmcmbmzPfqXGbQ0YQIAodQrzOAaKANSKANSKANSKANSKANSKASKANSKANSECxkRm0pjcMo+yZcGEqM7lC38sbGX2b/gCgjRWjRoinj8Vb5QWD6pjKK8cZM4nc+cGKBu1MvVABlmMG5QOWnikhbLR/YydK5BsbBgZY4qG2DAyGfriXQ8G4NYNroDtbGySN+NaWfZMAS6G2OBvW4sTp5zJrsOIBuTk+Vy+WCweU0lm4vp8uT+WTu3ABkI7OYoSw4bZQFNSvpgTlJS1JfAcjG5IaYdNjICBbUvN6RatjWX0AA2Vhn/SyajcWPBIeyNqJtSO3sE/VHWSf6kC14nTatU9VFm16mRwYmcXFPquowNgQlK2Z7pZJVQr91k1RaDZuOygDUigDUigDUigDUigDUigDUigDUigDUigDUigDUigDUitTHU6wz0gotmo78lgbXxzD77z3IebfQER9jvv/7YbXGfcVFskB9+/He3xf3FhbF/vOrvz9DGz3iWf2i+6+/QRu9wS3sb/7nPtroCUOu/B/a6AldKRvQXYK10ZV2A22SVf6VGijTbpyvYE22qQr1+Joo026cp8KbbRJV+7hoo02QRuQQBuQcLneYKCNnoBAxJoAxJoAxKfhVwZcl/cIvrWQ0NDz7z+9+qkwdroftkIea3oHWgjgN0GBtoIYLeAdbGZ/bZ2v/+4c6TGzduDN3oBL71kzvv/43tEm20ji0+n39ii2dnNpiQz0lANuZsusP+EQ2u9XuTkzA2tAy9u2d+nh2ZuPGk781thFOt5jN3bvpuTDVcTf8IL283uEXwQb77vF80tfFr584bBx4/2WbKSVlIZyhrPUCisg4ZeBnTQwzIz9h8un+9rxsS8x8fXHDbuNLSRDYfDW2Rtd3l5d40GeX13ObzmnVVq42WYTSzPBXXS0FAZs8vg8Xz0bFvG8eP3rXZeNJC2dilDcHWLp2h7+uqFgoL9DYiPEfS3EbHLQd0G+874jp044NGtvv/nTND//6X3Sb8Q/0Vqe5jTUeYVoo2MyDsGdOl2lFdTlsfOv8lP/8w2PGR28++HtP/G3D3/ux4aIMJ2yZghrSjhWC5FdJpfFxp06G+M8ru2UDVo6XGz89D575Tb/9Q8unfZyArMFoKVDJHMR0+s8UkDhGfs87oWgNZUj3hkW20yOHyLR6411bOv/kGjX98Zd0tDLNom+0GDXJ2xD2by3L5On2f867N/Jw0RHjGPnGxEUwrbtVUr373htt87tX1tGHw1mtTxXO7i675zIt2vQ0ebm7nA0/COSkIcIyVquPq4hnGz3cF9bWdhvm6/YF0rZq8Yar3TE9UY4nW7Qv1WkO62mCHAb/+1l48aLTq/+9Fb8l9d/M/Sb67/zErHzUHLgLbxB08bbeJug3z/dOjp995Z2er0ErtlQNuo61F1yQb5/noDGecIGBvo2e6wr81TdGrIICx4YRlrPGnu+2yMf7CWTagADBLApuN8Rct2rASetu4xm8hgjxgFkS6DauyVuwTW1oCT1tvKAXHy/Qhj90GyJ+LdjQEnra+JIm+hJt+EOzIePX3Ia0MvGL/hdkl+gDV9YNlT8mtqwJfSyIe46jqMNX1g2xD30D5vbsCX0sPGBvMf+AchB5glgWnDjF8zG/aEHjbYDcc//vH4+FEN4qkDzJLAtDEu4zfezIY9obuNF+9SPvqvjyEeOoAsyRQNqz4Oe/COnAk9CgbDH4DGOSpA8ySwHb1Z91Ab1A27AnRRpCgDUiDUigDUigDUigDUigDUigDUigDUigDUigDUigDUigDUigDUigDUigDUigDUg0seHRR0PG/YRA2jDNw1teI6m8VhuHy+ONnzTwEaDkWaeNvSRZmjDN542Go4X/8tfWhgjjZ842GjyXjxt92X28eLow3feNloPF68Udkwx4ujDd9411SNxot7txvaeHG04RtxSERdA9X+6Yi2vBN46s/r/HiePXXHfDOCCTQBiTQBiTQBiTQBiTQBiTQBiTQBiTBiTQBiTQBiTQBiTQBiTQBiTQBiTQBiS6YwN/9aU9lI2Af/VlXH7NZxx/EckPZtl8XvUrGzYE3rYYD9i9d13+GthPjFtmPFrZsOe0MOG+QNvIE8dYJYEVruhfomwmQ1Qi8b+CuT7WDZCPZXJvEXWNtB61MF+gus/Ktu+OvEPtFsyF93bm5DT+htA3+52z/9Uagv9xN25cbaMMntqu/QH/VXgDy1CFkKYgnZvhN6ElPIwHBhs6/qAlb2XD9dLdf5WN2GwAhywW2et2jOFY9eb60PU3VsYaxDPIp2jBoTMbfN6fosPtKE8/u18sCi8X7/z9OOhj5++87XKmKeNzp+h/KQ/bBT3+JQIpG7jUIWWpdgrum3OGI1JG85yQX78YtXZIi8+uLHH0hDG0E8ffFOP9iILcWi2zTyS/v7S4dkNhqNxvgLXSXWxOb3Y9G8/tLS9478bDxmj3+kLWi37wmDWwE8wzlv/aDjXla4UcJWaIBnV3Sy8ZNGtxidE+oCVj6arYpBgVWIVF2qDL5uuPYPZpPGwE9Qzlb/vBBgtktHgYZTPRQ81G9DZ92b/Z4pR0qg1EWtYdbZfr6OpjWCeofyJ71M/F9qyURQ2irqNopiqt1EUOHbCuR2tO0IG8E8Q/lXe75P/Vxox8ahn7JxGBMc2nfCKbZjI4BW/JM9/6d+Lvi3wdoL1W7M3yTxWw3Wq2prqot7dhsPHG30dEzlP9856/ftnPq54JPG9H9fVokVJ+KVjW01eYvZp+mY0Ya9LpuqUo3aJ+tc2GC3L9w9/7yvfvHzr23uAIvcRvltSFhGwI9sTFBSv5h56GF57OnRZ2qKNNuk3G93mHG181tGuugIIG0PPXP6FXPFY3CK2rXt7u9YVEDZ8EGDQBsdgzYgEaCNZx3tqitcYhtYNjoGbUACbUCiYxs/vFYz2G50TKc2vv7xm2B21RUm413vghoV13hktl48/RVQLvqCpfMxvWPrRlsNzqmQxtwvlboyiWzoZcNtNEx2G7D7Y+FbYbPQavNyBhuxZHGz0G71NBAv++AQksG5BAG5BAG5DAdgMSWDYggTYggTa1kEbkEAbkEAbkEAbkOhzG6cz1vRMvHn6nVM5cW+nK/lpQp/bGNAMKBsTCa/UEzOCTG1k2hBXfD0uQ3BxAB7pTYG2IS3jXhc2hg4eYw2AiX+fCwxwyI/kNjcZB/1mc3eOIxIQnKhMdGYsVp4l4r1Vrw9LEN6uKU2TiZEbXUzMkpjfOAVjZmEgJrI2Fjc6eRiZ4+tgGa8Bp5AdYsLkNFmAabu+aStqIj7XW5AdP/9uY8LZxOiGwNuI2EvF4/CQHzjvHF8GGw3Kxk5cYG3EbTBBY5teTUs36X8b5OQ5Od3UbAwkTj03Mpt3rKmCxbQQGudx5oNsnni8cFPWN0ttNFFxp7rcxO9qIVa4RLYuPJ4ZqxB5QSJS2Dj9MrMlV7oUUugY0LBNqABNqABNqABNqABNqABNqABNqABNqABNqABNqABNqABNqABNqABNqBNqABNqABNqABNqABNqABNqABNqABNqABNqABNqABNqABNqABNqABNqAxLnbiKRqUj94py1LFVz3zLnshklmSK5pmdhpojkGq11OXQo550jRi3V7Ng+OHcbyWQqlazLY6sWilK7ltqSWw79GVj1aE0ldTXuhya2fDIEd+2lGx2bB/4t1Hy+TBpx5kk2Wcf8Ymc2JVzu3jSkpiZc2xspSrWZMluUMRzfr91GTiUs7hy9qrsqEdR9sPXRqy7zWslWT2zq2yTUoRs3xa6NGaxpfG9B6yZZBboO9RELJfJVGKl9Nhs7YmSX5s3T5pzFpQsLNGGFJlLxYCefzIvlhE+y7ZUNup9qvkT3SshRqEZK9P9qKBmq0BRVulHIOnwVKnm82I2xw9pLqGHotmqhuQnSB2d5SiZCiVVnsWe1bbmsUmykGfn0j7+bNSO3krtpF660jzwUSwUNXYKSfPSIHVPyX1OctHxLnnRQIWW6LZOKvSdznL9snKmLSRp/t5elWNVKhiyN5cpRnG5dIJanXRSx1TpVOs2zIJfQ9dER3LfJrHp3liEa/pPIcoQcEauWk8emNuRG7eJr25+9R2P760//yQ+f/ppu897PzH3Qj3QyT8/4LJ/L5WigCtWGRVSrRD5SRTvXJVug8VKEVlNhlLKRomfCI1WNUJCkSpZXSWFAj1CNUVnnTaILKJbzfYEmajYlatBZkbM0dmnldt25rHZrto3oY1wMe2vz1LMVZ/kvLDTz7lb2e/VeG5FbZQWnBp9DTKoRCSVk2KlVCbDZ4zPSaajUUyksh1WqKxVrGVwSBJl2tHBVIqFY4t6TyQjfvnUbpWqIV28qjW5D5VlurLY1j32uNt7jcW2nbNDSYdpIiajzSkdQqhbmbHCThqWDUqtIrJsRtBRNo7ylQipnNFZ+QnmdU/rNghrd0Q1llRHN8uGzDOEskFqrd4ZH0dgG/xllZTsc1p+GusAqkdEdbjXOU2IrLx1GywCvpMs8EaoCORZd725FPdoNuxtvxJBH7o32gQoF9qq3D22ycsU10G0xE9cxcl9NtmHlm6SPWtma7ca42gmr6WEr9JRovynC+i2sP+LoU0kbrGZKaTbkNhy2oVVTmf0a3pQS1qCwng/rHpVC1Xzy0aNrrTZyNNuk+q5VvPVgm7DPL7orZnbmn2q87VBD9xGD9fjak520mvu1xsmNVstcQlx35d9iMXNbwIyDl2U9IWONeZe5RXMub6JufQKv5NPvR59ffQ9xE0qqupvPseF8C/K7hUSoVzKfuYgDcxiUDbUACbUACbUACbUACbUACbUACbUACbUACbUACbUAbUACbUACbUACbUACbUACbUACbUACbUACbUACbUACbUACbUACbUACbUACbUDC24YILiDQbgeo4rbp2xoMxnD8EwoKEaDPLjfZ8f7xtuGNSC4g0G4HqOKdcJpPzvUbWxSK3c2IfTBp9vW5G/Z8e3gauNhmOGS7aV7JvzcnRvzvbFfNuX7T2+2bx2l5g20mtIZ998MAl+fQtZWO6zF4zg2r+1rRL8tu3eeAPi3xur7hHHDaKh0SuYjNsNZndc9njv35vQP82Y32Z8dfcXvEb00PSP3gAxdcbNSNGWYDRMwxw7bhvgWWsiBH91b5eOB6CjPBl9Vq2x8ERuEEqrkqyEXHw+yYWojGw6Ht8hcOLubpcvC67vLYeolvbs750ikjGUjcxixlggg4ZhsP9GmdwyMiuO5NtLS0UW+Pn9pX06OxqNRUcJiVKK/IVsR2NMZZilKbYXopFr9JkN6M3D+37OZ1JxE+1Z8eTzZM4eyK5/dnxVxLxe87zUwOkeUxPKxBVq64rKwbM8xtyDHD9uG+fESuHN3LCglNkAslj3Ji7JWywUb68dFeITl6iTGuyzizcrGS/aSHaEzW4Ssr7PF6fXw1ksrUwuLBwvsndnYmBTvVtmg6w8WF6zUe7PeV4kijTsZOkqDT2diW5rZWOPrYndlCnmiUhCS8dS7La1o4GxxBh/jKb57PixuCgzmfH72ye7NjCqAZIiyjKeJBIw1rfzYZzzDC3Icd+OYc0WqO0ameVJE3A5/m4RNNzvazA5wH4RHVXDARd5f5MjHD3hkvh5kbzooxVRZTLPrGYLlcpiVCt0GnpgxVPmao7LG4YEfjZH5UfY+r9m4ykrM7aiYic1qrcl2bEnVV/ET9RRN8xnAiXvSRt3zsSfEnr5UAOkiR6PJrgVHOeYYZuNnIeNWqhwllM2cm42ajkB23Itu6sizQRssVoqLW2pY255V3VekxnFgfFFLdxkKFMO2wMLmZU63GbVj1iiod4NsbDzd4tG3SGT9XZ2KOldrnTOKxfMCvZWPCy8bMie0B8WqANNHj0QT3asw+ZrilspGqigTeZSOSFIhtX46R3jD7V42Xm6Fs3pnqzZlTLFgcxuyDGg2pulqvQ9RjEVnzVablomWy8ZtuqEeiZ0UQE1KxtmlWZS0LqTHZSNujHDug3WblTcbKjhvEJVfpXUqg1qKs5WmLYUJDyntxvfS488tKZfNCYEtGfOqBzt4SNaYNJmDIGnanpR3xbhphOqHbjMEod8Rer3SCajaWbeeOJuK0dbBssHZjLOF8djxt4lX6VdlyqwHSJfYLPioe/tuNujHDug26LL/q2m589WKaaOUDyULzWyI3uxwOKv1qeg7KydrrsnLqk9lZBYXhQ1ysHhQJmXX5IcsxLSxCoe2acitP9UFC9mn4poNopu+zk91WzQ9vzkecL57HjtgeUhda0sB0jzEecqHv7VE3HDEeqroud44ArLQ5mXeM1UlpWW2l3EXZqZesCo+yuwkReVYjrDTpbVC/m9YZdjb1Ofuz4/Xx4vY4thAPv/epcsnUqv7TKx6cFVKVUBs/1eTvwrwXTMRnnifqri0UhW3pS3Gw/ddw0iq0e/KKWpnqbZ+p2mrrrUAx87MzGmD1RHX6LQYD7yHCwm0AQmAYme2UgPZ7N3+cR61ry2KG9kMrfYxK3JzKTWV9rm/aHRGGXUXLijqu979htEF5i2VgfTj9YHqb92/Dd9MiuXDi5UV452KBWMgvlQUPpKM5GeY80drNYNHulEzMJ2bPSXTjDz89oac1FbsHMkKNkGXt9vmKuvOUUdfXsZi0od+ziMeljYGTx2gjCJgNfmdeMRaaNowrKrKxYa4EKYXyol7XfmjaE/oqQ11Z0rcw5VkptjrdMbQ/n4kbUSjUavkDY2d7rzJ+qe0EsbI+xmrdPGlCwa5YVF6+6HsLHHbiZdNRdyG/GxLn1hoCf00MY+5Or08aGYTpgf+KTRM27eaMxcyG3kYjH4yeJuNufpS8gvbMxssvvD/Ju7rr609OViAGM+akZWPWYWOCMrZpu293gemZjZFl8c7+0LQWljdu+V8uKCusAV+8ZSbmNviP7S/P6geLtZUnRPm0DKR3c2af/82OINkwVjMGBsqaVR8yeOQ/a3CbMUT4ssaDLQIGtplxu35bLLvdDDotvXnfoIADYQE7QBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQBCbQCbQBCbQBCbQBCbQBCbQBif8HPdLWAOwjtc0AAAAASUVORK5CYII=            <
+"                                                               <
+2,"(Base64 with Linefeeds)                                      <
+iVBORw0KGgoAAAANSUhEUgAAAY0AAAFTCAMAAADyTaC8AAAAA3NCSVQICAjb4U/AAABtlBMVEUAAAD7+O1/sn8AAP9QUFCurq6ZMzOGhoaZAJkAZgCpUlLq1ZXUqSfmQAnJydpaf/Vqqp+fn5YWP9CRT9wemLDh4frzevevFhja1jMzMypKanX1/+JCIkfScnJ/+OnHnjueOlpaWxv53Jeclre2PX19f379cHBwebrIM9iz1Ym1i8eXnt9O1iWyVv5V1dXU9PT3v39+Ojo7dq93mzc3lzH/v7++3xKTMmZmVlf+rq/+zQLOxZGT59f79furzasHagecOTnV3coREf9YWFjB2sFqamoRERHz5sFLT0Xt7f/UlNQ9Pf9pWnf39/Bwf/PoBF/f//dvLz39/eGk3Ln5+fu3atocFsHB/+kG6RfZlX8+fnYsT2np6ltY66UrqgQUERcBFQVUnz4fPhw2nnwuf48fGSoXy9yKu+vr5bYlLNnAf9/PdY2PJ07v39/+VlZX57/lER0ARABHn6+HMf8xsdV+tMq28WLyRBJHXnNf15/VMUEfzrTx2/Hqy+rt8OhYXk+rupVJTURTWUzP2MPPhs/////b4tL39+/lveWwOrDgsuCYL/Zodm2SLbb4dGnI6eFtRMPAAAACXBIWXMAAAsSAAALEgHS3X78AAAAFnRFWHRcmVhdGlvbiBUaW1lADAxLzIzLzA3TruF+QAAAB90RVh0U29mdHdhcmUATWFjcm9ZWRpYSBGaXJld29ya3MgOLVo0ngAABW6SURBVHic7Z0LWxvXmYAFqhRGloRFTKFpXabR8hg4kpZI2MWFQgCeTHUgGJCjWtD7OBwSY2bi7Ob7iZptzlbb9rs/uM915koxlJI43Qh/heP5bmcmbmzPfqXGbQ0YQIAodQrzOAaKANSKANSKANSKANSKANSKASKANSKANSECxkRm0pjcMo+yZcGEqM7lC38sbGX2b/gCgjRWjRoinj8Vb5QWD6pjKK8cZM4nc+cGKBu1MvVABlmMG5QOWnikhbLR/YydK5BsbBgZY4qG2DAyGfriXQ8G4NYNroDtbGySN+NaWfZMAS6G2OBvW4sTp5zJrsOIBuTk+Vy+WCweU0lm4vp8uT+WTu3ABkI7OYoSw4bZQFNSvpgTlJS1JfAcjG5IaYdNjICBbUvN6RatjWX0AA2Vh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            <
+"                                                               <
+diff -drywtNW 130 --suppress-common-lines ../../../grbtst/ODBCAPTURE/GRBTST_IMAGE.tbl grbtst/ODBCAPTURE/GRBTST_IMAGE.tbl
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbtst/odbcapture_installation_logs.csv grbtst/odbcapture_installation_logs.csv
+"grbtst","RAS_Admin_ODBCTEST.racl.log"                                                                <
+diff -drywtNW 130 --suppress-common-lines ../../../grbtst/ODBCTEST/DBTOOLS_EXECUTION_HISTORY.tbl grbtst/ODBCTEST/DBTOOLS_EXECUTION_HISTORY.tbl
+                                                                >
+                                                                >  --
+                                                                >  --  Create ODBCTEST.DBTOOLS$EXECUTION_HISTORY Table
+                                                                >  --
+                                                                >
+                                                                >  set define off
+                                                                >
+                                                                >
+                                                                >  --DBMS_METADATA:ODBCTEST.DBTOOLS$EXECUTION_HISTORY
+                                                                >
+                                                                >    CREATE TABLE "ODBCTEST"."DBTOOLS$EXECUTION_HISTORY" 
+                                                                >     (    "ID" NUMBER NOT NULL ENABLE, 
+                                                                >          "HASH" CLOB COLLATE "USING_NLS_COMP", 
+                                                                >          "CREATED_BY" VARCHAR2(255 BYTE) COLLATE "USING_NLS_COMP
+                                                                >          "CREATED_ON" TIMESTAMP (6) WITH TIME ZONE, 
+                                                                >          "UPDATED_BY" VARCHAR2(255 BYTE) COLLATE "USING_NLS_COMP
+                                                                >          "UPDATED_ON" TIMESTAMP (6) WITH TIME ZONE, 
+                                                                >          "STATEMENT" CLOB COLLATE "USING_NLS_COMP", 
+                                                                >          "TIMES" NUMBER
+                                                                >     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+                                                                >  ALTER TABLE "ODBCTEST"."DBTOOLS$EXECUTION_HISTORY" ADD CONSTRAI
+                                                                >    USING INDEX  ENABLE;
+                                                                >
+                                                                >  --  Comments
+                                                                >
+                                                                >  --DBMS_METADATA:ODBCTEST.DBTOOLS$EXECUTION_HISTORY
+                                                                >
+                                                                >
+                                                                >  --  Grants
+                                                                >
+                                                                >
+                                                                >  --  Synonyms
+                                                                >
+                                                                >
+                                                                >  set define on
+diff -drywtNW 130 --suppress-common-lines ../../../grbtst/ODBCTEST/DBTOOLS_EXECUTION_HISTORY_SEQ.seq grbtst/ODBCTEST/DBTOOLS_EXECUTION_HISTORY_SEQ.seq
+                                                                >
+                                                                >  --
+                                                                >  --  Create ODBCTEST.DBTOOLS$EXECUTION_HISTORY_SEQ Sequence
+                                                                >  --
+                                                                >
+                                                                >  set define off
+                                                                >
+                                                                >
+                                                                >  --DBMS_METADATA:ODBCTEST.DBTOOLS$EXECUTION_HISTORY_SEQ
+                                                                >
+                                                                >     CREATE SEQUENCE  "ODBCTEST"."DBTOOLS$EXECUTION_HISTORY_SEQ" 
+                                                                >
+                                                                >
+                                                                >  --  Grants
+                                                                >
+                                                                >
+                                                                >  --  Synonyms
+                                                                >
+                                                                >
+                                                                >  set define on
+diff -drywtNW 130 --suppress-common-lines ../../../grbtst/RAS_Admin_ODBCTEST.racl grbtst/RAS_Admin_ODBCTEST.racl
+                                                                <
+--                                                                <
+-- Create RAS ACLs for RAS Administrator ODBCTEST                                                                <
+--  NOTE: This is a "GRANTEE" RAS ACL                                                                <
+--                                                                <
+-- To disable RAS ACLs for data loading/unloading, use:                                                                <
+--begin                                                                <
+--   xs_data_security.disable_object_policy                                                                <
+--      (policy  => '"ODBCTEST"."GRB_TEST_POLICY_01"'                                                                <
+--      ,schema  => 'ODBCAPTURE'                                                                <
+--      ,object  => 'GRBTST_$NAME'                                                                <
+--      );                                                                <
+--end;                                                                <
+--/                                                                <
+--                                                                <
+                                                                <
+set define off                                                                <
+                                                                <
+                                                                <
+-- RAS Defined Roles                                                                <
+                                                                <
+prompt GRB_TEST_ROLE_01.XS_ROLE                                                                <
+--DBMS_METADATA:GRB_TEST_ROLE_01.XS_ROLE                                                                <
+                                                                <
+                                                                  <
+BEGIN                                                                <
+ xs_principal.create_role(                                                                <
+     name=>'"GRB_TEST_ROLE_01"',                                                                <
+     enabled=>TRUE);                                                                <
+END;                                                                <
+/                                                                <
+                                                                <
+                                                                <
+-- RAS Defined Users                                                                <
+                                                                <
+prompt GRB_TEST_USER_01.XS_USER                                                                <
+--DBMS_METADATA:GRB_TEST_USER_01.XS_USER                                                                <
+                                                                <
+                                                                  <
+BEGIN                                                                <
+ xs_principal.create_user(                                                                <
+     name=>'"GRB_TEST_USER_01"',                                                                <
+     schema=>'"ODBCAPTURE"',                                                                <
+     status=>XS_PRINCIPAL.ACTIVE);                                                                <
+ xs_principal.set_profile(                                                                <
+     user => '"GRB_TEST_USER_01"',                                                                <
+     profile => '"DEFAULT"');                                                                <
+ xs_principal.set_verifier(                                                                <
+     user => '"GRB_TEST_USER_01"',                                                                <
+     verifier  => 'T:B1ED28E684D158779DD408B6AB210B0A264CE4F334                                                                <
+     type  => XS_PRINCIPAL.XS_SHA512);                                                                <
+END;                                                                <
+/                                                                <
+                                                                <
+prompt GRB_TEST_USER_02.XS_USER                                                                <
+--DBMS_METADATA:GRB_TEST_USER_02.XS_USER                                                                <
+                                                                <
+                                                                  <
+BEGIN                                                                <
+ xs_principal.create_user(                                                                <
+     name=>'"GRB_TEST_USER_02"',                                                                <
+     schema=>'"ODBCAPTURE"',                                                                <
+     status=>XS_PRINCIPAL.ACTIVE);                                                                <
+ xs_principal.set_profile(                                                                <
+     user => '"GRB_TEST_USER_02"',                                                                <
+     profile => '"DEFAULT"');                                                                <
+ xs_principal.set_verifier(                                                                <
+     user => '"GRB_TEST_USER_02"',                                                                <
+     verifier  => 'T:12723D051F39576E8847201016CAEC0F96624EACD9                                                                <
+     type  => XS_PRINCIPAL.XS_SHA512);                                                                <
+END;                                                                <
+/                                                                <
+                                                                <
+                                                                <
+-- Database Role Grants to RAS Principals                                                                <
+-- DBMS_METADATA: "XS_ROLE_GRANT" doesn't do this                                                                <
+                                                                <
+prompt grant "GRB_TEST_ROLE" to "GRB_TEST_ROLE_01";                                                                <
+grant "GRB_TEST_ROLE" to "GRB_TEST_ROLE_01";                                                                <
+                                                                <
+                                                                <
+-- RAS Role Grants to RAS Principals                                                                <
+-- Note: DBMS_METADATA XS_ROLE_GRANT won't work with multiple u                                                                <
+                                                                <
+prompt principal grant "GRB_TEST_ROLE_01" to "GRB_TEST_USER_01"                                                                <
+BEGIN                                                                <
+  xs_principal.grant_roles(grantee => '"GRB_TEST_USER_01"',                                                                 <
+     role => '"GRB_TEST_ROLE_01"');                                                                <
+END;                                                                <
+/                                                                <
+                                                                <
+prompt principal grant "XSCONNECT" to "GRB_TEST_USER_01";                                                                <
+BEGIN                                                                <
+  xs_principal.grant_roles(grantee => '"GRB_TEST_USER_01"',                                                                 <
+     role => '"XSCONNECT"');                                                                <
+END;                                                                <
+/                                                                <
+                                                                <
+prompt principal grant "XSPUBLIC" to "GRB_TEST_USER_01";                                                                <
+BEGIN                                                                <
+  xs_principal.grant_roles(grantee => '"GRB_TEST_USER_01"',                                                                 <
+     role => '"XSPUBLIC"');                                                                <
+END;                                                                <
+/                                                                <
+                                                                <
+prompt principal grant "GRB_TEST_ROLE_01" to "GRB_TEST_USER_02"                                                                <
+BEGIN                                                                <
+  xs_principal.grant_roles(grantee => '"GRB_TEST_USER_02"',                                                                 <
+     role => '"GRB_TEST_ROLE_01"');                                                                <
+END;                                                                <
+/                                                                <
+                                                                <
+prompt principal grant "XSCONNECT" to "GRB_TEST_USER_02";                                                                <
+BEGIN                                                                <
+  xs_principal.grant_roles(grantee => '"GRB_TEST_USER_02"',                                                                 <
+     role => '"XSCONNECT"');                                                                <
+END;                                                                <
+/                                                                <
+                                                                <
+prompt principal grant "XSPUBLIC" to "GRB_TEST_USER_02";                                                                <
+BEGIN                                                                <
+  xs_principal.grant_roles(grantee => '"GRB_TEST_USER_02"',                                                                 <
+     role => '"XSPUBLIC"');                                                                <
+END;                                                                <
+/                                                                <
+                                                                <
+                                                                <
+--------------------------------------                                                                <
+-- RAS ACLs Owned by RAS Administrator                                                                <
+--------------------------------------                                                                <
+                                                                <
+                                                                <
+prompt GRB_TEST_ACL_01.XS_ACL                                                                <
+--DBMS_METADATA:GRB_TEST_ACL_01.XS_ACL                                                                <
+                                                                <
+                                                                  <
+DECLARE                                                                <
+ ace_list      XS$ACE_LIST;                                                                <
+BEGIN                                                                <
+ ace_list := XS$ACE_LIST(                                                                <
+   XS$ACE_TYPE(                                                                <
+     privilege_list => XS$NAME_LIST('"DELETE"', '"INSERT"', '"S                                                                <
+     principal_name=>'"GRB_TEST_USER_01"'));                                                                <
+                                                                <
+ xs_acl.create_acl(                                                                <
+     name=>'"ODBCTEST"."GRB_TEST_ACL_01"',                                                                <
+     ace_list=>ace_list);                                                                <
+END;                                                                <
+/                                                                <
+                                                                <
+prompt GRB_TEST_ACL_02.XS_ACL                                                                <
+--DBMS_METADATA:GRB_TEST_ACL_02.XS_ACL                                                                <
+                                                                <
+                                                                  <
+DECLARE                                                                <
+ ace_list      XS$ACE_LIST;                                                                <
+BEGIN                                                                <
+ ace_list := XS$ACE_LIST(                                                                <
+   XS$ACE_TYPE(                                                                <
+     privilege_list => XS$NAME_LIST('"DELETE"', '"INSERT"', '"S                                                                <
+     principal_name=>'"GRB_TEST_USER_02"'));                                                                <
+                                                                <
+ xs_acl.create_acl(                                                                <
+     name=>'"ODBCTEST"."GRB_TEST_ACL_02"',                                                                <
+     ace_list=>ace_list);                                                                <
+END;                                                                <
+/                                                                <
+                                                                <
+                                                                <
+----------------------------------------------------                                                                <
+-- Policies for RAS Admininistrator (includes REALM)                                                                <
+----------------------------------------------------                                                                <
+                                                                <
+                                                                <
+prompt GRB_TEST_POLICY_01.XS_DATA_SECURITY                                                                <
+--DBMS_METADATA:GRB_TEST_POLICY_01.XS_DATA_SECURITY                                                                <
+--  For UNKNOWN reasons: Need to change from this:                                                                <
+--    dbms_xds.enable_xds(                                                                <
+--       object_schema => 'ODBCAPTURE',                                                                <
+--       object_name => 'GRBTST_$NAME',                                                                <
+--       policy_name => '"ODBCTEST"."GRB_TEST_POLICY_01"');                                                                <
+--  To this for use with Autonomous Database Service in Oracle                                                                 <
+--    xs_data_security.apply_object_policy(                                                                <
+--       schema => 'ODBCAPTURE',                                                                <
+--       object => 'GRBTST_$NAME',                                                                <
+--       policy => '"ODBCTEST"."GRB_TEST_POLICY_01"');                                                                <
+                                                                <
+                                                                  <
+BEGIN                                                                <
+  xs_data_security.create_policy(                                                                <
+     name => '"ODBCTEST"."GRB_TEST_POLICY_01"',                                                                <
+     realm_constraint_list => NULL);                                                                <
+                                                                <
+  xs_data_security.apply_object_policy(                                                                <
+     schema => 'ODBCAPTURE',                                                                <
+     object => 'GRBTST_$NAME',                                                                <
+     policy => '"ODBCTEST"."GRB_TEST_POLICY_01"');                                                                <
+END;                                                                <
+/                                                                <
+DECLARE                                                                <
+    realmList   sys.xs$realm_constraint_list;                                                                <
+  BEGIN                                                                <
+  realmList := sys.xs$realm_constraint_list(                                                                <
+      sys.xs$realm_constraint_type(                                                                <
+          realm => 'id < 10',                                                                 <
+          acl_list => XS$NAME_LIST('"ODBCTEST"."GRB_TEST_ACL_01                                                                <
+      sys.xs$realm_constraint_type(                                                                <
+          realm => 'id >= 10',                                                                 <
+          acl_list => XS$NAME_LIST('"ODBCTEST"."GRB_TEST_ACL_02                                                                <
+                                                                     <
+ xs_data_security.append_realm_constraints(policy => '"ODBCTEST                                                                <
+END;                                                                <
+/                                                                <
+                                                                <
+                                                                <
+set define on                                                                <
+diff -drywtNW 130 --suppress-common-lines ../../../grbtst/SYS/_opt_install_files_oracle_wallet.wacl grbtst/SYS/_opt_install_files_oracle_wallet.wacl
+                                                                <
+--                                                                <
+--  Create Wallet ACL/ACE                                                                <
+--                                                                <
+-- Wallet ACLs with the following:                                                                <
+--    PRINCIPAL_TYPE      = 'DATABASE' (xs_acl.ptype_db)                                                                <
+--    GRANT_TYPE          = 'GRANT'                                                                <
+--    INVERTED_PRINICIPAL = 'NO'                                                                <
+--    PRIVILEGE          is not null                                                                <
+-- Start Dates and End Dates are ignored (set to NULL).                                                                <
+--                                                                <
+                                                                <
+set define off                                                                <
+                                                                <
+                                                                <
+--                                                                <
+--  NOTE: This is a "GRANTEE" Wallet ACL                                                                <
+--                                                                <
+                                                                <
+begin                                                                <
+   DBMS_NETWORK_ACL_ADMIN.APPEND_WALLET_ACE                                                                <
+      (wallet_path => 'file:/opt/install_files/oracle_wallet'                                                                <
+      ,ace         => xs$ace_type                                                                <
+                         (privilege_list   => xs$name_list('USE                                                                <
+                         ,granted          => TRUE                                                                <
+                         ,inverted         => FALSE                                                                <
+                         ,principal_name   => 'ODBCTEST'                                                                <
+                         ,principal_type   => xs_acl.ptype_db                                                                <
+                         ,start_date       => NULL                                                                <
+                         ,end_date         => NULL));                                                                <
+end;                                                                <
+/                                                                <
+                                                                <
+set define on                                                                <
+diff -drywtNW 130 --suppress-common-lines ../../../grbtst/SYS/_var_opt_install_files_oracle_wallet.wacl grbtst/SYS/_var_opt_install_files_oracle_wallet.wacl
+                                                                <
+--                                                                <
+--  Create Wallet ACL/ACE                                                                <
+--                                                                <
+-- Wallet ACLs with the following:                                                                <
+--    PRINCIPAL_TYPE      = 'DATABASE' (xs_acl.ptype_db)                                                                <
+--    GRANT_TYPE          = 'GRANT'                                                                <
+--    INVERTED_PRINICIPAL = 'NO'                                                                <
+--    PRIVILEGE          is not null                                                                <
+-- Start Dates and End Dates are ignored (set to NULL).                                                                <
+--                                                                <
+                                                                <
+set define off                                                                <
+                                                                <
+                                                                <
+--                                                                <
+--  NOTE: This is a "GRANTEE" Wallet ACL                                                                <
+--                                                                <
+                                                                <
+begin                                                                <
+   DBMS_NETWORK_ACL_ADMIN.APPEND_WALLET_ACE                                                                <
+      (wallet_path => 'file:/var\opt\install_files/oracle_walle                                                                <
+      ,ace         => xs$ace_type                                                                <
+                         (privilege_list   => xs$name_list('USE                                                                <
+                         ,granted          => TRUE                                                                <
+                         ,inverted         => FALSE                                                                <
+                         ,principal_name   => 'ODBCTEST'                                                                <
+                         ,principal_type   => xs_acl.ptype_db                                                                <
+                         ,start_date       => NULL                                                                <
+                         ,end_date         => NULL));                                                                <
+end;                                                                <
+/                                                                <
+                                                                <
+set define on                                                                <
+diff -drywtNW 130 --suppress-common-lines ../../../grbtst/SYS/ODBCTEST.user grbtst/SYS/ODBCTEST.user
+-- Real Application Security System Grants                                                                <
+                                                                <
+                                                                <
+prompt XS Admin Grant "ADMIN_ANY_SEC_POLICY" to "ODBCTEST"                                                                <
+begin                                                                <
+   execute immediate 'begin' ||                                                                <
+                     '  xs_admin_util.grant_system_privilege(''                                                                <
+                     'end;';                                                                <
+exception when others then                                                                <
+   if    SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_UT                                                                <
+     AND SQLERRM not like '%ORA-01031: insufficient privileges%                                                                <
+   then                                                                <
+      raise;                                                                <
+   end if;                                                                <
+end;                                                                <
+/                                                                <
+                                                                <
+prompt XS Admin Cloud Grant "ADMIN_ANY_SEC_POLICY" to "ODBCTEST                                                                <
+begin                                                                <
+   execute immediate 'begin' ||                                                                <
+                     '  xs_admin_cloud_util.grant_system_privil                                                                <
+                     'end;';                                                                <
+exception when others then                                                                <
+   if SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_CLOUD                                                                <
+   then                                                                <
+      raise;                                                                <
+   end if;                                                                <
+end;                                                                <
+/                                                                <
+                                                                <
+                                                                <
+prompt XS Admin Grant "PROVISION" to "ODBCTEST"                                                                <
+begin                                                                <
+   execute immediate 'begin' ||                                                                <
+                     '  xs_admin_util.grant_system_privilege(''                                                                <
+                     'end;';                                                                <
+exception when others then                                                                <
+   if    SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_UT                                                                <
+     AND SQLERRM not like '%ORA-01031: insufficient privileges%                                                                <
+   then                                                                <
+      raise;                                                                <
+   end if;                                                                <
+end;                                                                <
+/                                                                <
+                                                                <
+prompt XS Admin Cloud Grant "PROVISION" to "ODBCTEST"                                                                <
+begin                                                                <
+   execute immediate 'begin' ||                                                                <
+                     '  xs_admin_cloud_util.grant_system_privil                                                                <
+                     'end;';                                                                <
+exception when others then                                                                <
+   if SQLERRM not like '%PLS-00201: identifier ''XS_ADMIN_CLOUD                                                                <
+   then                                                                <
+      raise;                                                                <
+   end if;                                                                <
+end;                                                                <
+/                                                                <
+                                                                <
+                                                                <

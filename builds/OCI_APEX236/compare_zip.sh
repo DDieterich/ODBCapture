@@ -9,21 +9,20 @@
 ZIP_FILE_ROOT="${1:-temp_files}"
 echo ""
 
-echo "Setup and Unzip"
+echo "Setup Folder ${ZIP_FILE_ROOT}"
 rm -rf "${ZIP_FILE_ROOT}"
 mkdir "${ZIP_FILE_ROOT}"
-cd "${ZIP_FILE_ROOT}"
-unzip "../${ZIP_FILE_ROOT}.zip"
-cd ..
 
-echo "Compare Source Code"
 cd "${ZIP_FILE_ROOT}"
-ls | while read FOLDER
-     do
-        diff -drywtNW 172 --suppress-common-lines "../../../${FOLDER}" "${FOLDER}"
-     done > "../diff_report.txt" 2>&1
+echo "Unzip File ../${ZIP_FILE_ROOT}.zip"
+unzip "../${ZIP_FILE_ROOT}.zip"
+echo "Compare Files from '${PWD}' folders"
+ls |
+   while read FOLDER
+do
+   diff -drywtNW 130 --suppress-common-lines "../../../${FOLDER}" "${FOLDER}"
+done > "../diff_report.txt" 2>&1
 cd ..
-echo ""
 
 echo "Files that are Different"
 grep -e '^diff ' "diff_report.txt" | cut '-d ' -f6

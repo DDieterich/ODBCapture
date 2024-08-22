@@ -1,0 +1,107 @@
+GRB_TEST_ROLE_01.XS_ROLE
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.072
+
+
+GRB_TEST_USER_01.XS_USER
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.060
+
+
+GRB_TEST_USER_02.XS_USER
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.022
+
+
+grant "GRB_TEST_ROLE" to "GRB_TEST_ROLE_01"
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.024
+
+
+principal grant "GRB_TEST_ROLE_01" to "GRB_TEST_USER_01"
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.069
+
+
+principal grant "XSCONNECT" to "GRB_TEST_USER_01"
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.012
+
+
+principal grant "XSPUBLIC" to "GRB_TEST_USER_01"
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.012
+
+
+principal grant "GRB_TEST_ROLE_01" to "GRB_TEST_USER_02"
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.011
+
+
+principal grant "XSCONNECT" to "GRB_TEST_USER_02"
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.010
+
+
+principal grant "XSPUBLIC" to "GRB_TEST_USER_02"
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.011
+
+
+GRB_TEST_ACL_01.XS_ACL
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.035
+
+
+GRB_TEST_ACL_02.XS_ACL
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.016
+
+
+GRB_TEST_POLICY_01.XS_DATA_SECURITY
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.116
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.080
