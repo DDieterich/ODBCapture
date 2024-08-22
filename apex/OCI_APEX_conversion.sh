@@ -12,11 +12,11 @@ do
    cat "../${INSTALL_SELECT}/install_sys.sql" \
        "../${INSTALL_SELECT}/install_SYSTEM.sql" \
        "../${INSTALL_SELECT}/install_${INSTALL_SELECT}.sql" |
-      while IFS="" read -r buff
+      while IFS="" read -r MAIN_LINE
    do
-      if [ "${buff:0:9}" = '@dbi.sql ' ]
+      if [ "${MAIN_LINE:0:9}" = '@dbi.sql ' ]
       then
-         set ${buff}    # Parses "buff" into command line parameters like $1
+         set ${MAIN_LINE}    # Parses "MAIN_LINE" into command line parameters like $1
          DBI_FILENAME="${2//\"/}"
          echo ""
          echo "prompt ============================================================"
@@ -56,6 +56,7 @@ do
                   echo "${CLDR_LINE/'&_RC.'/'0'}"
                fi
             done
+            echo "commit;"
          elif [ "${DBI_FILENAME: -4}" = '.sql' ]
          then
             grep -Ev -e '^spool ' \
@@ -63,14 +64,12 @@ do
                      -e '^set trimspool ' \
                      -e '^set termout ' \
                      -e '^set sqlprefix ' \
-                     -e '^define INSTALL_SYSTEM_CONNECT[ =]' \
-                     -e '^define TOP_PDB_SYSTEM[ =]' \
                < "../${INSTALL_SELECT}/${DBI_FILENAME}"
          else
             cat < "../${INSTALL_SELECT}/${DBI_FILENAME}"
          fi
       else
-         echo "${buff}" |
+         echo "${MAIN_LINE}" |
             grep -Ev -e '^spool ' \
                      -e '^set linesize ' \
                      -e '^set trimspool ' \
@@ -81,3 +80,31 @@ do
       fi
    done | sed -e '1,$s/^[@]/--@/1' >> "${SQL_SCRIPT}"
 done
+
+#
+# Add All Finalize Scripts
+#
+(
+   cat < "../grb_linked_install_scripts/fix_invalid_public_synonyms.sql"
+   sed -e "1,\$s/&1[.]/'ODBCAPTURE','ODBCTEST'/g" \
+       < "../grb_linked_install_scripts/compile_all.sql"
+   sed -e "1,\$s/&1[.]/ENABLE/g" \
+       -e "1,\$s/&2[.]/'ODBCAPTURE','ODBCTEST'/g" \
+       < "../grb_linked_install_scripts/alter_foreign_keys.sql"
+   sed -e "1,\$s/&1[.]/ENABLE/g" \
+       -e "1,\$s/&2[.]/'ODBCAPTURE','ODBCTEST'/g" \
+       < "../grb_linked_install_scripts/alter_triggers.sql"
+   sed -e "1,\$s/&1[.]/'ODBCAPTURE','ODBCTEST'/g" \
+       < "../grb_linked_install_scripts/update_id_sequences.sql"
+#   sed -e "1,\$s/&1[.]/ENABLE/g" \
+#       -e "1,\$s/&2[.]/'ODBCAPTURE','ODBCTEST'/g" \
+#       < "../grb_linked_install_scripts/alter_queues.sql"
+#   sed -e "1,\$s/&1[.]/ENABLE/g" \
+#       -e "1,\$s/&2[.]/'ODBCAPTURE','ODBCTEST'/g" \
+#       < "../grb_linked_install_scripts/alter_scheduler_jobs.sql"
+) | grep -Ev -e '^spool ' \
+             -e '^set linesize ' \
+             -e '^set trimspool ' \
+             -e '^set termout ' \
+             -e '^set sqlprefix ' |
+    sed '1,$s/^[@]/--@/1' >> "${SQL_SCRIPT}"

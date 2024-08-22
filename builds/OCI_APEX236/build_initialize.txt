@@ -7,7 +7,7 @@ ODBCAPTURE
 ODBCTEST   
 
 
-Elapsed: 00:00:00.042
+Elapsed: 00:00:00.037
 2 rows selected.
 
 
@@ -17,17 +17,14 @@ Elapsed: 00:00:00.042
 Drop Index COLA_SPATIAL_IDX
 
 
-ORA-01418: specified index does not exist
-
-
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.013
+Elapsed: 00:00:00.726
 
 
 0 rows deleted.
 
-Elapsed: 00:00:00.037
+Elapsed: 00:00:00.014
 
 
 
@@ -37,19 +34,13 @@ Drop Principal Roles
 
 
 xs_principal.delete_principal "GRB_TEST_USER_02"
-ORA-46215: The Real Application Security (RAS or XS) object by the name
-"GRB_TEST_USER_02" does not exist.
 xs_principal.delete_principal "GRB_TEST_USER_01"
-ORA-46215: The Real Application Security (RAS or XS) object by the name
-"GRB_TEST_USER_01" does not exist.
 xs_principal.delete_principal "GRB_TEST_ROLE_01"
-ORA-46215: The Real Application Security (RAS or XS) object by the name
-"GRB_TEST_ROLE_01" does not exist.
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.040
+Elapsed: 00:00:00.137
 
 
 
@@ -58,15 +49,15 @@ Elapsed: 00:00:00.040
 Drop Schema
 
 
--- 2024-08-21 21:23:35 --
+-- 2024-08-22 16:12:52 --
 drop user "ODBCAPTURE" cascade
--- 2024-08-21 21:23:38 --
+-- 2024-08-22 16:12:55 --
 drop user "ODBCTEST" cascade
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:04.319
+Elapsed: 00:00:04.405
 
 
 
@@ -75,10 +66,10 @@ Elapsed: 00:00:04.319
 Drop Role
 
 
--- 2024-08-21 21:23:39 --
+-- 2024-08-22 16:12:57 --
 drop role "GRB_TEST_ROLE"
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.069
+Elapsed: 00:00:00.079

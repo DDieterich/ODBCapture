@@ -3,7 +3,7 @@ GRB_TEST_ROLE_01.XS_ROLE
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.072
+Elapsed: 00:00:00.042
 
 
 GRB_TEST_USER_01.XS_USER
@@ -11,7 +11,7 @@ GRB_TEST_USER_01.XS_USER
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.060
+Elapsed: 00:00:00.037
 
 
 GRB_TEST_USER_02.XS_USER
@@ -19,7 +19,7 @@ GRB_TEST_USER_02.XS_USER
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.022
+Elapsed: 00:00:00.020
 
 
 grant "GRB_TEST_ROLE" to "GRB_TEST_ROLE_01"
@@ -27,7 +27,7 @@ grant "GRB_TEST_ROLE" to "GRB_TEST_ROLE_01"
 
 Grant succeeded.
 
-Elapsed: 00:00:00.024
+Elapsed: 00:00:00.018
 
 
 principal grant "GRB_TEST_ROLE_01" to "GRB_TEST_USER_01"
@@ -35,7 +35,7 @@ principal grant "GRB_TEST_ROLE_01" to "GRB_TEST_USER_01"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.069
+Elapsed: 00:00:00.022
 
 
 principal grant "XSCONNECT" to "GRB_TEST_USER_01"
@@ -51,7 +51,7 @@ principal grant "XSPUBLIC" to "GRB_TEST_USER_01"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.012
+Elapsed: 00:00:00.013
 
 
 principal grant "GRB_TEST_ROLE_01" to "GRB_TEST_USER_02"
@@ -59,7 +59,7 @@ principal grant "GRB_TEST_ROLE_01" to "GRB_TEST_USER_02"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.011
+Elapsed: 00:00:00.012
 
 
 principal grant "XSCONNECT" to "GRB_TEST_USER_02"
@@ -67,7 +67,7 @@ principal grant "XSCONNECT" to "GRB_TEST_USER_02"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.011
 
 
 principal grant "XSPUBLIC" to "GRB_TEST_USER_02"
@@ -75,7 +75,7 @@ principal grant "XSPUBLIC" to "GRB_TEST_USER_02"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.011
+Elapsed: 00:00:00.012
 
 
 GRB_TEST_ACL_01.XS_ACL
@@ -83,7 +83,7 @@ GRB_TEST_ACL_01.XS_ACL
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.035
+Elapsed: 00:00:00.031
 
 
 GRB_TEST_ACL_02.XS_ACL
@@ -99,9 +99,9 @@ GRB_TEST_POLICY_01.XS_DATA_SECURITY
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.116
+Elapsed: 00:00:00.034
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.080
+Elapsed: 00:00:00.033

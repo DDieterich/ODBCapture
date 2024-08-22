@@ -11,7 +11,7 @@ declare
    sql_txt  varchar2(1000);
 begin
    dbms_output.put_line('Alter Scheduler Jobs started.');
-   dbms_output.put_line('  &1. &2.');
+   dbms_output.put_line(q'{  &1. &2.}');
    for buff in (select owner, job_name
                  from  dba_scheduler_jobs
                  where owner in (&2.)

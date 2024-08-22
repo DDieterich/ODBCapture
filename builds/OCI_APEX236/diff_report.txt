@@ -23,6 +23,9 @@ diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/BUILD_CONF.
    ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
 diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/BUILD_PATH.tbl grbsrc/ODBCAPTURE/BUILD_PATH.tbl
    ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/BUILD_PATH.tfk grbsrc/ODBCAPTURE/BUILD_PATH.tfk
+          REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ") EN                                                                |            REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ") DI
+          REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ") EN                                                                |            REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ") DI
 diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/BUILD_PATH_REVIEW.vw grbsrc/ODBCAPTURE/BUILD_PATH_REVIEW.vw
   CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."BUILD_                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."BUILD_
 diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/BUILD_TYPE_TIMING.tbl grbsrc/ODBCAPTURE/BUILD_TYPE_TIMING.tbl
@@ -90,7 +93,7 @@ diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/DBTOOLS_EXE
                                                                 >          "UPDATED_ON" TIMESTAMP (6) WITH TIME ZONE, 
                                                                 >          "STATEMENT" CLOB COLLATE "USING_NLS_COMP", 
                                                                 >          "TIMES" NUMBER
-                                                                >     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+                                                                >     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION DEFER
                                                                 >  ALTER TABLE "ODBCAPTURE"."DBTOOLS$EXECUTION_HISTORY" ADD CONSTR
                                                                 >    USING INDEX  ENABLE;
                                                                 >
@@ -138,6 +141,9 @@ diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/DLOAD_CONF.
         "AFTER_ORDER_BY_SQL" VARCHAR2(4000 BYTE),                                                                 |          "AFTER_ORDER_BY_SQL" VARCHAR2(4000 BYTE) COLLATE "USING
         "NOTES" VARCHAR2(4000 BYTE)                                                                |          "NOTES" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP"
    ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/DLOAD_CONF.tfk grbsrc/ODBCAPTURE/DLOAD_CONF.tfk
+          REFERENCES "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME") EN                                                                |            REFERENCES "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME") DI
+          REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_TYPE") E                                                                |            REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_TYPE") D
 diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/ELEMENT_CONF.tbl grbsrc/ODBCAPTURE/ELEMENT_CONF.tbl
         "ELEMENT_NAME" VARCHAR2(20 BYTE) NOT NULL ENABLE,                                                                 |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COM
         "FILE_EXT1" VARCHAR2(6 BYTE) NOT NULL ENABLE,                                                                 |          "FILE_EXT1" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP" N
@@ -317,6 +323,10 @@ diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJECT_CONF
         "OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) NOT NULL ENABL                                                                |          "OBJECT_NAME_REGEXP" VARCHAR2(4000 BYTE) COLLATE "USING
         "NOTES" VARCHAR2(1024 BYTE)                                                                |          "NOTES" VARCHAR2(1024 BYTE) COLLATE "USING_NLS_COMP"
    ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/OBJECT_CONF.tfk grbsrc/ODBCAPTURE/OBJECT_CONF.tfk
+          REFERENCES "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME") EN                                                                |            REFERENCES "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME") DI
+          REFERENCES "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_NAME                                                                |            REFERENCES "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_NAME
+          REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_TYPE") E                                                                |            REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_TYPE") D
 diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw grbsrc/ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw
   CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_O                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."PRIV_O
 diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw grbsrc/ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw
@@ -345,6 +355,8 @@ diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/ROLE_CONF.t
         "ORACLE_PROVIDED" VARCHAR2(1 BYTE) NOT NULL ENABLE,                                                                 |          "ORACLE_PROVIDED" VARCHAR2(1 BYTE) COLLATE "USING_NLS_C
         "NOTES" VARCHAR2(1024 BYTE)                                                                |          "NOTES" VARCHAR2(1024 BYTE) COLLATE "USING_NLS_COMP"
    ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/ROLE_CONF.tfk grbsrc/ODBCAPTURE/ROLE_CONF.tfk
+          REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_TYPE") E                                                                |            REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_TYPE") D
 diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/SCHEMA_CONF.tbl grbsrc/ODBCAPTURE/SCHEMA_CONF.tbl
    (    "USERNAME" VARCHAR2(128 BYTE) NOT NULL ENABLE,                                                                 |     (    "USERNAME" VARCHAR2(128 BYTE) COLLATE "USING_NLS_COMP" 
         "BUILD_TYPE" VARCHAR2(10 BYTE) NOT NULL ENABLE,                                                                 |          "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP"
@@ -355,6 +367,8 @@ diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/SCHEMA_CONF
         "TS_QUOTA" VARCHAR2(10 BYTE),                                                                 |          "TS_QUOTA" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP", 
         "NOTES" VARCHAR2(1024 BYTE)                                                                |          "NOTES" VARCHAR2(1024 BYTE) COLLATE "USING_NLS_COMP"
    ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/SCHEMA_CONF.tfk grbsrc/ODBCAPTURE/SCHEMA_CONF.tfk
+          REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_TYPE") E                                                                |            REFERENCES "ODBCAPTURE"."BUILD_CONF" ("BUILD_TYPE") D
 diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl grbsrc/ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl
    (    "BUILD_TYPE" VARCHAR2(10 BYTE),                                                                 |     (    "BUILD_TYPE" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP"
         "OBJECT_OWNER" VARCHAR2(128 BYTE),                                                                 |          "OBJECT_OWNER" VARCHAR2(128 BYTE) COLLATE "USING_NLS_CO
@@ -367,11 +381,13 @@ diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/TSPACE_CONF
         "TSPACE_NAME" VARCHAR2(30 BYTE) NOT NULL ENABLE,                                                                 |          "TSPACE_NAME" VARCHAR2(30 BYTE) COLLATE "USING_NLS_COMP
         "TS_QUOTA" VARCHAR2(10 BYTE)                                                                |          "TS_QUOTA" VARCHAR2(10 BYTE) COLLATE "USING_NLS_COMP"
    ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION DEFER
+diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/TSPACE_CONF.tfk grbsrc/ODBCAPTURE/TSPACE_CONF.tfk
+          REFERENCES "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME") EN                                                                |            REFERENCES "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME") DI
 diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/UOR_INSTALL_VIEW.vw grbsrc/ODBCAPTURE/UOR_INSTALL_VIEW.vw
   CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."UOR_IN                                                                |    CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."UOR_IN
 diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/ZIP_FILES.tbl grbsrc/ODBCAPTURE/ZIP_FILES.tbl
    (    "FILE_NAME" VARCHAR2(1000 BYTE),                                                                 |     (    "FILE_NAME" VARCHAR2(1000 BYTE) COLLATE "USING_NLS_COMP
-   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMED
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION DEFER
 diff -drywtNW 130 --suppress-common-lines ../../../grbsrc/SYS/ODBCAPTURE.user grbsrc/SYS/ODBCAPTURE.user
 -- Real Application Security System Grants                                                                <
                                                                 <

@@ -1856,6 +1856,7 @@ begin
 end;
 /
 
+commit;
 
 prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/BUILD_PATH.cldr
@@ -1961,6 +1962,7 @@ begin
 end;
 /
 
+commit;
 
 prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/ELEMENT_CONF.cldr
@@ -2153,6 +2155,7 @@ begin
 end;
 /
 
+commit;
 
 prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/METADATA_TRANSFORM_PARAMS.cldr
@@ -2270,6 +2273,7 @@ begin
 end;
 /
 
+commit;
 
 prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/ROLE_CONF.cldr
@@ -2606,6 +2610,7 @@ begin
 end;
 /
 
+commit;
 
 prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/SCHEMA_CONF.cldr
@@ -2744,6 +2749,7 @@ begin
 end;
 /
 
+commit;
 
 prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/TSPACE_CONF.cldr
@@ -2819,6 +2825,7 @@ begin
 end;
 /
 
+commit;
 
 ----------------------------------------
 -- INDEX Install
@@ -12054,6 +12061,7 @@ begin
 end;
 /
 
+commit;
 
 prompt ============================================================
 prompt Running: grbras ODBCAPTURE/SCHEMA_CONF.cldr
@@ -12132,6 +12140,7 @@ begin
 end;
 /
 
+commit;
 
 ----------------------------------------
 -- VIEW Install
@@ -12969,6 +12978,7 @@ begin
 end;
 /
 
+commit;
 
 prompt ============================================================
 prompt Running: grbsdo ODBCAPTURE/SCHEMA_CONF.cldr
@@ -13050,6 +13060,7 @@ begin
 end;
 /
 
+commit;
 
 ----------------------------------------
 -- PACKAGE BODY Install
@@ -13777,6 +13788,7 @@ begin
 end;
 /
 
+commit;
 
 prompt ============================================================
 prompt Running: grbdat ODBCAPTURE/OBJECT_CONF.cldr
@@ -13900,6 +13912,7 @@ begin
 end;
 /
 
+commit;
 
 ----------------------------------------
 -- Finalize Installation (Includes SPOOL OFF)
@@ -14604,6 +14617,7 @@ begin
 end;
 /
 
+commit;
 
 prompt ============================================================
 prompt Running: grbtst ODBCAPTURE/BUILD_PATH.cldr
@@ -14709,6 +14723,7 @@ begin
 end;
 /
 
+commit;
 
 prompt ============================================================
 prompt Running: grbtst ODBCAPTURE/GRBTST__NAME.cldr
@@ -14792,6 +14807,7 @@ begin
 end;
 /
 
+commit;
 
 prompt ============================================================
 prompt Running: grbtst ODBCAPTURE/GRBTST_IMAGE.cldr
@@ -15209,6 +15225,7 @@ end;
 
 commit;
 
+commit;
 
 prompt ============================================================
 prompt Running: grbtst ODBCAPTURE/ROLE_CONF.cldr
@@ -15287,6 +15304,7 @@ begin
 end;
 /
 
+commit;
 
 prompt ============================================================
 prompt Running: grbtst ODBCAPTURE/SCHEMA_CONF.cldr
@@ -15365,6 +15383,7 @@ begin
 end;
 /
 
+commit;
 
 prompt ============================================================
 prompt Running: grbtst ODBCAPTURE/TSPACE_CONF.cldr
@@ -15440,6 +15459,7 @@ begin
 end;
 /
 
+commit;
 
 ----------------------------------------
 -- Finalize Installation (Includes SPOOL OFF)
@@ -15798,6 +15818,7 @@ begin
 end;
 /
 
+commit;
 
 ----------------------------------------
 -- Finalize Installation (Includes SPOOL OFF)
@@ -16096,6 +16117,7 @@ begin
 end;
 /
 
+commit;
 
 ----------------------------------------
 -- INDEX Install
@@ -16407,6 +16429,7 @@ begin
 end;
 /
 
+commit;
 
 ----------------------------------------
 -- INDEX Install
@@ -16714,6 +16737,7 @@ begin
 end;
 /
 
+commit;
 
 prompt ============================================================
 prompt Running: grbtdat ODBCAPTURE/OBJECT_CONF.cldr
@@ -16837,6 +16861,7 @@ begin
 end;
 /
 
+commit;
 
 ----------------------------------------
 -- Finalize Installation (Includes SPOOL OFF)
@@ -16888,3 +16913,269 @@ prompt Switch Spooling Off
 
 
 
+
+--
+--  Re-create Invalid Public Synonyms
+--
+
+----------------------------------------
+prompt
+prompt Re-create Invalid Public Synonyms
+set serveroutput on size unlimited format wrapped
+
+Declare
+   sql_txt varchar(2000);
+Begin
+ for buff in (with q1 as (
+              select owner, object_name, editionable
+               from  dba_objects
+               where status != 'VALID'
+              )
+              select syn.synonym_name, syn.table_owner, syn.table_name,
+                     case q1.editionable when 'Y'  then ' EDITIONABLE'
+                                         when NULL then ''
+                                                   else ' NONEDITIONABLE'
+                     end                  EDITIONABLE
+                from dba_synonyms  syn
+                     join q1
+                          on  q1.owner       = syn.owner
+                          and q1.object_name = syn.synonym_name
+                     join dba_users  usr
+                          on  usr.username = syn.table_owner
+                          and (   usr.oracle_maintained is null
+                               OR usr.oracle_maintained != 'Y')
+               where syn.owner = 'PUBLIC' )
+  loop
+    begin
+      sql_txt := 'CREATE OR REPLACE' || buff.EDITIONABLE || ' PUBLIC SYNONYM "' ||
+                  buff.synonym_name || '" for "' || buff.table_owner || '"."' ||
+                  buff.table_name ||'"';
+      dbms_output.put_line(sql_txt);
+      execute immediate sql_txt;
+    exception
+      when others then
+        dbms_output.put_line('ERROR:' || CHR(10) || SQLERRM || CHR(10));
+        dbms_output.put_line('----------------------------------------');
+    end;
+  end loop;
+end;
+/
+
+
+--
+--  Compile All "grbtst" Build Type Objects
+--   1 - Schema List
+--
+
+declare
+   sql_txt  varchar2(1000);
+begin
+   dbms_output.put_line('Compile All started');
+   for buff in (select owner, object_name
+                 from  sys.dba_objects
+                 where owner      in ('ODBCAPTURE','ODBCTEST')
+                  and  object_type = 'JAVA SOURCE'
+                 order by owner, object_name )
+   loop
+      sql_txt := 'alter java source "' || buff.owner       ||
+                                 '"."' || buff.object_name || '" compile';
+      dbms_output.put_line(sql_txt || ';');
+      begin
+         execute immediate sql_txt;
+      exception when others then
+         dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+      end;
+   end loop;
+   for buff in (select username from dba_users
+                 where username in ('ODBCAPTURE','ODBCTEST')
+                 order by username )
+   loop
+      begin
+         DBMS_UTILITY.compile_schema(schema      => buff.username
+                                    ,compile_all => FALSE);
+         dbms_output.put_line(buff.username  || ' Compiled.');
+      exception when others then
+         dbms_output.put_line('Error Compiling Schema ' || buff.username);
+         dbms_output.put_line(SQLERRM || CHR(10));
+      end;
+   end loop;
+   dbms_output.put_line('Compile All is done.');
+end;
+/
+
+--
+--  Alter Foreign Keys
+--
+-- Command Line Parameters:
+--   1 - ENABLE/DISABLE
+--   2 - Schema List
+--
+
+declare
+   sql_txt  varchar2(1000);
+   procedure missing_parent_sql
+         (in_owner       sys.dba_constraints.owner%TYPE
+         ,in_constraint  sys.dba_constraints.constraint_name%TYPE)
+   is
+      TYPE fk_rec_type is record
+         (child_owner    sys.dba_constraints.owner%TYPE
+         ,child_table    sys.dba_constraints.table_name%TYPE
+         ,child_column   sys.dba_cons_columns.column_name%TYPE
+         ,parent_owner   sys.dba_constraints.owner%TYPE
+         ,parent_table   sys.dba_constraints.table_name%TYPE
+         ,parent_column  sys.dba_cons_columns.column_name%TYPE);
+      TYPE fk_nt_type is table of fk_rec_type;
+      fk_nt  fk_nt_type;
+   begin
+      select ctab.owner child_owner,  ctab.table_name child_table,  ccol.column_name child_column,
+             ptab.owner parent_owner, ptab.table_name parent_table, pcol.column_name parent_column
+       bulk  collect into fk_nt
+       from  sys.dba_constraints  ctab
+             join sys.dba_cons_columns  ccol
+                  on  ccol.owner = ctab.owner and ccol.constraint_name = ctab.constraint_name
+             join sys.dba_constraints  ptab
+                  on  ptab.owner = ctab.r_owner and ptab.constraint_name = ctab.r_constraint_name
+             join sys.dba_cons_columns  pcol
+                  on  pcol.owner = ptab.owner and pcol.constraint_name = ptab.constraint_name
+                  and pcol.position = ccol.position
+       where ctab.owner = in_owner and ctab.constraint_name = in_constraint
+       order by ccol.position;
+      if SQL%NOTFOUND then return; end if;
+      dbms_output.put_line('-- ORA-20000: Query to find missing parent keys:');
+      -- ORA-20000:  select "CHILD_KEY" from from "CHILD_OWNER"."CHILD_TABLE" group by "CHILD_KEY"
+      sql_txt := '-- ORA-20000:  select "' || fk_nt(1).child_column;
+      for i in 2 .. fk_nt.LAST
+      loop
+         sql_txt := sql_txt || '", "' || fk_nt(i).child_column;
+      end loop;
+      sql_txt := sql_txt || '" from "' || fk_nt(1).child_owner || '"."' || fk_nt(1).child_table ||
+                        '" group by "' || fk_nt(1).child_column;
+      for i in 2 .. fk_nt.LAST
+      loop
+         sql_txt := sql_txt || '", "' || fk_nt(i).child_column;
+      end loop;
+      dbms_output.put_line (sql_txt || '"');
+      -- ORA-20000: MINUS select "PARENT_KEY" from "PARENT_OWNER"."PARENT_TABLE";
+      sql_txt := '-- ORA-20000:  MINUS select "' || fk_nt(1).parent_column;
+      for i in 2 .. fk_nt.LAST
+      loop
+         sql_txt := sql_txt || '", "' || fk_nt(i).parent_column;
+      end loop;
+      sql_txt := sql_txt || '" from "' || fk_nt(1).parent_owner || '"."' || fk_nt(1).parent_table || '";';
+      dbms_output.put_line (sql_txt);
+   end missing_parent_sql;
+begin
+   dbms_output.put_line('Alter Foreign Keys started.');
+   dbms_output.put_line(q'{  ENABLE 'ODBCAPTURE','ODBCTEST'}');
+   for buff in (select owner, table_name, constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner in ('ODBCAPTURE','ODBCTEST')
+                 order by owner, table_name, constraint_name)
+   loop
+      sql_txt := 'alter table "' || buff.owner || '"."' || buff.table_name ||
+                    '" ENABLE constraint "' || buff.constraint_name || '"';
+      dbms_output.put_line(sql_txt || ';');
+      begin
+         execute immediate sql_txt;
+      exception when others then
+         dbms_output.put_line('-- *');
+         dbms_output.put_line('-- ERROR at line :');
+         dbms_output.put_line('-- ' || SQLERRM);
+         missing_parent_sql(buff.owner, buff.constraint_name);
+      end;
+   end loop;
+   dbms_output.put_line('Alter Foreign Keys is done.');
+end;
+/
+
+--
+--  Alter Type Triggers
+--
+-- Command Line Parameters:
+--   1 - ENABLE/DISABLE
+--   2 - Schema List
+--
+
+declare
+   sql_txt  varchar2(1000);
+begin
+   dbms_output.put_line('Alter Triggers started.');
+   dbms_output.put_line(q'{  ENABLE 'ODBCAPTURE','ODBCTEST'}');
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner in ('ODBCAPTURE','ODBCTEST')
+                 order by owner, trigger_name)
+   loop
+      sql_txt := 'alter trigger "' || buff.owner        || '"."' ||
+                                      buff.trigger_name || '" ENABLE';
+      dbms_output.put_line(sql_txt || ';');
+      begin
+         execute immediate sql_txt;
+      exception when others then
+         dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+      end;
+   end loop;
+   dbms_output.put_line('Alter Triggers is done.');
+end;
+/
+
+--
+-- Update "grbtst" IDENTITY SEQUENCES
+--   1 - Schema List
+--
+
+declare
+   UNDEFINED_SEQUENCE  EXCEPTION;  -- sequence not yet defined in this session
+   PRAGMA EXCEPTION_INIT (UNDEFINED_SEQUENCE, -8002);
+   l_last_seq   number;
+   l_max_val    number;
+   sql_txt      varchar2(4000);
+begin
+   dbms_output.put_line('Update ID Sequences started');
+   for buff in (
+      select tic.owner
+            ,tic.table_name
+            ,tic.column_name
+            ,tic.sequence_name
+       from  dba_tab_identity_cols  tic
+       where tic.owner in ('ODBCAPTURE','ODBCTEST')
+      order by tic.owner
+            ,tic.table_name
+            ,tic.column_name
+            ,tic.sequence_name )
+   loop
+      -- Find the Current Sequence Value
+      sql_txt := 'select ' || buff.owner || '.' || buff.sequence_name ||
+                 '.currval from dual';
+      begin
+         execute immediate sql_txt into l_last_seq;
+      exception when UNDEFINED_SEQUENCE
+      then
+         -- Find the Last Number for the Sequence
+         select ds.last_number into l_last_seq
+          from  dba_sequences  ds
+          where ds.sequence_owner = buff.owner
+           and  ds.sequence_name  = buff.sequence_name;
+      end;
+      -- Find the maximum IDENTITY column value
+      sql_txt := 'select max(' || buff.column_name || ')' ||
+                 ' from ' || buff.owner || '.' || buff.table_name;
+      execute immediate sql_txt into l_max_val;
+      -- Display values found
+      dbms_output.put_line(buff.owner || '.' || buff.sequence_name || ' Last Sequence: ' || l_last_seq ||
+                   ', ' || buff.owner || '.' || buff.table_name || ' max(' || buff.column_name || ') = ' || l_max_val);
+      if l_last_seq < l_max_val
+      then
+         -- Increment the sequence as necessary
+         sql_txt := 'begin' ||
+                    ' while ' || buff.owner || '.' || buff.sequence_name || '.nextval < ' || l_max_val ||
+                    ' loop null; end loop;' ||
+                    'end;';
+         dbms_output.put_line(sql_txt);
+         execute immediate sql_txt;-- using l_last_seq;
+      end if;
+   end loop;
+   dbms_output.put_line('Identity Sequence Updates is done.');
+end;
+/
