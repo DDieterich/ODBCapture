@@ -1761,6 +1761,67 @@ set define on
 prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/BUILD_CONF.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.BUILD_CONF data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'BUILD_CONF'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'BUILD_CONF'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."BUILD_CONF"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'BUILD_CONF'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/BUILD_CONF.ctl
+
 prompt Translating ../grbsrc/ODBCAPTURE/BUILD_CONF.csv to 'INSERT INTO'
 
 insert into "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ","BUILD_TYPE","NOTES")
@@ -1788,9 +1849,78 @@ insert into "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ","BUILD_TYPE","NOTES")
   values (-48,'grbdat','ODBCapture Self-Capture Configuration Data');
 
 
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/BUILD_CONF.ctl" returned error: 0');
+   end if;
+end;
+/
+
+
 prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/BUILD_PATH.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.BUILD_PATH data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'BUILD_PATH'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'BUILD_PATH'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."BUILD_PATH"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'BUILD_PATH'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/BUILD_PATH.ctl
+
 prompt Translating ../grbsrc/ODBCAPTURE/BUILD_PATH.csv to 'INSERT INTO'
 
 insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
@@ -1824,9 +1954,78 @@ insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
   values (-50,-48);
 
 
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/BUILD_PATH.ctl" returned error: 0');
+   end if;
+end;
+/
+
+
 prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/ELEMENT_CONF.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.ELEMENT_CONF data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'ELEMENT_CONF'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'ELEMENT_CONF'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."ELEMENT_CONF"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'ELEMENT_CONF'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/ELEMENT_CONF.ctl
+
 prompt Translating ../grbsrc/ODBCAPTURE/ELEMENT_CONF.csv to 'INSERT INTO'
 
 insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1","FILE_EXT2","FILE_EXT3","OBJECT_TYPE","NAME_CHECK_OBJECT_TYPE","NOTES")
@@ -1947,9 +2146,78 @@ insert into "ODBCAPTURE"."ELEMENT_CONF" ("ELEMENT_SEQ","ELEMENT_NAME","FILE_EXT1
   values (710,'CONTEXT','ctxt',NULL,NULL,'CONTEXT','CONTEXT','Memory Based Application Context (NOT Oracle Text) (Don''t match OBJECT_TYPE)');
 
 
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/ELEMENT_CONF.ctl" returned error: 0');
+   end if;
+end;
+/
+
+
 prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/METADATA_TRANSFORM_PARAMS.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.METADATA_TRANSFORM_PARAMS data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'METADATA_TRANSFORM_PARAMS'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'METADATA_TRANSFORM_PARAMS'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'METADATA_TRANSFORM_PARAMS'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/METADATA_TRANSFORM_PARAMS.ctl
+
 prompt Translating ../grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.csv to 'INSERT INTO'
 
 insert into "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" ("NAME","VALUE_TYPE","VALUE")
@@ -1995,9 +2263,78 @@ insert into "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" ("NAME","VALUE_TYPE","VALUE
   values ('TABLE_COMPRESSION_CLAUSE','VARCHAR','NONE');
 
 
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/METADATA_TRANSFORM_PARAMS.ctl" returned error: 0');
+   end if;
+end;
+/
+
+
 prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/ROLE_CONF.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.ROLE_CONF data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'ROLE_CONF'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'ROLE_CONF'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."ROLE_CONF"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'ROLE_CONF'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
+
 prompt Translating ../grbsrc/ODBCAPTURE/ROLE_CONF.csv to 'INSERT INTO'
 
 insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
@@ -2262,9 +2599,78 @@ insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED",
   values ('XDB_WEBSERVICES_WITH_PUBLIC','sys','Y','(grbxrep) Allows the grantee access to public objects through Oracle Database Web services.');
 
 
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/ROLE_CONF.ctl" returned error: 0');
+   end if;
+end;
+/
+
+
 prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/SCHEMA_CONF.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.SCHEMA_CONF data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'SCHEMA_CONF'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'SCHEMA_CONF'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."SCHEMA_CONF"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'SCHEMA_CONF'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
+
 prompt Translating ../grbsrc/ODBCAPTURE/SCHEMA_CONF.csv to 'INSERT INTO'
 
 insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
@@ -2331,10 +2737,87 @@ insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED
   values ('XDB','sys','Y',NULL,NULL,NULL,NULL,'(grbxrep) XDB - XML Database Repository (XDB,ANONYMOUS)');
 
 
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/SCHEMA_CONF.ctl" returned error: 0');
+   end if;
+end;
+/
+
+
 prompt ============================================================
 prompt Running: grbsrc ODBCAPTURE/TSPACE_CONF.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.TSPACE_CONF data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'TSPACE_CONF'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'TSPACE_CONF'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."TSPACE_CONF"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'TSPACE_CONF'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/TSPACE_CONF.ctl
+
 prompt Translating ../grbsrc/ODBCAPTURE/TSPACE_CONF.csv to 'INSERT INTO'
+
+
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/TSPACE_CONF.ctl" returned error: 0');
+   end if;
+end;
+/
 
 
 ----------------------------------------
@@ -11485,6 +11968,67 @@ set define on
 prompt ============================================================
 prompt Running: grbras ODBCAPTURE/ROLE_CONF.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.ROLE_CONF data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'ROLE_CONF'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'ROLE_CONF'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."ROLE_CONF"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'ROLE_CONF'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
+
 prompt Translating ../grbras/ODBCAPTURE/ROLE_CONF.csv to 'INSERT INTO'
 
 insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
@@ -11503,13 +12047,90 @@ insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED",
   values ('XS_SESSION_ADMIN','grbras','Y','In Oracle Database Real Application Security, enables the grantee to manage the life cycle of a session, including the ability to create, attach, detach, and destroy the session. Grant this role to the application connection user or Real Application Security dispatcher.');
 
 
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/ROLE_CONF.ctl" returned error: 0');
+   end if;
+end;
+/
+
+
 prompt ============================================================
 prompt Running: grbras ODBCAPTURE/SCHEMA_CONF.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.SCHEMA_CONF data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'SCHEMA_CONF'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'SCHEMA_CONF'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."SCHEMA_CONF"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'SCHEMA_CONF'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
+
 prompt Translating ../grbras/ODBCAPTURE/SCHEMA_CONF.csv to 'INSERT INTO'
 
 insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
   values ('XS$NULL','grbras','Y',NULL,NULL,NULL,NULL,'RAS - Real Application Security NULL Login');
+
+
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/SCHEMA_CONF.ctl" returned error: 0');
+   end if;
+end;
+/
 
 
 ----------------------------------------
@@ -12265,6 +12886,67 @@ set define on
 prompt ============================================================
 prompt Running: grbsdo ODBCAPTURE/ROLE_CONF.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.ROLE_CONF data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'ROLE_CONF'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'ROLE_CONF'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."ROLE_CONF"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'ROLE_CONF'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
+
 prompt Translating ../grbsdo/ODBCAPTURE/ROLE_CONF.csv to 'INSERT INTO'
 
 insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
@@ -12280,9 +12962,78 @@ insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED",
   values ('WFS_USR_ROLE','grbsdo','Y','Provides user privileges for the Web Feature Service (WFS) component of Oracle Spatial.');
 
 
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/ROLE_CONF.ctl" returned error: 0');
+   end if;
+end;
+/
+
+
 prompt ============================================================
 prompt Running: grbsdo ODBCAPTURE/SCHEMA_CONF.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.SCHEMA_CONF data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'SCHEMA_CONF'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'SCHEMA_CONF'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."SCHEMA_CONF"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'SCHEMA_CONF'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
+
 prompt Translating ../grbsdo/ODBCAPTURE/SCHEMA_CONF.csv to 'INSERT INTO'
 
 insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
@@ -12290,6 +13041,14 @@ insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED
 
 insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
   values ('MDSYS','grbsdo','Y',NULL,NULL,NULL,NULL,'SDO,LCTR - Spatial - Oracle Locator (MDSYS, MDDATA)');
+
+
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/SCHEMA_CONF.ctl" returned error: 0');
+   end if;
+end;
+/
 
 
 ----------------------------------------
@@ -12902,6 +13661,67 @@ end;
 prompt ============================================================
 prompt Running: grbdat ODBCAPTURE/DLOAD_CONF.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.DLOAD_CONF data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'DLOAD_CONF'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'DLOAD_CONF'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."DLOAD_CONF"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'DLOAD_CONF'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/DLOAD_CONF.ctl
+
 prompt Translating ../grbdat/ODBCAPTURE/DLOAD_CONF.csv to 'INSERT INTO'
 
 insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
@@ -12950,9 +13770,78 @@ insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORD
   values ('ODBCAPTURE','TSPACE_CONF','grbsrc','USERNAME, TSPACE_NAME',NULL,NULL,'username in (select username from schema_conf where build_type in (''grbsrc''))',NULL,NULL);
 
 
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/DLOAD_CONF.ctl" returned error: 0');
+   end if;
+end;
+/
+
+
 prompt ============================================================
 prompt Running: grbdat ODBCAPTURE/OBJECT_CONF.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.OBJECT_CONF data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'OBJECT_CONF'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'OBJECT_CONF'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."OBJECT_CONF"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'OBJECT_CONF'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/OBJECT_CONF.ctl
+
 prompt Translating ../grbdat/ODBCAPTURE/OBJECT_CONF.csv to 'INSERT INTO'
 
 insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
@@ -13002,6 +13891,14 @@ insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","
 
 insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
   values ('ODBCAPTURE','VIEW','grbras','PRIV_OBJ_RACL_VIEW','Only Valid with Real Application Security');
+
+
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/OBJECT_CONF.ctl" returned error: 0');
+   end if;
+end;
+/
 
 
 ----------------------------------------
@@ -13615,6 +14512,67 @@ set define on
 prompt ============================================================
 prompt Running: grbtst ODBCAPTURE/BUILD_CONF.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.BUILD_CONF data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'BUILD_CONF'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'BUILD_CONF'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."BUILD_CONF"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'BUILD_CONF'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/BUILD_CONF.ctl
+
 prompt Translating ../grbtst/ODBCAPTURE/BUILD_CONF.csv to 'INSERT INTO'
 
 insert into "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ","BUILD_TYPE","NOTES")
@@ -13639,9 +14597,78 @@ insert into "ODBCAPTURE"."BUILD_CONF" ("BUILD_SEQ","BUILD_TYPE","NOTES")
   values (-8,'grbtdat','ODBCapture and ODBCTest Testing Self-Capture Configuration Data');
 
 
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/BUILD_CONF.ctl" returned error: 0');
+   end if;
+end;
+/
+
+
 prompt ============================================================
 prompt Running: grbtst ODBCAPTURE/BUILD_PATH.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.BUILD_PATH data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'BUILD_PATH'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'BUILD_PATH'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."BUILD_PATH"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'BUILD_PATH'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/BUILD_PATH.ctl
+
 prompt Translating ../grbtst/ODBCAPTURE/BUILD_PATH.csv to 'INSERT INTO'
 
 insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
@@ -13675,9 +14702,78 @@ insert into "ODBCAPTURE"."BUILD_PATH" ("PARENT_BUILD_SEQ","BUILD_SEQ")
   values (-10,-8);
 
 
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/BUILD_PATH.ctl" returned error: 0');
+   end if;
+end;
+/
+
+
 prompt ============================================================
 prompt Running: grbtst ODBCAPTURE/GRBTST__NAME.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.GRBTST_$NAME data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'GRBTST_$NAME'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'GRBTST_$NAME'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."GRBTST_$NAME"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'GRBTST_$NAME'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/GRBTST__NAME.ctl
+
 prompt Translating ../grbtst/ODBCAPTURE/GRBTST__NAME.csv to 'INSERT INTO'
 
 -- Manually Fixed by DDieterich
@@ -13689,9 +14785,78 @@ insert into "ODBCAPTURE"."GRBTST_$NAME" ("C1","ID")
   values ('15',15);
 
 
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/GRBTST__NAME.ctl" returned error: 0');
+   end if;
+end;
+/
+
+
 prompt ============================================================
 prompt Running: grbtst ODBCAPTURE/GRBTST_IMAGE.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.GRBTST_IMAGE data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'GRBTST_IMAGE'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'GRBTST_IMAGE'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."GRBTST_IMAGE"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'GRBTST_IMAGE'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/GRBTST_IMAGE.ctl
+
 prompt Translating ../grbtst/ODBCAPTURE/GRBTST_IMAGE.csv to 'INSERT INTO'
 
 -- Need to Use "DBMS_LOB.CONVERTTOBLOB" on IMAGE data
@@ -13963,28 +15128,317 @@ CbQBCbQBCbQBCbQBCbQBif8HPdLWAOwjtc0AAAAASUVORK5CYII=
 ');
 
 
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/GRBTST_IMAGE.ctl" returned error: 0');
+   end if;
+end;
+/
+
+declare
+   l_blob          blob;
+   the_blob        blob;
+   procedure b64_decode
+         (in_blob  in BLOB)
+   is
+      BASE64_ENCODE_HEADER      constant varchar2(30) := '(Base64 with Linefeeds)';
+      SPLIT_LEN              constant pls_integer  := 32764;    -- Must be divisible by 4
+      header_txt    varchar2(128);
+      len_blob      pls_integer;
+      ptr           pls_integer;
+   begin
+      dbms_lob.trim(l_blob, 0);
+      dbms_lob.trim(the_blob, 0);
+      ----------------------------------------
+      -- Check incoming BLOB sizes (and return if needed)
+      if in_blob is null then return; end if;
+      len_blob := length(in_blob);
+      if len_blob = 0 then return; end if;
+      ----------------------------------------
+      -- Check for BASE64_ENCODE_HEADER in in_BLOB
+      header_txt := utl_raw.cast_to_varchar2(dbms_lob.substr(in_blob
+                                                            ,length(BASE64_ENCODE_HEADER)
+                                                            ,1)                       );
+      if header_txt != BASE64_ENCODE_HEADER
+      then
+         raise_application_error(-20000, 'BASE64_ENCODE_HEADER missing from data: ' || header_txt);
+      end if;
+      ----------------------------------------
+      -- Create "L_BLOB" after removing BASE64_ENCODE_HEADER, Carriage Returns, and Line Feeds
+      ptr := 1 + length(BASE64_ENCODE_HEADER);  -- Skip over the header
+      while ptr <= len_blob
+      loop
+         dbms_lob.append(l_blob
+                        ,utl_raw.translate(dbms_lob.substr(in_blob
+                                                          ,SPLIT_LEN
+                                                          ,ptr)
+                                          ,hextoraw('000D0A')       -- NULL, Carriage Return, Line Feed
+                                          ,hextoraw('00')   )   );  -- NULL
+         ptr := ptr + SPLIT_LEN;
+      end loop;
+      len_blob := length(l_blob);
+      ----------------------------------------
+      --  Create "THE_BLOB" after Base64 Decoding
+      ptr := 1;
+      while ptr <= len_blob
+      loop
+         dbms_lob.append(the_blob
+                        ,UTL_ENCODE.BASE64_DECODE(dbms_lob.substr(l_blob
+                                                                 ,SPLIT_LEN
+                                                                 ,ptr)   )   );
+         ptr := ptr + SPLIT_LEN;
+      end loop;
+   end b64_decode;
+begin
+   dbms_lob.createtemporary(l_blob, true);
+   dbms_lob.createtemporary(the_blob, true);
+   for buff in (select ROWID RID, "IMAGE"
+                 from  "ODBCAPTURE"."GRBTST_IMAGE"
+                 for update of "IMAGE")
+   loop
+      b64_decode(buff."IMAGE");
+      -- This overwrites the Base64 Encoded String with the original binary data
+      update "ODBCAPTURE"."GRBTST_IMAGE"
+        set  "IMAGE" = the_blob
+       where rowid = buff.rid;
+   end loop;
+   dbms_lob.freetemporary(l_blob);
+   dbms_lob.freetemporary(the_blob);
+end;
+/
+
+commit;
+
+
 prompt ============================================================
 prompt Running: grbtst ODBCAPTURE/ROLE_CONF.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.ROLE_CONF data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'ROLE_CONF'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'ROLE_CONF'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."ROLE_CONF"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'ROLE_CONF'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
+
 prompt Translating ../grbtst/ODBCAPTURE/ROLE_CONF.csv to 'INSERT INTO'
 
 insert into "ODBCAPTURE"."ROLE_CONF" ("ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES")
   values ('GRB_TEST_ROLE','grbtst','N','ODBCapture Testing');
 
 
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/ROLE_CONF.ctl" returned error: 0');
+   end if;
+end;
+/
+
+
 prompt ============================================================
 prompt Running: grbtst ODBCAPTURE/SCHEMA_CONF.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.SCHEMA_CONF data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'SCHEMA_CONF'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'SCHEMA_CONF'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."SCHEMA_CONF"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'SCHEMA_CONF'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
+
 prompt Translating ../grbtst/ODBCAPTURE/SCHEMA_CONF.csv to 'INSERT INTO'
 
 insert into "ODBCAPTURE"."SCHEMA_CONF" ("USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES")
   values ('ODBCTEST','grbtst','N',NULL,NULL,'USERS','512M','Test Account');
 
 
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/SCHEMA_CONF.ctl" returned error: 0');
+   end if;
+end;
+/
+
+
 prompt ============================================================
 prompt Running: grbtst ODBCAPTURE/TSPACE_CONF.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.TSPACE_CONF data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'TSPACE_CONF'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'TSPACE_CONF'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."TSPACE_CONF"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'TSPACE_CONF'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/TSPACE_CONF.ctl
+
 prompt Translating ../grbtst/ODBCAPTURE/TSPACE_CONF.csv to 'INSERT INTO'
+
+
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/TSPACE_CONF.ctl" returned error: 0');
+   end if;
+end;
+/
 
 
 ----------------------------------------
@@ -14194,6 +15648,67 @@ set define on
 prompt ============================================================
 prompt Running: grbtjsn ODBCAPTURE/GRBTST_JSON.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.GRBTST_JSON data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'GRBTST_JSON'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'GRBTST_JSON'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."GRBTST_JSON"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'GRBTST_JSON'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/GRBTST_JSON.ctl
+
 prompt Translating ../grbtjsn/ODBCAPTURE/GRBTST_JSON.csv to 'INSERT INTO'
 
 -- Manually Fixed by DDieterich
@@ -14274,6 +15789,14 @@ insert into "ODBCAPTURE"."GRBTST_JSON" ("ID","JSON_DATA")
     }
   ]
 }');
+
+
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/GRBTST_JSON.ctl" returned error: 0');
+   end if;
+end;
+/
 
 
 ----------------------------------------
@@ -14486,6 +16009,67 @@ set define on
 prompt ============================================================
 prompt Running: grbtsdo ODBCTEST/SDO_COLA_MARKETS.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCTEST.SDO_COLA_MARKETS data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCTEST'
+                  and  table_name = 'SDO_COLA_MARKETS'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCTEST'
+                  and  table_name = 'SDO_COLA_MARKETS'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCTEST"."SDO_COLA_MARKETS"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCTEST'
+                  and  table_name = 'SDO_COLA_MARKETS'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCTEST/SDO_COLA_MARKETS.ctl
+
 prompt Translating ../grbtsdo/ODBCTEST/SDO_COLA_MARKETS.csv to 'INSERT INTO'
 
 -- The SHAPE column loads data as COLUMN "OBJECT TREAT AS ST_GEOMETRY"
@@ -14503,6 +16087,14 @@ insert into "ODBCTEST"."SDO_COLA_MARKETS" ("MKT_ID","NAME","SHAPE")
 -- The SHAPE column loads data as COLUMN "OBJECT TREAT AS ST_GEOMETRY"
 insert into "ODBCTEST"."SDO_COLA_MARKETS" ("MKT_ID","NAME","SHAPE")
   values (4,'cola_d','2003;;;;;1;1003;48;7;10;9;8;11');
+
+
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCTEST/SDO_COLA_MARKETS.ctl" returned error: 0');
+   end if;
+end;
+/
 
 
 ----------------------------------------
@@ -14735,6 +16327,67 @@ set define on
 prompt ============================================================
 prompt Running: grbtctx ODBCTEST/CUST_CTX_TEST.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCTEST.CUST_CTX_TEST data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCTEST'
+                  and  table_name = 'CUST_CTX_TEST'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCTEST'
+                  and  table_name = 'CUST_CTX_TEST'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCTEST"."CUST_CTX_TEST"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCTEST'
+                  and  table_name = 'CUST_CTX_TEST'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCTEST/CUST_CTX_TEST.ctl
+
 prompt Translating ../grbtctx/ODBCTEST/CUST_CTX_TEST.csv to 'INSERT INTO'
 
 insert into "ODBCTEST"."CUST_CTX_TEST" ("CUST_ID","CUST_NAME","CREATE_DATE")
@@ -14745,6 +16398,14 @@ insert into "ODBCTEST"."CUST_CTX_TEST" ("CUST_ID","CUST_NAME","CREATE_DATE")
 
 insert into "ODBCTEST"."CUST_CTX_TEST" ("CUST_ID","CUST_NAME","CREATE_DATE")
   values (3,'Trapezium and Trappist Developments','14-MAY-2024 16:41:28');
+
+
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCTEST/CUST_CTX_TEST.ctl" returned error: 0');
+   end if;
+end;
+/
 
 
 ----------------------------------------
@@ -14946,6 +16607,67 @@ end;
 prompt ============================================================
 prompt Running: grbtdat ODBCAPTURE/DLOAD_CONF.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.DLOAD_CONF data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'DLOAD_CONF'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'DLOAD_CONF'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."DLOAD_CONF"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'DLOAD_CONF'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/DLOAD_CONF.ctl
+
 prompt Translating ../grbtdat/ODBCAPTURE/DLOAD_CONF.csv to 'INSERT INTO'
 
 insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORDER_BY_COLUMNS","BEFORE_SELECT_SQL","COLUMNS_REMOVED","WHERE_CLAUSE","AFTER_ORDER_BY_SQL","NOTES")
@@ -14985,9 +16707,78 @@ insert into "ODBCAPTURE"."DLOAD_CONF" ("USERNAME","TABLE_NAME","BUILD_TYPE","ORD
   values ('ODBCTEST','SDO_COLA_MARKETS','grbtsdo','MKT_ID',NULL,NULL,NULL,NULL,NULL);
 
 
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/DLOAD_CONF.ctl" returned error: 0');
+   end if;
+end;
+/
+
+
 prompt ============================================================
 prompt Running: grbtdat ODBCAPTURE/OBJECT_CONF.cldr
 prompt ============================================================
+
+--
+--  Comprehensive Data Loader script for ODBCAPTURE.OBJECT_CONF data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCAPTURE'
+                  and  table_name = 'OBJECT_CONF'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCAPTURE'
+                  and  table_name = 'OBJECT_CONF'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCAPTURE"."OBJECT_CONF"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCAPTURE'
+                  and  table_name = 'OBJECT_CONF'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCAPTURE/OBJECT_CONF.ctl
+
 prompt Translating ../grbtdat/ODBCAPTURE/OBJECT_CONF.csv to 'INSERT INTO'
 
 insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
@@ -15037,6 +16828,14 @@ insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","
 
 insert into "ODBCAPTURE"."OBJECT_CONF" ("USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES")
   values ('PUBLIC','HOST_ACL','grbtst','^odbctest','Any Public Host ACLs with a Hostname starting with "ODBCTEST"');
+
+
+begin
+   if '0' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCAPTURE/OBJECT_CONF.ctl" returned error: 0');
+   end if;
+end;
+/
 
 
 ----------------------------------------

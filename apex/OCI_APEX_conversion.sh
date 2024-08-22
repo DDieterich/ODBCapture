@@ -12,7 +12,7 @@ do
    cat "../${INSTALL_SELECT}/install_sys.sql" \
        "../${INSTALL_SELECT}/install_SYSTEM.sql" \
        "../${INSTALL_SELECT}/install_${INSTALL_SELECT}.sql" |
-      while read buff
+      while IFS="" read -r buff
    do
       if [ "${buff:0:9}" = '@dbi.sql ' ]
       then
@@ -27,24 +27,34 @@ do
             SCHEMA_NAME="$(dirname "${DBI_FILENAME}")"
             TABLE_NAME="$(basename "${DBI_FILENAME/[.]cldr/}")"
             CSV_FILENAME="../${INSTALL_SELECT}/${DBI_FILENAME/[.]cldr/.csv}"
-            echo "prompt Translating ${CSV_FILENAME} to 'INSERT INTO'"
-            echo ""
-            sed -e '1d' \
-                -e '1,$s/\r$//1' \
-                -e "1,\$s/'/''/g" \
-                -e '1,$s/""/||/g' \
-                -e "1,\$s/\"/'/g" \
-                -e '1,$s/[|][|]/"/g' \
-                -e '1,$s/^,/NULL,/1' \
-                -e '1,$s/[,][,]/,NULL,/g' \
-                -e '1,$s/[,][,]/,NULL,/g' \
-                -e '1,$s/,$/,NULL/1' \
-                 < "${CSV_FILENAME}" |
-                while read CSV_LINE
+            cat "../${INSTALL_SELECT}/${DBI_FILENAME}" |
+               while IFS="" read -r CLDR_LINE
             do
-               echo "insert into \"${SCHEMA_NAME}\".\"${TABLE_NAME}\" ($(head -1 "${CSV_FILENAME}"))"
-               echo "  values (${CSV_LINE});"
-               echo ""
+               if [ "${CLDR_LINE:0:12}" = 'host sqlldr ' ]
+               then
+                  echo ""
+                  echo "prompt Translating ${CSV_FILENAME} to 'INSERT INTO'"
+                  echo ""
+                  sed -e '1d' \
+                      -e '1,$s/\r$//1' \
+                      -e "1,\$s/'/''/g" \
+                      -e '1,$s/""/||/g' \
+                      -e "1,\$s/\"/'/g" \
+                      -e '1,$s/[|][|]/"/g' \
+                      -e '1,$s/^,/NULL,/1' \
+                      -e '1,$s/[,][,]/,NULL,/g' \
+                      -e '1,$s/[,][,]/,NULL,/g' \
+                      -e '1,$s/,$/,NULL/1' \
+                       < "${CSV_FILENAME}" |
+                      while IFS="" read -r CSV_LINE
+                  do
+                     echo "insert into \"${SCHEMA_NAME}\".\"${TABLE_NAME}\" ($(head -1 "${CSV_FILENAME}"))"
+                     echo "  values (${CSV_LINE});"
+                     echo ""
+                  done
+               else
+                  echo "${CLDR_LINE/'&_RC.'/'0'}"
+               fi
             done
          elif [ "${DBI_FILENAME: -4}" = '.sql' ]
          then
