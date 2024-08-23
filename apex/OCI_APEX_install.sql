@@ -1,7 +1,48 @@
 
 prompt Converted/Consolidated SQL Script for APEX Instance on OCI
+
 ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MON-YYYY HH24:MI:SS';
 
+prompt
+prompt Confirm/Create odbcapture_installation_logs Table
+declare
+   jnk  number := 0;
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   begin
+      execute immediate 'insert into odbcapture_installation_logs(load_dtm, build_type, file_name)' ||
+                        ' values(sysdate, ''Test'', ''Test'')';
+      rollback;
+      jnk := 1;
+   exception when others then
+      if SQLCODE != -942    -- Table or view does not exist
+      then
+         dbms_output.put_line('odbcapture_installation_logs table: ' || SQLERRM);
+      end if;
+      jnk := -1;
+   end;
+   if jnk = -1
+   then
+      run_sql('create table odbcapture_installation_logs' || CHR(10) ||
+         ' (load_dtm date' || CHR(10) ||
+         ' ,build_type varchar2(10)' || CHR(10) ||
+         ' ,file_name varchar2(512)' || CHR(10) ||
+         ' ,contents clob)');
+      run_sql('comment on column odbcapture_installation_logs.load_dtm is ''Date/Time the installation log file was loaded.''');
+      run_sql('comment on column odbcapture_installation_logs.build_type is ''Type of Build (from BUILD_CONF).''');
+      run_sql('comment on column odbcapture_installation_logs.file_name is ''Name of installation log file.''');
+      run_sql('comment on column odbcapture_installation_logs.contents is ''Contents/Text of the installation log file.''');
+      run_sql('comment on table odbcapture_installation_logs is ''ODBCAPTURE installation log files.''');
+      run_sql('grant select on odbcapture_installation_logs to public');
+      run_sql('create public synonym odbcapture_installation_logs for odbcapture_installation_logs');
+   end if;
+end;
+/
 
 --
 --  SYS Installation Script
@@ -11739,6 +11780,10 @@ prompt Switch Spooling Off
 
 
 
+prompt Update ODBCAPTURE_INSTALLATION_LOGS
+insert into odbcapture_installation_logs(load_dtm, build_type, file_name)
+  values(sysdate, 'grbsrc', 'OCI_APEX_install.sql');
+commit;
 
 --
 --  SYS Installation Script
@@ -12676,6 +12721,10 @@ prompt Switch Spooling Off
 
 
 
+prompt Update ODBCAPTURE_INSTALLATION_LOGS
+insert into odbcapture_installation_logs(load_dtm, build_type, file_name)
+  values(sysdate, 'grbras', 'OCI_APEX_install.sql');
+commit;
 
 --
 --  SYS Installation Script
@@ -13553,6 +13602,10 @@ prompt Switch Spooling Off
 
 
 
+prompt Update ODBCAPTURE_INSTALLATION_LOGS
+insert into odbcapture_installation_logs(load_dtm, build_type, file_name)
+  values(sysdate, 'grbsdo', 'OCI_APEX_install.sql');
+commit;
 
 --
 --  SYS Installation Script
@@ -13964,6 +14017,10 @@ prompt Switch Spooling Off
 
 
 
+prompt Update ODBCAPTURE_INSTALLATION_LOGS
+insert into odbcapture_installation_logs(load_dtm, build_type, file_name)
+  values(sysdate, 'grbdat', 'OCI_APEX_install.sql');
+commit;
 
 --
 --  SYS Installation Script
@@ -15511,6 +15568,10 @@ prompt Switch Spooling Off
 
 
 
+prompt Update ODBCAPTURE_INSTALLATION_LOGS
+insert into odbcapture_installation_logs(load_dtm, build_type, file_name)
+  values(sysdate, 'grbtst', 'OCI_APEX_install.sql');
+commit;
 
 --
 --  SYS Installation Script
@@ -15870,6 +15931,10 @@ prompt Switch Spooling Off
 
 
 
+prompt Update ODBCAPTURE_INSTALLATION_LOGS
+insert into odbcapture_installation_logs(load_dtm, build_type, file_name)
+  values(sysdate, 'grbtjsn', 'OCI_APEX_install.sql');
+commit;
 
 --
 --  SYS Installation Script
@@ -16093,21 +16158,33 @@ prompt sqlldr_control=ODBCTEST/SDO_COLA_MARKETS.ctl
 
 prompt Translating ../grbtsdo/ODBCTEST/SDO_COLA_MARKETS.csv to 'INSERT INTO'
 
--- The SHAPE column loads data as COLUMN "OBJECT TREAT AS ST_GEOMETRY"
-insert into "ODBCTEST"."SDO_COLA_MARKETS" ("MKT_ID","NAME","SHAPE")
-  values (1,'cola_a','2003;;;;;1;1003;31;1;5;7');
+-- 2003;;;;;1;1003;31;1;5;7
+insert into "ODBCTEST"."SDO_COLA_MARKETS" (MKT_ID, NAME, SHAPE)
+   values (1, 'cola_a', ST_GEOMETRY(SDO_GEOMETRY(2003, NULL,
+          SDO_POINT_TYPE(NULL, NULL, NULL),
+          SDO_ELEM_INFO_ARRAY(1, 1003, 3),
+          SDO_ORDINATE_ARRAY(1, 1, 5, 7) ) ) );
 
--- The SHAPE column loads data as COLUMN "OBJECT TREAT AS ST_GEOMETRY"
-insert into "ODBCTEST"."SDO_COLA_MARKETS" ("MKT_ID","NAME","SHAPE")
-  values (2,'cola_b','2003;;;;;1;1003;15;1;8;1;8;6;5;7;5;1');
+-- 2003;;;;;1;1003;15;1;8;1;8;6;5;7;5;1
+insert into "ODBCTEST"."SDO_COLA_MARKETS" (MKT_ID, NAME, SHAPE)
+   values (2, 'cola_b', ST_GEOMETRY(SDO_GEOMETRY(2003, NULL,
+          SDO_POINT_TYPE(NULL, NULL, NULL),
+          SDO_ELEM_INFO_ARRAY(1, 1003, 1),
+          SDO_ORDINATE_ARRAY(5, 1, 8, 1, 8, 6, 5, 7, 5, 1) ) ) );
 
--- The SHAPE column loads data as COLUMN "OBJECT TREAT AS ST_GEOMETRY"
-insert into "ODBCTEST"."SDO_COLA_MARKETS" ("MKT_ID","NAME","SHAPE")
-  values (3,'cola_c','2003;;;;;1;1003;13;3;6;3;6;5;4;5;3;3');
+-- 2003;;;;;1;1003;13;3;6;3;6;5;4;5;3;3
+insert into "ODBCTEST"."SDO_COLA_MARKETS" (MKT_ID, NAME, SHAPE)
+   values (3, 'cola_c', ST_GEOMETRY(SDO_GEOMETRY(2003, NULL,
+          SDO_POINT_TYPE(NULL, NULL, NULL),
+          SDO_ELEM_INFO_ARRAY(1, 1003, 1),
+          SDO_ORDINATE_ARRAY(3, 3, 6, 3, 6, 5, 4, 5, 3, 3) ) ) );
 
--- The SHAPE column loads data as COLUMN "OBJECT TREAT AS ST_GEOMETRY"
-insert into "ODBCTEST"."SDO_COLA_MARKETS" ("MKT_ID","NAME","SHAPE")
-  values (4,'cola_d','2003;;;;;1;1003;48;7;10;9;8;11');
+-- 2003;;;;;1;1003;48;7;10;9;8;11
+insert into "ODBCTEST"."SDO_COLA_MARKETS" (MKT_ID, NAME, SHAPE)
+   values (4, 'cola_d', ST_GEOMETRY(SDO_GEOMETRY(2003, NULL,
+          SDO_POINT_TYPE(NULL, NULL, NULL),
+          SDO_ELEM_INFO_ARRAY(1, 1003, 4),
+          SDO_ORDINATE_ARRAY(8, 7, 10, 9, 8, 11) ) ) );
 
 
 begin
@@ -16193,6 +16270,10 @@ prompt Switch Spooling Off
 
 
 
+prompt Update ODBCAPTURE_INSTALLATION_LOGS
+insert into odbcapture_installation_logs(load_dtm, build_type, file_name)
+  values(sysdate, 'grbtsdo', 'OCI_APEX_install.sql');
+commit;
 
 --
 --  SYS Installation Script
@@ -16505,6 +16586,10 @@ prompt Switch Spooling Off
 
 
 
+prompt Update ODBCAPTURE_INSTALLATION_LOGS
+insert into odbcapture_installation_logs(load_dtm, build_type, file_name)
+  values(sysdate, 'grbtctx', 'OCI_APEX_install.sql');
+commit;
 
 --
 --  SYS Installation Script
@@ -16913,6 +16998,10 @@ prompt Switch Spooling Off
 
 
 
+prompt Update ODBCAPTURE_INSTALLATION_LOGS
+insert into odbcapture_installation_logs(load_dtm, build_type, file_name)
+  values(sysdate, 'grbtdat', 'OCI_APEX_install.sql');
+commit;
 
 --
 --  Re-create Invalid Public Synonyms

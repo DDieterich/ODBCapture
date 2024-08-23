@@ -1,6 +1,3 @@
-Running Set User Authentication
-
-
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.386
+Elapsed: 00:00:00.362

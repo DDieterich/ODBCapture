@@ -3,7 +3,18 @@ Converted/Consolidated SQL Script for APEX Instance on OCI
 
 Session altered.
 
-Elapsed: 00:00:00.012
+Elapsed: 00:00:00.013
+
+
+
+
+
+Confirm/Create odbcapture_installation_logs Table
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.053
 
 
 ============================================================
@@ -17,62 +28,12 @@ Running: grbsrc SYS/ODBCAPTURE.user
 
 User "ODBCAPTURE" created.
 
-Elapsed: 00:00:00.085
+Elapsed: 00:00:00.086
 
 
 Grant succeeded.
 
-Elapsed: 00:00:00.028
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.010
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.008
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.015
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.010
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.009
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.013
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.009
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.010
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.016
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.035
 
 
 Grant succeeded.
@@ -82,82 +43,12 @@ Elapsed: 00:00:00.012
 
 Grant succeeded.
 
-Elapsed: 00:00:00.007
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.012
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.009
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.007
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.007
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.008
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.008
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.009
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.009
-
-
-Grant succeeded.
-
 Elapsed: 00:00:00.010
 
 
 Grant succeeded.
 
-Elapsed: 00:00:00.009
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.009
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.024
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.016
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.010
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.012
+Elapsed: 00:00:00.014
 
 
 Grant succeeded.
@@ -167,27 +58,17 @@ Elapsed: 00:00:00.011
 
 Grant succeeded.
 
+Elapsed: 00:00:00.010
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.017
+
+
+Grant succeeded.
+
 Elapsed: 00:00:00.011
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.009
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.009
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.015
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.007
 
 
 Grant succeeded.
@@ -202,22 +83,12 @@ Elapsed: 00:00:00.018
 
 Grant succeeded.
 
-Elapsed: 00:00:00.010
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.009
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.010
-
-
-Grant succeeded.
-
 Elapsed: 00:00:00.011
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.012
 
 
 Grant succeeded.
@@ -227,7 +98,27 @@ Elapsed: 00:00:00.008
 
 Grant succeeded.
 
+Elapsed: 00:00:00.012
+
+
+Grant succeeded.
+
 Elapsed: 00:00:00.010
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.009
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.009
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.009
 
 
 Grant succeeded.
@@ -242,7 +133,27 @@ Elapsed: 00:00:00.011
 
 Grant succeeded.
 
-Elapsed: 00:00:00.028
+Elapsed: 00:00:00.010
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.012
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.009
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.014
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.027
 
 
 Grant succeeded.
@@ -252,167 +163,27 @@ Elapsed: 00:00:00.019
 
 Grant succeeded.
 
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.018
 
 
 Grant succeeded.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.014
 
 
 Grant succeeded.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.013
 
 
 Grant succeeded.
 
-Elapsed: 00:00:00.008
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.008
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.008
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.007
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.007
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.010
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.008
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.008
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.008
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.008
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.026
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.007
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.007
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.010
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.008
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.008
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.012
 
 
 Grant succeeded.
 
 Elapsed: 00:00:00.011
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.009
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.008
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.008
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.013
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.017
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.017
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.009
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.009
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.023
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.013
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.015
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.017
 
 
 Grant succeeded.
@@ -432,6 +203,86 @@ Elapsed: 00:00:00.010
 
 Grant succeeded.
 
+Elapsed: 00:00:00.011
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.018
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.012
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.010
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.009
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.011
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.011
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.012
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.011
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.009
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.027
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.017
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.009
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.011
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.009
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.009
+
+
+Grant succeeded.
+
 Elapsed: 00:00:00.010
 
 
@@ -445,29 +296,29 @@ Grant succeeded.
 Elapsed: 00:00:00.009
 
 
-XS Admin Grant "ADMIN_ANY_SEC_POLICY" to "ODBCAPTURE"
+Grant succeeded.
+
+Elapsed: 00:00:00.009
 
 
-PL/SQL procedure successfully completed.
+Grant succeeded.
 
-Elapsed: 00:00:00.015
-
-
-XS Admin Cloud Grant "ADMIN_ANY_SEC_POLICY" to "ODBCAPTURE"
+Elapsed: 00:00:00.011
 
 
-PL/SQL procedure successfully completed.
+Grant succeeded.
 
-Elapsed: 00:00:00.021
-
-
-============================================================
+Elapsed: 00:00:00.009
 
 
-Running: grbsrc SYSTEM/ODBCAPTURE_usr.grnt
+Grant succeeded.
+
+Elapsed: 00:00:00.009
 
 
-============================================================
+Grant succeeded.
+
+Elapsed: 00:00:00.009
 
 
 Grant succeeded.
@@ -477,12 +328,27 @@ Elapsed: 00:00:00.010
 
 Grant succeeded.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.029
 
 
 Grant succeeded.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.012
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.009
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.012
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.009
 
 
 Grant succeeded.
@@ -492,7 +358,12 @@ Elapsed: 00:00:00.010
 
 Grant succeeded.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.009
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.012
 
 
 Grant succeeded.
@@ -507,7 +378,147 @@ Elapsed: 00:00:00.010
 
 Grant succeeded.
 
+Elapsed: 00:00:00.009
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.014
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.019
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.018
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.011
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.009
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.024
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.015
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.016
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.017
+
+
+Grant succeeded.
+
 Elapsed: 00:00:00.010
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.013
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.011
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.012
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.010
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.011
+
+
+XS Admin Grant "ADMIN_ANY_SEC_POLICY" to "ODBCAPTURE"
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.016
+
+
+XS Admin Cloud Grant "ADMIN_ANY_SEC_POLICY" to "ODBCAPTURE"
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.024
+
+
+============================================================
+
+
+Running: grbsrc SYSTEM/ODBCAPTURE_usr.grnt
+
+
+============================================================
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.012
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.008
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.008
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.012
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.008
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.012
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.012
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.011
 
 
 ============================================================
@@ -527,17 +538,17 @@ Create Temp Publicly Updateable Table
 
 Table TEMP_PUBLICLY_UPDATEABLE_TABLE created.
 
-Elapsed: 00:00:00.048
+Elapsed: 00:00:00.049
 
 
 Grant succeeded.
 
-Elapsed: 00:00:00.012
+Elapsed: 00:00:00.013
 
 
 Synonym TEMP_PUBLICLY_UPDATEABLE_TABLE created.
 
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.013
 
 
 
@@ -551,7 +562,7 @@ Prerequisite BUILD_TYPEs for "grbsrc"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 ============================================================
@@ -570,7 +581,7 @@ LINE/COL  ERROR
 0/0       PL/SQL: Compilation unit analysis terminated
 29/27     PLS-00201: identifier 'FH2.SF_PTR_TYPE' must be declared
 Errors: check compiler log
-Elapsed: 00:00:00.115
+Elapsed: 00:00:00.028
 
 
 ============================================================
@@ -584,7 +595,7 @@ Running: grbsrc ODBCAPTURE/FH2.pkssql
 
 Package ODBCAPTURE.FH2 compiled
 
-Elapsed: 00:00:00.038
+Elapsed: 00:00:00.057
 
 
 ============================================================
@@ -603,7 +614,7 @@ LINE/COL  ERROR
 0/0       PL/SQL: Compilation unit analysis terminated
 58/16     PLS-00201: identifier 'BUILD_CONF.BUILD_TYPE' must be declared
 Errors: check compiler log
-Elapsed: 00:00:00.015
+Elapsed: 00:00:00.018
 
 
 ============================================================
@@ -617,7 +628,7 @@ Running: grbsrc ODBCAPTURE/ROOT_SCRIPTS.pkssql
 
 Package ODBCAPTURE.ROOT_SCRIPTS compiled
 
-Elapsed: 00:00:00.016
+Elapsed: 00:00:00.019
 
 
 ============================================================
@@ -631,7 +642,7 @@ Running: grbsrc ODBCAPTURE/ZIP_UTIL_PKG.pkssql
 
 Package ODBCAPTURE.ZIP_UTIL_PKG compiled
 
-Elapsed: 00:00:00.016
+Elapsed: 00:00:00.020
 
 
 ============================================================
@@ -650,32 +661,32 @@ Elapsed: 00:00:00.018
 
 Table "ODBCAPTURE"."BUILD_CONF" altered.
 
-Elapsed: 00:00:00.023
+Elapsed: 00:00:00.027
 
 
 Table "ODBCAPTURE"."BUILD_CONF" altered.
 
-Elapsed: 00:00:00.018
+Elapsed: 00:00:00.020
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.010
 
 
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.009
 
 
 ============================================================
@@ -689,32 +700,32 @@ Running: grbsrc ODBCAPTURE/BUILD_PATH.tbl
 
 Table "ODBCAPTURE"."BUILD_PATH" created.
 
-Elapsed: 00:00:00.011
-
-
-Table "ODBCAPTURE"."BUILD_PATH" altered.
-
-Elapsed: 00:00:00.018
-
-
-Table "ODBCAPTURE"."BUILD_PATH" altered.
-
 Elapsed: 00:00:00.014
 
 
+Table "ODBCAPTURE"."BUILD_PATH" altered.
+
+Elapsed: 00:00:00.020
+
+
+Table "ODBCAPTURE"."BUILD_PATH" altered.
+
+Elapsed: 00:00:00.015
+
+
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.009
 
 
 ============================================================
@@ -733,11 +744,6 @@ Elapsed: 00:00:00.013
 
 Comment created.
 
-Elapsed: 00:00:00.008
-
-
-Comment created.
-
 Elapsed: 00:00:00.009
 
 
@@ -748,7 +754,12 @@ Elapsed: 00:00:00.009
 
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.009
+
+
+Comment created.
+
+Elapsed: 00:00:00.009
 
 
 ============================================================
@@ -762,7 +773,7 @@ Running: grbsrc ODBCAPTURE/DBA_DEPENDENCIES_TAB.tbl
 
 Table "ODBCAPTURE"."DBA_DEPENDENCIES_TAB" created.
 
-Elapsed: 00:00:00.012
+Elapsed: 00:00:00.016
 
 
 ============================================================
@@ -809,57 +820,57 @@ Elapsed: 00:00:00.013
 
 Table "ODBCAPTURE"."DLOAD_CONF" altered.
 
-Elapsed: 00:00:00.019
+Elapsed: 00:00:00.021
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.010
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.010
 
 
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.010
 
 
 ============================================================
@@ -873,7 +884,12 @@ Running: grbsrc ODBCAPTURE/ELEMENT_CONF.tbl
 
 Table "ODBCAPTURE"."ELEMENT_CONF" created.
 
-Elapsed: 00:00:00.012
+Elapsed: 00:00:00.015
+
+
+Table "ODBCAPTURE"."ELEMENT_CONF" altered.
+
+Elapsed: 00:00:00.021
 
 
 Table "ODBCAPTURE"."ELEMENT_CONF" altered.
@@ -881,9 +897,9 @@ Table "ODBCAPTURE"."ELEMENT_CONF" altered.
 Elapsed: 00:00:00.019
 
 
-Table "ODBCAPTURE"."ELEMENT_CONF" altered.
+Comment created.
 
-Elapsed: 00:00:00.017
+Elapsed: 00:00:00.009
 
 
 Comment created.
@@ -893,7 +909,7 @@ Elapsed: 00:00:00.008
 
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.009
 
 
 Comment created.
@@ -903,32 +919,27 @@ Elapsed: 00:00:00.008
 
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
-
-
-Comment created.
-
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 ============================================================
@@ -942,12 +953,12 @@ Running: grbsrc ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl
 
 Table "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" created.
 
-Elapsed: 00:00:00.011
+Elapsed: 00:00:00.014
 
 
 Table "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" altered.
 
-Elapsed: 00:00:00.015
+Elapsed: 00:00:00.017
 
 
 Table "ODBCAPTURE"."METADATA_TRANSFORM_PARAMS" altered.
@@ -957,22 +968,22 @@ Elapsed: 00:00:00.019
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.010
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 ============================================================
@@ -1001,7 +1012,7 @@ Elapsed: 00:00:00.015
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.010
 
 
 Comment created.
@@ -1011,22 +1022,22 @@ Elapsed: 00:00:00.008
 
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.010
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 ============================================================
@@ -1040,7 +1051,7 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tbl
 
 Table "ODBCAPTURE"."OBJ_INSTALL_COMMENTS_TAB" created.
 
-Elapsed: 00:00:00.012
+Elapsed: 00:00:00.013
 
 
 ============================================================
@@ -1054,7 +1065,7 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tbl
 
 Table "ODBCAPTURE"."OBJ_INSTALL_CONTEXT_TAB" created.
 
-Elapsed: 00:00:00.011
+Elapsed: 00:00:00.012
 
 
 ============================================================
@@ -1068,7 +1079,7 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tbl
 
 Table "ODBCAPTURE"."OBJ_INSTALL_DATA_LOAD_TAB" created.
 
-Elapsed: 00:00:00.014
+Elapsed: 00:00:00.016
 
 
 ============================================================
@@ -1082,7 +1093,7 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tbl
 
 Table "ODBCAPTURE"."OBJ_INSTALL_FKEY_TAB" created.
 
-Elapsed: 00:00:00.012
+Elapsed: 00:00:00.016
 
 
 ============================================================
@@ -1096,7 +1107,7 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tbl
 
 Table "ODBCAPTURE"."OBJ_INSTALL_INDEX_TAB" created.
 
-Elapsed: 00:00:00.013
+Elapsed: 00:00:00.014
 
 
 ============================================================
@@ -1110,7 +1121,7 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tbl
 
 Table "ODBCAPTURE"."OBJ_INSTALL_OBJECT_TAB" created.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.013
 
 
 ============================================================
@@ -1124,7 +1135,7 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tbl
 
 Table "ODBCAPTURE"."OBJ_INSTALL_SYNONYM_TAB" created.
 
-Elapsed: 00:00:00.011
+Elapsed: 00:00:00.014
 
 
 ============================================================
@@ -1138,7 +1149,7 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tbl
 
 Table "ODBCAPTURE"."OBJ_INSTALL_TRIGGER_TAB" created.
 
-Elapsed: 00:00:00.012
+Elapsed: 00:00:00.013
 
 
 ============================================================
@@ -1152,42 +1163,42 @@ Running: grbsrc ODBCAPTURE/ROLE_CONF.tbl
 
 Table "ODBCAPTURE"."ROLE_CONF" created.
 
-Elapsed: 00:00:00.012
-
-
-Table "ODBCAPTURE"."ROLE_CONF" altered.
-
-Elapsed: 00:00:00.019
-
-
-Table "ODBCAPTURE"."ROLE_CONF" altered.
-
 Elapsed: 00:00:00.014
 
 
-Comment created.
+Table "ODBCAPTURE"."ROLE_CONF" altered.
 
-Elapsed: 00:00:00.007
-
-
-Comment created.
-
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.021
 
 
-Comment created.
+Table "ODBCAPTURE"."ROLE_CONF" altered.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.016
 
 
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.010
 
 
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.009
+
+
+Comment created.
+
+Elapsed: 00:00:00.009
+
+
+Comment created.
+
+Elapsed: 00:00:00.009
+
+
+Comment created.
+
+Elapsed: 00:00:00.009
 
 
 ============================================================
@@ -1201,7 +1212,7 @@ Running: grbsrc ODBCAPTURE/SCHEMA_CONF.tbl
 
 Table "ODBCAPTURE"."SCHEMA_CONF" created.
 
-Elapsed: 00:00:00.012
+Elapsed: 00:00:00.013
 
 
 Table "ODBCAPTURE"."SCHEMA_CONF" altered.
@@ -1211,12 +1222,32 @@ Elapsed: 00:00:00.016
 
 Table "ODBCAPTURE"."SCHEMA_CONF" altered.
 
-Elapsed: 00:00:00.017
+Elapsed: 00:00:00.019
 
 
 Table "ODBCAPTURE"."SCHEMA_CONF" altered.
 
-Elapsed: 00:00:00.014
+Elapsed: 00:00:00.015
+
+
+Comment created.
+
+Elapsed: 00:00:00.009
+
+
+Comment created.
+
+Elapsed: 00:00:00.009
+
+
+Comment created.
+
+Elapsed: 00:00:00.009
+
+
+Comment created.
+
+Elapsed: 00:00:00.009
 
 
 Comment created.
@@ -1226,7 +1257,12 @@ Elapsed: 00:00:00.008
 
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
+
+
+Comment created.
+
+Elapsed: 00:00:00.009
 
 
 Comment created.
@@ -1236,32 +1272,7 @@ Elapsed: 00:00:00.008
 
 Comment created.
 
-Elapsed: 00:00:00.007
-
-
-Comment created.
-
-Elapsed: 00:00:00.008
-
-
-Comment created.
-
-Elapsed: 00:00:00.007
-
-
-Comment created.
-
-Elapsed: 00:00:00.008
-
-
-Comment created.
-
-Elapsed: 00:00:00.007
-
-
-Comment created.
-
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 ============================================================
@@ -1275,7 +1286,7 @@ Running: grbsrc ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl
 
 Table "ODBCAPTURE"."SCHEMA_OBJECTS_TAB" created.
 
-Elapsed: 00:00:00.016
+Elapsed: 00:00:00.018
 
 
 ============================================================
@@ -1289,32 +1300,32 @@ Running: grbsrc ODBCAPTURE/TSPACE_CONF.tbl
 
 Table "ODBCAPTURE"."TSPACE_CONF" created.
 
-Elapsed: 00:00:00.012
+Elapsed: 00:00:00.014
 
 
 Table "ODBCAPTURE"."TSPACE_CONF" altered.
 
-Elapsed: 00:00:00.019
+Elapsed: 00:00:00.023
 
 
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.010
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.009
 
 
 ============================================================
@@ -1328,12 +1339,12 @@ Running: grbsrc ODBCAPTURE/ZIP_FILES.tbl
 
 Table "ODBCAPTURE"."ZIP_FILES" created.
 
-Elapsed: 00:00:00.011
+Elapsed: 00:00:00.013
 
 
 Table "ODBCAPTURE"."ZIP_FILES" altered.
 
-Elapsed: 00:00:00.018
+Elapsed: 00:00:00.020
 
 
 ============================================================
@@ -1353,7 +1364,7 @@ Disable Triggers and Foreign Keys
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.564
+Elapsed: 00:00:00.573
 
 
 
@@ -1367,7 +1378,22 @@ Translating ../grbsrc/ODBCAPTURE/BUILD_CONF.csv to 'INSERT INTO'
 
 1 row inserted.
 
-Elapsed: 00:00:00.028
+Elapsed: 00:00:00.023
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
@@ -1377,32 +1403,17 @@ Elapsed: 00:00:00.007
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
 Elapsed: 00:00:00.007
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
 
 
 PL/SQL procedure successfully completed.
@@ -1412,7 +1423,7 @@ Elapsed: 00:00:00.011
 
 Commit complete.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.018
 
 
 ============================================================
@@ -1432,7 +1443,7 @@ Disable Triggers and Foreign Keys
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.576
+Elapsed: 00:00:00.555
 
 
 
@@ -1446,62 +1457,62 @@ Translating ../grbsrc/ODBCAPTURE/BUILD_PATH.csv to 'INSERT INTO'
 
 1 row inserted.
 
-Elapsed: 00:00:00.018
+Elapsed: 00:00:00.019
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.012
 
 
 Commit complete.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.007
 
 
 ============================================================
@@ -1521,7 +1532,7 @@ Disable Triggers and Foreign Keys
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.586
+Elapsed: 00:00:00.598
 
 
 
@@ -1535,7 +1546,27 @@ Translating ../grbsrc/ODBCAPTURE/ELEMENT_CONF.csv to 'INSERT INTO'
 
 1 row inserted.
 
-Elapsed: 00:00:00.021
+Elapsed: 00:00:00.023
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
@@ -1545,12 +1576,7 @@ Elapsed: 00:00:00.007
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.007
 
 
 1 row inserted.
@@ -1560,67 +1586,42 @@ Elapsed: 00:00:00.007
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.009
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
@@ -1630,22 +1631,102 @@ Elapsed: 00:00:00.007
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.009
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
@@ -1655,87 +1736,17 @@ Elapsed: 00:00:00.007
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.012
 
 
 Commit complete.
 
-Elapsed: 00:00:00.005
+Elapsed: 00:00:00.007
 
 
 ============================================================
@@ -1755,7 +1766,7 @@ Disable Triggers and Foreign Keys
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.573
+Elapsed: 00:00:01.025
 
 
 
@@ -1769,7 +1780,37 @@ Translating ../grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.csv to 'INSERT INTO'
 
 1 row inserted.
 
-Elapsed: 00:00:00.017
+Elapsed: 00:00:00.019
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
@@ -1779,7 +1820,17 @@ Elapsed: 00:00:00.007
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.007
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
@@ -1789,62 +1840,22 @@ Elapsed: 00:00:00.007
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.011
 
 
 Commit complete.
 
-Elapsed: 00:00:00.005
+Elapsed: 00:00:00.010
 
 
 ============================================================
@@ -1864,7 +1875,7 @@ Disable Triggers and Foreign Keys
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.340
+Elapsed: 00:00:01.006
 
 
 
@@ -1883,247 +1894,127 @@ Elapsed: 00:00:00.018
 
 1 row inserted.
 
-Elapsed: 00:00:00.015
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.015
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.016
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
@@ -2138,32 +2029,27 @@ Elapsed: 00:00:00.007
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
@@ -2173,7 +2059,87 @@ Elapsed: 00:00:00.007
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.007
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
@@ -2183,97 +2149,12 @@ Elapsed: 00:00:00.007
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
@@ -2283,12 +2164,7 @@ Elapsed: 00:00:00.007
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.007
 
 
 1 row inserted.
@@ -2298,27 +2174,162 @@ Elapsed: 00:00:00.007
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.007
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.007
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.007
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.007
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.007
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.007
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.011
 
 
 Commit complete.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.007
 
 
 ============================================================
@@ -2338,7 +2349,7 @@ Disable Triggers and Foreign Keys
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.563
+Elapsed: 00:00:00.111
 
 
 
@@ -2352,117 +2363,117 @@ Translating ../grbsrc/ODBCAPTURE/SCHEMA_CONF.csv to 'INSERT INTO'
 
 1 row inserted.
 
-Elapsed: 00:00:00.019
+Elapsed: 00:00:00.018
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.018
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.011
 
 
 Commit complete.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.007
 
 
 ============================================================
@@ -2482,7 +2493,7 @@ Disable Triggers and Foreign Keys
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.562
+Elapsed: 00:00:00.353
 
 
 
@@ -2496,12 +2507,12 @@ Translating ../grbsrc/ODBCAPTURE/TSPACE_CONF.csv to 'INSERT INTO'
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.012
 
 
 Commit complete.
 
-Elapsed: 00:00:00.004
+Elapsed: 00:00:00.006
 
 
 ============================================================
@@ -2515,12 +2526,12 @@ Running: grbsrc ODBCAPTURE/DBA_DEPENDENCIES_TAB.tidx
 
 Index "ODBCAPTURE"."DBA_DEPENDENCIES_TAB_IDX2" created.
 
-Elapsed: 00:00:00.017
+Elapsed: 00:00:00.018
 
 
 Index "ODBCAPTURE"."DBA_DEPENDENCIES_TAB_IX1" created.
 
-Elapsed: 00:00:00.012
+Elapsed: 00:00:00.015
 
 
 ============================================================
@@ -2534,7 +2545,7 @@ Running: grbsrc ODBCAPTURE/DBA_OBJECTS_TAB.tidx
 
 Index "ODBCAPTURE"."DBA_OBJECTS_TAB_IX1" created.
 
-Elapsed: 00:00:00.015
+Elapsed: 00:00:00.018
 
 
 ============================================================
@@ -2548,7 +2559,7 @@ Running: grbsrc ODBCAPTURE/DBA_TAB_PRIVS_TAB.tidx
 
 Index "ODBCAPTURE"."DBA_TAB_PRIVS_TAB_IX1" created.
 
-Elapsed: 00:00:00.015
+Elapsed: 00:00:00.017
 
 
 ============================================================
@@ -2562,7 +2573,7 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tidx
 
 Index "ODBCAPTURE"."OBJ_INSTALL_COMMENTS_TAB_IX1" created.
 
-Elapsed: 00:00:00.015
+Elapsed: 00:00:00.018
 
 
 ============================================================
@@ -2576,7 +2587,7 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tidx
 
 Index "ODBCAPTURE"."OBJ_INSTALL_CONTEXT_TAB_IX1" created.
 
-Elapsed: 00:00:00.015
+Elapsed: 00:00:00.017
 
 
 ============================================================
@@ -2590,7 +2601,7 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tidx
 
 Index "ODBCAPTURE"."OBJ_INSTALL_DATA_LOAD_TAB_IX1" created.
 
-Elapsed: 00:00:00.015
+Elapsed: 00:00:00.017
 
 
 ============================================================
@@ -2604,7 +2615,7 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tidx
 
 Index "ODBCAPTURE"."OBJ_INSTALL_FKEY_TAB_IX1" created.
 
-Elapsed: 00:00:00.015
+Elapsed: 00:00:00.024
 
 
 ============================================================
@@ -2618,7 +2629,7 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tidx
 
 Index "ODBCAPTURE"."OBJ_INSTALL_INDEX_TAB_IX1" created.
 
-Elapsed: 00:00:00.015
+Elapsed: 00:00:00.017
 
 
 ============================================================
@@ -2632,7 +2643,7 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tidx
 
 Index "ODBCAPTURE"."OBJ_INSTALL_OBJECT_TAB_IX1" created.
 
-Elapsed: 00:00:00.017
+Elapsed: 00:00:00.018
 
 
 ============================================================
@@ -2646,12 +2657,12 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tidx
 
 Index "ODBCAPTURE"."OBJ_INSTALL_SYNONYM_TAB_IX1" created.
 
-Elapsed: 00:00:00.014
+Elapsed: 00:00:00.017
 
 
 Index "ODBCAPTURE"."OBJ_INSTALL_SYNONYM_TAB_IX2" created.
 
-Elapsed: 00:00:00.012
+Elapsed: 00:00:00.015
 
 
 ============================================================
@@ -2665,12 +2676,12 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tidx
 
 Index "ODBCAPTURE"."OBJ_INSTALL_TRIGGER_TAB_IX1" created.
 
-Elapsed: 00:00:00.015
+Elapsed: 00:00:00.017
 
 
 Index "ODBCAPTURE"."OBJ_INSTALL_TRIGGER_TAB_IX2" created.
 
-Elapsed: 00:00:00.012
+Elapsed: 00:00:00.014
 
 
 ============================================================
@@ -2684,12 +2695,12 @@ Running: grbsrc ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw
 
 View "ODBCAPTURE"."AQ_SYSTEM_PRIVS_VW" created.
 
-Elapsed: 00:00:00.012
+Elapsed: 00:00:00.013
 
 
 View "ODBCAPTURE"."AQ_SYSTEM_PRIVS_VW" created.
 
-Elapsed: 00:00:00.021
+Elapsed: 00:00:00.023
 
 
 ============================================================
@@ -2703,12 +2714,12 @@ Running: grbsrc ODBCAPTURE/BUILD_PATH_REVIEW.vw
 
 View "ODBCAPTURE"."BUILD_PATH_REVIEW" created.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.012
 
 
 View "ODBCAPTURE"."BUILD_PATH_REVIEW" created.
 
-Elapsed: 00:00:00.011
+Elapsed: 00:00:00.014
 
 
 ============================================================
@@ -2722,12 +2733,12 @@ Running: grbsrc ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw
 
 View "ODBCAPTURE"."DBA_DEPENDENCIES_VIEW" created.
 
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.011
 
 
 View "ODBCAPTURE"."DBA_DEPENDENCIES_VIEW" created.
 
-Elapsed: 00:00:00.018
+Elapsed: 00:00:00.020
 
 
 ============================================================
@@ -2741,12 +2752,12 @@ Running: grbsrc ODBCAPTURE/DBA_OBJECTS_VIEW.vw
 
 View "ODBCAPTURE"."DBA_OBJECTS_VIEW" created.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.011
 
 
 View "ODBCAPTURE"."DBA_OBJECTS_VIEW" created.
 
-Elapsed: 00:00:00.093
+Elapsed: 00:00:00.100
 
 
 ============================================================
@@ -2760,12 +2771,12 @@ Running: grbsrc ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw
 
 View "ODBCAPTURE"."DBA_TAB_PRIVS_VIEW" created.
 
-Elapsed: 00:00:00.011
+Elapsed: 00:00:00.013
 
 
 View "ODBCAPTURE"."DBA_TAB_PRIVS_VIEW" created.
 
-Elapsed: 00:00:00.011
+Elapsed: 00:00:00.014
 
 
 ============================================================
@@ -2784,7 +2795,7 @@ Elapsed: 00:00:00.011
 
 View "ODBCAPTURE"."OBJ_INSTALL_COMMENTS_VIEW" created.
 
-Elapsed: 00:00:00.021
+Elapsed: 00:00:00.024
 
 
 ============================================================
@@ -2798,12 +2809,12 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw
 
 View "ODBCAPTURE"."OBJ_INSTALL_CONTEXT_VIEW" created.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.012
 
 
 View "ODBCAPTURE"."OBJ_INSTALL_CONTEXT_VIEW" created.
 
-Elapsed: 00:00:00.035
+Elapsed: 00:00:00.040
 
 
 ============================================================
@@ -2817,12 +2828,12 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw
 
 View "ODBCAPTURE"."OBJ_INSTALL_DATA_LOAD_VIEW" created.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.011
 
 
 View "ODBCAPTURE"."OBJ_INSTALL_DATA_LOAD_VIEW" created.
 
-Elapsed: 00:00:00.014
+Elapsed: 00:00:00.017
 
 
 ============================================================
@@ -2836,12 +2847,12 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw
 
 View "ODBCAPTURE"."OBJ_INSTALL_FKEY_VIEW" created.
 
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.011
 
 
 View "ODBCAPTURE"."OBJ_INSTALL_FKEY_VIEW" created.
 
-Elapsed: 00:00:00.030
+Elapsed: 00:00:00.033
 
 
 ============================================================
@@ -2855,12 +2866,12 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw
 
 View "ODBCAPTURE"."OBJ_INSTALL_INDEX_VIEW" created.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.011
 
 
 View "ODBCAPTURE"."OBJ_INSTALL_INDEX_VIEW" created.
 
-Elapsed: 00:00:00.018
+Elapsed: 00:00:00.021
 
 
 ============================================================
@@ -2874,7 +2885,7 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw
 
 View "ODBCAPTURE"."OBJ_INSTALL_OBJECT_VIEW" created.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.012
 
 
 View "ODBCAPTURE"."OBJ_INSTALL_OBJECT_VIEW" created.
@@ -2893,12 +2904,12 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw
 
 View "ODBCAPTURE"."OBJ_INSTALL_SYNONYM_VIEW" created.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.011
 
 
 View "ODBCAPTURE"."OBJ_INSTALL_SYNONYM_VIEW" created.
 
-Elapsed: 00:00:00.016
+Elapsed: 00:00:00.019
 
 
 ============================================================
@@ -2912,12 +2923,12 @@ Running: grbsrc ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw
 
 View "ODBCAPTURE"."OBJ_INSTALL_TRIGGER_VIEW" created.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.012
 
 
 View "ODBCAPTURE"."OBJ_INSTALL_TRIGGER_VIEW" created.
 
-Elapsed: 00:00:00.026
+Elapsed: 00:00:00.030
 
 
 ============================================================
@@ -2931,12 +2942,12 @@ Running: grbsrc ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw
 
 View "ODBCAPTURE"."PRIV_OBJ_DIR_VIEW" created.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.012
 
 
 View "ODBCAPTURE"."PRIV_OBJ_DIR_VIEW" created.
 
-Elapsed: 00:00:00.015
+Elapsed: 00:00:00.019
 
 
 ============================================================
@@ -2950,12 +2961,12 @@ Running: grbsrc ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw
 
 View "ODBCAPTURE"."PRIV_OBJ_HACL_VIEW" created.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.012
 
 
 View "ODBCAPTURE"."PRIV_OBJ_HACL_VIEW" created.
 
-Elapsed: 00:00:00.013
+Elapsed: 00:00:00.017
 
 
 ============================================================
@@ -2969,12 +2980,12 @@ Running: grbsrc ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw
 
 View "ODBCAPTURE"."PRIV_OBJ_INSTALL_VW" created.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.012
 
 
 View "ODBCAPTURE"."PRIV_OBJ_INSTALL_VW" created.
 
-Elapsed: 00:00:00.013
+Elapsed: 00:00:00.015
 
 
 ============================================================
@@ -2988,12 +2999,12 @@ Running: grbsrc ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw
 
 View "ODBCAPTURE"."PRIV_OBJ_QUEUE_VIEW" created.
 
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.012
 
 
 View "ODBCAPTURE"."PRIV_OBJ_QUEUE_VIEW" created.
 
-Elapsed: 00:00:00.017
+Elapsed: 00:00:00.020
 
 
 ============================================================
@@ -3007,12 +3018,12 @@ Running: grbsrc ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw
 
 View "ODBCAPTURE"."PRIV_OBJ_WACL_VIEW" created.
 
-Elapsed: 00:00:00.011
+Elapsed: 00:00:00.012
 
 
 View "ODBCAPTURE"."PRIV_OBJ_WACL_VIEW" created.
 
-Elapsed: 00:00:00.014
+Elapsed: 00:00:00.016
 
 
 ============================================================
@@ -3031,7 +3042,7 @@ Elapsed: 00:00:00.011
 
 View "ODBCAPTURE"."PRIV_QUEUE_REGISTER_VIEW" created.
 
-Elapsed: 00:00:00.016
+Elapsed: 00:00:00.019
 
 
 ============================================================
@@ -3045,12 +3056,12 @@ Running: grbsrc ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw
 
 View "ODBCAPTURE"."PRIV_QUEUE_SUBSCRIBE_VIEW" created.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.012
 
 
 View "ODBCAPTURE"."PRIV_QUEUE_SUBSCRIBE_VIEW" created.
 
-Elapsed: 00:00:00.018
+Elapsed: 00:00:00.019
 
 
 ============================================================
@@ -3064,12 +3075,12 @@ Running: grbsrc ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw
 
 View "ODBCAPTURE"."PRIV_QUEUE_SYSPRIVS_VIEW" created.
 
-Elapsed: 00:00:00.011
+Elapsed: 00:00:00.012
 
 
 View "ODBCAPTURE"."PRIV_QUEUE_SYSPRIVS_VIEW" created.
 
-Elapsed: 00:00:00.012
+Elapsed: 00:00:00.015
 
 
 ============================================================
@@ -3083,12 +3094,12 @@ Running: grbsrc ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw
 
 View "ODBCAPTURE"."PRIV_ROLE_PRIVILEGES_VIEW" created.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.011
 
 
 View "ODBCAPTURE"."PRIV_ROLE_PRIVILEGES_VIEW" created.
 
-Elapsed: 00:00:00.013
+Elapsed: 00:00:00.015
 
 
 ============================================================
@@ -3102,12 +3113,12 @@ Running: grbsrc ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw
 
 View "ODBCAPTURE"."PRIV_SYSOBJ_PRIVILEGES_VIEW" created.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.011
 
 
 View "ODBCAPTURE"."PRIV_SYSOBJ_PRIVILEGES_VIEW" created.
 
-Elapsed: 00:00:00.013
+Elapsed: 00:00:00.015
 
 
 ============================================================
@@ -3121,12 +3132,12 @@ Running: grbsrc ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw
 
 View "ODBCAPTURE"."PRIV_SYSTEM_PRIVILEGES_VIEW" created.
 
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.012
 
 
 View "ODBCAPTURE"."PRIV_SYSTEM_PRIVILEGES_VIEW" created.
 
-Elapsed: 00:00:00.013
+Elapsed: 00:00:00.014
 
 
 ============================================================
@@ -3140,12 +3151,12 @@ Running: grbsrc ODBCAPTURE/UOR_INSTALL_VIEW.vw
 
 View "ODBCAPTURE"."UOR_INSTALL_VIEW" created.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.011
 
 
 View "ODBCAPTURE"."UOR_INSTALL_VIEW" created.
 
-Elapsed: 00:00:00.012
+Elapsed: 00:00:00.014
 
 
 ============================================================
@@ -3159,7 +3170,7 @@ Running: grbsrc ODBCAPTURE/COMMON_UTIL.pkbsql
 
 Package Body ODBCAPTURE.COMMON_UTIL compiled
 
-Elapsed: 00:00:00.128
+Elapsed: 00:00:00.077
 
 
 ============================================================
@@ -3173,7 +3184,7 @@ Running: grbsrc ODBCAPTURE/FH2.pkbsql
 
 Package Body ODBCAPTURE.FH2 compiled
 
-Elapsed: 00:00:00.068
+Elapsed: 00:00:00.069
 
 
 ============================================================
@@ -3187,7 +3198,7 @@ Running: grbsrc ODBCAPTURE/GRAB_SCRIPTS.pkbsql
 
 Package Body ODBCAPTURE.GRAB_SCRIPTS compiled
 
-Elapsed: 00:00:00.493
+Elapsed: 00:00:00.528
 
 
 ============================================================
@@ -3215,7 +3226,7 @@ Running: grbsrc ODBCAPTURE/ZIP_UTIL_PKG.pkbsql
 
 Package Body ODBCAPTURE.ZIP_UTIL_PKG compiled
 
-Elapsed: 00:00:00.056
+Elapsed: 00:00:00.060
 
 
 ============================================================
@@ -3229,12 +3240,12 @@ Running: grbsrc ODBCAPTURE/BUILD_PATH.tfk
 
 Table "ODBCAPTURE"."BUILD_PATH" altered.
 
-Elapsed: 00:00:00.020
+Elapsed: 00:00:00.021
 
 
 Table "ODBCAPTURE"."BUILD_PATH" altered.
 
-Elapsed: 00:00:00.019
+Elapsed: 00:00:00.021
 
 
 ============================================================
@@ -3248,12 +3259,12 @@ Running: grbsrc ODBCAPTURE/DLOAD_CONF.tfk
 
 Table "ODBCAPTURE"."DLOAD_CONF" altered.
 
-Elapsed: 00:00:00.018
+Elapsed: 00:00:00.020
 
 
 Table "ODBCAPTURE"."DLOAD_CONF" altered.
 
-Elapsed: 00:00:00.018
+Elapsed: 00:00:00.019
 
 
 ============================================================
@@ -3267,17 +3278,17 @@ Running: grbsrc ODBCAPTURE/OBJECT_CONF.tfk
 
 Table "ODBCAPTURE"."OBJECT_CONF" altered.
 
-Elapsed: 00:00:00.018
+Elapsed: 00:00:00.021
 
 
 Table "ODBCAPTURE"."OBJECT_CONF" altered.
 
-Elapsed: 00:00:00.019
+Elapsed: 00:00:00.020
 
 
 Table "ODBCAPTURE"."OBJECT_CONF" altered.
 
-Elapsed: 00:00:00.018
+Elapsed: 00:00:00.020
 
 
 ============================================================
@@ -3305,7 +3316,7 @@ Running: grbsrc ODBCAPTURE/SCHEMA_CONF.tfk
 
 Table "ODBCAPTURE"."SCHEMA_CONF" altered.
 
-Elapsed: 00:00:00.020
+Elapsed: 00:00:00.022
 
 
 ============================================================
@@ -3319,7 +3330,7 @@ Running: grbsrc ODBCAPTURE/TSPACE_CONF.tfk
 
 Table "ODBCAPTURE"."TSPACE_CONF" altered.
 
-Elapsed: 00:00:00.019
+Elapsed: 00:00:00.020
 
 
 ============================================================
@@ -3339,12 +3350,12 @@ Drop Temp Publicly Updateable Table
 
 Synonym TEMP_PUBLICLY_UPDATEABLE_TABLE dropped.
 
-Elapsed: 00:00:00.016
+Elapsed: 00:00:00.015
 
 
 Table TEMP_PUBLICLY_UPDATEABLE_TABLE dropped.
 
-Elapsed: 00:00:00.022
+Elapsed: 00:00:00.024
 
 
 
@@ -3383,6 +3394,19 @@ update_id_sequences
 Switch Spooling Off
 
 
+Update ODBCAPTURE_INSTALLATION_LOGS
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.007
+
+
+Commit complete.
+
+Elapsed: 00:00:00.008
+
+
 ============================================================
 
 
@@ -3394,32 +3418,32 @@ Running: grbras SYS/ODBCAPTURE_usr.sgrnt
 
 Grant succeeded.
 
-Elapsed: 00:00:00.009
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.008
-
-
-Grant succeeded.
-
 Elapsed: 00:00:00.012
 
 
 Grant succeeded.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 Grant succeeded.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.014
 
 
 Grant succeeded.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.010
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.010
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.010
 
 
 ============================================================
@@ -3439,7 +3463,7 @@ Create Temp Publicly Updateable Table
 
 Table TEMP_PUBLICLY_UPDATEABLE_TABLE created.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.012
 
 
 Grant succeeded.
@@ -3449,7 +3473,7 @@ Elapsed: 00:00:00.012
 
 Synonym TEMP_PUBLICLY_UPDATEABLE_TABLE created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 
@@ -3459,12 +3483,12 @@ Check for Prerequisite BUILD_TYPEs
 
 
 Prerequisite BUILD_TYPEs for "grbras"
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbsrc".
+ -) "grbsrc" last loaded on 23-Aug-2024 06:32:37
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.027
 
 
 ============================================================
@@ -3478,7 +3502,7 @@ Running: grbras ODBCAPTURE/GRAB_RAS.pkssql
 
 Package ODBCAPTURE.GRAB_RAS compiled
 
-Elapsed: 00:00:00.015
+Elapsed: 00:00:00.018
 
 
 ============================================================
@@ -3492,32 +3516,32 @@ Running: grbras ODBCAPTURE/EXPORTING_RAS_DATA.tbl
 
 Table "ODBCAPTURE"."EXPORTING_RAS_DATA" created.
 
-Elapsed: 00:00:00.020
+Elapsed: 00:00:00.021
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 Comment created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 ============================================================
@@ -3540,7 +3564,7 @@ alter table "ODBCAPTURE"."ROLE_CONF" DISABLE constraint "ROLE_CONF_FK1";
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.020
+Elapsed: 00:00:00.025
 
 
 
@@ -3554,32 +3578,32 @@ Translating ../grbras/ODBCAPTURE/ROLE_CONF.csv to 'INSERT INTO'
 
 1 row inserted.
 
+Elapsed: 00:00:00.009
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.007
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.007
+
+
+1 row inserted.
+
 Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.012
 
 
 Commit complete.
@@ -3621,12 +3645,12 @@ Translating ../grbras/ODBCAPTURE/SCHEMA_CONF.csv to 'INSERT INTO'
 
 1 row inserted.
 
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.010
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.010
 
 
 Commit complete.
@@ -3645,12 +3669,12 @@ Running: grbras ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw
 
 View "ODBCAPTURE"."PRIV_OBJ_RACL_VIEW" created.
 
-Elapsed: 00:00:00.011
+Elapsed: 00:00:00.012
 
 
 View "ODBCAPTURE"."PRIV_OBJ_RACL_VIEW" created.
 
-Elapsed: 00:00:00.018
+Elapsed: 00:00:00.020
 
 
 ============================================================
@@ -3664,7 +3688,7 @@ Running: grbras ODBCAPTURE/GRAB_RAS.pkbsql
 
 Package Body ODBCAPTURE.GRAB_RAS compiled
 
-Elapsed: 00:00:00.069
+Elapsed: 00:00:00.070
 
 
 ============================================================
@@ -3684,12 +3708,12 @@ Drop Temp Publicly Updateable Table
 
 Synonym TEMP_PUBLICLY_UPDATEABLE_TABLE dropped.
 
-Elapsed: 00:00:00.013
+Elapsed: 00:00:00.015
 
 
 Table TEMP_PUBLICLY_UPDATEABLE_TABLE dropped.
 
-Elapsed: 00:00:00.019
+Elapsed: 00:00:00.020
 
 
 
@@ -3728,6 +3752,19 @@ update_id_sequences
 Switch Spooling Off
 
 
+Update ODBCAPTURE_INSTALLATION_LOGS
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.007
+
+
+Commit complete.
+
+Elapsed: 00:00:00.007
+
+
 ============================================================
 
 
@@ -3745,17 +3782,17 @@ Create Temp Publicly Updateable Table
 
 Table TEMP_PUBLICLY_UPDATEABLE_TABLE created.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.012
 
 
 Grant succeeded.
 
-Elapsed: 00:00:00.012
+Elapsed: 00:00:00.013
 
 
 Synonym TEMP_PUBLICLY_UPDATEABLE_TABLE created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.010
 
 
 
@@ -3765,12 +3802,12 @@ Check for Prerequisite BUILD_TYPEs
 
 
 Prerequisite BUILD_TYPEs for "grbsdo"
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbsrc".
+ -) "grbsrc" last loaded on 23-Aug-2024 06:32:37
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 ============================================================
@@ -3784,7 +3821,7 @@ Running: grbsdo ODBCAPTURE/GRAB_SDO.pkssql
 
 Package ODBCAPTURE.GRAB_SDO compiled
 
-Elapsed: 00:00:00.028
+Elapsed: 00:00:00.027
 
 
 ============================================================
@@ -3807,7 +3844,7 @@ alter table "ODBCAPTURE"."ROLE_CONF" DISABLE constraint "ROLE_CONF_FK1";
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.018
+Elapsed: 00:00:00.020
 
 
 
@@ -3821,17 +3858,17 @@ Translating ../grbsdo/ODBCAPTURE/ROLE_CONF.csv to 'INSERT INTO'
 
 1 row inserted.
 
+Elapsed: 00:00:00.009
+
+
+1 row inserted.
+
 Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
@@ -3846,7 +3883,7 @@ Elapsed: 00:00:00.010
 
 Commit complete.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.007
 
 
 ============================================================
@@ -3869,7 +3906,7 @@ alter table "ODBCAPTURE"."SCHEMA_CONF" DISABLE constraint "SCHEMA_CONF_FK1";
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.018
+Elapsed: 00:00:00.020
 
 
 
@@ -3883,22 +3920,22 @@ Translating ../grbsdo/ODBCAPTURE/SCHEMA_CONF.csv to 'INSERT INTO'
 
 1 row inserted.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.009
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.011
 
 
 Commit complete.
 
-Elapsed: 00:00:00.005
+Elapsed: 00:00:00.007
 
 
 ============================================================
@@ -3912,7 +3949,7 @@ Running: grbsdo ODBCAPTURE/GRAB_SDO.pkbsql
 
 Package Body ODBCAPTURE.GRAB_SDO compiled
 
-Elapsed: 00:00:00.064
+Elapsed: 00:00:00.067
 
 
 ============================================================
@@ -3932,12 +3969,12 @@ Drop Temp Publicly Updateable Table
 
 Synonym TEMP_PUBLICLY_UPDATEABLE_TABLE dropped.
 
-Elapsed: 00:00:00.014
+Elapsed: 00:00:00.015
 
 
 Table TEMP_PUBLICLY_UPDATEABLE_TABLE dropped.
 
-Elapsed: 00:00:00.021
+Elapsed: 00:00:00.020
 
 
 
@@ -3976,6 +4013,19 @@ update_id_sequences
 Switch Spooling Off
 
 
+Update ODBCAPTURE_INSTALLATION_LOGS
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.007
+
+
+Commit complete.
+
+Elapsed: 00:00:00.007
+
+
 ============================================================
 
 
@@ -3993,17 +4043,17 @@ Create Temp Publicly Updateable Table
 
 Table TEMP_PUBLICLY_UPDATEABLE_TABLE created.
 
-Elapsed: 00:00:00.011
+Elapsed: 00:00:00.012
 
 
 Grant succeeded.
 
-Elapsed: 00:00:00.011
+Elapsed: 00:00:00.012
 
 
 Synonym TEMP_PUBLICLY_UPDATEABLE_TABLE created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.010
 
 
 
@@ -4013,16 +4063,18 @@ Check for Prerequisite BUILD_TYPEs
 
 
 Prerequisite BUILD_TYPEs for "grbdat"
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbendp".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbjava".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbras".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbsdo".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbsrc".
+WARNING: Prerequisite BUILD_TYPE "grbendp" not found in
+ODBCAPTURE_INSTALLATION_LOGS table.
+WARNING: Prerequisite BUILD_TYPE "grbjava" not found in
+ODBCAPTURE_INSTALLATION_LOGS table.
+ -) "grbras" last loaded on 23-Aug-2024 06:32:38
+ -) "grbsdo" last loaded on 23-Aug-2024 06:32:39
+ -) "grbsrc" last loaded on 23-Aug-2024 06:32:37
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.017
 
 
 ============================================================
@@ -4046,7 +4098,7 @@ alter table "ODBCAPTURE"."DLOAD_CONF" DISABLE constraint "DLOAD_CONF_FK2";
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.357
+Elapsed: 00:00:01.029
 
 
 
@@ -4060,7 +4112,7 @@ Translating ../grbdat/ODBCAPTURE/DLOAD_CONF.csv to 'INSERT INTO'
 
 1 row inserted.
 
-Elapsed: 00:00:00.019
+Elapsed: 00:00:00.021
 
 
 1 row inserted.
@@ -4070,32 +4122,7 @@ Elapsed: 00:00:00.007
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.007
 
 
 1 row inserted.
@@ -4105,7 +4132,12 @@ Elapsed: 00:00:00.008
 
 1 row inserted.
 
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
@@ -4115,32 +4147,52 @@ Elapsed: 00:00:00.007
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.007
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.007
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.011
 
 
 Commit complete.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 ============================================================
@@ -4165,7 +4217,7 @@ alter table "ODBCAPTURE"."OBJECT_CONF" DISABLE constraint "OBJECT_CONF_FK3";
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:01.061
+Elapsed: 00:00:00.138
 
 
 
@@ -4179,47 +4231,27 @@ Translating ../grbdat/ODBCAPTURE/OBJECT_CONF.csv to 'INSERT INTO'
 
 1 row inserted.
 
-Elapsed: 00:00:00.017
+Elapsed: 00:00:00.019
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
@@ -4234,17 +4266,7 @@ Elapsed: 00:00:00.008
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
@@ -4254,17 +4276,47 @@ Elapsed: 00:00:00.008
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.009
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.011
+Elapsed: 00:00:00.012
 
 
 Commit complete.
 
-Elapsed: 00:00:00.005
+Elapsed: 00:00:00.007
 
 
 ============================================================
@@ -4284,743 +4336,7 @@ Drop Temp Publicly Updateable Table
 
 Synonym TEMP_PUBLICLY_UPDATEABLE_TABLE dropped.
 
-Elapsed: 00:00:00.014
-
-
-Table TEMP_PUBLICLY_UPDATEABLE_TABLE dropped.
-
-Elapsed: 00:00:00.019
-
-
-
-
-
-fix_invalid_public_synonyms
-
-
-
-
-
-compile_all
-
-
-
-
-
-alter_foreign_keys_ENABLE
-
-
-
-
-
-alter_triggers_ENABLE
-
-
-
-
-
-update_id_sequences
-
-
-
-
-
-Switch Spooling Off
-
-
-============================================================
-
-
-Running: grbtst SYS/GRB_TEST_ROLE.role
-
-
-============================================================
-
-
-Role GRB_TEST_ROLE created.
-
-Elapsed: 00:00:00.009
-
-
-============================================================
-
-
-Running: grbtst SYS/ODBCTEST.user
-
-
-============================================================
-
-
-User "ODBCTEST" created.
-
-Elapsed: 00:00:00.068
-
-
-XS Admin Grant "ADMIN_ANY_SEC_POLICY" to "ODBCTEST"
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.014
-
-
-XS Admin Cloud Grant "ADMIN_ANY_SEC_POLICY" to "ODBCTEST"
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.014
-
-
-XS Admin Grant "PROVISION" to "ODBCTEST"
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.013
-
-
-XS Admin Cloud Grant "PROVISION" to "ODBCTEST"
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.013
-
-
-============================================================
-
-
-Running: grbtst SYS/host1.hacl
-
-
-============================================================
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.061
-
-
-============================================================
-
-
-Running: grbtst SYS/host2.hacl
-
-
-============================================================
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.024
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.019
-
-
-============================================================
-
-
-Running: grbtst SYS/odbctest_host.hacl
-
-
-============================================================
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.018
-
-
-============================================================
-
-
-Running: grbtst SYS/_opt_install_files_oracle_wallet.wacl
-
-
-============================================================
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.019
-
-
-============================================================
-
-
-Running: grbtst SYS/_var_opt_install_files_oracle_wallet.wacl
-
-
-============================================================
-
-
-PL/SQL procedure successfully completed.
-
 Elapsed: 00:00:00.015
-
-
-============================================================
-
-
-Running: grbtst SYSTEM/ODBCTEST_usr.grnt
-
-
-============================================================
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.008
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.006
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.006
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.006
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.010
-
-
-============================================================
-
-
-Running: grbtst ./installation_prepare.sql
-
-
-============================================================
-
-
-
-
-
-Create Temp Publicly Updateable Table
-
-
-Table TEMP_PUBLICLY_UPDATEABLE_TABLE created.
-
-Elapsed: 00:00:00.011
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.010
-
-
-Synonym TEMP_PUBLICLY_UPDATEABLE_TABLE created.
-
-Elapsed: 00:00:00.009
-
-
-
-
-
-Check for Prerequisite BUILD_TYPEs
-
-
-Prerequisite BUILD_TYPEs for "grbtst"
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbendp".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbjava".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbras".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbsdo".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbsrc".
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.009
-
-
-============================================================
-
-
-Running: grbtst ODBCAPTURE/GRBTST__NAME.tbl
-
-
-============================================================
-
-
-Table "ODBCAPTURE"."GRBTST_$NAME" created.
-
-Elapsed: 00:00:00.011
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.012
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.011
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.012
-
-
-Grant succeeded.
-
-Elapsed: 00:00:00.011
-
-
-============================================================
-
-
-Running: grbtst ODBCAPTURE/GRBTST_IMAGE.tbl
-
-
-============================================================
-
-
-Table "ODBCAPTURE"."GRBTST_IMAGE" created.
-
-Elapsed: 00:00:00.012
-
-
-============================================================
-
-
-Running: grbtst ODBCAPTURE/BUILD_CONF.cldr
-
-
-============================================================
-
-
-
-
-
-Disable Triggers and Foreign Keys
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.009
-
-
-
-
-
-sqlldr_control=ODBCAPTURE/BUILD_CONF.ctl
-
-
-Translating ../grbtst/ODBCAPTURE/BUILD_CONF.csv to 'INSERT INTO'
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.011
-
-
-Commit complete.
-
-Elapsed: 00:00:00.006
-
-
-============================================================
-
-
-Running: grbtst ODBCAPTURE/BUILD_PATH.cldr
-
-
-============================================================
-
-
-
-
-
-Disable Triggers and Foreign Keys
-
-
-alter table "ODBCAPTURE"."BUILD_PATH" DISABLE constraint "BUILD_PATH_FK1";
-alter table "ODBCAPTURE"."BUILD_PATH" DISABLE constraint "BUILD_PATH_FK2";
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.026
-
-
-
-
-
-sqlldr_control=ODBCAPTURE/BUILD_PATH.ctl
-
-
-Translating ../grbtst/ODBCAPTURE/BUILD_PATH.csv to 'INSERT INTO'
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.010
-
-
-Commit complete.
-
-Elapsed: 00:00:00.005
-
-
-============================================================
-
-
-Running: grbtst ODBCAPTURE/GRBTST__NAME.cldr
-
-
-============================================================
-
-
-
-
-
-Disable Triggers and Foreign Keys
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.560
-
-
-
-
-
-sqlldr_control=ODBCAPTURE/GRBTST__NAME.ctl
-
-
-Translating ../grbtst/ODBCAPTURE/GRBTST__NAME.csv to 'INSERT INTO'
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.014
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.010
-
-
-Commit complete.
-
-Elapsed: 00:00:00.005
-
-
-============================================================
-
-
-Running: grbtst ODBCAPTURE/GRBTST_IMAGE.cldr
-
-
-============================================================
-
-
-
-
-
-Disable Triggers and Foreign Keys
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.563
-
-
-
-
-
-sqlldr_control=ODBCAPTURE/GRBTST_IMAGE.ctl
-
-
-Translating ../grbtst/ODBCAPTURE/GRBTST_IMAGE.csv to 'INSERT INTO'
-
-
-ORA-01465: invalid hex number
-Error at Line: 14884 Column: 0
-
-
-ORA-01465: invalid hex number
-Error at Line: 15018 Column: 0
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.009
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.019
-
-
-Commit complete.
-
-Elapsed: 00:00:00.004
-
-
-Commit complete.
-
-Elapsed: 00:00:00.005
-
-
-============================================================
-
-
-Running: grbtst ODBCAPTURE/ROLE_CONF.cldr
-
-
-============================================================
-
-
-
-
-
-Disable Triggers and Foreign Keys
-
-
-alter table "ODBCAPTURE"."ROLE_CONF" DISABLE constraint "ROLE_CONF_FK1";
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.018
-
-
-
-
-
-sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
-
-
-Translating ../grbtst/ODBCAPTURE/ROLE_CONF.csv to 'INSERT INTO'
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.008
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.009
-
-
-Commit complete.
-
-Elapsed: 00:00:00.006
-
-
-============================================================
-
-
-Running: grbtst ODBCAPTURE/SCHEMA_CONF.cldr
-
-
-============================================================
-
-
-
-
-
-Disable Triggers and Foreign Keys
-
-
-alter table "ODBCAPTURE"."SCHEMA_CONF" DISABLE constraint "SCHEMA_CONF_FK1";
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.018
-
-
-
-
-
-sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
-
-
-Translating ../grbtst/ODBCAPTURE/SCHEMA_CONF.csv to 'INSERT INTO'
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.008
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.009
-
-
-Commit complete.
-
-Elapsed: 00:00:00.005
-
-
-============================================================
-
-
-Running: grbtst ODBCAPTURE/TSPACE_CONF.cldr
-
-
-============================================================
-
-
-
-
-
-Disable Triggers and Foreign Keys
-
-
-alter table "ODBCAPTURE"."TSPACE_CONF" DISABLE constraint "TSPACE_CONF_FK1";
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.022
-
-
-
-
-
-sqlldr_control=ODBCAPTURE/TSPACE_CONF.ctl
-
-
-Translating ../grbtst/ODBCAPTURE/TSPACE_CONF.csv to 'INSERT INTO'
-
-
-PL/SQL procedure successfully completed.
-
-Elapsed: 00:00:00.010
-
-
-Commit complete.
-
-Elapsed: 00:00:00.004
-
-
-============================================================
-
-
-Running: grbtst ./installation_finalize.sql
-
-
-============================================================
-
-
-
-
-
-Drop Temp Publicly Updateable Table
-
-
-Synonym TEMP_PUBLICLY_UPDATEABLE_TABLE dropped.
-
-Elapsed: 00:00:00.014
 
 
 Table TEMP_PUBLICLY_UPDATEABLE_TABLE dropped.
@@ -5064,10 +4380,192 @@ update_id_sequences
 Switch Spooling Off
 
 
+Update ODBCAPTURE_INSTALLATION_LOGS
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.007
+
+
+Commit complete.
+
+Elapsed: 00:00:00.007
+
+
 ============================================================
 
 
-Running: grbtjsn ./installation_prepare.sql
+Running: grbtst SYS/GRB_TEST_ROLE.role
+
+
+============================================================
+
+
+Role GRB_TEST_ROLE created.
+
+Elapsed: 00:00:00.012
+
+
+============================================================
+
+
+Running: grbtst SYS/ODBCTEST.user
+
+
+============================================================
+
+
+User "ODBCTEST" created.
+
+Elapsed: 00:00:00.074
+
+
+XS Admin Grant "ADMIN_ANY_SEC_POLICY" to "ODBCTEST"
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.016
+
+
+XS Admin Cloud Grant "ADMIN_ANY_SEC_POLICY" to "ODBCTEST"
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.015
+
+
+XS Admin Grant "PROVISION" to "ODBCTEST"
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.014
+
+
+XS Admin Cloud Grant "PROVISION" to "ODBCTEST"
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.017
+
+
+============================================================
+
+
+Running: grbtst SYS/host1.hacl
+
+
+============================================================
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.062
+
+
+============================================================
+
+
+Running: grbtst SYS/host2.hacl
+
+
+============================================================
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.024
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.020
+
+
+============================================================
+
+
+Running: grbtst SYS/odbctest_host.hacl
+
+
+============================================================
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.020
+
+
+============================================================
+
+
+Running: grbtst SYS/_opt_install_files_oracle_wallet.wacl
+
+
+============================================================
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.020
+
+
+============================================================
+
+
+Running: grbtst SYS/_var_opt_install_files_oracle_wallet.wacl
+
+
+============================================================
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.017
+
+
+============================================================
+
+
+Running: grbtst SYSTEM/ODBCTEST_usr.grnt
+
+
+============================================================
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.009
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.007
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.007
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.008
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.011
+
+
+============================================================
+
+
+Running: grbtst ./installation_prepare.sql
 
 
 ============================================================
@@ -5081,17 +4579,17 @@ Create Temp Publicly Updateable Table
 
 Table TEMP_PUBLICLY_UPDATEABLE_TABLE created.
 
-Elapsed: 00:00:00.011
+Elapsed: 00:00:00.012
 
 
 Grant succeeded.
 
-Elapsed: 00:00:00.011
+Elapsed: 00:00:00.012
 
 
 Synonym TEMP_PUBLICLY_UPDATEABLE_TABLE created.
 
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.010
 
 
 
@@ -5100,16 +4598,139 @@ Elapsed: 00:00:00.009
 Check for Prerequisite BUILD_TYPEs
 
 
-Prerequisite BUILD_TYPEs for "grbtjsn"
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbendp".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbjava".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbras".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbsdo".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbsrc".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbtst".
+Prerequisite BUILD_TYPEs for "grbtst"
+WARNING: Prerequisite BUILD_TYPE "grbendp" not found in
+ODBCAPTURE_INSTALLATION_LOGS table.
+WARNING: Prerequisite BUILD_TYPE "grbjava" not found in
+ODBCAPTURE_INSTALLATION_LOGS table.
+ -) "grbras" last loaded on 23-Aug-2024 06:32:38
+ -) "grbsdo" last loaded on 23-Aug-2024 06:32:39
+ -) "grbsrc" last loaded on 23-Aug-2024 06:32:37
 
 
 PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.009
+
+
+============================================================
+
+
+Running: grbtst ODBCAPTURE/GRBTST__NAME.tbl
+
+
+============================================================
+
+
+Table "ODBCAPTURE"."GRBTST_$NAME" created.
+
+Elapsed: 00:00:00.012
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.013
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.013
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.013
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.012
+
+
+============================================================
+
+
+Running: grbtst ODBCAPTURE/GRBTST_IMAGE.tbl
+
+
+============================================================
+
+
+Table "ODBCAPTURE"."GRBTST_IMAGE" created.
+
+Elapsed: 00:00:00.013
+
+
+============================================================
+
+
+Running: grbtst ODBCAPTURE/BUILD_CONF.cldr
+
+
+============================================================
+
+
+
+
+
+Disable Triggers and Foreign Keys
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.010
+
+
+
+
+
+sqlldr_control=ODBCAPTURE/BUILD_CONF.ctl
+
+
+Translating ../grbtst/ODBCAPTURE/BUILD_CONF.csv to 'INSERT INTO'
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.009
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.007
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.011
+
+
+Commit complete.
 
 Elapsed: 00:00:00.008
 
@@ -5117,26 +4738,100 @@ Elapsed: 00:00:00.008
 ============================================================
 
 
-Running: grbtjsn ODBCAPTURE/GRBTST_JSON.tbl
+Running: grbtst ODBCAPTURE/BUILD_PATH.cldr
 
 
 ============================================================
 
 
-Table "ODBCAPTURE"."GRBTST_JSON" created.
-
-Elapsed: 00:00:00.012
 
 
-Table "ODBCAPTURE"."GRBTST_JSON" altered.
 
-Elapsed: 00:00:00.020
+Disable Triggers and Foreign Keys
+
+
+alter table "ODBCAPTURE"."BUILD_PATH" DISABLE constraint "BUILD_PATH_FK1";
+alter table "ODBCAPTURE"."BUILD_PATH" DISABLE constraint "BUILD_PATH_FK2";
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.029
+
+
+
+
+
+sqlldr_control=ODBCAPTURE/BUILD_PATH.ctl
+
+
+Translating ../grbtst/ODBCAPTURE/BUILD_PATH.csv to 'INSERT INTO'
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.007
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.009
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.013
+
+
+Commit complete.
+
+Elapsed: 00:00:00.007
 
 
 ============================================================
 
 
-Running: grbtjsn ODBCAPTURE/GRBTST_JSON.cldr
+Running: grbtst ODBCAPTURE/GRBTST__NAME.cldr
 
 
 ============================================================
@@ -5156,6 +4851,393 @@ Elapsed: 00:00:00.566
 
 
 
+sqlldr_control=ODBCAPTURE/GRBTST__NAME.ctl
+
+
+Translating ../grbtst/ODBCAPTURE/GRBTST__NAME.csv to 'INSERT INTO'
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.015
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.011
+
+
+Commit complete.
+
+Elapsed: 00:00:00.007
+
+
+============================================================
+
+
+Running: grbtst ODBCAPTURE/GRBTST_IMAGE.cldr
+
+
+============================================================
+
+
+
+
+
+Disable Triggers and Foreign Keys
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:01.023
+
+
+
+
+
+sqlldr_control=ODBCAPTURE/GRBTST_IMAGE.ctl
+
+
+Translating ../grbtst/ODBCAPTURE/GRBTST_IMAGE.csv to 'INSERT INTO'
+
+
+ORA-01465: invalid hex number
+Error at Line: 14941 Column: 0
+
+
+ORA-01465: invalid hex number
+Error at Line: 15075 Column: 0
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.011
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.021
+
+
+Commit complete.
+
+Elapsed: 00:00:00.006
+
+
+Commit complete.
+
+Elapsed: 00:00:00.006
+
+
+============================================================
+
+
+Running: grbtst ODBCAPTURE/ROLE_CONF.cldr
+
+
+============================================================
+
+
+
+
+
+Disable Triggers and Foreign Keys
+
+
+alter table "ODBCAPTURE"."ROLE_CONF" DISABLE constraint "ROLE_CONF_FK1";
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.020
+
+
+
+
+
+sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
+
+
+Translating ../grbtst/ODBCAPTURE/ROLE_CONF.csv to 'INSERT INTO'
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.009
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.012
+
+
+Commit complete.
+
+Elapsed: 00:00:00.007
+
+
+============================================================
+
+
+Running: grbtst ODBCAPTURE/SCHEMA_CONF.cldr
+
+
+============================================================
+
+
+
+
+
+Disable Triggers and Foreign Keys
+
+
+alter table "ODBCAPTURE"."SCHEMA_CONF" DISABLE constraint "SCHEMA_CONF_FK1";
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.020
+
+
+
+
+
+sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
+
+
+Translating ../grbtst/ODBCAPTURE/SCHEMA_CONF.csv to 'INSERT INTO'
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.009
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.011
+
+
+Commit complete.
+
+Elapsed: 00:00:00.007
+
+
+============================================================
+
+
+Running: grbtst ODBCAPTURE/TSPACE_CONF.cldr
+
+
+============================================================
+
+
+
+
+
+Disable Triggers and Foreign Keys
+
+
+alter table "ODBCAPTURE"."TSPACE_CONF" DISABLE constraint "TSPACE_CONF_FK1";
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.019
+
+
+
+
+
+sqlldr_control=ODBCAPTURE/TSPACE_CONF.ctl
+
+
+Translating ../grbtst/ODBCAPTURE/TSPACE_CONF.csv to 'INSERT INTO'
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.011
+
+
+Commit complete.
+
+Elapsed: 00:00:00.006
+
+
+============================================================
+
+
+Running: grbtst ./installation_finalize.sql
+
+
+============================================================
+
+
+
+
+
+Drop Temp Publicly Updateable Table
+
+
+Synonym TEMP_PUBLICLY_UPDATEABLE_TABLE dropped.
+
+Elapsed: 00:00:00.016
+
+
+Table TEMP_PUBLICLY_UPDATEABLE_TABLE dropped.
+
+Elapsed: 00:00:00.020
+
+
+
+
+
+fix_invalid_public_synonyms
+
+
+
+
+
+compile_all
+
+
+
+
+
+alter_foreign_keys_ENABLE
+
+
+
+
+
+alter_triggers_ENABLE
+
+
+
+
+
+update_id_sequences
+
+
+
+
+
+Switch Spooling Off
+
+
+Update ODBCAPTURE_INSTALLATION_LOGS
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.007
+
+
+Commit complete.
+
+Elapsed: 00:00:00.007
+
+
+============================================================
+
+
+Running: grbtjsn ./installation_prepare.sql
+
+
+============================================================
+
+
+
+
+
+Create Temp Publicly Updateable Table
+
+
+Table TEMP_PUBLICLY_UPDATEABLE_TABLE created.
+
+Elapsed: 00:00:00.012
+
+
+Grant succeeded.
+
+Elapsed: 00:00:00.012
+
+
+Synonym TEMP_PUBLICLY_UPDATEABLE_TABLE created.
+
+Elapsed: 00:00:00.010
+
+
+
+
+
+Check for Prerequisite BUILD_TYPEs
+
+
+Prerequisite BUILD_TYPEs for "grbtjsn"
+WARNING: Prerequisite BUILD_TYPE "grbendp" not found in
+ODBCAPTURE_INSTALLATION_LOGS table.
+WARNING: Prerequisite BUILD_TYPE "grbjava" not found in
+ODBCAPTURE_INSTALLATION_LOGS table.
+ -) "grbras" last loaded on 23-Aug-2024 06:32:38
+ -) "grbsdo" last loaded on 23-Aug-2024 06:32:39
+ -) "grbsrc" last loaded on 23-Aug-2024 06:32:37
+ -) "grbtst" last loaded on 23-Aug-2024 06:32:45
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.012
+
+
+============================================================
+
+
+Running: grbtjsn ODBCAPTURE/GRBTST_JSON.tbl
+
+
+============================================================
+
+
+Table "ODBCAPTURE"."GRBTST_JSON" created.
+
+Elapsed: 00:00:00.015
+
+
+Table "ODBCAPTURE"."GRBTST_JSON" altered.
+
+Elapsed: 00:00:00.022
+
+
+============================================================
+
+
+Running: grbtjsn ODBCAPTURE/GRBTST_JSON.cldr
+
+
+============================================================
+
+
+
+
+
+Disable Triggers and Foreign Keys
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.564
+
+
+
+
+
 sqlldr_control=ODBCAPTURE/GRBTST_JSON.ctl
 
 
@@ -5164,27 +5246,27 @@ Translating ../grbtjsn/ODBCAPTURE/GRBTST_JSON.csv to 'INSERT INTO'
 
 1 row inserted.
 
-Elapsed: 00:00:00.049
+Elapsed: 00:00:00.055
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.012
 
 
 Commit complete.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.007
 
 
 ============================================================
@@ -5248,6 +5330,19 @@ update_id_sequences
 Switch Spooling Off
 
 
+Update ODBCAPTURE_INSTALLATION_LOGS
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.007
+
+
+Commit complete.
+
+Elapsed: 00:00:00.007
+
+
 ============================================================
 
 
@@ -5270,7 +5365,7 @@ Elapsed: 00:00:00.012
 
 Grant succeeded.
 
-Elapsed: 00:00:00.011
+Elapsed: 00:00:00.013
 
 
 Synonym TEMP_PUBLICLY_UPDATEABLE_TABLE created.
@@ -5285,12 +5380,14 @@ Check for Prerequisite BUILD_TYPEs
 
 
 Prerequisite BUILD_TYPEs for "grbtsdo"
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbendp".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbjava".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbras".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbsdo".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbsrc".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbtst".
+WARNING: Prerequisite BUILD_TYPE "grbendp" not found in
+ODBCAPTURE_INSTALLATION_LOGS table.
+WARNING: Prerequisite BUILD_TYPE "grbjava" not found in
+ODBCAPTURE_INSTALLATION_LOGS table.
+ -) "grbras" last loaded on 23-Aug-2024 06:32:38
+ -) "grbsdo" last loaded on 23-Aug-2024 06:32:39
+ -) "grbsrc" last loaded on 23-Aug-2024 06:32:37
+ -) "grbtst" last loaded on 23-Aug-2024 06:32:45
 
 
 PL/SQL procedure successfully completed.
@@ -5309,12 +5406,12 @@ Running: grbtsdo ODBCTEST/SDO_COLA_MARKETS.tbl
 
 Table "ODBCTEST"."SDO_COLA_MARKETS" created.
 
-Elapsed: 00:00:00.033
+Elapsed: 00:00:00.026
 
 
 Table "ODBCTEST"."SDO_COLA_MARKETS" altered.
 
-Elapsed: 00:00:00.025
+Elapsed: 00:00:00.026
 
 
 ============================================================
@@ -5334,7 +5431,7 @@ Disable Triggers and Foreign Keys
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.566
+Elapsed: 00:00:00.565
 
 
 
@@ -5346,30 +5443,34 @@ sqlldr_control=ODBCTEST/SDO_COLA_MARKETS.ctl
 Translating ../grbtsdo/ODBCTEST/SDO_COLA_MARKETS.csv to 'INSERT INTO'
 
 
-ORA-00932: expression is of data type CHAR, which is incompatible with expected data type MDSYS.ST_GEOMETRY
-Error at Line: 16102 Column: 0
+1 row inserted.
+
+Elapsed: 00:00:00.084
 
 
-ORA-00932: expression is of data type CHAR, which is incompatible with expected data type MDSYS.ST_GEOMETRY
-Error at Line: 16106 Column: 0
+1 row inserted.
+
+Elapsed: 00:00:00.012
 
 
-ORA-00932: expression is of data type CHAR, which is incompatible with expected data type MDSYS.ST_GEOMETRY
-Error at Line: 16110 Column: 0
+1 row inserted.
+
+Elapsed: 00:00:00.012
 
 
-ORA-00932: expression is of data type CHAR, which is incompatible with expected data type MDSYS.ST_GEOMETRY
-Error at Line: 16114 Column: 0
+1 row inserted.
+
+Elapsed: 00:00:00.011
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.011
 
 
 Commit complete.
 
-Elapsed: 00:00:00.004
+Elapsed: 00:00:00.007
 
 
 ============================================================
@@ -5398,7 +5499,7 @@ Drop Temp Publicly Updateable Table
 
 Synonym TEMP_PUBLICLY_UPDATEABLE_TABLE dropped.
 
-Elapsed: 00:00:00.014
+Elapsed: 00:00:00.015
 
 
 Table TEMP_PUBLICLY_UPDATEABLE_TABLE dropped.
@@ -5442,6 +5543,19 @@ update_id_sequences
 Switch Spooling Off
 
 
+Update ODBCAPTURE_INSTALLATION_LOGS
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.007
+
+
+Commit complete.
+
+Elapsed: 00:00:00.007
+
+
 ============================================================
 
 
@@ -5459,17 +5573,17 @@ Create Temp Publicly Updateable Table
 
 Table TEMP_PUBLICLY_UPDATEABLE_TABLE created.
 
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.011
 
 
 Grant succeeded.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.011
 
 
 Synonym TEMP_PUBLICLY_UPDATEABLE_TABLE created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.010
 
 
 
@@ -5479,12 +5593,14 @@ Check for Prerequisite BUILD_TYPEs
 
 
 Prerequisite BUILD_TYPEs for "grbtctx"
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbendp".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbjava".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbras".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbsdo".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbsrc".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbtst".
+WARNING: Prerequisite BUILD_TYPE "grbendp" not found in
+ODBCAPTURE_INSTALLATION_LOGS table.
+WARNING: Prerequisite BUILD_TYPE "grbjava" not found in
+ODBCAPTURE_INSTALLATION_LOGS table.
+ -) "grbras" last loaded on 23-Aug-2024 06:32:38
+ -) "grbsdo" last loaded on 23-Aug-2024 06:32:39
+ -) "grbsrc" last loaded on 23-Aug-2024 06:32:37
+ -) "grbtst" last loaded on 23-Aug-2024 06:32:45
 
 
 PL/SQL procedure successfully completed.
@@ -5503,7 +5619,7 @@ Running: grbtctx ODBCTEST/CUST_CTX_TEST.tbl
 
 Table "ODBCTEST"."CUST_CTX_TEST" created.
 
-Elapsed: 00:00:00.011
+Elapsed: 00:00:00.012
 
 
 ============================================================
@@ -5523,7 +5639,7 @@ Disable Triggers and Foreign Keys
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.569
+Elapsed: 00:00:00.564
 
 
 
@@ -5537,12 +5653,7 @@ Translating ../grbtctx/ODBCTEST/CUST_CTX_TEST.csv to 'INSERT INTO'
 
 1 row inserted.
 
-Elapsed: 00:00:00.014
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.015
 
 
 1 row inserted.
@@ -5550,14 +5661,19 @@ Elapsed: 00:00:00.006
 Elapsed: 00:00:00.007
 
 
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.011
 
 
 Commit complete.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.007
 
 
 ============================================================
@@ -5571,7 +5687,7 @@ Running: grbtctx ODBCTEST/CUST_CTX_TEST.tidx
 
 Index "ODBCTEST"."CUST_CTX_TEST_IND" created.
 
-Elapsed: 00:00:01.946
+Elapsed: 00:00:01.964
 
 
 ============================================================
@@ -5591,7 +5707,7 @@ Drop Temp Publicly Updateable Table
 
 Synonym TEMP_PUBLICLY_UPDATEABLE_TABLE dropped.
 
-Elapsed: 00:00:00.014
+Elapsed: 00:00:00.016
 
 
 Table TEMP_PUBLICLY_UPDATEABLE_TABLE dropped.
@@ -5635,6 +5751,19 @@ update_id_sequences
 Switch Spooling Off
 
 
+Update ODBCAPTURE_INSTALLATION_LOGS
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+Commit complete.
+
+Elapsed: 00:00:00.007
+
+
 ============================================================
 
 
@@ -5652,7 +5781,7 @@ Create Temp Publicly Updateable Table
 
 Table TEMP_PUBLICLY_UPDATEABLE_TABLE created.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.013
 
 
 Grant succeeded.
@@ -5662,7 +5791,7 @@ Elapsed: 00:00:00.012
 
 Synonym TEMP_PUBLICLY_UPDATEABLE_TABLE created.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.010
 
 
 
@@ -5672,22 +5801,26 @@ Check for Prerequisite BUILD_TYPEs
 
 
 Prerequisite BUILD_TYPEs for "grbtdat"
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbendp".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbjava".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbras".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbsdo".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbsrc".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbtctx".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbtend".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbtjsn".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbtjva".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbtsdo".
-NOTE: ODBCAPTURE_INSTALLATION_LOGS table not available to check "grbtst".
+WARNING: Prerequisite BUILD_TYPE "grbendp" not found in
+ODBCAPTURE_INSTALLATION_LOGS table.
+WARNING: Prerequisite BUILD_TYPE "grbjava" not found in
+ODBCAPTURE_INSTALLATION_LOGS table.
+ -) "grbras" last loaded on 23-Aug-2024 06:32:38
+ -) "grbsdo" last loaded on 23-Aug-2024 06:32:39
+ -) "grbsrc" last loaded on 23-Aug-2024 06:32:37
+ -) "grbtctx" last loaded on 23-Aug-2024 06:32:51
+WARNING: Prerequisite BUILD_TYPE "grbtend" not found in
+ODBCAPTURE_INSTALLATION_LOGS table.
+ -) "grbtjsn" last loaded on 23-Aug-2024 06:32:47
+WARNING: Prerequisite BUILD_TYPE "grbtjva" not found in
+ODBCAPTURE_INSTALLATION_LOGS table.
+ -) "grbtsdo" last loaded on 23-Aug-2024 06:32:48
+ -) "grbtst" last loaded on 23-Aug-2024 06:32:45
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.019
 
 
 ============================================================
@@ -5711,7 +5844,7 @@ alter table "ODBCAPTURE"."DLOAD_CONF" DISABLE constraint "DLOAD_CONF_FK2";
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.026
+Elapsed: 00:00:00.029
 
 
 
@@ -5725,72 +5858,72 @@ Translating ../grbtdat/ODBCAPTURE/DLOAD_CONF.csv to 'INSERT INTO'
 
 1 row inserted.
 
+Elapsed: 00:00:00.009
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.009
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
 Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.011
+Elapsed: 00:00:00.012
 
 
 Commit complete.
 
-Elapsed: 00:00:00.005
+Elapsed: 00:00:00.007
 
 
 ============================================================
@@ -5815,7 +5948,7 @@ alter table "ODBCAPTURE"."OBJECT_CONF" DISABLE constraint "OBJECT_CONF_FK3";
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.062
+Elapsed: 00:00:00.035
 
 
 
@@ -5829,92 +5962,92 @@ Translating ../grbtdat/ODBCAPTURE/OBJECT_CONF.csv to 'INSERT INTO'
 
 1 row inserted.
 
+Elapsed: 00:00:00.010
+
+
+1 row inserted.
+
 Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.008
 
 
 1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.006
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-1 row inserted.
-
-Elapsed: 00:00:00.007
-
-
-PL/SQL procedure successfully completed.
 
 Elapsed: 00:00:00.009
 
 
+1 row inserted.
+
+Elapsed: 00:00:00.007
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.009
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.009
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.008
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.012
+
+
 Commit complete.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.007
 
 
 ============================================================
@@ -5934,12 +6067,12 @@ Drop Temp Publicly Updateable Table
 
 Synonym TEMP_PUBLICLY_UPDATEABLE_TABLE dropped.
 
-Elapsed: 00:00:00.014
+Elapsed: 00:00:00.015
 
 
 Table TEMP_PUBLICLY_UPDATEABLE_TABLE dropped.
 
-Elapsed: 00:00:00.018
+Elapsed: 00:00:00.020
 
 
 
@@ -5978,15 +6111,32 @@ update_id_sequences
 Switch Spooling Off
 
 
+Update ODBCAPTURE_INSTALLATION_LOGS
+
+
+1 row inserted.
+
+Elapsed: 00:00:00.007
+
+
+Commit complete.
+
+Elapsed: 00:00:00.007
+
+
 
 
 
 Re-create Invalid Public Synonyms
 
 
+CREATE OR REPLACE NONEDITIONABLE PUBLIC SYNONYM "ODBCAPTURE_INSTALLATION_LOGS" f
+or "ODBCAPTURE"."ODBCAPTURE_INSTALLATION_LOGS"
+
+
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.318
+Elapsed: 00:00:00.300
 
 
 Compile All started
@@ -5997,7 +6147,7 @@ Compile All is done.
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:01.946
+Elapsed: 00:00:01.613
 
 
 Alter Foreign Keys started.
@@ -6017,7 +6167,7 @@ Alter Foreign Keys is done.
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:01.195
+Elapsed: 00:00:00.663
 
 
 Alter Triggers started.
@@ -6027,7 +6177,7 @@ Alter Triggers is done.
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.098
+Elapsed: 00:00:00.200
 
 
 Update ID Sequences started
@@ -6036,4 +6186,4 @@ Identity Sequence Updates is done.
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.038
+Elapsed: 00:00:00.039

@@ -7,8 +7,19 @@ ODBCAPTURE
 ODBCTEST   
 
 
-Elapsed: 00:00:00.044
+Elapsed: 00:00:00.038
 2 rows selected.
+
+
+
+
+
+delete from "ADMIN"."ODBCAPTURE_INSTALLATION_LOGS"
+
+
+PL/SQL procedure successfully completed.
+
+Elapsed: 00:00:00.015
 
 
 
@@ -19,12 +30,12 @@ Drop Index COLA_SPATIAL_IDX
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.512
+Elapsed: 00:00:00.237
 
 
 0 rows deleted.
 
-Elapsed: 00:00:00.030
+Elapsed: 00:00:00.016
 
 
 
@@ -40,7 +51,7 @@ xs_principal.delete_principal "GRB_TEST_ROLE_01"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.106
+Elapsed: 00:00:00.102
 
 
 
@@ -49,15 +60,15 @@ Elapsed: 00:00:00.106
 Drop Schema
 
 
--- 2024-08-23 00:52:09 --
+-- 2024-08-23 06:27:55 --
 drop user "ODBCAPTURE" cascade
--- 2024-08-23 00:52:11 --
+-- 2024-08-23 06:27:57 --
 drop user "ODBCTEST" cascade
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:03.875
+Elapsed: 00:00:03.963
 
 
 
@@ -66,10 +77,10 @@ Elapsed: 00:00:03.875
 Drop Role
 
 
--- 2024-08-23 00:52:13 --
+-- 2024-08-23 06:27:59 --
 drop role "GRB_TEST_ROLE"
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.061
+Elapsed: 00:00:00.060

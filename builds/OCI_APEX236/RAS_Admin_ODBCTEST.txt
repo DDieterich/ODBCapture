@@ -3,7 +3,7 @@ GRB_TEST_ROLE_01.XS_ROLE
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.040
+Elapsed: 00:00:00.032
 
 
 GRB_TEST_USER_01.XS_USER
@@ -11,7 +11,7 @@ GRB_TEST_USER_01.XS_USER
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.035
+Elapsed: 00:00:00.031
 
 
 GRB_TEST_USER_02.XS_USER
@@ -19,7 +19,7 @@ GRB_TEST_USER_02.XS_USER
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.015
+Elapsed: 00:00:00.016
 
 
 grant "GRB_TEST_ROLE" to "GRB_TEST_ROLE_01"
@@ -27,7 +27,7 @@ grant "GRB_TEST_ROLE" to "GRB_TEST_ROLE_01"
 
 Grant succeeded.
 
-Elapsed: 00:00:00.017
+Elapsed: 00:00:00.018
 
 
 principal grant "GRB_TEST_ROLE_01" to "GRB_TEST_USER_01"
@@ -35,7 +35,7 @@ principal grant "GRB_TEST_ROLE_01" to "GRB_TEST_USER_01"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.019
+Elapsed: 00:00:00.017
 
 
 principal grant "XSCONNECT" to "GRB_TEST_USER_01"
@@ -43,7 +43,7 @@ principal grant "XSCONNECT" to "GRB_TEST_USER_01"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.011
 
 
 principal grant "XSPUBLIC" to "GRB_TEST_USER_01"
@@ -51,7 +51,7 @@ principal grant "XSPUBLIC" to "GRB_TEST_USER_01"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.012
 
 
 principal grant "GRB_TEST_ROLE_01" to "GRB_TEST_USER_02"
@@ -59,7 +59,7 @@ principal grant "GRB_TEST_ROLE_01" to "GRB_TEST_USER_02"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.011
 
 
 principal grant "XSCONNECT" to "GRB_TEST_USER_02"
@@ -67,7 +67,7 @@ principal grant "XSCONNECT" to "GRB_TEST_USER_02"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.010
 
 
 principal grant "XSPUBLIC" to "GRB_TEST_USER_02"
@@ -75,7 +75,7 @@ principal grant "XSPUBLIC" to "GRB_TEST_USER_02"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.008
+Elapsed: 00:00:00.012
 
 
 GRB_TEST_ACL_01.XS_ACL
@@ -83,7 +83,7 @@ GRB_TEST_ACL_01.XS_ACL
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.026
+Elapsed: 00:00:00.029
 
 
 GRB_TEST_ACL_02.XS_ACL
@@ -91,7 +91,7 @@ GRB_TEST_ACL_02.XS_ACL
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.013
+Elapsed: 00:00:00.016
 
 
 GRB_TEST_POLICY_01.XS_DATA_SECURITY
@@ -99,9 +99,9 @@ GRB_TEST_POLICY_01.XS_DATA_SECURITY
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.029
+Elapsed: 00:00:00.026
 
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.029
+Elapsed: 00:00:00.030

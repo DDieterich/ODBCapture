@@ -3,11 +3,12 @@ Running Grab Scripts
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.012
+Elapsed: 00:00:00.007
 
 
 Running COMMON_UTIL.update_view_tabs
 
+GRAB_SCRIPTS.set_installed_types: 9 Build Types in ODBCAPTURE_INSTALLATION_LOG
 
 SUCCESS(      rows in      sec): truncate table schema_objects_tab
 SUCCESS(      rows in      sec): truncate table obj_install_comments_tab
@@ -23,25 +24,25 @@ SUCCESS(      rows in      sec): truncate table dba_tab_privs_tab
 SUCCESS(      rows in      sec): truncate table dba_objects_tab
 SUCCESS(      rows in      sec): truncate table build_type_timing
 SUCCESS(  173 rows in   .1 sec): update_build_type_timing
-SUCCESS(  238 rows in  7.7 sec): insert into dba_objects_tab           select *
+SUCCESS(  238 rows in  7.5 sec): insert into dba_objects_tab           select *
 from dba_objects_view
-SUCCESS(   95 rows in  1.8 sec): insert into dba_tab_privs_tab         select *
+SUCCESS(   95 rows in  1.7 sec): insert into dba_tab_privs_tab         select *
 from dba_tab_privs_view
 SUCCESS(  306 rows in   .1 sec): insert into dba_dependencies_tab      select *
 from dba_dependencies_view
-SUCCESS(  228 rows in   .8 sec): insert into obj_install_object_tab    select *
+SUCCESS(  228 rows in  1.4 sec): insert into obj_install_object_tab    select *
 from obj_install_object_view
 SUCCESS(      rows in   .1 sec): insert into obj_install_context_tab   select *
 from obj_install_context_view
-SUCCESS(   10 rows in  2.0 sec): insert into obj_install_fkey_tab      select *
+SUCCESS(   10 rows in   .8 sec): insert into obj_install_fkey_tab      select *
 from obj_install_fkey_view
-SUCCESS(   53 rows in   .2 sec): insert into obj_install_index_tab     select *
+SUCCESS(   53 rows in   .5 sec): insert into obj_install_index_tab     select *
 from obj_install_index_view
-SUCCESS(   27 rows in      sec): insert into obj_install_data_load_tab select *
+SUCCESS(   27 rows in   .1 sec): insert into obj_install_data_load_tab select *
 from obj_install_data_load_view
-SUCCESS(      rows in   .1 sec): insert into obj_install_synonym_tab   select *
+SUCCESS(      rows in  2.6 sec): insert into obj_install_synonym_tab   select *
 from obj_install_synonym_view
-SUCCESS(      rows in   .4 sec): insert into obj_install_trigger_tab   select *
+SUCCESS(      rows in   .6 sec): insert into obj_install_trigger_tab   select *
 from obj_install_trigger_view
 SUCCESS(   63 rows in   .3 sec): insert into obj_install_comments_tab  select *
 from obj_install_comments_view
@@ -66,22 +67,25 @@ select DISTINCT
 SUCCESS(      rows in      sec): insert into schema_objects_tab (BUILD_TYPE,    
 OBJECT_OWNER,     ELEMENT_NAME) 
 select DISTINCT    
-SUCCESS(      rows in   .1 sec): insert into schema_objects_tab (BUILD_TYPE,    
+SUCCESS(      rows in   .2 sec): insert into schema_objects_tab (BUILD_TYPE,    
 OBJECT_OWNER,     ELEMENT_NAME) 
 select DISTINCT    
-SUCCESS(    2 rows in   .2 sec): insert into schema_objects_tab (BUILD_TYPE,    
+SUCCESS(    2 rows in   .1 sec): insert into schema_objects_tab (BUILD_TYPE,    
 OBJECT_OWNER,     ELEMENT_NAME) 
 select DISTINCT    
-SUCCESS(      rows in   .1 sec): insert into schema_objects_tab (BUILD_TYPE,    
+SUCCESS(      rows in   .2 sec): insert into schema_objects_tab (BUILD_TYPE,    
 OBJECT_OWNER,     ELEMENT_NAME) 
 select DISTINCT    
-SUCCESS(      rows in   .1 sec): insert into schema_objects_tab (BUILD_TYPE,    
+SUCCESS(      rows in   .2 sec): insert into schema_objects_tab (BUILD_TYPE,    
 OBJECT_OWNER,     ELEMENT_NAME) 
 select DISTINCT    
 SUCCESS(      rows in      sec): insert into schema_objects_tab (BUILD_TYPE,    
 OBJECT_OWNER,     ELEMENT_NAME) 
 select DISTINCT    
-SUCCESS(    1 rows in   .3 sec): begin sys.dbms_stats.gather_table_stats(ownname
+SUCCESS(    1 rows in      sec): insert into schema_objects_tab (BUILD_TYPE,    
+OBJECT_OWNER,     ELEMENT_NAME) 
+select DISTINCT    
+SUCCESS(    1 rows in   .2 sec): begin sys.dbms_stats.gather_table_stats(ownname
 => 'ODBCAPTURE', tabname => 'DBA_OBJECTS_TAB',      
 SUCCESS(    1 rows in   .1 sec): begin sys.dbms_stats.gather_table_stats(ownname
 => 'ODBCAPTURE', tabname => 'DBA_TAB_PRIVS_TAB',    
@@ -110,7 +114,7 @@ SUCCESS(      rows in      sec): purge recyclebin
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:15.222
+Elapsed: 00:00:17.575
 
 
 Running GRAB_SCRIPTS.all_scripts(in_build_type "grbsrc")
@@ -238,7 +242,7 @@ Script Open: grbsrc//install_grbsrc.sql
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:50.399
+Elapsed: 00:00:47.201
 
 
 Running GRAB_SCRIPTS.all_scripts(in_build_type "grbras")
@@ -277,7 +281,7 @@ Script Open: grbras//install_grbras.sql
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:02.315
+Elapsed: 00:00:02.106
 
 
 Running GRAB_SCRIPTS.all_scripts(in_build_type "grbsdo")
@@ -314,7 +318,7 @@ Script Open: grbsdo//install_grbsdo.sql
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.907
+Elapsed: 00:00:01.053
 
 
 Running GRAB_SCRIPTS.all_scripts(in_build_type "grbdat")
@@ -348,7 +352,7 @@ Script Open: grbdat//install_grbdat.sql
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.357
+Elapsed: 00:00:00.615
 
 
 Running GRAB_SCRIPTS.all_scripts(in_build_type "grbtst")
@@ -374,6 +378,44 @@ Script Open: grbtst//odbcapture_installation_logs.ctl
 Script Open: grbtst//report_status.sql
 Script Open: grbtst//list_invalids.csv
 Script Open: grbtst//set_user_authentication.sql
+Script Open: grbtst//RAS_Admin_ODBCTEST.racl
+ORA-31603: object "GRB_TEST_USER_01" of type XS_USER not found in schema
+"ODBCAPTURE"
+ORA-06512: at "SYS.DBMS_METADATA", line 6775
+ORA-06512: at "SYS.DBMS_SYS_ERROR", line 150
+ORA-06512: at "SYS.DBMS_METADATA", line 6762
+ORA-06512: at "SYS.DBMS_METADATA", line 9739
+ORA-06512: at "ODBCAPTURE.GRAB_RAS", line 229
+----- PL/SQL Call Stack -----
+  object      line  object
+  handle    number  name
+0x1f589fe50       236  package body ODBCAPTURE.GRAB_RAS.GRB_RACL
+0x748f96a8         1  anonymous block
+0x2e18a5368      1178  package body ODBCAPTURE.GRAB_SCRIPTS.GRB_RAS_ACLS
+0x2e18a5368      3032  package body ODBCAPTURE.GRAB_SCRIPTS.GRB_INSTALL_MASTER
+0x2e18a5368      4049  package body ODBCAPTURE.GRAB_SCRIPTS.GEN_INSTALLS
+0x2e18a5368      4124  package body ODBCAPTURE.GRAB_SCRIPTS.ALL_SCRIPTS
+0xd2eb8940         1  anonymous block
+
+ORA-31603: object "GRB_TEST_USER_02" of type XS_USER not found in schema
+"ODBCAPTURE"
+ORA-06512: at "SYS.DBMS_METADATA", line 6775
+ORA-06512: at "SYS.DBMS_SYS_ERROR", line 150
+ORA-06512: at "SYS.DBMS_METADATA", line 6762
+ORA-06512: at "SYS.DBMS_METADATA", line 9739
+ORA-06512: at "ODBCAPTURE.GRAB_RAS", line 229
+----- PL/SQL Call Stack -----
+  object      line  object
+  handle    number  name
+0x1f589fe50       236  package body ODBCAPTURE.GRAB_RAS.GRB_RACL
+0x748f96a8         1  anonymous block
+0x2e18a5368      1178  package body ODBCAPTURE.GRAB_SCRIPTS.GRB_RAS_ACLS
+0x2e18a5368      3032  package body ODBCAPTURE.GRAB_SCRIPTS.GRB_INSTALL_MASTER
+0x2e18a5368      4049  package body ODBCAPTURE.GRAB_SCRIPTS.GEN_INSTALLS
+0x2e18a5368      4124  package body ODBCAPTURE.GRAB_SCRIPTS.ALL_SCRIPTS
+0xd2eb8940         1  anonymous block
+
+Script Open: grbtst//odbcapture_installation_logs.csv
 Script Open: grbtst//install_sys.sql
 Script Open: grbtst//install_system.sql
 g_schema_name = ODBCAPTURE
@@ -409,7 +451,7 @@ Script Open: grbtst//install_grbtst.sql
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:01.475
+Elapsed: 00:00:02.504
 
 
 Running GRAB_SCRIPTS.all_scripts(in_build_type "grbtjsn")
@@ -441,7 +483,7 @@ Script Open: grbtjsn//install_grbtjsn.sql
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.525
+Elapsed: 00:00:00.683
 
 
 Running GRAB_SCRIPTS.all_scripts(in_build_type "grbtsdo")
@@ -467,6 +509,9 @@ Script Open: grbtsdo/ODBCTEST/SDO_COLA_MARKETS.ctl
 Script Open: grbtsdo/ODBCTEST/SDO_COLA_MARKETS.csv
 Script Open: grbtsdo/ODBCTEST/SDO_COLA_MARKETS.cldr
 Script Open: grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tidx
+ODBCTEST, SDO_COLA_MARKETS, TABLE, ODBCTEST, COLA_SPATIAL_IDX, tidx
+Script Open: grbtsdo//COLA_SPATIAL_IDX.tidx
+Script Open: grbtsdo//odbcapture_installation_logs.csv
 Script Open: grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tbl
 g_schema_name = 
 Script Open: grbtsdo//install_grbtsdo.sql
@@ -474,7 +519,7 @@ Script Open: grbtsdo//install_grbtsdo.sql
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:01.231
+Elapsed: 00:00:00.757
 
 
 Running GRAB_SCRIPTS.all_scripts(in_build_type "grbtctx")
@@ -507,7 +552,7 @@ Script Open: grbtctx//install_grbtctx.sql
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.813
+Elapsed: 00:00:01.132
 
 
 Running GRAB_SCRIPTS.all_scripts(in_build_type "grbtdat")
@@ -542,12 +587,12 @@ Script Open: grbtdat//install_grbtdat.sql
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.045
+Elapsed: 00:00:00.211
 
 
-0 rows deleted.
+1 row deleted.
 
-Elapsed: 00:00:00.009
+Elapsed: 00:00:00.006
 
 
 Running FH2.write_scripts(in_zip_file_name "capture_files.zip", in_folder_name
@@ -631,9 +676,9 @@ grbsrc/set_user_authentication.sql total_bytes: 144, 1:144.
 grbsrc/install_sys.sql total_bytes: 325, 1:325.
 grbsrc/install_system.sql total_bytes: 342, 1:342.
 grbsrc/install_grbsrc.sql total_bytes: 8499, 1:2482, 2:2416, 3:2496, 4:1105.
-grbsrc/SYS/ODBCAPTURE.user total_bytes: 5203, 1:2446, 2:2476, 3:281.
+grbsrc/SYS/ODBCAPTURE.user total_bytes: 6157, 1:2446, 2:2476, 3:1235.
 grbsrc/SYSTEM/ODBCAPTURE_usr.grnt total_bytes: 577, 1:577.
-grbsrc/ODBCAPTURE/DBTOOLS_EXECUTION_HISTORY_SEQ.seq total_bytes: 384, 1:384.
+grbsrc/ODBCAPTURE/DBTOOLS_EXECUTION_HISTORY_SEQ.seq total_bytes: 385, 1:385.
 grbsrc/ODBCAPTURE/COMMON_UTIL.pkssql total_bytes: 3059, 1:2486, 2:573.
 grbsrc/ODBCAPTURE/FH2.pkssql total_bytes: 3162, 1:2479, 2:683.
 grbsrc/ODBCAPTURE/GRAB_SCRIPTS.pkssql total_bytes: 2392, 1:2392.
@@ -645,7 +690,7 @@ grbsrc/ODBCAPTURE/BUILD_TYPE_TIMING.tbl total_bytes: 987, 1:987.
 grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_TAB.tbl total_bytes: 1078, 1:1078.
 grbsrc/ODBCAPTURE/DBA_OBJECTS_TAB.tbl total_bytes: 710, 1:710.
 grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_TAB.tbl total_bytes: 1072, 1:1072.
-grbsrc/ODBCAPTURE/DBTOOLS_EXECUTION_HISTORY.tbl total_bytes: 866, 1:866.
+grbsrc/ODBCAPTURE/DBTOOLS_EXECUTION_HISTORY.tbl total_bytes: 867, 1:867.
 grbsrc/ODBCAPTURE/DLOAD_CONF.tbl total_bytes: 2573, 1:2409, 2:164.
 grbsrc/ODBCAPTURE/ELEMENT_CONF.tbl total_bytes: 2123, 1:2123.
 grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl total_bytes: 1308, 1:1308.
@@ -662,7 +707,7 @@ grbsrc/ODBCAPTURE/ROLE_CONF.tbl total_bytes: 1427, 1:1427.
 grbsrc/ODBCAPTURE/SCHEMA_CONF.tbl total_bytes: 2379, 1:2379.
 grbsrc/ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl total_bytes: 703, 1:703.
 grbsrc/ODBCAPTURE/TSPACE_CONF.tbl total_bytes: 1106, 1:1106.
-grbsrc/ODBCAPTURE/ZIP_FILES.tbl total_bytes: 590, 1:590.
+grbsrc/ODBCAPTURE/ZIP_FILES.tbl total_bytes: 591, 1:591.
 grbsrc/ODBCAPTURE/BUILD_CONF.ctl total_bytes: 259, 1:259.
 grbsrc/ODBCAPTURE/BUILD_CONF.csv total_bytes: 667, 1:667.
 grbsrc/ODBCAPTURE/BUILD_CONF.cldr total_bytes: 2280, 1:2280.
@@ -808,25 +853,26 @@ grbtsdo/dbi.sql total_bytes: 1503, 1:1503.
 grbtsdo/installation_finalize.sql total_bytes: 1006, 1:1006.
 grbtsdo/installation_prepare.sql total_bytes: 1698, 1:1698.
 grbtsdo/odbcapture_installation_logs.cldr total_bytes: 2712, 1:2391, 2:321.
-grbtsdo/odbcapture_installation_logs.csv total_bytes: 133, 1:133.
+grbtsdo/odbcapture_installation_logs.csv total_bytes: 171, 1:171.
 grbtsdo/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
 grbtsdo/report_status.sql total_bytes: 1829, 1:1829.
 grbtsdo/list_invalids.csv total_bytes: 45, 1:45.
 grbtsdo/set_user_authentication.sql total_bytes: 99, 1:99.
 grbtsdo/install_sys.sql total_bytes: 229, 1:229.
 grbtsdo/install_system.sql total_bytes: 238, 1:238.
+grbtsdo/COLA_SPATIAL_IDX.tidx total_bytes: 618, 1:618.
 grbtsdo/install_grbtsdo.sql total_bytes: 1305, 1:1305.
-grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tbl total_bytes: 654, 1:654.
-grbtsdo/ODBCTEST/SDO_COLA_MARKETS.ctl total_bytes: 217, 1:217.
-grbtsdo/ODBCTEST/SDO_COLA_MARKETS.csv total_bytes: 24, 1:24.
+grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tbl total_bytes: 655, 1:655.
+grbtsdo/ODBCTEST/SDO_COLA_MARKETS.ctl total_bytes: 905, 1:905.
+grbtsdo/ODBCTEST/SDO_COLA_MARKETS.csv total_bytes: 206, 1:206.
 grbtsdo/ODBCTEST/SDO_COLA_MARKETS.cldr total_bytes: 2320, 1:2320.
-grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tidx total_bytes: 308, 1:308.
+grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tidx total_bytes: 314, 1:314.
 grbtst/install.sql total_bytes: 2270, 1:2270.
 grbtst/dbi.sql total_bytes: 1503, 1:1503.
 grbtst/installation_finalize.sql total_bytes: 1084, 1:1084.
 grbtst/installation_prepare.sql total_bytes: 1677, 1:1677.
 grbtst/odbcapture_installation_logs.cldr total_bytes: 2712, 1:2391, 2:321.
-grbtst/odbcapture_installation_logs.csv total_bytes: 351, 1:351.
+grbtst/odbcapture_installation_logs.csv total_bytes: 390, 1:390.
 grbtst/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
 grbtst/report_status.sql total_bytes: 1853, 1:1853.
 grbtst/list_invalids.csv total_bytes: 45, 1:45.
@@ -834,8 +880,9 @@ grbtst/set_user_authentication.sql total_bytes: 142, 1:142.
 grbtst/install_sys.sql total_bytes: 589, 1:589.
 grbtst/install_system.sql total_bytes: 340, 1:340.
 grbtst/install_grbtst.sql total_bytes: 1956, 1:1956.
+grbtst/RAS_Admin_ODBCTEST.racl total_bytes: 4468, 1:2468, 2:2000.
 grbtst/SYS/GRB_TEST_ROLE.role total_bytes: 154, 1:154.
-grbtst/SYS/ODBCTEST.user total_bytes: 271, 1:271.
+grbtst/SYS/ODBCTEST.user total_bytes: 2074, 1:2074.
 grbtst/SYS/host1.hacl total_bytes: 993, 1:993.
 grbtst/SYS/host2.hacl total_bytes: 1615, 1:1615.
 grbtst/SYS/odbctest_host.hacl total_bytes: 1055, 1:1055.
@@ -851,7 +898,7 @@ grbtst/ODBCAPTURE/BUILD_PATH.ctl total_bytes: 219, 1:219.
 grbtst/ODBCAPTURE/BUILD_PATH.csv total_bytes: 110, 1:110.
 grbtst/ODBCAPTURE/BUILD_PATH.cldr total_bytes: 2280, 1:2280.
 grbtst/ODBCAPTURE/GRBTST__NAME.ctl total_bytes: 215, 1:215.
-grbtst/ODBCAPTURE/GRBTST__NAME.csv total_bytes: 10, 1:10.
+grbtst/ODBCAPTURE/GRBTST__NAME.csv total_bytes: 24, 1:24.
 grbtst/ODBCAPTURE/GRBTST__NAME.cldr total_bytes: 2300, 1:2300.
 grbtst/ODBCAPTURE/GRBTST_IMAGE.ctl total_bytes: 281, 1:281.
 grbtst/ODBCAPTURE/GRBTST_IMAGE.csv total_bytes: 13, 1:13.
@@ -869,9 +916,9 @@ grbtst/ODBCAPTURE/TSPACE_CONF.cldr total_bytes: 2290, 1:2290.
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.740
+Elapsed: 00:00:00.724
 
 
 Commit complete.
 
-Elapsed: 00:00:00.006
+Elapsed: 00:00:00.005
