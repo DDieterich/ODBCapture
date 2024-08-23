@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="F49B4DA3-814E-4C0A-D0EC-4D3D4A52C8C2" containerWithKeyObject="D1243705-997F-0640-9D4E-E2B17C3A1FEC" localFKIndex="486D2E00-6BDF-7A81-6C7E-97EEA7A02943" name="TSPACE_CONF_FK1">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>ODBCAPTURE</sourceObjSchema>
+<sourceObjName>TSPACE_CONF_FK1</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:19 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<referredTableLongName>ODBCAPTURE.SCHEMA_CONF</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>DE594064-FEFA-FA1C-49B0-765CE2A90436</referredTableID>
+<keyObject>D78E9F66-9630-F714-D61B-DE4EF9F91586</keyObject>
+<referredKeyID>D78E9F66-9630-F714-D61B-DE4EF9F91586</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>USERNAME</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

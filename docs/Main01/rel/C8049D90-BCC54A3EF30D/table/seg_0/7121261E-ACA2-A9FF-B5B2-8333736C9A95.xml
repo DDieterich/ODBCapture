@@ -1,0 +1,125 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7121261E-ACA2-A9FF-B5B2-8333736C9A95" schemaObject="6F9A8F01-BCA4-83B6-CC5E-8F7DE3814D46" name="ROLE_CONF">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>ODBCAPTURE</sourceObjSchema>
+<sourceObjName>ROLE_CONF</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[List of Roles to install in each Build Type.]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ROLENAME" id="0B34BEC9-C928-86E6-B0AC-BD90B808AE64">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>ROLE_CONF</sourceObjSchema>
+<sourceObjName>ROLENAME</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[Name of the database role (Primary Key Column 1)]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128 BYTE</dataTypeSize>
+<ownDataTypeParameters>128 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BUILD_TYPE" id="A1AE1B64-6445-8201-12A3-BCA1B2760202">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>ROLE_CONF</sourceObjSchema>
+<sourceObjName>BUILD_TYPE</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[Build Type for this database role (Primary Key Column 2). Value must exist in BUILD_CONF table.]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 BYTE</dataTypeSize>
+<ownDataTypeParameters>10 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="164B3FF7-15C6-701E-10E4-1F85ABF8404C" referredColumn="6A1D9F49-0DDC-0901-ABAD-C0E053F3BB37"/>
+</associations>
+</Column>
+<Column name="ORACLE_PROVIDED" id="DE294104-7B07-4EAA-9CD7-35D94F9D4DCC">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>ROLE_CONF</sourceObjSchema>
+<sourceObjName>ORACLE_PROVIDED</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[Identifies a Role already provided with the database]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<constraintName>ROLE_CONF_CK1</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="&quot;ORACLE_PROVIDED&quot; in (&apos;Y&apos;,&apos;N&apos;)"/>
+<implementationDef dbType="Oracle Database 21c" definition="&quot;ORACLE_PROVIDED&quot; in (&apos;Y&apos;,&apos;N&apos;)"/>
+</checkConstraint>
+<ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOTES" id="07C285E6-037A-2CB6-22BF-2F4F421C698C">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>ROLE_CONF</sourceObjSchema>
+<sourceObjName>NOTES</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[Free text field (Optional)]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1024 BYTE</dataTypeSize>
+<ownDataTypeParameters>1024 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5F00B068-0354-052D-7A44-8AC47E7BA768" name="ROLE_CONF_PK">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>ODBCAPTURE</sourceObjSchema>
+<sourceObjName>ROLE_CONF_PK</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:17 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0B34BEC9-C928-86E6-B0AC-BD90B808AE64"/>
+<colUsage columnID="A1AE1B64-6445-8201-12A3-BCA1B2760202"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E3E65806-AD55-2126-750A-3CCB106A2C72" schemaObject="6F9A8F01-BCA4-83B6-CC5E-8F7DE3814D46" name="ROLE_CONF_PK">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>ODBCAPTURE</sourceObjSchema>
+<sourceObjName>ROLE_CONF_PK</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:14 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0B34BEC9-C928-86E6-B0AC-BD90B808AE64"/>
+<colUsage columnID="A1AE1B64-6445-8201-12A3-BCA1B2760202"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="35966A8A-3272-DC03-7C61-BE73CE00EE09" name="ROLE_CONF_FK1">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:19 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A1AE1B64-6445-8201-12A3-BCA1B2760202"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

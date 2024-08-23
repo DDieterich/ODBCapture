@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="164B3FF7-15C6-701E-10E4-1F85ABF8404C" containerWithKeyObject="7121261E-ACA2-A9FF-B5B2-8333736C9A95" localFKIndex="35966A8A-3272-DC03-7C61-BE73CE00EE09" name="ROLE_CONF_FK1">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>ODBCAPTURE</sourceObjSchema>
+<sourceObjName>ROLE_CONF_FK1</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:19 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<referredTableLongName>ODBCAPTURE.BUILD_CONF</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>CC6D679A-820D-D697-687F-46F19C214E2C</referredTableID>
+<keyObject>A65BAFB3-8DF0-8960-64EF-3C7C59699C5E</keyObject>
+<referredKeyID>A65BAFB3-8DF0-8960-64EF-3C7C59699C5E</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>BUILD_TYPE</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

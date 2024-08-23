@@ -1,0 +1,105 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D1243705-997F-0640-9D4E-E2B17C3A1FEC" schemaObject="6F9A8F01-BCA4-83B6-CC5E-8F7DE3814D46" name="TSPACE_CONF">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>ODBCAPTURE</sourceObjSchema>
+<sourceObjName>TSPACE_CONF</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[Additional Tablespace Quotas for Schema]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="USERNAME" id="0B170B5A-2615-2558-D580-CBF38CB1899A">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>TSPACE_CONF</sourceObjSchema>
+<sourceObjName>USERNAME</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[Name of the database schema (Primary Key)]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128 BYTE</dataTypeSize>
+<ownDataTypeParameters>128 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F49B4DA3-814E-4C0A-D0EC-4D3D4A52C8C2" referredColumn="E5367A7E-990B-084D-2D47-DFD1C72C7809"/>
+</associations>
+</Column>
+<Column name="TSPACE_NAME" id="964D91B4-BFC8-8D9E-D027-E46383A5FA5A">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>TSPACE_CONF</sourceObjSchema>
+<sourceObjName>TSPACE_NAME</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[Name of the tablespace (Primary Key)]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 BYTE</dataTypeSize>
+<ownDataTypeParameters>30 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TS_QUOTA" id="7353306B-6B3D-28E4-6A1F-DFB72CF9B069">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>TSPACE_CONF</sourceObjSchema>
+<sourceObjName>TS_QUOTA</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[Tablespace quota for this schema and tablespace. NULL is UNLIMITED.]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 BYTE</dataTypeSize>
+<ownDataTypeParameters>10 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="69EE7328-8F91-A86E-4D11-DA6F59725733" name="TSPACE_CONF_PK">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>ODBCAPTURE</sourceObjSchema>
+<sourceObjName>TSPACE_CONF_PK</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:17 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0B170B5A-2615-2558-D580-CBF38CB1899A"/>
+<colUsage columnID="964D91B4-BFC8-8D9E-D027-E46383A5FA5A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="61CC729F-3B18-EA58-2692-891956DB48BC" schemaObject="6F9A8F01-BCA4-83B6-CC5E-8F7DE3814D46" name="TSPACE_CONF_PK">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>ODBCAPTURE</sourceObjSchema>
+<sourceObjName>TSPACE_CONF_PK</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:14 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0B170B5A-2615-2558-D580-CBF38CB1899A"/>
+<colUsage columnID="964D91B4-BFC8-8D9E-D027-E46383A5FA5A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="486D2E00-6BDF-7A81-6C7E-97EEA7A02943" name="TSPACE_CONF_FK1">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:19 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0B170B5A-2615-2558-D580-CBF38CB1899A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
