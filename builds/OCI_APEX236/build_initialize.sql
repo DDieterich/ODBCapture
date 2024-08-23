@@ -20,6 +20,16 @@ select username from dba_users where username in ('ODBCAPTURE', 'ODBCTEST');
 
 ----------------------------------------
 prompt
+prompt delete from "ADMIN"."ODBCAPTURE_INSTALLATION_LOGS"
+begin
+   execute immediate 'delete from "ADMIN"."ODBCAPTURE_INSTALLATION_LOGS" where build_type like ''grb%''';
+exception when others then
+   dbms_output.put_line(SQLERRM);
+end;
+/
+
+----------------------------------------
+prompt
 prompt Drop Index COLA_SPATIAL_IDX
 begin
    execute immediate 'drop index "ODBCTEST"."COLA_SPATIAL_IDX"';

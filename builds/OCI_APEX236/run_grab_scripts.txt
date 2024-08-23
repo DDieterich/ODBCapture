@@ -1,3 +1,6 @@
+Running Grab Scripts
+
+
 PL/SQL procedure successfully completed.
 
 Elapsed: 00:00:00.012
@@ -20,7 +23,7 @@ SUCCESS(      rows in      sec): truncate table dba_tab_privs_tab
 SUCCESS(      rows in      sec): truncate table dba_objects_tab
 SUCCESS(      rows in      sec): truncate table build_type_timing
 SUCCESS(  173 rows in   .1 sec): update_build_type_timing
-SUCCESS(  238 rows in  7.6 sec): insert into dba_objects_tab           select *
+SUCCESS(  238 rows in  7.7 sec): insert into dba_objects_tab           select *
 from dba_objects_view
 SUCCESS(   95 rows in  1.8 sec): insert into dba_tab_privs_tab         select *
 from dba_tab_privs_view
@@ -30,7 +33,7 @@ SUCCESS(  228 rows in   .8 sec): insert into obj_install_object_tab    select *
 from obj_install_object_view
 SUCCESS(      rows in   .1 sec): insert into obj_install_context_tab   select *
 from obj_install_context_view
-SUCCESS(   10 rows in  2.1 sec): insert into obj_install_fkey_tab      select *
+SUCCESS(   10 rows in  2.0 sec): insert into obj_install_fkey_tab      select *
 from obj_install_fkey_view
 SUCCESS(   53 rows in   .2 sec): insert into obj_install_index_tab     select *
 from obj_install_index_view
@@ -40,7 +43,7 @@ SUCCESS(      rows in   .1 sec): insert into obj_install_synonym_tab   select *
 from obj_install_synonym_view
 SUCCESS(      rows in   .4 sec): insert into obj_install_trigger_tab   select *
 from obj_install_trigger_view
-SUCCESS(   63 rows in   .5 sec): insert into obj_install_comments_tab  select *
+SUCCESS(   63 rows in   .3 sec): insert into obj_install_comments_tab  select *
 from obj_install_comments_view
 SUCCESS(      rows in      sec): insert into schema_objects_tab (BUILD_TYPE,    
 OBJECT_OWNER,     ELEMENT_NAME) 
@@ -66,7 +69,7 @@ select DISTINCT
 SUCCESS(      rows in   .1 sec): insert into schema_objects_tab (BUILD_TYPE,    
 OBJECT_OWNER,     ELEMENT_NAME) 
 select DISTINCT    
-SUCCESS(    2 rows in   .1 sec): insert into schema_objects_tab (BUILD_TYPE,    
+SUCCESS(    2 rows in   .2 sec): insert into schema_objects_tab (BUILD_TYPE,    
 OBJECT_OWNER,     ELEMENT_NAME) 
 select DISTINCT    
 SUCCESS(      rows in   .1 sec): insert into schema_objects_tab (BUILD_TYPE,    
@@ -107,7 +110,7 @@ SUCCESS(      rows in      sec): purge recyclebin
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:15.377
+Elapsed: 00:00:15.222
 
 
 Running GRAB_SCRIPTS.all_scripts(in_build_type "grbsrc")
@@ -235,7 +238,7 @@ Script Open: grbsrc//install_grbsrc.sql
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:51.847
+Elapsed: 00:00:50.399
 
 
 Running GRAB_SCRIPTS.all_scripts(in_build_type "grbras")
@@ -274,7 +277,7 @@ Script Open: grbras//install_grbras.sql
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:02.137
+Elapsed: 00:00:02.315
 
 
 Running GRAB_SCRIPTS.all_scripts(in_build_type "grbsdo")
@@ -311,7 +314,7 @@ Script Open: grbsdo//install_grbsdo.sql
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.917
+Elapsed: 00:00:00.907
 
 
 Running GRAB_SCRIPTS.all_scripts(in_build_type "grbdat")
@@ -345,7 +348,7 @@ Script Open: grbdat//install_grbdat.sql
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.501
+Elapsed: 00:00:00.357
 
 
 Running GRAB_SCRIPTS.all_scripts(in_build_type "grbtst")
@@ -406,7 +409,7 @@ Script Open: grbtst//install_grbtst.sql
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:01.937
+Elapsed: 00:00:01.475
 
 
 Running GRAB_SCRIPTS.all_scripts(in_build_type "grbtjsn")
@@ -438,7 +441,7 @@ Script Open: grbtjsn//install_grbtjsn.sql
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.978
+Elapsed: 00:00:00.525
 
 
 Running GRAB_SCRIPTS.all_scripts(in_build_type "grbtsdo")
@@ -471,7 +474,7 @@ Script Open: grbtsdo//install_grbtsdo.sql
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:01.520
+Elapsed: 00:00:01.231
 
 
 Running GRAB_SCRIPTS.all_scripts(in_build_type "grbtctx")
@@ -504,7 +507,7 @@ Script Open: grbtctx//install_grbtctx.sql
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.972
+Elapsed: 00:00:00.813
 
 
 Running GRAB_SCRIPTS.all_scripts(in_build_type "grbtdat")
@@ -539,12 +542,12 @@ Script Open: grbtdat//install_grbtdat.sql
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.205
+Elapsed: 00:00:00.045
 
 
 0 rows deleted.
 
-Elapsed: 00:00:00.010
+Elapsed: 00:00:00.009
 
 
 Running FH2.write_scripts(in_zip_file_name "capture_files.zip", in_folder_name
@@ -740,12 +743,12 @@ grbsrc/ODBCAPTURE/ROOT_SCRIPTS.pkbsql total_bytes: 16793, 1:2475, 2:2469,
 3:2475, 4:2393, 5:2417, 6:2476, 7:2088.
 grbsrc/ODBCAPTURE/ZIP_UTIL_PKG.pkbsql total_bytes: 18317, 1:2457, 2:2477,
 3:2422, 4:2436, 5:2467, 6:2487, 7:2475, 8:1096.
-grbsrc/ODBCAPTURE/BUILD_PATH.tfk total_bytes: 604, 1:604.
-grbsrc/ODBCAPTURE/DLOAD_CONF.tfk total_bytes: 598, 1:598.
-grbsrc/ODBCAPTURE/OBJECT_CONF.tfk total_bytes: 867, 1:867.
-grbsrc/ODBCAPTURE/ROLE_CONF.tfk total_bytes: 344, 1:344.
-grbsrc/ODBCAPTURE/SCHEMA_CONF.tfk total_bytes: 352, 1:352.
-grbsrc/ODBCAPTURE/TSPACE_CONF.tfk total_bytes: 349, 1:349.
+grbsrc/ODBCAPTURE/BUILD_PATH.tfk total_bytes: 602, 1:602.
+grbsrc/ODBCAPTURE/DLOAD_CONF.tfk total_bytes: 596, 1:596.
+grbsrc/ODBCAPTURE/OBJECT_CONF.tfk total_bytes: 864, 1:864.
+grbsrc/ODBCAPTURE/ROLE_CONF.tfk total_bytes: 343, 1:343.
+grbsrc/ODBCAPTURE/SCHEMA_CONF.tfk total_bytes: 351, 1:351.
+grbsrc/ODBCAPTURE/TSPACE_CONF.tfk total_bytes: 348, 1:348.
 grbtctx/install.sql total_bytes: 2273, 1:2273.
 grbtctx/dbi.sql total_bytes: 1503, 1:1503.
 grbtctx/installation_finalize.sql total_bytes: 1006, 1:1006.
@@ -866,9 +869,9 @@ grbtst/ODBCAPTURE/TSPACE_CONF.cldr total_bytes: 2290, 1:2290.
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.735
+Elapsed: 00:00:00.740
 
 
 Commit complete.
 
-Elapsed: 00:00:00.007
+Elapsed: 00:00:00.006

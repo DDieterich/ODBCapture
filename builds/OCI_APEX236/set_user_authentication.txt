@@ -1,8 +1,6 @@
-User "ODBCAPTURE" altered.
-
-Elapsed: 00:00:00.220
+Running Set User Authentication
 
 
-User "ODBCTEST" altered.
+PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.175
+Elapsed: 00:00:00.386

@@ -7,20 +7,25 @@ This folder includes ODBCapture installation scripts for Oracle's APEX Service/I
 
 ## File/Folder List
 
-File Name               | Description
-------------------------|-------------
-*.PNG                   | Screen shots for documentation
-OCI_APEX_conversion.sh  | Bash Script to Convert one Source Code Folder
-OCI_APEX_install.sql    | Converted Source Code Script
+File Name                   | Description
+----------------------------|-------------
+*.PNG                       | Screen shots for documentation
+compare_zip.sh              | Unzip/Compare output from "run_grab_scripts.sql"
+OCI_APEX_conversion.sh      | Bash Script to Convert one Source Code Folder
+OCI_APEX_install.sql        | Converted Source Code Script
+run_grab_scripts.sql        | Captured DB Source Code for Testing/Confirmation
+set_user_authentication.sql | Creates passwords for New Schema
 
 
 ## Installation
+
+This example uses the "../builds/OCI_APEX235/" folder.
 
 ### Run OCI_APEX_conversion.sh
 1. Run BASH
 2. "cd" to this folder
 3. ./OCI_APEX_conversion.sh
-4. Review/Modify `OCI_APEX_install.sql`:
+4. Fix errant INSERT statements in `OCI_APEX_install.sql` at these locations:
     * Translating ../grbtst/ODBCAPTURE/GRBTST__NAME.csv
     * Translating ../grbtst/ODBCAPTURE/GRBTST_IMAGE.csv
     * Translating ../grbtjsn/ODBCAPTURE/GRBTST_JSON.csv
@@ -55,14 +60,10 @@ OCI_APEX_install.sql    | Converted Source Code Script
 4. Save to file `../builds/OCI_APEX235/OCI_APEX_install.txt`
 5. Review `../builds/OCI_APEX235/OCI_APEX_install.txt`
     * REGEXP Search: `(ORA-|SQL-|SP2-|PLS-|PL2-|TNS-|(object|mmap) failed|WARNING: Prerequisite BUILD_TYPE)`
-6. Manually Run Final Processing as "ADMIN"
-    * alter user "ODBCAPTURE" identified by "PASSWORD1";
-    * alter user "ODBCTEST" identified by "PASSWORD2";
-    * ../grb_linked_install_scripts/fix_invalid_public_synonyms.sql
-    * ../grb_linked_install_scripts/compile_all.sql
-    * ../grb_linked_install_scripts/alter_foreign_keys.sql ENABLE
-    * ../grb_linked_install_scripts/alter_triggers.sql ENABLE
-    * ../grb_linked_install_scripts/update_id_sequences.sql
+
+### Set User Authentication
+1. Open and Run `set_user_authentication.sql` as "ADMIN"
+2. Save Script Output to file `../builds/OCI_APEX235/set_user_authentication.txt`
 
 ### REST Enable "ODBCAPTURE" and "ODBCTEST"
 1. Navigate to Database Users Page
@@ -79,44 +80,40 @@ OCI_APEX_install.sql    | Converted Source Code Script
     
 
 ### Manually Run Final Processing
-1. Open SQL Worksheet as "ODBCTEST"
-2. Manually Run Final Processing
+1. On the "Database Users Page" as "ADMIN"
+2. Find the "ODBCTEST" card
+3. Click on "Open New Tab" at the Bottom Right
+4. Login as "ODBCTEST"
+5. Open SQL Worksheet
+6. Manually Run Final Processing
     * ../grbtst/RAS_Admin_ODBCTEST.racl
     * ../grbtsdo/COLA_SPATIAL_IDX.tidx
 
 ### Example DB Capture After Installation
-1. Run these in an SQL Worksheet as "ODBCAPTURE"
-    ```
-    execute FH2.clear_buffers;
-    execute COMMON_UTIL.update_view_tabs;
-    execute GRAB_SCRIPTS.all_scripts('grbsrc');
-    execute GRAB_SCRIPTS.all_scripts('grbras');
-    execute GRAB_SCRIPTS.all_scripts('grbsdo');
-    execute GRAB_SCRIPTS.all_scripts('grbdat');
-    execute GRAB_SCRIPTS.all_scripts('grbtst');
-    execute GRAB_SCRIPTS.all_scripts('grbtjsn');
-    execute GRAB_SCRIPTS.all_scripts('grbtsdo');
-    execute GRAB_SCRIPTS.all_scripts('grbtctx');
-    execute GRAB_SCRIPTS.all_scripts('grbtdat');
-    delete from zip_files where file_name = 'capture_files.zip';
-    execute FH2.write_scripts('capture_files.zip');
-    commit;
-    ```
-2. Click on `Download Script Output`
-    * Save to file `Grab_Scripts_Output.txt`
-3. Run the Query
-    * `Select "FILE_BLOB" from "ZIP_FILES" where "FILE_NAME" = 'capture_files.zip';`
-4. Select the BLOB from the Query Results
+1. On the "Database Users Page" as "ADMIN"
+2. Find the "ODBCAPTURE" card
+3. Click on "Open New Tab" at the Bottom Right
+4. Login as "ODBCAPTURE"
+5. Open SQL Worksheet
+6. Open and Run `../../apex/run_grab_scripts.sql`
+7. Click on `Download Script Output`
+    * Save to file `../builds/OCI_APEX235/run_grab_scripts.txt`
+8. Run the Query
+    * `select "FILE_BLOB" from "ZIP_FILES" where "FILE_NAME" = 'capture_files.zip';`
+9.  Select the BLOB from the Query Results
     
     ![Select BLOB from ZIP_FILES](Select_Zip_File.PNG)
 
-5. Download data from "FILE_BLOB" to "capture_files.zip"
+10. Download data from "FILE_BLOB" to `../builds/OCI_APEX235/capture_files.zip`
     
     ![Download Zip File](Download_Zip_File.PNG)
 
-6. Run `./compare_zip.sh capture_files` using BASH
+11. Go to BASH
+12. `cd ../builds/OCI_APEX236/`
+13. Run `../../apex/compare_zip.sh capture_files`
+14. Review `diff_report.txt`
 
-### Notes
+## Notes
 
 ```
 The only configuration commands that persist during a session in Database Actions are:

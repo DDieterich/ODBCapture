@@ -3,8 +3,24 @@
 SQL_SCRIPT="OCI_APEX_install.sql"
 
 echo "
+
 prompt Converted/Consolidated SQL Script for APEX Instance on OCI
+
 ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MON-YYYY HH24:MI:SS';
+
+create table odbcapture_installation_logs
+  (load_dtm date
+  ,build_type varchar2(10)
+  ,file_name varchar2(512)
+  ,contents clob);
+comment on column odbcapture_installation_logs.load_dtm is 'Date/Time the installation log file was loaded.';
+comment on column odbcapture_installation_logs.build_type is 'Type of Build (from BUILD_CONF).';
+comment on column odbcapture_installation_logs.file_name is 'Name of installation log file.';
+comment on column odbcapture_installation_logs.contents is 'Contents/Text of the installation log file.';
+comment on table odbcapture_installation_logs is 'ODBCAPTURE installation log files.';
+grant select on odbcapture_installation_logs to public;
+create public synonym odbcapture_installation_logs for odbcapture_installation_logs;
+
 " > "${SQL_SCRIPT}"
 
 for INSTALL_SELECT in 'grbsrc' 'grbras' 'grbsdo' 'grbdat' 'grbtst' 'grbtjsn' 'grbtsdo' 'grbtctx' 'grbtdat'
@@ -79,6 +95,10 @@ do
                      -e '^define TOP_PDB_SYSTEM[ =]'
       fi
    done | sed -e '1,$s/^[@]/--@/1' >> "${SQL_SCRIPT}"
+   echo "
+insert into odbcapture_installation_logs(load_dtm, build_type, file_name)
+  values(sysdate, '${INSTALL_SELECT}', '${SQL_SCRIPT}');
+" >> "${SQL_SCRIPT}"
 done
 
 #
