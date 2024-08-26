@@ -10,7 +10,7 @@ information.
 
 ## Why?  What's the point?
 
-Existing tools like TOAD, PL/SQL Developer, and SQL*Developer can create "source code" scripts from an Oracle database.  They can also create data load scripts from an Oracle database.  What they cannot do is create a cohesive set of installation scripts that execute from a single "install.sql" script.
+Existing tools like TOAD, PL/SQL Developer, and SQL\*Developer can create "source code" scripts from an Oracle database.  They can also create data load scripts from an Oracle database.  What they cannot do is create a cohesive set of installation scripts that execute from a single "install.sql" script.
 
 Existing database source code is handled by Liquibase and Flyway which are "diff" engines.  These "diff" engines simply track changes to a database.  Rarely is the source code from these "diff" engines ever used to create a database from nothing.  Typically, the database source code from these "diff" engines require some existing database to get started.
 
@@ -25,9 +25,9 @@ ODBCapture is not a "diff" engine.  ODBCapture is unique in its ability to creat
 
 ODBCapture generates database source code in a set of scripts, all of which are called from a common "install.sql"
 
-* Separate folder for SYS privileged statements
-* Separate folder for common DBA privileged statements
-* Separate folders for each schema in an integrated application.
+* Separate folder for **SYS privileged** statements
+* Separate folder for **common DBA privileged** statements
+* Separate folders for **each schema** in an integrated application.
 
 ### Confguration Data Source Code
 
@@ -41,31 +41,31 @@ ODBCapture generates configuration data source code.
 
 ODBCapture generates "installation layers", allowing for differences between databases.
 
-* Development/Test tables/packages installed in Development/Test databases.
-* Environment configuration data for Development/Test/Production databases.
-* Development/Test data installed in Development/Test databases.
-* Mock schema/API installed in Development/Test databases.
+* **Development/Test tables/packages** installed in Development/Test databases.
+* **Environment configuration data** for Development/Test/Production databases.
+* **Development/Test data** installed in Development/Test databases.
+* **Mock schema/API** installed in Development/Test databases.
 
 ### Open Source
 
 Oracle databases include a massive amount of functionality.  Oracle is constantly changing that functionality for various reasons.  ODBCapture is open source and can be quickly modified to meet new requirements for changes in database functionality.
 
-* New functionality add to new versions
-* Deprecated functionality removed from new versions
-* Restricted functionality from various editions (Express, Standard)
-* Functionality differences between Cloud and OnPremise
+* **New functionality** added to new versions
+* **Deprecated functionality** removed from new versions
+* **Restricted functionality** removed from various editions (Express, Standard)
+* **Functionality differences** between Cloud and OnPremise
 
 ### Portability
 
 ODBCapture provides source code portability between Oracle databases running on a variety of platforms.
 
-* Microsoft, Linux, and Apple use different line endings in test files. Git in particular does a good job of translating line endings when source code is moved between platforms.  All source code created by ODBCapture is text based, so these translations function as needed.
-* SPARC and x86/ARM use different Endiannesse - While text files are automatically translated during transfer between systems, binary data requires complex bit swapping.  All source code created by ODBCapture is text based, so these translations function as needed.  Specifically, BLOB and RAW data are Base64 encoded before storage as source code and decoded when loaded back into the database.
-* ASCII, UTF (Several Versions), and ASCII are all in use today.  Operating Systems (and Oracle Databases) automatically translate between these different encodings.  All source code created by ODBCapture is text based, so these translations function as needed.
+* **Microsoft, Linux, and Apple** use different line endings in test files. Git in particular does a good job of translating line endings when source code is moved between platforms.  All source code created by ODBCapture is text based, so these translations function as needed.
+* **SPARC and x86/ARM** use different Endiannesse - While text files are automatically translated during transfer between systems, binary data requires complex bit swapping.  All source code created by ODBCapture is text based, so these translations function as needed.  Specifically, BLOB and RAW data are Base64 encoded before storage as source code and decoded when loaded back into the database.
+* **ASCII, UTF (Several Versions), and EBCDIC** are all in use today.  Operating Systems (and Oracle Databases) automatically translate between these different encodings.  All source code created by ODBCapture is text based, so these translations function as needed.
 
 ### All Oracle, All The Time
 
-ODBCapture is pure Oracle SQL and PL/SQL.  No need to train/hire expertise in non-Oracle development to use/modify ODBCapture.
+**ODBCapture is pure Oracle** (SQL, PL/SQL, SQL\*Plus, SQL\*Loader)  No need to train/hire expertise in non-Oracle development to use/modify ODBCapture.
 
 
 ## Application Source Code Audit
