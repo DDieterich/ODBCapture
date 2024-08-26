@@ -5,72 +5,67 @@ This website is intended for user information and usage documentation.  Developm
 
 Click [here for a white paper overview](Generating-Self-Build.md) on **Generating Self-Build Scripts**.
 
-## ODBCapture Installation
+Click [here for installation and configuration](Install-and-Config.md)
+information.
 
-[Installation instructions](https://github.com/DDieterich/ODBCapture?tab=readme-ov-file#main-odbcapture-installation) are on the main page on GitHub.  This is the same location as the "View Oracle DB Capture on GitHub" link above.
+## Why?  What's the point?
 
+Existing tools like TOAD, PL/SQL Developer, and SQL*Developer can create "source code" scripts from an Oracle database.  They can also create data load scripts from an Oracle database.  What they cannot do is create a cohesive set of installation scripts that execute from a single "install.sql" script.
 
-## Application Configuration
+Existing database source code is handled by Liquibase and Flyway which are "diff" engines.  These "diff" engines simply track changes to a database.  Rarely is the source code from these "diff" engines ever used to create a database from nothing.  Typically, the database source code from these "diff" engines require some existing database to get started.
 
-Configuring ODBCapture can be as simple as adding 2 configuration records.  More complex configurations involve installation layering, object selection/filtering, role identification, and configuration data capture.
+### What's different?
 
-Care must be taken to preserve any ODBCapture configurations for an application.  Best practice is to create a configuration data installation layer that keeps ODBCapture configuration data separate from configuration data for a target application.
+ODBCapture is not a "diff" engine.  ODBCapture is unique in its ability to create Oracle database installation scripts that can create different "flavors" of Oracle databases from a common set of source code.  This installation occurs after an initialization to an empty database or PDB.  (See the white paper above for more details.)
+* Create Database ...
+* Created Pluggable Database ...
+* Drop Schema ...
 
+### Single Install Script
 
-### Simple Configuration
+ODBCapture generates database source code in a set of scripts, all of which are called from a common "install.sql"
 
-**Add record to BUILD_CONF**
+* Separate folder for SYS privileged statements
+* Separate folder for common DBA privileged statements
+* Separate folders for each schema in an integrated application.
 
-There are 2 columns that require data in the BUILD_CONF table:
-* **BUILD_SEQ** is the Unique Sequence of the build type
-* **BUILD_TYPE** is the Name of the build type
+### Confguration Data Source Code
 
+ODBCapture generates configuration data source code.
 
-**Add record to SCHEMA_CONF**
+* Data driven applications require configuration data to run.
+* Because it's required, configuration data is source code for a database.
+* All configuration data is saved as CSV files for easy editing.
 
-There are 3 columns that require data in the SCHEMA_CONF table:
-* **USERNAME** is the Name of the database schema
-* **BUILD_TYPE** is the Build Type from the BUILD_CONF record above.
-* **ORACLE_PROVIDED** should always be set to 'N'
+### Layered Installation
 
+ODBCapture generates "installation layers", allowing for differences between databases.
 
-### Advanced Configuration
+* Development/Test tables/packages installed in Development/Test databases.
+* Environment configuration data for Development/Test/Production databases.
+* Development/Test data installed in Development/Test databases.
+* Mock schema/API installed in Development/Test databases.
 
-Advanced configuration is entirely related to Build Script Layering.  Build Script Layering allows configuration of:
-* Basic application configuration data
-* Environment and/or test specific configuration data
-* PL/SQL for unit testing on a development database
-* Test data for unit testing on a development database
-* PL/SQL for QA testing on a QA database
-* Test data for QA testing on a QA database
+### Open Source
 
-See the [Build Script Layering](Build_Script_Layering.md) page for more details.
+Oracle databases include a massive amount of functionality.  Oracle is constantly changing that functionality for various reasons.  ODBCapture is open source and can be quickly modified to meet new requirements for changes in database functionality.
 
+* New functionality add to new versions
+* Deprecated functionality removed from new versions
+* Restricted functionality from various editions (Express, Standard)
+* Functionality differences between Cloud and OnPremise
 
-## Application Source Code Capture
+### Portability
 
-After configuration is complete, application source code capture is accomplished using the following steps:
-```
-execute ODBCAPTURE.FH2.clear_buffers;
-execute ODBCAPTURE.COMMON_UTIL.update_view_tabs;
-execute ODBCAPTURE.GRAB_SCRIPTS.all_scripts('CONFIGURED_BUILD_TYPE');
-execute ODBCAPTURE.FH2.write_scripts('FILE_NAME.zip');
-```
-Then, download and unzip "FILE_NAME.zip" from the "ZIP_FILES" table.
+ODBCapture provides source code portability between Oracle databases running on a variety of platforms.
 
-The [capture_files.sql](https://github.com/DDieterich/ODBCapture/blob/main/builds/util/capture_files.sql) SQL script can be used for source code capture if the ODBCAPTURE_INSTALLATION_LOGS table has been created and includes records for all the needed BUILD TYPES.  This SQL script runs correctly in SQL*Plus.
+* Microsoft, Linux, and Apple use different line endings in test files. Git in particular does a good job of translating line endings when source code is moved between platforms.  All source code created by ODBCapture is text based, so these translations function as needed.
+* SPARC and x86/ARM use different Endiannesse - While text files are automatically translated during transfer between systems, binary data requires complex bit swapping.  All source code created by ODBCapture is text based, so these translations function as needed.  Specifically, BLOB and RAW data are Base64 encoded before storage as source code and decoded when loaded back into the database.
+* ASCII, UTF (Several Versions), and ASCII are all in use today.  Operating Systems (and Oracle Databases) automatically translate between these different encodings.  All source code created by ODBCapture is text based, so these translations function as needed.
 
+### All Oracle, All The Time
 
-## Application Build
-
-After application source code has been captured by ODBCapture, the installation of the application is the same as the ODBCapture installation.  The `install.sql` script that is captured in each BUILD_TYPE folder is the core of the installation.
-
-[Several examples](https://github.com/DDieterich/ODBCapture/tree/main/builds#build-sequence) of build scripts can be found in the "builds" folder on the main page on GitHub.  These build scripts are Linux oriented for several reasons:
-* Oracle Docker images run Linux internally.
-* Visual Source Code includes a BASH terminal that is Linux compatable.
-* Git Tools are delivered with GitBash, which is Linux compatable.
-* Windows Subsystem for Linux (WSL) is Linux compatable.
-* Apple's MacOS is Linux compatable.
+ODBCapture is pure Oracle SQL and PL/SQL.  No need to train/hire expertise in non-Oracle development to use/modify ODBCapture.
 
 
 ## Application Source Code Audit
