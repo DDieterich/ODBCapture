@@ -75,6 +75,7 @@ Auditing source code is a simple process.  It is described in the [Build Sequenc
 
 ## References
 
+* [Main01 ER Diagram (PDF)](Main01.pdf)
 * [JUnit_XML_Format.md](JUnit_XML_Format.md)
 * [RAS_DBA_Columns.ods](RAS_DBA_Columns.ods)
 

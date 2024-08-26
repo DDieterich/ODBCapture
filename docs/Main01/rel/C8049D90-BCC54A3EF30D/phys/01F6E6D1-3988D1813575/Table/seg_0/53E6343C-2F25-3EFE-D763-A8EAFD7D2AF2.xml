@@ -1,0 +1,97 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="DLOAD_CONF" directorySegmentName="seg_0" id="53E6343C-2F25-3EFE-D763-A8EAFD7D2AF2">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<schemaObject>6F9A8F01-BCA4-83B6-CC5E-8F7DE3814D46</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>CE509B7B-2390-6705-838A-F624724FC1AC</segment>
+<tableSpace>29AD4A01-F497-DF3C-8B80-69BC6141CF72</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="USERNAME" id="51506EE2-8E7F-C1A5-15A9-E1AEBE9FDB43">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TABLE_NAME" id="6712A66C-EF18-56CD-868F-6BF69B50DE3C">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="WHERE_CLAUSE" id="857D436A-33F8-9DBC-6C30-E0D7AAADED66">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="BEFORE_SELECT_SQL" id="8F9CA2FB-2064-DFAC-5F90-4A437DB4033E">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="AFTER_ORDER_BY_SQL" id="90724641-F569-64E7-A733-496F32315987">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NOTES" id="ACE321FD-9A5E-92CF-8080-202134354381">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="BUILD_TYPE" id="B6CC342D-FDE0-B57E-7B86-8A6F25F8A81C">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="COLUMNS_REMOVED" id="BFCC0799-AD61-6B36-3B30-9379A733AF70">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ORDER_BY_COLUMNS" id="D4782169-1A4E-AED8-C40D-20011844610D">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="DLOAD_CONF_PK" id="1F157FC7-10DF-8DC6-1392-E9BC81FA377D">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:12 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<schemaObject>6F9A8F01-BCA4-83B6-CC5E-8F7DE3814D46</schemaObject>
+<segment>B7EE5100-424A-CDF4-1FF9-3B532DAF9EB3</segment>
+<tableSpace>29AD4A01-F497-DF3C-8B80-69BC6141CF72</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="DLOAD_CONF_FK1" id="BD7A9B6A-E917-E9BC-B83B-A5CCFEF516F0">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:19 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="DLOAD_CONF_FK2" id="D7D87253-2BB2-2FAA-F4F3-CA2D68E7BD44">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:19 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="DLOAD_CONF_PK" id="333CC3DD-DAAE-29FA-8923-2A9103764456">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:17 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<segment>B7EE5100-424A-CDF4-1FF9-3B532DAF9EB3</segment>
+<tableSpace>29AD4A01-F497-DF3C-8B80-69BC6141CF72</tableSpace>
+<existingIndex>1F157FC7-10DF-8DC6-1392-E9BC81FA377D</existingIndex>
+<indexSegment>B7EE5100-424A-CDF4-1FF9-3B532DAF9EB3</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev20c>

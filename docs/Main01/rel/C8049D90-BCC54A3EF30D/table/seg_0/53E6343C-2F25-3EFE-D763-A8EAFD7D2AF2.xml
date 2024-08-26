@@ -1,0 +1,214 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="53E6343C-2F25-3EFE-D763-A8EAFD7D2AF2" schemaObject="6F9A8F01-BCA4-83B6-CC5E-8F7DE3814D46" name="DLOAD_CONF">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>ODBCAPTURE</sourceObjSchema>
+<sourceObjName>DLOAD_CONF</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[DATA LOAD filter for each table/view in a schema for a build type.]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="USERNAME" id="51506EE2-8E7F-C1A5-15A9-E1AEBE9FDB43">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>DLOAD_CONF</sourceObjSchema>
+<sourceObjName>USERNAME</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[Name of the database schema (Primary Key Column 1). Value must be in SCHEMA_CONF table.]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128 BYTE</dataTypeSize>
+<ownDataTypeParameters>128 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="38420A86-0F9F-8F17-B311-D9362E35AC2C" referredColumn="E5367A7E-990B-084D-2D47-DFD1C72C7809"/>
+</associations>
+</Column>
+<Column name="TABLE_NAME" id="6712A66C-EF18-56CD-868F-6BF69B50DE3C">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>DLOAD_CONF</sourceObjSchema>
+<sourceObjName>TABLE_NAME</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[Name of the database table/view (Primary Key Column 2).]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128 BYTE</dataTypeSize>
+<ownDataTypeParameters>128 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BUILD_TYPE" id="B6CC342D-FDE0-B57E-7B86-8A6F25F8A81C">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>DLOAD_CONF</sourceObjSchema>
+<sourceObjName>BUILD_TYPE</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[Name of the database schema (Primary Key Column 3). Value must be in BUILD_CONF table.]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 BYTE</dataTypeSize>
+<ownDataTypeParameters>10 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AB537499-AC13-5F0B-E34E-F08C1678818F" referredColumn="6A1D9F49-0DDC-0901-ABAD-C0E053F3BB37"/>
+</associations>
+</Column>
+<Column name="ORDER_BY_COLUMNS" id="D4782169-1A4E-AED8-C40D-20011844610D">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>DLOAD_CONF</sourceObjSchema>
+<sourceObjName>ORDER_BY_COLUMNS</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[ORDER BY columns for the selected data load to capture.  List the column names as they would appear in an ORDER BY clause.]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 BYTE</dataTypeSize>
+<ownDataTypeParameters>4000 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BEFORE_SELECT_SQL" id="8F9CA2FB-2064-DFAC-5F90-4A437DB4033E">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>DLOAD_CONF</sourceObjSchema>
+<sourceObjName>BEFORE_SELECT_SQL</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[Any SQL before " select * from owner.table " for the selected data load to capture (Optional).]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 BYTE</dataTypeSize>
+<ownDataTypeParameters>4000 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COLUMNS_REMOVED" id="BFCC0799-AD61-6B36-3B30-9379A733AF70">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>DLOAD_CONF</sourceObjSchema>
+<sourceObjName>COLUMNS_REMOVED</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[REGEXP Filter of Columns to Remove from Data Load (Optional)]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 BYTE</dataTypeSize>
+<ownDataTypeParameters>4000 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="WHERE_CLAUSE" id="857D436A-33F8-9DBC-6C30-E0D7AAADED66">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>DLOAD_CONF</sourceObjSchema>
+<sourceObjName>WHERE_CLAUSE</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[WHERE clause for the selected data load to capture (Optional). Do not add the WHERE keyword]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 BYTE</dataTypeSize>
+<ownDataTypeParameters>4000 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="AFTER_ORDER_BY_SQL" id="90724641-F569-64E7-A733-496F32315987">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>DLOAD_CONF</sourceObjSchema>
+<sourceObjName>AFTER_ORDER_BY_SQL</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[Any SQL after the ORDER BY clause for the selected data load to capture (Optional). Do not add ";" at the end.]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 BYTE</dataTypeSize>
+<ownDataTypeParameters>4000 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOTES" id="ACE321FD-9A5E-92CF-8080-202134354381">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>DLOAD_CONF</sourceObjSchema>
+<sourceObjName>NOTES</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[Free text field (Optional)]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 BYTE</dataTypeSize>
+<ownDataTypeParameters>4000 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="333CC3DD-DAAE-29FA-8923-2A9103764456" name="DLOAD_CONF_PK">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>ODBCAPTURE</sourceObjSchema>
+<sourceObjName>DLOAD_CONF_PK</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:17 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="51506EE2-8E7F-C1A5-15A9-E1AEBE9FDB43"/>
+<colUsage columnID="6712A66C-EF18-56CD-868F-6BF69B50DE3C"/>
+<colUsage columnID="B6CC342D-FDE0-B57E-7B86-8A6F25F8A81C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1F157FC7-10DF-8DC6-1392-E9BC81FA377D" schemaObject="6F9A8F01-BCA4-83B6-CC5E-8F7DE3814D46" name="DLOAD_CONF_PK">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>ODBCAPTURE</sourceObjSchema>
+<sourceObjName>DLOAD_CONF_PK</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:12 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="51506EE2-8E7F-C1A5-15A9-E1AEBE9FDB43"/>
+<colUsage columnID="6712A66C-EF18-56CD-868F-6BF69B50DE3C"/>
+<colUsage columnID="B6CC342D-FDE0-B57E-7B86-8A6F25F8A81C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BD7A9B6A-E917-E9BC-B83B-A5CCFEF516F0" name="DLOAD_CONF_FK1">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:19 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="51506EE2-8E7F-C1A5-15A9-E1AEBE9FDB43"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D7D87253-2BB2-2FAA-F4F3-CA2D68E7BD44" name="DLOAD_CONF_FK2">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:19 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B6CC342D-FDE0-B57E-7B86-8A6F25F8A81C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

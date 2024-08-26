@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="ZIP_FILES" directorySegmentName="seg_0" id="DA8925D3-CFAF-A86A-6B1A-C338FA533F0F">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<schemaObject>6F9A8F01-BCA4-83B6-CC5E-8F7DE3814D46</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>CE509B7B-2390-6705-838A-F624724FC1AC</segment>
+<tableSpace>29AD4A01-F497-DF3C-8B80-69BC6141CF72</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="FILE_BLOB" id="233E77D7-674D-2294-DAB8-C555DD477D0C">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FILE_NAME" id="4899D320-650C-0DF6-F29E-5587792A8237">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FILE_SIZE" id="E78F21AE-9517-5C2F-1E16-D45F49BFD17E">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<defaultValue>0</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="DATE_CREATED" id="F9D9633F-58F0-CA12-935D-3C547578D5A9">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<defaultValue>sysdate</defaultValue>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="ZIP_FILES_PK" id="0647A81D-8B2E-54DC-8CAB-E5E7E74D5505">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:14 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<schemaObject>6F9A8F01-BCA4-83B6-CC5E-8F7DE3814D46</schemaObject>
+<segment>B7EE5100-424A-CDF4-1FF9-3B532DAF9EB3</segment>
+<tableSpace>29AD4A01-F497-DF3C-8B80-69BC6141CF72</tableSpace>
+</IndexProxy>
+</indexProxies>
+<lobStorages>
+<LobStorage class="oracle.dbtools.crest.model.design.storage.oracle.v11g.LobStorageOraclev11g" name="SYS_LOB0000075773C00004$$" id="2DF4A6B3-51DD-D253-DE19-BDEF8CBF4AAD">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:19 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<cache>NOCACHE</cache>
+<chunk>8192</chunk>
+<column>FILE_BLOB</column>
+<compression>NO</compression>
+<duplication>KEEP_DUPLICATES</duplication>
+<logging>YES</logging>
+<tableSpace>29AD4A01-F497-DF3C-8B80-69BC6141CF72</tableSpace>
+<lobStorageType>SECUREFILE</lobStorageType>
+</LobStorage>
+</lobStorages>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="ZIP_FILES_PK" id="CA96EDF3-2A56-CCC3-C04B-03292B643C8F">
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:17 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<segment>B7EE5100-424A-CDF4-1FF9-3B532DAF9EB3</segment>
+<tableSpace>29AD4A01-F497-DF3C-8B80-69BC6141CF72</tableSpace>
+<existingIndex>0647A81D-8B2E-54DC-8CAB-E5E7E74D5505</existingIndex>
+<indexSegment>B7EE5100-424A-CDF4-1FF9-3B532DAF9EB3</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev20c>

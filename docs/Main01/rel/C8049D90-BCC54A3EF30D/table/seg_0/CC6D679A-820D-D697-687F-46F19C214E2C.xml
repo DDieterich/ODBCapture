@@ -1,0 +1,117 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="CC6D679A-820D-D697-687F-46F19C214E2C" schemaObject="6F9A8F01-BCA4-83B6-CC5E-8F7DE3814D46" name="BUILD_CONF">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>ODBCAPTURE</sourceObjSchema>
+<sourceObjName>BUILD_CONF</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[List of Build Types.  Also defines the names of the top level directories]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="BUILD_SEQ" id="9305FCB4-8970-D333-08C9-5E43EC6E82EB">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>BUILD_CONF</sourceObjSchema>
+<sourceObjName>BUILD_SEQ</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[Unique Sequence of the build type (Primary Key)]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,2,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="BUILD_TYPE" id="6A1D9F49-0DDC-0901-ABAD-C0E053F3BB37">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>BUILD_CONF</sourceObjSchema>
+<sourceObjName>BUILD_TYPE</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[Name of the build type (Unique Key) (Required)]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 BYTE</dataTypeSize>
+<ownDataTypeParameters>10 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOTES" id="904F6B6F-37FC-7C4F-0660-F205D9F92B0A">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>BUILD_CONF</sourceObjSchema>
+<sourceObjName>NOTES</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[Free text field (Optional)]]></commentInRDBMS>
+<ownerDesignName>Main01</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1024 BYTE</dataTypeSize>
+<ownDataTypeParameters>1024 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5797EC80-3134-9E36-FE2E-77C28E22C39B" name="BUILD_CONF_PK">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>ODBCAPTURE</sourceObjSchema>
+<sourceObjName>BUILD_CONF_PK</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:17 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9305FCB4-8970-D333-08C9-5E43EC6E82EB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A65BAFB3-8DF0-8960-64EF-3C7C59699C5E" name="BUILD_CONF_NK1">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>ODBCAPTURE</sourceObjSchema>
+<sourceObjName>BUILD_CONF_NK1</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:17 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6A1D9F49-0DDC-0901-ABAD-C0E053F3BB37"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AFD6C9BD-9B74-2664-72EC-53EBDC8C700B" schemaObject="6F9A8F01-BCA4-83B6-CC5E-8F7DE3814D46" name="BUILD_CONF_NK1">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>ODBCAPTURE</sourceObjSchema>
+<sourceObjName>BUILD_CONF_NK1</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:11 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6A1D9F49-0DDC-0901-ABAD-C0E053F3BB37"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6EA65527-4372-B8E0-5CC2-B0382757E583" schemaObject="6F9A8F01-BCA4-83B6-CC5E-8F7DE3814D46" name="BUILD_CONF_PK">
+<sourceConnName>odbcapture@DEVPDB_local</sourceConnName>
+<sourceObjSchema>ODBCAPTURE</sourceObjSchema>
+<sourceObjName>BUILD_CONF_PK</sourceObjName>
+<createdBy>duane</createdBy>
+<createdTime>2024-08-23 20:06:11 UTC</createdTime>
+<ownerDesignName>Main01</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9305FCB4-8970-D333-08C9-5E43EC6E82EB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
