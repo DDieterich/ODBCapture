@@ -1,9 +1,9 @@
 
-ODBCapture is a native PL/SQL application that can be used to generate self-building scripts (source code and configuration data) for a database.
+ODBCapture is a native PL/SQL application that can be used to capture self-building scripts (source code and configuration data) for a database.
 
 This website is intended for user information and usage documentation.  Development guides and design documentation can be found in [the wiki](https://github.com/DDieterich/ODBCapture/wiki)
 
-Click [here for a white paper overview](Generating-Self-Build.md) on **Generating Self-Build Scripts**.
+Click [here for a white paper overview](Capturing-Self-Build.md) on **Capturing Self-Build Scripts**.
 
 Click [here for installation and configuration](Install-and-Config.md)
 information.
