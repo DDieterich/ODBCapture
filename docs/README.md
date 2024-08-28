@@ -23,7 +23,7 @@ ODBCapture is not a "diff" engine.  ODBCapture is unique in its ability to creat
 
 ### Single Install Script
 
-ODBCapture generates database source code in a set of scripts, all of which are called from a common "install.sql"
+ODBCapture captures database source code in a set of scripts, all of which are called from a common "install.sql"
 
 * Separate folder for **SYS privileged** statements
 * Separate folder for **common DBA privileged** statements
@@ -31,7 +31,7 @@ ODBCapture generates database source code in a set of scripts, all of which are 
 
 ### Confguration Data Source Code
 
-ODBCapture generates configuration data source code.
+ODBCapture captures configuration data source code.
 
 * Data driven applications require configuration data to run.
 * Because it's required, configuration data is source code for a database.
@@ -39,7 +39,7 @@ ODBCapture generates configuration data source code.
 
 ### Layered Installation
 
-ODBCapture generates "installation layers", allowing for differences between databases.
+ODBCapture captures "installation layers", allowing for differences between databases.
 
 * **Development/Test tables/packages** installed in Development/Test databases.
 * **Environment configuration data** for Development/Test/Production databases.
