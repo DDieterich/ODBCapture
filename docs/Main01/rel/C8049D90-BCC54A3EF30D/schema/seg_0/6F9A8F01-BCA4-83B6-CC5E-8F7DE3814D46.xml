@@ -1,6 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<SchemaObject class="oracle.dbtools.crest.model.design.relational.SchemaObject" name="ODBCAPTURE" directorySegmentName="seg_0" id="6F9A8F01-BCA4-83B6-CC5E-8F7DE3814D46">
-<createdBy>duane</createdBy>
-<createdTime>2024-08-23 20:06:10 UTC</createdTime>
-<ownerDesignName>Main01</ownerDesignName>
-</SchemaObject>
