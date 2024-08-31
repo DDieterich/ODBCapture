@@ -73,13 +73,6 @@ ODBCapture provides source code portability between Oracle databases running on 
 Auditing source code is a simple process.  It is described in the [Build Sequence](https://github.com/DDieterich/ODBCapture/tree/main/builds#build-sequence) listed in the "builds" folder on the main page on GitHub.  The basic idea is to capture application source code from the production database and compare it to the application source code in the source control system (ex. Git).  In the build sequence from the "builds" folder, the Linux "diff" utility is used to compare the 2 sets of files.
 
 
-## References
-
-* [Main01 ER Diagram (PDF)](Main01.pdf)
-* [JUnit_XML_Format.md](JUnit_XML_Format.md)
-* [RAS_DBA_Columns.ods](RAS_DBA_Columns.ods)
-
-
 ---
 Website formatted with [jekyll-theme-minimal](https://github.com/pages-themes/minimal)
 
