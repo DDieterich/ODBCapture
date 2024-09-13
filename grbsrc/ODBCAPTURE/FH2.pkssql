@@ -100,8 +100,9 @@ as
       ,in_folder_name    in varchar2 default '');
 
    procedure show_file
-      (in_bld_type  in  varchar2
-      ,in_element   in  varchar2);
+      (in_bld_type      in  varchar2
+      ,in_element       in  varchar2
+      ,in_fname_regexp  in  varchar2 default '.*');
 
    procedure clear_buffers
       (in_build_type   in varchar2 default null);

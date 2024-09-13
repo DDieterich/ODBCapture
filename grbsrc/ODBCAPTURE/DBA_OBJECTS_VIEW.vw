@@ -23,9 +23,9 @@ create view "ODBCAPTURE"."DBA_OBJECTS_VIEW"
       ,obj.owner                 OBJECT_OWNER
       ,obj.object_name
       ,obj.object_type
-      ,case when tab.table_name is not null then 'TAB'
+      ,case when  nt.table_name is not null then  'NT'
+            when tab.table_name is not null then 'TAB'
             when xml.table_name is not null then 'XML'
-            when  nt.table_name is not null then  'NT'
                                             else NULL
        end                       TABLE_FLAG
       ,'BASE'                    SELTYPE
@@ -49,9 +49,9 @@ create view "ODBCAPTURE"."DBA_OBJECTS_VIEW"
       ,sc.build_type
       ,obj.object_name
       ,obj.object_type
-      ,case when tab.table_name is not null then 'TAB'
+      ,case when  nt.table_name is not null then  'NT'
+            when tab.table_name is not null then 'TAB'
             when xml.table_name is not null then 'XML'
-            when  nt.table_name is not null then  'NT'
                                             else NULL
        end
 UNION ALL
@@ -73,9 +73,9 @@ select sco.build_type            OBJECT_OWNER_BUILD_TYPE
       ,priv.owner                OBJECT_OWNER
       ,priv.table_name           OBJECT_NAME
       ,priv.type                 OBJECT_TYPE
-      ,case when tab.table_name is not null then 'TAB'
+      ,case when  nt.table_name is not null then  'NT'
+            when tab.table_name is not null then 'TAB'
             when xml.table_name is not null then 'XML'
-            when  nt.table_name is not null then  'NT'
                                             else NULL
        end                       TABLE_FLAG
       ,'SYS'                     SELTYPE
@@ -102,9 +102,9 @@ select sco.build_type            OBJECT_OWNER_BUILD_TYPE
       ,sco.build_type
       ,priv.table_name
       ,priv.type
-      ,case when tab.table_name is not null then 'TAB'
+      ,case when  nt.table_name is not null then  'NT'
+            when tab.table_name is not null then 'TAB'
             when xml.table_name is not null then 'XML'
-            when  nt.table_name is not null then  'NT'
                                             else NULL
        end;
 

@@ -544,21 +544,27 @@ end write_scripts;
 ------------------------------------------------------------
 -- Report File Contents from Memory Array
 procedure show_file
-      (in_bld_type  in  varchar2
-      ,in_element   in  varchar2)
+      (in_bld_type      in  varchar2
+      ,in_element       in  varchar2
+      ,in_fname_regexp  in  varchar2 default '.*')
 is
-   bld_ord        pls_integer;
-   file_id         pls_integer;
+   bld_ord      pls_integer;
+   file_id      pls_integer;
 begin
    select element_seq into bld_ord from element_conf
     where element_name = in_element;
    file_id := sf_aa(in_bld_type)(bld_ord).FIRST;
-   dbms_output.put_line('FNAME: ' || sf_aa(in_bld_type)(bld_ord)(file_id).filename);
    loop
-      for i in 1 .. sf_aa(in_bld_type)(bld_ord)(file_id).num_buffers
-      loop
-         dbms_output.put_line(sf_aa(in_bld_type)(bld_ord)(file_id).buffer_aa(i).buffer);
-      end loop;
+      if regexp_like(sf_aa(in_bld_type)(bld_ord)(file_id).filename, in_fname_regexp)
+      then
+         dbms_output.put_line('FNAME: ' || sf_aa(in_bld_type)(bld_ord)(file_id).filename);
+         for i in 1 .. sf_aa(in_bld_type)(bld_ord)(file_id).num_buffers
+         loop
+            dbms_output.put_line(sf_aa(in_bld_type)(bld_ord)(file_id).buffer_aa(i).buffer);
+         end loop;
+      else
+         dbms_output.put_line(' ... skipping FNAME: ' || sf_aa(in_bld_type)(bld_ord)(file_id).filename);
+      end if;
       exit when file_id = sf_aa(in_bld_type)(bld_ord).LAST;
       file_id := sf_aa(in_bld_type)(bld_ord).NEXT(file_id);
    end loop;

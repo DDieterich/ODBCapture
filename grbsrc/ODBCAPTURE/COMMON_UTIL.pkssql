@@ -21,6 +21,7 @@ as
    ORACLE_TEXT_TABLE_REGEXP CONSTANT varchar2(25) := '^DR[$].*[$][A-Z]{1,2}$'; -- Oracle Text Table/Index
    SDO_TABLE_REGEXP         CONSTANT varchar2(25) := '^MDR[ST]_'; -- Spatial Data Table/Sequence
    MVIEW_AUTO_INDEX_PREFIX  CONSTANT varchar2(10) := 'I_SNAP$_';
+   SYS_OVIEW_OID_PATTERN    CONSTANT varchar2(20) := 'SYS\_YOID%'; -- object view OID type
    SYS_PIPELINE_PATTERN     CONSTANT varchar2(20) := 'SYS\_PLSQL\_%'; -- pipeline package/function
    -- https://blogs.oracle.com/db/entry/oracle_support_master_note_for_troubleshooting_advanced_queuing_and_oracle_streams_propagation_issue
    ADV_QUEUE_VIEW_PATTERN   CONSTANT varchar2(20) := 'QT%\_BUFFER';
