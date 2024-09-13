@@ -18,7 +18,7 @@ Existing database source code is handled by Liquibase and Flyway which are "diff
 
 ODBCapture is not a "diff" engine.  ODBCapture is unique in its ability to create Oracle database installation scripts that can create different "flavors" of Oracle databases from a common set of source code.  This installation occurs after an initialization to an empty database or PDB.  (See the white paper above for more details.)
 * Create Database ...
-* Created Pluggable Database ...
+* Create Pluggable Database ...
 * Drop Schema ...
 
 ### Single Install Script
@@ -71,13 +71,6 @@ ODBCapture provides source code portability between Oracle databases running on 
 ## Application Source Code Audit
 
 Auditing source code is a simple process.  It is described in the [Build Sequence](https://github.com/DDieterich/ODBCapture/tree/main/builds#build-sequence) listed in the "builds" folder on the main page on GitHub.  The basic idea is to capture application source code from the production database and compare it to the application source code in the source control system (ex. Git).  In the build sequence from the "builds" folder, the Linux "diff" utility is used to compare the 2 sets of files.
-
-
-## References
-
-* [Main01 ER Diagram (PDF)](Main01.pdf)
-* [JUnit_XML_Format.md](JUnit_XML_Format.md)
-* [RAS_DBA_Columns.ods](RAS_DBA_Columns.ods)
 
 
 ---

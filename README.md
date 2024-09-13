@@ -4,7 +4,9 @@ Native PL/SQL Application to Capture Source Code and Configuration Data
 
 This site is intended for development guides and design documentation.  User information and usage documentation can be found at http://ODBCapture.org.
 
-*NOTE:* Issues are tracked in the Wiki.  See: [Issues Summary](https://github.com/DDieterich/ODBCapture/wiki/Z-Issues-Summary)
+*NOTE1:* Issues are tracked in the Wiki.  See: [Issues Summary](https://github.com/DDieterich/ODBCapture/wiki/Z-Issues-Summary)
+
+*NOTE2:* I uploaded an image to customize this repository’s social media preview, but I don't see it anywhere.
 
 ## File/Folder List
 
