@@ -70,12 +70,6 @@ as
 
    -- INTERNALs Made Public for Modularization
 
-   TYPE grb_cldr_delim_nt_type is table of varchar2(1);
-   grb_cldr_delim_nt   grb_cldr_delim_nt_type :=
-                       grb_cldr_delim_nt_type (CHR(11), CHR(12), CHR(28),
-                                               CHR(29), CHR(30), CHR(31));
-   grb_cldr_array_lvl  pls_integer;
-
    g_build_type      varchar2(10);
    g_schema_name     varchar2(128);
 
