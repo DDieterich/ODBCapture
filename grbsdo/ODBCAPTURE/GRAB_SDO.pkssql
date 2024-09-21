@@ -18,35 +18,37 @@ as
    st_geometry_buff     mdsys.st_geometry;
 
    function ctl_sdo_point_type
-      (in_spaces  in  varchar2 default '   ')
+      (in_spaces  in  varchar2 default '')
    return varchar2;
    function dat_sdo_point_type
       (in_pt  in  mdsys.sdo_point_type)
    return varchar2;
 
    function ctl_sdo_elem_info_array
-      (in_cname  in varchar2)
+      (in_cname   in  varchar2
+      ,in_spaces  in  varchar2 default '')
    return varchar2;
    function dat_sdo_elem_info_array
       (in_eia  in  mdsys.sdo_elem_info_array)
    return varchar2;
 
    function ctl_sdo_ordinate_array
-      (in_cname  in varchar2)
+      (in_cname  in varchar2
+      ,in_spaces  in  varchar2 default '')
    return varchar2;
    function dat_sdo_ordinate_array
       (in_oa  in  mdsys.sdo_ordinate_array)
    return varchar2;
 
    function ctl_sdo_geometry
-      (in_spaces  in  varchar2 default '   ')
+      (in_spaces  in  varchar2 default '')
    return varchar2;
    function dat_sdo_geometry
       (in_geo  in  mdsys.sdo_geometry)
    return varchar2;
 
    function ctl_st_geometry
-      (in_spaces  in  varchar2 default '   ')
+      (in_spaces  in  varchar2 default '')
    return varchar2;
    function dat_st_geometry
       (in_geo  in  mdsys.st_geometry)

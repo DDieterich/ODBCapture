@@ -108,6 +108,28 @@ end get_cs_form_err;
 
 
 ------------------------------------------------------------
+-- Convert National Character Set to UNISTR encoding
+function unistr_encode
+      (in_nclob  in nclob)
+   return clob
+is
+   acode  pls_integer;
+   oclob  clob;
+begin
+   for i in 1 .. length(in_nclob)
+   loop
+      acode := ascii(substr(in_nclob,i,1));
+      if acode > 127
+      then
+         oclob := oclob || '\' || to_char(acode,'FM000X');
+      else
+         oclob := oclob || chr(acode);
+      end if;
+   end loop;
+   return oclob;
+end;
+
+------------------------------------------------------------
 -- Split g_clob_buff into multiple lines
 procedure utf_put_clob
       (in_fh  in out nocopy fh2.sf_ptr_type)
@@ -208,19 +230,19 @@ begin
       when g_desc_tab(col_num).col_type = DBMS_SQL.VARCHAR2_TYPE
       then
          case g_desc_tab(col_num).col_charsetform
-         when 1 -- data types VARCHAR2, CHAR, LONG, and CLOB
+         when 1 -- VARCHAR2
          then
             fh2.script_put_line(fh_ctl, lc || common_util.old_rpad(g_desc_tab(col_num).col_name,30) ||
-                                  ' CHAR(' || g_desc_tab(col_num).col_max_len       || ')');
+                                  ' CHAR(' ||                      g_desc_tab(col_num).col_max_len  || ')');
             dbms_sql.define_column(c            => g_dyn_curs
                                   ,position     => col_num
                                   ,column       => g_vc2_buff
                                   ,column_size  => g_desc_tab(col_num).col_max_len);
-         when 2 -- data types NVARCHAR2, NCHAR, and NCLOB
+         when 2 -- NVARCHAR2 (Avoids ORA-01406: fetched column value was truncated)
          then
-            -- ORA-01406: fetched column value was truncated
-            fh2.script_put_line(fh_ctl, lc || common_util.old_rpad(g_desc_tab(col_num).col_name,30) ||
-                                  ' CHAR(' || g_desc_tab(col_num).col_max_len       || ')');
+            fh2.script_put_line(fh_ctl, lc || common_util.old_rpad(g_desc_tab(col_num).col_name,30)  ||
+                                  ' CHAR(' ||                      g_desc_tab(col_num).col_max_len*5 ||
+                             ') "UNISTR(:' ||                      g_desc_tab(col_num).col_name      || ')"');
             dbms_sql.define_column(c            => g_dyn_curs
                                   ,position     => col_num
                                   ,column       => g_nvc2_buff
@@ -232,18 +254,19 @@ begin
       when g_desc_tab(col_num).col_type = DBMS_SQL.CHAR_TYPE
       then
          case g_desc_tab(col_num).col_charsetform
-         when 1 -- data types VARCHAR2, CHAR, LONG, and CLOB
+         when 1 -- CHAR
          then
             fh2.script_put_line(fh_ctl, lc || common_util.old_rpad(g_desc_tab(col_num).col_name,30) ||
-                                  ' CHAR(' || g_desc_tab(col_num).col_max_len       || ')');
+                                  ' CHAR(' ||                      g_desc_tab(col_num).col_max_len  || ')');
             dbms_sql.define_column_char(c            => g_dyn_curs
                                        ,position     => col_num
                                        ,column       => g_char_buff
                                        ,column_size  => g_desc_tab(col_num).col_max_len);
-         when 2 -- data types NVARCHAR2, NCHAR, and NCLOB
+         when 2 -- NCHAR (Avoids ORA-01406: fetched column value was truncated)
          then
-            fh2.script_put_line(fh_ctl, lc || common_util.old_rpad(g_desc_tab(col_num).col_name,30) ||
-                                  ' CHAR(' || g_desc_tab(col_num).col_max_len       || ')');
+            fh2.script_put_line(fh_ctl, lc || common_util.old_rpad(g_desc_tab(col_num).col_name,30)  ||
+                                  ' CHAR(' ||                      g_desc_tab(col_num).col_max_len*5 ||
+                             ') "UNISTR(:' ||                      g_desc_tab(col_num).col_name      || ')"');
             dbms_sql.define_column_char(c            => g_dyn_curs
                                        ,position     => col_num
                                        ,column       => g_nchar_buff
@@ -320,11 +343,11 @@ begin
          --
       when g_desc_tab(col_num).col_type = DBMS_SQL.BFILE_TYPE
       then
-         fh2.script_put_line(fh_ctl, lc  || common_util.old_rpad(g_desc_tab(col_num).col_name,30) || '_dname FILLER char(512)' );
-         fh2.script_put_line(fh_ctl, lc2 || common_util.old_rpad(g_desc_tab(col_num).col_name,30) || '_fname FILLER char(512)' );
+         fh2.script_put_line(fh_ctl, lc  || common_util.old_rpad(g_desc_tab(col_num).col_name     || '_dname',30) || ' FILLER char(512)' );
+         fh2.script_put_line(fh_ctl, lc2 || common_util.old_rpad(g_desc_tab(col_num).col_name     || '_fname',30) || ' FILLER char(512)' );
          fh2.script_put_line(fh_ctl, lc2 || common_util.old_rpad(g_desc_tab(col_num).col_name,30) || ' BFILE('  ||
-                                            common_util.old_rpad(g_desc_tab(col_num).col_name,30) || '_dname, ' ||
-                                            common_util.old_rpad(g_desc_tab(col_num).col_name,30) || '_fname)'  );
+                                                                 g_desc_tab(col_num).col_name     || '_dname, ' ||
+                                                                 g_desc_tab(col_num).col_name     || '_fname)'  );
          dbms_sql.define_column(c         => g_dyn_curs
                                ,position  => col_num
                                ,column    => g_bfile_buff);
@@ -343,17 +366,17 @@ $END
       when g_desc_tab(col_num).col_type = DBMS_SQL.CLOB_TYPE
       then
          case g_desc_tab(col_num).col_charsetform
-         when 1 -- data types VARCHAR2, CHAR, LONG, and CLOB
+         when 1 -- CLOB
          then
             fh2.script_put_line(fh_ctl, lc || common_util.old_rpad(g_desc_tab(col_num).col_name,30) ||
                           ' CHAR(1048576)' );
             dbms_sql.define_column(c         => g_dyn_curs
                                   ,position  => col_num
                                   ,column    => g_clob_buff);
-         when 2 -- data types NVARCHAR2, NCHAR, and NCLOB
+         when 2 -- NCLOB (Avoids ORA-01406: fetched column value was truncated)
          then
             fh2.script_put_line(fh_ctl, lc || common_util.old_rpad(g_desc_tab(col_num).col_name,30) ||
-                          ' CHAR(1048576)' );
+                ' CHAR(5242880) "UNISTR(:' ||                      g_desc_tab(col_num).col_name     || ')"');
             dbms_sql.define_column(c         => g_dyn_curs
                                   ,position  => col_num
                                   ,column    => g_nclob_buff);
@@ -478,7 +501,7 @@ begin
          when g_desc_tab(col_num).col_type = DBMS_SQL.VARCHAR2_TYPE
          then
             case g_desc_tab(col_num).col_charsetform
-            when 1 -- data types VARCHAR2, CHAR, LONG, and CLOB
+            when 1 -- VARCHAR2
             then
                dbms_sql.column_value(c              => g_dyn_curs
                                     ,position       => col_num
@@ -492,9 +515,8 @@ begin
                   g_clob_buff := '"' || replace(g_vc2_buff,'"','""')  || '"';
                   utf_put_clob(fh_dat);
                end if;
-            when 2 -- data types NVARCHAR2, NCHAR, and NCLOB
+            when 2 -- NVARCHAR2 (Avoids ORA-01406: fetched column value was truncated)
             then
-               -- ORA-01406: fetched column value was truncated
                dbms_sql.column_value(c              => g_dyn_curs
                                     ,position       => col_num
                                     ,value          => g_nvc2_buff
@@ -504,7 +526,7 @@ begin
                fh2.script_put(fh_dat, lc);
                if g_nvc2_buff is not null
                then
-                  g_clob_buff := '"' || replace(g_nvc2_buff,'"','""')  || '"';
+                  g_clob_buff := '"' || unistr_encode(replace(g_nvc2_buff,'"','""'))  || '"';
                   utf_put_clob(fh_dat);
                end if;
             else
@@ -515,7 +537,7 @@ begin
          then
             fh2.script_put(fh_dat, lc);
             case g_desc_tab(col_num).col_charsetform
-            when 1 -- data types VARCHAR2, CHAR, LONG, and CLOB
+            when 1 -- CHAR
             then
                dbms_sql.column_value_char(c              => g_dyn_curs
                                          ,position       => col_num
@@ -529,9 +551,8 @@ begin
                                              ,'"','""')           || '"';
                   utf_put_clob(fh_dat);
                end if;
-            when 2 -- data types NVARCHAR2, NCHAR, and NCLOB
+            when 2 -- NCHAR (Avoids ORA-01406: fetched column value was truncated)
             then
-               -- ORA-01406: fetched column value was truncated
                dbms_sql.column_value_char(c              => g_dyn_curs
                                          ,position       => col_num
                                          ,value          => g_nchar_buff
@@ -540,8 +561,8 @@ begin
                show_col_err(tabs_table_name, 'CHAR', col_num);
                if g_nchar_buff is not null
                then
-                  g_clob_buff := '"' || replace(substr(g_nchar_buff, 1, g_col_len)
-                                             ,'"','""')           || '"';
+                  g_clob_buff := '"' || unistr_encode(replace(substr(g_nchar_buff, 1, g_col_len)
+                                                     ,'"','""'))           || '"';
                   utf_put_clob(fh_dat);
                end if;
             else
@@ -551,7 +572,7 @@ begin
          when g_desc_tab(col_num).col_type = DBMS_SQL.CLOB_TYPE
          then
             case g_desc_tab(col_num).col_charsetform
-            when 1 -- data types VARCHAR2, CHAR, LONG, and CLOB
+            when 1 -- CLOB
             then
                dbms_sql.column_value(c         => g_dyn_curs
                                     ,position  => col_num
@@ -562,7 +583,7 @@ begin
                   g_clob_buff := '"' || replace(g_clob_buff,'"','""') || '"';
                   utf_put_clob(fh_dat);
                end if;
-            when 2 -- data types NVARCHAR2, NCHAR, and NCLOB
+            when 2 -- NCLOB (Avoids ORA-01406: fetched column value was truncated)
             then
                dbms_sql.column_value(c         => g_dyn_curs
                                     ,position  => col_num
@@ -570,7 +591,7 @@ begin
                fh2.script_put(fh_dat, lc);
                if g_nclob_buff is not null
                then
-                  g_clob_buff := '"' || replace(g_nclob_buff,'"','""') || '"';
+                  g_clob_buff := '"' || unistr_encode(replace(g_nclob_buff,'"','""')) || '"';
                   utf_put_clob(fh_dat);
                end if;
             else

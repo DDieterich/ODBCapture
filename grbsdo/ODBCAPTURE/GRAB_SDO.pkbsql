@@ -14,7 +14,7 @@ set define off
 ------------------------------------------------------------
 -- Report the Control File Specification of the SDO POINT
 function ctl_sdo_point_type
-      (in_spaces  in  varchar2 default '   ')
+      (in_spaces  in  varchar2 default '')
    return varchar2
 as
 begin
@@ -40,7 +40,8 @@ end dat_sdo_point_type;
 ------------------------------------------------------------
 -- Report the Control File Specification of the SDO_ELEM_INFO_ARRAY
 function ctl_sdo_elem_info_array
-      (in_cname  in varchar2)
+      (in_cname   in  varchar2
+      ,in_spaces  in  varchar2 default '')
    return varchar2
 as
    delim  varchar2(1);
@@ -48,8 +49,8 @@ begin
    grab_data.grb_cldr_array_lvl := grab_data.grb_cldr_array_lvl + 1;
    delim                        := grab_data.grb_cldr_delim_nt(grab_data.grb_cldr_array_lvl);
    grab_data.grb_cldr_array_lvl := grab_data.grb_cldr_array_lvl - 1;
-   return 'VARRAY TERMINATED BY ''' || delim ||
-        ''' (' || in_cname || '  FLOAT EXTERNAL TERMINATED BY '';'')';
+   return 'VARRAY TERMINATED BY ''' || delim || '''' || CHR(10) || in_spaces ||
+          '   (' || in_cname || '  FLOAT EXTERNAL TERMINATED BY '';'')';
 end ctl_sdo_elem_info_array;
 
 -- Report the Data Contents of the SDO_ELEM_INFO_ARRAY
@@ -78,7 +79,8 @@ end dat_sdo_elem_info_array;
 ------------------------------------------------------------
 -- Report the Control File Specification of the SDO_ORDINATE_ARRAY
 function ctl_sdo_ordinate_array
-      (in_cname  in varchar2)
+      (in_cname   in  varchar2
+      ,in_spaces  in  varchar2 default '')
    return varchar2
 as
    delim  varchar2(1);
@@ -86,8 +88,8 @@ begin
    grab_data.grb_cldr_array_lvl := grab_data.grb_cldr_array_lvl + 1;
    delim                        := grab_data.grb_cldr_delim_nt(grab_data.grb_cldr_array_lvl);
    grab_data.grb_cldr_array_lvl := grab_data.grb_cldr_array_lvl - 1;
-   return 'VARRAY TERMINATED BY ''' || delim ||
-        ''' (' || in_cname || '  FLOAT EXTERNAL TERMINATED BY '';'')';
+   return 'VARRAY TERMINATED BY ''' || delim || '''' || CHR(10) || in_spaces ||
+          '   (' || in_cname || '  FLOAT EXTERNAL TERMINATED BY '';'')';
 end ctl_sdo_ordinate_array;
 
 -- Report the Data Contents of the SDO_ORDINATE_ARRAY
@@ -116,16 +118,16 @@ end dat_sdo_ordinate_array;
 ------------------------------------------------------------
 -- Report the Control File Specification of the SDO_GEOMETRY
 function ctl_sdo_geometry
-      (in_spaces  in  varchar2 default '   ')
+      (in_spaces  in  varchar2 default '')
    return varchar2
 as
 begin
-   return 'COLUMN OBJECT TREAT AS MDSYS.SDO_GEOMETRY'                      || CHR(10) || in_spaces ||
-          '   (SDO_GTYPE     FLOAT EXTERNAL TERMINATED BY '';'''           || CHR(10) || in_spaces ||
-          '   ,SDO_SRID      FLOAT EXTERNAL TERMINATED BY '';'''           || CHR(10) || in_spaces ||
-          '   ,SDO_POINT     ' || ctl_sdo_point_type(in_spaces||'   ')     || CHR(10) || in_spaces ||
-          '   ,SDO_ELEM_INFO ' || ctl_sdo_elem_info_array('SDO_ELEM_INFO') || CHR(10) || in_spaces ||
-          '   ,SDO_ORDINATES ' || ctl_sdo_ordinate_array('SDO_ORDINATES')  || CHR(10) || in_spaces ||
+   return 'COLUMN OBJECT TREAT AS MDSYS.SDO_GEOMETRY'                                       || CHR(10) || in_spaces ||
+          '   (SDO_GTYPE     FLOAT EXTERNAL TERMINATED BY '';'''                            || CHR(10) || in_spaces ||
+          '   ,SDO_SRID      FLOAT EXTERNAL TERMINATED BY '';'''                            || CHR(10) || in_spaces ||
+          '   ,SDO_POINT     ' || ctl_sdo_point_type(in_spaces||'   ')                      || CHR(10) || in_spaces ||
+          '   ,SDO_ELEM_INFO ' || ctl_sdo_elem_info_array('SDO_ELEM_INFO',in_spaces||'   ') || CHR(10) || in_spaces ||
+          '   ,SDO_ORDINATES ' || ctl_sdo_ordinate_array('SDO_ORDINATES',in_spaces||'   ')  || CHR(10) || in_spaces ||
           '   )';
 end ctl_sdo_geometry;
 
@@ -146,7 +148,7 @@ end dat_sdo_geometry;
 ------------------------------------------------------------
 -- Report the Control File Specification of the SDO_GEOMETRY
 function ctl_st_geometry
-      (in_spaces  in  varchar2 default '   ')
+      (in_spaces  in  varchar2 default '')
    return varchar2
 as
 begin
@@ -176,31 +178,31 @@ begin
    case grab_data.g_desc_tab(in_position).col_type_name
    when 'SDO_ELEM_INFO_ARRAY' then
       fh2.script_put_line(io_fh, in_lc || common_util.old_rpad(grab_data.g_desc_tab(in_position).col_name,30) ||
-              ' ' || ctl_sdo_elem_info_array(grab_data.g_desc_tab(in_position).col_name) );
+              ' ' || ctl_sdo_elem_info_array(grab_data.g_desc_tab(in_position).col_name,'   ') );
       dbms_sql.define_column(c         => grab_data.g_dyn_curs
                             ,position  => in_position
                             ,column    => sdo_elem_info_buff);
    when 'SDO_GEOMETRY' then
       fh2.script_put_line(io_fh, in_lc || common_util.old_rpad(grab_data.g_desc_tab(in_position).col_name,30) ||
-              ' ' || ctl_sdo_geometry );
+              ' ' || ctl_sdo_geometry('   ') );
       dbms_sql.define_column(c         => grab_data.g_dyn_curs
                             ,position  => in_position
                             ,column    => sdo_geometry_buff);
    when 'SDO_ORDINATE_ARRAY' then
       fh2.script_put_line(io_fh, in_lc || common_util.old_rpad(grab_data.g_desc_tab(in_position).col_name,30) ||
-              ' ' || ctl_sdo_ordinate_array(grab_data.g_desc_tab(in_position).col_name) );
+              ' ' || ctl_sdo_ordinate_array(grab_data.g_desc_tab(in_position).col_name,'   ') );
       dbms_sql.define_column(c         => grab_data.g_dyn_curs
                             ,position  => in_position
                             ,column    => sdo_ordinate_buff);
    when 'SDO_POINT_TYPE' then
       fh2.script_put_line(io_fh, in_lc || common_util.old_rpad(grab_data.g_desc_tab(in_position).col_name,30) ||
-              ' ' || ctl_sdo_point_type );
+              ' ' || ctl_sdo_point_type('   ') );
       dbms_sql.define_column(c         => grab_data.g_dyn_curs
                             ,position  => in_position
                             ,column    => sdo_point_buff);
    when 'ST_GEOMETRY' then
       fh2.script_put_line(io_fh, in_lc || common_util.old_rpad(grab_data.g_desc_tab(in_position).col_name,30) ||
-              ' ' || ctl_st_geometry );
+              ' ' || ctl_st_geometry('   ') );
       dbms_sql.define_column(c         => grab_data.g_dyn_curs
                             ,position  => in_position
                             ,column    => st_geometry_buff);

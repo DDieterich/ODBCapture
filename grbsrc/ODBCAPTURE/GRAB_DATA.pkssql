@@ -39,6 +39,11 @@ as
       index by varchar2(1024);   -- Column Name
    bincol_aa  bincol_aa_type;
 
+   -- Convert National Character Set to UNISTR encoding
+   function unistr_encode
+      (in_nclob  in nclob)
+   return clob;
+
    --  Main Procedure
    procedure grb_comp_data_loader;
 
