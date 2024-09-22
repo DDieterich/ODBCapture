@@ -124,6 +124,7 @@ declare
 begin
    dbms_lob.createtemporary(l_blob, true);
    dbms_lob.createtemporary(the_blob, true);
+   -- Decode Binary Data for column IMAGE
    for buff in (select ROWID RID, "IMAGE"
                  from  "ODBCAPTURE"."GRBTST_IMAGE"
                  for update of "IMAGE")

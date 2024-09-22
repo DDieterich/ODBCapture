@@ -1,6 +1,6 @@
 "USERNAME","ELEMENT_NAME","BUILD_TYPE","OBJECT_NAME_REGEXP","NOTES"
 "ODBCAPTURE","TABLE","grbtjsn","GRBTST_JSON","ODBCapture JSON Datatype Testing"
-"ODBCAPTURE","TABLE","grbtst","^(GRBTST_IMAGE|GRBTST_[$]NAME)$","ODBCatpure Test Tables"
+"ODBCAPTURE","TABLE","grbtst","^(GRBTST_IMAGE|GRBTST_[$]NAME)$","ODBCapture Test Tables"
 "ODBCTEST","GRANT","grbtjva","[Jj][Aa][Vv][Aa]","Any permission with JAVA in the name"
 "ODBCTEST","JAVA_SOURCE","grbtjva","^DirUtil$","Any Java Source called ""DirUtil"""
 "ODBCTEST","PACKAGE_BODY","grbtjva","^DIR_UTIL$","Any Package Body called ""DIRUTIL"""

@@ -36,6 +36,7 @@ set escape ""
 
 @dbi.sql "ODBCAPTURE/ROLE_CONF.cldr" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
 @dbi.sql "ODBCAPTURE/SCHEMA_CONF.cldr" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
+@dbi.sql "ODBCAPTURE/USER_DEFINED_TYPE_CONF.cldr" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
 
 ----------------------------------------
 -- PACKAGE BODY Install
