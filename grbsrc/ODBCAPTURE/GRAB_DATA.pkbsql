@@ -829,6 +829,7 @@ begin
              ,replace(replace(table_name,'$','_'),'%','_') || '.' || file_ext2  CTL_FILE
              ,replace(replace(table_name,'$','_'),'%','_') || '.' || file_ext3  DAT_FILE
              ,replace(replace(table_name,'$','_'),'%','_') || '.log'            LOG_FILE
+             ,object_table_type
              ,before_select_sql
              ,columns_removed
              ,where_clause
@@ -851,15 +852,21 @@ begin
       end if;
       --
       query_txt := query_txt || 'select ';
-      for cols in (select dc.column_name from dba_tab_columns  dc
-                    where dc.owner      = GRAB_SCRIPTS.g_schema_name
-                     and  dc.table_name = tabs.table_name
-                     and (                                   tabs.columns_removed is null
-                          OR NOT regexp_like(dc.column_name, tabs.columns_removed)    )
-                    order by dc.column_id)
-      loop
-         query_txt := query_txt || '"' || cols.column_name || '",';
-      end loop;
+      if tabs.object_table_type is NOT NULL
+      then
+         -- This only works for 1 defined type in the table (Issue Z0024.md)
+         query_txt := query_txt || 'OBJECT_VALUE,';
+      else
+         for cols in (select dc.column_name from dba_tab_columns  dc
+                       where dc.owner      = GRAB_SCRIPTS.g_schema_name
+                        and  dc.table_name = tabs.table_name
+                        and (                                   tabs.columns_removed is null
+                             OR NOT regexp_like(dc.column_name, tabs.columns_removed)    )
+                       order by dc.column_id)
+         loop
+            query_txt := query_txt || '"' || cols.column_name || '",';
+         end loop;
+      end if;
       query_txt := substr(query_txt, 1, length(query_txt)-1);
       query_txt := query_txt || ' from "' || GRAB_SCRIPTS.g_schema_name || '"' ||
                                      '."' || tabs.table_name            || '"' ;

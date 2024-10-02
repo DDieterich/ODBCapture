@@ -18,7 +18,7 @@ create view "ODBCAPTURE"."OBJ_INSTALL_DATA_LOAD_VIEW"
 
 --DBMS_METADATA:ODBCAPTURE.OBJ_INSTALL_DATA_LOAD_VIEW
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_INSTALL_DATA_LOAD_VIEW" ("BUILD_TYPE", "BUILD_TIMING", "TABLE_BUILD_TYPE", "TABLE_BUILD_TIMING", "TABLE_OWNER", "TABLE_NAME", "TABLE_TYPE", "BEFORE_SELECT_SQL", "COLUMNS_REMOVED", "WHERE_CLAUSE", "ORDER_BY_COLUMNS", "AFTER_ORDER_BY_SQL", "NOTES", "ELEMENT_NAME", "FILE_EXT1", "FILE_EXT2", "FILE_EXT3") AS 
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "ODBCAPTURE"."OBJ_INSTALL_DATA_LOAD_VIEW" ("BUILD_TYPE", "BUILD_TIMING", "TABLE_BUILD_TYPE", "TABLE_BUILD_TIMING", "TABLE_OWNER", "TABLE_NAME", "TABLE_TYPE", "OBJECT_TABLE_TYPE", "BEFORE_SELECT_SQL", "COLUMNS_REMOVED", "WHERE_CLAUSE", "ORDER_BY_COLUMNS", "AFTER_ORDER_BY_SQL", "NOTES", "ELEMENT_NAME", "FILE_EXT1", "FILE_EXT2", "FILE_EXT3") AS 
   select dlc.build_type
       ,t.build_timing
       ,tab.build_type                 TABLE_BUILD_TYPE
@@ -26,6 +26,7 @@ create view "ODBCAPTURE"."OBJ_INSTALL_DATA_LOAD_VIEW"
       ,tab.object_owner               TABLE_OWNER
       ,tab.object_name                TABLE_NAME
       ,tab.object_type                TABLE_TYPE
+      ,ot.table_type                  OBJECT_TABLE_TYPE
       ,dlc.before_select_sql
       ,dlc.columns_removed
       ,dlc.where_clause
@@ -45,7 +46,10 @@ create view "ODBCAPTURE"."OBJ_INSTALL_DATA_LOAD_VIEW"
        join build_type_timing  t
             -- Ensure the Table is installed before this Data Load
             on  t.from_build_type = dlc.build_type
-            and t.to_build_type   = tab.build_type;
+            and t.to_build_type   = tab.build_type
+  left join dba_object_tables  ot
+            on  ot.owner      = tab.object_owner
+            and ot.table_name = tab.object_name;
 
 --  Comments
 
