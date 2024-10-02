@@ -69,6 +69,17 @@ select sco.build_type            OBJECT_OWNER_BUILD_TYPE
             and sct.oracle_provided = 'N'   -- Exclude Oracle Provided Synonym Owner
  where sco.build_type = 'pub'     -- Public Synonyms
 UNION ALL
+select sc.build_type             OBJECT_OWNER_BUILD_TYPE
+      ,xsd.owner                 OBJECT_OWNER
+      ,xsd.int_objname           OBJECT_NAME
+      ,'XML SCHEMA'              OBJECT_TYPE
+      ,NULL                      TABLE_FLAG
+      ,'BASE'                    SELTYPE
+ from  schema_conf  sc
+       join dba_xml_schemas  xsd
+            on  xsd.owner = sc.username
+ where sc.oracle_provided = 'N'  -- Exclude Oracle Provided Synonym Owner
+UNION ALL
 select sco.build_type            OBJECT_OWNER_BUILD_TYPE
       ,priv.owner                OBJECT_OWNER
       ,priv.table_name           OBJECT_NAME

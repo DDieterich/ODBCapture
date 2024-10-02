@@ -3163,6 +3163,55 @@ begin
    end loop;
 end grb_views;
 
+------------------------------------------------------------
+-- Create Table Scripts
+procedure grb_xmlschema
+is
+   PELMNT     varchar2(100) := '';
+   ELMNT      varchar2(100) := 'XML_SCHEMA';
+   fh         fh2.sf_ptr_type;  -- object script file handle
+begin
+   for buf1 in (select xsd.schema_url
+                      ,translate(regexp_replace(xsd.schema_url,'^.*[:][/][/]','')
+                                ,'$%:/','____') || '.' || obj.file_ext1       FILE_NAME
+                      ,obj.build_timing
+                 from  obj_install_object_tab  obj
+                       join dba_xml_schemas  xsd
+                            on  xsd.owner       = g_schema_name
+                            and xsd.int_objname = obj.object_name
+                 where obj.build_type    = g_build_type
+                  and  obj.object_owner  = g_schema_name
+                  and  obj.element_name  = ELMNT
+                 order by xsd.schema_url )
+   loop
+      fh := fh2.script_open(in_filename     => buf1.file_name
+                           ,in_elmnt        => ELMNT
+                           ,in_max_linesize => common_util.MAXIMUM_SQL_LENGTH);
+      fh2.script_put_line(fh, '');
+      fh2.script_put_line(fh, '--');
+      fh2.script_put_line(fh, '--  Create ' || g_schema_name || '.' || buf1.schema_url || ' XML Schema');
+      fh2.script_put_line(fh, '--');
+      if buf1.build_timing != 'CURRENT'
+      then
+         fh2.script_put_line(fh, '');
+         fh2.script_put_line(fh, '-- NOTE: This is a "' || buf1.build_timing || '" XML Schema');
+      end if;
+      fh2.script_put_line(fh, '');
+      fh2.script_put_line(fh, 'set define off');
+      fh2.script_put_line(fh, '');
+      fh2.script_put_line(fh, '--DBMS_METADATA:' || g_schema_name   ||
+                                             '.' || buf1.schema_url );
+      fh2.put_big_line(fh, g_schema_name || '.' || buf1.schema_url || ' Table'
+                      ,dbms_metadata.get_ddl(object_type => 'XMLSCHEMA'
+                                            ,name        => buf1.schema_url
+                                            ,schema      => g_schema_name)
+                      ,common_util.MAXIMUM_SQL_LENGTH);
+      fh2.script_put_line(fh, '');
+      fh2.script_put_line(fh, 'set define on');
+      fh2.script_close(fh);
+   end loop;
+end grb_xmlschema;
+
 
 ------------------------------------------------------------
 ---   Setup and Main Control  ---
@@ -3315,6 +3364,7 @@ is
       grb_triggers('TABLE_TRIGGER');
       grb_triggers('VIEW_TRIGGER');
       grb_views;
+      grb_xmlschema;
    end all_schema_scripts;
 begin
    for sch in (select obj.object_owner

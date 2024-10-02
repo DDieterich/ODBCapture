@@ -523,7 +523,6 @@ begin
 -- Command Line Parameters:
 --   1 - Password Key
 --
-
 }';
    for sch in (select sl.username
                      ,trim(to_char(ora_hash(username,99),'09'))   HASH_VALUE
@@ -532,8 +531,8 @@ begin
                  and  sl.oracle_provided = 'N'
                 order by sl.username)
    loop
-      ret_txt := ret_txt || 'alter user "' || sch.username   ||
-                       '" identified by "' || sch.hash_value || '&1.";' ;
+      ret_txt := ret_txt || CHR(10) || 'alter user "' || sch.username   ||
+                                  '" identified by "' || sch.hash_value || '&1.";' ;
    end loop;
    return ret_txt;
 end set_user_authentication_sql;
