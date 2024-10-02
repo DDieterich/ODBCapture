@@ -33,19 +33,23 @@ grbtst                     | Unit Testing Main Scripts
 
 ### Main ODBCapture Installation:
 
-1. Move to Main Scripts Folder: `cd grbsrc`
-2. Connect to the Database as SYS: `sqlplus / as sysdba`
-3. Run and Main Installation Script: `@install.sql "SYSTEM/PASSWORD"`
-4. Set the ODBCAPTURE user password: `alter user "ODBCAPTURE" identified by "PASSWORD";`
-5. Run the installation reports: `@report_status.sql "SYSTEM/PASSWORD"`
-7. Review results from installation reports
-6. Exit from SQL*Plus: `exit`
+1. Download the Instllation ZIP (or Tarball) and extract the files.
+2. Create an Installation Folder
+3. Copy Common Script Folder `grb_linked_install_scripts` to the new Installation Folder
+4. Copy Main Script Folder `grbsrc` to the new Installation Folder
+5. Move to Main Scripts Folder in the new Installation Folder: `cd grbsrc`
+6. Connect to the Database as SYS: `sqlplus SYS/PASSWORD@TNS_ALIAS as sysdba`
+7. Run and Main Installation Script: `@install.sql "SYSTEM/PASSWORD@TNS_ALIAS"`
+8. Set the ODBCAPTURE user password: `alter user "ODBCAPTURE" identified by "PASSWORD";`
+9. Run the installation reports: `@report_status.sql "SYSTEM/PASSWORD"`
+10. Exit from SQL*Plus: `exit`
+11. Review results from installation reports
 
 ### Optional Installations:
 
-* Install from the `grbjava` folder to capture Java Source Code from the Database
-* Install from the `grbras` folder to capture Real Application Security Source Code
-* Install from the `grbsdo` folder to capture Spatial Data Source Code
+* Copy and Repeat Install from the `grbjava` folder to capture Java Source Code from the Database
+* Copy and Repeat Install from the `grbras` folder to capture Real Application Security Source Code
+* Copy and Repeat Install from the `grbsdo` folder to capture Spatial Data Source Code
 
 ### Removal
 
