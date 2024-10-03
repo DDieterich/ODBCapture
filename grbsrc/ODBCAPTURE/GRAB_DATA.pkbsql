@@ -119,12 +119,16 @@ begin
    for i in 1 .. length(in_nclob)
    loop
       acode := ascii(substr(in_nclob,i,1));
-      if acode > 127
+      case
+      when acode = 92  -- "\"
+      then
+         oclob := oclob || '\\';
+      when acode > 127
       then
          oclob := oclob || '\' || to_char(acode,'FM000X');
       else
          oclob := oclob || chr(acode);
-      end if;
+      end case;
    end loop;
    return oclob;
 end;
@@ -214,7 +218,7 @@ begin
    fh2.script_put_line(fh_ctl, 'LOAD DATA');
    fh2.script_put_line(fh_ctl, 'APPEND INTO TABLE "' || GRAB_SCRIPTS.g_schema_name ||
                                                '"."' || tabs_table_name            || '"');
-   fh2.script_put_line(fh_ctl, 'FIELDS CSV WITH EMBEDDED');
+   fh2.script_put_line(fh_ctl, 'FIELDS TERMINATED BY '','' OPTIONALLY ENCLOSED BY ''"''');
    fh2.script_put_line(fh_ctl, 'TRAILING NULLCOLS');
    --
    -----------------------

@@ -53,8 +53,9 @@ as
 --  -) procedure grb_tables              - Create Table
 --  -) procedure grb_triggers            - Create Table/View Trigger
 --  -) procedure grb_users               - Create User and 'SYS' Object Grants
---  -) procedure grb_user_triggers     - Create Schema Trigger
+--  -) procedure grb_user_triggers       - Create Schema Trigger
 --  -) procedure grb_views               - Create View
+--  -) procedure grb_xmlschema           - Create XML Schema Scripts
 -- Setup and Main Control
 --  -) procedure initialize
 --  -) procedure set_schema_name
@@ -3167,7 +3168,7 @@ begin
 end grb_views;
 
 ------------------------------------------------------------
--- Create Table Scripts
+-- Create XML Schema Scripts
 procedure grb_xmlschema
 is
    PELMNT     varchar2(100) := '';
@@ -3209,6 +3210,7 @@ begin
                                             ,name        => buf1.schema_url
                                             ,schema      => g_schema_name)
                       ,common_util.MAXIMUM_SQL_LENGTH);
+      fh2.script_put_line(fh, '/');
       fh2.script_put_line(fh, '');
       fh2.script_put_line(fh, 'set define on');
       fh2.script_close(fh);
