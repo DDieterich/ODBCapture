@@ -2682,15 +2682,18 @@ is
    ELMNT      varchar2(100) := 'TABLE';
    fh         fh2.sf_ptr_type;  -- object script file handle
 begin
-   for buf1 in (select obj.object_name                      TABLE_NAME
+   for buf1 in (with xmltab as (select table_name
+                                 from  dba_xml_tables
+                                 where owner = g_schema_name
+                                 group by table_name)
+                select obj.object_name                      TABLE_NAME
                       ,replace(replace(obj.object_name,'$','_'),'%','_') || '.' || obj.file_ext1
                                                             FILE_NAME
                       ,obj.build_timing
                       ,xt.table_name                        XML_TABLE_NAME
                  from  obj_install_object_tab  obj
-                  left join dba_xml_tables  xt
-                            on  xt.owner      = obj.object_owner
-                            and xt.table_name = obj.object_name
+                  left join xmltab  xt
+                            on  xt.table_name = obj.object_name
                  where obj.build_type    = g_build_type
                   and  obj.object_owner  = g_schema_name
                   and  obj.element_name   = ELMNT
