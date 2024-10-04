@@ -205,6 +205,7 @@ is
    fh_ctl      fh2.sf_ptr_type;  -- Control file handle
    lc          varchar2(10);     -- Lead Characters
    lc2         varchar2(10);     -- Secondary Lead Characters
+   l_col_len   pls_integer;
    l_pname     varchar2(256);
    sql_txt     varchar2(32767);
 begin
@@ -218,7 +219,7 @@ begin
    fh2.script_put_line(fh_ctl, 'LOAD DATA');
    fh2.script_put_line(fh_ctl, 'APPEND INTO TABLE "' || GRAB_SCRIPTS.g_schema_name ||
                                                '"."' || tabs_table_name            || '"');
-   fh2.script_put_line(fh_ctl, 'FIELDS TERMINATED BY '','' OPTIONALLY ENCLOSED BY ''"''');
+   fh2.script_put_line(fh_ctl, 'FIELDS CSV WITH EMBEDDED');
    fh2.script_put_line(fh_ctl, 'TRAILING NULLCOLS');
    --
    -----------------------
@@ -244,9 +245,10 @@ begin
                                   ,column_size  => g_desc_tab(col_num).col_max_len);
          when 2 -- NVARCHAR2 (Avoids ORA-01406: fetched column value was truncated)
          then
-            fh2.script_put_line(fh_ctl, lc || common_util.old_rpad(g_desc_tab(col_num).col_name,30)  ||
-                                  ' CHAR(' ||                      g_desc_tab(col_num).col_max_len*5 ||
-                             ') "UNISTR(:' ||                      g_desc_tab(col_num).col_name      || ')"');
+            l_col_len := g_desc_tab(col_num).col_max_len * 5;
+            fh2.script_put_line(fh_ctl, lc || common_util.old_rpad(g_desc_tab(col_num).col_name,30) ||
+                                  ' CHAR(' ||                                        l_col_len      ||
+                     ') "UNISTR(to_char(:' ||                      g_desc_tab(col_num).col_name     || '))"');
             dbms_sql.define_column(c            => g_dyn_curs
                                   ,position     => col_num
                                   ,column       => g_nvc2_buff
@@ -268,9 +270,10 @@ begin
                                        ,column_size  => g_desc_tab(col_num).col_max_len);
          when 2 -- NCHAR (Avoids ORA-01406: fetched column value was truncated)
          then
-            fh2.script_put_line(fh_ctl, lc || common_util.old_rpad(g_desc_tab(col_num).col_name,30)  ||
-                                  ' CHAR(' ||                      g_desc_tab(col_num).col_max_len*5 ||
-                             ') "UNISTR(:' ||                      g_desc_tab(col_num).col_name      || ')"');
+            l_col_len := g_desc_tab(col_num).col_max_len * 5;
+            fh2.script_put_line(fh_ctl, lc || common_util.old_rpad(g_desc_tab(col_num).col_name,30) ||
+                                  ' CHAR(' ||                                        l_col_len      ||
+                     ') "UNISTR(to_char(:' ||                      g_desc_tab(col_num).col_name     || '))"');
             dbms_sql.define_column_char(c            => g_dyn_curs
                                        ,position     => col_num
                                        ,column       => g_nchar_buff
@@ -380,7 +383,7 @@ $END
          when 2 -- NCLOB (Avoids ORA-01406: fetched column value was truncated)
          then
             fh2.script_put_line(fh_ctl, lc || common_util.old_rpad(g_desc_tab(col_num).col_name,30) ||
-                ' CHAR(5242880) "UNISTR(:' ||                      g_desc_tab(col_num).col_name     || ')"');
+        ' CHAR(5242880) "UNISTR(to_char(:' ||                      g_desc_tab(col_num).col_name     || '))"');
             dbms_sql.define_column(c         => g_dyn_curs
                                   ,position  => col_num
                                   ,column    => g_nclob_buff);
