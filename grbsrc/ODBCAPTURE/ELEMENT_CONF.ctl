@@ -11,4 +11,5 @@ TRAILING NULLCOLS
    ,OBJECT_TYPE                    CHAR(30)
    ,NAME_CHECK_OBJECT_TYPE         CHAR(30)
    ,NOTES                          CHAR(1024)
+   ,PRE_COMPILE                    CHAR(1)
    )

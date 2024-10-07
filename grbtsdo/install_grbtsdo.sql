@@ -37,7 +37,7 @@ set escape ""
 @dbi.sql "ODBCTEST/SDO_COLA_MARKETS.cldr" "ODBCTEST" "&INSTALL_SYSTEM_CONNECT."
 
 ----------------------------------------
--- INDEX Install
+-- TABLE_INDEX Install
 
 @dbi.sql "ODBCTEST/SDO_COLA_MARKETS.tidx" "ODBCTEST" "&INSTALL_SYSTEM_CONNECT."
 

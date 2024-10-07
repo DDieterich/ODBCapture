@@ -225,8 +225,9 @@ begin
    -----------------------
    -- Main Control File --
    -----------------------
-   -- Add Column Spec and Bind Variable to Dynamic Cursor
    bincol_aa.DELETE;
+   postload_aa.DELETE;
+   -- Add Column Spec and Bind Variable to Dynamic Cursor
    lc2 := '   ,';  -- Secondary Lead Characters
    lc  := '   (';  -- Initial Lead Characters
    for col_num in 1 .. g_num_cols
@@ -382,8 +383,9 @@ $END
                                   ,column    => g_clob_buff);
          when 2 -- NCLOB (Avoids ORA-01406: fetched column value was truncated)
          then
+            postload_aa(g_desc_tab(col_num).col_name) := 'GRAB_DATA.SQL_UNISTR_DECODE';
             fh2.script_put_line(fh_ctl, lc || common_util.old_rpad(g_desc_tab(col_num).col_name,30) ||
-        ' CHAR(5242880) "UNISTR(to_char(:' ||                      g_desc_tab(col_num).col_name     || '))"');
+                          ' CHAR(5242880)' );
             dbms_sql.define_column(c         => g_dyn_curs
                                   ,position  => col_num
                                   ,column    => g_nclob_buff);
@@ -828,6 +830,7 @@ is
    colname     varchar2(1024);
    query_txt   varchar2(32767);
    bcol_txt    varchar2(32767);
+   unis_txt    varchar2(32767);
 begin
    --
    for tabs in
@@ -1087,6 +1090,34 @@ begin
          fh2.script_put_line(fh_sql, 'commit;');
          fh2.script_put_line(fh_sql, '');
       end if;
+      -------------------
+      -- Post Load SQL --
+      -------------------
+      if postload_aa.COUNT > 0
+      then
+         fh2.script_put_line(fh_sql, 'begin');
+         colname := postload_aa.FIRST;
+         loop
+            unis_txt := 'begin ' || postload_aa(colname) || '(:1, ''' || tabs.table_name || ''', ''' || colname || '''); end;';
+            begin
+               execute immediate unis_txt using in out fh_sql;
+            exception when others then
+               raise_application_error(-20000, 'Execute Immediate ERROR for ' || GRAB_SCRIPTS.g_schema_name ||
+                                                                          '.' || tabs.table_name            ||
+                                                                          '.' || colname                    || LF ||
+                                                UNIS_TXT || LF ||
+                                                SQLERRM  || LF ||
+                                                dbms_utility.format_error_backtrace );
+            end;
+            exit when colname = postload_aa.LAST;
+            colname := postload_aa.NEXT(colname);
+         end loop;
+         fh2.script_put_line(fh_sql, 'end;');
+         fh2.script_put_line(fh_sql, '/');
+         fh2.script_put_line(fh_sql, '');
+         fh2.script_put_line(fh_sql, 'commit;');
+         fh2.script_put_line(fh_sql, '');
+      end if;
       ----------------------------
       -- Finish SQL Script File --
       ----------------------------
@@ -1119,6 +1150,27 @@ begin
    fh2.script_put_line(in_fh, '       where rowid = buff.rid;');
    fh2.script_put_line(in_fh, '   end loop;');
 end sql_decode_blob;
+
+
+------------------------------------------------------------
+-- Create SQL to Decode UNISTR
+procedure sql_unistr_decode
+      (in_fh       in out nocopy fh2.sf_ptr_type
+      ,in_tabname  in            varchar2
+      ,in_colname  in            varchar2)
+is
+begin
+   fh2.script_put_line(in_fh, '   -- Decode UNISTR Data for column ' || in_colname);
+   fh2.script_put_line(in_fh, '   for buff in (select ROWID RID, "' || in_colname || '"');
+   fh2.script_put_line(in_fh, '                 from  "' || GRAB_SCRIPTS.g_schema_name || '"."' || in_tabname || '"');
+   fh2.script_put_line(in_fh, '                 for update of "' || in_colname || '")');
+   fh2.script_put_line(in_fh, '   loop');
+   fh2.script_put_line(in_fh, '      -- This overwrites the UNISTR Encoded String with the original UNICODE data');
+   fh2.script_put_line(in_fh, '      update "' || GRAB_SCRIPTS.g_schema_name || '"."' || in_tabname || '"');
+   fh2.script_put_line(in_fh, '        set  "' || in_colname || '" = UNISTR(to_char("' || in_colname || '"))');
+   fh2.script_put_line(in_fh, '       where rowid = buff.rid;');
+   fh2.script_put_line(in_fh, '   end loop;');
+end sql_unistr_decode;
 
 
 end grab_data;

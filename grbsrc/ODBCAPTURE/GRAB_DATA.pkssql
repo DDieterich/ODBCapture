@@ -29,15 +29,27 @@ as
    --  Delimiters for Nested Types
    TYPE grb_cldr_delim_nt_type is table of varchar2(1);
    grb_cldr_delim_nt   grb_cldr_delim_nt_type :=
-                       grb_cldr_delim_nt_type (CHR(11), CHR(12), CHR(28),
-                                               CHR(29), CHR(30), CHR(31));
+                       grb_cldr_delim_nt_type (CHR(11)    -- ASCII Vertical Tab
+                                              ,CHR(12)    -- ASCII Form Feed
+                                              ,CHR(28)    -- ASCII File Separator
+                                              ,CHR(29)    -- ASCII Group Separator
+                                              ,CHR(30)    -- ASCII Record Separator
+                                              ,CHR(31)    -- ASCII Unit Separator
+                                              );
    grb_cldr_array_lvl  pls_integer;
+   grb_cldr_obj_delim  varchar2(1) := CHR(23);   -- ASCII End of Transmission Block
 
    -- Binary Column Array
    TYPE bincol_aa_type IS
-      table of varchar2(1024)    -- Binary Decode Procedure Name
+      table of varchar2(1024)    -- Binary Decode Procedure to Create Script Statements
       index by varchar2(1024);   -- Column Name
    bincol_aa  bincol_aa_type;
+
+   -- PostLoad Column Array
+   TYPE postload_aa_type IS
+      table of varchar2(1024)    -- Post-Load Procedure to Create Script Statements
+      index by varchar2(1024);   -- Column Name
+   postload_aa  postload_aa_type;
 
    -- Convert National Character Set to UNISTR encoding
    function unistr_encode
@@ -49,6 +61,12 @@ as
 
    -- Create SQL to Decode BLOBs and RAWs
    procedure sql_decode_blob
+      (in_fh       in out nocopy fh2.sf_ptr_type
+      ,in_tabname  in            varchar2
+      ,in_colname  in            varchar2);
+
+   -- Create SQL to Decode UNISTR
+   procedure sql_unistr_decode
       (in_fh       in out nocopy fh2.sf_ptr_type
       ,in_tabname  in            varchar2
       ,in_colname  in            varchar2);

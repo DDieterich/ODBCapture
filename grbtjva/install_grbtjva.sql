@@ -27,17 +27,17 @@ set escape ""
 @dbi.sql "./installation_prepare.sql" "" "&INSTALL_SYSTEM_CONNECT."
 
 ----------------------------------------
--- PACKAGE Install
+-- PACKAGE_SPEC Install
 
 @dbi.sql "ODBCTEST/DIR_UTIL.pkssql" "ODBCTEST" "&INSTALL_SYSTEM_CONNECT."
 
 ----------------------------------------
--- JAVA SOURCE Install
+-- JAVA_SOURCE Install
 
 @dbi.sql "ODBCTEST/DirUtil.pjv" "ODBCTEST" "&INSTALL_SYSTEM_CONNECT."
 
 ----------------------------------------
--- PACKAGE BODY Install
+-- PACKAGE_BODY Install
 
 @dbi.sql "ODBCTEST/DIR_UTIL.pkbsql" "ODBCTEST" "&INSTALL_SYSTEM_CONNECT."
 

@@ -27,9 +27,23 @@ set escape ""
 @dbi.sql "./installation_prepare.sql" "" "&INSTALL_SYSTEM_CONNECT."
 
 ----------------------------------------
--- PACKAGE Install
+-- PACKAGE_SPEC Install
 
 @dbi.sql "ODBCAPTURE/GRAB_JAVA.pkssql" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
+
+----------------------------------------
+prompt Compile All started
+begin
+   DBMS_UTILITY.compile_schema(schema      => 'ODBCAPTURE'
+                              ,compile_all => FALSE);
+end;
+/
+prompt Compile All is done.
+----------------------------------------
+-- VIEW Install
+
+@dbi.sql "ODBCAPTURE/PRIV_OBJ_JAVA_FG_VIEW.vw" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
+@dbi.sql "ODBCAPTURE/PRIV_SYSOBJ_JAVA_FG_VIEW.vw" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
 
 ----------------------------------------
 -- DATA_LOAD Install
@@ -38,13 +52,7 @@ set escape ""
 @dbi.sql "ODBCAPTURE/SCHEMA_CONF.cldr" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
 
 ----------------------------------------
--- VIEW Install
-
-@dbi.sql "ODBCAPTURE/PRIV_OBJ_JAVA_FG_VIEW.vw" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
-@dbi.sql "ODBCAPTURE/PRIV_SYSOBJ_JAVA_FG_VIEW.vw" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
-
-----------------------------------------
--- PACKAGE BODY Install
+-- PACKAGE_BODY Install
 
 @dbi.sql "ODBCAPTURE/GRAB_JAVA.pkbsql" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
 

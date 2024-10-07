@@ -2298,16 +2298,34 @@ begin
    fh2.script_put_line(fh, '@dbi.sql "./installation_prepare.sql" "" "&INSTALL_SYSTEM_CONNECT."');
    fh2.script_put_line(fh, '');
    --
-   for buff in (select nvl(object_type, element_name)    OBJECT_TYPE
-                      ,element_seq, file_ext2, file_ext3
+   for buff in (select element_name, element_seq, pre_compile, file_ext2, file_ext3
                  from  element_conf
                  where element_seq > 0
                  order by element_seq)
    loop
       if fh2.sf_aa(g_build_type).EXISTS(buff.element_seq)
       then
+         if buff.pre_compile = 'Y'
+         then
+            fh2.script_put_line(fh, '----------------------------------------');
+            fh2.script_put_line(fh, 'prompt Compile All started');
+            for sch in (select obj.object_owner
+                         from  schema_objects_tab  obj
+                         where obj.build_type = g_build_type
+                          and  obj.object_owner != 'PUBLIC'
+                         group by obj.object_owner
+                         order by obj.object_owner)
+            loop
+               fh2.script_put_line(fh, 'begin');
+               fh2.script_put_line(fh, '   DBMS_UTILITY.compile_schema(schema      => ''' || sch.object_owner || '''');
+               fh2.script_put_line(fh, '                              ,compile_all => FALSE);');
+               fh2.script_put_line(fh, 'end;');
+               fh2.script_put_line(fh, '/');
+            end loop;
+            fh2.script_put_line(fh, 'prompt Compile All is done.');
+         end if;
          fh2.script_put_line(fh, '----------------------------------------');
-         fh2.script_put_line(fh, '-- ' || buff.object_type || ' Install');
+         fh2.script_put_line(fh, '-- ' || buff.element_name || ' Install');
          fh2.script_put_line(fh, '');
          file_id := fh2.sf_aa(g_build_type)(buff.element_seq).FIRST;
          loop

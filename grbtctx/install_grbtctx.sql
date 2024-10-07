@@ -37,7 +37,7 @@ set escape ""
 @dbi.sql "ODBCTEST/CUST_CTX_TEST.cldr" "ODBCTEST" "&INSTALL_SYSTEM_CONNECT."
 
 ----------------------------------------
--- INDEX Install
+-- TABLE_INDEX Install
 
 @dbi.sql "ODBCTEST/CUST_CTX_TEST.tidx" "ODBCTEST" "&INSTALL_SYSTEM_CONNECT."
 

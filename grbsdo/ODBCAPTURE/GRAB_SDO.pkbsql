@@ -10,6 +10,9 @@ set define off
 
   CREATE OR REPLACE EDITIONABLE PACKAGE BODY "ODBCAPTURE"."GRAB_SDO" as
 
+-- Termination Character for Object Fields
+OTC               varchar2(1)   := grab_data.grb_cldr_obj_delim;
+TERMINATED_BY_OTC varchar2(100) := 'TERMINATED BY ''' || OTC || '''';
 
 ------------------------------------------------------------
 -- Report the Control File Specification of the SDO POINT
@@ -18,10 +21,10 @@ function ctl_sdo_point_type
    return varchar2
 as
 begin
-    return 'COLUMN OBJECT TREAT AS MDSYS.SDO_POINT_TYPE' || CHR(10) || in_spaces ||
-           '   (X   FLOAT EXTERNAL TERMINATED BY '';'''  || CHR(10) || in_spaces ||
-           '   ,Y   FLOAT EXTERNAL TERMINATED BY '';'''  || CHR(10) || in_spaces ||
-           '   ,Z   FLOAT EXTERNAL TERMINATED BY '';'''  || CHR(10) || in_spaces ||
+    return 'COLUMN OBJECT TREAT AS MDSYS.SDO_POINT_TYPE'  || CHR(10) || in_spaces ||
+           '   (X   FLOAT EXTERNAL ' || TERMINATED_BY_OTC || CHR(10) || in_spaces ||
+           '   ,Y   FLOAT EXTERNAL ' || TERMINATED_BY_OTC || CHR(10) || in_spaces ||
+           '   ,Z   FLOAT EXTERNAL ' || TERMINATED_BY_OTC || CHR(10) || in_spaces ||
            '   )';
 end ctl_sdo_point_type;
 
@@ -31,9 +34,9 @@ function dat_sdo_point_type
    return varchar2
 as
 begin
-    return to_char(in_pt.x) || ';' ||
-           to_char(in_pt.y) || ';' ||
-           to_char(in_pt.z) || ';' ;
+    return to_char(in_pt.x) || OTC ||
+           to_char(in_pt.y) || OTC ||
+           to_char(in_pt.z) || OTC ;
 end dat_sdo_point_type;
 
 
@@ -50,7 +53,7 @@ begin
    delim                        := grab_data.grb_cldr_delim_nt(grab_data.grb_cldr_array_lvl);
    grab_data.grb_cldr_array_lvl := grab_data.grb_cldr_array_lvl - 1;
    return 'VARRAY TERMINATED BY ''' || delim || '''' || CHR(10) || in_spaces ||
-          '   (' || in_cname || '  FLOAT EXTERNAL TERMINATED BY '';'')';
+          '   (' || in_cname || '  FLOAT EXTERNAL ' || TERMINATED_BY_OTC || ')';
 end ctl_sdo_elem_info_array;
 
 -- Report the Data Contents of the SDO_ELEM_INFO_ARRAY
@@ -68,7 +71,7 @@ begin
       ret_txt := to_char(in_eia(1));
       for i in 2 .. in_eia.COUNT
       loop
-         ret_txt := ret_txt || ';' || to_char(in_eia(i));
+         ret_txt := ret_txt || OTC || to_char(in_eia(i));
       end loop;
    end if;
    grab_data.grb_cldr_array_lvl := grab_data.grb_cldr_array_lvl - 1;
@@ -89,7 +92,7 @@ begin
    delim                        := grab_data.grb_cldr_delim_nt(grab_data.grb_cldr_array_lvl);
    grab_data.grb_cldr_array_lvl := grab_data.grb_cldr_array_lvl - 1;
    return 'VARRAY TERMINATED BY ''' || delim || '''' || CHR(10) || in_spaces ||
-          '   (' || in_cname || '  FLOAT EXTERNAL TERMINATED BY '';'')';
+          '   (' || in_cname || '  FLOAT EXTERNAL ' || TERMINATED_BY_OTC || ')';
 end ctl_sdo_ordinate_array;
 
 -- Report the Data Contents of the SDO_ORDINATE_ARRAY
@@ -107,7 +110,7 @@ begin
       ret_txt := to_char(in_oa(1));
       for i in 2 .. in_oa.COUNT
       loop
-         ret_txt := ret_txt || ';' || to_char(in_oa(i));
+         ret_txt := ret_txt || OTC || to_char(in_oa(i));
       end loop;
    end if;
    grab_data.grb_cldr_array_lvl := grab_data.grb_cldr_array_lvl - 1;
@@ -123,8 +126,8 @@ function ctl_sdo_geometry
 as
 begin
    return 'COLUMN OBJECT TREAT AS MDSYS.SDO_GEOMETRY'                                       || CHR(10) || in_spaces ||
-          '   (SDO_GTYPE     FLOAT EXTERNAL TERMINATED BY '';'''                            || CHR(10) || in_spaces ||
-          '   ,SDO_SRID      FLOAT EXTERNAL TERMINATED BY '';'''                            || CHR(10) || in_spaces ||
+          '   (SDO_GTYPE     FLOAT EXTERNAL ' || TERMINATED_BY_OTC                          || CHR(10) || in_spaces ||
+          '   ,SDO_SRID      FLOAT EXTERNAL ' || TERMINATED_BY_OTC                          || CHR(10) || in_spaces ||
           '   ,SDO_POINT     ' || ctl_sdo_point_type(in_spaces||'   ')                      || CHR(10) || in_spaces ||
           '   ,SDO_ELEM_INFO ' || ctl_sdo_elem_info_array('SDO_ELEM_INFO',in_spaces||'   ') || CHR(10) || in_spaces ||
           '   ,SDO_ORDINATES ' || ctl_sdo_ordinate_array('SDO_ORDINATES',in_spaces||'   ')  || CHR(10) || in_spaces ||
@@ -137,8 +140,8 @@ function dat_sdo_geometry
    return varchar2
 as
 begin
-   return to_char(in_geo.sdo_gtype)                     || ';' ||
-          to_char(in_geo.sdo_srid)                      || ';' ||
+   return to_char(in_geo.sdo_gtype)                     || OTC ||
+          to_char(in_geo.sdo_srid)                      || OTC ||
           dat_sdo_point_type(in_geo.sdo_point)          ||
           dat_sdo_elem_info_array(in_geo.sdo_elem_info) ||
           dat_sdo_ordinate_array(in_geo.sdo_ordinates)  ;
