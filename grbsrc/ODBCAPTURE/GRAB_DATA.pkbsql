@@ -19,6 +19,10 @@ LF          CONSTANT varchar2(4) := GRAB_SCRIPTS.LF;
 CRTN        CONSTANT varchar2(4) := GRAB_SCRIPTS.CRTN;
 
 ------------------------------------------------------------
+-- Private Variables
+grb_prev_user_type  varchar2(256);    -- Column Name from the Previous User Type
+
+------------------------------------------------------------
 --  SYS.DBMS_SQL Package Specification, Named Datatype CONSTANTS
 --
 --  User_Defined_Type is Data Type ID 109. Requires col_type_name
@@ -228,10 +232,19 @@ begin
    bincol_aa.DELETE;
    postload_aa.DELETE;
    -- Add Column Spec and Bind Variable to Dynamic Cursor
+   grb_prev_user_type := '';
+   grb_cldr_array_lvl := 0;
    lc2 := '   ,';  -- Secondary Lead Characters
    lc  := '   (';  -- Initial Lead Characters
    for col_num in 1 .. g_num_cols
    loop
+      if length(grb_prev_user_type) > 0
+      then
+         -- "grb_prev_user_type" should never be set on the first column
+         fh2.script_put_line(fh_ctl, lc || 'Z' || substr(grb_prev_user_type,1,127) ||
+                                           ' FILLER CHAR(1) -- Skip Trailing Comma');
+         grb_prev_user_type := '';
+      end if;
       case
       when g_desc_tab(col_num).col_type = DBMS_SQL.VARCHAR2_TYPE
       then
@@ -384,6 +397,7 @@ $END
          when 2 -- NCLOB (Avoids ORA-01406: fetched column value was truncated)
          then
             postload_aa(g_desc_tab(col_num).col_name) := 'GRAB_DATA.SQL_UNISTR_DECODE';
+            fh2.script_put_line(fh_ctl, '      -- NCLOB data must be decoded with UNISTR after loading');
             fh2.script_put_line(fh_ctl, lc || common_util.old_rpad(g_desc_tab(col_num).col_name,30) ||
                           ' CHAR(5242880)' );
             dbms_sql.define_column(c         => g_dyn_curs
@@ -423,6 +437,8 @@ $END
                raise_application_error(-20000, '*** DBMS_SQL.USER_DEFINED_TYPE "' || g_desc_tab(col_num).col_type_name ||
                                                '" not found in USER_DEFINED_TYPE_CONF table.');
             end;
+            -- Save the USER TYPE Column Name
+            grab_data.grb_prev_user_type := g_desc_tab(col_num).col_name;
             sql_txt := 'begin ' || l_pname || '.grb_cldr_define(:1, ' || col_num || ', ''' || lc || '''); end;';
             begin
                execute immediate sql_txt using in out fh_ctl;
@@ -502,6 +518,7 @@ begin
    loop
       --
       -- Add the data
+      grb_cldr_array_lvl := 0;
       lc2 := ',';  -- Secondary Lead Characters
       lc  := '';   -- Initial Lead Characters
       for col_num in 1 .. g_num_cols

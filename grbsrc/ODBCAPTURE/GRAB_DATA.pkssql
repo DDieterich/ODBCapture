@@ -36,7 +36,7 @@ as
                                               ,CHR(30)    -- ASCII Record Separator
                                               ,CHR(31)    -- ASCII Unit Separator
                                               );
-   grb_cldr_array_lvl  pls_integer;
+   grb_cldr_array_lvl  pls_integer;              -- Array Levels 0 - 5 (Effective as 1 - 6)
    grb_cldr_obj_delim  varchar2(1) := CHR(23);   -- ASCII End of Transmission Block
 
    -- Binary Column Array

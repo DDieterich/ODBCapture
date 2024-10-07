@@ -3302,7 +3302,6 @@ begin
    g_build_type   := null;
    g_schema_name    := null;
    -- Set Globals
-   GRAB_DATA.grb_cldr_array_lvl := 0;
    set_build_type;
    if fh2.sf_aa.EXISTS(g_build_type) then fh2.sf_aa(g_build_type).DELETE; end if;
    --  Checks and Settings
