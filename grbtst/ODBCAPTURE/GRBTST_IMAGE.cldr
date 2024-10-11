@@ -70,6 +70,7 @@ end;
 declare
    l_blob          blob;
    the_blob        blob;
+   cnt             pls_integer;
    procedure b64_decode
          (in_blob  in BLOB)
    is
@@ -122,11 +123,15 @@ declare
       end loop;
    end b64_decode;
 begin
+   dbms_output.put_line('Decode Binary Data');
+   dbms_output.put_line('------------------');
    dbms_lob.createtemporary(l_blob, true);
    dbms_lob.createtemporary(the_blob, true);
    -- Decode Binary Data for column IMAGE
+   cnt := 0;
    for buff in (select ROWID RID, "IMAGE"
                  from  "ODBCAPTURE"."GRBTST_IMAGE"
+                 where "IMAGE" is not null
                  for update of "IMAGE")
    loop
       b64_decode(buff."IMAGE");
@@ -134,7 +139,9 @@ begin
       update "ODBCAPTURE"."GRBTST_IMAGE"
         set  "IMAGE" = the_blob
        where rowid = buff.rid;
+      cnt := cnt + 1;
    end loop;
+   dbms_output.put_line(cnt || ' "IMAGE" updates.');
    dbms_lob.freetemporary(l_blob);
    dbms_lob.freetemporary(the_blob);
 end;

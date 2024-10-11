@@ -47,13 +47,15 @@ function ctl_sdo_elem_info_array
       ,in_spaces  in  varchar2 default '')
    return varchar2
 as
-   delim  varchar2(1);
+   delim     varchar2(1);
+   ret_txt   varchar2(32767);
 begin
    grab_data.grb_cldr_array_lvl := grab_data.grb_cldr_array_lvl + 1;
    delim                        := grab_data.grb_cldr_delim_nt(grab_data.grb_cldr_array_lvl);
+   ret_txt := 'VARRAY TERMINATED BY ''' || delim || '''' || CHR(10) || in_spaces ||
+              '   (' || in_cname || '  FLOAT EXTERNAL ' || TERMINATED_BY_OTC || ')';
    grab_data.grb_cldr_array_lvl := grab_data.grb_cldr_array_lvl - 1;
-   return 'VARRAY TERMINATED BY ''' || delim || '''' || CHR(10) || in_spaces ||
-          '   (' || in_cname || '  FLOAT EXTERNAL ' || TERMINATED_BY_OTC || ')';
+   return ret_txt;
 end ctl_sdo_elem_info_array;
 
 -- Report the Data Contents of the SDO_ELEM_INFO_ARRAY
@@ -86,13 +88,15 @@ function ctl_sdo_ordinate_array
       ,in_spaces  in  varchar2 default '')
    return varchar2
 as
-   delim  varchar2(1);
+   delim     varchar2(1);
+   ret_txt   varchar2(32767);
 begin
    grab_data.grb_cldr_array_lvl := grab_data.grb_cldr_array_lvl + 1;
    delim                        := grab_data.grb_cldr_delim_nt(grab_data.grb_cldr_array_lvl);
+   ret_txt := 'VARRAY TERMINATED BY ''' || delim || '''' || CHR(10) || in_spaces ||
+              '   (' || in_cname || '  FLOAT EXTERNAL ' || TERMINATED_BY_OTC || ')';
    grab_data.grb_cldr_array_lvl := grab_data.grb_cldr_array_lvl - 1;
-   return 'VARRAY TERMINATED BY ''' || delim || '''' || CHR(10) || in_spaces ||
-          '   (' || in_cname || '  FLOAT EXTERNAL ' || TERMINATED_BY_OTC || ')';
+   return ret_txt;
 end ctl_sdo_ordinate_array;
 
 -- Report the Data Contents of the SDO_ORDINATE_ARRAY

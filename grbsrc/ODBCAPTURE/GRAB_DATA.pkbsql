@@ -203,8 +203,9 @@ end enable_ras_policy;
 ------------------------------------------------------------
 -- Create Control File
 procedure create_control_file
-      (tabs_ctl_file    in  varchar2
-      ,tabs_table_name  in varchar2)
+      (tabs_ctl_file        in  varchar2
+      ,tabs_table_name      in  varchar2
+      ,tabs_loading_method  in  varchar2)
 is
    fh_ctl      fh2.sf_ptr_type;  -- Control file handle
    lc          varchar2(10);     -- Lead Characters
@@ -221,8 +222,9 @@ begin
                             ,in_max_linesize => common_util.MAXIMUM_LOADER_LENGTH);
    fh2.script_put_line(fh_ctl, 'OPTIONS (SKIP=1)');
    fh2.script_put_line(fh_ctl, 'LOAD DATA');
-   fh2.script_put_line(fh_ctl, 'APPEND INTO TABLE "' || GRAB_SCRIPTS.g_schema_name ||
-                                               '"."' || tabs_table_name            || '"');
+   fh2.script_put_line(fh_ctl, 'INTO TABLE "' || GRAB_SCRIPTS.g_schema_name ||
+                                        '"."' || tabs_table_name            || '"');
+   fh2.script_put_line(fh_ctl, nvl(tabs_loading_method, 'APPEND'));
    fh2.script_put_line(fh_ctl, 'FIELDS CSV WITH EMBEDDED');
    fh2.script_put_line(fh_ctl, 'TRAILING NULLCOLS');
    --
@@ -857,6 +859,7 @@ begin
              ,replace(replace(table_name,'$','_'),'%','_') || '.' || file_ext3  DAT_FILE
              ,replace(replace(table_name,'$','_'),'%','_') || '.log'            LOG_FILE
              ,object_table_type
+             ,loading_method
              ,before_select_sql
              ,columns_removed
              ,where_clause
@@ -925,7 +928,7 @@ begin
       -------------------------
       -- Create Control File --
       -------------------------
-      create_control_file(tabs.ctl_file, tabs.table_name);
+      create_control_file(tabs.ctl_file, tabs.table_name, tabs.loading_method);
       ----------------------
       -- Create Data File --
       ----------------------
@@ -1029,6 +1032,7 @@ begin
          fh2.script_put_line(fh_sql, 'declare');
          fh2.script_put_line(fh_sql, '   l_blob          blob;');
          fh2.script_put_line(fh_sql, '   the_blob        blob;');
+         fh2.script_put_line(fh_sql, '   cnt             pls_integer;');
          fh2.script_put_line(fh_sql, '   procedure b64_decode');
          fh2.script_put_line(fh_sql, '         (in_blob  in BLOB)');
          fh2.script_put_line(fh_sql, '   is');
@@ -1081,6 +1085,8 @@ begin
          fh2.script_put_line(fh_sql, '      end loop;');
          fh2.script_put_line(fh_sql, '   end b64_decode;');
          fh2.script_put_line(fh_sql, 'begin');
+         fh2.script_put_line(fh_sql, '   dbms_output.put_line(''Decode Binary Data'');');
+         fh2.script_put_line(fh_sql, '   dbms_output.put_line(''------------------'');');
          fh2.script_put_line(fh_sql, '   dbms_lob.createtemporary(l_blob, true);');
          fh2.script_put_line(fh_sql, '   dbms_lob.createtemporary(the_blob, true);');
          colname := bincol_aa.FIRST;
@@ -1112,7 +1118,6 @@ begin
       -------------------
       if postload_aa.COUNT > 0
       then
-         fh2.script_put_line(fh_sql, 'begin');
          colname := postload_aa.FIRST;
          loop
             unis_txt := 'begin ' || postload_aa(colname) || '(:1, ''' || tabs.table_name || ''', ''' || colname || '''); end;';
@@ -1129,11 +1134,6 @@ begin
             exit when colname = postload_aa.LAST;
             colname := postload_aa.NEXT(colname);
          end loop;
-         fh2.script_put_line(fh_sql, 'end;');
-         fh2.script_put_line(fh_sql, '/');
-         fh2.script_put_line(fh_sql, '');
-         fh2.script_put_line(fh_sql, 'commit;');
-         fh2.script_put_line(fh_sql, '');
       end if;
       ----------------------------
       -- Finish SQL Script File --
@@ -1156,8 +1156,10 @@ procedure sql_decode_blob
 is
 begin
    fh2.script_put_line(in_fh, '   -- Decode Binary Data for column ' || in_colname);
+   fh2.script_put_line(in_fh, '   cnt := 0;');
    fh2.script_put_line(in_fh, '   for buff in (select ROWID RID, "' || in_colname || '"');
    fh2.script_put_line(in_fh, '                 from  "' || GRAB_SCRIPTS.g_schema_name || '"."' || in_tabname || '"');
+   fh2.script_put_line(in_fh, '                 where "' || in_colname || '" is not null');
    fh2.script_put_line(in_fh, '                 for update of "' || in_colname || '")');
    fh2.script_put_line(in_fh, '   loop');
    fh2.script_put_line(in_fh, '      b64_decode(buff."' || in_colname || '");');
@@ -1165,7 +1167,9 @@ begin
    fh2.script_put_line(in_fh, '      update "' || GRAB_SCRIPTS.g_schema_name || '"."' || in_tabname || '"');
    fh2.script_put_line(in_fh, '        set  "' || in_colname || '" = the_blob');
    fh2.script_put_line(in_fh, '       where rowid = buff.rid;');
+   fh2.script_put_line(in_fh, '      cnt := cnt + 1;');
    fh2.script_put_line(in_fh, '   end loop;');
+   fh2.script_put_line(in_fh, '   dbms_output.put_line(cnt || '' "' || in_colname || '" updates.'');');
 end sql_decode_blob;
 
 
@@ -1177,16 +1181,29 @@ procedure sql_unistr_decode
       ,in_colname  in            varchar2)
 is
 begin
+   fh2.script_put_line(in_fh, 'declare');
+   fh2.script_put_line(in_fh, '   cnt    pls_integer := 0;');
+   fh2.script_put_line(in_fh, 'begin');
+   fh2.script_put_line(in_fh, '   dbms_output.put_line(''Decode UNISTR Data'');');
+   fh2.script_put_line(in_fh, '   dbms_output.put_line(''------------------'');');
    fh2.script_put_line(in_fh, '   -- Decode UNISTR Data for column ' || in_colname);
    fh2.script_put_line(in_fh, '   for buff in (select ROWID RID, "' || in_colname || '"');
    fh2.script_put_line(in_fh, '                 from  "' || GRAB_SCRIPTS.g_schema_name || '"."' || in_tabname || '"');
+   fh2.script_put_line(in_fh, '                 where "' || in_colname || '" is not null');
    fh2.script_put_line(in_fh, '                 for update of "' || in_colname || '")');
    fh2.script_put_line(in_fh, '   loop');
    fh2.script_put_line(in_fh, '      -- This overwrites the UNISTR Encoded String with the original UNICODE data');
    fh2.script_put_line(in_fh, '      update "' || GRAB_SCRIPTS.g_schema_name || '"."' || in_tabname || '"');
    fh2.script_put_line(in_fh, '        set  "' || in_colname || '" = UNISTR(to_char("' || in_colname || '"))');
    fh2.script_put_line(in_fh, '       where rowid = buff.rid;');
+   fh2.script_put_line(in_fh, '      cnt := cnt + 1;');
    fh2.script_put_line(in_fh, '   end loop;');
+   fh2.script_put_line(in_fh, '   dbms_output.put_line(cnt || '' "AD_FLTEXTN" updates.'');');
+   fh2.script_put_line(in_fh, 'end;');
+   fh2.script_put_line(in_fh, '/');
+   fh2.script_put_line(in_fh, '');
+   fh2.script_put_line(in_fh, 'commit;');
+   fh2.script_put_line(in_fh, '');
 end sql_unistr_decode;
 
 
