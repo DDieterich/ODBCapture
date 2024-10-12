@@ -301,6 +301,7 @@ View Foreign Key
 View Trigger
 Wallet ACL (psuedo-object)
 XDB ACL (psuedo-object)
+XML Schema
 ```
 
 
@@ -310,16 +311,22 @@ The following lists the data types supported by ODBCapture.
 
 ```
 BLOB
+BFILE
 CHAR
 CLOB
 DATE
 INTERVAL_DAY_TO_SECOND
+INTERVAL_YEAR_TO_MONTH
 JSON
+NCHAR
+NCLOB
 NUMBER
+NVARCHAR
 RAW
 TIMESTAMP
 TIMESTAMP_WITH_LOCAL_TZ
 TIMESTAMP_WITH_TZ
+User Defined Object Types (Limited)
 VARCHAR2
 XMLTYPE
 ```
