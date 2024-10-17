@@ -1,28 +1,16 @@
 
 ### Folder Descriptions
 
-File Name       | Status | Location     | Ver  | Description
-----------------|--------|--------------|------|-------------
-OCI_APEX236     |        | Oracle Cloud | 23.6 | APEX Service/Instance
-OCI_Auto234     | Future | Oracle Cloud | 23.4 | Autonomous Database
-OCI_BaseEE234   | Future | Oracle Cloud | 23.4 | Base Enterprise Edition
-OCI_BaseSE234   | Future | Oracle Cloud | 23.4 | Base Standard Edition
-OnPrem_Free234  |        | On-Premise   | 23.4 | Free Database
-OCI_Auto213     |        | Oracle Cloud | 21.3 | Autonomous Database
-OCI_BaseEE213   | Future | Oracle Cloud | 21.3 | Base Enterprise Edition
-OCI_BaseSE213   | Future | Oracle Cloud | 21.3 | Base Standard Edition
-OnPrem_EE213    |        | On-Premise   | 21.3 | Enterprise Edition
-OnPrem_SE213    |        | On-Premise   | 21.3 | Standard Edition
-OnPrem_XE213    | Future | On-Premise   | 21.3 | Express Edition
-OCI_Auto193     | Future | Oracle Cloud | 19.3 | Autonomous Database
-OCI_BaseEE193   | Future | Oracle Cloud | 19.3 | Base Enterprise Edition
-OCI_BaseSE193   | Future | Oracle Cloud | 19.3 | Base Standard Edition
-OnPrem_EE193    |        | On-Premise   | 19.3 | Enterprise Edition
-OnPrem_SE193    | Future | On-Premise   | 19.3 | Standard Edition
-OnPrem_XE184    |        | On-Premise   | 18.4 | Express Edition
-OnPrem_EE122    | Future | On-Premise   | 12.2 | Enterprise Edition
-OnPrem_SE122    | Future | On-Premise   | 12.2 | Standard Edition
-util            |        |              |      | Common utility scripts for builds
+File Name       | Description
+----------------|-------------
+OCI_APEX236     | Oracle Cloud APEX Service/Instance v23.6
+OnPrem_Free234  | On-Premise Free Database v23.4
+OCI_Auto213     | Oracle Cloud Autonomous Database v21.3
+OnPrem_EE213    | On-Premise Enterprise Edition v21.3
+OnPrem_SE213    | On-Premise Standard Edition v21.3
+OnPrem_EE193    | On-Premise Enterprise Edition v19.3
+OnPrem_XE184    | On-Premise Express Edition v18.4
+util            | Common utility scripts for builds
 
 
 ## Build Results
