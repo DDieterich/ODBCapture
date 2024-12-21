@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbtjsn.log" tests="3" errors="0" hostname="SE213CDB" id="3" time="3" timestamp="2024-08-14T17:47:18">
+  <testsuite name="install_grbtjsn.log" tests="3" errors="0" hostname="SE213CDB" id="3" time="2" timestamp="2025-01-07T23:08:00">
     <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
-    <testcase name="./installation_prepare.sql" assertions="10" classname="..sql" status="PASS" time="0">
+    <testcase name="./installation_prepare.sql" assertions="16" classname="..sql" status="PASS" time="0">
       <system-out>
 === DBI Started: ./installation_prepare.sql
 Create Temp Publicly Updateable Table
@@ -11,20 +11,26 @@ Table created.
 Grant succeeded.
 Synonym created.
 Check for Prerequisite BUILD_TYPEs
+Prerequisite BUILD_TYPEs for &quot;grbtjsn&quot;
 WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
+ -) &quot;grbjava&quot; last loaded on 07-Jan-2025 23:07:19
 WARNING: Prerequisite BUILD_TYPE &quot;grbras&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
+ -) &quot;grbsdo&quot; last loaded on 07-Jan-2025 23:07:23
+ -) &quot;grbsrc&quot; last loaded on 07-Jan-2025 23:07:15
+ -) &quot;grbtst&quot; last loaded on 07-Jan-2025 23:07:40
+ -) &quot;grbxrep&quot; last loaded on 07-Jan-2025 23:07:26
 PL/SQL procedure successfully completed.
-=== DBI Completed at 2024-08-14T17:47:12 for a duration of .22 seconds (started at 2024-08-14T17:47:12)
+=== DBI Completed at 2025-01-07T23:07:57 for a duration of .07 seconds (started at 2025-01-07T23:07:57)
       </system-out>
     </testcase>
-    <testcase name="ODBCAPTURE/GRBTST_JSON.cldr" assertions="6" classname="ODBCAPTURE.cldr" status="PASS" time="3">
+    <testcase name="ODBCAPTURE/GRBTST_JSON.cldr" assertions="6" classname="ODBCAPTURE.cldr" status="PASS" time="2">
       <system-out>
 === DBI Started: ODBCAPTURE/GRBTST_JSON.cldr
 Disable Triggers and Foreign Keys
 PL/SQL procedure successfully completed.
 sqlldr_control=ODBCAPTURE/GRBTST_JSON.ctl
 PL/SQL procedure successfully completed.
-=== DBI Completed at 2024-08-14T17:47:15 for a duration of 3.11 seconds (started at 2024-08-14T17:47:12)
+=== DBI Completed at 2025-01-07T23:07:59 for a duration of 1.72 seconds (started at 2025-01-07T23:07:57)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/GRBTST_JSON.tbl" assertions="4" classname="ODBCAPTURE.tbl" status="PASS" time="0">
@@ -32,12 +38,12 @@ PL/SQL procedure successfully completed.
 === DBI Started: ODBCAPTURE/GRBTST_JSON.tbl
 Table created.
 Table altered.
-=== DBI Completed at 2024-08-14T17:47:12 for a duration of .09 seconds (started at 2024-08-14T17:47:12)
+=== DBI Completed at 2025-01-07T23:07:57 for a duration of .08 seconds (started at 2025-01-07T23:07:57)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_sys.log" tests="0" errors="0" hostname="SE213CDB" id="1" time="0" timestamp="2024-08-14T17:47:18">
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="SE213CDB" id="1" time="0" timestamp="2025-01-07T23:08:00">
   </testsuite>
-  <testsuite name="install_system.log" tests="0" errors="0" hostname="SE213CDB" id="2" time="0" timestamp="2024-08-14T17:47:18">
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="SE213CDB" id="2" time="0" timestamp="2025-01-07T23:08:00">
   </testsuite>
 </testsuites>
