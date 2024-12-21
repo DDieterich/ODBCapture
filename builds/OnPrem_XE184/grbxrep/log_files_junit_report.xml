@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="install_grbxrep.log" tests="6" errors="0" hostname="XE" id="3" time="1" timestamp="2024-12-21T10:04:31">
+    <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
+    </testcase>
+    <testcase name="./installation_prepare.sql" assertions="21" classname="..sql" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ./installation_prepare.sql
+
+Create Temp Publicly Updateable Table
+
+Table created.
+
+
+Grant succeeded.
+
+
+Synonym created.
+
+
+Check for Prerequisite BUILD_TYPEs
+Prerequisite BUILD_TYPEs for &quot;grbxrep&quot;
+ -) &quot;grbjava&quot; last loaded on 21-Dec-2024 10:04:14
+ -) &quot;grbsrc&quot; last loaded on 21-Dec-2024 10:03:51
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-12-21T10:04:26 for a duration of .39 seconds (started at 2024-12-21T10:04:26)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/GRAB_XDB_REPO.pkbsql" assertions="5" classname="ODBCAPTURE.pkbsql" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCAPTURE/GRAB_XDB_REPO.pkbsql
+
+Package body created.
+
+=== DBI Completed at 2024-12-21T10:04:28 for a duration of .08 seconds (started at 2024-12-21T10:04:28)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/GRAB_XDB_REPO.pkssql" assertions="5" classname="ODBCAPTURE.pkssql" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCAPTURE/GRAB_XDB_REPO.pkssql
+
+Package created.
+
+=== DBI Completed at 2024-12-21T10:04:26 for a duration of .05 seconds (started at 2024-12-21T10:04:26)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/OBJ_INSTALL_XDB_REPO_VIEW.vw" assertions="8" classname="ODBCAPTURE.vw" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_XDB_REPO_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-12-21T10:04:27 for a duration of .12 seconds (started at 2024-12-21T10:04:27)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/ROLE_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCAPTURE/ROLE_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table &quot;ODBCAPTURE&quot;.&quot;ROLE_CONF&quot; DISABLE constraint &quot;ROLE_CONF_FK1&quot;;
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-12-21T10:04:28 for a duration of .46 seconds (started at 2024-12-21T10:04:27)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/SCHEMA_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="1">
+      <system-out>
+=== DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table &quot;ODBCAPTURE&quot;.&quot;SCHEMA_CONF&quot; DISABLE constraint &quot;SCHEMA_CONF_FK1&quot;;
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-12-21T10:04:28 for a duration of .5 seconds (started at 2024-12-21T10:04:28)
+      </system-out>
+    </testcase>
+    <system-out>
+(ODBCAPTURE/GRAB_XDB_REPO.pkssql) Compile All started
+(ODBCAPTURE/GRAB_XDB_REPO.pkssql) 
+(ODBCAPTURE/GRAB_XDB_REPO.pkssql) PL/SQL procedure successfully completed.
+(ODBCAPTURE/GRAB_XDB_REPO.pkssql) 
+(ODBCAPTURE/GRAB_XDB_REPO.pkssql) Compile All is done.
+    </system-out>
+  </testsuite>
+  <testsuite name="install_sys.log" tests="1" errors="0" hostname="XE" id="1" time="0" timestamp="2024-12-21T10:04:31">
+    <testcase name="SYS/ODBCAPTURE_usr.sgrnt" assertions="5" classname="SYS.sgrnt" status="PASS" time="0">
+      <system-out>
+=== DBI Started: SYS/ODBCAPTURE_usr.sgrnt
+
+Grant succeeded.
+
+=== DBI Completed at 2024-12-21T10:04:26 for a duration of .1 seconds (started at 2024-12-21T10:04:25)
+      </system-out>
+    </testcase>
+  </testsuite>
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="XE" id="2" time="0" timestamp="2024-12-21T10:04:31">
+  </testsuite>
+</testsuites>

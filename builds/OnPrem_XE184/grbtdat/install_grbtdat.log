@@ -12,13 +12,23 @@ Synonym created.
 
 
 Check for Prerequisite BUILD_TYPEs
+Prerequisite BUILD_TYPEs for "grbtdat"
 WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+ -) "grbjava" last loaded on 21-Dec-2024 10:04:14
+ -) "grbras" last loaded on 21-Dec-2024 10:04:04
+ -) "grbsdo" last loaded on 21-Dec-2024 10:04:22
+ -) "grbsrc" last loaded on 21-Dec-2024 10:03:51
+ -) "grbtctx" last loaded on 21-Dec-2024 10:06:45
 WARNING: Prerequisite BUILD_TYPE "grbtend" not found in ODBCAPTURE_INSTALLATION_LOGS table.
 WARNING: Prerequisite BUILD_TYPE "grbtjsn" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+ -) "grbtjva" last loaded on 21-Dec-2024 10:05:42
+ -) "grbtsdo" last loaded on 21-Dec-2024 10:06:12
+ -) "grbtst" last loaded on 21-Dec-2024 10:04:59
+ -) "grbxrep" last loaded on 21-Dec-2024 10:04:31
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-07T21:00:31 for a duration of .14 seconds (started at 2024-08-07T21:00:30)
+=== DBI Completed at 2024-12-21T10:06:49 for a duration of .5 seconds (started at 2024-12-21T10:06:48)
 === DBI Started: ODBCAPTURE/DLOAD_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -33,7 +43,7 @@ sqlldr_control=ODBCAPTURE/DLOAD_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-07T21:00:32 for a duration of 1.87 seconds (started at 2024-08-07T21:00:31)
+=== DBI Completed at 2024-12-21T10:06:52 for a duration of 2.84 seconds (started at 2024-12-21T10:06:49)
 === DBI Started: ODBCAPTURE/OBJECT_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -49,7 +59,7 @@ sqlldr_control=ODBCAPTURE/OBJECT_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-07T21:00:34 for a duration of 1.42 seconds (started at 2024-08-07T21:00:32)
+=== DBI Completed at 2024-12-21T10:06:53 for a duration of 1.49 seconds (started at 2024-12-21T10:06:52)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table

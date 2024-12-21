@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbtst.log" tests="10" errors="0" hostname="XE" id="1" time="10" timestamp="2024-08-07T20:59:28">
+  <testsuite name="install_grbtst.log" tests="10" errors="0" hostname="XE" id="1" time="7" timestamp="2024-12-21T10:04:59">
     <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
-    <testcase name="./installation_prepare.sql" assertions="19" classname="..sql" status="PASS" time="0">
+    <testcase name="./installation_prepare.sql" assertions="25" classname="..sql" status="PASS" time="0">
       <system-out>
 === DBI Started: ./installation_prepare.sql
 
@@ -19,14 +19,20 @@ Synonym created.
 
 
 Check for Prerequisite BUILD_TYPEs
+Prerequisite BUILD_TYPEs for &quot;grbtst&quot;
 WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
+ -) &quot;grbjava&quot; last loaded on 21-Dec-2024 10:04:14
+ -) &quot;grbras&quot; last loaded on 21-Dec-2024 10:04:04
+ -) &quot;grbsdo&quot; last loaded on 21-Dec-2024 10:04:22
+ -) &quot;grbsrc&quot; last loaded on 21-Dec-2024 10:03:51
+ -) &quot;grbxrep&quot; last loaded on 21-Dec-2024 10:04:31
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-07T20:59:12 for a duration of .38 seconds (started at 2024-08-07T20:59:11)
+=== DBI Completed at 2024-12-21T10:04:45 for a duration of .11 seconds (started at 2024-12-21T10:04:45)
       </system-out>
     </testcase>
-    <testcase name="ODBCAPTURE/BUILD_CONF.cldr" assertions="13" classname="ODBCAPTURE.cldr" status="PASS" time="2">
+    <testcase name="ODBCAPTURE/BUILD_CONF.cldr" assertions="13" classname="ODBCAPTURE.cldr" status="PASS" time="1">
       <system-out>
 === DBI Started: ODBCAPTURE/BUILD_CONF.cldr
 
@@ -40,7 +46,7 @@ sqlldr_control=ODBCAPTURE/BUILD_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-07T20:59:14 for a duration of 1.82 seconds (started at 2024-08-07T20:59:12)
+=== DBI Completed at 2024-12-21T10:04:46 for a duration of 1.18 seconds (started at 2024-12-21T10:04:45)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/BUILD_PATH.cldr" assertions="15" classname="ODBCAPTURE.cldr" status="PASS" time="1">
@@ -59,10 +65,10 @@ sqlldr_control=ODBCAPTURE/BUILD_PATH.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-07T20:59:15 for a duration of .71 seconds (started at 2024-08-07T20:59:14)
+=== DBI Completed at 2024-12-21T10:04:47 for a duration of 1.29 seconds (started at 2024-12-21T10:04:46)
       </system-out>
     </testcase>
-    <testcase name="ODBCAPTURE/GRBTST_IMAGE.cldr" assertions="19" classname="ODBCAPTURE.cldr" status="PASS" time="3">
+    <testcase name="ODBCAPTURE/GRBTST_IMAGE.cldr" assertions="22" classname="ODBCAPTURE.cldr" status="PASS" time="2">
       <system-out>
 === DBI Started: ODBCAPTURE/GRBTST_IMAGE.cldr
 
@@ -76,13 +82,16 @@ sqlldr_control=ODBCAPTURE/GRBTST_IMAGE.ctl
 
 PL/SQL procedure successfully completed.
 
+Decode Binary Data
+------------------
+2 &quot;IMAGE&quot; updates.
 
 PL/SQL procedure successfully completed.
 
 
 Commit complete.
 
-=== DBI Completed at 2024-08-07T20:59:19 for a duration of 2.61 seconds (started at 2024-08-07T20:59:16)
+=== DBI Completed at 2024-12-21T10:04:51 for a duration of 1.69 seconds (started at 2024-12-21T10:04:49)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/GRBTST_IMAGE.tbl" assertions="5" classname="ODBCAPTURE.tbl" status="PASS" time="0">
@@ -91,10 +100,10 @@ Commit complete.
 
 Table created.
 
-=== DBI Completed at 2024-08-07T20:59:12 for a duration of .03 seconds (started at 2024-08-07T20:59:12)
+=== DBI Completed at 2024-12-21T10:04:45 for a duration of .04 seconds (started at 2024-12-21T10:04:45)
       </system-out>
     </testcase>
-    <testcase name="ODBCAPTURE/GRBTST__NAME.cldr" assertions="13" classname="ODBCAPTURE.cldr" status="PASS" time="1">
+    <testcase name="ODBCAPTURE/GRBTST__NAME.cldr" assertions="13" classname="ODBCAPTURE.cldr" status="PASS" time="2">
       <system-out>
 === DBI Started: ODBCAPTURE/GRBTST__NAME.cldr
 
@@ -108,7 +117,7 @@ sqlldr_control=ODBCAPTURE/GRBTST__NAME.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-07T20:59:16 for a duration of 1.37 seconds (started at 2024-08-07T20:59:15)
+=== DBI Completed at 2024-12-21T10:04:49 for a duration of 1.66 seconds (started at 2024-12-21T10:04:47)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/GRBTST__NAME.tbl" assertions="17" classname="ODBCAPTURE.tbl" status="PASS" time="0">
@@ -129,10 +138,10 @@ Grant succeeded.
 
 Grant succeeded.
 
-=== DBI Completed at 2024-08-07T20:59:12 for a duration of .34 seconds (started at 2024-08-07T20:59:12)
+=== DBI Completed at 2024-12-21T10:04:45 for a duration of .11 seconds (started at 2024-12-21T10:04:45)
       </system-out>
     </testcase>
-    <testcase name="ODBCAPTURE/ROLE_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="1">
+    <testcase name="ODBCAPTURE/ROLE_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="0">
       <system-out>
 === DBI Started: ODBCAPTURE/ROLE_CONF.cldr
 
@@ -147,10 +156,10 @@ sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-07T20:59:20 for a duration of .86 seconds (started at 2024-08-07T20:59:19)
+=== DBI Completed at 2024-12-21T10:04:51 for a duration of .44 seconds (started at 2024-12-21T10:04:51)
       </system-out>
     </testcase>
-    <testcase name="ODBCAPTURE/SCHEMA_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="1">
+    <testcase name="ODBCAPTURE/SCHEMA_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="0">
       <system-out>
 === DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
 
@@ -165,7 +174,7 @@ sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-07T20:59:20 for a duration of .5 seconds (started at 2024-08-07T20:59:20)
+=== DBI Completed at 2024-12-21T10:04:52 for a duration of .45 seconds (started at 2024-12-21T10:04:51)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/TSPACE_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="1">
@@ -183,18 +192,18 @@ sqlldr_control=ODBCAPTURE/TSPACE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-07T20:59:21 for a duration of .5 seconds (started at 2024-08-07T20:59:20)
+=== DBI Completed at 2024-12-21T10:04:53 for a duration of 1.13 seconds (started at 2024-12-21T10:04:52)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_sys.log" tests="7" errors="0" hostname="XE" id="2" time="0" timestamp="2024-08-07T20:59:28">
+  <testsuite name="install_sys.log" tests="7" errors="0" hostname="XE" id="2" time="0" timestamp="2024-12-21T10:04:59">
     <testcase name="SYS/GRB_TEST_ROLE.role" assertions="5" classname="SYS.role" status="PASS" time="0">
       <system-out>
 === DBI Started: SYS/GRB_TEST_ROLE.role
 
 Role created.
 
-=== DBI Completed at 2024-08-07T20:59:10 for a duration of .11 seconds (started at 2024-08-07T20:59:10)
+=== DBI Completed at 2024-12-21T10:04:43 for a duration of .25 seconds (started at 2024-12-21T10:04:43)
       </system-out>
     </testcase>
     <testcase name="SYS/ODBCTEST.user" assertions="21" classname="SYS.user" status="PASS" time="0">
@@ -219,7 +228,7 @@ XS Admin Cloud Grant &quot;PROVISION&quot; to &quot;ODBCTEST&quot;
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-07T20:59:10 for a duration of .17 seconds (started at 2024-08-07T20:59:10)
+=== DBI Completed at 2024-12-21T10:04:44 for a duration of .19 seconds (started at 2024-12-21T10:04:43)
       </system-out>
     </testcase>
     <testcase name="SYS/_opt_install_files_oracle_wallet.wacl" assertions="5" classname="SYS.wacl" status="PASS" time="0">
@@ -228,7 +237,7 @@ PL/SQL procedure successfully completed.
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-07T20:59:11 for a duration of .07 seconds (started at 2024-08-07T20:59:11)
+=== DBI Completed at 2024-12-21T10:04:44 for a duration of .06 seconds (started at 2024-12-21T10:04:44)
       </system-out>
     </testcase>
     <testcase name="SYS/_var_opt_install_files_oracle_wallet.wacl" assertions="5" classname="SYS.wacl" status="PASS" time="0">
@@ -237,7 +246,7 @@ PL/SQL procedure successfully completed.
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-07T20:59:11 for a duration of .04 seconds (started at 2024-08-07T20:59:11)
+=== DBI Completed at 2024-12-21T10:04:44 for a duration of .05 seconds (started at 2024-12-21T10:04:44)
       </system-out>
     </testcase>
     <testcase name="SYS/host1.hacl" assertions="5" classname="SYS.hacl" status="PASS" time="0">
@@ -246,7 +255,7 @@ PL/SQL procedure successfully completed.
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-07T20:59:11 for a duration of .3 seconds (started at 2024-08-07T20:59:10)
+=== DBI Completed at 2024-12-21T10:04:44 for a duration of .3 seconds (started at 2024-12-21T10:04:44)
       </system-out>
     </testcase>
     <testcase name="SYS/host2.hacl" assertions="8" classname="SYS.hacl" status="PASS" time="0">
@@ -258,7 +267,7 @@ PL/SQL procedure successfully completed.
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-07T20:59:11 for a duration of .17 seconds (started at 2024-08-07T20:59:11)
+=== DBI Completed at 2024-12-21T10:04:44 for a duration of .11 seconds (started at 2024-12-21T10:04:44)
       </system-out>
     </testcase>
     <testcase name="SYS/odbctest_host.hacl" assertions="5" classname="SYS.hacl" status="PASS" time="0">
@@ -267,11 +276,11 @@ PL/SQL procedure successfully completed.
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-07T20:59:11 for a duration of .11 seconds (started at 2024-08-07T20:59:11)
+=== DBI Completed at 2024-12-21T10:04:44 for a duration of .1 seconds (started at 2024-12-21T10:04:44)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_system.log" tests="1" errors="0" hostname="XE" id="3" time="0" timestamp="2024-08-07T20:59:28">
+  <testsuite name="install_system.log" tests="1" errors="0" hostname="XE" id="3" time="0" timestamp="2024-12-21T10:04:59">
     <testcase name="SYSTEM/ODBCTEST_usr.grnt" assertions="17" classname="SYSTEM.grnt" status="PASS" time="0">
       <system-out>
 === DBI Started: SYSTEM/ODBCTEST_usr.grnt
@@ -290,7 +299,7 @@ Grant succeeded.
 
 Grant succeeded.
 
-=== DBI Completed at 2024-08-07T20:59:11 for a duration of .17 seconds (started at 2024-08-07T20:59:11)
+=== DBI Completed at 2024-12-21T10:04:45 for a duration of .12 seconds (started at 2024-12-21T10:04:44)
       </system-out>
     </testcase>
   </testsuite>

@@ -1,5 +1,5 @@
 
-SQL*Loader: Release 18.0.0.0.0 - Production on Wed Aug 7 20:58:02 2024
+SQL*Loader: Release 18.0.0.0.0 - Production on Sat Dec 21 10:03:34 2024
 Version 18.4.0.0.0
 
 Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.
@@ -29,7 +29,7 @@ BUILD_SEQ                            NEXT     *   ,  O(") CHARACTER
 
 
 Table "ODBCAPTURE"."BUILD_PATH":
-  10 Rows successfully loaded.
+  12 Rows successfully loaded.
   0 Rows not loaded due to data errors.
   0 Rows not loaded because all WHEN clauses were failed.
   0 Rows not loaded because all fields were null.
@@ -39,12 +39,12 @@ Space allocated for bind array:                 129000 bytes(250 rows)
 Read   buffer bytes: 1048576
 
 Total logical records skipped:          1
-Total logical records read:            10
+Total logical records read:            12
 Total logical records rejected:         0
 Total logical records discarded:        0
 
-Run began on Wed Aug 07 20:58:02 2024
-Run ended on Wed Aug 07 20:58:03 2024
+Run began on Sat Dec 21 10:03:34 2024
+Run ended on Sat Dec 21 10:03:34 2024
 
-Elapsed time was:     00:00:01.06
-CPU time was:         00:00:00.25
+Elapsed time was:     00:00:00.30
+CPU time was:         00:00:00.21

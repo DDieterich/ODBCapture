@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbtsdo.log" tests="4" errors="0" hostname="XE" id="2" time="2" timestamp="2024-08-07T21:00:12">
+  <testsuite name="install_grbtsdo.log" tests="4" errors="0" hostname="XE" id="2" time="4" timestamp="2024-12-21T10:06:12">
     <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
-    <testcase name="./installation_prepare.sql" assertions="19" classname="..sql" status="PASS" time="0">
+    <testcase name="./installation_prepare.sql" assertions="26" classname="..sql" status="PASS" time="0">
       <system-out>
 === DBI Started: ./installation_prepare.sql
 
@@ -19,14 +19,21 @@ Synonym created.
 
 
 Check for Prerequisite BUILD_TYPEs
+Prerequisite BUILD_TYPEs for &quot;grbtsdo&quot;
 WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
+ -) &quot;grbjava&quot; last loaded on 21-Dec-2024 10:04:14
+ -) &quot;grbras&quot; last loaded on 21-Dec-2024 10:04:04
+ -) &quot;grbsdo&quot; last loaded on 21-Dec-2024 10:04:22
+ -) &quot;grbsrc&quot; last loaded on 21-Dec-2024 10:03:51
+ -) &quot;grbtst&quot; last loaded on 21-Dec-2024 10:04:59
+ -) &quot;grbxrep&quot; last loaded on 21-Dec-2024 10:04:31
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-07T21:00:00 for a duration of .33 seconds (started at 2024-08-07T21:00:00)
+=== DBI Completed at 2024-12-21T10:05:46 for a duration of .45 seconds (started at 2024-12-21T10:05:45)
       </system-out>
     </testcase>
-    <testcase name="ODBCTEST/SDO_COLA_MARKETS.cldr" assertions="13" classname="ODBCTEST.cldr" status="PASS" time="2">
+    <testcase name="ODBCTEST/SDO_COLA_MARKETS.cldr" assertions="13" classname="ODBCTEST.cldr" status="PASS" time="3">
       <system-out>
 === DBI Started: ODBCTEST/SDO_COLA_MARKETS.cldr
 
@@ -40,10 +47,10 @@ sqlldr_control=ODBCTEST/SDO_COLA_MARKETS.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-07T21:00:02 for a duration of 1.97 seconds (started at 2024-08-07T21:00:00)
+=== DBI Completed at 2024-12-21T10:05:49 for a duration of 2.75 seconds (started at 2024-12-21T10:05:46)
       </system-out>
     </testcase>
-    <testcase name="ODBCTEST/SDO_COLA_MARKETS.tbl" assertions="8" classname="ODBCTEST.tbl" status="PASS" time="0">
+    <testcase name="ODBCTEST/SDO_COLA_MARKETS.tbl" assertions="8" classname="ODBCTEST.tbl" status="PASS" time="1">
       <system-out>
 === DBI Started: ODBCTEST/SDO_COLA_MARKETS.tbl
 
@@ -52,18 +59,18 @@ Table created.
 
 Table altered.
 
-=== DBI Completed at 2024-08-07T21:00:00 for a duration of .37 seconds (started at 2024-08-07T21:00:00)
+=== DBI Completed at 2024-12-21T10:05:46 for a duration of .71 seconds (started at 2024-12-21T10:05:46)
       </system-out>
     </testcase>
     <testcase name="ODBCTEST/SDO_COLA_MARKETS.tidx" assertions="2" classname="ODBCTEST.tidx" status="PASS" time="0">
       <system-out>
 === DBI Started: ODBCTEST/SDO_COLA_MARKETS.tidx
-=== DBI Completed at 2024-08-07T21:00:02 for a duration of .02 seconds (started at 2024-08-07T21:00:02)
+=== DBI Completed at 2024-12-21T10:05:49 for a duration of .02 seconds (started at 2024-12-21T10:05:49)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_sys.log" tests="0" errors="0" hostname="XE" id="1" time="0" timestamp="2024-08-07T21:00:12">
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="XE" id="1" time="0" timestamp="2024-12-21T10:06:12">
   </testsuite>
-  <testsuite name="install_system.log" tests="0" errors="0" hostname="XE" id="3" time="0" timestamp="2024-08-07T21:00:12">
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="XE" id="3" time="0" timestamp="2024-12-21T10:06:12">
   </testsuite>
 </testsuites>

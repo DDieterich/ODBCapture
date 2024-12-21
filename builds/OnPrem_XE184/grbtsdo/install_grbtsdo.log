@@ -12,11 +12,18 @@ Synonym created.
 
 
 Check for Prerequisite BUILD_TYPEs
+Prerequisite BUILD_TYPEs for "grbtsdo"
 WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+ -) "grbjava" last loaded on 21-Dec-2024 10:04:14
+ -) "grbras" last loaded on 21-Dec-2024 10:04:04
+ -) "grbsdo" last loaded on 21-Dec-2024 10:04:22
+ -) "grbsrc" last loaded on 21-Dec-2024 10:03:51
+ -) "grbtst" last loaded on 21-Dec-2024 10:04:59
+ -) "grbxrep" last loaded on 21-Dec-2024 10:04:31
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-07T21:00:00 for a duration of .33 seconds (started at 2024-08-07T21:00:00)
+=== DBI Completed at 2024-12-21T10:05:46 for a duration of .45 seconds (started at 2024-12-21T10:05:45)
 === DBI Started: ODBCTEST/SDO_COLA_MARKETS.tbl
 
 Table created.
@@ -24,7 +31,7 @@ Table created.
 
 Table altered.
 
-=== DBI Completed at 2024-08-07T21:00:00 for a duration of .37 seconds (started at 2024-08-07T21:00:00)
+=== DBI Completed at 2024-12-21T10:05:46 for a duration of .71 seconds (started at 2024-12-21T10:05:46)
 === DBI Started: ODBCTEST/SDO_COLA_MARKETS.cldr
 
 Disable Triggers and Foreign Keys
@@ -37,9 +44,9 @@ sqlldr_control=ODBCTEST/SDO_COLA_MARKETS.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-07T21:00:02 for a duration of 1.97 seconds (started at 2024-08-07T21:00:00)
+=== DBI Completed at 2024-12-21T10:05:49 for a duration of 2.75 seconds (started at 2024-12-21T10:05:46)
 === DBI Started: ODBCTEST/SDO_COLA_MARKETS.tidx
-=== DBI Completed at 2024-08-07T21:00:02 for a duration of .02 seconds (started at 2024-08-07T21:00:02)
+=== DBI Completed at 2024-12-21T10:05:49 for a duration of .02 seconds (started at 2024-12-21T10:05:49)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table
