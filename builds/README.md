@@ -4,11 +4,12 @@
 File Name       | Description
 ----------------|-------------
 OCI_APEX236     | Oracle Cloud APEX Service/Instance v23.6
-OnPrem_Free234  | On-Premise Free Database v23.4
 OCI_Auto213     | Oracle Cloud Autonomous Database v21.3
-OnPrem_EE213    | On-Premise Enterprise Edition v21.3
-OnPrem_SE213    | On-Premise Standard Edition v21.3
+OnPrem_AD236    | On-Premise Autonomous Database v23.6
 OnPrem_EE193    | On-Premise Enterprise Edition v19.3
+OnPrem_EE213    | On-Premise Enterprise Edition v21.3
+OnPrem_Free234  | On-Premise Free Database v23.4
+OnPrem_SE213    | On-Premise Standard Edition v21.3
 OnPrem_XE184    | On-Premise Express Edition v18.4
 util            | Common utility scripts for builds
 
