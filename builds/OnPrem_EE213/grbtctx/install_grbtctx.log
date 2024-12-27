@@ -14,20 +14,20 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbtctx"
 WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) "grbjava" last loaded on 21-Aug-2024 20:41:18
- -) "grbras" last loaded on 21-Aug-2024 20:41:10
- -) "grbsdo" last loaded on 21-Aug-2024 20:41:26
- -) "grbsrc" last loaded on 21-Aug-2024 20:41:01
- -) "grbtst" last loaded on 21-Aug-2024 20:42:01
+ -) "grbjava" last loaded on 27-Dec-2024 22:17:42
+ -) "grbras" last loaded on 27-Dec-2024 22:17:34
+ -) "grbsdo" last loaded on 27-Dec-2024 22:17:51
+ -) "grbsrc" last loaded on 27-Dec-2024 22:17:25
+ -) "grbtst" last loaded on 27-Dec-2024 22:18:21
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:42:55 for a duration of .16 seconds (started at 2024-08-21T20:42:55)
+=== DBI Completed at 2024-12-27T22:19:07 for a duration of .17 seconds (started at 2024-12-27T22:19:07)
 === DBI Started: ODBCTEST/CUST_CTX_TEST.tbl
 
 Table created.
 
-=== DBI Completed at 2024-08-21T20:42:55 for a duration of .06 seconds (started at 2024-08-21T20:42:55)
+=== DBI Completed at 2024-12-27T22:19:07 for a duration of .21 seconds (started at 2024-12-27T22:19:07)
 === DBI Started: ODBCTEST/CUST_CTX_TEST.cldr
 
 Disable Triggers and Foreign Keys
@@ -40,12 +40,12 @@ sqlldr_control=ODBCTEST/CUST_CTX_TEST.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:42:59 for a duration of 3.8 seconds (started at 2024-08-21T20:42:55)
+=== DBI Completed at 2024-12-27T22:19:10 for a duration of 3.01 seconds (started at 2024-12-27T22:19:07)
 === DBI Started: ODBCTEST/CUST_CTX_TEST.tidx
 
 Index created.
 
-=== DBI Completed at 2024-08-21T20:43:06 for a duration of 7.08 seconds (started at 2024-08-21T20:42:59)
+=== DBI Completed at 2024-12-27T22:19:17 for a duration of 7.18 seconds (started at 2024-12-27T22:19:10)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table

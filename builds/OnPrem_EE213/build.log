@@ -1,5 +1,5 @@
 build.sh
-Running from /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Running from /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Setup Variables
 
@@ -7,7 +7,7 @@ Capture Version
 
 build_initialize.sql
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:39:41 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:15:55 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
@@ -20,9 +20,9 @@ Version 21.3.0.0.0
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYS, db: EE213CDB, con: CDB$ROOT, tstmp: 21-AUG-24 08.39.41.277758 PM +00:00
+user: SYS, db: EE213CDB, con: CDB$ROOT, tstmp: 27-DEC-24 10.15.55.381482 PM +00:00
 
-Elapsed: 00:00:00.01
+Elapsed: 00:00:00.07
 
 Show PDBs
 
@@ -31,7 +31,7 @@ Show PDBs
 	 2 PDB$SEED			  READ ONLY  NO
 	 3 TESTPDB			  READ WRITE NO
 	 4 DEVPDB			  READ WRITE NO
-	 6 AP212PDB			  READ WRITE NO
+	 5 AP212PDB			  READ WRITE NO
 
 Create PDB
 ALTER PLUGGABLE DATABASE "DEVPDB" CLOSE IMMEDIATE INSTANCES=ALL;
@@ -44,13 +44,13 @@ create pluggable database "DEVPDB"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:10.93
+Elapsed: 00:00:17.68
 
 Open PDB
 
 Pluggable database altered.
 
-Elapsed: 00:00:07.57
+Elapsed: 00:00:08.28
 
 Show Services
 
@@ -66,7 +66,7 @@ EE213CDBXDB
 
 7 rows selected.
 
-Elapsed: 00:00:00.00
+Elapsed: 00:00:00.02
 
 Update DEFAULT Profile
 
@@ -76,7 +76,7 @@ Elapsed: 00:00:00.02
 
 Profile altered.
 
-Elapsed: 00:00:00.09
+Elapsed: 00:00:00.10
 
 Session altered.
 
@@ -86,11 +86,11 @@ Version 21.3.0.0.0
 
 Clear old grbsrc logs
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbsrc
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbsrc
 
-/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../util/run_build.sql grbsrc
+/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../util/run_build.sql grbsrc
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:40:00 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:16:21 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
@@ -104,7 +104,7 @@ Setup Abort on Error
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.40.00.625276 PM +00:00
+user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.16.22.185329 PM +00:00
 
 Identify this Module in V$SESSION
 
@@ -371,6 +371,12 @@ Grant succeeded.
 
 Grant succeeded.
 
+
+Grant succeeded.
+
+
+Grant succeeded.
+
 XS Admin Grant "ADMIN_ANY_SEC_POLICY" to "ODBCAPTURE"
 
 PL/SQL procedure successfully completed.
@@ -379,7 +385,7 @@ XS Admin Cloud Grant "ADMIN_ANY_SEC_POLICY" to "ODBCAPTURE"
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:40:06 for a duration of 5.77 seconds (started at 2024-08-21T20:40:00)
+=== DBI Completed at 2024-12-27T22:16:26 for a duration of 4.35 seconds (started at 2024-12-27T22:16:22)
 Setup Continue on Error
 
 *****************************
@@ -390,7 +396,7 @@ Connected.
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.40.06.656560 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.16.26.807517 PM +00:00
 
 1 row selected.
 
@@ -419,7 +425,10 @@ Grant succeeded.
 
 Grant succeeded.
 
-=== DBI Completed at 2024-08-21T20:40:06 for a duration of .32 seconds (started at 2024-08-21T20:40:06)
+
+Grant succeeded.
+
+=== DBI Completed at 2024-12-27T22:16:27 for a duration of .41 seconds (started at 2024-12-27T22:16:26)
 
 *************************
 *  Install Application	*
@@ -443,32 +452,37 @@ Prerequisite BUILD_TYPEs for "grbsrc"
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:40:07 for a duration of .26 seconds (started at 2024-08-21T20:40:06)
+=== DBI Completed at 2024-12-27T22:16:27 for a duration of .23 seconds (started at 2024-12-27T22:16:27)
 === DBI Started: ODBCAPTURE/COMMON_UTIL.pkssql
 
 Warning: Package created with compilation errors.
 
-=== DBI Completed at 2024-08-21T20:40:07 for a duration of .07 seconds (started at 2024-08-21T20:40:07)
+=== DBI Completed at 2024-12-27T22:16:27 for a duration of .07 seconds (started at 2024-12-27T22:16:27)
 === DBI Started: ODBCAPTURE/FH2.pkssql
 
 Package created.
 
-=== DBI Completed at 2024-08-21T20:40:07 for a duration of .13 seconds (started at 2024-08-21T20:40:07)
+=== DBI Completed at 2024-12-27T22:16:27 for a duration of .13 seconds (started at 2024-12-27T22:16:27)
+=== DBI Started: ODBCAPTURE/GRAB_DATA.pkssql
+
+Package created.
+
+=== DBI Completed at 2024-12-27T22:16:27 for a duration of .07 seconds (started at 2024-12-27T22:16:27)
 === DBI Started: ODBCAPTURE/GRAB_SCRIPTS.pkssql
 
 Warning: Package created with compilation errors.
 
-=== DBI Completed at 2024-08-21T20:40:07 for a duration of .05 seconds (started at 2024-08-21T20:40:07)
+=== DBI Completed at 2024-12-27T22:16:27 for a duration of .05 seconds (started at 2024-12-27T22:16:27)
 === DBI Started: ODBCAPTURE/ROOT_SCRIPTS.pkssql
 
 Package created.
 
-=== DBI Completed at 2024-08-21T20:40:07 for a duration of .06 seconds (started at 2024-08-21T20:40:07)
+=== DBI Completed at 2024-12-27T22:16:27 for a duration of .06 seconds (started at 2024-12-27T22:16:27)
 === DBI Started: ODBCAPTURE/ZIP_UTIL_PKG.pkssql
 
 Package created.
 
-=== DBI Completed at 2024-08-21T20:40:07 for a duration of .05 seconds (started at 2024-08-21T20:40:07)
+=== DBI Completed at 2024-12-27T22:16:27 for a duration of .06 seconds (started at 2024-12-27T22:16:27)
 === DBI Started: ODBCAPTURE/BUILD_CONF.tbl
 
 Table created.
@@ -491,7 +505,7 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2024-08-21T20:40:24 for a duration of 16.64 seconds (started at 2024-08-21T20:40:07)
+=== DBI Completed at 2024-12-27T22:16:45 for a duration of 17.29 seconds (started at 2024-12-27T22:16:27)
 === DBI Started: ODBCAPTURE/BUILD_PATH.tbl
 
 Table created.
@@ -511,7 +525,7 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2024-08-21T20:40:24 for a duration of .21 seconds (started at 2024-08-21T20:40:24)
+=== DBI Completed at 2024-12-27T22:16:45 for a duration of .45 seconds (started at 2024-12-27T22:16:45)
 === DBI Started: ODBCAPTURE/BUILD_TYPE_TIMING.tbl
 
 Table created.
@@ -528,22 +542,22 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2024-08-21T20:40:24 for a duration of .13 seconds (started at 2024-08-21T20:40:24)
+=== DBI Completed at 2024-12-27T22:16:45 for a duration of .16 seconds (started at 2024-12-27T22:16:45)
 === DBI Started: ODBCAPTURE/DBA_DEPENDENCIES_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2024-08-21T20:40:24 for a duration of .06 seconds (started at 2024-08-21T20:40:24)
+=== DBI Completed at 2024-12-27T22:16:45 for a duration of .07 seconds (started at 2024-12-27T22:16:45)
 === DBI Started: ODBCAPTURE/DBA_OBJECTS_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2024-08-21T20:40:24 for a duration of .06 seconds (started at 2024-08-21T20:40:24)
+=== DBI Completed at 2024-12-27T22:16:46 for a duration of .08 seconds (started at 2024-12-27T22:16:45)
 === DBI Started: ODBCAPTURE/DBA_TAB_PRIVS_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2024-08-21T20:40:24 for a duration of .05 seconds (started at 2024-08-21T20:40:24)
+=== DBI Completed at 2024-12-27T22:16:46 for a duration of .06 seconds (started at 2024-12-27T22:16:46)
 === DBI Started: ODBCAPTURE/DLOAD_CONF.tbl
 
 Table created.
@@ -581,7 +595,10 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2024-08-21T20:40:25 for a duration of .35 seconds (started at 2024-08-21T20:40:24)
+
+Comment created.
+
+=== DBI Completed at 2024-12-27T22:16:46 for a duration of .4 seconds (started at 2024-12-27T22:16:46)
 === DBI Started: ODBCAPTURE/ELEMENT_CONF.tbl
 
 Table created.
@@ -593,7 +610,7 @@ Table altered.
 Table altered.
 
 
-Comment created.
+Table altered.
 
 
 Comment created.
@@ -619,7 +636,10 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2024-08-21T20:40:25 for a duration of .46 seconds (started at 2024-08-21T20:40:25)
+
+Comment created.
+
+=== DBI Completed at 2024-12-27T22:16:46 for a duration of .44 seconds (started at 2024-12-27T22:16:46)
 === DBI Started: ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl
 
 Table created.
@@ -642,7 +662,7 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2024-08-21T20:40:25 for a duration of .24 seconds (started at 2024-08-21T20:40:25)
+=== DBI Completed at 2024-12-27T22:16:47 for a duration of .26 seconds (started at 2024-12-27T22:16:46)
 === DBI Started: ODBCAPTURE/OBJECT_CONF.tbl
 
 Table created.
@@ -671,47 +691,47 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2024-08-21T20:40:26 for a duration of .3 seconds (started at 2024-08-21T20:40:25)
+=== DBI Completed at 2024-12-27T22:16:47 for a duration of .32 seconds (started at 2024-12-27T22:16:47)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2024-08-21T20:40:26 for a duration of .04 seconds (started at 2024-08-21T20:40:26)
+=== DBI Completed at 2024-12-27T22:16:47 for a duration of .05 seconds (started at 2024-12-27T22:16:47)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2024-08-21T20:40:26 for a duration of .05 seconds (started at 2024-08-21T20:40:26)
+=== DBI Completed at 2024-12-27T22:16:47 for a duration of .05 seconds (started at 2024-12-27T22:16:47)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2024-08-21T20:40:26 for a duration of .05 seconds (started at 2024-08-21T20:40:26)
+=== DBI Completed at 2024-12-27T22:16:47 for a duration of .05 seconds (started at 2024-12-27T22:16:47)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2024-08-21T20:40:26 for a duration of .05 seconds (started at 2024-08-21T20:40:26)
+=== DBI Completed at 2024-12-27T22:16:47 for a duration of .06 seconds (started at 2024-12-27T22:16:47)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2024-08-21T20:40:26 for a duration of .05 seconds (started at 2024-08-21T20:40:26)
+=== DBI Completed at 2024-12-27T22:16:47 for a duration of .06 seconds (started at 2024-12-27T22:16:47)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2024-08-21T20:40:26 for a duration of .06 seconds (started at 2024-08-21T20:40:26)
+=== DBI Completed at 2024-12-27T22:16:47 for a duration of .05 seconds (started at 2024-12-27T22:16:47)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2024-08-21T20:40:26 for a duration of .06 seconds (started at 2024-08-21T20:40:26)
+=== DBI Completed at 2024-12-27T22:16:47 for a duration of .06 seconds (started at 2024-12-27T22:16:47)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2024-08-21T20:40:26 for a duration of .07 seconds (started at 2024-08-21T20:40:26)
+=== DBI Completed at 2024-12-27T22:16:48 for a duration of .05 seconds (started at 2024-12-27T22:16:47)
 === DBI Started: ODBCAPTURE/ROLE_CONF.tbl
 
 Table created.
@@ -737,7 +757,7 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2024-08-21T20:40:27 for a duration of .31 seconds (started at 2024-08-21T20:40:26)
+=== DBI Completed at 2024-12-27T22:16:48 for a duration of .29 seconds (started at 2024-12-27T22:16:48)
 === DBI Started: ODBCAPTURE/SCHEMA_CONF.tbl
 
 Table created.
@@ -778,12 +798,12 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2024-08-21T20:40:27 for a duration of .54 seconds (started at 2024-08-21T20:40:27)
+=== DBI Completed at 2024-12-27T22:16:48 for a duration of .4 seconds (started at 2024-12-27T22:16:48)
 === DBI Started: ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2024-08-21T20:40:27 for a duration of .08 seconds (started at 2024-08-21T20:40:27)
+=== DBI Completed at 2024-12-27T22:16:48 for a duration of .06 seconds (started at 2024-12-27T22:16:48)
 === DBI Started: ODBCAPTURE/TSPACE_CONF.tbl
 
 Table created.
@@ -803,7 +823,15 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2024-08-21T20:40:27 for a duration of .24 seconds (started at 2024-08-21T20:40:27)
+=== DBI Completed at 2024-12-27T22:16:48 for a duration of .2 seconds (started at 2024-12-27T22:16:48)
+=== DBI Started: ODBCAPTURE/USER_DEFINED_TYPE_CONF.tbl
+
+Table created.
+
+
+Table altered.
+
+=== DBI Completed at 2024-12-27T22:16:49 for a duration of .12 seconds (started at 2024-12-27T22:16:48)
 === DBI Started: ODBCAPTURE/ZIP_FILES.tbl
 
 Table created.
@@ -811,7 +839,212 @@ Table created.
 
 Table altered.
 
-=== DBI Completed at 2024-08-21T20:40:28 for a duration of .13 seconds (started at 2024-08-21T20:40:27)
+=== DBI Completed at 2024-12-27T22:16:49 for a duration of .11 seconds (started at 2024-12-27T22:16:49)
+Compile All started
+
+PL/SQL procedure successfully completed.
+
+Compile All is done.
+=== DBI Started: ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-12-27T22:16:52 for a duration of .18 seconds (started at 2024-12-27T22:16:52)
+=== DBI Started: ODBCAPTURE/BUILD_PATH_REVIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-12-27T22:16:52 for a duration of .09 seconds (started at 2024-12-27T22:16:52)
+=== DBI Started: ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-12-27T22:16:52 for a duration of .11 seconds (started at 2024-12-27T22:16:52)
+=== DBI Started: ODBCAPTURE/DBA_OBJECTS_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-12-27T22:16:52 for a duration of .26 seconds (started at 2024-12-27T22:16:52)
+=== DBI Started: ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-12-27T22:16:53 for a duration of .1 seconds (started at 2024-12-27T22:16:52)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-12-27T22:16:53 for a duration of .12 seconds (started at 2024-12-27T22:16:53)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-12-27T22:16:53 for a duration of .09 seconds (started at 2024-12-27T22:16:53)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-12-27T22:16:53 for a duration of .11 seconds (started at 2024-12-27T22:16:53)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-12-27T22:16:53 for a duration of .16 seconds (started at 2024-12-27T22:16:53)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-12-27T22:16:53 for a duration of .14 seconds (started at 2024-12-27T22:16:53)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-12-27T22:16:53 for a duration of .18 seconds (started at 2024-12-27T22:16:53)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-12-27T22:16:53 for a duration of .09 seconds (started at 2024-12-27T22:16:53)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-12-27T22:16:54 for a duration of .1 seconds (started at 2024-12-27T22:16:53)
+=== DBI Started: ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-12-27T22:16:54 for a duration of .09 seconds (started at 2024-12-27T22:16:54)
+=== DBI Started: ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-12-27T22:16:54 for a duration of .1 seconds (started at 2024-12-27T22:16:54)
+=== DBI Started: ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-12-27T22:16:54 for a duration of .09 seconds (started at 2024-12-27T22:16:54)
+=== DBI Started: ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-12-27T22:16:54 for a duration of .1 seconds (started at 2024-12-27T22:16:54)
+=== DBI Started: ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-12-27T22:16:54 for a duration of .11 seconds (started at 2024-12-27T22:16:54)
+=== DBI Started: ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-12-27T22:16:54 for a duration of .11 seconds (started at 2024-12-27T22:16:54)
+=== DBI Started: ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-12-27T22:16:54 for a duration of .1 seconds (started at 2024-12-27T22:16:54)
+=== DBI Started: ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-12-27T22:16:54 for a duration of .1 seconds (started at 2024-12-27T22:16:54)
+=== DBI Started: ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-12-27T22:16:55 for a duration of .1 seconds (started at 2024-12-27T22:16:54)
+=== DBI Started: ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-12-27T22:16:55 for a duration of .1 seconds (started at 2024-12-27T22:16:55)
+=== DBI Started: ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw
+
+View created.
+
+
+Warning: View created with compilation errors.
+
+=== DBI Completed at 2024-12-27T22:16:55 for a duration of .09 seconds (started at 2024-12-27T22:16:55)
+=== DBI Started: ODBCAPTURE/UOR_INSTALL_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-12-27T22:16:55 for a duration of .25 seconds (started at 2024-12-27T22:16:55)
 === DBI Started: ODBCAPTURE/BUILD_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -826,7 +1059,7 @@ sqlldr_control=ODBCAPTURE/BUILD_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:40:32 for a duration of 4.58 seconds (started at 2024-08-21T20:40:28)
+=== DBI Completed at 2024-12-27T22:17:00 for a duration of 4.78 seconds (started at 2024-12-27T22:16:55)
 === DBI Started: ODBCAPTURE/BUILD_PATH.cldr
 
 Disable Triggers and Foreign Keys
@@ -841,7 +1074,7 @@ sqlldr_control=ODBCAPTURE/BUILD_PATH.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:40:33 for a duration of 1.28 seconds (started at 2024-08-21T20:40:32)
+=== DBI Completed at 2024-12-27T22:17:02 for a duration of 2.2 seconds (started at 2024-12-27T22:17:00)
 === DBI Started: ODBCAPTURE/ELEMENT_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -851,12 +1084,12 @@ PL/SQL procedure successfully completed.
 
 sqlldr_control=ODBCAPTURE/ELEMENT_CONF.ctl
 
-  39 Rows successfully loaded.
+  40 Rows successfully loaded.
 
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:40:36 for a duration of 2.63 seconds (started at 2024-08-21T20:40:33)
+=== DBI Completed at 2024-12-27T22:17:05 for a duration of 2.65 seconds (started at 2024-12-27T22:17:02)
 === DBI Started: ODBCAPTURE/METADATA_TRANSFORM_PARAMS.cldr
 
 Disable Triggers and Foreign Keys
@@ -871,7 +1104,7 @@ sqlldr_control=ODBCAPTURE/METADATA_TRANSFORM_PARAMS.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:40:39 for a duration of 2.43 seconds (started at 2024-08-21T20:40:36)
+=== DBI Completed at 2024-12-27T22:17:07 for a duration of 2.19 seconds (started at 2024-12-27T22:17:05)
 === DBI Started: ODBCAPTURE/ROLE_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -886,7 +1119,7 @@ sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:40:40 for a duration of 1.73 seconds (started at 2024-08-21T20:40:39)
+=== DBI Completed at 2024-12-27T22:17:09 for a duration of 2.15 seconds (started at 2024-12-27T22:17:07)
 === DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -901,7 +1134,7 @@ sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:40:42 for a duration of 1.81 seconds (started at 2024-08-21T20:40:40)
+=== DBI Completed at 2024-12-27T22:17:12 for a duration of 2.55 seconds (started at 2024-12-27T22:17:09)
 === DBI Started: ODBCAPTURE/TSPACE_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -916,7 +1149,7 @@ sqlldr_control=ODBCAPTURE/TSPACE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:40:44 for a duration of 2.35 seconds (started at 2024-08-21T20:40:42)
+=== DBI Completed at 2024-12-27T22:17:14 for a duration of 2.09 seconds (started at 2024-12-27T22:17:12)
 === DBI Started: ODBCAPTURE/DBA_DEPENDENCIES_TAB.tidx
 
 Index created.
@@ -924,47 +1157,47 @@ Index created.
 
 Index created.
 
-=== DBI Completed at 2024-08-21T20:40:45 for a duration of .15 seconds (started at 2024-08-21T20:40:44)
+=== DBI Completed at 2024-12-27T22:17:14 for a duration of .11 seconds (started at 2024-12-27T22:17:14)
 === DBI Started: ODBCAPTURE/DBA_OBJECTS_TAB.tidx
 
 Index created.
 
-=== DBI Completed at 2024-08-21T20:40:45 for a duration of .08 seconds (started at 2024-08-21T20:40:45)
+=== DBI Completed at 2024-12-27T22:17:14 for a duration of .06 seconds (started at 2024-12-27T22:17:14)
 === DBI Started: ODBCAPTURE/DBA_TAB_PRIVS_TAB.tidx
 
 Index created.
 
-=== DBI Completed at 2024-08-21T20:40:45 for a duration of .07 seconds (started at 2024-08-21T20:40:45)
+=== DBI Completed at 2024-12-27T22:17:14 for a duration of .05 seconds (started at 2024-12-27T22:17:14)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tidx
 
 Index created.
 
-=== DBI Completed at 2024-08-21T20:40:45 for a duration of .07 seconds (started at 2024-08-21T20:40:45)
+=== DBI Completed at 2024-12-27T22:17:14 for a duration of .05 seconds (started at 2024-12-27T22:17:14)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tidx
 
 Index created.
 
-=== DBI Completed at 2024-08-21T20:40:45 for a duration of .07 seconds (started at 2024-08-21T20:40:45)
+=== DBI Completed at 2024-12-27T22:17:14 for a duration of .06 seconds (started at 2024-12-27T22:17:14)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tidx
 
 Index created.
 
-=== DBI Completed at 2024-08-21T20:40:45 for a duration of .06 seconds (started at 2024-08-21T20:40:45)
+=== DBI Completed at 2024-12-27T22:17:14 for a duration of .06 seconds (started at 2024-12-27T22:17:14)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tidx
 
 Index created.
 
-=== DBI Completed at 2024-08-21T20:40:45 for a duration of .06 seconds (started at 2024-08-21T20:40:45)
+=== DBI Completed at 2024-12-27T22:17:14 for a duration of .06 seconds (started at 2024-12-27T22:17:14)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tidx
 
 Index created.
 
-=== DBI Completed at 2024-08-21T20:40:45 for a duration of .06 seconds (started at 2024-08-21T20:40:45)
+=== DBI Completed at 2024-12-27T22:17:14 for a duration of .06 seconds (started at 2024-12-27T22:17:14)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tidx
 
 Index created.
 
-=== DBI Completed at 2024-08-21T20:40:45 for a duration of .08 seconds (started at 2024-08-21T20:40:45)
+=== DBI Completed at 2024-12-27T22:17:14 for a duration of .06 seconds (started at 2024-12-27T22:17:14)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tidx
 
 Index created.
@@ -972,7 +1205,7 @@ Index created.
 
 Index created.
 
-=== DBI Completed at 2024-08-21T20:40:45 for a duration of .11 seconds (started at 2024-08-21T20:40:45)
+=== DBI Completed at 2024-12-27T22:17:14 for a duration of .12 seconds (started at 2024-12-27T22:17:14)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tidx
 
 Index created.
@@ -980,232 +1213,37 @@ Index created.
 
 Index created.
 
-=== DBI Completed at 2024-08-21T20:40:46 for a duration of .2 seconds (started at 2024-08-21T20:40:45)
-=== DBI Started: ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw
-
-View created.
-
-
-View created.
-
-=== DBI Completed at 2024-08-21T20:40:46 for a duration of .62 seconds (started at 2024-08-21T20:40:46)
-=== DBI Started: ODBCAPTURE/BUILD_PATH_REVIEW.vw
-
-View created.
-
-
-View created.
-
-=== DBI Completed at 2024-08-21T20:40:46 for a duration of .1 seconds (started at 2024-08-21T20:40:46)
-=== DBI Started: ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw
-
-View created.
-
-
-View created.
-
-=== DBI Completed at 2024-08-21T20:40:46 for a duration of .13 seconds (started at 2024-08-21T20:40:46)
-=== DBI Started: ODBCAPTURE/DBA_OBJECTS_VIEW.vw
-
-View created.
-
-
-View created.
-
-=== DBI Completed at 2024-08-21T20:40:47 for a duration of .33 seconds (started at 2024-08-21T20:40:46)
-=== DBI Started: ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw
-
-View created.
-
-
-Warning: View created with compilation errors.
-
-=== DBI Completed at 2024-08-21T20:40:47 for a duration of .15 seconds (started at 2024-08-21T20:40:47)
-=== DBI Started: ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw
-
-View created.
-
-
-View created.
-
-=== DBI Completed at 2024-08-21T20:40:47 for a duration of .26 seconds (started at 2024-08-21T20:40:47)
-=== DBI Started: ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw
-
-View created.
-
-
-View created.
-
-=== DBI Completed at 2024-08-21T20:40:48 for a duration of .3 seconds (started at 2024-08-21T20:40:47)
-=== DBI Started: ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw
-
-View created.
-
-
-View created.
-
-=== DBI Completed at 2024-08-21T20:40:48 for a duration of .1 seconds (started at 2024-08-21T20:40:48)
-=== DBI Started: ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw
-
-View created.
-
-
-View created.
-
-=== DBI Completed at 2024-08-21T20:40:48 for a duration of .12 seconds (started at 2024-08-21T20:40:48)
-=== DBI Started: ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw
-
-View created.
-
-
-View created.
-
-=== DBI Completed at 2024-08-21T20:40:48 for a duration of .1 seconds (started at 2024-08-21T20:40:48)
-=== DBI Started: ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw
-
-View created.
-
-
-View created.
-
-=== DBI Completed at 2024-08-21T20:40:48 for a duration of .32 seconds (started at 2024-08-21T20:40:48)
-=== DBI Started: ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw
-
-View created.
-
-
-View created.
-
-=== DBI Completed at 2024-08-21T20:40:48 for a duration of .13 seconds (started at 2024-08-21T20:40:48)
-=== DBI Started: ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw
-
-View created.
-
-
-View created.
-
-=== DBI Completed at 2024-08-21T20:40:48 for a duration of .14 seconds (started at 2024-08-21T20:40:48)
-=== DBI Started: ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw
-
-View created.
-
-
-Warning: View created with compilation errors.
-
-=== DBI Completed at 2024-08-21T20:40:49 for a duration of .17 seconds (started at 2024-08-21T20:40:48)
-=== DBI Started: ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw
-
-View created.
-
-
-Warning: View created with compilation errors.
-
-=== DBI Completed at 2024-08-21T20:40:49 for a duration of .12 seconds (started at 2024-08-21T20:40:49)
-=== DBI Started: ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw
-
-View created.
-
-
-Warning: View created with compilation errors.
-
-=== DBI Completed at 2024-08-21T20:40:49 for a duration of .09 seconds (started at 2024-08-21T20:40:49)
-=== DBI Started: ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw
-
-View created.
-
-
-Warning: View created with compilation errors.
-
-=== DBI Completed at 2024-08-21T20:40:49 for a duration of .11 seconds (started at 2024-08-21T20:40:49)
-=== DBI Started: ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw
-
-View created.
-
-
-Warning: View created with compilation errors.
-
-=== DBI Completed at 2024-08-21T20:40:49 for a duration of .11 seconds (started at 2024-08-21T20:40:49)
-=== DBI Started: ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw
-
-View created.
-
-
-Warning: View created with compilation errors.
-
-=== DBI Completed at 2024-08-21T20:40:49 for a duration of .1 seconds (started at 2024-08-21T20:40:49)
-=== DBI Started: ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw
-
-View created.
-
-
-Warning: View created with compilation errors.
-
-=== DBI Completed at 2024-08-21T20:40:49 for a duration of .1 seconds (started at 2024-08-21T20:40:49)
-=== DBI Started: ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw
-
-View created.
-
-
-Warning: View created with compilation errors.
-
-=== DBI Completed at 2024-08-21T20:40:49 for a duration of .1 seconds (started at 2024-08-21T20:40:49)
-=== DBI Started: ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw
-
-View created.
-
-
-Warning: View created with compilation errors.
-
-=== DBI Completed at 2024-08-21T20:40:50 for a duration of .11 seconds (started at 2024-08-21T20:40:49)
-=== DBI Started: ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw
-
-View created.
-
-
-Warning: View created with compilation errors.
-
-=== DBI Completed at 2024-08-21T20:40:50 for a duration of .1 seconds (started at 2024-08-21T20:40:50)
-=== DBI Started: ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw
-
-View created.
-
-
-Warning: View created with compilation errors.
-
-=== DBI Completed at 2024-08-21T20:40:50 for a duration of .12 seconds (started at 2024-08-21T20:40:50)
-=== DBI Started: ODBCAPTURE/UOR_INSTALL_VIEW.vw
-
-View created.
-
-
-View created.
-
-=== DBI Completed at 2024-08-21T20:40:50 for a duration of .11 seconds (started at 2024-08-21T20:40:50)
+=== DBI Completed at 2024-12-27T22:17:15 for a duration of .2 seconds (started at 2024-12-27T22:17:14)
 === DBI Started: ODBCAPTURE/COMMON_UTIL.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2024-08-21T20:40:50 for a duration of .21 seconds (started at 2024-08-21T20:40:50)
+=== DBI Completed at 2024-12-27T22:17:15 for a duration of .32 seconds (started at 2024-12-27T22:17:15)
 === DBI Started: ODBCAPTURE/FH2.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2024-08-21T20:40:50 for a duration of .18 seconds (started at 2024-08-21T20:40:50)
+=== DBI Completed at 2024-12-27T22:17:15 for a duration of .25 seconds (started at 2024-12-27T22:17:15)
+=== DBI Started: ODBCAPTURE/GRAB_DATA.pkbsql
+
+Package body created.
+
+=== DBI Completed at 2024-12-27T22:17:16 for a duration of .37 seconds (started at 2024-12-27T22:17:15)
 === DBI Started: ODBCAPTURE/GRAB_SCRIPTS.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2024-08-21T20:40:52 for a duration of 1.58 seconds (started at 2024-08-21T20:40:50)
+=== DBI Completed at 2024-12-27T22:17:17 for a duration of 1.07 seconds (started at 2024-12-27T22:17:16)
 === DBI Started: ODBCAPTURE/ROOT_SCRIPTS.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2024-08-21T20:40:52 for a duration of .12 seconds (started at 2024-08-21T20:40:52)
+=== DBI Completed at 2024-12-27T22:17:17 for a duration of .08 seconds (started at 2024-12-27T22:17:17)
 === DBI Started: ODBCAPTURE/ZIP_UTIL_PKG.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2024-08-21T20:40:52 for a duration of .12 seconds (started at 2024-08-21T20:40:52)
+=== DBI Completed at 2024-12-27T22:17:17 for a duration of .12 seconds (started at 2024-12-27T22:17:17)
 === DBI Started: ODBCAPTURE/BUILD_PATH.tfk
 
 Table altered.
@@ -1213,7 +1251,7 @@ Table altered.
 
 Table altered.
 
-=== DBI Completed at 2024-08-21T20:40:52 for a duration of .15 seconds (started at 2024-08-21T20:40:52)
+=== DBI Completed at 2024-12-27T22:17:17 for a duration of .12 seconds (started at 2024-12-27T22:17:17)
 === DBI Started: ODBCAPTURE/DLOAD_CONF.tfk
 
 Table altered.
@@ -1221,7 +1259,7 @@ Table altered.
 
 Table altered.
 
-=== DBI Completed at 2024-08-21T20:40:52 for a duration of .14 seconds (started at 2024-08-21T20:40:52)
+=== DBI Completed at 2024-12-27T22:17:17 for a duration of .12 seconds (started at 2024-12-27T22:17:17)
 === DBI Started: ODBCAPTURE/OBJECT_CONF.tfk
 
 Table altered.
@@ -1232,22 +1270,22 @@ Table altered.
 
 Table altered.
 
-=== DBI Completed at 2024-08-21T20:40:53 for a duration of .25 seconds (started at 2024-08-21T20:40:52)
+=== DBI Completed at 2024-12-27T22:17:17 for a duration of .16 seconds (started at 2024-12-27T22:17:17)
 === DBI Started: ODBCAPTURE/ROLE_CONF.tfk
 
 Table altered.
 
-=== DBI Completed at 2024-08-21T20:40:53 for a duration of .06 seconds (started at 2024-08-21T20:40:53)
+=== DBI Completed at 2024-12-27T22:17:17 for a duration of .06 seconds (started at 2024-12-27T22:17:17)
 === DBI Started: ODBCAPTURE/SCHEMA_CONF.tfk
 
 Table altered.
 
-=== DBI Completed at 2024-08-21T20:40:53 for a duration of .06 seconds (started at 2024-08-21T20:40:53)
+=== DBI Completed at 2024-12-27T22:17:18 for a duration of .07 seconds (started at 2024-12-27T22:17:17)
 === DBI Started: ODBCAPTURE/TSPACE_CONF.tfk
 
 Table altered.
 
-=== DBI Completed at 2024-08-21T20:40:53 for a duration of .06 seconds (started at 2024-08-21T20:40:53)
+=== DBI Completed at 2024-12-27T22:17:18 for a duration of .09 seconds (started at 2024-12-27T22:17:18)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table
@@ -1307,7 +1345,7 @@ PL/SQL procedure successfully completed.
 
 
 Switch Spooling Off
-=== DBI Completed at 2024-08-21T20:40:59 for a duration of 5.67 seconds (started at 2024-08-21T20:40:53)
+=== DBI Completed at 2024-12-27T22:17:23 for a duration of 5.67 seconds (started at 2024-12-27T22:17:18)
 not spooling currently
 
 "grbsrc" Installation is Done.
@@ -1315,7 +1353,7 @@ Connected.
 
 CONNECTION
 ---------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.40.59.215981 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.17.23.916571 PM +00:00
 
 1 row selected.
 
@@ -1326,18 +1364,18 @@ User altered.
 Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbsrc
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbsrc
 
 report_status.sql grbsrc
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:40:59 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:17:24 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
 
-Last Successful login time: Wed Aug 21 2024 15:40:59 -05:00
+Last Successful login time: Fri Dec 27 2024 16:17:23 -06:00
 
 Connected to:
 Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
@@ -1364,16 +1402,16 @@ PL/SQL procedure successfully completed.
 
 
 Reporting Summary of Build Type Log Errors
-Processing file ODBCAPTURE/BUILD_CONF.log (2024-08-21 20:41:01)
-Processing file ODBCAPTURE/BUILD_PATH.log (2024-08-21 20:41:01)
-Processing file ODBCAPTURE/ELEMENT_CONF.log (2024-08-21 20:41:01)
-Processing file ODBCAPTURE/METADATA_TRANSFORM_PARAMS.log (2024-08-21 20:41:01)
-Processing file ODBCAPTURE/ROLE_CONF.log (2024-08-21 20:41:01)
-Processing file ODBCAPTURE/SCHEMA_CONF.log (2024-08-21 20:41:01)
-Processing file ODBCAPTURE/TSPACE_CONF.log (2024-08-21 20:41:01)
-Processing file install_grbsrc.log (2024-08-21 20:41:01)
-Processing file install_sys.log (2024-08-21 20:41:01)
-Processing file install_system.log (2024-08-21 20:41:01)
+Processing file ODBCAPTURE/BUILD_CONF.log (2024-12-27 22:17:25)
+Processing file ODBCAPTURE/BUILD_PATH.log (2024-12-27 22:17:25)
+Processing file ODBCAPTURE/ELEMENT_CONF.log (2024-12-27 22:17:25)
+Processing file ODBCAPTURE/METADATA_TRANSFORM_PARAMS.log (2024-12-27 22:17:25)
+Processing file ODBCAPTURE/ROLE_CONF.log (2024-12-27 22:17:25)
+Processing file ODBCAPTURE/SCHEMA_CONF.log (2024-12-27 22:17:25)
+Processing file ODBCAPTURE/TSPACE_CONF.log (2024-12-27 22:17:25)
+Processing file install_grbsrc.log (2024-12-27 22:17:25)
+Processing file install_sys.log (2024-12-27 22:17:25)
+Processing file install_system.log (2024-12-27 22:17:25)
 
 PL/SQL procedure successfully completed.
 
@@ -1386,33 +1424,33 @@ Reorting JUnit XML Installation Log
 SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Move Log Files to Build Folder
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbsrc
-renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsrc/db_build_junit_report.xml'
-renamed 'install_grbsrc.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsrc/install_grbsrc.log'
-renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsrc/install_sys.log'
-renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsrc/install_system.log'
-renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsrc/log_files_junit_report.xml'
-renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsrc/odbcapture_installation_logs.log'
-renamed 'ODBCAPTURE/BUILD_CONF.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsrc/ODBCAPTURE/BUILD_CONF.log'
-renamed 'ODBCAPTURE/BUILD_PATH.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsrc/ODBCAPTURE/BUILD_PATH.log'
-renamed 'ODBCAPTURE/ELEMENT_CONF.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsrc/ODBCAPTURE/ELEMENT_CONF.log'
-renamed 'ODBCAPTURE/METADATA_TRANSFORM_PARAMS.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.log'
-renamed 'ODBCAPTURE/ROLE_CONF.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsrc/ODBCAPTURE/ROLE_CONF.log'
-renamed 'ODBCAPTURE/SCHEMA_CONF.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsrc/ODBCAPTURE/SCHEMA_CONF.log'
-renamed 'ODBCAPTURE/TSPACE_CONF.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsrc/ODBCAPTURE/TSPACE_CONF.log'
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbsrc
+renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsrc/db_build_junit_report.xml'
+renamed 'install_grbsrc.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsrc/install_grbsrc.log'
+renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsrc/install_sys.log'
+renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsrc/install_system.log'
+renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsrc/log_files_junit_report.xml'
+renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsrc/odbcapture_installation_logs.log'
+renamed 'ODBCAPTURE/BUILD_CONF.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsrc/ODBCAPTURE/BUILD_CONF.log'
+renamed 'ODBCAPTURE/BUILD_PATH.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsrc/ODBCAPTURE/BUILD_PATH.log'
+renamed 'ODBCAPTURE/ELEMENT_CONF.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsrc/ODBCAPTURE/ELEMENT_CONF.log'
+renamed 'ODBCAPTURE/METADATA_TRANSFORM_PARAMS.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.log'
+renamed 'ODBCAPTURE/ROLE_CONF.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsrc/ODBCAPTURE/ROLE_CONF.log'
+renamed 'ODBCAPTURE/SCHEMA_CONF.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsrc/ODBCAPTURE/SCHEMA_CONF.log'
+renamed 'ODBCAPTURE/TSPACE_CONF.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsrc/ODBCAPTURE/TSPACE_CONF.log'
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Clear old grbras logs
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbras
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbras
 
-/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../util/run_build.sql grbras
+/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../util/run_build.sql grbras
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:41:04 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:17:28 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
@@ -1426,7 +1464,7 @@ Setup Abort on Error
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.41.04.795497 PM +00:00
+user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.17.28.963968 PM +00:00
 
 Identify this Module in V$SESSION
 
@@ -1453,7 +1491,7 @@ Grant succeeded.
 
 Grant succeeded.
 
-=== DBI Completed at 2024-08-21T20:41:05 for a duration of .28 seconds (started at 2024-08-21T20:41:04)
+=== DBI Completed at 2024-12-27T22:17:29 for a duration of .26 seconds (started at 2024-12-27T22:17:28)
 Setup Continue on Error
 
 *****************************
@@ -1464,7 +1502,7 @@ Connected.
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.41.05.647222 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.17.29.373296 PM +00:00
 
 1 row selected.
 
@@ -1488,16 +1526,16 @@ Synonym created.
 
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbras"
- -) "grbsrc" last loaded on 21-Aug-2024 20:41:01
+ -) "grbsrc" last loaded on 27-Dec-2024 22:17:25
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:05 for a duration of .22 seconds (started at 2024-08-21T20:41:05)
+=== DBI Completed at 2024-12-27T22:17:29 for a duration of .16 seconds (started at 2024-12-27T22:17:29)
 === DBI Started: ODBCAPTURE/GRAB_RAS.pkssql
 
 Package created.
 
-=== DBI Completed at 2024-08-21T20:41:05 for a duration of .06 seconds (started at 2024-08-21T20:41:05)
+=== DBI Completed at 2024-12-27T22:17:29 for a duration of .05 seconds (started at 2024-12-27T22:17:29)
 === DBI Started: ODBCAPTURE/EXPORTING_RAS_DATA.tbl
 
 Table created.
@@ -1517,7 +1555,20 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2024-08-21T20:41:06 for a duration of .23 seconds (started at 2024-08-21T20:41:05)
+=== DBI Completed at 2024-12-27T22:17:29 for a duration of .19 seconds (started at 2024-12-27T22:17:29)
+Compile All started
+
+PL/SQL procedure successfully completed.
+
+Compile All is done.
+=== DBI Started: ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-12-27T22:17:30 for a duration of .14 seconds (started at 2024-12-27T22:17:30)
 === DBI Started: ODBCAPTURE/ROLE_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -1533,7 +1584,7 @@ sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:06 for a duration of .57 seconds (started at 2024-08-21T20:41:06)
+=== DBI Completed at 2024-12-27T22:17:31 for a duration of .82 seconds (started at 2024-12-27T22:17:30)
 === DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -1549,20 +1600,12 @@ sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:07 for a duration of .53 seconds (started at 2024-08-21T20:41:06)
-=== DBI Started: ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw
-
-View created.
-
-
-View created.
-
-=== DBI Completed at 2024-08-21T20:41:07 for a duration of .1 seconds (started at 2024-08-21T20:41:07)
+=== DBI Completed at 2024-12-27T22:17:32 for a duration of .57 seconds (started at 2024-12-27T22:17:31)
 === DBI Started: ODBCAPTURE/GRAB_RAS.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2024-08-21T20:41:07 for a duration of .17 seconds (started at 2024-08-21T20:41:07)
+=== DBI Completed at 2024-12-27T22:17:32 for a duration of .18 seconds (started at 2024-12-27T22:17:32)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table
@@ -1622,7 +1665,7 @@ PL/SQL procedure successfully completed.
 
 
 Switch Spooling Off
-=== DBI Completed at 2024-08-21T20:41:09 for a duration of 2.38 seconds (started at 2024-08-21T20:41:07)
+=== DBI Completed at 2024-12-27T22:17:33 for a duration of 1.52 seconds (started at 2024-12-27T22:17:32)
 not spooling currently
 
 "grbras" Installation is Done.
@@ -1630,26 +1673,26 @@ Connected.
 
 CONNECTION
 ---------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.41.10.133764 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.17.34.092711 PM +00:00
 
 1 row selected.
 
-Elapsed: 00:00:00.01
+Elapsed: 00:00:00.00
 Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbras
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbras
 
 report_status.sql grbras
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:41:10 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:17:34 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
 
-Last Successful login time: Wed Aug 21 2024 15:41:10 -05:00
+Last Successful login time: Fri Dec 27 2024 16:17:34 -06:00
 
 Connected to:
 Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
@@ -1676,11 +1719,11 @@ PL/SQL procedure successfully completed.
 
 
 Reporting Summary of Build Type Log Errors
-Processing file ODBCAPTURE/ROLE_CONF.log (2024-08-21 20:41:10)
-Processing file ODBCAPTURE/SCHEMA_CONF.log (2024-08-21 20:41:10)
-Processing file install_grbras.log (2024-08-21 20:41:10)
-Processing file install_sys.log (2024-08-21 20:41:10)
-Processing file install_system.log (2024-08-21 20:41:10)
+Processing file ODBCAPTURE/ROLE_CONF.log (2024-12-27 22:17:34)
+Processing file ODBCAPTURE/SCHEMA_CONF.log (2024-12-27 22:17:34)
+Processing file install_grbras.log (2024-12-27 22:17:34)
+Processing file install_sys.log (2024-12-27 22:17:34)
+Processing file install_system.log (2024-12-27 22:17:34)
 
 PL/SQL procedure successfully completed.
 
@@ -1693,28 +1736,28 @@ Reorting JUnit XML Installation Log
 SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Move Log Files to Build Folder
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbras
-renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbras/db_build_junit_report.xml'
-renamed 'install_grbras.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbras/install_grbras.log'
-renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbras/install_sys.log'
-renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbras/install_system.log'
-renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbras/log_files_junit_report.xml'
-renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbras/odbcapture_installation_logs.log'
-renamed 'ODBCAPTURE/ROLE_CONF.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbras/ODBCAPTURE/ROLE_CONF.log'
-renamed 'ODBCAPTURE/SCHEMA_CONF.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbras/ODBCAPTURE/SCHEMA_CONF.log'
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbras
+renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbras/db_build_junit_report.xml'
+renamed 'install_grbras.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbras/install_grbras.log'
+renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbras/install_sys.log'
+renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbras/install_system.log'
+renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbras/log_files_junit_report.xml'
+renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbras/odbcapture_installation_logs.log'
+renamed 'ODBCAPTURE/ROLE_CONF.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbras/ODBCAPTURE/ROLE_CONF.log'
+renamed 'ODBCAPTURE/SCHEMA_CONF.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbras/ODBCAPTURE/SCHEMA_CONF.log'
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Clear old grbjava logs
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbjava
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbjava
 
-/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../util/run_build.sql grbjava
+/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../util/run_build.sql grbjava
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:41:12 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:17:36 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
@@ -1728,7 +1771,7 @@ Setup Abort on Error
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.41.12.952564 PM +00:00
+user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.17.36.899702 PM +00:00
 
 Identify this Module in V$SESSION
 
@@ -1743,7 +1786,7 @@ Grant succeeded.
 
 Grant succeeded.
 
-=== DBI Completed at 2024-08-21T20:41:13 for a duration of .09 seconds (started at 2024-08-21T20:41:12)
+=== DBI Completed at 2024-12-27T22:17:37 for a duration of .11 seconds (started at 2024-12-27T22:17:36)
 Setup Continue on Error
 
 *****************************
@@ -1754,7 +1797,7 @@ Connected.
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.41.13.181294 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.17.37.219083 PM +00:00
 
 1 row selected.
 
@@ -1762,7 +1805,7 @@ user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.41.13.181294 PM +00
 
 Grant succeeded.
 
-=== DBI Completed at 2024-08-21T20:41:13 for a duration of .05 seconds (started at 2024-08-21T20:41:13)
+=== DBI Completed at 2024-12-27T22:17:37 for a duration of .05 seconds (started at 2024-12-27T22:17:37)
 
 *************************
 *  Install Application	*
@@ -1783,16 +1826,37 @@ Synonym created.
 
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbjava"
- -) "grbsrc" last loaded on 21-Aug-2024 20:41:01
+ -) "grbsrc" last loaded on 27-Dec-2024 22:17:25
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:13 for a duration of .16 seconds (started at 2024-08-21T20:41:13)
+=== DBI Completed at 2024-12-27T22:17:37 for a duration of .16 seconds (started at 2024-12-27T22:17:37)
 === DBI Started: ODBCAPTURE/GRAB_JAVA.pkssql
 
 Package created.
 
-=== DBI Completed at 2024-08-21T20:41:13 for a duration of .06 seconds (started at 2024-08-21T20:41:13)
+=== DBI Completed at 2024-12-27T22:17:37 for a duration of .05 seconds (started at 2024-12-27T22:17:37)
+Compile All started
+
+PL/SQL procedure successfully completed.
+
+Compile All is done.
+=== DBI Started: ODBCAPTURE/PRIV_OBJ_JAVA_FG_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-12-27T22:17:38 for a duration of .11 seconds (started at 2024-12-27T22:17:38)
+=== DBI Started: ODBCAPTURE/PRIV_SYSOBJ_JAVA_FG_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2024-12-27T22:17:38 for a duration of .1 seconds (started at 2024-12-27T22:17:38)
 === DBI Started: ODBCAPTURE/ROLE_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -1808,7 +1872,7 @@ sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:14 for a duration of .61 seconds (started at 2024-08-21T20:41:13)
+=== DBI Completed at 2024-12-27T22:17:39 for a duration of .57 seconds (started at 2024-12-27T22:17:38)
 === DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -1824,28 +1888,12 @@ sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:14 for a duration of .61 seconds (started at 2024-08-21T20:41:14)
-=== DBI Started: ODBCAPTURE/PRIV_OBJ_JAVA_FG_VIEW.vw
-
-View created.
-
-
-View created.
-
-=== DBI Completed at 2024-08-21T20:41:14 for a duration of .16 seconds (started at 2024-08-21T20:41:14)
-=== DBI Started: ODBCAPTURE/PRIV_SYSOBJ_JAVA_FG_VIEW.vw
-
-View created.
-
-
-View created.
-
-=== DBI Completed at 2024-08-21T20:41:14 for a duration of .09 seconds (started at 2024-08-21T20:41:14)
+=== DBI Completed at 2024-12-27T22:17:39 for a duration of .61 seconds (started at 2024-12-27T22:17:39)
 === DBI Started: ODBCAPTURE/GRAB_JAVA.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2024-08-21T20:41:15 for a duration of .12 seconds (started at 2024-08-21T20:41:14)
+=== DBI Completed at 2024-12-27T22:17:39 for a duration of .12 seconds (started at 2024-12-27T22:17:39)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table
@@ -1905,7 +1953,7 @@ PL/SQL procedure successfully completed.
 
 
 Switch Spooling Off
-=== DBI Completed at 2024-08-21T20:41:17 for a duration of 2.8 seconds (started at 2024-08-21T20:41:15)
+=== DBI Completed at 2024-12-27T22:17:41 for a duration of 1.41 seconds (started at 2024-12-27T22:17:39)
 not spooling currently
 
 "grbjava" Installation is Done.
@@ -1913,26 +1961,26 @@ Connected.
 
 CONNECTION
 ---------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.41.18.044690 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.17.41.431856 PM +00:00
 
 1 row selected.
 
-Elapsed: 00:00:00.01
+Elapsed: 00:00:00.00
 Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbjava
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbjava
 
 report_status.sql grbjava
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:41:18 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:17:41 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
 
-Last Successful login time: Wed Aug 21 2024 15:41:18 -05:00
+Last Successful login time: Fri Dec 27 2024 16:17:41 -06:00
 
 Connected to:
 Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
@@ -1959,11 +2007,11 @@ PL/SQL procedure successfully completed.
 
 
 Reporting Summary of Build Type Log Errors
-Processing file ODBCAPTURE/ROLE_CONF.log (2024-08-21 20:41:18)
-Processing file ODBCAPTURE/SCHEMA_CONF.log (2024-08-21 20:41:18)
-Processing file install_grbjava.log (2024-08-21 20:41:18)
-Processing file install_sys.log (2024-08-21 20:41:18)
-Processing file install_system.log (2024-08-21 20:41:18)
+Processing file ODBCAPTURE/ROLE_CONF.log (2024-12-27 22:17:42)
+Processing file ODBCAPTURE/SCHEMA_CONF.log (2024-12-27 22:17:42)
+Processing file install_grbjava.log (2024-12-27 22:17:42)
+Processing file install_sys.log (2024-12-27 22:17:42)
+Processing file install_system.log (2024-12-27 22:17:42)
 
 PL/SQL procedure successfully completed.
 
@@ -1976,28 +2024,28 @@ Reorting JUnit XML Installation Log
 SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Move Log Files to Build Folder
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbjava
-renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbjava/db_build_junit_report.xml'
-renamed 'install_grbjava.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbjava/install_grbjava.log'
-renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbjava/install_sys.log'
-renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbjava/install_system.log'
-renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbjava/log_files_junit_report.xml'
-renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbjava/odbcapture_installation_logs.log'
-renamed 'ODBCAPTURE/ROLE_CONF.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbjava/ODBCAPTURE/ROLE_CONF.log'
-renamed 'ODBCAPTURE/SCHEMA_CONF.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbjava/ODBCAPTURE/SCHEMA_CONF.log'
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbjava
+renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbjava/db_build_junit_report.xml'
+renamed 'install_grbjava.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbjava/install_grbjava.log'
+renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbjava/install_sys.log'
+renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbjava/install_system.log'
+renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbjava/log_files_junit_report.xml'
+renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbjava/odbcapture_installation_logs.log'
+renamed 'ODBCAPTURE/ROLE_CONF.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbjava/ODBCAPTURE/ROLE_CONF.log'
+renamed 'ODBCAPTURE/SCHEMA_CONF.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbjava/ODBCAPTURE/SCHEMA_CONF.log'
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Clear old grbsdo logs
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbsdo
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbsdo
 
-/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../util/run_build.sql grbsdo
+/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../util/run_build.sql grbsdo
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:41:20 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:17:44 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
@@ -2011,7 +2059,7 @@ Setup Abort on Error
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.41.21.041705 PM +00:00
+user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.17.44.482579 PM +00:00
 
 Identify this Module in V$SESSION
 
@@ -2029,7 +2077,7 @@ Connected.
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.41.21.181827 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.17.44.610725 PM +00:00
 
 
 *************************
@@ -2051,16 +2099,16 @@ Synonym created.
 
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbsdo"
- -) "grbsrc" last loaded on 21-Aug-2024 20:41:01
+ -) "grbsrc" last loaded on 27-Dec-2024 22:17:25
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:21 for a duration of .17 seconds (started at 2024-08-21T20:41:21)
+=== DBI Completed at 2024-12-27T22:17:44 for a duration of .15 seconds (started at 2024-12-27T22:17:44)
 === DBI Started: ODBCAPTURE/GRAB_SDO.pkssql
 
 Package created.
 
-=== DBI Completed at 2024-08-21T20:41:21 for a duration of .1 seconds (started at 2024-08-21T20:41:21)
+=== DBI Completed at 2024-12-27T22:17:45 for a duration of .24 seconds (started at 2024-12-27T22:17:44)
 === DBI Started: ODBCAPTURE/ROLE_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -2076,7 +2124,7 @@ sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:22 for a duration of .63 seconds (started at 2024-08-21T20:41:21)
+=== DBI Completed at 2024-12-27T22:17:45 for a duration of .96 seconds (started at 2024-12-27T22:17:45)
 === DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -2092,12 +2140,27 @@ sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:22 for a duration of .74 seconds (started at 2024-08-21T20:41:22)
+=== DBI Completed at 2024-12-27T22:17:46 for a duration of .57 seconds (started at 2024-12-27T22:17:45)
+=== DBI Started: ODBCAPTURE/USER_DEFINED_TYPE_CONF.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/USER_DEFINED_TYPE_CONF.ctl
+
+  5 Rows successfully loaded.
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2024-12-27T22:17:49 for a duration of 2.48 seconds (started at 2024-12-27T22:17:46)
 === DBI Started: ODBCAPTURE/GRAB_SDO.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2024-08-21T20:41:23 for a duration of .14 seconds (started at 2024-08-21T20:41:22)
+=== DBI Completed at 2024-12-27T22:17:49 for a duration of .13 seconds (started at 2024-12-27T22:17:49)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table
@@ -2157,7 +2220,7 @@ PL/SQL procedure successfully completed.
 
 
 Switch Spooling Off
-=== DBI Completed at 2024-08-21T20:41:25 for a duration of 2.24 seconds (started at 2024-08-21T20:41:23)
+=== DBI Completed at 2024-12-27T22:17:50 for a duration of 1.24 seconds (started at 2024-12-27T22:17:49)
 not spooling currently
 
 "grbsdo" Installation is Done.
@@ -2165,26 +2228,26 @@ Connected.
 
 CONNECTION
 ---------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.41.25.397171 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.17.50.569232 PM +00:00
 
 1 row selected.
 
-Elapsed: 00:00:00.01
+Elapsed: 00:00:00.00
 Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbsdo
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbsdo
 
 report_status.sql grbsdo
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:41:25 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:17:50 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
 
-Last Successful login time: Wed Aug 21 2024 15:41:25 -05:00
+Last Successful login time: Fri Dec 27 2024 16:17:50 -06:00
 
 Connected to:
 Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
@@ -2200,7 +2263,7 @@ PL/SQL procedure successfully completed.
 
 sqlldr_control=./odbcapture_installation_logs.ctl
 
-  5 Rows successfully loaded.
+  6 Rows successfully loaded.
 
 old   2:    if '&_RC.' != '0' then
 new   2:    if '0' != '0' then
@@ -2211,11 +2274,12 @@ PL/SQL procedure successfully completed.
 
 
 Reporting Summary of Build Type Log Errors
-Processing file ODBCAPTURE/ROLE_CONF.log (2024-08-21 20:41:26)
-Processing file ODBCAPTURE/SCHEMA_CONF.log (2024-08-21 20:41:26)
-Processing file install_grbsdo.log (2024-08-21 20:41:26)
-Processing file install_sys.log (2024-08-21 20:41:26)
-Processing file install_system.log (2024-08-21 20:41:26)
+Processing file ODBCAPTURE/ROLE_CONF.log (2024-12-27 22:17:51)
+Processing file ODBCAPTURE/SCHEMA_CONF.log (2024-12-27 22:17:51)
+Processing file ODBCAPTURE/USER_DEFINED_TYPE_CONF.log (2024-12-27 22:17:51)
+Processing file install_grbsdo.log (2024-12-27 22:17:51)
+Processing file install_sys.log (2024-12-27 22:17:51)
+Processing file install_system.log (2024-12-27 22:17:51)
 
 PL/SQL procedure successfully completed.
 
@@ -2228,28 +2292,29 @@ Reorting JUnit XML Installation Log
 SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Move Log Files to Build Folder
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbsdo
-renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsdo/db_build_junit_report.xml'
-renamed 'install_grbsdo.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsdo/install_grbsdo.log'
-renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsdo/install_sys.log'
-renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsdo/install_system.log'
-renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsdo/log_files_junit_report.xml'
-renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsdo/odbcapture_installation_logs.log'
-renamed 'ODBCAPTURE/ROLE_CONF.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsdo/ODBCAPTURE/ROLE_CONF.log'
-renamed 'ODBCAPTURE/SCHEMA_CONF.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbsdo/ODBCAPTURE/SCHEMA_CONF.log'
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbsdo
+renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsdo/db_build_junit_report.xml'
+renamed 'install_grbsdo.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsdo/install_grbsdo.log'
+renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsdo/install_sys.log'
+renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsdo/install_system.log'
+renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsdo/log_files_junit_report.xml'
+renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsdo/odbcapture_installation_logs.log'
+renamed 'ODBCAPTURE/ROLE_CONF.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsdo/ODBCAPTURE/ROLE_CONF.log'
+renamed 'ODBCAPTURE/SCHEMA_CONF.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsdo/ODBCAPTURE/SCHEMA_CONF.log'
+renamed 'ODBCAPTURE/USER_DEFINED_TYPE_CONF.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbsdo/ODBCAPTURE/USER_DEFINED_TYPE_CONF.log'
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Clear old grbdat logs
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbdat
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbdat
 
-/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../util/run_build.sql grbdat
+/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../util/run_build.sql grbdat
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:41:27 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:17:53 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
@@ -2263,7 +2328,7 @@ Setup Abort on Error
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.41.28.105611 PM +00:00
+user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.17.53.559407 PM +00:00
 
 Identify this Module in V$SESSION
 
@@ -2281,7 +2346,7 @@ Connected.
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.41.28.245655 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.17.53.716044 PM +00:00
 
 
 *************************
@@ -2304,14 +2369,14 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbdat"
 WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) "grbjava" last loaded on 21-Aug-2024 20:41:18
- -) "grbras" last loaded on 21-Aug-2024 20:41:10
- -) "grbsdo" last loaded on 21-Aug-2024 20:41:26
- -) "grbsrc" last loaded on 21-Aug-2024 20:41:01
+ -) "grbjava" last loaded on 27-Dec-2024 22:17:42
+ -) "grbras" last loaded on 27-Dec-2024 22:17:34
+ -) "grbsdo" last loaded on 27-Dec-2024 22:17:51
+ -) "grbsrc" last loaded on 27-Dec-2024 22:17:25
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:28 for a duration of .15 seconds (started at 2024-08-21T20:41:28)
+=== DBI Completed at 2024-12-27T22:17:53 for a duration of .21 seconds (started at 2024-12-27T22:17:53)
 === DBI Started: ODBCAPTURE/DLOAD_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -2323,12 +2388,12 @@ PL/SQL procedure successfully completed.
 
 sqlldr_control=ODBCAPTURE/DLOAD_CONF.ctl
 
-  15 Rows successfully loaded.
+  16 Rows successfully loaded.
 
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:31 for a duration of 2.8 seconds (started at 2024-08-21T20:41:28)
+=== DBI Completed at 2024-12-27T22:17:57 for a duration of 3.08 seconds (started at 2024-12-27T22:17:53)
 === DBI Started: ODBCAPTURE/OBJECT_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -2346,7 +2411,7 @@ sqlldr_control=ODBCAPTURE/OBJECT_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:32 for a duration of 1.68 seconds (started at 2024-08-21T20:41:31)
+=== DBI Completed at 2024-12-27T22:17:59 for a duration of 2.44 seconds (started at 2024-12-27T22:17:57)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table
@@ -2406,7 +2471,7 @@ PL/SQL procedure successfully completed.
 
 
 Switch Spooling Off
-=== DBI Completed at 2024-08-21T20:41:35 for a duration of 2.14 seconds (started at 2024-08-21T20:41:32)
+=== DBI Completed at 2024-12-27T22:18:00 for a duration of 1.41 seconds (started at 2024-12-27T22:17:59)
 not spooling currently
 
 "grbdat" Installation is Done.
@@ -2414,26 +2479,26 @@ Connected.
 
 CONNECTION
 ---------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.41.35.275181 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.18.01.044649 PM +00:00
 
 1 row selected.
 
-Elapsed: 00:00:00.01
+Elapsed: 00:00:00.00
 Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbdat
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbdat
 
 report_status.sql grbdat
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:41:35 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:18:01 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
 
-Last Successful login time: Wed Aug 21 2024 15:41:35 -05:00
+Last Successful login time: Fri Dec 27 2024 16:18:01 -06:00
 
 Connected to:
 Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
@@ -2460,12 +2525,12 @@ PL/SQL procedure successfully completed.
 
 
 Reporting Summary of Build Type Log Errors
-Processing file ODBCAPTURE/DLOAD_CONF.log (2024-08-21 20:41:36)
-Processing file ODBCAPTURE/OBJECT_CONF.log (2024-08-21 20:41:36)
-Processing file install_grbdat.log (2024-08-21 20:41:36)
+Processing file ODBCAPTURE/DLOAD_CONF.log (2024-12-27 22:18:01)
+Processing file ODBCAPTURE/OBJECT_CONF.log (2024-12-27 22:18:01)
+Processing file install_grbdat.log (2024-12-27 22:18:01)
   1 lines: WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
-Processing file install_sys.log (2024-08-21 20:41:36)
-Processing file install_system.log (2024-08-21 20:41:36)
+Processing file install_sys.log (2024-12-27 22:18:01)
+Processing file install_system.log (2024-12-27 22:18:01)
 
 PL/SQL procedure successfully completed.
 
@@ -2478,28 +2543,28 @@ Reorting JUnit XML Installation Log
 SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Move Log Files to Build Folder
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbdat
-renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbdat/db_build_junit_report.xml'
-renamed 'install_grbdat.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbdat/install_grbdat.log'
-renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbdat/install_sys.log'
-renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbdat/install_system.log'
-renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbdat/log_files_junit_report.xml'
-renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbdat/odbcapture_installation_logs.log'
-renamed 'ODBCAPTURE/DLOAD_CONF.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbdat/ODBCAPTURE/DLOAD_CONF.log'
-renamed 'ODBCAPTURE/OBJECT_CONF.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbdat/ODBCAPTURE/OBJECT_CONF.log'
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbdat
+renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbdat/db_build_junit_report.xml'
+renamed 'install_grbdat.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbdat/install_grbdat.log'
+renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbdat/install_sys.log'
+renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbdat/install_system.log'
+renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbdat/log_files_junit_report.xml'
+renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbdat/odbcapture_installation_logs.log'
+renamed 'ODBCAPTURE/DLOAD_CONF.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbdat/ODBCAPTURE/DLOAD_CONF.log'
+renamed 'ODBCAPTURE/OBJECT_CONF.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbdat/ODBCAPTURE/OBJECT_CONF.log'
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Clear old grbtst logs
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbtst
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbtst
 
-/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../util/run_build.sql grbtst
+/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../util/run_build.sql grbtst
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:41:38 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:18:03 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
@@ -2513,7 +2578,7 @@ Setup Abort on Error
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.41.38.361080 PM +00:00
+user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.18.03.671398 PM +00:00
 
 Identify this Module in V$SESSION
 
@@ -2525,7 +2590,7 @@ Identify this Module in V$SESSION
 
 Role created.
 
-=== DBI Completed at 2024-08-21T20:41:38 for a duration of .08 seconds (started at 2024-08-21T20:41:38)
+=== DBI Completed at 2024-12-27T22:18:03 for a duration of .06 seconds (started at 2024-12-27T22:18:03)
 === DBI Started: SYS/ODBCTEST.user
 
 User created.
@@ -2546,12 +2611,12 @@ XS Admin Cloud Grant "PROVISION" to "ODBCTEST"
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:38 for a duration of .24 seconds (started at 2024-08-21T20:41:38)
+=== DBI Completed at 2024-12-27T22:18:04 for a duration of .36 seconds (started at 2024-12-27T22:18:03)
 === DBI Started: SYS/host1.hacl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:38 for a duration of .16 seconds (started at 2024-08-21T20:41:38)
+=== DBI Completed at 2024-12-27T22:18:04 for a duration of .4 seconds (started at 2024-12-27T22:18:04)
 === DBI Started: SYS/host2.hacl
 
 PL/SQL procedure successfully completed.
@@ -2559,22 +2624,22 @@ PL/SQL procedure successfully completed.
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:39 for a duration of .14 seconds (started at 2024-08-21T20:41:38)
+=== DBI Completed at 2024-12-27T22:18:04 for a duration of .16 seconds (started at 2024-12-27T22:18:04)
 === DBI Started: SYS/odbctest_host.hacl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:39 for a duration of .11 seconds (started at 2024-08-21T20:41:39)
+=== DBI Completed at 2024-12-27T22:18:04 for a duration of .08 seconds (started at 2024-12-27T22:18:04)
 === DBI Started: SYS/_opt_install_files_oracle_wallet.wacl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:39 for a duration of .08 seconds (started at 2024-08-21T20:41:39)
+=== DBI Completed at 2024-12-27T22:18:04 for a duration of .07 seconds (started at 2024-12-27T22:18:04)
 === DBI Started: SYS/_var_opt_install_files_oracle_wallet.wacl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:39 for a duration of .13 seconds (started at 2024-08-21T20:41:39)
+=== DBI Completed at 2024-12-27T22:18:04 for a duration of .06 seconds (started at 2024-12-27T22:18:04)
 Setup Continue on Error
 
 *****************************
@@ -2585,7 +2650,7 @@ Connected.
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.41.39.744456 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.18.05.055779 PM +00:00
 
 1 row selected.
 
@@ -2605,7 +2670,7 @@ Grant succeeded.
 
 Grant succeeded.
 
-=== DBI Completed at 2024-08-21T20:41:40 for a duration of .29 seconds (started at 2024-08-21T20:41:39)
+=== DBI Completed at 2024-12-27T22:18:05 for a duration of .18 seconds (started at 2024-12-27T22:18:05)
 
 *************************
 *  Install Application	*
@@ -2627,14 +2692,14 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbtst"
 WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) "grbjava" last loaded on 21-Aug-2024 20:41:18
- -) "grbras" last loaded on 21-Aug-2024 20:41:10
- -) "grbsdo" last loaded on 21-Aug-2024 20:41:26
- -) "grbsrc" last loaded on 21-Aug-2024 20:41:01
+ -) "grbjava" last loaded on 27-Dec-2024 22:17:42
+ -) "grbras" last loaded on 27-Dec-2024 22:17:34
+ -) "grbsdo" last loaded on 27-Dec-2024 22:17:51
+ -) "grbsrc" last loaded on 27-Dec-2024 22:17:25
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:40 for a duration of .22 seconds (started at 2024-08-21T20:41:40)
+=== DBI Completed at 2024-12-27T22:18:05 for a duration of .15 seconds (started at 2024-12-27T22:18:05)
 === DBI Started: ODBCAPTURE/GRBTST__NAME.tbl
 
 Table created.
@@ -2651,12 +2716,12 @@ Grant succeeded.
 
 Grant succeeded.
 
-=== DBI Completed at 2024-08-21T20:41:40 for a duration of .27 seconds (started at 2024-08-21T20:41:40)
+=== DBI Completed at 2024-12-27T22:18:05 for a duration of .19 seconds (started at 2024-12-27T22:18:05)
 === DBI Started: ODBCAPTURE/GRBTST_IMAGE.tbl
 
 Table created.
 
-=== DBI Completed at 2024-08-21T20:41:40 for a duration of .1 seconds (started at 2024-08-21T20:41:40)
+=== DBI Completed at 2024-12-27T22:18:05 for a duration of .06 seconds (started at 2024-12-27T22:18:05)
 === DBI Started: ODBCAPTURE/BUILD_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -2671,7 +2736,7 @@ sqlldr_control=ODBCAPTURE/BUILD_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:41 for a duration of .6 seconds (started at 2024-08-21T20:41:40)
+=== DBI Completed at 2024-12-27T22:18:06 for a duration of .54 seconds (started at 2024-12-27T22:18:05)
 === DBI Started: ODBCAPTURE/BUILD_PATH.cldr
 
 Disable Triggers and Foreign Keys
@@ -2688,7 +2753,7 @@ sqlldr_control=ODBCAPTURE/BUILD_PATH.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:41 for a duration of .57 seconds (started at 2024-08-21T20:41:41)
+=== DBI Completed at 2024-12-27T22:18:06 for a duration of .59 seconds (started at 2024-12-27T22:18:06)
 === DBI Started: ODBCAPTURE/GRBTST__NAME.cldr
 
 Disable Triggers and Foreign Keys
@@ -2703,7 +2768,7 @@ sqlldr_control=ODBCAPTURE/GRBTST__NAME.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:44 for a duration of 2.93 seconds (started at 2024-08-21T20:41:41)
+=== DBI Completed at 2024-12-27T22:18:08 for a duration of 2.11 seconds (started at 2024-12-27T22:18:06)
 === DBI Started: ODBCAPTURE/GRBTST_IMAGE.cldr
 
 Disable Triggers and Foreign Keys
@@ -2718,13 +2783,16 @@ sqlldr_control=ODBCAPTURE/GRBTST_IMAGE.ctl
 
 PL/SQL procedure successfully completed.
 
+Decode Binary Data
+------------------
+2 "IMAGE" updates.
 
 PL/SQL procedure successfully completed.
 
 
 Commit complete.
 
-=== DBI Completed at 2024-08-21T20:41:48 for a duration of 3.72 seconds (started at 2024-08-21T20:41:44)
+=== DBI Completed at 2024-12-27T22:18:12 for a duration of 3.19 seconds (started at 2024-12-27T22:18:08)
 === DBI Started: ODBCAPTURE/ROLE_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -2740,7 +2808,7 @@ sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:49 for a duration of 1.22 seconds (started at 2024-08-21T20:41:48)
+=== DBI Completed at 2024-12-27T22:18:12 for a duration of .57 seconds (started at 2024-12-27T22:18:12)
 === DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -2756,7 +2824,7 @@ sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:50 for a duration of .56 seconds (started at 2024-08-21T20:41:49)
+=== DBI Completed at 2024-12-27T22:18:13 for a duration of .71 seconds (started at 2024-12-27T22:18:12)
 === DBI Started: ODBCAPTURE/TSPACE_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -2772,7 +2840,7 @@ sqlldr_control=ODBCAPTURE/TSPACE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:41:50 for a duration of .61 seconds (started at 2024-08-21T20:41:50)
+=== DBI Completed at 2024-12-27T22:18:13 for a duration of .52 seconds (started at 2024-12-27T22:18:13)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table
@@ -2833,7 +2901,7 @@ PL/SQL procedure successfully completed.
 
 
 Switch Spooling Off
-=== DBI Completed at 2024-08-21T20:41:57 for a duration of 6.26 seconds (started at 2024-08-21T20:41:50)
+=== DBI Completed at 2024-12-27T22:18:18 for a duration of 4.87 seconds (started at 2024-12-27T22:18:13)
 not spooling currently
 
 "grbtst" Installation is Done.
@@ -2841,24 +2909,24 @@ Connected.
 
 CONNECTION
 ---------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.41.57.909734 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.18.18.983396 PM +00:00
 
 1 row selected.
 
-Elapsed: 00:00:00.04
+Elapsed: 00:00:00.00
 
 User altered.
 
 Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbtst
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbtst
 
-/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../util/run_script.sql grbtst RAS_Admin_ODBCTEST.racl
+/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../util/run_script.sql grbtst RAS_Admin_ODBCTEST.racl
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:41:59 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:18:19 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
@@ -2879,7 +2947,7 @@ GRB_TEST_ROLE_01.XS_ROLE
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.36
+Elapsed: 00:00:00.11
 GRB_TEST_USER_01.XS_USER
 
 PL/SQL procedure successfully completed.
@@ -2899,17 +2967,17 @@ principal grant "GRB_TEST_ROLE_01" to "GRB_TEST_USER_01"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.05
+Elapsed: 00:00:00.04
 principal grant "XSCONNECT" to "GRB_TEST_USER_01"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.03
+Elapsed: 00:00:00.02
 principal grant "XSPUBLIC" to "GRB_TEST_USER_01"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.04
+Elapsed: 00:00:00.03
 principal grant "GRB_TEST_ROLE_01" to "GRB_TEST_USER_02"
 
 PL/SQL procedure successfully completed.
@@ -2919,7 +2987,7 @@ principal grant "XSCONNECT" to "GRB_TEST_USER_02"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.03
+Elapsed: 00:00:00.02
 principal grant "XSPUBLIC" to "GRB_TEST_USER_02"
 
 PL/SQL procedure successfully completed.
@@ -2934,33 +3002,33 @@ GRB_TEST_ACL_02.XS_ACL
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.03
+Elapsed: 00:00:00.02
 GRB_TEST_POLICY_01.XS_DATA_SECURITY
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.08
+Elapsed: 00:00:00.10
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.08
+Elapsed: 00:00:00.14
 
 "RAS_Admin_ODBCTEST.racl" is Done.
 Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbtst
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbtst
 
 report_status.sql grbtst
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:42:01 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:18:20 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
 
-Last Successful login time: Wed Aug 21 2024 15:41:57 -05:00
+Last Successful login time: Fri Dec 27 2024 16:18:18 -06:00
 
 Connected to:
 Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
@@ -2987,18 +3055,18 @@ PL/SQL procedure successfully completed.
 
 
 Reporting Summary of Build Type Log Errors
-Processing file ODBCAPTURE/BUILD_CONF.log (2024-08-21 20:42:01)
-Processing file ODBCAPTURE/BUILD_PATH.log (2024-08-21 20:42:01)
-Processing file ODBCAPTURE/GRBTST_IMAGE.log (2024-08-21 20:42:01)
-Processing file ODBCAPTURE/GRBTST__NAME.log (2024-08-21 20:42:01)
-Processing file ODBCAPTURE/ROLE_CONF.log (2024-08-21 20:42:01)
-Processing file ODBCAPTURE/SCHEMA_CONF.log (2024-08-21 20:42:01)
-Processing file ODBCAPTURE/TSPACE_CONF.log (2024-08-21 20:42:01)
-Processing file RAS_Admin_ODBCTEST.racl.log (2024-08-21 20:42:01)
-Processing file install_grbtst.log (2024-08-21 20:42:01)
+Processing file ODBCAPTURE/BUILD_CONF.log (2024-12-27 22:18:21)
+Processing file ODBCAPTURE/BUILD_PATH.log (2024-12-27 22:18:21)
+Processing file ODBCAPTURE/GRBTST_IMAGE.log (2024-12-27 22:18:21)
+Processing file ODBCAPTURE/GRBTST__NAME.log (2024-12-27 22:18:21)
+Processing file ODBCAPTURE/ROLE_CONF.log (2024-12-27 22:18:21)
+Processing file ODBCAPTURE/SCHEMA_CONF.log (2024-12-27 22:18:21)
+Processing file ODBCAPTURE/TSPACE_CONF.log (2024-12-27 22:18:21)
+Processing file RAS_Admin_ODBCTEST.racl.log (2024-12-27 22:18:21)
+Processing file install_grbtst.log (2024-12-27 22:18:21)
   1 lines: WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
-Processing file install_sys.log (2024-08-21 20:42:01)
-Processing file install_system.log (2024-08-21 20:42:01)
+Processing file install_sys.log (2024-12-27 22:18:21)
+Processing file install_system.log (2024-12-27 22:18:21)
 
 PL/SQL procedure successfully completed.
 
@@ -3011,34 +3079,34 @@ Reorting JUnit XML Installation Log
 SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Move Log Files to Build Folder
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbtst
-renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtst/db_build_junit_report.xml'
-renamed 'install_grbtst.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtst/install_grbtst.log'
-renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtst/install_sys.log'
-renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtst/install_system.log'
-renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtst/log_files_junit_report.xml'
-renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtst/odbcapture_installation_logs.log'
-renamed 'RAS_Admin_ODBCTEST.racl.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtst/RAS_Admin_ODBCTEST.racl.log'
-renamed 'ODBCAPTURE/BUILD_CONF.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtst/ODBCAPTURE/BUILD_CONF.log'
-renamed 'ODBCAPTURE/BUILD_PATH.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtst/ODBCAPTURE/BUILD_PATH.log'
-renamed 'ODBCAPTURE/GRBTST__NAME.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtst/ODBCAPTURE/GRBTST__NAME.log'
-renamed 'ODBCAPTURE/GRBTST_IMAGE.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtst/ODBCAPTURE/GRBTST_IMAGE.log'
-renamed 'ODBCAPTURE/ROLE_CONF.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtst/ODBCAPTURE/ROLE_CONF.log'
-renamed 'ODBCAPTURE/SCHEMA_CONF.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtst/ODBCAPTURE/SCHEMA_CONF.log'
-renamed 'ODBCAPTURE/TSPACE_CONF.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtst/ODBCAPTURE/TSPACE_CONF.log'
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbtst
+renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtst/db_build_junit_report.xml'
+renamed 'install_grbtst.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtst/install_grbtst.log'
+renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtst/install_sys.log'
+renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtst/install_system.log'
+renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtst/log_files_junit_report.xml'
+renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtst/odbcapture_installation_logs.log'
+renamed 'RAS_Admin_ODBCTEST.racl.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtst/RAS_Admin_ODBCTEST.racl.log'
+renamed 'ODBCAPTURE/BUILD_CONF.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtst/ODBCAPTURE/BUILD_CONF.log'
+renamed 'ODBCAPTURE/BUILD_PATH.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtst/ODBCAPTURE/BUILD_PATH.log'
+renamed 'ODBCAPTURE/GRBTST__NAME.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtst/ODBCAPTURE/GRBTST__NAME.log'
+renamed 'ODBCAPTURE/GRBTST_IMAGE.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtst/ODBCAPTURE/GRBTST_IMAGE.log'
+renamed 'ODBCAPTURE/ROLE_CONF.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtst/ODBCAPTURE/ROLE_CONF.log'
+renamed 'ODBCAPTURE/SCHEMA_CONF.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtst/ODBCAPTURE/SCHEMA_CONF.log'
+renamed 'ODBCAPTURE/TSPACE_CONF.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtst/ODBCAPTURE/TSPACE_CONF.log'
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Clear old grbtjva logs
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbtjva
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbtjva
 
-/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../util/run_build.sql grbtjva
+/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../util/run_build.sql grbtjva
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:42:04 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:18:23 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
@@ -3052,7 +3120,7 @@ Setup Abort on Error
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.42.04.617783 PM +00:00
+user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.18.24.215155 PM +00:00
 
 Identify this Module in V$SESSION
 
@@ -3070,7 +3138,7 @@ PL/SQL procedure successfully completed.
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:42:14 for a duration of 10.14 seconds (started at 2024-08-21T20:42:04)
+=== DBI Completed at 2024-12-27T22:18:33 for a duration of 9.32 seconds (started at 2024-12-27T22:18:24)
 Setup Continue on Error
 
 *****************************
@@ -3081,7 +3149,7 @@ Connected.
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.42.14.912655 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.18.33.691645 PM +00:00
 
 1 row selected.
 
@@ -3089,7 +3157,7 @@ user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.42.14.912655 PM +00
 
 Grant succeeded.
 
-=== DBI Completed at 2024-08-21T20:42:14 for a duration of .04 seconds (started at 2024-08-21T20:42:14)
+=== DBI Completed at 2024-12-27T22:18:33 for a duration of .05 seconds (started at 2024-12-27T22:18:33)
 
 *************************
 *  Install Application	*
@@ -3111,30 +3179,30 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbtjva"
 WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) "grbjava" last loaded on 21-Aug-2024 20:41:18
- -) "grbras" last loaded on 21-Aug-2024 20:41:10
- -) "grbsdo" last loaded on 21-Aug-2024 20:41:26
- -) "grbsrc" last loaded on 21-Aug-2024 20:41:01
- -) "grbtst" last loaded on 21-Aug-2024 20:42:01
+ -) "grbjava" last loaded on 27-Dec-2024 22:17:42
+ -) "grbras" last loaded on 27-Dec-2024 22:17:34
+ -) "grbsdo" last loaded on 27-Dec-2024 22:17:51
+ -) "grbsrc" last loaded on 27-Dec-2024 22:17:25
+ -) "grbtst" last loaded on 27-Dec-2024 22:18:21
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:42:15 for a duration of .19 seconds (started at 2024-08-21T20:42:14)
+=== DBI Completed at 2024-12-27T22:18:33 for a duration of .17 seconds (started at 2024-12-27T22:18:33)
 === DBI Started: ODBCTEST/DIR_UTIL.pkssql
 
 Package created.
 
-=== DBI Completed at 2024-08-21T20:42:15 for a duration of .06 seconds (started at 2024-08-21T20:42:15)
+=== DBI Completed at 2024-12-27T22:18:34 for a duration of .06 seconds (started at 2024-12-27T22:18:33)
 === DBI Started: ODBCTEST/DirUtil.pjv
 
 Java created.
 
-=== DBI Completed at 2024-08-21T20:42:16 for a duration of 1.67 seconds (started at 2024-08-21T20:42:15)
+=== DBI Completed at 2024-12-27T22:18:34 for a duration of .33 seconds (started at 2024-12-27T22:18:34)
 === DBI Started: ODBCTEST/DIR_UTIL.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2024-08-21T20:42:17 for a duration of .08 seconds (started at 2024-08-21T20:42:16)
+=== DBI Completed at 2024-12-27T22:18:34 for a duration of .05 seconds (started at 2024-12-27T22:18:34)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table
@@ -3185,7 +3253,7 @@ PL/SQL procedure successfully completed.
 
 
 Switch Spooling Off
-=== DBI Completed at 2024-08-21T20:42:24 for a duration of 7.69 seconds (started at 2024-08-21T20:42:17)
+=== DBI Completed at 2024-12-27T22:18:42 for a duration of 8.25 seconds (started at 2024-12-27T22:18:34)
 not spooling currently
 
 "grbtjva" Installation is Done.
@@ -3193,7 +3261,7 @@ Connected.
 
 CONNECTION
 ---------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.42.24.918159 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.18.42.821428 PM +00:00
 
 1 row selected.
 
@@ -3201,18 +3269,18 @@ Elapsed: 00:00:00.01
 Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbtjva
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbtjva
 
 report_status.sql grbtjva
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:42:25 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:18:42 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
 
-Last Successful login time: Wed Aug 21 2024 15:42:24 -05:00
+Last Successful login time: Fri Dec 27 2024 16:18:42 -06:00
 
 Connected to:
 Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
@@ -3239,10 +3307,10 @@ PL/SQL procedure successfully completed.
 
 
 Reporting Summary of Build Type Log Errors
-Processing file install_grbtjva.log (2024-08-21 20:42:25)
+Processing file install_grbtjva.log (2024-12-27 22:18:43)
   1 lines: WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
-Processing file install_sys.log (2024-08-21 20:42:25)
-Processing file install_system.log (2024-08-21 20:42:25)
+Processing file install_sys.log (2024-12-27 22:18:43)
+Processing file install_system.log (2024-12-27 22:18:43)
 
 PL/SQL procedure successfully completed.
 
@@ -3255,26 +3323,26 @@ Reorting JUnit XML Installation Log
 SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Move Log Files to Build Folder
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbtjva
-renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtjva/db_build_junit_report.xml'
-renamed 'install_grbtjva.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtjva/install_grbtjva.log'
-renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtjva/install_sys.log'
-renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtjva/install_system.log'
-renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtjva/log_files_junit_report.xml'
-renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtjva/odbcapture_installation_logs.log'
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbtjva
+renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtjva/db_build_junit_report.xml'
+renamed 'install_grbtjva.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtjva/install_grbtjva.log'
+renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtjva/install_sys.log'
+renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtjva/install_system.log'
+renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtjva/log_files_junit_report.xml'
+renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtjva/odbcapture_installation_logs.log'
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Clear old grbtjsn logs
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbtjsn
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbtjsn
 
-/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../util/run_build.sql grbtjsn
+/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../util/run_build.sql grbtjsn
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:42:28 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:18:45 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
@@ -3288,7 +3356,7 @@ Setup Abort on Error
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.42.28.294221 PM +00:00
+user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.18.46.037071 PM +00:00
 
 Identify this Module in V$SESSION
 
@@ -3306,7 +3374,7 @@ Connected.
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.42.28.490753 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.18.46.223704 PM +00:00
 
 
 *************************
@@ -3329,15 +3397,15 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbtjsn"
 WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) "grbjava" last loaded on 21-Aug-2024 20:41:18
- -) "grbras" last loaded on 21-Aug-2024 20:41:10
- -) "grbsdo" last loaded on 21-Aug-2024 20:41:26
- -) "grbsrc" last loaded on 21-Aug-2024 20:41:01
- -) "grbtst" last loaded on 21-Aug-2024 20:42:01
+ -) "grbjava" last loaded on 27-Dec-2024 22:17:42
+ -) "grbras" last loaded on 27-Dec-2024 22:17:34
+ -) "grbsdo" last loaded on 27-Dec-2024 22:17:51
+ -) "grbsrc" last loaded on 27-Dec-2024 22:17:25
+ -) "grbtst" last loaded on 27-Dec-2024 22:18:21
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:42:28 for a duration of .22 seconds (started at 2024-08-21T20:42:28)
+=== DBI Completed at 2024-12-27T22:18:46 for a duration of .16 seconds (started at 2024-12-27T22:18:46)
 === DBI Started: ODBCAPTURE/GRBTST_JSON.tbl
 
 Table created.
@@ -3345,7 +3413,7 @@ Table created.
 
 Table altered.
 
-=== DBI Completed at 2024-08-21T20:42:28 for a duration of .14 seconds (started at 2024-08-21T20:42:28)
+=== DBI Completed at 2024-12-27T22:18:46 for a duration of .12 seconds (started at 2024-12-27T22:18:46)
 === DBI Started: ODBCAPTURE/GRBTST_JSON.cldr
 
 Disable Triggers and Foreign Keys
@@ -3360,7 +3428,7 @@ sqlldr_control=ODBCAPTURE/GRBTST_JSON.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:42:32 for a duration of 3.21 seconds (started at 2024-08-21T20:42:28)
+=== DBI Completed at 2024-12-27T22:18:49 for a duration of 3.04 seconds (started at 2024-12-27T22:18:46)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table
@@ -3420,7 +3488,7 @@ PL/SQL procedure successfully completed.
 
 
 Switch Spooling Off
-=== DBI Completed at 2024-08-21T20:42:33 for a duration of 1.85 seconds (started at 2024-08-21T20:42:32)
+=== DBI Completed at 2024-12-27T22:18:51 for a duration of 1.91 seconds (started at 2024-12-27T22:18:49)
 not spooling currently
 
 "grbtjsn" Installation is Done.
@@ -3428,26 +3496,26 @@ Connected.
 
 CONNECTION
 ---------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.42.34.143527 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.18.51.630572 PM +00:00
 
 1 row selected.
 
-Elapsed: 00:00:00.01
+Elapsed: 00:00:00.00
 Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbtjsn
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbtjsn
 
 report_status.sql grbtjsn
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:42:34 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:18:51 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
 
-Last Successful login time: Wed Aug 21 2024 15:42:34 -05:00
+Last Successful login time: Fri Dec 27 2024 16:18:51 -06:00
 
 Connected to:
 Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
@@ -3474,11 +3542,11 @@ PL/SQL procedure successfully completed.
 
 
 Reporting Summary of Build Type Log Errors
-Processing file ODBCAPTURE/GRBTST_JSON.log (2024-08-21 20:42:35)
-Processing file install_grbtjsn.log (2024-08-21 20:42:35)
+Processing file ODBCAPTURE/GRBTST_JSON.log (2024-12-27 22:18:52)
+Processing file install_grbtjsn.log (2024-12-27 22:18:52)
   1 lines: WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
-Processing file install_sys.log (2024-08-21 20:42:35)
-Processing file install_system.log (2024-08-21 20:42:35)
+Processing file install_sys.log (2024-12-27 22:18:52)
+Processing file install_system.log (2024-12-27 22:18:52)
 
 PL/SQL procedure successfully completed.
 
@@ -3491,27 +3559,27 @@ Reorting JUnit XML Installation Log
 SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Move Log Files to Build Folder
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbtjsn
-renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtjsn/db_build_junit_report.xml'
-renamed 'install_grbtjsn.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtjsn/install_grbtjsn.log'
-renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtjsn/install_sys.log'
-renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtjsn/install_system.log'
-renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtjsn/log_files_junit_report.xml'
-renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtjsn/odbcapture_installation_logs.log'
-renamed 'ODBCAPTURE/GRBTST_JSON.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtjsn/ODBCAPTURE/GRBTST_JSON.log'
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbtjsn
+renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtjsn/db_build_junit_report.xml'
+renamed 'install_grbtjsn.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtjsn/install_grbtjsn.log'
+renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtjsn/install_sys.log'
+renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtjsn/install_system.log'
+renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtjsn/log_files_junit_report.xml'
+renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtjsn/odbcapture_installation_logs.log'
+renamed 'ODBCAPTURE/GRBTST_JSON.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtjsn/ODBCAPTURE/GRBTST_JSON.log'
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Clear old grbtsdo logs
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbtsdo
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbtsdo
 
-/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../util/run_build.sql grbtsdo
+/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../util/run_build.sql grbtsdo
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:42:37 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:18:54 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
@@ -3525,7 +3593,7 @@ Setup Abort on Error
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.42.37.913637 PM +00:00
+user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.18.54.677691 PM +00:00
 
 Identify this Module in V$SESSION
 
@@ -3543,7 +3611,7 @@ Connected.
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.42.38.060026 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.18.54.833939 PM +00:00
 
 
 *************************
@@ -3566,15 +3634,15 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbtsdo"
 WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) "grbjava" last loaded on 21-Aug-2024 20:41:18
- -) "grbras" last loaded on 21-Aug-2024 20:41:10
- -) "grbsdo" last loaded on 21-Aug-2024 20:41:26
- -) "grbsrc" last loaded on 21-Aug-2024 20:41:01
- -) "grbtst" last loaded on 21-Aug-2024 20:42:01
+ -) "grbjava" last loaded on 27-Dec-2024 22:17:42
+ -) "grbras" last loaded on 27-Dec-2024 22:17:34
+ -) "grbsdo" last loaded on 27-Dec-2024 22:17:51
+ -) "grbsrc" last loaded on 27-Dec-2024 22:17:25
+ -) "grbtst" last loaded on 27-Dec-2024 22:18:21
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:42:38 for a duration of .19 seconds (started at 2024-08-21T20:42:38)
+=== DBI Completed at 2024-12-27T22:18:55 for a duration of .16 seconds (started at 2024-12-27T22:18:54)
 === DBI Started: ODBCTEST/SDO_COLA_MARKETS.tbl
 
 Table created.
@@ -3582,7 +3650,7 @@ Table created.
 
 Table altered.
 
-=== DBI Completed at 2024-08-21T20:42:38 for a duration of .28 seconds (started at 2024-08-21T20:42:38)
+=== DBI Completed at 2024-12-27T22:18:55 for a duration of .48 seconds (started at 2024-12-27T22:18:55)
 === DBI Started: ODBCTEST/SDO_COLA_MARKETS.cldr
 
 Disable Triggers and Foreign Keys
@@ -3597,9 +3665,9 @@ sqlldr_control=ODBCTEST/SDO_COLA_MARKETS.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:42:41 for a duration of 3.41 seconds (started at 2024-08-21T20:42:38)
+=== DBI Completed at 2024-12-27T22:18:58 for a duration of 2.73 seconds (started at 2024-12-27T22:18:55)
 === DBI Started: ODBCTEST/SDO_COLA_MARKETS.tidx
-=== DBI Completed at 2024-08-21T20:42:42 for a duration of .09 seconds (started at 2024-08-21T20:42:42)
+=== DBI Completed at 2024-12-27T22:18:58 for a duration of .01 seconds (started at 2024-12-27T22:18:58)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table
@@ -3650,7 +3718,7 @@ PL/SQL procedure successfully completed.
 
 
 Switch Spooling Off
-=== DBI Completed at 2024-08-21T20:42:46 for a duration of 4.16 seconds (started at 2024-08-21T20:42:42)
+=== DBI Completed at 2024-12-27T22:19:01 for a duration of 2.78 seconds (started at 2024-12-27T22:18:58)
 not spooling currently
 
 "grbtsdo" Installation is Done.
@@ -3658,26 +3726,26 @@ Connected.
 
 CONNECTION
 ---------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.42.46.698122 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.19.01.215199 PM +00:00
 
 1 row selected.
 
-Elapsed: 00:00:00.03
+Elapsed: 00:00:00.00
 Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbtsdo
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbtsdo
 
-/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../util/run_script.sql grbtsdo COLA_SPATIAL_IDX.tidx
+/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../util/run_script.sql grbtsdo COLA_SPATIAL_IDX.tidx
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:42:46 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:19:01 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
 
-Last Successful login time: Wed Aug 21 2024 15:41:59 -05:00
+Last Successful login time: Fri Dec 27 2024 16:18:19 -06:00
 
 Connected to:
 Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
@@ -3695,28 +3763,28 @@ MUST be run as ODBCTEST
 
 1 row created.
 
-Elapsed: 00:00:00.26
+Elapsed: 00:00:00.13
 
 Index created.
 
-Elapsed: 00:00:03.04
+Elapsed: 00:00:02.39
 
 "COLA_SPATIAL_IDX.tidx" is Done.
 Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbtsdo
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbtsdo
 
 report_status.sql grbtsdo
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:42:50 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:19:04 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
 
-Last Successful login time: Wed Aug 21 2024 15:42:46 -05:00
+Last Successful login time: Fri Dec 27 2024 16:19:01 -06:00
 
 Connected to:
 Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
@@ -3743,12 +3811,12 @@ PL/SQL procedure successfully completed.
 
 
 Reporting Summary of Build Type Log Errors
-Processing file COLA_SPATIAL_IDX.tidx.log (2024-08-21 20:42:52)
-Processing file ODBCTEST/SDO_COLA_MARKETS.log (2024-08-21 20:42:52)
-Processing file install_grbtsdo.log (2024-08-21 20:42:52)
+Processing file COLA_SPATIAL_IDX.tidx.log (2024-12-27 22:19:05)
+Processing file ODBCTEST/SDO_COLA_MARKETS.log (2024-12-27 22:19:05)
+Processing file install_grbtsdo.log (2024-12-27 22:19:05)
   1 lines: WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
-Processing file install_sys.log (2024-08-21 20:42:52)
-Processing file install_system.log (2024-08-21 20:42:52)
+Processing file install_sys.log (2024-12-27 22:19:05)
+Processing file install_system.log (2024-12-27 22:19:05)
 
 PL/SQL procedure successfully completed.
 
@@ -3761,28 +3829,28 @@ Reorting JUnit XML Installation Log
 SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Move Log Files to Build Folder
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbtsdo
-renamed 'COLA_SPATIAL_IDX.tidx.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtsdo/COLA_SPATIAL_IDX.tidx.log'
-renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtsdo/db_build_junit_report.xml'
-renamed 'install_grbtsdo.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtsdo/install_grbtsdo.log'
-renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtsdo/install_sys.log'
-renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtsdo/install_system.log'
-renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtsdo/log_files_junit_report.xml'
-renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtsdo/odbcapture_installation_logs.log'
-renamed 'ODBCTEST/SDO_COLA_MARKETS.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtsdo/ODBCTEST/SDO_COLA_MARKETS.log'
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbtsdo
+renamed 'COLA_SPATIAL_IDX.tidx.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtsdo/COLA_SPATIAL_IDX.tidx.log'
+renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtsdo/db_build_junit_report.xml'
+renamed 'install_grbtsdo.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtsdo/install_grbtsdo.log'
+renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtsdo/install_sys.log'
+renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtsdo/install_system.log'
+renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtsdo/log_files_junit_report.xml'
+renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtsdo/odbcapture_installation_logs.log'
+renamed 'ODBCTEST/SDO_COLA_MARKETS.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtsdo/ODBCTEST/SDO_COLA_MARKETS.log'
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Clear old grbtctx logs
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbtctx
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbtctx
 
-/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../util/run_build.sql grbtctx
+/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../util/run_build.sql grbtctx
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:42:54 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:19:06 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
@@ -3796,7 +3864,7 @@ Setup Abort on Error
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.42.55.010404 PM +00:00
+user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.19.07.115438 PM +00:00
 
 Identify this Module in V$SESSION
 
@@ -3814,7 +3882,7 @@ Connected.
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.42.55.162743 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.19.07.262210 PM +00:00
 
 
 *************************
@@ -3837,20 +3905,20 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbtctx"
 WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) "grbjava" last loaded on 21-Aug-2024 20:41:18
- -) "grbras" last loaded on 21-Aug-2024 20:41:10
- -) "grbsdo" last loaded on 21-Aug-2024 20:41:26
- -) "grbsrc" last loaded on 21-Aug-2024 20:41:01
- -) "grbtst" last loaded on 21-Aug-2024 20:42:01
+ -) "grbjava" last loaded on 27-Dec-2024 22:17:42
+ -) "grbras" last loaded on 27-Dec-2024 22:17:34
+ -) "grbsdo" last loaded on 27-Dec-2024 22:17:51
+ -) "grbsrc" last loaded on 27-Dec-2024 22:17:25
+ -) "grbtst" last loaded on 27-Dec-2024 22:18:21
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:42:55 for a duration of .16 seconds (started at 2024-08-21T20:42:55)
+=== DBI Completed at 2024-12-27T22:19:07 for a duration of .17 seconds (started at 2024-12-27T22:19:07)
 === DBI Started: ODBCTEST/CUST_CTX_TEST.tbl
 
 Table created.
 
-=== DBI Completed at 2024-08-21T20:42:55 for a duration of .06 seconds (started at 2024-08-21T20:42:55)
+=== DBI Completed at 2024-12-27T22:19:07 for a duration of .21 seconds (started at 2024-12-27T22:19:07)
 === DBI Started: ODBCTEST/CUST_CTX_TEST.cldr
 
 Disable Triggers and Foreign Keys
@@ -3865,12 +3933,12 @@ sqlldr_control=ODBCTEST/CUST_CTX_TEST.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:42:59 for a duration of 3.8 seconds (started at 2024-08-21T20:42:55)
+=== DBI Completed at 2024-12-27T22:19:10 for a duration of 3.01 seconds (started at 2024-12-27T22:19:07)
 === DBI Started: ODBCTEST/CUST_CTX_TEST.tidx
 
 Index created.
 
-=== DBI Completed at 2024-08-21T20:43:06 for a duration of 7.08 seconds (started at 2024-08-21T20:42:59)
+=== DBI Completed at 2024-12-27T22:19:17 for a duration of 7.18 seconds (started at 2024-12-27T22:19:10)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table
@@ -3921,7 +3989,7 @@ PL/SQL procedure successfully completed.
 
 
 Switch Spooling Off
-=== DBI Completed at 2024-08-21T20:43:09 for a duration of 3.08 seconds (started at 2024-08-21T20:43:06)
+=== DBI Completed at 2024-12-27T22:19:20 for a duration of 2.25 seconds (started at 2024-12-27T22:19:17)
 not spooling currently
 
 "grbtctx" Installation is Done.
@@ -3929,26 +3997,26 @@ Connected.
 
 CONNECTION
 ---------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.43.10.060712 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.19.20.278562 PM +00:00
 
 1 row selected.
 
-Elapsed: 00:00:00.10
+Elapsed: 00:00:00.01
 Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbtctx
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbtctx
 
 report_status.sql grbtctx
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:43:10 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:19:20 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
 
-Last Successful login time: Wed Aug 21 2024 15:43:09 -05:00
+Last Successful login time: Fri Dec 27 2024 16:19:20 -06:00
 
 Connected to:
 Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
@@ -3975,11 +4043,11 @@ PL/SQL procedure successfully completed.
 
 
 Reporting Summary of Build Type Log Errors
-Processing file ODBCTEST/CUST_CTX_TEST.log (2024-08-21 20:43:11)
-Processing file install_grbtctx.log (2024-08-21 20:43:11)
+Processing file ODBCTEST/CUST_CTX_TEST.log (2024-12-27 22:19:21)
+Processing file install_grbtctx.log (2024-12-27 22:19:21)
   1 lines: WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
-Processing file install_sys.log (2024-08-21 20:43:11)
-Processing file install_system.log (2024-08-21 20:43:11)
+Processing file install_sys.log (2024-12-27 22:19:21)
+Processing file install_system.log (2024-12-27 22:19:21)
 
 PL/SQL procedure successfully completed.
 
@@ -3992,27 +4060,27 @@ Reorting JUnit XML Installation Log
 SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Move Log Files to Build Folder
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbtctx
-renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtctx/db_build_junit_report.xml'
-renamed 'install_grbtctx.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtctx/install_grbtctx.log'
-renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtctx/install_sys.log'
-renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtctx/install_system.log'
-renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtctx/log_files_junit_report.xml'
-renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtctx/odbcapture_installation_logs.log'
-renamed 'ODBCTEST/CUST_CTX_TEST.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtctx/ODBCTEST/CUST_CTX_TEST.log'
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbtctx
+renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtctx/db_build_junit_report.xml'
+renamed 'install_grbtctx.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtctx/install_grbtctx.log'
+renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtctx/install_sys.log'
+renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtctx/install_system.log'
+renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtctx/log_files_junit_report.xml'
+renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtctx/odbcapture_installation_logs.log'
+renamed 'ODBCTEST/CUST_CTX_TEST.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtctx/ODBCTEST/CUST_CTX_TEST.log'
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Clear old grbtdat logs
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbtdat
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbtdat
 
-/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../util/run_build.sql grbtdat
+/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../util/run_build.sql grbtdat
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:43:13 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:19:22 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
@@ -4026,7 +4094,7 @@ Setup Abort on Error
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.43.14.222948 PM +00:00
+user: SYS, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.19.23.021779 PM +00:00
 
 Identify this Module in V$SESSION
 
@@ -4044,7 +4112,7 @@ Connected.
 
 CONNECTION
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.43.14.408634 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.19.23.158299 PM +00:00
 
 
 *************************
@@ -4067,20 +4135,20 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbtdat"
 WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) "grbjava" last loaded on 21-Aug-2024 20:41:18
- -) "grbras" last loaded on 21-Aug-2024 20:41:10
- -) "grbsdo" last loaded on 21-Aug-2024 20:41:26
- -) "grbsrc" last loaded on 21-Aug-2024 20:41:01
- -) "grbtctx" last loaded on 21-Aug-2024 20:43:11
+ -) "grbjava" last loaded on 27-Dec-2024 22:17:42
+ -) "grbras" last loaded on 27-Dec-2024 22:17:34
+ -) "grbsdo" last loaded on 27-Dec-2024 22:17:51
+ -) "grbsrc" last loaded on 27-Dec-2024 22:17:25
+ -) "grbtctx" last loaded on 27-Dec-2024 22:19:21
 WARNING: Prerequisite BUILD_TYPE "grbtend" not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) "grbtjsn" last loaded on 21-Aug-2024 20:42:35
- -) "grbtjva" last loaded on 21-Aug-2024 20:42:25
- -) "grbtsdo" last loaded on 21-Aug-2024 20:42:52
- -) "grbtst" last loaded on 21-Aug-2024 20:42:01
+ -) "grbtjsn" last loaded on 27-Dec-2024 22:18:52
+ -) "grbtjva" last loaded on 27-Dec-2024 22:18:43
+ -) "grbtsdo" last loaded on 27-Dec-2024 22:19:05
+ -) "grbtst" last loaded on 27-Dec-2024 22:18:21
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:43:14 for a duration of .2 seconds (started at 2024-08-21T20:43:14)
+=== DBI Completed at 2024-12-27T22:19:23 for a duration of .2 seconds (started at 2024-12-27T22:19:23)
 === DBI Started: ODBCAPTURE/DLOAD_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -4097,7 +4165,7 @@ sqlldr_control=ODBCAPTURE/DLOAD_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:43:15 for a duration of .96 seconds (started at 2024-08-21T20:43:14)
+=== DBI Completed at 2024-12-27T22:19:25 for a duration of 2.04 seconds (started at 2024-12-27T22:19:23)
 === DBI Started: ODBCAPTURE/OBJECT_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -4115,7 +4183,7 @@ sqlldr_control=ODBCAPTURE/OBJECT_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-08-21T20:43:16 for a duration of .85 seconds (started at 2024-08-21T20:43:15)
+=== DBI Completed at 2024-12-27T22:19:27 for a duration of 1.72 seconds (started at 2024-12-27T22:19:25)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table
@@ -4175,7 +4243,7 @@ PL/SQL procedure successfully completed.
 
 
 Switch Spooling Off
-=== DBI Completed at 2024-08-21T20:43:18 for a duration of 2.51 seconds (started at 2024-08-21T20:43:16)
+=== DBI Completed at 2024-12-27T22:19:28 for a duration of 1.39 seconds (started at 2024-12-27T22:19:27)
 not spooling currently
 
 "grbtdat" Installation is Done.
@@ -4183,26 +4251,26 @@ Connected.
 
 CONNECTION
 ---------------------------------------------------------------------------------------------------------------------------
-user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 21-AUG-24 08.43.19.141104 PM +00:00
+user: SYSTEM, db: EE213CDB, con: DEVPDB, tstmp: 27-DEC-24 10.19.28.707243 PM +00:00
 
 1 row selected.
 
-Elapsed: 00:00:00.01
+Elapsed: 00:00:00.00
 Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbtdat
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbtdat
 
 report_status.sql grbtdat
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:43:19 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:19:28 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
 
-Last Successful login time: Wed Aug 21 2024 15:43:19 -05:00
+Last Successful login time: Fri Dec 27 2024 16:19:28 -06:00
 
 Connected to:
 Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
@@ -4229,13 +4297,13 @@ PL/SQL procedure successfully completed.
 
 
 Reporting Summary of Build Type Log Errors
-Processing file ODBCAPTURE/DLOAD_CONF.log (2024-08-21 20:43:20)
-Processing file ODBCAPTURE/OBJECT_CONF.log (2024-08-21 20:43:20)
-Processing file install_grbtdat.log (2024-08-21 20:43:20)
+Processing file ODBCAPTURE/DLOAD_CONF.log (2024-12-27 22:19:29)
+Processing file ODBCAPTURE/OBJECT_CONF.log (2024-12-27 22:19:29)
+Processing file install_grbtdat.log (2024-12-27 22:19:29)
   1 lines: WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
   1 lines: WARNING: Prerequisite BUILD_TYPE "grbtend" not found in ODBCAPTURE_INSTALLATION_LOGS table.
-Processing file install_sys.log (2024-08-21 20:43:20)
-Processing file install_system.log (2024-08-21 20:43:20)
+Processing file install_sys.log (2024-12-27 22:19:29)
+Processing file install_system.log (2024-12-27 22:19:29)
 
 PL/SQL procedure successfully completed.
 
@@ -4248,24 +4316,24 @@ Reorting JUnit XML Installation Log
 SQL> Disconnected from Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production
 Version 21.3.0.0.0
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 Move Log Files to Build Folder
-Move to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/../../grbtdat
-renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtdat/db_build_junit_report.xml'
-renamed 'install_grbtdat.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtdat/install_grbtdat.log'
-renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtdat/install_sys.log'
-renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtdat/install_system.log'
-renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtdat/log_files_junit_report.xml'
-renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtdat/odbcapture_installation_logs.log'
-renamed 'ODBCAPTURE/DLOAD_CONF.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtdat/ODBCAPTURE/DLOAD_CONF.log'
-renamed 'ODBCAPTURE/OBJECT_CONF.log' -> '/c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213/grbtdat/ODBCAPTURE/OBJECT_CONF.log'
+Move to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/../../grbtdat
+renamed 'db_build_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtdat/db_build_junit_report.xml'
+renamed 'install_grbtdat.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtdat/install_grbtdat.log'
+renamed 'install_sys.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtdat/install_sys.log'
+renamed 'install_system.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtdat/install_system.log'
+renamed 'log_files_junit_report.xml' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtdat/log_files_junit_report.xml'
+renamed 'odbcapture_installation_logs.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtdat/odbcapture_installation_logs.log'
+renamed 'ODBCAPTURE/DLOAD_CONF.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtdat/ODBCAPTURE/DLOAD_CONF.log'
+renamed 'ODBCAPTURE/OBJECT_CONF.log' -> '/c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213/grbtdat/ODBCAPTURE/OBJECT_CONF.log'
 
-Move back to /c/DMSTEX_dev/ODBCAPTURE/builds/OnPrem_EE213
+Move back to /c/DMSTEX_dev/ODBCApture/builds/OnPrem_EE213
 
 capture_files.sql
 
-SQL*Plus: Release 19.0.0.0.0 - Production on Wed Aug 21 15:43:22 2024
+SQL*Plus: Release 19.0.0.0.0 - Production on Fri Dec 27 16:19:31 2024
 Version 19.22.0.0.0
 
 Copyright (c) 1982, 2023, Oracle.  All rights reserved.
@@ -4293,19 +4361,19 @@ SUCCESS(      rows in	   sec): truncate table dba_dependencies_tab
 SUCCESS(      rows in	   sec): truncate table dba_tab_privs_tab
 SUCCESS(      rows in	   sec): truncate table dba_objects_tab
 SUCCESS(      rows in	   sec): truncate table build_type_timing
-SUCCESS(  173 rows in	.6 sec): update_build_type_timing
-SUCCESS(  234 rows in 14.7 sec): insert into dba_objects_tab	       select * from dba_objects_view
-SUCCESS(   97 rows in  3.3 sec): insert into dba_tab_privs_tab	       select * from dba_tab_privs_view
-SUCCESS(  331 rows in	.3 sec): insert into dba_dependencies_tab      select * from dba_dependencies_view
-SUCCESS(  227 rows in  1.4 sec): insert into obj_install_object_tab    select * from obj_install_object_view
+SUCCESS(  173 rows in	.1 sec): update_build_type_timing
+SUCCESS(  240 rows in 10.2 sec): insert into dba_objects_tab	       select * from dba_objects_view
+SUCCESS(   99 rows in  2.0 sec): insert into dba_tab_privs_tab	       select * from dba_tab_privs_view
+SUCCESS(  350 rows in	.2 sec): insert into dba_dependencies_tab      select * from dba_dependencies_view
+SUCCESS(  233 rows in  1.1 sec): insert into obj_install_object_tab    select * from obj_install_object_view
 SUCCESS(      rows in	.1 sec): insert into obj_install_context_tab   select * from obj_install_context_view
-SUCCESS(   10 rows in 12.4 sec): insert into obj_install_fkey_tab      select * from obj_install_fkey_view
-SUCCESS(   47 rows in	.4 sec): insert into obj_install_index_tab     select * from obj_install_index_view
-SUCCESS(   27 rows in	   sec): insert into obj_install_data_load_tab select * from obj_install_data_load_view
+SUCCESS(   10 rows in 10.2 sec): insert into obj_install_fkey_tab      select * from obj_install_fkey_view
+SUCCESS(   48 rows in	.4 sec): insert into obj_install_index_tab     select * from obj_install_index_view
+SUCCESS(   28 rows in	.2 sec): insert into obj_install_data_load_tab select * from obj_install_data_load_view
 SUCCESS(      rows in	.1 sec): insert into obj_install_synonym_tab   select * from obj_install_synonym_view
 SUCCESS(      rows in	.2 sec): insert into obj_install_trigger_tab   select * from obj_install_trigger_view
-SUCCESS(   63 rows in	.8 sec): insert into obj_install_comments_tab  select * from obj_install_comments_view
-SUCCESS(      rows in	.2 sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
+SUCCESS(   64 rows in	.9 sec): insert into obj_install_comments_tab  select * from obj_install_comments_view
+SUCCESS(      rows in	   sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
 select DISTINCT
 SUCCESS(   10 rows in	   sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
 select DISTINCT
@@ -4325,25 +4393,25 @@ SUCCESS(    2 rows in	.3 sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJE
 select DISTINCT
 SUCCESS(      rows in	.2 sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
 select DISTINCT
-SUCCESS(    1 rows in	.2 sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
+SUCCESS(    1 rows in	.3 sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
 select DISTINCT
 SUCCESS(      rows in	.1 sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
 select DISTINCT
 SUCCESS(    1 rows in	   sec): insert into schema_objects_tab (BUILD_TYPE,	 OBJECT_OWNER,	   ELEMENT_NAME) 
 select DISTINCT
-SUCCESS(    1 rows in  1.0 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'DBA_OBJECTS_TAB',
-SUCCESS(    1 rows in	.4 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'DBA_TAB_PRIVS_TAB',
-SUCCESS(    1 rows in	.2 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'DBA_DEPENDENCIES_TAB',
-SUCCESS(    1 rows in	.3 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'OBJ_INSTALL_OBJECT_TAB'
+SUCCESS(    1 rows in	.5 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'DBA_OBJECTS_TAB',
+SUCCESS(    1 rows in	.1 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'DBA_TAB_PRIVS_TAB',
+SUCCESS(    1 rows in	.1 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'DBA_DEPENDENCIES_TAB',
+SUCCESS(    1 rows in	.2 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'OBJ_INSTALL_OBJECT_TAB'
 SUCCESS(    1 rows in	.1 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'OBJ_INSTALL_CONTEXT_TAB
 SUCCESS(    1 rows in	.1 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'OBJ_INSTALL_FKEY_TAB',
-SUCCESS(    1 rows in	.3 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'OBJ_INSTALL_INDEX_TAB',
-SUCCESS(    1 rows in	.2 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'OBJ_INSTALL_DATA_LOAD_T
+SUCCESS(    1 rows in	.1 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'OBJ_INSTALL_INDEX_TAB',
+SUCCESS(    1 rows in	.1 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'OBJ_INSTALL_DATA_LOAD_T
 SUCCESS(    1 rows in	.1 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'OBJ_INSTALL_SYNONYM_TAB
 SUCCESS(    1 rows in	.1 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'OBJ_INSTALL_TRIGGER_TAB
 SUCCESS(    1 rows in	.1 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'OBJ_INSTALL_COMMENTS_TA
-SUCCESS(    1 rows in	.3 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'SCHEMA_OBJECTS_TAB',
-SUCCESS(      rows in	.2 sec): purge recyclebin
+SUCCESS(    1 rows in	.1 sec): begin sys.dbms_stats.gather_table_stats(ownname => 'ODBCAPTURE', tabname => 'SCHEMA_OBJECTS_TAB',
+SUCCESS(      rows in	   sec): purge recyclebin
 
 PL/SQL procedure successfully completed.
 
@@ -4391,11 +4459,13 @@ Script Open: grbsrc/ODBCAPTURE/TSPACE_CONF.csv
 Script Open: grbsrc/ODBCAPTURE/TSPACE_CONF.cldr
 Script Open: grbsrc/ODBCAPTURE/COMMON_UTIL.pkbsql
 Script Open: grbsrc/ODBCAPTURE/FH2.pkbsql
+Script Open: grbsrc/ODBCAPTURE/GRAB_DATA.pkbsql
 Script Open: grbsrc/ODBCAPTURE/GRAB_SCRIPTS.pkbsql
 Script Open: grbsrc/ODBCAPTURE/ROOT_SCRIPTS.pkbsql
 Script Open: grbsrc/ODBCAPTURE/ZIP_UTIL_PKG.pkbsql
 Script Open: grbsrc/ODBCAPTURE/COMMON_UTIL.pkssql
 Script Open: grbsrc/ODBCAPTURE/FH2.pkssql
+Script Open: grbsrc/ODBCAPTURE/GRAB_DATA.pkssql
 Script Open: grbsrc/ODBCAPTURE/GRAB_SCRIPTS.pkssql
 Script Open: grbsrc/ODBCAPTURE/ROOT_SCRIPTS.pkssql
 Script Open: grbsrc/ODBCAPTURE/ZIP_UTIL_PKG.pkssql
@@ -4438,6 +4508,7 @@ Script Open: grbsrc/ODBCAPTURE/ROLE_CONF.tbl
 Script Open: grbsrc/ODBCAPTURE/SCHEMA_CONF.tbl
 Script Open: grbsrc/ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl
 Script Open: grbsrc/ODBCAPTURE/TSPACE_CONF.tbl
+Script Open: grbsrc/ODBCAPTURE/USER_DEFINED_TYPE_CONF.tbl
 Script Open: grbsrc/ODBCAPTURE/ZIP_FILES.tbl
 Script Open: grbsrc/ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw
 Script Open: grbsrc/ODBCAPTURE/BUILD_PATH_REVIEW.vw
@@ -4556,6 +4627,9 @@ Script Open: grbsdo/ODBCAPTURE/ROLE_CONF.cldr
 Script Open: grbsdo/ODBCAPTURE/SCHEMA_CONF.ctl
 Script Open: grbsdo/ODBCAPTURE/SCHEMA_CONF.csv
 Script Open: grbsdo/ODBCAPTURE/SCHEMA_CONF.cldr
+Script Open: grbsdo/ODBCAPTURE/USER_DEFINED_TYPE_CONF.ctl
+Script Open: grbsdo/ODBCAPTURE/USER_DEFINED_TYPE_CONF.csv
+Script Open: grbsdo/ODBCAPTURE/USER_DEFINED_TYPE_CONF.cldr
 Script Open: grbsdo/ODBCAPTURE/GRAB_SDO.pkbsql
 Script Open: grbsdo/ODBCAPTURE/GRAB_SDO.pkssql
 g_schema_name =
@@ -4794,12 +4868,12 @@ grbdat/odbcapture_installation_logs.csv total_bytes: 162, 1:162.
 grbdat/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
 grbdat/report_status.sql total_bytes: 1831, 1:1831.
 grbdat/list_invalids.csv total_bytes: 45, 1:45.
-grbdat/set_user_authentication.sql total_bytes: 98, 1:98.
+grbdat/set_user_authentication.sql total_bytes: 97, 1:97.
 grbdat/install_sys.sql total_bytes: 229, 1:229.
 grbdat/install_system.sql total_bytes: 238, 1:238.
 grbdat/install_grbdat.sql total_bytes: 1101, 1:1101.
-grbdat/ODBCAPTURE/DLOAD_CONF.ctl total_bytes: 529, 1:529.
-grbdat/ODBCAPTURE/DLOAD_CONF.csv total_bytes: 1587, 1:1587.
+grbdat/ODBCAPTURE/DLOAD_CONF.ctl total_bytes: 573, 1:573.
+grbdat/ODBCAPTURE/DLOAD_CONF.csv total_bytes: 1711, 1:1711.
 grbdat/ODBCAPTURE/DLOAD_CONF.cldr total_bytes: 2280, 1:2280.
 grbdat/ODBCAPTURE/OBJECT_CONF.ctl total_bytes: 345, 1:345.
 grbdat/ODBCAPTURE/OBJECT_CONF.csv total_bytes: 1729, 1:1729.
@@ -4813,21 +4887,21 @@ grbjava/odbcapture_installation_logs.csv total_bytes: 167, 1:167.
 grbjava/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
 grbjava/report_status.sql total_bytes: 1833, 1:1833.
 grbjava/list_invalids.csv total_bytes: 45, 1:45.
-grbjava/set_user_authentication.sql total_bytes: 99, 1:99.
+grbjava/set_user_authentication.sql total_bytes: 98, 1:98.
 grbjava/install_sys.sql total_bytes: 335, 1:335.
 grbjava/install_system.sql total_bytes: 342, 1:342.
-grbjava/install_grbjava.sql total_bytes: 1625, 1:1625.
+grbjava/install_grbjava.sql total_bytes: 1852, 1:1852.
 grbjava/SYS/ODBCAPTURE_usr.sgrnt total_bytes: 235, 1:235.
 grbjava/SYSTEM/ODBCAPTURE_usr.grnt total_bytes: 251, 1:251.
 grbjava/ODBCAPTURE/GRAB_JAVA.pkssql total_bytes: 779, 1:779.
+grbjava/ODBCAPTURE/PRIV_OBJ_JAVA_FG_VIEW.vw total_bytes: 2925, 1:2447, 2:478.
+grbjava/ODBCAPTURE/PRIV_SYSOBJ_JAVA_FG_VIEW.vw total_bytes: 2763, 1:2481, 2:282.
 grbjava/ODBCAPTURE/ROLE_CONF.ctl total_bytes: 296, 1:296.
 grbjava/ODBCAPTURE/ROLE_CONF.csv total_bytes: 1288, 1:1288.
 grbjava/ODBCAPTURE/ROLE_CONF.cldr total_bytes: 2270, 1:2270.
 grbjava/ODBCAPTURE/SCHEMA_CONF.ctl total_bytes: 475, 1:475.
 grbjava/ODBCAPTURE/SCHEMA_CONF.csv total_bytes: 240, 1:240.
 grbjava/ODBCAPTURE/SCHEMA_CONF.cldr total_bytes: 2290, 1:2290.
-grbjava/ODBCAPTURE/PRIV_OBJ_JAVA_FG_VIEW.vw total_bytes: 2925, 1:2447, 2:478.
-grbjava/ODBCAPTURE/PRIV_SYSOBJ_JAVA_FG_VIEW.vw total_bytes: 2763, 1:2481, 2:282.
 grbjava/ODBCAPTURE/GRAB_JAVA.pkbsql total_bytes: 13466, 1:2489, 2:2475, 3:2483, 4:2419, 5:2485, 6:1115.
 grbras/install.sql total_bytes: 2270, 1:2270.
 grbras/dbi.sql total_bytes: 1503, 1:1503.
@@ -4838,42 +4912,45 @@ grbras/odbcapture_installation_logs.csv total_bytes: 161, 1:161.
 grbras/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
 grbras/report_status.sql total_bytes: 1831, 1:1831.
 grbras/list_invalids.csv total_bytes: 45, 1:45.
-grbras/set_user_authentication.sql total_bytes: 98, 1:98.
+grbras/set_user_authentication.sql total_bytes: 97, 1:97.
 grbras/install_sys.sql total_bytes: 335, 1:335.
 grbras/install_system.sql total_bytes: 238, 1:238.
-grbras/install_grbras.sql total_bytes: 1673, 1:1673.
+grbras/install_grbras.sql total_bytes: 1900, 1:1900.
 grbras/SYS/ODBCAPTURE_usr.sgrnt total_bytes: 473, 1:473.
 grbras/ODBCAPTURE/GRAB_RAS.pkssql total_bytes: 579, 1:579.
 grbras/ODBCAPTURE/EXPORTING_RAS_DATA.tbl total_bytes: 1172, 1:1172.
+grbras/ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw total_bytes: 2894, 1:2489, 2:405.
 grbras/ODBCAPTURE/ROLE_CONF.ctl total_bytes: 296, 1:296.
 grbras/ODBCAPTURE/ROLE_CONF.csv total_bytes: 933, 1:933.
 grbras/ODBCAPTURE/ROLE_CONF.cldr total_bytes: 2270, 1:2270.
 grbras/ODBCAPTURE/SCHEMA_CONF.ctl total_bytes: 475, 1:475.
 grbras/ODBCAPTURE/SCHEMA_CONF.csv total_bytes: 179, 1:179.
 grbras/ODBCAPTURE/SCHEMA_CONF.cldr total_bytes: 2290, 1:2290.
-grbras/ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw total_bytes: 2894, 1:2489, 2:405.
 grbras/ODBCAPTURE/GRAB_RAS.pkbsql total_bytes: 18304, 1:2453, 2:2494, 3:2445, 4:2485, 5:2427, 6:2433, 7:2461, 8:1106.
 grbsdo/install.sql total_bytes: 2270, 1:2270.
 grbsdo/dbi.sql total_bytes: 1503, 1:1503.
 grbsdo/installation_finalize.sql total_bytes: 1018, 1:1018.
 grbsdo/installation_prepare.sql total_bytes: 1595, 1:1595.
 grbsdo/odbcapture_installation_logs.cldr total_bytes: 2712, 1:2391, 2:321.
-grbsdo/odbcapture_installation_logs.csv total_bytes: 161, 1:161.
+grbsdo/odbcapture_installation_logs.csv total_bytes: 210, 1:210.
 grbsdo/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
 grbsdo/report_status.sql total_bytes: 1831, 1:1831.
 grbsdo/list_invalids.csv total_bytes: 45, 1:45.
-grbsdo/set_user_authentication.sql total_bytes: 98, 1:98.
+grbsdo/set_user_authentication.sql total_bytes: 97, 1:97.
 grbsdo/install_sys.sql total_bytes: 229, 1:229.
 grbsdo/install_system.sql total_bytes: 238, 1:238.
-grbsdo/install_grbsdo.sql total_bytes: 1385, 1:1385.
-grbsdo/ODBCAPTURE/GRAB_SDO.pkssql total_bytes: 2332, 1:2332.
+grbsdo/install_grbsdo.sql total_bytes: 1480, 1:1480.
+grbsdo/ODBCAPTURE/GRAB_SDO.pkssql total_bytes: 2386, 1:2386.
 grbsdo/ODBCAPTURE/ROLE_CONF.ctl total_bytes: 296, 1:296.
 grbsdo/ODBCAPTURE/ROLE_CONF.csv total_bytes: 588, 1:588.
 grbsdo/ODBCAPTURE/ROLE_CONF.cldr total_bytes: 2270, 1:2270.
 grbsdo/ODBCAPTURE/SCHEMA_CONF.ctl total_bytes: 475, 1:475.
 grbsdo/ODBCAPTURE/SCHEMA_CONF.csv total_bytes: 266, 1:266.
 grbsdo/ODBCAPTURE/SCHEMA_CONF.cldr total_bytes: 2290, 1:2290.
-grbsdo/ODBCAPTURE/GRAB_SDO.pkbsql total_bytes: 17452, 1:2474, 2:2466, 3:2471, 4:2455, 5:2476, 6:2420, 7:2415, 8:275.
+grbsdo/ODBCAPTURE/USER_DEFINED_TYPE_CONF.ctl total_bytes: 221, 1:221.
+grbsdo/ODBCAPTURE/USER_DEFINED_TYPE_CONF.csv total_bytes: 171, 1:171.
+grbsdo/ODBCAPTURE/USER_DEFINED_TYPE_CONF.cldr total_bytes: 2400, 1:2400.
+grbsdo/ODBCAPTURE/GRAB_SDO.pkbsql total_bytes: 17348, 1:2492, 2:2383, 3:2480, 4:2438, 5:2459, 6:2467, 7:2496, 8:133.
 grbsrc/install.sql total_bytes: 2270, 1:2270.
 grbsrc/dbi.sql total_bytes: 1503, 1:1503.
 grbsrc/installation_finalize.sql total_bytes: 1018, 1:1018.
@@ -4886,12 +4963,13 @@ grbsrc/list_invalids.csv total_bytes: 45, 1:45.
 grbsrc/set_user_authentication.sql total_bytes: 144, 1:144.
 grbsrc/install_sys.sql total_bytes: 325, 1:325.
 grbsrc/install_system.sql total_bytes: 342, 1:342.
-grbsrc/install_grbsrc.sql total_bytes: 8248, 1:2410, 2:2478, 3:2491, 4:869.
-grbsrc/SYS/ODBCAPTURE.user total_bytes: 6157, 1:2446, 2:2476, 3:1235.
-grbsrc/SYSTEM/ODBCAPTURE_usr.grnt total_bytes: 577, 1:577.
-grbsrc/ODBCAPTURE/COMMON_UTIL.pkssql total_bytes: 3059, 1:2486, 2:573.
-grbsrc/ODBCAPTURE/FH2.pkssql total_bytes: 3162, 1:2479, 2:683.
-grbsrc/ODBCAPTURE/GRAB_SCRIPTS.pkssql total_bytes: 2392, 1:2392.
+grbsrc/install_grbsrc.sql total_bytes: 8728, 1:2494, 2:2424, 3:2468, 4:1342.
+grbsrc/SYS/ODBCAPTURE.user total_bytes: 6273, 1:2450, 2:2476, 3:1347.
+grbsrc/SYSTEM/ODBCAPTURE_usr.grnt total_bytes: 617, 1:617.
+grbsrc/ODBCAPTURE/COMMON_UTIL.pkssql total_bytes: 3150, 1:2489, 2:661.
+grbsrc/ODBCAPTURE/FH2.pkssql total_bytes: 3220, 1:2479, 2:741.
+grbsrc/ODBCAPTURE/GRAB_DATA.pkssql total_bytes: 2770, 1:2463, 2:307.
+grbsrc/ODBCAPTURE/GRAB_SCRIPTS.pkssql total_bytes: 2356, 1:2356.
 grbsrc/ODBCAPTURE/ROOT_SCRIPTS.pkssql total_bytes: 1104, 1:1104.
 grbsrc/ODBCAPTURE/ZIP_UTIL_PKG.pkssql total_bytes: 1754, 1:1754.
 grbsrc/ODBCAPTURE/BUILD_CONF.tbl total_bytes: 1085, 1:1085.
@@ -4900,13 +4978,13 @@ grbsrc/ODBCAPTURE/BUILD_TYPE_TIMING.tbl total_bytes: 876, 1:876.
 grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_TAB.tbl total_bytes: 792, 1:792.
 grbsrc/ODBCAPTURE/DBA_OBJECTS_TAB.tbl total_bytes: 524, 1:524.
 grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_TAB.tbl total_bytes: 736, 1:736.
-grbsrc/ODBCAPTURE/DLOAD_CONF.tbl total_bytes: 2312, 1:2312.
-grbsrc/ODBCAPTURE/ELEMENT_CONF.tbl total_bytes: 1912, 1:1912.
+grbsrc/ODBCAPTURE/DLOAD_CONF.tbl total_bytes: 2542, 1:2378, 2:164.
+grbsrc/ODBCAPTURE/ELEMENT_CONF.tbl total_bytes: 2056, 1:2056.
 grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl total_bytes: 1197, 1:1197.
 grbsrc/ODBCAPTURE/OBJECT_CONF.tbl total_bytes: 1680, 1:1680.
 grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tbl total_bytes: 674, 1:674.
 grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tbl total_bytes: 945, 1:945.
-grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tbl total_bytes: 1028, 1:1028.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tbl total_bytes: 1108, 1:1108.
 grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tbl total_bytes: 1121, 1:1121.
 grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tbl total_bytes: 1066, 1:1066.
 grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tbl total_bytes: 771, 1:771.
@@ -4916,15 +4994,41 @@ grbsrc/ODBCAPTURE/ROLE_CONF.tbl total_bytes: 1291, 1:1291.
 grbsrc/ODBCAPTURE/SCHEMA_CONF.tbl total_bytes: 2143, 1:2143.
 grbsrc/ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl total_bytes: 525, 1:525.
 grbsrc/ODBCAPTURE/TSPACE_CONF.tbl total_bytes: 996, 1:996.
+grbsrc/ODBCAPTURE/USER_DEFINED_TYPE_CONF.tbl total_bytes: 579, 1:579.
 grbsrc/ODBCAPTURE/ZIP_FILES.tbl total_bytes: 530, 1:530.
+grbsrc/ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw total_bytes: 1081, 1:1081.
+grbsrc/ODBCAPTURE/BUILD_PATH_REVIEW.vw total_bytes: 1347, 1:1347.
+grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw total_bytes: 1488, 1:1488.
+grbsrc/ODBCAPTURE/DBA_OBJECTS_VIEW.vw total_bytes: 4827, 1:2472, 2:2355.
+grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw total_bytes: 1913, 1:1913.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw total_bytes: 2222, 1:2222.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw total_bytes: 2223, 1:2223.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw total_bytes: 2133, 1:2133.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw total_bytes: 3634, 1:2443, 2:1191.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw total_bytes: 2757, 1:2446, 2:311.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw total_bytes: 6732, 1:2461, 2:2421, 3:1850.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw total_bytes: 3046, 1:2454, 2:592.
+grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw total_bytes: 3155, 1:2477, 2:678.
+grbsrc/ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw total_bytes: 4532, 1:2484, 2:2048.
+grbsrc/ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw total_bytes: 5534, 1:2450, 2:2259, 3:825.
+grbsrc/ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw total_bytes: 2703, 1:2434, 2:269.
+grbsrc/ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw total_bytes: 2972, 1:2470, 2:502.
+grbsrc/ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw total_bytes: 5310, 1:2485, 2:2385, 3:440.
+grbsrc/ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw total_bytes: 3295, 1:2487, 2:808.
+grbsrc/ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw total_bytes: 2342, 1:2342.
+grbsrc/ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw total_bytes: 2603, 1:2493, 2:110.
+grbsrc/ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw total_bytes: 4211, 1:2473, 2:1738.
+grbsrc/ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw total_bytes: 2406, 1:2406.
+grbsrc/ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw total_bytes: 2330, 1:2330.
+grbsrc/ODBCAPTURE/UOR_INSTALL_VIEW.vw total_bytes: 1184, 1:1184.
 grbsrc/ODBCAPTURE/BUILD_CONF.ctl total_bytes: 259, 1:259.
 grbsrc/ODBCAPTURE/BUILD_CONF.csv total_bytes: 667, 1:667.
 grbsrc/ODBCAPTURE/BUILD_CONF.cldr total_bytes: 2280, 1:2280.
 grbsrc/ODBCAPTURE/BUILD_PATH.ctl total_bytes: 219, 1:219.
 grbsrc/ODBCAPTURE/BUILD_PATH.csv total_bytes: 111, 1:111.
 grbsrc/ODBCAPTURE/BUILD_PATH.cldr total_bytes: 2280, 1:2280.
-grbsrc/ODBCAPTURE/ELEMENT_CONF.ctl total_bytes: 478, 1:478.
-grbsrc/ODBCAPTURE/ELEMENT_CONF.csv total_bytes: 2607, 1:2607.
+grbsrc/ODBCAPTURE/ELEMENT_CONF.ctl total_bytes: 521, 1:521.
+grbsrc/ODBCAPTURE/ELEMENT_CONF.csv total_bytes: 2739, 1:2739.
 grbsrc/ODBCAPTURE/ELEMENT_CONF.cldr total_bytes: 2300, 1:2300.
 grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.ctl total_bytes: 265, 1:265.
 grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.csv total_bytes: 490, 1:490.
@@ -4949,35 +5053,11 @@ grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tidx total_bytes: 336, 1:336.
 grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tidx total_bytes: 342, 1:342.
 grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tidx total_bytes: 591, 1:591.
 grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tidx total_bytes: 591, 1:591.
-grbsrc/ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw total_bytes: 1081, 1:1081.
-grbsrc/ODBCAPTURE/BUILD_PATH_REVIEW.vw total_bytes: 1347, 1:1347.
-grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw total_bytes: 1488, 1:1488.
-grbsrc/ODBCAPTURE/DBA_OBJECTS_VIEW.vw total_bytes: 4369, 1:2472, 2:1897.
-grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw total_bytes: 1913, 1:1913.
-grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw total_bytes: 2222, 1:2222.
-grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw total_bytes: 2223, 1:2223.
-grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw total_bytes: 1881, 1:1881.
-grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw total_bytes: 3634, 1:2443, 2:1191.
-grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw total_bytes: 2757, 1:2446, 2:311.
-grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw total_bytes: 6732, 1:2461, 2:2421, 3:1850.
-grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw total_bytes: 3046, 1:2454, 2:592.
-grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw total_bytes: 3155, 1:2477, 2:678.
-grbsrc/ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw total_bytes: 4532, 1:2484, 2:2048.
-grbsrc/ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw total_bytes: 5534, 1:2450, 2:2259, 3:825.
-grbsrc/ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw total_bytes: 2703, 1:2434, 2:269.
-grbsrc/ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw total_bytes: 2972, 1:2470, 2:502.
-grbsrc/ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw total_bytes: 5310, 1:2485, 2:2385, 3:440.
-grbsrc/ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw total_bytes: 3295, 1:2487, 2:808.
-grbsrc/ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw total_bytes: 2342, 1:2342.
-grbsrc/ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw total_bytes: 2603, 1:2493, 2:110.
-grbsrc/ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw total_bytes: 4211, 1:2473, 2:1738.
-grbsrc/ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw total_bytes: 2406, 1:2406.
-grbsrc/ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw total_bytes: 2330, 1:2330.
-grbsrc/ODBCAPTURE/UOR_INSTALL_VIEW.vw total_bytes: 1184, 1:1184.
 grbsrc/ODBCAPTURE/COMMON_UTIL.pkbsql total_bytes: 19784, 1:2444, 2:2493, 3:2472, 4:2448, 5:2432, 6:2460, 7:2395, 8:2467, 9:173.
-grbsrc/ODBCAPTURE/FH2.pkbsql total_bytes: 21738, 1:2490, 2:2474, 3:2496, 4:2490, 5:2495, 6:2445, 7:2490, 8:2494, 9:1864.
-grbsrc/ODBCAPTURE/GRAB_SCRIPTS.pkbsql total_bytes: 209799, 1:2479, 2:2482, 3:2456, 4:2459, 5:2442, 6:2451, 7:2473, 8:2445, 9:2478, 10:2476, 11:2464, 12:2444, 13:2486, 14:2485, 15:2481, 16:2458, 17:2479, 18:2492, 19:2487, 20:2433, 21:2492, 22:2444, 23:2480, 24:2495, 25:2479, 26:2460, 27:2425, 28:2441, 29:2469, 30:2484, 31:2490, 32:2461, 33:2441, 34:2483, 35:2434, 36:2428, 37:2477, 38:2494, 39:2450, 40:2366, 41:2483, 42:2449, 43:2485, 44:2462, 45:2472, 46:2462, 47:2459, 48:2393, 49:2450, 50:2413, 51:2407, 52:2471, 53:2488, 54:2454, 55:2480, 56:2495, 57:2479, 58:2485, 59:2480, 60:2403, 61:2470, 62:2437, 63:2475, 64:2433, 65:2460, 66:2455, 67:2447, 68:2428, 69:2469, 70:2486, 71:2450, 72:2438, 73:2466, 74:2464, 75:2486, 76:2461, 77:2489, 78:2470, 79:2447, 80:2493, 81:2483, 82:2463, 83:2486, 84:2475, 85:2495, 86:460.
-grbsrc/ODBCAPTURE/ROOT_SCRIPTS.pkbsql total_bytes: 16793, 1:2475, 2:2469, 3:2475, 4:2393, 5:2417, 6:2476, 7:2088.
+grbsrc/ODBCAPTURE/FH2.pkbsql total_bytes: 22035, 1:2490, 2:2474, 3:2496, 4:2490, 5:2495, 6:2445, 7:2490, 8:2494, 9:2161.
+grbsrc/ODBCAPTURE/GRAB_DATA.pkbsql total_bytes: 61492, 1:2473, 2:2451, 3:2457, 4:2456, 5:2458, 6:2490, 7:2367, 8:2479, 9:2493, 10:2482, 11:2468, 12:2417, 13:2445, 14:2451, 15:2429, 16:2474, 17:2428, 18:2408, 19:2473, 20:2387, 21:2477, 22:2459, 23:2435, 24:2478, 25:2488, 26:169.
+grbsrc/ODBCAPTURE/GRAB_SCRIPTS.pkbsql total_bytes: 172639, 1:2481, 2:2464, 3:2472, 4:2453, 5:2385, 6:2452, 7:2448, 8:2441, 9:2422, 10:2464, 11:2405, 12:2489, 13:2476, 14:2490, 15:2480, 16:2470, 17:2478, 18:2486, 19:2478, 20:2397, 21:2377, 22:2408, 23:2444, 24:2478, 25:2443, 26:2424, 27:2492, 28:2489, 29:2481, 30:2465, 31:2461, 32:2453, 33:2467, 34:2436, 35:2465, 36:2467, 37:2494, 38:2491, 39:2494, 40:2491, 41:2439, 42:2486, 43:2481, 44:2489, 45:2485, 46:2489, 47:2479, 48:2458, 49:2443, 50:2457, 51:2492, 52:2472, 53:2455, 54:2452, 55:2475, 56:2451, 57:2414, 58:2460, 59:2436, 60:2489, 61:2458, 62:2461, 63:2463, 64:2462, 65:2466, 66:2436, 67:2479, 68:2408, 69:2478, 70:2494, 71:381.
+grbsrc/ODBCAPTURE/ROOT_SCRIPTS.pkbsql total_bytes: 16814, 1:2475, 2:2469, 3:2475, 4:2393, 5:2417, 6:2476, 7:2109.
 grbsrc/ODBCAPTURE/ZIP_UTIL_PKG.pkbsql total_bytes: 18317, 1:2457, 2:2477, 3:2422, 4:2436, 5:2467, 6:2487, 7:2475, 8:1096.
 grbsrc/ODBCAPTURE/BUILD_PATH.tfk total_bytes: 602, 1:602.
 grbsrc/ODBCAPTURE/DLOAD_CONF.tfk total_bytes: 596, 1:596.
@@ -4994,10 +5074,10 @@ grbtctx/odbcapture_installation_logs.csv total_bytes: 130, 1:130.
 grbtctx/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
 grbtctx/report_status.sql total_bytes: 1829, 1:1829.
 grbtctx/list_invalids.csv total_bytes: 45, 1:45.
-grbtctx/set_user_authentication.sql total_bytes: 99, 1:99.
+grbtctx/set_user_authentication.sql total_bytes: 98, 1:98.
 grbtctx/install_sys.sql total_bytes: 229, 1:229.
 grbtctx/install_system.sql total_bytes: 238, 1:238.
-grbtctx/install_grbtctx.sql total_bytes: 1296, 1:1296.
+grbtctx/install_grbtctx.sql total_bytes: 1302, 1:1302.
 grbtctx/ODBCTEST/CUST_CTX_TEST.tbl total_bytes: 365, 1:365.
 grbtctx/ODBCTEST/CUST_CTX_TEST.ctl total_bytes: 279, 1:279.
 grbtctx/ODBCTEST/CUST_CTX_TEST.csv total_bytes: 220, 1:220.
@@ -5012,12 +5092,12 @@ grbtdat/odbcapture_installation_logs.csv total_bytes: 168, 1:168.
 grbtdat/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
 grbtdat/report_status.sql total_bytes: 1833, 1:1833.
 grbtdat/list_invalids.csv total_bytes: 45, 1:45.
-grbtdat/set_user_authentication.sql total_bytes: 99, 1:99.
+grbtdat/set_user_authentication.sql total_bytes: 98, 1:98.
 grbtdat/install_sys.sql total_bytes: 229, 1:229.
 grbtdat/install_system.sql total_bytes: 238, 1:238.
 grbtdat/install_grbtdat.sql total_bytes: 1103, 1:1103.
-grbtdat/ODBCAPTURE/DLOAD_CONF.ctl total_bytes: 529, 1:529.
-grbtdat/ODBCAPTURE/DLOAD_CONF.csv total_bytes: 1244, 1:1244.
+grbtdat/ODBCAPTURE/DLOAD_CONF.ctl total_bytes: 573, 1:573.
+grbtdat/ODBCAPTURE/DLOAD_CONF.csv total_bytes: 1273, 1:1273.
 grbtdat/ODBCAPTURE/DLOAD_CONF.cldr total_bytes: 2280, 1:2280.
 grbtdat/ODBCAPTURE/OBJECT_CONF.ctl total_bytes: 345, 1:345.
 grbtdat/ODBCAPTURE/OBJECT_CONF.csv total_bytes: 1451, 1:1451.
@@ -5031,7 +5111,7 @@ grbtjsn/odbcapture_installation_logs.csv total_bytes: 130, 1:130.
 grbtjsn/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
 grbtjsn/report_status.sql total_bytes: 1833, 1:1833.
 grbtjsn/list_invalids.csv total_bytes: 45, 1:45.
-grbtjsn/set_user_authentication.sql total_bytes: 99, 1:99.
+grbtjsn/set_user_authentication.sql total_bytes: 98, 1:98.
 grbtjsn/install_sys.sql total_bytes: 229, 1:229.
 grbtjsn/install_system.sql total_bytes: 238, 1:238.
 grbtjsn/install_grbtjsn.sql total_bytes: 1163, 1:1163.
@@ -5048,10 +5128,10 @@ grbtjva/odbcapture_installation_logs.csv total_bytes: 91, 1:91.
 grbtjva/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
 grbtjva/report_status.sql total_bytes: 1829, 1:1829.
 grbtjva/list_invalids.csv total_bytes: 45, 1:45.
-grbtjva/set_user_authentication.sql total_bytes: 99, 1:99.
+grbtjva/set_user_authentication.sql total_bytes: 98, 1:98.
 grbtjva/install_sys.sql total_bytes: 333, 1:333.
 grbtjva/install_system.sql total_bytes: 340, 1:340.
-grbtjva/install_grbtjva.sql total_bytes: 1295, 1:1295.
+grbtjva/install_grbtjva.sql total_bytes: 1300, 1:1300.
 grbtjva/SYS/ODBCTEST_usr.sgrnt total_bytes: 1312, 1:1312.
 grbtjva/SYSTEM/ODBCTEST_usr.grnt total_bytes: 247, 1:247.
 grbtjva/ODBCTEST/DIR_UTIL.pkssql total_bytes: 395, 1:395.
@@ -5066,13 +5146,13 @@ grbtsdo/odbcapture_installation_logs.csv total_bytes: 171, 1:171.
 grbtsdo/odbcapture_installation_logs.ctl total_bytes: 268, 1:268.
 grbtsdo/report_status.sql total_bytes: 1829, 1:1829.
 grbtsdo/list_invalids.csv total_bytes: 45, 1:45.
-grbtsdo/set_user_authentication.sql total_bytes: 99, 1:99.
+grbtsdo/set_user_authentication.sql total_bytes: 98, 1:98.
 grbtsdo/install_sys.sql total_bytes: 229, 1:229.
 grbtsdo/install_system.sql total_bytes: 238, 1:238.
 grbtsdo/COLA_SPATIAL_IDX.tidx total_bytes: 618, 1:618.
-grbtsdo/install_grbtsdo.sql total_bytes: 1305, 1:1305.
+grbtsdo/install_grbtsdo.sql total_bytes: 1311, 1:1311.
 grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tbl total_bytes: 594, 1:594.
-grbtsdo/ODBCTEST/SDO_COLA_MARKETS.ctl total_bytes: 905, 1:905.
+grbtsdo/ODBCTEST/SDO_COLA_MARKETS.ctl total_bytes: 936, 1:936.
 grbtsdo/ODBCTEST/SDO_COLA_MARKETS.csv total_bytes: 206, 1:206.
 grbtsdo/ODBCTEST/SDO_COLA_MARKETS.cldr total_bytes: 2320, 1:2320.
 grbtsdo/ODBCTEST/SDO_COLA_MARKETS.tidx total_bytes: 314, 1:314.
@@ -5111,7 +5191,7 @@ grbtst/ODBCAPTURE/GRBTST__NAME.csv total_bytes: 24, 1:24.
 grbtst/ODBCAPTURE/GRBTST__NAME.cldr total_bytes: 2300, 1:2300.
 grbtst/ODBCAPTURE/GRBTST_IMAGE.ctl total_bytes: 281, 1:281.
 grbtst/ODBCAPTURE/GRBTST_IMAGE.csv total_bytes: 16817, 1:16817.
-grbtst/ODBCAPTURE/GRBTST_IMAGE.cldr total_bytes: 5295, 1:2416, 2:2461, 3:418.
+grbtst/ODBCAPTURE/GRBTST_IMAGE.cldr total_bytes: 5594, 1:2448, 2:2468, 3:678.
 grbtst/ODBCAPTURE/ROLE_CONF.ctl total_bytes: 296, 1:296.
 grbtst/ODBCAPTURE/ROLE_CONF.csv total_bytes: 100, 1:100.
 grbtst/ODBCAPTURE/ROLE_CONF.cldr total_bytes: 2270, 1:2270.
@@ -5171,14 +5251,14 @@ Implementation by Anton Scheffer
   inflating: grbjava/SYS/ODBCAPTURE_usr.sgrnt  
   inflating: grbjava/SYSTEM/ODBCAPTURE_usr.grnt  
   inflating: grbjava/ODBCAPTURE/GRAB_JAVA.pkssql  
+  inflating: grbjava/ODBCAPTURE/PRIV_OBJ_JAVA_FG_VIEW.vw  
+  inflating: grbjava/ODBCAPTURE/PRIV_SYSOBJ_JAVA_FG_VIEW.vw  
   inflating: grbjava/ODBCAPTURE/ROLE_CONF.ctl  
   inflating: grbjava/ODBCAPTURE/ROLE_CONF.csv  
   inflating: grbjava/ODBCAPTURE/ROLE_CONF.cldr  
   inflating: grbjava/ODBCAPTURE/SCHEMA_CONF.ctl  
   inflating: grbjava/ODBCAPTURE/SCHEMA_CONF.csv  
   inflating: grbjava/ODBCAPTURE/SCHEMA_CONF.cldr  
-  inflating: grbjava/ODBCAPTURE/PRIV_OBJ_JAVA_FG_VIEW.vw  
-  inflating: grbjava/ODBCAPTURE/PRIV_SYSOBJ_JAVA_FG_VIEW.vw  
   inflating: grbjava/ODBCAPTURE/GRAB_JAVA.pkbsql  
   inflating: grbras/install.sql      
   inflating: grbras/dbi.sql          
@@ -5196,13 +5276,13 @@ Implementation by Anton Scheffer
   inflating: grbras/SYS/ODBCAPTURE_usr.sgrnt  
   inflating: grbras/ODBCAPTURE/GRAB_RAS.pkssql  
   inflating: grbras/ODBCAPTURE/EXPORTING_RAS_DATA.tbl  
+  inflating: grbras/ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw  
   inflating: grbras/ODBCAPTURE/ROLE_CONF.ctl  
   inflating: grbras/ODBCAPTURE/ROLE_CONF.csv  
   inflating: grbras/ODBCAPTURE/ROLE_CONF.cldr  
   inflating: grbras/ODBCAPTURE/SCHEMA_CONF.ctl  
   inflating: grbras/ODBCAPTURE/SCHEMA_CONF.csv  
   inflating: grbras/ODBCAPTURE/SCHEMA_CONF.cldr  
-  inflating: grbras/ODBCAPTURE/PRIV_OBJ_RACL_VIEW.vw  
   inflating: grbras/ODBCAPTURE/GRAB_RAS.pkbsql  
   inflating: grbsdo/install.sql      
   inflating: grbsdo/dbi.sql          
@@ -5224,6 +5304,9 @@ Implementation by Anton Scheffer
   inflating: grbsdo/ODBCAPTURE/SCHEMA_CONF.ctl  
   inflating: grbsdo/ODBCAPTURE/SCHEMA_CONF.csv  
   inflating: grbsdo/ODBCAPTURE/SCHEMA_CONF.cldr  
+  inflating: grbsdo/ODBCAPTURE/USER_DEFINED_TYPE_CONF.ctl  
+  inflating: grbsdo/ODBCAPTURE/USER_DEFINED_TYPE_CONF.csv  
+  inflating: grbsdo/ODBCAPTURE/USER_DEFINED_TYPE_CONF.cldr  
   inflating: grbsdo/ODBCAPTURE/GRAB_SDO.pkbsql  
   inflating: grbsrc/install.sql      
   inflating: grbsrc/dbi.sql          
@@ -5242,6 +5325,7 @@ Implementation by Anton Scheffer
   inflating: grbsrc/SYSTEM/ODBCAPTURE_usr.grnt  
   inflating: grbsrc/ODBCAPTURE/COMMON_UTIL.pkssql  
   inflating: grbsrc/ODBCAPTURE/FH2.pkssql  
+  inflating: grbsrc/ODBCAPTURE/GRAB_DATA.pkssql  
   inflating: grbsrc/ODBCAPTURE/GRAB_SCRIPTS.pkssql  
   inflating: grbsrc/ODBCAPTURE/ROOT_SCRIPTS.pkssql  
   inflating: grbsrc/ODBCAPTURE/ZIP_UTIL_PKG.pkssql  
@@ -5267,7 +5351,33 @@ Implementation by Anton Scheffer
   inflating: grbsrc/ODBCAPTURE/SCHEMA_CONF.tbl  
   inflating: grbsrc/ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl  
   inflating: grbsrc/ODBCAPTURE/TSPACE_CONF.tbl  
+  inflating: grbsrc/ODBCAPTURE/USER_DEFINED_TYPE_CONF.tbl  
   inflating: grbsrc/ODBCAPTURE/ZIP_FILES.tbl  
+  inflating: grbsrc/ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw  
+  inflating: grbsrc/ODBCAPTURE/BUILD_PATH_REVIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/DBA_OBJECTS_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw  
+  inflating: grbsrc/ODBCAPTURE/UOR_INSTALL_VIEW.vw  
   inflating: grbsrc/ODBCAPTURE/BUILD_CONF.ctl  
   inflating: grbsrc/ODBCAPTURE/BUILD_CONF.csv  
   inflating: grbsrc/ODBCAPTURE/BUILD_CONF.cldr  
@@ -5300,33 +5410,9 @@ Implementation by Anton Scheffer
   inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tidx  
   inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tidx  
   inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tidx  
-  inflating: grbsrc/ODBCAPTURE/AQ_SYSTEM_PRIVS_VW.vw  
-  inflating: grbsrc/ODBCAPTURE/BUILD_PATH_REVIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/DBA_OBJECTS_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw  
-  inflating: grbsrc/ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw  
-  inflating: grbsrc/ODBCAPTURE/UOR_INSTALL_VIEW.vw  
   inflating: grbsrc/ODBCAPTURE/COMMON_UTIL.pkbsql  
   inflating: grbsrc/ODBCAPTURE/FH2.pkbsql  
+  inflating: grbsrc/ODBCAPTURE/GRAB_DATA.pkbsql  
   inflating: grbsrc/ODBCAPTURE/GRAB_SCRIPTS.pkbsql  
   inflating: grbsrc/ODBCAPTURE/ROOT_SCRIPTS.pkbsql  
   inflating: grbsrc/ODBCAPTURE/ZIP_UTIL_PKG.pkbsql  
