@@ -100,8 +100,6 @@ grant SELECT on "SYS"."DBA_TYPES" to "ODBCAPTURE";
 grant SELECT on "SYS"."DBA_USERS" to "ODBCAPTURE";
 grant SELECT on "SYS"."DBA_VIEWS" to "ODBCAPTURE";
 grant SELECT on "SYS"."DBA_WALLET_ACES" to "ODBCAPTURE";
-grant SELECT on "SYS"."DBA_XML_SCHEMAS" to "ODBCAPTURE";
-grant SELECT on "SYS"."DBA_XML_TABLES" to "ODBCAPTURE";
 
 -- Real Application Security System Grants
 

@@ -1,5 +1,4 @@
 "USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES"
-"ANONYMOUS","sys","Y",,,,,"(grbxrep) XDB - XML Database Repository (XDB,ANONYMOUS)"
 "APEX_220100","sys","Y",,,,,"(grbapex) Oracle Application Express Version 22.1"
 "APEX_220200","sys","Y",,,,,"(grbapex) Oracle Application Express Version 22.2"
 "APEX_230100","sys","Y",,,,,"(grbapex) Oracle Application Express Version 23.1"
@@ -19,4 +18,3 @@
 "SYSMAN","sys","Y",,,,,"(grbemdc) Enterprise Manager Grid Control Schema Name"
 "SYSTEM","sys","Y",,,,,"Default Database Administrator Account"
 "WMSYS","sys","Y",,,,,"(grbowm) OWM - Oracle Workspace Manager (WMSYS)"
-"XDB","sys","Y",,,,,"(grbxrep) XDB - XML Database Repository (XDB,ANONYMOUS)"

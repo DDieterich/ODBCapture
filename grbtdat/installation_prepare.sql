@@ -53,6 +53,7 @@ begin
    do_it('grbtjva');
    do_it('grbtsdo');
    do_it('grbtst');
+   do_it('grbxrep');
 end;
 /
 

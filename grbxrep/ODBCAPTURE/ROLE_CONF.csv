@@ -1,0 +1,7 @@
+"ROLENAME","BUILD_TYPE","ORACLE_PROVIDED","NOTES"
+"AUTHENTICATEDUSER","grbxrep","Y","(grbxrep) Used by the XDB protocols to define any user who has logged in to the system."
+"XDBADMIN","grbxrep","Y","(grbxrep) Allows the grantee to register an XML schema globally, as opposed to registering it for use or access only by its owner. It also lets the grantee bypass access control list (ACL) checks when accessing Oracle XML DB Repository."
+"XDB_SET_INVOKER","grbxrep","Y","(grbxrep) Allows the grantee to define invoker's rights handlers and to create or update the resource configuration for XML repository triggers. By default, Oracle Database grants this role to the DBA role but not to the XDBADMIN role."
+"XDB_WEBSERVICES","grbxrep","Y","(grbxrep) Allows the grantee to access Oracle Database Web services over HTTPS. However, it does not provide the user access to objects in the database that are public. To allow public access, you need to grant the user the XDB_WEBSERVICES_WITH_PUBLIC role. For a user to use these Web services, SYS must enable the Web service servlets."
+"XDB_WEBSERVICES_OVER_HTTP","grbxrep","Y","(grbxrep) Allows the grantee to access Oracle Database Web services over HTTP. However, it does not provide the user access to objects in the database that are public. To allow public access, you need to grant the user the XDB_WEBSERVICES_WITH_PUBLIC role."
+"XDB_WEBSERVICES_WITH_PUBLIC","grbxrep","Y","(grbxrep) Allows the grantee access to public objects through Oracle Database Web services."

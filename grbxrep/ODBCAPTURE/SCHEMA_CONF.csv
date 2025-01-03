@@ -1,0 +1,3 @@
+"USERNAME","BUILD_TYPE","ORACLE_PROVIDED","PROFILE","TEMPORARY_TSPACE","DEFAULT_TSPACE","TS_QUOTA","NOTES"
+"ANONYMOUS","grbxrep","Y",,,,,"(grbxrep) XDB - XML Database Repository (XDB,ANONYMOUS)"
+"XDB","grbxrep","Y",,,,,"(grbxrep) XDB - XML Database Repository (XDB,ANONYMOUS)"

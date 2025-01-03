@@ -5,5 +5,6 @@
 -85,"grbras","RAS - Real Application Security (XS$NULL)"
 -82,"grbjava","JAVAVM,CATJAVA,XML - JServer JAVA Virtual Machine, Oracle Database Java Packages (OJVMSYS), Oracle XDK"
 -78,"grbsdo","SDO,LCTR (Placeholder) - Spatial - Oracle Locator - Graph (MDSYS, MDDATA)"
+-59,"grbxrep","Oracle XDB Repository"
 -50,"grbendp","ODBCapture Common Endpoint for Hierarchy and Non-Generated Objects"
 -48,"grbdat","ODBCapture Self-Capture Configuration Data"

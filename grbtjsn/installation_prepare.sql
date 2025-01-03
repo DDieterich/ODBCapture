@@ -48,6 +48,7 @@ begin
    do_it('grbsdo');
    do_it('grbsrc');
    do_it('grbtst');
+   do_it('grbxrep');
 end;
 /
 
