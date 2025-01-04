@@ -1,0 +1,27 @@
+
+--
+--  Create ODBCAPTURE.GRAB_XDB_REPO Package
+--
+
+set define off
+
+
+--DBMS_METADATA:ODBCAPTURE.GRAB_XDB_REPO
+
+  CREATE OR REPLACE EDITIONABLE PACKAGE "ODBCAPTURE"."GRAB_XDB_REPO" 
+   authid current_user
+as 
+
+  procedure grb_xmlschema;
+
+end grab_xdb_repo;
+/
+
+
+--  Grants
+
+
+--  Synonyms
+
+
+set define on

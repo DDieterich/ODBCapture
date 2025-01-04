@@ -11,7 +11,6 @@ set define off
 --  "SYS" Object Grants
 
 grant SELECT on "SYS"."DBA_XML_SCHEMAS" to "ODBCAPTURE";
-grant SELECT on "SYS"."DBA_XML_TABLES" to "ODBCAPTURE";
 
 
 set define on
