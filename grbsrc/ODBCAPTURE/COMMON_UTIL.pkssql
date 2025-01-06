@@ -62,10 +62,13 @@ as
       (in_str      IN   CLOB)
    return CLOB;
 
-   procedure check_windows_filenames
-      (in_build_type  in varchar2);
-
-   procedure update_vieW_tabs;
+   procedure check_filename
+      (in_filename  in varchar2);
+   function fix_filename
+      (in_filename  in varchar2)
+   return varchar2 deterministic;
+   
+   procedure update_view_tabs;
 
    function b64_encode
       (in_blob     in BLOB

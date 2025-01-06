@@ -170,7 +170,7 @@ begin
                  where oracle_provided = 'N'
                 )
                 select q1.grantee
-                      ,replace(replace(q1.grantee,'$','_'),'%','_') ||
+                      ,COMMON_UTIL.fix_filename(q1.grantee) ||
                        q1.file_suffix || ec.file_ext1  FILE_NAME
                  from  q1
                        join element_conf  ec
@@ -320,7 +320,7 @@ begin
                  where oracle_provided = 'N'
                 )
                 select q1.grantee
-                      ,replace(replace(q1.grantee,'$','_'),'%','_') ||
+                      ,COMMON_UTIL.fix_filename(q1.grantee) ||
                        q1.file_suffix || ec.file_ext1  FILE_NAME
                  from  q1
                        join element_conf  ec
@@ -671,7 +671,7 @@ begin
    loop
       if NOT fh2.script_is_open(fh)
       then
-         fh := fh2.script_open(in_filename     => replace(replace(g_schema_name,'$','_'),'%','_') || '.' || buf1.file_ext1
+         fh := fh2.script_open(in_filename     => COMMON_UTIL.fix_filename(g_schema_name) || '.' || buf1.file_ext1
                               ,in_elmnt        => ELMNT
                               ,in_max_linesize => common_util.MAXIMUM_SQL_LENGTH);
          fh2.script_put_line(fh, '');
@@ -828,7 +828,7 @@ is
    fh         fh2.sf_ptr_type;  -- object script file handle
 begin
    for buf1 in (select obj.object_name                          QUEUE_NAME
-                      ,replace(replace(obj.object_name,'$','_'),'%','_') || '.' || obj.file_ext1
+                      ,COMMON_UTIL.fix_filename(obj.object_name) || '.' || obj.file_ext1
                                                                 FILE_NAME
                       ,obj.build_timing
                  from  obj_install_object_tab  obj
@@ -1053,7 +1053,7 @@ is
    gsm_save   varchar2(128);
 begin
    for buff in (select aqt.queue_table
-                      ,replace(replace(aqt.queue_table,'$','_'),'%','_') || '.' || elem.file_ext1
+                      ,COMMON_UTIL.fix_filename(aqt.queue_table) || '.' || elem.file_ext1
                                                            FILE_NAME
                       ,obj.object_name
                       ,obj.object_type
@@ -1137,7 +1137,7 @@ begin
    for buf1 in (select obj.context_owner
                       ,obj.context_name
                       ,obj.context_type
-                      ,replace(replace(obj.context_name,'$','_'),'%','_') || '.' || obj.file_ext1
+                      ,COMMON_UTIL.fix_filename(obj.context_name) || '.' || obj.file_ext1
                                                              FILE_NAME
                       ,obj.package_owner
                       ,obj.package_name
@@ -1254,7 +1254,7 @@ is
 begin
    --dbms_output.put_line('ELMNT: ' || ELMNT || ', g_build_type: ' || g_build_type ||
    --                     ', g_schema_name: ' || g_schema_name || ', ' || ELMNT);
-   for buff in (select replace(replace(replace(host,'*','_'),'$','_'),'%','_') || '.' || file_ext1
+   for buff in (select COMMON_UTIL.fix_filename(replace(host,'*','_')) || '.' || file_ext1
                                                               FILE_NAME
                       ,host
                       ,object_name_regexp
@@ -1271,7 +1271,7 @@ begin
                   and  grant_type         = 'GRANT'
                   and  inverted_principal = 'NO'
                   and  privilege         is not null
-                 group by replace(replace(replace(host,'*','_'),'$','_'),'%','_') || '.' || file_ext1
+                 group by COMMON_UTIL.fix_filename(replace(host,'*','_')) || '.' || file_ext1
                       ,host
                       ,object_name_regexp
                       ,lower_port
@@ -1279,7 +1279,7 @@ begin
                       ,grantee
                       ,privilege
                       ,build_type_selector
-                 order by replace(replace(replace(host,'*','_'),'$','_'),'%','_') || '.' || file_ext1
+                 order by COMMON_UTIL.fix_filename(replace(host,'*','_')) || '.' || file_ext1
                       ,host
                       ,object_name_regexp
                       ,lower_port
@@ -1380,7 +1380,7 @@ is
 begin
    --dbms_output.put_line('ELMNT: ' || ELMNT || ', g_build_type: ' || g_build_type ||
    --                     ', g_schema_name: ' || g_schema_name || ', ' || ELMNT);
-   for buff in (select replace(replace(wacl_name,'$','_'),'%','_') || '.' || file_ext1
+   for buff in (select COMMON_UTIL.fix_filename(wacl_name) || '.' || file_ext1
                                                                     FILE_NAME
                       ,wallet_path
                       ,object_name_regexp
@@ -1393,13 +1393,13 @@ begin
                   and  grant_type         = 'GRANT'
                   and  inverted_principal = 'NO'
                   and  privilege         is not null
-                 group by replace(replace(wacl_name,'$','_'),'%','_') || '.' || file_ext1
+                 group by COMMON_UTIL.fix_filename(wacl_name) || '.' || file_ext1
                       ,wallet_path
                       ,object_name_regexp
                       ,grantee
                       ,privilege
                       ,build_type_selector
-                 order by replace(replace(wacl_name,'$','_'),'%','_') || '.' || file_ext1
+                 order by COMMON_UTIL.fix_filename(wacl_name) || '.' || file_ext1
                       ,wallet_path
                       ,object_name_regexp
                       ,grantee
@@ -1482,7 +1482,7 @@ is
    fh         fh2.sf_ptr_type;  -- object script file handle
 begin
    for buff in (select obj.object_name                      OBJECT_NAME
-                      ,replace(replace(obj.object_name,'$','_'),'%','_') || '.' || obj.file_ext1
+                      ,COMMON_UTIL.fix_filename(obj.object_name) || '.' || obj.file_ext1
                                                             FILE_NAME
                       ,obj.build_timing
                       ,obj.object_type
@@ -1571,7 +1571,7 @@ is
    fh         fh2.sf_ptr_type;  -- object script file handle
 begin
    for buf1 in (select obj.object_name                      DB_LINK_NAME
-                      ,replace(replace(obj.object_name,'$','_'),'%','_') || '.' || obj.file_ext1
+                      ,COMMON_UTIL.fix_filename(obj.object_name) || '.' || obj.file_ext1
                                                             FILE_NAME
                       ,obj.object_owner                     USERNAME
                       ,lnk.host
@@ -1682,7 +1682,7 @@ begin
    loop
       if NOT fh2.script_is_open(fh)
       then
-         fh := fh2.script_open(in_filename     => replace(replace(g_schema_name,'$','_'),'%','_') || '.' || buff.file_ext1
+         fh := fh2.script_open(in_filename     => COMMON_UTIL.fix_filename(g_schema_name) || '.' || buff.file_ext1
                               ,in_elmnt        => ELMNT
                               ,in_max_linesize => common_util.MAXIMUM_SQL_LENGTH);
          fh2.script_put_line(fh, '');
@@ -1733,11 +1733,11 @@ begin
                      ,privilege
                      ,max(grantable)            GRANTABLE
                      ,directory_path
-                     ,replace(replace(directory_name,'$','_'),'%','_') || '.' || file_ext1
+                     ,COMMON_UTIL.fix_filename(directory_name) || '.' || file_ext1
                                                 FILE_NAME
-                     --,replace(replace(directory_name,'$','_'),'%','_') || '.' || file_ext2
+                     --,COMMON_UTIL.fix_filename(directory_name) || '.' || file_ext2
                      --                           BASH_NAME
-                     --,replace(replace(directory_name,'$','_'),'%','_') || '.' || file_ext3
+                     --,COMMON_UTIL.fix_filename(directory_name) || '.' || file_ext3
                      --                           BATCH_NAME
                      ,build_timing
                 from  priv_obj_dir_view
@@ -1748,9 +1748,9 @@ begin
                      ,grantee
                      ,privilege
                      ,directory_path
-                     ,replace(replace(directory_name,'$','_'),'%','_') || '.' || file_ext1
-                     --,replace(replace(directory_name,'$','_'),'%','_') || '.' || file_ext2
-                     --,replace(replace(directory_name,'$','_'),'%','_') || '.' || file_ext3
+                     ,COMMON_UTIL.fix_filename(directory_name) || '.' || file_ext1
+                     --,COMMON_UTIL.fix_filename(directory_name) || '.' || file_ext2
+                     --,COMMON_UTIL.fix_filename(directory_name) || '.' || file_ext3
                      ,build_timing
                 order by directory_name
                      ,grantee
@@ -1902,7 +1902,7 @@ is
 begin
    old_tab := 'This is not a Table Name.';
    for buff in (select fk.base_table_name                   TABLE_NAME
-                      ,replace(replace(fk.base_table_name,'$','_'),'%','_') || '.' || fk.file_ext1
+                      ,COMMON_UTIL.fix_filename(fk.base_table_name) || '.' || fk.file_ext1
                                                             FILE_NAME
                       ,fk.base_table_type
                       ,fk.foreign_key_name
@@ -1970,7 +1970,7 @@ begin
    old_tab := 'This is not a Table name.';
    for buff in (select ind.table_owner
                       ,ind.table_name
-                      ,replace(replace(ind.table_name,'$','_'),'%','_') || '.' || ind.file_ext1
+                      ,COMMON_UTIL.fix_filename(ind.table_name) || '.' || ind.file_ext1
                                                           FILE_NAME
                       ,ind.table_type
                       ,ind.index_owner
@@ -2262,7 +2262,7 @@ end grb_install_master;
 procedure grb_install_schemas
 is
    fh             fh2.sf_ptr_type;  -- object script file handle
-   fname          varchar2(1000) := 'install_' || replace(replace(g_build_type,'$','_'),'%','_') || '.sql';
+   fname          varchar2(1000) := 'install_' || COMMON_UTIL.fix_filename(g_build_type) || '.sql';
    file_id        pls_integer;
 begin
    fh := fh2.script_open(in_filename     => fname
@@ -2494,7 +2494,7 @@ is
 begin
    for buf1 in (with qmain as (
                 select object_name                  MVIEW_NAME
-                      ,replace(replace(object_name,'$','_'),'%','_') || '.' || file_ext1
+                      ,COMMON_UTIL.fix_filename(object_name) || '.' || file_ext1
                                                     FILE_NAME
                       ,build_timing
                  from  obj_install_object_tab
@@ -2619,7 +2619,7 @@ is
 begin
    for buf1 in
       (select user_or_role                 ROLENAME
-             ,replace(replace(user_or_role,'$','_'),'%','_') || '.' || file_ext1
+             ,COMMON_UTIL.fix_filename(user_or_role) || '.' || file_ext1
                                            FILE_NAME
         from  uor_install_view
         where uor_type = 'ROLE'
@@ -2706,7 +2706,7 @@ begin
                                  where owner = g_schema_name
                                  group by table_name)
                 select obj.object_name                      TABLE_NAME
-                      ,replace(replace(obj.object_name,'$','_'),'%','_') || '.' || obj.file_ext1
+                      ,COMMON_UTIL.fix_filename(obj.object_name) || '.' || obj.file_ext1
                                                             FILE_NAME
                       ,obj.build_timing
                       ,xt.table_name                        XML_TABLE_NAME
@@ -2810,7 +2810,7 @@ begin
    old_tab := 'This is not a Table name.';
    for buff in (select target_name                 TABLE_NAME
                       ,target_owner                TABLE_OWNER
-                      ,replace(replace(target_name,'$','_'),'%','_') || '.' || file_ext1
+                      ,COMMON_UTIL.fix_filename(target_name) || '.' || file_ext1
                                                    FILE_NAME
                       ,target_type
                       ,trigger_name
@@ -2883,7 +2883,7 @@ is
    sql_txt   varchar2(32767);
 begin
    for buf1 in (select sc.username
-                      ,replace(replace(sc.username,'$','_'),'%','_') || '.' || ec.file_ext1
+                      ,COMMON_UTIL.fix_filename(sc.username) || '.' || ec.file_ext1
                                                       FILE_NAME
                       ,sc.profile
                       ,sc.temporary_tspace
@@ -3065,7 +3065,7 @@ begin
    loop
       if NOT fh2.script_is_open(fh)
       then
-         fh := fh2.script_open(in_filename     => replace(replace(g_schema_name,'$','_'),'%','_') || '.' || buff.file_ext1
+         fh := fh2.script_open(in_filename     => COMMON_UTIL.fix_filename(g_schema_name) || '.' || buff.file_ext1
                               ,in_elmnt        => ELMNT
                               ,in_max_linesize => common_util.MAXIMUM_SQL_LENGTH);
          fh2.script_put_line(fh, '');
@@ -3107,7 +3107,7 @@ is
    fh         fh2.sf_ptr_type;  -- object script file handle
 begin
    for buf1 in (select obj.object_name                      VIEW_NAME
-                      ,replace(replace(obj.object_name,'$','_'),'%','_') || '.' || obj.file_ext1
+                      ,COMMON_UTIL.fix_filename(obj.object_name) || '.' || obj.file_ext1
                                                             FILE_NAME
                       ,obj.build_timing
                  from  obj_install_object_tab  obj
@@ -3273,7 +3273,6 @@ begin
    set_build_type;
    if fh2.sf_aa.EXISTS(g_build_type) then fh2.sf_aa(g_build_type).DELETE; end if;
    --  Checks and Settings
-   COMMON_UTIL.check_windows_filenames(g_build_type);
    COMMON_UTIL.dbms_metadata_settings;
 end initialize;
 

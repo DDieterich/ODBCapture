@@ -97,7 +97,6 @@ function script_open
 is
    sf_ptr       fh2.sf_ptr_type;
    schema_name  varchar2(128);
-   filename     varchar2(500);
    init_sf_aa   boolean;
    ----------------------------------------
    -- Find the ELEMENT SEQ for the in_elmnt
@@ -115,24 +114,24 @@ is
          SQLERRM);
    end get_element_seq;
    ----------------------------------------
-   -- Find the File ID for the sf_ptr.bld_ord, and filename
+   -- Find the File ID for the sf_ptr.bld_ord, and in_filename
    procedure get_file_id is
       file_id    pls_integer;
    begin
-      -- Find Filename in Script File Array
+      -- Find In_Filename in Script File Array
       file_id := sf_aa(grab_scripts.g_build_type)(sf_ptr.bld_ord).FIRST;
       loop
          if    (   sf_aa(grab_scripts.g_build_type)(sf_ptr.bld_ord)(file_id).schema_name = schema_name
                 OR (    sf_aa(grab_scripts.g_build_type)(sf_ptr.bld_ord)(file_id).schema_name is null
                     AND                                                 schema_name is null) )
-           AND sf_aa(grab_scripts.g_build_type)(sf_ptr.bld_ord)(file_id).filename = filename
+           AND sf_aa(grab_scripts.g_build_type)(sf_ptr.bld_ord)(file_id).filename = in_filename
          then
             sf_ptr.file_id := file_id;
             if script_is_open(sf_ptr)
             then
                raise_application_error(-20000, 'Script Name: "' || grab_scripts.g_build_type ||
                                                             '/' || schema_name ||
-                                                            '/' || filename ||
+                                                            '/' || in_filename ||
                                                    '" (ELMNT: ' || in_elmnt ||
                                             ') is already open.');
             end if;
@@ -144,6 +143,9 @@ is
       end loop;
    end get_file_id;
 begin
+   -- Check the filename for invalid characters
+   COMMON_UTIL.check_filename(in_filename);
+   -- Set Build Type
    sf_ptr.bld_type := grab_scripts.g_build_type;
    -- Set the Schema Name
    schema_name := case when grab_scripts.g_schema_name is null    then NULL
@@ -152,28 +154,10 @@ begin
                   end;
    -- Get the ELEMENT SEQ to sf_ptr
    get_element_seq;
-   -- Starting from Oracle Database release 19c, version 19.3, file names
-   --   with the $ character will no longer run on Windows.
-   if instr(in_filename,'$') != 0
-   then
-      --dbms_output.put_line('  Warning: Changed "$" to "_" in filename: ' || in_filename);
-      raise_application_error(-20000,'File names with the $ character will no longer run on Windows: ' || in_filename);
-   end if;
-   -- Windows also has trouble with "%" in a script name
-   --    https://docs.oracle.com/en/database/oracle/oracle-database/23/sqlrf/Database-Object-Names-and-Qualifiers.html
-   --    Quoted identifiers can contain any characters and punctuations marks as well as spaces
-   if instr(in_filename,'%') != 0
-   then
-      --dbms_output.put_line('  Warning: Changed "%" to "_" in filename: ' || in_filename);
-      raise_application_error(-20000,'Windows also has trouble with "%" in a script name: ' || in_filename);
-   end if;
    -- Set Filename
-   --  (This "replace(replace(" has been moved to the calling procedure.)
-   --  filename := replace(replace(in_filename,'$','_'),'%','_');
-   filename := in_filename;
    dbms_output.put_line('Script Open: ' || grab_scripts.g_build_type ||
                                     '/' || schema_name    ||
-                                    '/' || filename       );
+                                    '/' || in_filename    );
    -- Find File ID
    sf_ptr.file_id := null;
    if     sf_aa.EXISTS(grab_scripts.g_build_type)
@@ -203,7 +187,7 @@ begin
       sf_aa(sf_ptr.bld_type)(sf_ptr.bld_ord)(sf_ptr.file_id).num_buffers  := 1;
       sf_aa(sf_ptr.bld_type)(sf_ptr.bld_ord)(sf_ptr.file_id).is_open      := 'Y';
       sf_aa(sf_ptr.bld_type)(sf_ptr.bld_ord)(sf_ptr.file_id).schema_name  := schema_name;
-      sf_aa(sf_ptr.bld_type)(sf_ptr.bld_ord)(sf_ptr.file_id).filename     := filename;
+      sf_aa(sf_ptr.bld_type)(sf_ptr.bld_ord)(sf_ptr.file_id).filename     := in_filename;
       sf_aa(sf_ptr.bld_type)(sf_ptr.bld_ord)(sf_ptr.file_id).buffer_aa(1).len := 0;
    end if;
    return sf_ptr;

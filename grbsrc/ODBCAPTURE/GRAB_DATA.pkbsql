@@ -853,11 +853,11 @@ is
 begin
    --
    for tabs in
-      (select table_name                                                        TABLE_NAME
-             ,replace(replace(table_name,'$','_'),'%','_') || '.' || file_ext1  FILE_NAME
-             ,replace(replace(table_name,'$','_'),'%','_') || '.' || file_ext2  CTL_FILE
-             ,replace(replace(table_name,'$','_'),'%','_') || '.' || file_ext3  DAT_FILE
-             ,replace(replace(table_name,'$','_'),'%','_') || '.log'            LOG_FILE
+      (select table_name
+             ,COMMON_UTIL.fix_filename(table_name) || '.' || file_ext1  FILE_NAME
+             ,COMMON_UTIL.fix_filename(table_name) || '.' || file_ext2  CTL_FILE
+             ,COMMON_UTIL.fix_filename(table_name) || '.' || file_ext3  DAT_FILE
+             ,COMMON_UTIL.fix_filename(table_name) || '.log'            LOG_FILE
              ,object_table_type
              ,loading_method
              ,before_select_sql

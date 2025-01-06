@@ -367,8 +367,8 @@ begin
                       ,table_name)
    loop
       ret_txt := ret_txt || CHR(10) || '"' || in_build_type   ||
-                                     '","' || replace(replace(buff.table_owner,'$','_'),'%','_') ||
-                                       '/' || replace(replace(buff.table_name,'$','_'),'%','_')  || '.log"';
+                                     '","' || COMMON_UTIL.fix_filename(buff.table_owner) ||
+                                       '/' || COMMON_UTIL.fix_filename(buff.table_name)  || '.log"';
    end loop;
    return ret_txt;
 end odbcapture_installation_logs_csv;

@@ -344,7 +344,7 @@ begin
                         in_index_ext   );
    --
    grab_scripts.g_schema_name  := '';
-   fh := fh2.script_open(in_filename     => replace(replace(in_index_name ,'$','_'),'%','_')
+   fh := fh2.script_open(in_filename     => COMMON_UTIL.fix_filename(in_index_name)
                                                    || '.' || in_index_ext
                                ,in_elmnt        => 'INSTALL_SCRIPT'
                                ,in_max_linesize => common_util.MAXIMUM_SQL_LENGTH);
