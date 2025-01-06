@@ -50,7 +50,7 @@ ZIP_FILE_ROOT="capture_files"
 
 capture_version
 build_init
-for BTYPE in 'grbsrc' 'grbjava' 'grbsdo' 'grbdat' 'grbtst' 'grbtjva' 'grbtjsn' 'grbtsdo' 'grbtctx' 'grbtdat'
+for BTYPE in 'grbsrc' 'grbjava' 'grbsdo' 'grbxrep' 'grbdat' 'grbtst' 'grbtjva' 'grbtjsn' 'grbtsdo' 'grbtctx' 'grbtdat'
 do
    clear_log_files "${BTYPE}"
    run_build  "${BTYPE}"
