@@ -14,15 +14,16 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbtsdo"
 WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) "grbjava" last loaded on 27-Dec-2024 22:17:42
- -) "grbras" last loaded on 27-Dec-2024 22:17:34
- -) "grbsdo" last loaded on 27-Dec-2024 22:17:51
- -) "grbsrc" last loaded on 27-Dec-2024 22:17:25
- -) "grbtst" last loaded on 27-Dec-2024 22:18:21
+ -) "grbjava" last loaded on 07-Jan-2025 03:23:14
+ -) "grbras" last loaded on 07-Jan-2025 03:23:04
+ -) "grbsdo" last loaded on 07-Jan-2025 03:23:25
+ -) "grbsrc" last loaded on 07-Jan-2025 03:22:50
+ -) "grbtst" last loaded on 07-Jan-2025 03:24:10
+ -) "grbxrep" last loaded on 07-Jan-2025 03:23:35
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-27T22:18:55 for a duration of .16 seconds (started at 2024-12-27T22:18:54)
+=== DBI Completed at 2025-01-07T03:24:53 for a duration of .2 seconds (started at 2025-01-07T03:24:53)
 === DBI Started: ODBCTEST/SDO_COLA_MARKETS.tbl
 
 Table created.
@@ -30,7 +31,7 @@ Table created.
 
 Table altered.
 
-=== DBI Completed at 2024-12-27T22:18:55 for a duration of .48 seconds (started at 2024-12-27T22:18:55)
+=== DBI Completed at 2025-01-07T03:24:54 for a duration of .7 seconds (started at 2025-01-07T03:24:53)
 === DBI Started: ODBCTEST/SDO_COLA_MARKETS.cldr
 
 Disable Triggers and Foreign Keys
@@ -43,9 +44,9 @@ sqlldr_control=ODBCTEST/SDO_COLA_MARKETS.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-27T22:18:58 for a duration of 2.73 seconds (started at 2024-12-27T22:18:55)
+=== DBI Completed at 2025-01-07T03:24:58 for a duration of 3.62 seconds (started at 2025-01-07T03:24:54)
 === DBI Started: ODBCTEST/SDO_COLA_MARKETS.tidx
-=== DBI Completed at 2024-12-27T22:18:58 for a duration of .01 seconds (started at 2024-12-27T22:18:58)
+=== DBI Completed at 2025-01-07T03:24:58 for a duration of .02 seconds (started at 2025-01-07T03:24:58)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table

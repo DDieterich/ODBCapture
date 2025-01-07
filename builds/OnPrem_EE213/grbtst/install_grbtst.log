@@ -14,14 +14,15 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbtst"
 WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) "grbjava" last loaded on 27-Dec-2024 22:17:42
- -) "grbras" last loaded on 27-Dec-2024 22:17:34
- -) "grbsdo" last loaded on 27-Dec-2024 22:17:51
- -) "grbsrc" last loaded on 27-Dec-2024 22:17:25
+ -) "grbjava" last loaded on 07-Jan-2025 03:23:14
+ -) "grbras" last loaded on 07-Jan-2025 03:23:04
+ -) "grbsdo" last loaded on 07-Jan-2025 03:23:25
+ -) "grbsrc" last loaded on 07-Jan-2025 03:22:50
+ -) "grbxrep" last loaded on 07-Jan-2025 03:23:35
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-27T22:18:05 for a duration of .15 seconds (started at 2024-12-27T22:18:05)
+=== DBI Completed at 2025-01-07T03:23:51 for a duration of .18 seconds (started at 2025-01-07T03:23:51)
 === DBI Started: ODBCAPTURE/GRBTST__NAME.tbl
 
 Table created.
@@ -38,12 +39,12 @@ Grant succeeded.
 
 Grant succeeded.
 
-=== DBI Completed at 2024-12-27T22:18:05 for a duration of .19 seconds (started at 2024-12-27T22:18:05)
+=== DBI Completed at 2025-01-07T03:23:51 for a duration of .26 seconds (started at 2025-01-07T03:23:51)
 === DBI Started: ODBCAPTURE/GRBTST_IMAGE.tbl
 
 Table created.
 
-=== DBI Completed at 2024-12-27T22:18:05 for a duration of .06 seconds (started at 2024-12-27T22:18:05)
+=== DBI Completed at 2025-01-07T03:23:51 for a duration of .07 seconds (started at 2025-01-07T03:23:51)
 === DBI Started: ODBCAPTURE/BUILD_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -56,7 +57,7 @@ sqlldr_control=ODBCAPTURE/BUILD_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-27T22:18:06 for a duration of .54 seconds (started at 2024-12-27T22:18:05)
+=== DBI Completed at 2025-01-07T03:23:52 for a duration of .72 seconds (started at 2025-01-07T03:23:51)
 === DBI Started: ODBCAPTURE/BUILD_PATH.cldr
 
 Disable Triggers and Foreign Keys
@@ -71,7 +72,7 @@ sqlldr_control=ODBCAPTURE/BUILD_PATH.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-27T22:18:06 for a duration of .59 seconds (started at 2024-12-27T22:18:06)
+=== DBI Completed at 2025-01-07T03:23:53 for a duration of .75 seconds (started at 2025-01-07T03:23:52)
 === DBI Started: ODBCAPTURE/GRBTST__NAME.cldr
 
 Disable Triggers and Foreign Keys
@@ -84,7 +85,7 @@ sqlldr_control=ODBCAPTURE/GRBTST__NAME.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-27T22:18:08 for a duration of 2.11 seconds (started at 2024-12-27T22:18:06)
+=== DBI Completed at 2025-01-07T03:23:56 for a duration of 2.91 seconds (started at 2025-01-07T03:23:53)
 === DBI Started: ODBCAPTURE/GRBTST_IMAGE.cldr
 
 Disable Triggers and Foreign Keys
@@ -106,7 +107,7 @@ PL/SQL procedure successfully completed.
 
 Commit complete.
 
-=== DBI Completed at 2024-12-27T22:18:12 for a duration of 3.19 seconds (started at 2024-12-27T22:18:08)
+=== DBI Completed at 2025-01-07T03:23:59 for a duration of 2.73 seconds (started at 2025-01-07T03:23:56)
 === DBI Started: ODBCAPTURE/ROLE_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -120,7 +121,7 @@ sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-27T22:18:12 for a duration of .57 seconds (started at 2024-12-27T22:18:12)
+=== DBI Completed at 2025-01-07T03:23:59 for a duration of .73 seconds (started at 2025-01-07T03:23:59)
 === DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -134,7 +135,7 @@ sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-27T22:18:13 for a duration of .71 seconds (started at 2024-12-27T22:18:12)
+=== DBI Completed at 2025-01-07T03:24:01 for a duration of 1.33 seconds (started at 2025-01-07T03:23:59)
 === DBI Started: ODBCAPTURE/TSPACE_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -148,7 +149,7 @@ sqlldr_control=ODBCAPTURE/TSPACE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-27T22:18:13 for a duration of .52 seconds (started at 2024-12-27T22:18:13)
+=== DBI Completed at 2025-01-07T03:24:02 for a duration of .83 seconds (started at 2025-01-07T03:24:01)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table

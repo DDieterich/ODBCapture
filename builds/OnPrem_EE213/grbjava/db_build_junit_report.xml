@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="ODBCAPTURE_schema_build" tests="100" failures="0" time="0" timestamp="2024-12-27T22:16:27">
+  <testsuite name="ODBCAPTURE_schema_build" tests="100" failures="0" time="0" timestamp="2025-01-07T03:21:48">
     <testcase name="INDEX:db_object_status" classname="ODBCAPTURE.BUILD_CONF_NK1" time="0"/>
     <testcase name="INDEX:db_object_status" classname="ODBCAPTURE.BUILD_CONF_PK" time="0"/>
     <testcase name="INDEX:db_object_status" classname="ODBCAPTURE.BUILD_PATH_PK" time="0"/>

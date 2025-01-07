@@ -14,14 +14,15 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbdat"
 WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) "grbjava" last loaded on 27-Dec-2024 22:17:42
- -) "grbras" last loaded on 27-Dec-2024 22:17:34
- -) "grbsdo" last loaded on 27-Dec-2024 22:17:51
- -) "grbsrc" last loaded on 27-Dec-2024 22:17:25
+ -) "grbjava" last loaded on 07-Jan-2025 03:23:14
+ -) "grbras" last loaded on 07-Jan-2025 03:23:04
+ -) "grbsdo" last loaded on 07-Jan-2025 03:23:25
+ -) "grbsrc" last loaded on 07-Jan-2025 03:22:50
+ -) "grbxrep" last loaded on 07-Jan-2025 03:23:35
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-27T22:17:53 for a duration of .21 seconds (started at 2024-12-27T22:17:53)
+=== DBI Completed at 2025-01-07T03:23:38 for a duration of .23 seconds (started at 2025-01-07T03:23:38)
 === DBI Started: ODBCAPTURE/DLOAD_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -36,7 +37,7 @@ sqlldr_control=ODBCAPTURE/DLOAD_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-27T22:17:57 for a duration of 3.08 seconds (started at 2024-12-27T22:17:53)
+=== DBI Completed at 2025-01-07T03:23:41 for a duration of 2.15 seconds (started at 2025-01-07T03:23:38)
 === DBI Started: ODBCAPTURE/OBJECT_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -52,7 +53,7 @@ sqlldr_control=ODBCAPTURE/OBJECT_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-27T22:17:59 for a duration of 2.44 seconds (started at 2024-12-27T22:17:57)
+=== DBI Completed at 2025-01-07T03:23:43 for a duration of 2.3 seconds (started at 2025-01-07T03:23:41)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table

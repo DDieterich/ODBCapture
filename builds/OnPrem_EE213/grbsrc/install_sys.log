@@ -260,9 +260,6 @@ Grant succeeded.
 
 Grant succeeded.
 
-
-Grant succeeded.
-
 XS Admin Grant "ADMIN_ANY_SEC_POLICY" to "ODBCAPTURE"
 
 PL/SQL procedure successfully completed.
@@ -271,4 +268,4 @@ XS Admin Cloud Grant "ADMIN_ANY_SEC_POLICY" to "ODBCAPTURE"
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-27T22:16:26 for a duration of 4.35 seconds (started at 2024-12-27T22:16:22)
+=== DBI Completed at 2025-01-07T03:21:47 for a duration of 5.36 seconds (started at 2025-01-07T03:21:41)

@@ -12,38 +12,31 @@ Synonym created.
 
 
 Check for Prerequisite BUILD_TYPEs
-Prerequisite BUILD_TYPEs for "grbjava"
+Prerequisite BUILD_TYPEs for "grbxrep"
+ -) "grbjava" last loaded on 07-Jan-2025 03:23:14
  -) "grbsrc" last loaded on 07-Jan-2025 03:22:50
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T03:23:07 for a duration of .19 seconds (started at 2025-01-07T03:23:07)
-=== DBI Started: ODBCAPTURE/GRAB_JAVA.pkssql
+=== DBI Completed at 2025-01-07T03:23:28 for a duration of .18 seconds (started at 2025-01-07T03:23:28)
+=== DBI Started: ODBCAPTURE/GRAB_XDB_REPO.pkssql
 
 Package created.
 
-=== DBI Completed at 2025-01-07T03:23:07 for a duration of .09 seconds (started at 2025-01-07T03:23:07)
+=== DBI Completed at 2025-01-07T03:23:28 for a duration of .09 seconds (started at 2025-01-07T03:23:28)
 Compile All started
 
 PL/SQL procedure successfully completed.
 
 Compile All is done.
-=== DBI Started: ODBCAPTURE/PRIV_OBJ_JAVA_FG_VIEW.vw
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_XDB_REPO_VIEW.vw
 
 View created.
 
 
 View created.
 
-=== DBI Completed at 2025-01-07T03:23:09 for a duration of .48 seconds (started at 2025-01-07T03:23:09)
-=== DBI Started: ODBCAPTURE/PRIV_SYSOBJ_JAVA_FG_VIEW.vw
-
-View created.
-
-
-View created.
-
-=== DBI Completed at 2025-01-07T03:23:09 for a duration of .19 seconds (started at 2025-01-07T03:23:09)
+=== DBI Completed at 2025-01-07T03:23:30 for a duration of .18 seconds (started at 2025-01-07T03:23:29)
 === DBI Started: ODBCAPTURE/ROLE_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -57,7 +50,7 @@ sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T03:23:10 for a duration of .72 seconds (started at 2025-01-07T03:23:09)
+=== DBI Completed at 2025-01-07T03:23:30 for a duration of .71 seconds (started at 2025-01-07T03:23:30)
 === DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -71,12 +64,12 @@ sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T03:23:11 for a duration of .76 seconds (started at 2025-01-07T03:23:10)
-=== DBI Started: ODBCAPTURE/GRAB_JAVA.pkbsql
+=== DBI Completed at 2025-01-07T03:23:31 for a duration of 1 seconds (started at 2025-01-07T03:23:30)
+=== DBI Started: ODBCAPTURE/GRAB_XDB_REPO.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2025-01-07T03:23:11 for a duration of .16 seconds (started at 2025-01-07T03:23:11)
+=== DBI Completed at 2025-01-07T03:23:32 for a duration of .31 seconds (started at 2025-01-07T03:23:31)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbtdat.log" tests="3" errors="0" hostname="EE213CDB" id="3" time="4" timestamp="2024-12-27T22:19:29">
+  <testsuite name="install_grbtdat.log" tests="3" errors="0" hostname="EE213CDB" id="3" time="2" timestamp="2025-01-07T03:25:35">
     <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
-    <testcase name="./installation_prepare.sql" assertions="30" classname="..sql" status="PASS" time="0">
+    <testcase name="./installation_prepare.sql" assertions="31" classname="..sql" status="PASS" time="0">
       <system-out>
 === DBI Started: ./installation_prepare.sql
 
@@ -21,23 +21,24 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for &quot;grbtdat&quot;
 WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) &quot;grbjava&quot; last loaded on 27-Dec-2024 22:17:42
- -) &quot;grbras&quot; last loaded on 27-Dec-2024 22:17:34
- -) &quot;grbsdo&quot; last loaded on 27-Dec-2024 22:17:51
- -) &quot;grbsrc&quot; last loaded on 27-Dec-2024 22:17:25
- -) &quot;grbtctx&quot; last loaded on 27-Dec-2024 22:19:21
+ -) &quot;grbjava&quot; last loaded on 07-Jan-2025 03:23:14
+ -) &quot;grbras&quot; last loaded on 07-Jan-2025 03:23:04
+ -) &quot;grbsdo&quot; last loaded on 07-Jan-2025 03:23:25
+ -) &quot;grbsrc&quot; last loaded on 07-Jan-2025 03:22:50
+ -) &quot;grbtctx&quot; last loaded on 07-Jan-2025 03:25:27
 WARNING: Prerequisite BUILD_TYPE &quot;grbtend&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) &quot;grbtjsn&quot; last loaded on 27-Dec-2024 22:18:52
- -) &quot;grbtjva&quot; last loaded on 27-Dec-2024 22:18:43
- -) &quot;grbtsdo&quot; last loaded on 27-Dec-2024 22:19:05
- -) &quot;grbtst&quot; last loaded on 27-Dec-2024 22:18:21
+ -) &quot;grbtjsn&quot; last loaded on 07-Jan-2025 03:24:50
+ -) &quot;grbtjva&quot; last loaded on 07-Jan-2025 03:24:40
+ -) &quot;grbtsdo&quot; last loaded on 07-Jan-2025 03:25:07
+ -) &quot;grbtst&quot; last loaded on 07-Jan-2025 03:24:10
+ -) &quot;grbxrep&quot; last loaded on 07-Jan-2025 03:23:35
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-27T22:19:23 for a duration of .2 seconds (started at 2024-12-27T22:19:23)
+=== DBI Completed at 2025-01-07T03:25:29 for a duration of .22 seconds (started at 2025-01-07T03:25:29)
       </system-out>
     </testcase>
-    <testcase name="ODBCAPTURE/DLOAD_CONF.cldr" assertions="15" classname="ODBCAPTURE.cldr" status="PASS" time="2">
+    <testcase name="ODBCAPTURE/DLOAD_CONF.cldr" assertions="15" classname="ODBCAPTURE.cldr" status="PASS" time="1">
       <system-out>
 === DBI Started: ODBCAPTURE/DLOAD_CONF.cldr
 
@@ -53,10 +54,10 @@ sqlldr_control=ODBCAPTURE/DLOAD_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-27T22:19:25 for a duration of 2.04 seconds (started at 2024-12-27T22:19:23)
+=== DBI Completed at 2025-01-07T03:25:30 for a duration of .74 seconds (started at 2025-01-07T03:25:29)
       </system-out>
     </testcase>
-    <testcase name="ODBCAPTURE/OBJECT_CONF.cldr" assertions="16" classname="ODBCAPTURE.cldr" status="PASS" time="2">
+    <testcase name="ODBCAPTURE/OBJECT_CONF.cldr" assertions="16" classname="ODBCAPTURE.cldr" status="PASS" time="1">
       <system-out>
 === DBI Started: ODBCAPTURE/OBJECT_CONF.cldr
 
@@ -73,12 +74,12 @@ sqlldr_control=ODBCAPTURE/OBJECT_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-27T22:19:27 for a duration of 1.72 seconds (started at 2024-12-27T22:19:25)
+=== DBI Completed at 2025-01-07T03:25:31 for a duration of .94 seconds (started at 2025-01-07T03:25:30)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_sys.log" tests="0" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2024-12-27T22:19:29">
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2025-01-07T03:25:35">
   </testsuite>
-  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2024-12-27T22:19:29">
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2025-01-07T03:25:35">
   </testsuite>
 </testsuites>
