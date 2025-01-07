@@ -1,0 +1,19 @@
+
+CON_NAME
+------------------------------
+MYATP
+USER is "ODBCTEST"
+Setup Continue on Error
+Running COLA_SPATIAL_IDX.tidx
+
+MUST be run as ODBCTEST
+
+1 row created.
+
+Elapsed: 00:00:00.30
+
+Index created.
+
+Elapsed: 00:00:02.39
+
+"COLA_SPATIAL_IDX.tidx" is Done.
