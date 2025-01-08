@@ -47,20 +47,20 @@ ODBCapture captures configuration data source code.
 ODBCapture captures "build layers", allowing for different database builds for different purposes.
 
 * **Development Database Builds:**
-    * Base database objects and configuration data
-    * Development database objects and configuration data
-    * Development environment configuration data
-    * Mock schema with API for loopback testing
-    * Unit Test database objects and test data
+    * Base database objects and configuration data layer
+    * Development database objects and configuration data layer
+    * Development environment configuration data layer
+    * Mock schema with API for loopback testing layer
+    * Unit Test database objects and test data layer
 * **Integration Test Database Builds:**
-    * Base database objects and configuration data
-    * Integration test database objects and configuration data
-    * Integration test environment configuration data
-    * Integration test data
+    * Base database objects and configuration data layer
+    * Integration test database objects and configuration data layer
+    * Integration test environment configuration data layer
+    * Integration test data layer
 * **Production Database Builds:**
-    * Base database objects and configuration data
-    * Production environment configuration data
-    * Performance loading test data
+    * Base database objects and configuration data layer
+    * Production environment configuration data layer
+    * Performance loading test data layer
 
 ### Open Source
 
