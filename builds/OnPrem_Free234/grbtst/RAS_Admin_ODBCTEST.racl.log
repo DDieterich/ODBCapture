@@ -9,17 +9,17 @@ GRB_TEST_ROLE_01.XS_ROLE
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.07
+Elapsed: 00:00:00.08
 GRB_TEST_USER_01.XS_USER
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.05
+Elapsed: 00:00:00.08
 GRB_TEST_USER_02.XS_USER
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.02
+Elapsed: 00:00:00.03
 grant "GRB_TEST_ROLE" to "GRB_TEST_ROLE_01"
 
 Grant succeeded.
@@ -34,12 +34,12 @@ principal grant "XSCONNECT" to "GRB_TEST_USER_01"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.00
+Elapsed: 00:00:00.01
 principal grant "XSPUBLIC" to "GRB_TEST_USER_01"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.01
+Elapsed: 00:00:00.03
 principal grant "GRB_TEST_ROLE_01" to "GRB_TEST_USER_02"
 
 PL/SQL procedure successfully completed.
@@ -54,25 +54,25 @@ principal grant "XSPUBLIC" to "GRB_TEST_USER_02"
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.01
+Elapsed: 00:00:00.02
 GRB_TEST_ACL_01.XS_ACL
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.02
+Elapsed: 00:00:00.03
 GRB_TEST_ACL_02.XS_ACL
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.01
+Elapsed: 00:00:00.02
 GRB_TEST_POLICY_01.XS_DATA_SECURITY
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.08
+Elapsed: 00:00:00.10
 
 PL/SQL procedure successfully completed.
 
-Elapsed: 00:00:00.07
+Elapsed: 00:00:00.11
 
 "RAS_Admin_ODBCTEST.racl" is Done.
