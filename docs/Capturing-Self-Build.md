@@ -136,7 +136,7 @@ Due to its complex and comprehensive nature, this solution needs to be Oracle Da
 
 **Comprehensive**
 
-The solution needs to handle multiple integrated users/schemas.  Many large Oracle databases have an entaglement of dependencies between schemas.  Successfully extracting a single, buildable schema from this entaglement can be difficult.  This solution must be able to successfully install co-dependent schema simultaneously.
+The solution needs to handle multiple integrated users/schemas.  Many large Oracle databases have an entaglement of dependencies between schemas.  Successfully extracting a single, buildable schema from this entaglement can be difficult.  This solution must be able to successfull create and load co-dependent schema simultaneously.
 
 The solution needs to handle multiple Oracle object types.  Many sophisticated Oracle databases take advantage of the wide range of object types available in the database, like Advanced Queues.  This solution must handle a large list.
 
@@ -145,7 +145,7 @@ The solution needs to handle multiple Oracle data types.  Many sophisticated Ora
 
 ### Source Code Portability
 
-Since the Oracle database runs on several different operating systems, the build scripts created by the database must be portable.  No batch or shell scripting should be allowed because each must be tailored to a specific operating system.  Since SQL-Plus and SQL-Loader are included with every database installation, build scripts should be limited to the use of those tools.
+Since the Oracle database runs on several different operating systems, the build scripts created by the database must be portable.  No batch or shell scripting should be allowed because each must be tailored to a specific operating system.  Since SQL-Plus and SQL-Loader are included with every Oracle database software installation, build scripts should be limited to the use of those tools.
 
 Character translation of build scripts and data files must be handled.  For the purposes of these build scripts, Big Endien (and Little Endien) issues are handled by the operating systems and automativ conversions during file transfer.  Character set conversions between ASCII, UTF-8, UTF-16, EBCDIC, other are handled by the operating system.  Oracle database tools also automatically convert character sets during loading and unloading of data between the database and the operating system.
 
@@ -184,7 +184,7 @@ Configuration of ODBCapture is required to accomplish the needs previously descr
 
 The element configuration data should not be changed.  The internal operation of the build script generator relies on certain data items in this configuration.
 
-* **ELEMENT_SEQ** - The sequence these elements appear in the installation build scripts.
+* **ELEMENT_SEQ** - The sequence these elements appear in the database build scripts.
 * **ELEMENT_NAME** - An internal element designation used to generate build scripts.
 * **FILE_EXT1, FILE_EXT2, FILE_EXT3** - Build script file name extensions.
 * **OBJECT_TYPE** - Matching database object type from DBA_OBJECTS.
@@ -232,7 +232,7 @@ Role configuration is optional.  If the database doesn't have any roles of inter
 
 **Database Object Configuration**
 
-Database object configuration is optional.  Because all database objects are included in the default Build Type for a schema, this configuration is only necessary to move object installation to another Build Type.
+Database object configuration is optional.  Because all database objects are included in the default Build Type for a schema, this configuration is only necessary to move database objects to another Build Type.
 
 * **BUILD_TYPE** - Name of the Build Type.
 * **USERNAME** - Database username (schema owner).
@@ -406,13 +406,13 @@ Some care must be taken in supporting source code between these combinations of 
 * Exadata can require major index and other performance changes to database source code.
 
 Some accomodations for this complexity include:
-* Excluding unsupported Build Types during installation
+* Excluding unsupported Build Types while building the database
 * PL/SQL Compiler Directives ($IF DBMS_DB_VERSION.VERSION > 19)
 
 
 **Dynamically Created Reporting Scripts**
 
-After the database installation is complete, some reporting is needed to determine if evertyhing in the database was loaded successfully.  These reports created in the root folder of the ZIP file show any problems with database objects that were loaded during installation.
+After the database build is complete, some reporting is needed to determine if evertyhing in the database was loaded successfully.  The reports that are created in the root folder of the ZIP file show any problems with database objects that were loaded during the database build.
 
 * Invalid Database Object
 * JUnit (XML) Object Status Report
@@ -420,7 +420,7 @@ After the database installation is complete, some reporting is needed to determi
 
 **Database Captured Installation Logs**
 
-Log files are captured during database installation.  Almost all installation errors are captured in these log files.  As part of database installation, the installation log files are loaded into the "ODBCAPTURE_INSTALLATION_LOGS" table using the "odbcapture_installation_logs.cdl" script in the root folder of the ZIP file.  The "ODBCAPTURE_INSTALLATION_LOGS" table is dynamically created if necessary and can be pre-created if additional control is required.  The following reports, along with the "odbcapture_installation_logs.cdl" script, are generated as required in the root folder of the ZIP file.
+Log files are captured during database build.  Almost all build errors are captured in these log files.  As part of the database build process, the build script log files are loaded into the "ODBCAPTURE_INSTALLATION_LOGS" table using the "odbcapture_installation_logs.cdl" script in the root folder of the ZIP file.  The "ODBCAPTURE_INSTALLATION_LOGS" table is dynamically created if necessary and can be pre-created if additional control is required.  The following reports, along with the "odbcapture_installation_logs.cdl" script, are generated as required in the root folder of the ZIP file.
 
 * Install Status from Log File
 * JUnit (XML) Script Load Report
@@ -440,7 +440,7 @@ Data loading with Foreign keys, triggers, and/or binary data can create issues. 
 
 **Avoid errors granting permisions on a view that has errors**
 
-If views are part of a complex depedency network, they can be very difficult to load in the correct sequence.  If a view error occurs during installation, it may not be possible to install the associated grants.  This problem has been resolved in ODBCapture using the [ORA-01720: "WORKAROUND" at ASK TOM](https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:43253832697675#2653213300346351987)
+If views are part of a complex depedency network, they can be very difficult to load in the correct sequence.  If a view error occurs during a database build, it may not be possible to create the associated grants.  This problem has been resolved in ODBCapture using the [ORA-01720: "WORKAROUND" at ASK TOM](https://asktom.oracle.com/pls/apex/f?p=100:11:0::::P11_QUESTION_ID:43253832697675#2653213300346351987)
 
 
 

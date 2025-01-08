@@ -12,13 +12,16 @@ information.
 
 ## Why?  What's the point?
 
-Existing tools like TOAD, PL/SQL Developer, and SQL\*Developer can create "source code" scripts from an Oracle database.  They can also create data load scripts from an Oracle database.  What they cannot do is create a cohesive set of installation scripts that execute from a single "install.sql" script.
+Existing tools like TOAD, PL/SQL Developer, and SQL\*Developer can create "source code" scripts from an Oracle database.  They can also create data load scripts from an Oracle database.  What they cannot do is create a cohesive set of database build scripts that execute from a single "install.sql" script.
 
 Existing database source code is handled by Liquibase and Flyway which are "diff" engines.  These "diff" engines simply track changes to a database.  Rarely is the source code from these "diff" engines ever used to create a database from nothing.  Typically, the database source code from these "diff" engines require some existing database to get started.
 
 ### What's different?
 
-ODBCapture is not a "diff" engine.  ODBCapture is unique in its ability to create Oracle database installation scripts that can create different "flavors" of Oracle databases from a common set of source code.  This installation occurs after an initialization to an empty database or PDB.  (See the white paper above for more details.)
+ODBCapture is not a "diff" engine.  ODBCapture is unique in its ability to create Oracle database build scripts that can create different "flavors" of Oracle databases from a common set of source code.
+
+A database build occurs after an initialization to an empty database or PDB.  (See the white paper above for more details.)
+
 * Create Database ...
 * Create Pluggable Database ...
 * Drop Schema ...
@@ -39,28 +42,25 @@ ODBCapture captures configuration data source code.
 * Because it's required, configuration data is source code for a database.
 * All configuration data is saved as CSV files for easy editing.
 
-### Layered Installation
+### Layered Database Builds
 
 ODBCapture captures "build layers", allowing for different database builds for different purposes.
 
-**Development Database Builds:**
-
-* Base database objects and configuration data
-* Development database objects and configuration data
-* Development environment configuration data
-* Mock schema with API for loopback testing
-* Unit Test database objects and test data
-
-**Integration Test Database Builds:**
-
-* Base database objects and configuration data
-* Integration test database objects and configuration data
-* Integration test environment configuration data
-
-**Empty Production Database Builds:**
-
-* Base database objects and configuration data
-* Production environment configuration data
+* **Development Database Builds:**
+    * Base database objects and configuration data
+    * Development database objects and configuration data
+    * Development environment configuration data
+    * Mock schema with API for loopback testing
+    * Unit Test database objects and test data
+* **Integration Test Database Builds:**
+    * Base database objects and configuration data
+    * Integration test database objects and configuration data
+    * Integration test environment configuration data
+    * Integration test data
+* **Production Database Builds:**
+    * Base database objects and configuration data
+    * Production environment configuration data
+    * Performance loading test data
 
 ### Open Source
 

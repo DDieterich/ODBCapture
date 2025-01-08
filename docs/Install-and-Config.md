@@ -7,9 +7,9 @@
 
 ## Application Configuration
 
-Configuring ODBCapture can be as simple as adding 2 configuration records.  More complex configurations involve installation layering, object selection/filtering, role identification, and configuration data capture.
+Configuring ODBCapture can be as simple as adding 2 configuration records.  More complex configurations involve database build layering, object selection/filtering, role identification, and configuration data capture.
 
-Care must be taken to preserve any ODBCapture configurations for an application.  Best practice is to create a configuration data installation layer that keeps ODBCapture configuration data separate from configuration data for a target application.
+Care must be taken to preserve any ODBCapture configurations for an application.  Best practice is to create a configuration data build layer that keeps ODBCapture configuration data separate from configuration data for a target application.
 
 
 ### Simple Configuration
@@ -58,7 +58,7 @@ The [capture_files.sql](https://github.com/DDieterich/ODBCapture/blob/main/build
 
 ## Application Build
 
-After application source code has been captured by ODBCapture, the installation of the application is the same as the ODBCapture installation.  The `install.sql` script that is captured in each BUILD_TYPE folder is the core of the installation.
+After application source code has been captured by ODBCapture, the database build of the application is the same as the ODBCapture installation.  The `install.sql` script that is captured in each BUILD_TYPE folder is the core of the database build scripts.
 
 [Several examples](https://github.com/DDieterich/ODBCapture/tree/main/builds#build-sequence) of build scripts can be found in the "builds" folder on the main page on GitHub.  These build scripts are Linux oriented for several reasons:
 * Oracle Docker images run Linux internally.
