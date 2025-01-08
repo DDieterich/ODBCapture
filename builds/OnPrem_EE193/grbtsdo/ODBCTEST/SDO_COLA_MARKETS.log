@@ -1,5 +1,5 @@
 
-SQL*Loader: Release 23.0.0.0.0 - Production on Thu Aug 8 05:57:03 2024
+SQL*Loader: Release 23.0.0.0.0 - Production on Tue Jan 7 17:13:26 2025
 Version 23.4.0.24.05
 
 Copyright (c) 1982, 2024, Oracle and/or its affiliates.  All rights reserved.
@@ -28,30 +28,30 @@ MKT_ID                              FIRST     *   ,  O(") CHARACTER
 NAME                                 NEXT    32   ,  O(") CHARACTER            
 SHAPE                             DERIVED     *           COLUMN OBJECT        
 
-*** Fields in SHAPE treated as type ODBCTEST.ST_GEOMETRY
+*** Fields in SHAPE treated as type MDSYS.ST_GEOMETRY
 GEOM                              DERIVED     *           COLUMN OBJECT        
 
-*** Fields in SHAPE.GEOM treated as type ODBCTEST.SDO_GEOMETRY
-SDO_GTYPE                            NEXT     *   ;  O(") CHARACTER            
-SDO_SRID                             NEXT     *   ;  O(") CHARACTER            
+*** Fields in SHAPE.GEOM treated as type MDSYS.SDO_GEOMETRY
+SDO_GTYPE                            NEXT     * O(X17) O(") CHARACTER            
+SDO_SRID                             NEXT     * O(X17) O(") CHARACTER            
 SDO_POINT                         DERIVED     *           COLUMN OBJECT        
 
-*** Fields in SHAPE.GEOM.SDO_POINT treated as type ODBCTEST.SDO_POINT_TYPE
-X                                    NEXT     *   ;  O(") CHARACTER            
-Y                                    NEXT     *   ;  O(") CHARACTER            
-Z                                    NEXT     *   ;  O(") CHARACTER            
+*** Fields in SHAPE.GEOM.SDO_POINT treated as type MDSYS.SDO_POINT_TYPE
+X                                    NEXT     * O(X17) O(") CHARACTER            
+Y                                    NEXT     * O(X17) O(") CHARACTER            
+Z                                    NEXT     * O(X17) O(") CHARACTER            
 *** End of fields in SHAPE.GEOM.SDO_POINT
 
 SDO_ELEM_INFO                     DERIVED     *  WHT      VARRAY               
 
 *** Fields in SHAPE.GEOM.SDO_ELEM_INFO
-SDO_ELEM_INFO_ARRAY                 FIRST     *   ;  O(") CHARACTER            
+SDO_ELEM_INFO                       FIRST     * O(X17) O(") CHARACTER            
 *** End of fields in SHAPE.GEOM.SDO_ELEM_INFO
 
 SDO_ORDINATES                     DERIVED     *  WHT      VARRAY               
 
 *** Fields in SHAPE.GEOM.SDO_ORDINATES
-SDO_ORDINATE_ARRAY                  FIRST     *   ;  O(") CHARACTER            
+SDO_ORDINATES                       FIRST     * O(X17) O(") CHARACTER            
 *** End of fields in SHAPE.GEOM.SDO_ORDINATES
 
 *** End of fields in SHAPE.GEOM
@@ -75,8 +75,8 @@ Total logical records read:             4
 Total logical records rejected:         0
 Total logical records discarded:        0
 
-Run began on Thu Aug 08 05:57:03 2024
-Run ended on Thu Aug 08 05:57:04 2024
+Run began on Tue Jan 07 17:13:26 2025
+Run ended on Tue Jan 07 17:13:27 2025
 
-Elapsed time was:     00:00:00.44
+Elapsed time was:     00:00:00.67
 CPU time was:         00:00:00.04

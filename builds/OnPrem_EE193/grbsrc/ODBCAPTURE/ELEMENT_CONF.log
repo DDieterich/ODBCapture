@@ -1,5 +1,5 @@
 
-SQL*Loader: Release 23.0.0.0.0 - Production on Thu Aug 8 05:55:42 2024
+SQL*Loader: Release 23.0.0.0.0 - Production on Tue Jan 7 17:11:39 2025
 Version 23.4.0.24.05
 
 Copyright (c) 1982, 2024, Oracle and/or its affiliates.  All rights reserved.
@@ -32,25 +32,26 @@ FILE_EXT3                            NEXT     6   ,  O(") CHARACTER
 OBJECT_TYPE                          NEXT    30   ,  O(") CHARACTER            
 NAME_CHECK_OBJECT_TYPE               NEXT    30   ,  O(") CHARACTER            
 NOTES                                NEXT  1024   ,  O(") CHARACTER            
+PRE_COMPILE                          NEXT     1   ,  O(") CHARACTER            
 
 
 Table "ODBCAPTURE"."ELEMENT_CONF":
-  39 Rows successfully loaded.
+  41 Rows successfully loaded.
   0 Rows not loaded due to data errors.
   0 Rows not loaded because all WHEN clauses were failed.
   0 Rows not loaded because all fields were null.
 
 
-Space allocated for bind array:                 348500 bytes(250 rows)
+Space allocated for bind array:                 349500 bytes(250 rows)
 Read   buffer bytes: 1048576
 
 Total logical records skipped:          1
-Total logical records read:            39
+Total logical records read:            41
 Total logical records rejected:         0
 Total logical records discarded:        0
 
-Run began on Thu Aug 08 05:55:42 2024
-Run ended on Thu Aug 08 05:55:43 2024
+Run began on Tue Jan 07 17:11:39 2025
+Run ended on Tue Jan 07 17:11:39 2025
 
-Elapsed time was:     00:00:00.38
+Elapsed time was:     00:00:00.41
 CPU time was:         00:00:00.03

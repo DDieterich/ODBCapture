@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbdat.log" tests="3" errors="0" hostname="EE193CDB" id="3" time="2" timestamp="2024-08-08T10:56:28">
+  <testsuite name="install_grbdat.log" tests="3" errors="0" hostname="EE193CDB" id="2" time="2" timestamp="2025-01-07T23:12:20">
     <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
-    <testcase name="./installation_prepare.sql" assertions="9" classname="..sql" status="PASS" time="0">
+    <testcase name="./installation_prepare.sql" assertions="15" classname="..sql" status="PASS" time="0">
       <system-out>
 === DBI Started: ./installation_prepare.sql
 Create Temp Publicly Updateable Table
@@ -11,9 +11,15 @@ Table created.
 Grant succeeded.
 Synonym created.
 Check for Prerequisite BUILD_TYPEs
+Prerequisite BUILD_TYPEs for &quot;grbdat&quot;
 WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
+ -) &quot;grbjava&quot; last loaded on 07-Jan-2025 23:12:05
+ -) &quot;grbras&quot; last loaded on 07-Jan-2025 23:12:00
+ -) &quot;grbsdo&quot; last loaded on 07-Jan-2025 23:12:10
+ -) &quot;grbsrc&quot; last loaded on 07-Jan-2025 23:11:53
+ -) &quot;grbxrep&quot; last loaded on 07-Jan-2025 23:12:14
 PL/SQL procedure successfully completed.
-=== DBI Completed at 2024-08-08T10:56:24 for a duration of .16 seconds (started at 2024-08-08T10:56:24)
+=== DBI Completed at 2025-01-07T23:12:15 for a duration of .11 seconds (started at 2025-01-07T23:12:15)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/DLOAD_CONF.cldr" assertions="8" classname="ODBCAPTURE.cldr" status="PASS" time="1">
@@ -25,7 +31,7 @@ alter table &quot;ODBCAPTURE&quot;.&quot;DLOAD_CONF&quot; DISABLE constraint &qu
 PL/SQL procedure successfully completed.
 sqlldr_control=ODBCAPTURE/DLOAD_CONF.ctl
 PL/SQL procedure successfully completed.
-=== DBI Completed at 2024-08-08T10:56:25 for a duration of 1.17 seconds (started at 2024-08-08T10:56:24)
+=== DBI Completed at 2025-01-07T23:12:17 for a duration of 1.45 seconds (started at 2025-01-07T23:12:15)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/OBJECT_CONF.cldr" assertions="9" classname="ODBCAPTURE.cldr" status="PASS" time="1">
@@ -38,12 +44,12 @@ alter table &quot;ODBCAPTURE&quot;.&quot;OBJECT_CONF&quot; DISABLE constraint &q
 PL/SQL procedure successfully completed.
 sqlldr_control=ODBCAPTURE/OBJECT_CONF.ctl
 PL/SQL procedure successfully completed.
-=== DBI Completed at 2024-08-08T10:56:26 for a duration of 1.17 seconds (started at 2024-08-08T10:56:25)
+=== DBI Completed at 2025-01-07T23:12:18 for a duration of 1.41 seconds (started at 2025-01-07T23:12:17)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_sys.log" tests="0" errors="0" hostname="EE193CDB" id="1" time="0" timestamp="2024-08-08T10:56:28">
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="EE193CDB" id="3" time="0" timestamp="2025-01-07T23:12:20">
   </testsuite>
-  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE193CDB" id="2" time="0" timestamp="2024-08-08T10:56:28">
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE193CDB" id="1" time="0" timestamp="2025-01-07T23:12:20">
   </testsuite>
 </testsuites>
