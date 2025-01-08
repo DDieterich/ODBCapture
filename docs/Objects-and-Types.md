@@ -3,9 +3,9 @@
 # Supported Database Objects and Data Types
 
 
-**Database Object Types Supported**
+**Database Object Types**
 
-The following lists the database object types supported by ODBCapture.
+The following lists the database object types **SUPPORTED** by ODBCapture.
 
 ```
 Advanced Queue
@@ -52,9 +52,9 @@ XML DB Repository ACL (psuedo-object, Deprecated)
 XML Schema (Deprecated)
 ```
 
-**Data Types Supported**
+**Data Types:**
 
-The following lists the data types supported by ODBCapture.
+The following lists the data types **SUPPORTED** by ODBCapture.
 
 ```
 BLOB
@@ -76,4 +76,16 @@ TIMESTAMP_WITH_TZ
 User Defined Object Types (Limited)
 VARCHAR2
 XMLTYPE
+```
+
+The following lists the data types **NOT** supported by ODBCapture.
+
+```
+BINARY_DOUBLE
+BINARY_FLOAT
+LONG
+LONG RAW
+MLSLABEL
+ROWID
+UROWID
 ```
