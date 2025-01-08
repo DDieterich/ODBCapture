@@ -10,7 +10,6 @@ WHENEVER SQLERROR EXIT SQL.SQLCODE
 WHENEVER OSERROR EXIT
 
 define PDB_NAME="&1."
-define DB_LOGIN="&2."
 
 set linesize 2499
 set trimspool on
