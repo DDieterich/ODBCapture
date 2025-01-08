@@ -48,9 +48,11 @@ grbxrep                    | XML DB Repository Objects/Data (Deprecated)
 
 ### Optional Installations:
 
-* Copy and Repeat Install from the `grbjava` folder to capture Java Source Code from the Database
-* Copy and Repeat Install from the `grbras` folder to capture Real Application Security Source Code
-* Copy and Repeat Install from the `grbsdo` folder to capture Spatial Data Source Code
+Copy and Repeat Install from these folders:
+* `grbjava`- Java Source Code from the Database
+* `grbras` - Real Application Security Source Code
+* `grbsdo` - Spatial Data Source Code
+* `grbxrep`- XML DB Repository (and XML Schema)
 
 ### Removal
 
