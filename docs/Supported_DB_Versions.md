@@ -6,16 +6,16 @@ Between On-Premises, Engineered Systems, and Oracle Cloud, there are a variety o
 
 ## Tested Database Versions
 
-Ver. | Edition       | Deployment   | Build Folder   | Notes
------|---------------|--------------|----------------|-------
-23.6 | APEX Database | Oracle Cloud | OCI_APEX236    | Requires single install script
-23.6 | Autonomous DB | On-Premises  | OnPrem_AD236   | container-registry.oracle.com/database/adb-free:24.11.4.2-23ai
-23.4 | Free Edition  | On-Premises  | OnPrem_Free234 | container-registry.oracle.com/database/free:23.4.0.0
-21.3 | Autonomous DB | Oracle Cloud | OCI_Auto213    | 
-21.3 | Enterprise Ed | On-Premises  | OnPrem_EE213   | container-registry.oracle.com/database/enterprise:21.3.0.0
-21.3 | Standard Ed   | On-Premises  | OnPrem_SE213   | 
-19.3 | Enterprise Ed | On-Premises  | OnPrem_EE193   | container-registry.oracle.com/database/enterprise:19.3.0.0
-18.4 | eXpress Ed    | On-Premises  | OnPrem_XE184   | 
+Ver. | Edition       | Deploy | Build Folder   | Notes
+-----|---------------|--------|----------------|-------
+23.6 | APEX Database | OCI    | OCI_APEX236    | Requires single install script (apex/OCI_APEX_conversion.sh)
+23.6 | Autonomous DB | OnPrem | OnPrem_AD236   | container-registry.oracle.com/database/adb-free:24.11.4.2-23ai
+23.4 | Free Edition  | OnPrem | OnPrem_Free234 | container-registry.oracle.com/database/free:23.4.0.0
+21.3 | Autonomous DB | OCI    | OCI_Auto213    | 
+21.3 | Enterprise Ed | OnPrem | OnPrem_EE213   | container-registry.oracle.com/database/enterprise:21.3.0.0
+21.3 | Standard Ed   | OnPrem | OnPrem_SE213   | 
+19.3 | Enterprise Ed | OnPrem | OnPrem_EE193   | container-registry.oracle.com/database/enterprise:19.3.0.0
+18.4 | eXpress Ed    | OnPrem | OnPrem_XE184   | 
 
 
 ## Note about Current Database Versions
