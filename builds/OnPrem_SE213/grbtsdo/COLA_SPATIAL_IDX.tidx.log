@@ -10,10 +10,10 @@ MUST be run as ODBCTEST
 
 1 row created.
 
-Elapsed: 00:00:00.29
+Elapsed: 00:00:00.15
 
 Index created.
 
-Elapsed: 00:00:02.83
+Elapsed: 00:00:00.85
 
 "COLA_SPATIAL_IDX.tidx" is Done.
