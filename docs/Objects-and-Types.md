@@ -37,13 +37,12 @@ Sequence
 Schema Trigger
 Synonym
 Table
-Table Index
+Table Index (including CTXSYS.CONTEXT_V2 for Oracle Text)
 Table Foreign Key
 Table Trigger
 Type Body
 Type Specification
 User (Schema Owner)
-User Defined Index (ex. CTXSYS.CONTEXT_V2 for Oracle Text)
 View
 View Foreign Key
 View Trigger
