@@ -74,15 +74,13 @@ Accurate and complete database source code can be more fully understood using th
 
 **Build Script Layering**
 
-Use of accurate and complete database source code exposes the need for source code options, or layering, when building a database.  The options/layers include the need for:
-* Basic application configuration data
-* Environment and/or test specific configuration data
-* PL/SQL for unit testing on a development database
-* Test data for unit testing on a development database
-* PL/SQL for QA testing on a QA database
-* Test data for QA testing on a QA database
+Use of accurate and complete database source code exposes the need for database build layers.  These build layers include the need for:
+* Base database objects and configuration data layer
+* Dev/Test/Prod environment specific configuration data layer
+* Unit testing database objects and test data layer
+* Mock schema/API for loopback testing
 
-Each of these options/layers needs to be assembled in a fassion that allow the resulting database to function correctly.  DDL, DML, and DCL script capture must account for these options/layers and the inter-dependencies between them.
+Each of these build layers needs to be assembled in a fassion that allow the resulting database to function correctly.  DDL, DML, and DCL script capture must account for these build layers and the inter-dependencies between them.
 
 
 **Creating database source code.**
