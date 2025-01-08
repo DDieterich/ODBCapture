@@ -1,5 +1,6 @@
+[Home](README.md)
 
-## ODBCapture Installation
+# Installation and Configuration
 
 [Installation instructions](https://github.com/DDieterich/ODBCapture?tab=readme-ov-file#main-odbcapture-installation) are on the main page on GitHub.  This is the same location as the "View Oracle DB Capture on GitHub" link above.
 

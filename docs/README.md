@@ -1,4 +1,6 @@
 
+# ODBCapture
+
 ODBCapture is a native PL/SQL application that can be used to capture self-building scripts (source code and configuration data) for a database.
 
 This website is intended for user information and usage documentation.  Development guides and design documentation can be found in [the wiki](https://github.com/DDieterich/ODBCapture/wiki)
@@ -39,12 +41,26 @@ ODBCapture captures configuration data source code.
 
 ### Layered Installation
 
-ODBCapture captures "installation layers", allowing for differences between databases.
+ODBCapture captures "build layers", allowing for different database builds for different purposes.
 
-* **Development/Test tables/packages** installed in Development/Test databases.
-* **Environment configuration data** for Development/Test/Production databases.
-* **Development/Test data** installed in Development/Test databases.
-* **Mock schema/API** installed in Development/Test databases.
+**Development Database Builds:**
+
+* Base database objects and configuration data
+* Development database objects and configuration data
+* Development environment configuration data
+* Mock schema with API for loopback testing
+* Unit Test database objects and test data
+
+**Integration Test Database Builds:**
+
+* Base database objects and configuration data
+* Integration test database objects and configuration data
+* Integration test environment configuration data
+
+**Empty Production Database Builds:**
+
+* Base database objects and configuration data
+* Production environment configuration data
 
 ### Open Source
 

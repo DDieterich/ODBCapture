@@ -192,11 +192,11 @@ The element configuration data should not be changed.  The internal operation of
 
 **Build Type Configuration**
 
-At least one Build Type configuration is required to capture build scripts.  These Build Types are used to resolve dependencies between the various installation layers as needed.  It is possible for Build Types to have no relationship (not layered).
+At least one Build Type configuration is required to capture build scripts.  These Build Types are used to resolve dependencies between the various build layers as needed.  It is possible for Build Types to have no relationship (not layered).
 
 * **BUILD_TYPE** - Name of this Build Type.
 * **BUILD_SEQ** -  Sequence for this Build Type.
-* **BUILD_SEQ_PARENT** - Parent of this Build Type.  This defines the installation layers.
+* **BUILD_SEQ_PARENT** - Parent of this Build Type.  This defines the build layers.
 
 
 **User/Schema Configuration**
