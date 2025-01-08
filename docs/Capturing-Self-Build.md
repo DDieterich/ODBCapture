@@ -252,15 +252,39 @@ Data load configuration is optional.  If no data should be included in build scr
 * **AFTER_ORDER_BY_SQL** - The "post" SQL text included after of the SQL ORDER BY clause querying this data.
 
 
-### Database Objects and Data Types
+### Oracle Database Support
+
+**Database Objects and Data Types**
 
 All database objects and data types should be supported.
 
 Click [here for supported database objects and data types](Objects-and-Types.md) information.
 
+**Supported Database Versions**
+
+Oracle Database started with Version 2 in 1979.
+
+> In 1979, RSI introduced Oracle V2 (Version 2) as the first commercially available SQL-based RDBMS, a landmark event in the history of relational databases.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Ref: Oracle 23ai Database Documentation](https://docs.oracle.com/en/database/oracle/oracle-database/23/cncpt/introduction-to-oracle-database.html#GUID-43F9DD5C-8D8C-4E61-A2B4-5C05907D3CEC)
+
+Some care must be taken in supporting source code between these combinations of versions and offerings.
+* The oldest versions do not need to be supported.  Currently, that is considered to be 12R1 and earlier.
+* New database versions include new data types, like JSON.
+* New database versions drop old data types, like DICOM.
+* Standard Edition does not support Oracle RAS (Real Application Security).
+* OCI and On-Premises differ in feature/function support.
+* The APEX specific database service on OCI (not listed above) can't run SQL*loader in the load scripts.
+* Exadata can require major index and other performance changes to database source code.
+
+Some accomodations for this complexity include:
+* Excluding unsupported Build Types while building the database
+* PL/SQL Compiler Directives ($IF DBMS_DB_VERSION.VERSION > 19)
+
+Click [here for supported database versions](Supported_DB_Versions.md) information.
+
 
 ### Build Script Specifications
-
 
 **ZIP File Creation**
 
@@ -299,42 +323,6 @@ There are limitations on special characters used for build files.  Each of these
 
 * SQL-Plus Scripts: `@`
 * Windows File Names: `<, >, :, ", /, \, |, ?, *`
-
-
-**Multi-Version, Multi-Offering Support**
-
-Oracle Database started with Version 2 in 1979.
-
-> In 1979, RSI introduced Oracle V2 (Version 2) as the first commercially available SQL-based RDBMS, a landmark event in the history of relational databases.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Ref: Oracle 23ai Database Documentation](https://docs.oracle.com/en/database/oracle/oracle-database/23/cncpt/introduction-to-oracle-database.html#GUID-43F9DD5C-8D8C-4E61-A2B4-5C05907D3CEC)
-
-Oracle Database Version 23ai current includes these [licensed offerings](https://docs.oracle.com/en/database/oracle/oracle-database/23/dblic/Licensing-Information.html#GUID-AB354617-6614-487E-A022-7FC9A5A08472).
-
-```
-Database Free - On-Premises
-Database Standard Edition 2 on Oracle Database Appliance - On-Premises
-Database Enterprise Edition on Engineered Systems - On-Premises
-Base Database Service Standard Edition - OCI
-Base Database Service Enterprise Edition - OCI
-Base Database Service Enterprise Edition - High Performance - OCI
-Base Database Service Enterprise Edition - Extreme Performance - OCI
-Exadata Database Service on Dedicated Infrastructure - OCI
-Exadata Database Service on Cloud@Customer - OCI
-```
-
-Some care must be taken in supporting source code between these combinations of versions and offerings.
-* The oldest versions do not need to be supported.  Currently, that is considered to be 12R1 and earlier.
-* New database versions include new data types, like JSON.
-* New database versions drop old data types, like DICOM.
-* Standard Edition does not support Oracle RAS (Real Application Security).
-* OCI and On-Premises differ in feature/function support.
-* The APEX specific database service on OCI (not listed above) can't run SQL*loader in the load scripts.
-* Exadata can require major index and other performance changes to database source code.
-
-Some accomodations for this complexity include:
-* Excluding unsupported Build Types while building the database
-* PL/SQL Compiler Directives ($IF DBMS_DB_VERSION.VERSION > 19)
 
 
 **Dynamically Created Reporting Scripts**

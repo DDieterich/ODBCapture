@@ -10,6 +10,8 @@ Click [here for a white paper overview](Capturing-Self-Build.md) on **Capturing 
 Click [here for installation and configuration](Install-and-Config.md)
 information.
 
+Click [here for supported database versions](Supported_DB_Versions.md) information.
+
 Click [here for supported database objects and data types](Objects-and-Types.md) information.
 
 ## Why?  What's the point?
