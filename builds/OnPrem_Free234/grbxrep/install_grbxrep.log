@@ -12,39 +12,64 @@ Synonym created.
 
 
 Check for Prerequisite BUILD_TYPEs
-Prerequisite BUILD_TYPEs for "grbtjsn"
-WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
+Prerequisite BUILD_TYPEs for "grbxrep"
  -) "grbjava" last loaded on 08-Jan-2025 04:33:45
- -) "grbras" last loaded on 08-Jan-2025 04:33:41
- -) "grbsdo" last loaded on 08-Jan-2025 04:33:51
  -) "grbsrc" last loaded on 08-Jan-2025 04:33:37
- -) "grbtst" last loaded on 08-Jan-2025 04:34:11
- -) "grbxrep" last loaded on 08-Jan-2025 04:33:55
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-08T04:35:00 for a duration of .14 seconds (started at 2025-01-08T04:34:59)
-=== DBI Started: ODBCAPTURE/GRBTST_JSON.tbl
+=== DBI Completed at 2025-01-08T04:33:52 for a duration of .06 seconds (started at 2025-01-08T04:33:52)
+=== DBI Started: ODBCAPTURE/GRAB_XDB_REPO.pkssql
 
-Table created.
+Package created.
+
+=== DBI Completed at 2025-01-08T04:33:53 for a duration of .02 seconds (started at 2025-01-08T04:33:52)
+Compile All started
+
+PL/SQL procedure successfully completed.
+
+Compile All is done.
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_XDB_REPO_VIEW.vw
+
+View created.
 
 
-Table altered.
+View created.
 
-=== DBI Completed at 2025-01-08T04:35:00 for a duration of .1 seconds (started at 2025-01-08T04:35:00)
-=== DBI Started: ODBCAPTURE/GRBTST_JSON.cldr
+=== DBI Completed at 2025-01-08T04:33:53 for a duration of .06 seconds (started at 2025-01-08T04:33:53)
+=== DBI Started: ODBCAPTURE/ROLE_CONF.cldr
 
 Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."ROLE_CONF" DISABLE constraint "ROLE_CONF_FK1";
 
 PL/SQL procedure successfully completed.
 
 
-sqlldr_control=ODBCAPTURE/GRBTST_JSON.ctl
+sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
 
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-08T04:35:02 for a duration of 2.4 seconds (started at 2025-01-08T04:35:00)
+=== DBI Completed at 2025-01-08T04:33:53 for a duration of .15 seconds (started at 2025-01-08T04:33:53)
+=== DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."SCHEMA_CONF" DISABLE constraint "SCHEMA_CONF_FK1";
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2025-01-08T04:33:54 for a duration of .17 seconds (started at 2025-01-08T04:33:53)
+=== DBI Started: ODBCAPTURE/GRAB_XDB_REPO.pkbsql
+
+Package body created.
+
+=== DBI Completed at 2025-01-08T04:33:54 for a duration of .04 seconds (started at 2025-01-08T04:33:54)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table

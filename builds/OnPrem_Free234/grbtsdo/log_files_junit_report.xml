@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbtsdo.log" tests="4" errors="0" hostname="FREE" id="3" time="3" timestamp="2024-08-09T19:04:52">
+  <testsuite name="install_grbtsdo.log" tests="4" errors="0" hostname="FREE" id="3" time="2" timestamp="2025-01-08T04:35:17">
     <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
-    <testcase name="./installation_prepare.sql" assertions="9" classname="..sql" status="PASS" time="0">
+    <testcase name="./installation_prepare.sql" assertions="16" classname="..sql" status="PASS" time="0">
       <system-out>
 === DBI Started: ./installation_prepare.sql
 Create Temp Publicly Updateable Table
@@ -11,19 +11,26 @@ Table created.
 Grant succeeded.
 Synonym created.
 Check for Prerequisite BUILD_TYPEs
+Prerequisite BUILD_TYPEs for &quot;grbtsdo&quot;
 WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
+ -) &quot;grbjava&quot; last loaded on 08-Jan-2025 04:33:45
+ -) &quot;grbras&quot; last loaded on 08-Jan-2025 04:33:41
+ -) &quot;grbsdo&quot; last loaded on 08-Jan-2025 04:33:51
+ -) &quot;grbsrc&quot; last loaded on 08-Jan-2025 04:33:37
+ -) &quot;grbtst&quot; last loaded on 08-Jan-2025 04:34:11
+ -) &quot;grbxrep&quot; last loaded on 08-Jan-2025 04:33:55
 PL/SQL procedure successfully completed.
-=== DBI Completed at 2024-08-09T19:04:40 for a duration of .09 seconds (started at 2024-08-09T19:04:40)
+=== DBI Completed at 2025-01-08T04:35:05 for a duration of .15 seconds (started at 2025-01-08T04:35:05)
       </system-out>
     </testcase>
-    <testcase name="ODBCTEST/SDO_COLA_MARKETS.cldr" assertions="6" classname="ODBCTEST.cldr" status="PASS" time="3">
+    <testcase name="ODBCTEST/SDO_COLA_MARKETS.cldr" assertions="6" classname="ODBCTEST.cldr" status="PASS" time="2">
       <system-out>
 === DBI Started: ODBCTEST/SDO_COLA_MARKETS.cldr
 Disable Triggers and Foreign Keys
 PL/SQL procedure successfully completed.
 sqlldr_control=ODBCTEST/SDO_COLA_MARKETS.ctl
 PL/SQL procedure successfully completed.
-=== DBI Completed at 2024-08-09T19:04:43 for a duration of 2.53 seconds (started at 2024-08-09T19:04:40)
+=== DBI Completed at 2025-01-08T04:35:08 for a duration of 2.38 seconds (started at 2025-01-08T04:35:05)
       </system-out>
     </testcase>
     <testcase name="ODBCTEST/SDO_COLA_MARKETS.tbl" assertions="4" classname="ODBCTEST.tbl" status="PASS" time="0">
@@ -31,18 +38,18 @@ PL/SQL procedure successfully completed.
 === DBI Started: ODBCTEST/SDO_COLA_MARKETS.tbl
 Table created.
 Table altered.
-=== DBI Completed at 2024-08-09T19:04:40 for a duration of .3 seconds (started at 2024-08-09T19:04:40)
+=== DBI Completed at 2025-01-08T04:35:05 for a duration of .29 seconds (started at 2025-01-08T04:35:05)
       </system-out>
     </testcase>
     <testcase name="ODBCTEST/SDO_COLA_MARKETS.tidx" assertions="2" classname="ODBCTEST.tidx" status="PASS" time="0">
       <system-out>
 === DBI Started: ODBCTEST/SDO_COLA_MARKETS.tidx
-=== DBI Completed at 2024-08-09T19:04:43 for a duration of .01 seconds (started at 2024-08-09T19:04:43)
+=== DBI Completed at 2025-01-08T04:35:08 for a duration of 0 seconds (started at 2025-01-08T04:35:08)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_sys.log" tests="0" errors="0" hostname="FREE" id="1" time="0" timestamp="2024-08-09T19:04:52">
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="FREE" id="1" time="0" timestamp="2025-01-08T04:35:17">
   </testsuite>
-  <testsuite name="install_system.log" tests="0" errors="0" hostname="FREE" id="2" time="0" timestamp="2024-08-09T19:04:52">
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="FREE" id="2" time="0" timestamp="2025-01-08T04:35:17">
   </testsuite>
 </testsuites>
