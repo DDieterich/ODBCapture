@@ -28,6 +28,7 @@ grbtjsn                    | Unit Testing of JavaScript Object Notation (JSON)
 grbtjva                    | Unit Testing for Java Option
 grbtsdo                    | Unit Testing for Spatial Data
 grbtst                     | Unit Testing Main Scripts
+grbxrep                    | XML DB Repository Objects/Data (Deprecated)
 
 ## Installation
 
@@ -54,6 +55,20 @@ grbtst                     | Unit Testing Main Scripts
 ### Removal
 
 To remove, `drop user ODBCAPTURE cascade;`
+
+## Critical Issues
+
+* [grbtst "xs_principal" Users Missing from RAS_Admin_ODBCTEST.racl](https://github.com/DDieterich/ODBCapture/wiki/Z0015)
+* [grbtst Wallet (WACL) is Missing from GRAB_SCRIPTS.all_scripts](https://github.com/DDieterich/ODBCapture/wiki/Z0014)
+* [DBMS_METADATA get_ddl ORGANIZATION INDEX NOCOMPRESS](https://github.com/DDieterich/ODBCapture/wiki/Z0012)
+* [DBMS_METADATA get_ddl for object_type XS_USER](https://github.com/DDieterich/ODBCapture/wiki/Z0011)
+* [Implement Label Security](https://github.com/DDieterich/ODBCapture/wiki/Z0010)
+* [Implement Data Vault](https://github.com/DDieterich/ODBCapture/wiki/Z0009)
+* [Implement Library Element](https://github.com/DDieterich/ODBCapture/wiki/Z0008)
+* [Implement Addition Real Application Security Components](https://github.com/DDieterich/ODBCapture/wiki/Z0007)
+* [Confirm Oracle Spatial/Locator/Graph/Multimedia Datatype](https://github.com/DDieterich/ODBCapture/wiki/Z0005)
+* [Add Oracle Text Exports](https://github.com/DDieterich/ODBCapture/wiki/Z0004)
+
 
 ---
 Oracle and Java are trademarks of [Oracle Corp](https://www.oracle.com/).

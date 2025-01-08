@@ -10,6 +10,8 @@ Click [here for a white paper overview](Capturing-Self-Build.md) on **Capturing 
 Click [here for installation and configuration](Install-and-Config.md)
 information.
 
+Click [here for supported database objects and data types](Objects-and-Types.md) information.
+
 ## Why?  What's the point?
 
 Existing tools like TOAD, PL/SQL Developer, and SQL\*Developer can create "source code" scripts from an Oracle database.  They can also create data load scripts from an Oracle database.  What they cannot do is create a cohesive set of database build scripts that execute from a single "install.sql" script.

@@ -254,80 +254,9 @@ Data load configuration is optional.  If no data should be included in build scr
 
 ### Database Objects and Data Types
 
-**Database Object Types Supported**
+All database objects and data types should be supported.
 
-The following lists the database object types supported by ODBCapture.
-
-```
-Advanced Queue
-Advanced Queue Table
-Context
-Database Link
-Database Trigger
-Directory
-Foreign Key (psuedo-object)
-Grant, Database Object (psuedo-object)
-Grant, System Privilege (psuedo-object)
-Host ACL (psuedo object)
-PL/SQL Function
-Java Source
-Index
-Materialized View
-Materialized View Index
-Materialized View Foreign Key
-Materialized View Trigger
-Package Body
-Package Specification
-PL/SQL Procedure
-RAS ACL (psuedo-object)
-Role
-Scheduler Job
-Scheduler Program
-Scheduler Schedule
-Sequence
-Schema Trigger
-Synonym
-Table
-Table Index
-Table Foreign Key
-Table Trigger
-Type Body
-Type Specification
-User
-View
-View Foreign Key
-View Trigger
-Wallet ACL (psuedo-object)
-XDB ACL (psuedo-object)
-XML Schema
-```
-
-
-**Data Types Supported**
-
-The following lists the data types supported by ODBCapture.
-
-```
-BLOB
-BFILE
-CHAR
-CLOB
-DATE
-INTERVAL_DAY_TO_SECOND
-INTERVAL_YEAR_TO_MONTH
-JSON
-NCHAR
-NCLOB
-NUMBER
-NVARCHAR
-RAW
-TIMESTAMP
-TIMESTAMP_WITH_LOCAL_TZ
-TIMESTAMP_WITH_TZ
-User Defined Object Types (Limited)
-VARCHAR2
-XMLTYPE
-```
+Click [here for supported database objects and data types](Objects-and-Types.md) information.
 
 
 ### Build Script Specifications
