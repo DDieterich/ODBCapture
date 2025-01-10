@@ -95,9 +95,6 @@ as
    procedure all_scripts
       (in_build_type   in varchar2);
 
-   function get_version
-   return varchar2;
-
 end grab_scripts;
 /
 

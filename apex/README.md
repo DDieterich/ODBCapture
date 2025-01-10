@@ -25,6 +25,11 @@ This example uses the "../builds/OCI_APEX235/" folder.
 1. Run BASH
 2. "cd" to this folder
 3. ./OCI_APEX_conversion.sh
+4. Fix errant INSERT statements in `OCI_APEX_install.sql` at these locations:
+    * Translating ../grbtst/ODBCAPTURE/GRBTST__NAME.csv
+    * Translating ../grbtst/ODBCAPTURE/GRBTST_IMAGE.csv
+    * Translating ../grbtjsn/ODBCAPTURE/GRBTST_JSON.csv
+    * Translating ../grbtsdo/ODBCTEST/SDO_COLA_MARKETS.csv
 
 ### Login to APX01 Database Actions on Oracle Cloud
 1. Go to [Oracle MyCloud](https://myservices-ddieterich.console.oraclecloud.com/mycloud/cloudportal/gettingStarted)
@@ -73,6 +78,16 @@ This example uses the "../builds/OCI_APEX235/" folder.
     
     ![REST Enable Database User](REST_Enable_User.PNG)
     
+
+### Manually Run Final Processing
+1. On the "Database Users Page" as "ADMIN"
+2. Find the "ODBCTEST" card
+3. Click on "Open New Tab" at the Bottom Right
+4. Login as "ODBCTEST"
+5. Open SQL Worksheet
+6. Manually Run Final Processing
+    * ../grbtst/RAS_Admin_ODBCTEST.racl
+    * ../grbtsdo/COLA_SPATIAL_IDX.tidx
 
 ### Example DB Capture After Installation
 1. On the "Database Users Page" as "ADMIN"

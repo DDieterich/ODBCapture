@@ -5,16 +5,19 @@
 function capture_version {
    echo ""
    echo "Capture Version"
+   VERSION_FUNC="${HOME_DIR}/../../grbsrc/ODBCAPTURE/GET_VERSION.func"
+   VERSION_ABBR="${VERSION} https://ODBCapture.org"
    # 'Branch main at f2c736d0cc6fd80d961414dcae37df2bed0d69e2 - https://github.com/DMSTEX/DMSTEX.git'
-   VERSION_NOTE="Branch $(git rev-parse --abbrev-ref HEAD 2>&1)" &&
+   VERSION_NOTE="${VERSION} in Branch $(git rev-parse --abbrev-ref HEAD 2>&1)" &&
    VERSION_NOTE="${VERSION_NOTE} at $(git rev-parse HEAD 2>&1)" &&
    VERSION_NOTE="${VERSION_NOTE} - $(git config --get remote.origin.url 2>&1)"
    if [ $? = 0 ]
    then
-      echo "${VERSION_NOTE}" > "version.txt"
+      echo "${VERSION_NOTE}" > "${HOME_DIR}/version.txt"
    else
-      echo "${VERSION}" > "version.txt"
+      echo "${VERSION_ABBR}" > "${HOME_DIR}/version.txt"
    fi
+   sed -i "1,\$s/^   return ['].*['][;]\$/   return '${VERSION_ABBR}';/1" "${VERSION_FUNC}"
    }
 
 ########################################

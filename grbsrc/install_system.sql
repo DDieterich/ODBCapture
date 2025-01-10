@@ -7,6 +7,8 @@
 
 spool install_system.log
 
+prompt Version V2.1 https://ODBCapture.org
+
 set blockterminator off
 set sqlblanklines on
 

@@ -2091,7 +2091,7 @@ begin
    fh2.script_put_line(fh, '');
    fh2.script_put_line(fh, '--');
    fh2.script_put_line(fh, '--  Master Installation Script');
-   fh2.script_put_line(fh, '--    All scripts created by "https://ODBCapture.org", Version ' || get_version);
+   fh2.script_put_line(fh, '--    Scripts created by Version ' || get_version);
    fh2.script_put_line(fh, '--');
    fh2.script_put_line(fh, '--  Must be run as SYS');
    fh2.script_put_line(fh, '--');
@@ -2284,6 +2284,8 @@ begin
    fh2.script_put_line(fh, '');
    fh2.script_put_line(fh, 'spool install_' || g_build_type || '.log');
    fh2.script_put_line(fh, '');
+   fh2.script_put_line(fh, 'prompt Version ' || get_version);
+   fh2.script_put_line(fh, '');
    fh2.script_put_line(fh, 'define INSTALL_SYSTEM_CONNECT="&1."');
    fh2.script_put_line(fh, '');
    fh2.script_put_line(fh, '-- For Oracle Change Data Capture (CDC) packages');
@@ -2377,6 +2379,8 @@ begin
    fh2.script_put_line(fh, '');
    fh2.script_put_line(fh, 'spool install_sys.log');
    fh2.script_put_line(fh, '');
+   fh2.script_put_line(fh, 'prompt Version ' || get_version);
+   fh2.script_put_line(fh, '');
    fh2.script_put_line(fh, 'set blockterminator off');
    fh2.script_put_line(fh, 'set sqlblanklines on');
    fh2.script_put_line(fh, '');
@@ -2440,6 +2444,8 @@ begin
    fh2.script_put_line(fh, '--');
    fh2.script_put_line(fh, '');
    fh2.script_put_line(fh, 'spool install_system.log');
+   fh2.script_put_line(fh, '');
+   fh2.script_put_line(fh, 'prompt Version ' || get_version);
    fh2.script_put_line(fh, '');
    fh2.script_put_line(fh, 'set blockterminator off');
    fh2.script_put_line(fh, 'set sqlblanklines on');
@@ -3392,16 +3398,6 @@ begin
    gen_schemas;
    fh2.script_close_all;
 end all_scripts;
-
-
-------------------------------------------------------------
--- Get Version
-function get_version
-   return varchar2
-is
-begin
-   return 'V2.1';
-end get_version;
 
 
 end grab_scripts;
