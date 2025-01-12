@@ -1,0 +1,2 @@
+
+grant SELECT on "SYS"."DBA_OBJECT_TABLES" to "ODBCAPTURE";

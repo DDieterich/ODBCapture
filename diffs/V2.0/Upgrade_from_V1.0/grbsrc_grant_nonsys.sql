@@ -1,0 +1,2 @@
+
+grant EXECUTE ANY TYPE to "ODBCAPTURE";

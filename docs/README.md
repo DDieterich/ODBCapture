@@ -48,7 +48,9 @@ ODBCapture captures configuration data source code.
 
 ### Layered Database Builds
 
-ODBCapture captures "build layers", allowing for different database builds for different purposes.
+ODBCapture captures "build layers", allowing for different database builds for different purposes ("flavors" of Oracle databases).
+
+Click [here for more information](Build_Script_Layering.md) about different database builds.
 
 * **Development Database Builds:**
     * Base database objects and configuration data layer
