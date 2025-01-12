@@ -6,12 +6,10 @@
 # Command Line Parameters
 #  -) 1 - SYS Password
 #  -) 2 - User Password
-#  -) 3 - Version
 #
 
 SYS_PASS="${1}"
 USR_PASS="${2}"
-VERSION="${3}"
 
 # Copy stderr and stdout to log file
 exec &> >(tee build.log)

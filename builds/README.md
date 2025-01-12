@@ -34,7 +34,7 @@ This report shows the differences between the original source code from the main
 
 Each folder in the "builds" folder contains a "build.sh" script.  This script executes the following sequence.
 1. Setup Variables
-2. capture_version (from build_functions.sh) - Create "version.txt" file based on Git queries
+2. capture_version (from build_functions.sh) - Update Version based on Git queries.
 3. build_init (from build_functions.sh) - Runs the "build_initialize.sql" script.  This will either:
     * Drop and Recreate the PDB.
     * Drop the ODBCAPTURE Schema and perform other cleanup.

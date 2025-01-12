@@ -13,8 +13,6 @@
 
 spool install_grbsrc.log
 
-prompt Version V2.1 https://ODBCapture.org
-
 define INSTALL_SYSTEM_CONNECT="&1."
 
 -- For Oracle Change Data Capture (CDC) packages
@@ -31,7 +29,7 @@ set escape ""
 ----------------------------------------
 -- FUNCTION Install
 
-@dbi.sql "ODBCAPTURE/GET_VERSION.func" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
+@dbi.sql "ODBCAPTURE/ODBCAPTURE_VERSION.func" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
 
 ----------------------------------------
 -- PACKAGE_SPEC Install

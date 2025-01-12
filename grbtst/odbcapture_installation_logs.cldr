@@ -39,10 +39,12 @@ begin
       run_sql('create table odbcapture_installation_logs' || CHR(10) ||
          ' (load_dtm date' || CHR(10) ||
          ' ,build_type varchar2(10)' || CHR(10) ||
+         ' ,capver varchar2(20)' || CHR(10) ||
          ' ,file_name varchar2(512)' || CHR(10) ||
          ' ,contents clob)');
       run_sql('comment on column odbcapture_installation_logs.load_dtm is ''Date/Time the installation log file was loaded.''');
       run_sql('comment on column odbcapture_installation_logs.build_type is ''Type of Build (from BUILD_CONF).''');
+      run_sql('comment on column odbcapture_installation_logs.capver is ''ODBCapture Source Code Version.''');
       run_sql('comment on column odbcapture_installation_logs.file_name is ''Name of installation log file.''');
       run_sql('comment on column odbcapture_installation_logs.contents is ''Contents/Text of the installation log file.''');
       run_sql('comment on table odbcapture_installation_logs is ''ODBCAPTURE installation log files.''');

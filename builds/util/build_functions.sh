@@ -6,10 +6,14 @@ function capture_version {
    echo ""
    echo "Capture Version"
    VERSION_FUNC="${HOME_DIR}/../../grbsrc/ODBCAPTURE/GET_VERSION.func"
-   VERSION_ABBR="${VERSION} https://ODBCapture.org"
+   BRANCH_NAME="$(git rev-parse --abbrev-ref HEAD 2>&1)"
+   if [ "$?" != 0 ]
+   then
+      BRANCH_NAME='No Branch Name'
+   fi
+   VERSION_ABBR="${BRANCH_NAME:0:20}"
    # 'Branch main at f2c736d0cc6fd80d961414dcae37df2bed0d69e2 - https://github.com/DMSTEX/DMSTEX.git'
-   VERSION_NOTE="${VERSION} in Branch $(git rev-parse --abbrev-ref HEAD 2>&1)" &&
-   VERSION_NOTE="${VERSION_NOTE} at $(git rev-parse HEAD 2>&1)" &&
+   VERSION_NOTE="Branch ${BRANCH_NAME} at $(git rev-parse HEAD 2>&1)" &&
    VERSION_NOTE="${VERSION_NOTE} - $(git config --get remote.origin.url 2>&1)"
    if [ $? = 0 ]
    then

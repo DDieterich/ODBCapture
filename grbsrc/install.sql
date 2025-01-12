@@ -1,7 +1,7 @@
 
 --
 --  Master Installation Script
---    Scripts created by Version V2.1 https://ODBCapture.org
+--    All scripts created by "https://ODBCapture.org"
 --
 --  Must be run as SYS
 --
