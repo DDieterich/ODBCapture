@@ -46,12 +46,6 @@ prompt Compile All is done.
 @dbi.sql "ODBCAPTURE/PRIV_SYSOBJ_JAVA_FG_VIEW.vw" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
 
 ----------------------------------------
--- DATA_LOAD Install
-
-@dbi.sql "ODBCAPTURE/ROLE_CONF.cldr" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
-@dbi.sql "ODBCAPTURE/SCHEMA_CONF.cldr" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
-
-----------------------------------------
 -- PACKAGE_BODY Install
 
 @dbi.sql "ODBCAPTURE/GRAB_JAVA.pkbsql" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."

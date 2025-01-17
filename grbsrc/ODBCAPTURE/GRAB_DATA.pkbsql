@@ -919,8 +919,12 @@ begin
                        ,statement     => query_txt
                        ,language_flag => dbms_sql.native );
       exception when others then
-         raise_application_error(-20000, 'DBMS_SQL Parse Error: ' || SQLERRM || LF ||
-                                         query_txt || ';' || LF || LF );
+         raise_application_error(-20000, 'DBMS_SQL Parse Error.' || LF ||
+                      '----------------------------------------' || LF ||
+                                                query_txt || ';' || LF ||
+                      '----------------------------------------' || LF ||
+                                                        SQLERRM  || LF ||
+                                   dbms_utility.format_error_backtrace );
       end;
       dbms_sql.describe_columns3(c        => g_dyn_curs
                                 ,col_cnt  => g_num_cols
@@ -928,11 +932,31 @@ begin
       -------------------------
       -- Create Control File --
       -------------------------
-      create_control_file(tabs.ctl_file, tabs.table_name, tabs.loading_method);
+      begin
+         create_control_file(tabs.ctl_file, tabs.table_name, tabs.loading_method);
+      exception when others then
+         raise_application_error(-20000,
+            'DBMS_SQL "' || tabs.ctl_file || '" File Error.' || LF ||
+                  '----------------------------------------' || LF ||
+                                            query_txt || ';' || LF ||
+                  '----------------------------------------' || LF ||
+                                                    SQLERRM  || LF ||
+                               dbms_utility.format_error_backtrace );
+      end;
       ----------------------
       -- Create Data File --
       ----------------------
-      create_data_file(tabs.dat_file, tabs.table_name);
+      begin
+         create_data_file(tabs.dat_file, tabs.table_name);
+      exception when others then
+         raise_application_error(-20000,
+            'DBMS_SQL "' || tabs.dat_file || '" File Error.' || LF ||
+                  '----------------------------------------' || LF ||
+                                            query_txt || ';' || LF ||
+                  '----------------------------------------' || LF ||
+                                                    SQLERRM  || LF ||
+                               dbms_utility.format_error_backtrace );
+      end;
       -------------------------------
       -- Setup the SQL Script File --
       -------------------------------

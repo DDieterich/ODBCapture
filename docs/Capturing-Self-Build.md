@@ -173,83 +173,43 @@ The DBMS_SQL package provides an interface to use dynamic SQL to parse any data 
 ### Tool Configuration
 
 Configuration of ODBCapture is required to accomplish the needs previously described.
-* **Element** configuration is very specific and should not be modified without a thorough understanding of ODBCapture internals.
-* **Build Type** and **User/Schema** configurations are the minimum required for ODBCapture to work.  At least one Build Type and one User/Schema configuration must be created.
-* **Tablespace Quota**, **Role**, **Database Object**, and **Data Load** configurations are all optional.
 
+**Internal Configuration:**
 
-**Element Configuration**
+These configurations are very specific and should not be modified without a thorough understanding of ODBCapture internals.  These configuration are installed when ODBCapture is installed.
 
-The element configuration data should not be changed.  The internal operation of the build script generator relies on certain data items in this configuration.
+* **Element Data**
+    * defines all database object types that can be captured.
+    * defines the order database object types occur in the installation scripts.
+    * defines file name extensions for each database object type.
+* **Metadata Transformation Params** is used to configure the DBMS_METADATA parameters.
+* **System Schema Data** defines system schemas that are installed when empty databases are created.
+* **System Role Data** defines system roles that are installed when empty databases are created.
+* **System Build Layer Data** defines the Build Layers for the system schemas and system roles.  These Build Layers are never implemented in the installation scripts.
 
-* **ELEMENT_SEQ** - The sequence these elements appear in the database build scripts.
-* **ELEMENT_NAME** - An internal element designation used to generate build scripts.
-* **FILE_EXT1, FILE_EXT2, FILE_EXT3** - Build script file name extensions.
-* **OBJECT_TYPE** - Matching database object type from DBA_OBJECTS.
+**Minimal Configuration:**
 
+These configurations are the minimum required for ODBCapture to work.  Data for at least one of each configuration must be created.
 
-**Build Type Configuration**
+* **Build Layer Data** defines each of the Build Layers.  A sequencing of layer installations is also implicitly defined as well.
+* **Application Schema Data** defines the schemas to be captured in each layer.
 
-At least one Build Type configuration is required to capture build scripts.  These Build Types are used to resolve dependencies between the various build layers as needed.  It is possible for Build Types to have no relationship (not layered).
+**Additional Configurations:**
 
-* **BUILD_TYPE** - Name of this Build Type.
-* **BUILD_SEQ** -  Sequence for this Build Type.
-* **BUILD_SEQ_PARENT** - Parent of this Build Type.  This defines the build layers.
+These configurations are not required for ODBCapture to work, but may be required to correclty capture source code and configuration data for an application.
 
+* **Build Path Data** is used to define dependencies between Build Layers.
+* **Tablespace Quota Data** identifies tablespace names and quota for each user/schema.
+* **Application Role Data** identifies roles that defined for the application.
+* **Database Object Data** is used to discriminate different database objects from the same schema into different Build Layers.
+* **Data Load** configurations determine the data from each table to be captured with each Build Layer.  Can also be used to exclude columns from captured data.
 
-**User/Schema Configuration**
+**Specialty Configurations:**
 
-At least one User/Schema configuration is required to capture build scripts.  This configuration defines which database users are included in which Build Types.
+These configuration are used for specialty/optional functionality that may not be available on all databases.
 
-* **USERNAME** - Database username (schema name).
-* **BUILD_TYPE** - This is the default Build Type for this user.  By default, all user objects will be generated for this Build Type.
-* **ORACLE_PROVIDED** - Identifies a schema provided by Oracle.  No scripts are generated for these schema.
-* **PROFILE** - Default profile for this user.
-* **TEMPORARY_TSPACE** - Temporary tablespace to be used when creating this user (Default is 'TEMP').
-* **DEFAULT_TSPACE** - Default tablespace to be used when creating this user.
-* **TS_QUOTA** - Default tablespace quota for this user (Default is UNLIMITED).
-
-
-**Tablespace Quota Configuration**
-
-This configuration is used when additional Tablespace Quotas are required for a user.
-
-* **USERNAME** - Database username (schema name).
-* **TSPACE_NAME** - Name of the tablespace to add quota
-* **TS_QUOTA** - Size of the quota for this user and tablespace (Default is UNLIMITED).
-
-
-**Role Configuration**
-
-Role configuration is optional.  If the database doesn't have any roles of interest, this configration can remain empty.
-
-* **ROLENAME** - Name of the database role to generated build scripts.
-* **BUILD_TYPE** - This is the default Build Type for this role.
-* **ORACLE_PROVIDED** - Identifies a role provided by Oracle.  No scripts are generated for these roles.
-
-
-**Database Object Configuration**
-
-Database object configuration is optional.  Because all database objects are included in the default Build Type for a schema, this configuration is only necessary to move database objects to another Build Type.
-
-* **BUILD_TYPE** - Name of the Build Type.
-* **USERNAME** - Database username (schema owner).
-* **ELEMENT_NAME** - An internal element designation used to generate build scripts.
-* **OBJECT_NAME_REGEXP** - Limits which database objects to include in build scripts generated for this Build Type.  Objects that match this Regular Expression will NOT be included in the default Build Type for the user.
-
-
-**Data Load Configuration**
-
-Data load configuration is optional.  If no data should be included in build scripts, this configuration can remain empty.
-
-* **BUILD_TYPE** - Name of the Build Type.
-* **USERNAME** - Database username.
-* **TABLE_NAME** - Database table/view name with the data to include in the build scripts.
-* **COLUMNS_REMOVED** - Any column names that match this REGEXP Filter will be removes from the Data Load
-* **ORDER_BY_COLUMNS** - Required list of columns that uniquely identify the data being queried.
-* **WHERE_CLAUSE** - The WHERE clause for the SQL SELECT statement querying this data.
-* **BEFORE_SELECT_SQL** - The "pre" SQL text included before of the SQL SELECT statement querying this data.
-* **AFTER_ORDER_BY_SQL** - The "post" SQL text included after of the SQL ORDER BY clause querying this data.
+* **Exporting RAS Data** is used to disable Real Application Security policies on tables before exporting data.
+* **User Defined Type Data** defines package names used to export data within User Defined Types.
 
 
 ### Oracle Database Support

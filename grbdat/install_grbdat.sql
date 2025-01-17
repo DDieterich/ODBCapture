@@ -29,8 +29,12 @@ set escape ""
 ----------------------------------------
 -- DATA_LOAD Install
 
+@dbi.sql "ODBCAPTURE/BUILD_CONF.cldr" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
+@dbi.sql "ODBCAPTURE/BUILD_PATH.cldr" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
 @dbi.sql "ODBCAPTURE/DLOAD_CONF.cldr" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
 @dbi.sql "ODBCAPTURE/OBJECT_CONF.cldr" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
+@dbi.sql "ODBCAPTURE/ROLE_CONF.cldr" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
+@dbi.sql "ODBCAPTURE/SCHEMA_CONF.cldr" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
 
 ----------------------------------------
 -- Finalize Installation (Includes SPOOL OFF)

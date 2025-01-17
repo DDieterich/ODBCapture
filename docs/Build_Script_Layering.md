@@ -2,44 +2,146 @@
 
 # Build Script Layering
 
-There are many software tools available to "dump" PL/SQL, SQL, and Data from a database into text files.  ODBCapture does the same, but with a unique capability.  ODBCapture can be configured to capture build scripts that successfully add new build layers to a database.  Examples of these build layers include:
+There are many software tools available to "dump" PL/SQL, SQL, and Data from a database into text files.  ODBCapture does the same, but with a unique capability to create layered, or additive, installation scripts.
+
+
+## Introduction
+
+ODBCapture includes the unique capability to create complete database build scripts with all the required database objects and data.  The build scripts captured by ODBCapture can be used to create a working, functioning database.  Build layering of these different build scripts allow different databases to be built from the same database source code and data for different purposes like development, testing, and quality assurance.  ODBCapture can also create build scripts that support different environments.
+
+Examples of these build layers include:
+
 1. **Mock Build Layer** - Contains mocked database objects and APIs representative of a remote database.
 2. **Base Build Layer** - Basic database functionality with basic configuration data.
 3. **Environment Build Layer** - Environment specific configuration data for folders, users, etc...
-4. **Test Utility Build Layer** - Standard testing utility/application like utPLSQL.
+4. **Optional Build Layer** - Some databases installations will not include these objects or data.
 5. **Unit Test Build Layer** - Specific unit testing functionality kept separate from base database functionality.
 6. **Test Data Build Layer** - Set of test data for unit testing, integration, performance testing, etc...
-7. **ODBCapture Build Layer** - ODBCapture installation to re-capture database scripts with recent changes.
+7. **ODBCapture Data Layer** - ODBCapture configuration data to re-capture database scripts with recent changes.
 
-ODBCapture includes the unique capability to create complete database build scripts with all the required database objects and data.  The build scripts captured by ODBCapture can be used to create a working, functioning database.  Build layering of these different build scripts allow different databases to be built from the same database source code for different purposes like development, testing, and quality assurance.  ODBCapture can also create build scripts that support different environments.
+### Increased flexibility increases complexity.
 
-ODBCapture takes advantage of this layering to offer different installation options for various resources and services available in different versions and editions of Oracle database software.
+ODBCapture includes the ability to define non-default Build Layers for Database Objects in order to place them in their proper installation scripts.
+
+The ability to properly capture database objects in each Build layer requires specific information:
+
+* The default Build layer for a schema.
+* Any database objects that go into any non-default Build Layers.
+
+There are implications for this Build Layer information:
+
+* Database objects in a non-default Build Layer must be filtered from the default Build Layer.
+* The installation sequence determines precedence for which database objects get installed in a Build Layer.
+* Simple cross-schema database object dependencies must be accomodated:
+    * Grants
+    * Synonyms
+    * Foreign keys
+    * Indexes
+* Complex cross-schema database dependencies are more difficult to handled:
+    * Procedures, Functions, Package Bodies, Type Bodies, and Java Source
+    * Views, Materialized Views, and View Triggers
+    * DBMS_SCHEDULER
+
+### ODBCapture Flexibility
+
+The ODBCapture installation scripts use Build Layering to accomodate different Database versions, editions, and options.  Different implementations of the Oracle database can be missing dependent database objects for certain ODBCapture functions.  Build Layers are configured to offer different installation options for various resources and services available in these different versions, editions, and options of Oracle database software.
+
+* RAS - Real Application Security (XS$NULL)
+* JAVAVM,CATJAVA,XML - JServer JAVA Virtual Machine, Oracle Database Java Packages (OJVMSYS), Oracle XDK
+* SDO,LCTR (Placeholder) - Spatial - Oracle Locator - Graph (MDSYS, MDDATA)
+* Oracle XDB Repository
 
 
-There are 2 different requirements for build layering in ODBCapture.
-* User application build layering
-* ODBCapture build layering
+## ODBCapture Configuration Data
 
-## List of Oracle Database Options (Components)
+ODBCapture Configuration Data (OCD) defines what database objects and data to capture.  Each application will have its own OCD.  Some OCD is included when ODBCapture is installed in a database.
 
-[Mike Dietrich](https://mikedietrichde.com/) (Oracle Vice President of Product Management and Development for Database Upgrade, Cloud Migrations and Patching) has a blog entry ["Remove and Clean Up Components from Oracle Database 11.2 – 19c"](https://mikedietrichde.com/2017/07/26/remove-clean-components-oracle-11-2-12-2) that goes into these database options.
+* Fully Populated
+    * ELEMENT_CONF
+    * METADATA_TRANSFORM_PARAMS
+* Partially Populated
+    * BUILD_CONF - "Sys" and "Pub" Build Layers
+    * BUILD_PATH - "Sys" and "Pub" Build Layers
+    * ROLE_CONF - "Sys" and "Pub" Build Layers
+    * SCHEMA_CONF - "Sys" and "Pub" Build Layers
+    * USER_DEFINED_TYPE_CONF - Data added for "grsdo" Build Layer
+* Empty (Not Populated)
+    * DLOAD_CONF
+    * EXPORTING_RAS_DATA - Installed only with "grbras" Build Layer
+    * OBJECT_CONF
+    * TSPACE_CONF
 
-Mike explains the following are dependent on XDB Repository (XDB,ANONYMOUS,XS$NULL):
-* JServer JAVA Virtual Machine (JAVAVM)
-* Oracle Database Java Packages (CATJAVA, OJVMSYS)
-* Oracle XDK (XML)
+It is important to note that OCD must be created to save the OCD for each application.  OCD for the ODBCapture application is located in the "grbdat" Build Layer.
 
-Further, the following is dependent on ???
-* Oracle Multimedia (ORDIM, ORDSYS, ORDDATA, ORDPLUGINS, SI_INFORMTN_SCHEMA)
-* DICOM???
+**Best Practices:**
 
-Now, we know the XDB Repository has been deprecated, so these dependencies are no longer required at some point.
+* Don't install OCD for multiple applications in the same database. Each database should capture source code and data files for a single applcation.
+* Keep basic application OCD in a single, separate Build Layer so it can be installed in a development database. but not a production database.
+* Keep "database objects and data for testing" OCD in separate Build Layer(s).
+* Configure Parallel Build Layer Paths between OCD and "database objects and data for testing".
 
-This is confusing because 12c required the XDB Repository. "XDB became a mandatory component since Oracle Database 12.1.0.1. [You can’t have an Oracle 12c database without XDB](https://mikedietrichde.com/2017/08/08/xdb-clean-oracle-database-11-2-12-2/)"
+### Parallel Build Layer Paths
+
+Parallel Build Layer Paths are useful for things like environment settings where multiple databases need different parameters based on the usage.  An example would be URLs to web services that differ between development, test, and UAT.  Parallel Build Layer Paths can be created for each different URL setting that would allow some Build Layers to be installed without the others.
+
+One caveat here is the need to connect Build Layer Paths throughout the installation sequence.  To correctly filter database objects from the default Build Layer, all Build Layers must be connected to the default Build Layer thorugh Build Layer Paths.  It can be useful to create an artificial Build Layer as an end point collector for parallel Build Layer Paths.  This artificial Build Layer has no contents, would never be installed, but allows the necessary paths to the default Build Layer.
+
+### Build Layer Sequencing
+
+The Build Layer Sequencing determines precedence for which database objects get installed in a Build Layer.  A unique sequence number is assigned to each Build Layer.  The sequence number dictates the installation order for each Build Layer.
+
+2 tables are used to define Build Layer Sequencing:
+
+* BUILD_CONF - Defines Build Layers
+* BUILD_PATH - Relates Build Layers to Parent Build Layers
+
+**Aspects of Implementation:**
+
+* 2 digit integers forces a small set of layers.  Too many layers get too complicated very quickly.
+* Installing the main application before installing any other Build Layer like ODBCapture or "testing" ensures a "clean" installation of the main application.
+* Mock Build Layer(s) may need to be installed before the main application.
+* The built-in "sys" and "pub" Build Layers are database objects already installed in a new database.
+* The built-in "sys" and "pub" Build Layers are the most negative numbered sequences in BUILD_CONF.
+
+
+## Appendix A
+
+This appendix is provided to give some indication of the complexity of various configurations of empty Oracle database based on:
+
+* Oracle Database Edition
+* Oracle Database Option
+* Oracle Database Version
+* OnPrem/Cloud Deployment
+
+### Oracle Database Options (Components)
+
+[Mike Dietrich](https://mikedietrichde.com/) (Oracle Vice President of Product Management and Development for Database Upgrade, Cloud Migrations and Patching) has a blog entry ["Remove and Clean Up Components from Oracle Database 11.2 – 19c"](https://mikedietrichde.com/2017/07/26/remove-clean-components-oracle-11-2-12-2) that goes into these database options.  At the bottom of the blog, Mike includes graphic that shows the order of removal of these components from a database.
+
+1. OWM - Workspace Manager
+2. CONTEXT - Oracle Text
+3. (Security)
+    * OLD - Label Security
+    * DV - Data Vault
+4. (Analytics)
+    * XOQ - Oracle OLAP API
+    * APS - Analytical Workspace
+5. SDO - Spatial Data Option (Includes Locator?)
+6. ORDIM - Oracle Multimedia
+7. (Base)
+    * XDK - Oracle XML Toolkit
+    * JAVAVM - JServer Java Virtual Machine
+
+Since this blog was written, Oracle has deprecated the XDB Repository.  This is especially complicated because 12c required the XDB Repository. "XDB became a mandatory component since Oracle Database 12.1.0.1. [You can’t have an Oracle 12c database without XDB](https://mikedietrichde.com/2017/08/08/xdb-clean-oracle-database-11-2-12-2/)"
+
+### Listing the Components
+
+In the blog referenced above, Mike includes a [link to a query](https://github.com/MikeDietrichDE/scripts/blob/main/check_components.sql) that shows the components installed in an Oracle database.
 
 ```
 select CON_ID, COMP_ID, comp_name, schema, status, version from CDB_REGISTRY order by 1,2;
 ```
+
+The following are component lists from different database installations.
 
 **Oracle Enterprise Edition 21.3:**
 
@@ -76,6 +178,8 @@ OLS     | Oracle Label Security
 RAC     | Oracle Real Application Clusters
 SDO     | Spatial
 
+### Oracle Website List of Components
+
 A review of the Oracle Database Technologies website reveals several different groupings for these components.  *NOTE: This part of Oracle's website appears to be marketing driven and can be quite dynamic regarding content and details.*
 
 *  [Analytics and Data Warehousing](https://www.oracle.com/database/technologies/#analytics-and-data-warehousing)
@@ -107,74 +211,3 @@ A review of the Oracle Database Technologies website reveals several different g
     * Oracle Database Vault
     * Oracle Key Vault
     * Oracle Label Security
-
-
-* grbjnk:  ODBCapture Objects to Never Generate
-* grbrac:  RAC - Real Application Clusters (GV$_ Views)
-* grbxrep:  XDB - XML Database (XDB,ANONYMOUS,XS$NULL)
-    * grbjava: JAVAVM,CATJAVA,XML - JServer JAVA Virtual Machine, Oracle Database Java Packages (OJVMSYS), Oracle XDK
-        * grbord:  ORDIM - Oracle Multimedia (ORDSYS, ORDDATA, ORDPLUGINS, SI_INFORMTN_SCHEMA)
-* grbsdo:  SDO,LCTR - Spatial - Oracle Locator (MDSYS, MDDATA)
-* grbolap: XOQ,APS,AMD - OLAP API, OLAP Analytic Workspace (OLAPSYS), OLAP Catalog
-* grbsec:  OLS,DV - Oracle Label Security (LBACSYS), Oracle Database Vault (DVSYS, DVF)
-* grbctx:  CONTEXT - Oracle Text (CTXSYS)
-* grbowm:  OWM - Oracle Workspace Manager (WMSYS)
-* grbapex: APEX - Oracle Application Express (APEX_MMNN00)
-* grbsrc:
-    * grbendp: Common Endpoint for ODBCapture Hierarchy
-        * grbdat: ODBCapture Self-Capture Configuration Data
-        * grbtst: ODBCapture Testing
-            * grbtend: Common Endpoint for ODBCapture Testing
-        * wtpgrb: Example Application
-
-
-## Base Build Layer with Configuration Data
-
-(Coming Soon)
-
-
-## Multiple Interdependent Schema
-
-(Coming Soon)
-
-
-## Deployment Specific Roles
-
-* QA
-* TRAINING
-
-(Coming Soon)
-
-
-## Build Layering Examples
-
-(Coming Soon)
-
-
-### Environment/Test Specific Configuration Data
-
-(Coming Soon)
-
-### Unit Testing
-
-(Coming Soon)
-
-
-### Test Data
-
-(Coming Soon)
-
-
-### Mock Build Layer
-
-(Coming Soon)
-
-
-## Example Build Sequences
-
-(Coming Soon)
-
-
-## Example Build Pathways
-
-(Coming Soon)

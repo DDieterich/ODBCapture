@@ -45,12 +45,6 @@ prompt Compile All is done.
 @dbi.sql "ODBCAPTURE/OBJ_INSTALL_XDB_REPO_VIEW.vw" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
 
 ----------------------------------------
--- DATA_LOAD Install
-
-@dbi.sql "ODBCAPTURE/ROLE_CONF.cldr" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
-@dbi.sql "ODBCAPTURE/SCHEMA_CONF.cldr" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
-
-----------------------------------------
 -- PACKAGE_BODY Install
 
 @dbi.sql "ODBCAPTURE/GRAB_XDB_REPO.pkbsql" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
