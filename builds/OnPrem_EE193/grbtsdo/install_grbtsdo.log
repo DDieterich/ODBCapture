@@ -14,16 +14,16 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbtsdo"
 WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) "grbjava" last loaded on 07-Jan-2025 23:12:05
- -) "grbras" last loaded on 07-Jan-2025 23:12:00
- -) "grbsdo" last loaded on 07-Jan-2025 23:12:10
- -) "grbsrc" last loaded on 07-Jan-2025 23:11:53
- -) "grbtst" last loaded on 07-Jan-2025 23:12:34
- -) "grbxrep" last loaded on 07-Jan-2025 23:12:14
+ -) "grbjava" last loaded on 18-Jan-2025 15:12:44
+ -) "grbras" last loaded on 18-Jan-2025 15:12:39
+ -) "grbsdo" last loaded on 18-Jan-2025 15:12:48
+ -) "grbsrc" last loaded on 18-Jan-2025 15:12:33
+ -) "grbtst" last loaded on 18-Jan-2025 15:13:18
+ -) "grbxrep" last loaded on 18-Jan-2025 15:12:52
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T23:13:24 for a duration of .09 seconds (started at 2025-01-07T23:13:24)
+=== DBI Completed at 2025-01-18T15:14:15 for a duration of .14 seconds (started at 2025-01-18T15:14:15)
 === DBI Started: ODBCTEST/SDO_COLA_MARKETS.tbl
 
 Table created.
@@ -31,7 +31,7 @@ Table created.
 
 Table altered.
 
-=== DBI Completed at 2025-01-07T23:13:25 for a duration of .79 seconds (started at 2025-01-07T23:13:24)
+=== DBI Completed at 2025-01-18T15:14:17 for a duration of 1.5 seconds (started at 2025-01-18T15:14:15)
 === DBI Started: ODBCTEST/SDO_COLA_MARKETS.cldr
 
 Disable Triggers and Foreign Keys
@@ -44,9 +44,9 @@ sqlldr_control=ODBCTEST/SDO_COLA_MARKETS.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T23:13:27 for a duration of 1.92 seconds (started at 2025-01-07T23:13:25)
+=== DBI Completed at 2025-01-18T15:14:20 for a duration of 2.66 seconds (started at 2025-01-18T15:14:17)
 === DBI Started: ODBCTEST/SDO_COLA_MARKETS.tidx
-=== DBI Completed at 2025-01-07T23:13:27 for a duration of 0 seconds (started at 2025-01-07T23:13:27)
+=== DBI Completed at 2025-01-18T15:14:20 for a duration of 0 seconds (started at 2025-01-18T15:14:20)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table

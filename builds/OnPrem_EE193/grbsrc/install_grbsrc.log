@@ -16,37 +16,42 @@ Prerequisite BUILD_TYPEs for "grbsrc"
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T23:11:08 for a duration of .17 seconds (started at 2025-01-07T23:11:08)
+=== DBI Completed at 2025-01-18T15:11:39 for a duration of .2 seconds (started at 2025-01-18T15:11:39)
+=== DBI Started: ODBCAPTURE/ODBCAPTURE_VERSION.func
+
+Function created.
+
+=== DBI Completed at 2025-01-18T15:11:39 for a duration of .07 seconds (started at 2025-01-18T15:11:39)
 === DBI Started: ODBCAPTURE/COMMON_UTIL.pkssql
 
 Warning: Package created with compilation errors.
 
-=== DBI Completed at 2025-01-07T23:11:08 for a duration of .04 seconds (started at 2025-01-07T23:11:08)
+=== DBI Completed at 2025-01-18T15:11:39 for a duration of .06 seconds (started at 2025-01-18T15:11:39)
 === DBI Started: ODBCAPTURE/FH2.pkssql
 
 Package created.
 
-=== DBI Completed at 2025-01-07T23:11:08 for a duration of .1 seconds (started at 2025-01-07T23:11:08)
+=== DBI Completed at 2025-01-18T15:11:39 for a duration of .19 seconds (started at 2025-01-18T15:11:39)
 === DBI Started: ODBCAPTURE/GRAB_DATA.pkssql
 
 Package created.
 
-=== DBI Completed at 2025-01-07T23:11:08 for a duration of .05 seconds (started at 2025-01-07T23:11:08)
+=== DBI Completed at 2025-01-18T15:11:39 for a duration of .07 seconds (started at 2025-01-18T15:11:39)
 === DBI Started: ODBCAPTURE/GRAB_SCRIPTS.pkssql
 
 Warning: Package created with compilation errors.
 
-=== DBI Completed at 2025-01-07T23:11:08 for a duration of .03 seconds (started at 2025-01-07T23:11:08)
+=== DBI Completed at 2025-01-18T15:11:40 for a duration of .03 seconds (started at 2025-01-18T15:11:39)
 === DBI Started: ODBCAPTURE/ROOT_SCRIPTS.pkssql
 
 Package created.
 
-=== DBI Completed at 2025-01-07T23:11:08 for a duration of .04 seconds (started at 2025-01-07T23:11:08)
+=== DBI Completed at 2025-01-18T15:11:40 for a duration of .03 seconds (started at 2025-01-18T15:11:40)
 === DBI Started: ODBCAPTURE/ZIP_UTIL_PKG.pkssql
 
 Package created.
 
-=== DBI Completed at 2025-01-07T23:11:08 for a duration of .05 seconds (started at 2025-01-07T23:11:08)
+=== DBI Completed at 2025-01-18T15:11:40 for a duration of .03 seconds (started at 2025-01-18T15:11:40)
 === DBI Started: ODBCAPTURE/BUILD_CONF.tbl
 
 Table created.
@@ -69,7 +74,7 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2025-01-07T23:11:23 for a duration of 14.35 seconds (started at 2025-01-07T23:11:08)
+=== DBI Completed at 2025-01-18T15:12:01 for a duration of 21.91 seconds (started at 2025-01-18T15:11:40)
 === DBI Started: ODBCAPTURE/BUILD_PATH.tbl
 
 Table created.
@@ -89,7 +94,7 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2025-01-07T23:11:23 for a duration of .15 seconds (started at 2025-01-07T23:11:23)
+=== DBI Completed at 2025-01-18T15:12:02 for a duration of .16 seconds (started at 2025-01-18T15:12:01)
 === DBI Started: ODBCAPTURE/BUILD_TYPE_TIMING.tbl
 
 Table created.
@@ -106,22 +111,22 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2025-01-07T23:11:23 for a duration of .1 seconds (started at 2025-01-07T23:11:23)
+=== DBI Completed at 2025-01-18T15:12:02 for a duration of .08 seconds (started at 2025-01-18T15:12:02)
 === DBI Started: ODBCAPTURE/DBA_DEPENDENCIES_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2025-01-07T23:11:23 for a duration of .04 seconds (started at 2025-01-07T23:11:23)
+=== DBI Completed at 2025-01-18T15:12:02 for a duration of .07 seconds (started at 2025-01-18T15:12:02)
 === DBI Started: ODBCAPTURE/DBA_OBJECTS_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2025-01-07T23:11:23 for a duration of .02 seconds (started at 2025-01-07T23:11:23)
+=== DBI Completed at 2025-01-18T15:12:02 for a duration of .1 seconds (started at 2025-01-18T15:12:02)
 === DBI Started: ODBCAPTURE/DBA_TAB_PRIVS_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2025-01-07T23:11:23 for a duration of .09 seconds (started at 2025-01-07T23:11:23)
+=== DBI Completed at 2025-01-18T15:12:02 for a duration of .18 seconds (started at 2025-01-18T15:12:02)
 === DBI Started: ODBCAPTURE/DLOAD_CONF.tbl
 
 Table created.
@@ -162,7 +167,7 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2025-01-07T23:11:23 for a duration of .24 seconds (started at 2025-01-07T23:11:23)
+=== DBI Completed at 2025-01-18T15:12:02 for a duration of .22 seconds (started at 2025-01-18T15:12:02)
 === DBI Started: ODBCAPTURE/ELEMENT_CONF.tbl
 
 Table created.
@@ -203,7 +208,10 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2025-01-07T23:11:24 for a duration of .22 seconds (started at 2025-01-07T23:11:23)
+
+Comment created.
+
+=== DBI Completed at 2025-01-18T15:12:03 for a duration of .64 seconds (started at 2025-01-18T15:12:02)
 === DBI Started: ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl
 
 Table created.
@@ -226,7 +234,7 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2025-01-07T23:11:24 for a duration of .2 seconds (started at 2025-01-07T23:11:24)
+=== DBI Completed at 2025-01-18T15:12:03 for a duration of .33 seconds (started at 2025-01-18T15:12:03)
 === DBI Started: ODBCAPTURE/OBJECT_CONF.tbl
 
 Table created.
@@ -255,47 +263,47 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2025-01-07T23:11:24 for a duration of .21 seconds (started at 2025-01-07T23:11:24)
+=== DBI Completed at 2025-01-18T15:12:04 for a duration of .23 seconds (started at 2025-01-18T15:12:03)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2025-01-07T23:11:24 for a duration of .04 seconds (started at 2025-01-07T23:11:24)
+=== DBI Completed at 2025-01-18T15:12:04 for a duration of .04 seconds (started at 2025-01-18T15:12:04)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2025-01-07T23:11:24 for a duration of .06 seconds (started at 2025-01-07T23:11:24)
+=== DBI Completed at 2025-01-18T15:12:04 for a duration of .04 seconds (started at 2025-01-18T15:12:04)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2025-01-07T23:11:24 for a duration of .11 seconds (started at 2025-01-07T23:11:24)
+=== DBI Completed at 2025-01-18T15:12:04 for a duration of .03 seconds (started at 2025-01-18T15:12:04)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2025-01-07T23:11:24 for a duration of .07 seconds (started at 2025-01-07T23:11:24)
+=== DBI Completed at 2025-01-18T15:12:04 for a duration of .09 seconds (started at 2025-01-18T15:12:04)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2025-01-07T23:11:24 for a duration of .09 seconds (started at 2025-01-07T23:11:24)
+=== DBI Completed at 2025-01-18T15:12:04 for a duration of .05 seconds (started at 2025-01-18T15:12:04)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2025-01-07T23:11:24 for a duration of .07 seconds (started at 2025-01-07T23:11:24)
+=== DBI Completed at 2025-01-18T15:12:04 for a duration of .03 seconds (started at 2025-01-18T15:12:04)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2025-01-07T23:11:24 for a duration of .04 seconds (started at 2025-01-07T23:11:24)
+=== DBI Completed at 2025-01-18T15:12:04 for a duration of .09 seconds (started at 2025-01-18T15:12:04)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2025-01-07T23:11:24 for a duration of .02 seconds (started at 2025-01-07T23:11:24)
+=== DBI Completed at 2025-01-18T15:12:04 for a duration of .03 seconds (started at 2025-01-18T15:12:04)
 === DBI Started: ODBCAPTURE/ROLE_CONF.tbl
 
 Table created.
@@ -321,7 +329,7 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2025-01-07T23:11:25 for a duration of .65 seconds (started at 2025-01-07T23:11:24)
+=== DBI Completed at 2025-01-18T15:12:04 for a duration of .22 seconds (started at 2025-01-18T15:12:04)
 === DBI Started: ODBCAPTURE/SCHEMA_CONF.tbl
 
 Table created.
@@ -362,12 +370,12 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2025-01-07T23:11:26 for a duration of .44 seconds (started at 2025-01-07T23:11:25)
+=== DBI Completed at 2025-01-18T15:12:04 for a duration of .29 seconds (started at 2025-01-18T15:12:04)
 === DBI Started: ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl
 
 Table created.
 
-=== DBI Completed at 2025-01-07T23:11:26 for a duration of .03 seconds (started at 2025-01-07T23:11:26)
+=== DBI Completed at 2025-01-18T15:12:04 for a duration of .05 seconds (started at 2025-01-18T15:12:04)
 === DBI Started: ODBCAPTURE/TSPACE_CONF.tbl
 
 Table created.
@@ -387,7 +395,7 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2025-01-07T23:11:26 for a duration of .13 seconds (started at 2025-01-07T23:11:26)
+=== DBI Completed at 2025-01-18T15:12:05 for a duration of .24 seconds (started at 2025-01-18T15:12:04)
 === DBI Started: ODBCAPTURE/USER_DEFINED_TYPE_CONF.tbl
 
 Table created.
@@ -395,7 +403,7 @@ Table created.
 
 Table altered.
 
-=== DBI Completed at 2025-01-07T23:11:26 for a duration of .09 seconds (started at 2025-01-07T23:11:26)
+=== DBI Completed at 2025-01-18T15:12:05 for a duration of .06 seconds (started at 2025-01-18T15:12:05)
 === DBI Started: ODBCAPTURE/ZIP_FILES.tbl
 
 Table created.
@@ -403,7 +411,7 @@ Table created.
 
 Table altered.
 
-=== DBI Completed at 2025-01-07T23:11:26 for a duration of .09 seconds (started at 2025-01-07T23:11:26)
+=== DBI Completed at 2025-01-18T15:12:05 for a duration of .13 seconds (started at 2025-01-18T15:12:05)
 Compile All started
 
 PL/SQL procedure successfully completed.
@@ -416,7 +424,7 @@ View created.
 
 View created.
 
-=== DBI Completed at 2025-01-07T23:11:29 for a duration of .19 seconds (started at 2025-01-07T23:11:29)
+=== DBI Completed at 2025-01-18T15:12:09 for a duration of .3 seconds (started at 2025-01-18T15:12:09)
 === DBI Started: ODBCAPTURE/BUILD_PATH_REVIEW.vw
 
 View created.
@@ -424,7 +432,7 @@ View created.
 
 View created.
 
-=== DBI Completed at 2025-01-07T23:11:29 for a duration of .08 seconds (started at 2025-01-07T23:11:29)
+=== DBI Completed at 2025-01-18T15:12:09 for a duration of .07 seconds (started at 2025-01-18T15:12:09)
 === DBI Started: ODBCAPTURE/DBA_DEPENDENCIES_VIEW.vw
 
 View created.
@@ -432,7 +440,7 @@ View created.
 
 View created.
 
-=== DBI Completed at 2025-01-07T23:11:29 for a duration of .14 seconds (started at 2025-01-07T23:11:29)
+=== DBI Completed at 2025-01-18T15:12:09 for a duration of .15 seconds (started at 2025-01-18T15:12:09)
 === DBI Started: ODBCAPTURE/DBA_OBJECTS_VIEW.vw
 
 View created.
@@ -440,7 +448,7 @@ View created.
 
 View created.
 
-=== DBI Completed at 2025-01-07T23:11:29 for a duration of .25 seconds (started at 2025-01-07T23:11:29)
+=== DBI Completed at 2025-01-18T15:12:10 for a duration of .29 seconds (started at 2025-01-18T15:12:09)
 === DBI Started: ODBCAPTURE/DBA_TAB_PRIVS_VIEW.vw
 
 View created.
@@ -448,7 +456,7 @@ View created.
 
 Warning: View created with compilation errors.
 
-=== DBI Completed at 2025-01-07T23:11:29 for a duration of .06 seconds (started at 2025-01-07T23:11:29)
+=== DBI Completed at 2025-01-18T15:12:10 for a duration of .07 seconds (started at 2025-01-18T15:12:10)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_COMMENTS_VIEW.vw
 
 View created.
@@ -456,7 +464,7 @@ View created.
 
 View created.
 
-=== DBI Completed at 2025-01-07T23:11:30 for a duration of .08 seconds (started at 2025-01-07T23:11:29)
+=== DBI Completed at 2025-01-18T15:12:10 for a duration of .08 seconds (started at 2025-01-18T15:12:10)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_CONTEXT_VIEW.vw
 
 View created.
@@ -464,7 +472,7 @@ View created.
 
 View created.
 
-=== DBI Completed at 2025-01-07T23:11:30 for a duration of .07 seconds (started at 2025-01-07T23:11:30)
+=== DBI Completed at 2025-01-18T15:12:10 for a duration of .08 seconds (started at 2025-01-18T15:12:10)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_VIEW.vw
 
 View created.
@@ -472,7 +480,7 @@ View created.
 
 View created.
 
-=== DBI Completed at 2025-01-07T23:11:30 for a duration of .1 seconds (started at 2025-01-07T23:11:30)
+=== DBI Completed at 2025-01-18T15:12:10 for a duration of .11 seconds (started at 2025-01-18T15:12:10)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_FKEY_VIEW.vw
 
 View created.
@@ -480,7 +488,7 @@ View created.
 
 View created.
 
-=== DBI Completed at 2025-01-07T23:11:30 for a duration of .09 seconds (started at 2025-01-07T23:11:30)
+=== DBI Completed at 2025-01-18T15:12:10 for a duration of .11 seconds (started at 2025-01-18T15:12:10)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_INDEX_VIEW.vw
 
 View created.
@@ -488,7 +496,7 @@ View created.
 
 View created.
 
-=== DBI Completed at 2025-01-07T23:11:30 for a duration of .11 seconds (started at 2025-01-07T23:11:30)
+=== DBI Completed at 2025-01-18T15:12:10 for a duration of .12 seconds (started at 2025-01-18T15:12:10)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_OBJECT_VIEW.vw
 
 View created.
@@ -496,7 +504,7 @@ View created.
 
 View created.
 
-=== DBI Completed at 2025-01-07T23:11:30 for a duration of .17 seconds (started at 2025-01-07T23:11:30)
+=== DBI Completed at 2025-01-18T15:12:10 for a duration of .1 seconds (started at 2025-01-18T15:12:10)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_SYNONYM_VIEW.vw
 
 View created.
@@ -504,7 +512,7 @@ View created.
 
 View created.
 
-=== DBI Completed at 2025-01-07T23:11:30 for a duration of .09 seconds (started at 2025-01-07T23:11:30)
+=== DBI Completed at 2025-01-18T15:12:10 for a duration of .05 seconds (started at 2025-01-18T15:12:10)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_TRIGGER_VIEW.vw
 
 View created.
@@ -512,7 +520,7 @@ View created.
 
 View created.
 
-=== DBI Completed at 2025-01-07T23:11:30 for a duration of .08 seconds (started at 2025-01-07T23:11:30)
+=== DBI Completed at 2025-01-18T15:12:11 for a duration of .11 seconds (started at 2025-01-18T15:12:10)
 === DBI Started: ODBCAPTURE/PRIV_OBJ_DIR_VIEW.vw
 
 View created.
@@ -520,7 +528,7 @@ View created.
 
 Warning: View created with compilation errors.
 
-=== DBI Completed at 2025-01-07T23:11:30 for a duration of .07 seconds (started at 2025-01-07T23:11:30)
+=== DBI Completed at 2025-01-18T15:12:11 for a duration of .07 seconds (started at 2025-01-18T15:12:11)
 === DBI Started: ODBCAPTURE/PRIV_OBJ_HACL_VIEW.vw
 
 View created.
@@ -528,7 +536,7 @@ View created.
 
 Warning: View created with compilation errors.
 
-=== DBI Completed at 2025-01-07T23:11:31 for a duration of .37 seconds (started at 2025-01-07T23:11:30)
+=== DBI Completed at 2025-01-18T15:12:11 for a duration of .07 seconds (started at 2025-01-18T15:12:11)
 === DBI Started: ODBCAPTURE/PRIV_OBJ_INSTALL_VW.vw
 
 View created.
@@ -536,7 +544,7 @@ View created.
 
 Warning: View created with compilation errors.
 
-=== DBI Completed at 2025-01-07T23:11:31 for a duration of .33 seconds (started at 2025-01-07T23:11:31)
+=== DBI Completed at 2025-01-18T15:12:11 for a duration of .09 seconds (started at 2025-01-18T15:12:11)
 === DBI Started: ODBCAPTURE/PRIV_OBJ_QUEUE_VIEW.vw
 
 View created.
@@ -544,7 +552,7 @@ View created.
 
 Warning: View created with compilation errors.
 
-=== DBI Completed at 2025-01-07T23:11:31 for a duration of .07 seconds (started at 2025-01-07T23:11:31)
+=== DBI Completed at 2025-01-18T15:12:11 for a duration of .07 seconds (started at 2025-01-18T15:12:11)
 === DBI Started: ODBCAPTURE/PRIV_OBJ_WACL_VIEW.vw
 
 View created.
@@ -552,7 +560,7 @@ View created.
 
 Warning: View created with compilation errors.
 
-=== DBI Completed at 2025-01-07T23:11:31 for a duration of .07 seconds (started at 2025-01-07T23:11:31)
+=== DBI Completed at 2025-01-18T15:12:11 for a duration of .06 seconds (started at 2025-01-18T15:12:11)
 === DBI Started: ODBCAPTURE/PRIV_QUEUE_REGISTER_VIEW.vw
 
 View created.
@@ -560,7 +568,7 @@ View created.
 
 Warning: View created with compilation errors.
 
-=== DBI Completed at 2025-01-07T23:11:31 for a duration of .22 seconds (started at 2025-01-07T23:11:31)
+=== DBI Completed at 2025-01-18T15:12:11 for a duration of .08 seconds (started at 2025-01-18T15:12:11)
 === DBI Started: ODBCAPTURE/PRIV_QUEUE_SUBSCRIBE_VIEW.vw
 
 View created.
@@ -568,7 +576,7 @@ View created.
 
 Warning: View created with compilation errors.
 
-=== DBI Completed at 2025-01-07T23:11:32 for a duration of .18 seconds (started at 2025-01-07T23:11:31)
+=== DBI Completed at 2025-01-18T15:12:11 for a duration of .08 seconds (started at 2025-01-18T15:12:11)
 === DBI Started: ODBCAPTURE/PRIV_QUEUE_SYSPRIVS_VIEW.vw
 
 View created.
@@ -576,7 +584,7 @@ View created.
 
 Warning: View created with compilation errors.
 
-=== DBI Completed at 2025-01-07T23:11:32 for a duration of .2 seconds (started at 2025-01-07T23:11:32)
+=== DBI Completed at 2025-01-18T15:12:11 for a duration of .07 seconds (started at 2025-01-18T15:12:11)
 === DBI Started: ODBCAPTURE/PRIV_ROLE_PRIVILEGES_VIEW.vw
 
 View created.
@@ -584,7 +592,7 @@ View created.
 
 Warning: View created with compilation errors.
 
-=== DBI Completed at 2025-01-07T23:11:32 for a duration of .21 seconds (started at 2025-01-07T23:11:32)
+=== DBI Completed at 2025-01-18T15:12:11 for a duration of .11 seconds (started at 2025-01-18T15:12:11)
 === DBI Started: ODBCAPTURE/PRIV_SYSOBJ_PRIVILEGES_VIEW.vw
 
 View created.
@@ -592,7 +600,7 @@ View created.
 
 Warning: View created with compilation errors.
 
-=== DBI Completed at 2025-01-07T23:11:32 for a duration of .17 seconds (started at 2025-01-07T23:11:32)
+=== DBI Completed at 2025-01-18T15:12:11 for a duration of .06 seconds (started at 2025-01-18T15:12:11)
 === DBI Started: ODBCAPTURE/PRIV_SYSTEM_PRIVILEGES_VIEW.vw
 
 View created.
@@ -600,7 +608,7 @@ View created.
 
 Warning: View created with compilation errors.
 
-=== DBI Completed at 2025-01-07T23:11:32 for a duration of .29 seconds (started at 2025-01-07T23:11:32)
+=== DBI Completed at 2025-01-18T15:12:11 for a duration of .06 seconds (started at 2025-01-18T15:12:11)
 === DBI Started: ODBCAPTURE/UOR_INSTALL_VIEW.vw
 
 View created.
@@ -608,7 +616,7 @@ View created.
 
 View created.
 
-=== DBI Completed at 2025-01-07T23:11:33 for a duration of .16 seconds (started at 2025-01-07T23:11:32)
+=== DBI Completed at 2025-01-18T15:12:12 for a duration of .07 seconds (started at 2025-01-18T15:12:11)
 === DBI Started: ODBCAPTURE/BUILD_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -621,7 +629,7 @@ sqlldr_control=ODBCAPTURE/BUILD_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T23:11:36 for a duration of 3.74 seconds (started at 2025-01-07T23:11:33)
+=== DBI Completed at 2025-01-18T15:12:15 for a duration of 3.23 seconds (started at 2025-01-18T15:12:12)
 === DBI Started: ODBCAPTURE/BUILD_PATH.cldr
 
 Disable Triggers and Foreign Keys
@@ -634,7 +642,7 @@ sqlldr_control=ODBCAPTURE/BUILD_PATH.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T23:11:38 for a duration of 1.54 seconds (started at 2025-01-07T23:11:36)
+=== DBI Completed at 2025-01-18T15:12:16 for a duration of 1.48 seconds (started at 2025-01-18T15:12:15)
 === DBI Started: ODBCAPTURE/ELEMENT_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -647,7 +655,7 @@ sqlldr_control=ODBCAPTURE/ELEMENT_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T23:11:39 for a duration of 1.55 seconds (started at 2025-01-07T23:11:38)
+=== DBI Completed at 2025-01-18T15:12:18 for a duration of 1.67 seconds (started at 2025-01-18T15:12:16)
 === DBI Started: ODBCAPTURE/METADATA_TRANSFORM_PARAMS.cldr
 
 Disable Triggers and Foreign Keys
@@ -660,7 +668,7 @@ sqlldr_control=ODBCAPTURE/METADATA_TRANSFORM_PARAMS.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T23:11:41 for a duration of 1.43 seconds (started at 2025-01-07T23:11:39)
+=== DBI Completed at 2025-01-18T15:12:19 for a duration of 1.38 seconds (started at 2025-01-18T15:12:18)
 === DBI Started: ODBCAPTURE/ROLE_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -673,7 +681,7 @@ sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T23:11:42 for a duration of 1.45 seconds (started at 2025-01-07T23:11:41)
+=== DBI Completed at 2025-01-18T15:12:21 for a duration of 1.46 seconds (started at 2025-01-18T15:12:19)
 === DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -686,7 +694,7 @@ sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T23:11:44 for a duration of 1.49 seconds (started at 2025-01-07T23:11:42)
+=== DBI Completed at 2025-01-18T15:12:22 for a duration of 1.51 seconds (started at 2025-01-18T15:12:21)
 === DBI Started: ODBCAPTURE/TSPACE_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -699,7 +707,7 @@ sqlldr_control=ODBCAPTURE/TSPACE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T23:11:45 for a duration of 1.39 seconds (started at 2025-01-07T23:11:44)
+=== DBI Completed at 2025-01-18T15:12:24 for a duration of 1.41 seconds (started at 2025-01-18T15:12:22)
 === DBI Started: ODBCAPTURE/DBA_DEPENDENCIES_TAB.tidx
 
 Index created.
@@ -707,47 +715,47 @@ Index created.
 
 Index created.
 
-=== DBI Completed at 2025-01-07T23:11:45 for a duration of .06 seconds (started at 2025-01-07T23:11:45)
+=== DBI Completed at 2025-01-18T15:12:24 for a duration of .09 seconds (started at 2025-01-18T15:12:24)
 === DBI Started: ODBCAPTURE/DBA_OBJECTS_TAB.tidx
 
 Index created.
 
-=== DBI Completed at 2025-01-07T23:11:45 for a duration of .05 seconds (started at 2025-01-07T23:11:45)
+=== DBI Completed at 2025-01-18T15:12:24 for a duration of .04 seconds (started at 2025-01-18T15:12:24)
 === DBI Started: ODBCAPTURE/DBA_TAB_PRIVS_TAB.tidx
 
 Index created.
 
-=== DBI Completed at 2025-01-07T23:11:45 for a duration of .03 seconds (started at 2025-01-07T23:11:45)
+=== DBI Completed at 2025-01-18T15:12:24 for a duration of .05 seconds (started at 2025-01-18T15:12:24)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_COMMENTS_TAB.tidx
 
 Index created.
 
-=== DBI Completed at 2025-01-07T23:11:45 for a duration of .04 seconds (started at 2025-01-07T23:11:45)
+=== DBI Completed at 2025-01-18T15:12:24 for a duration of .1 seconds (started at 2025-01-18T15:12:24)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_CONTEXT_TAB.tidx
 
 Index created.
 
-=== DBI Completed at 2025-01-07T23:11:45 for a duration of .02 seconds (started at 2025-01-07T23:11:45)
+=== DBI Completed at 2025-01-18T15:12:24 for a duration of .05 seconds (started at 2025-01-18T15:12:24)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_DATA_LOAD_TAB.tidx
 
 Index created.
 
-=== DBI Completed at 2025-01-07T23:11:45 for a duration of .09 seconds (started at 2025-01-07T23:11:45)
+=== DBI Completed at 2025-01-18T15:12:24 for a duration of .03 seconds (started at 2025-01-18T15:12:24)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_FKEY_TAB.tidx
 
 Index created.
 
-=== DBI Completed at 2025-01-07T23:11:46 for a duration of .03 seconds (started at 2025-01-07T23:11:45)
+=== DBI Completed at 2025-01-18T15:12:24 for a duration of .02 seconds (started at 2025-01-18T15:12:24)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_INDEX_TAB.tidx
 
 Index created.
 
-=== DBI Completed at 2025-01-07T23:11:46 for a duration of .04 seconds (started at 2025-01-07T23:11:46)
+=== DBI Completed at 2025-01-18T15:12:24 for a duration of .04 seconds (started at 2025-01-18T15:12:24)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_OBJECT_TAB.tidx
 
 Index created.
 
-=== DBI Completed at 2025-01-07T23:11:46 for a duration of .03 seconds (started at 2025-01-07T23:11:46)
+=== DBI Completed at 2025-01-18T15:12:24 for a duration of .02 seconds (started at 2025-01-18T15:12:24)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_SYNONYM_TAB.tidx
 
 Index created.
@@ -755,7 +763,7 @@ Index created.
 
 Index created.
 
-=== DBI Completed at 2025-01-07T23:11:46 for a duration of .04 seconds (started at 2025-01-07T23:11:46)
+=== DBI Completed at 2025-01-18T15:12:24 for a duration of .08 seconds (started at 2025-01-18T15:12:24)
 === DBI Started: ODBCAPTURE/OBJ_INSTALL_TRIGGER_TAB.tidx
 
 Index created.
@@ -763,37 +771,37 @@ Index created.
 
 Index created.
 
-=== DBI Completed at 2025-01-07T23:11:46 for a duration of .04 seconds (started at 2025-01-07T23:11:46)
+=== DBI Completed at 2025-01-18T15:12:24 for a duration of .11 seconds (started at 2025-01-18T15:12:24)
 === DBI Started: ODBCAPTURE/COMMON_UTIL.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2025-01-07T23:11:46 for a duration of .28 seconds (started at 2025-01-07T23:11:46)
+=== DBI Completed at 2025-01-18T15:12:25 for a duration of .27 seconds (started at 2025-01-18T15:12:24)
 === DBI Started: ODBCAPTURE/FH2.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2025-01-07T23:11:46 for a duration of .22 seconds (started at 2025-01-07T23:11:46)
+=== DBI Completed at 2025-01-18T15:12:25 for a duration of .2 seconds (started at 2025-01-18T15:12:25)
 === DBI Started: ODBCAPTURE/GRAB_DATA.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2025-01-07T23:11:47 for a duration of .3 seconds (started at 2025-01-07T23:11:46)
+=== DBI Completed at 2025-01-18T15:12:25 for a duration of .45 seconds (started at 2025-01-18T15:12:25)
 === DBI Started: ODBCAPTURE/GRAB_SCRIPTS.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2025-01-07T23:11:47 for a duration of .79 seconds (started at 2025-01-07T23:11:47)
+=== DBI Completed at 2025-01-18T15:12:26 for a duration of 1.13 seconds (started at 2025-01-18T15:12:25)
 === DBI Started: ODBCAPTURE/ROOT_SCRIPTS.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2025-01-07T23:11:47 for a duration of .07 seconds (started at 2025-01-07T23:11:47)
+=== DBI Completed at 2025-01-18T15:12:26 for a duration of .07 seconds (started at 2025-01-18T15:12:26)
 === DBI Started: ODBCAPTURE/ZIP_UTIL_PKG.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2025-01-07T23:11:48 for a duration of .21 seconds (started at 2025-01-07T23:11:47)
+=== DBI Completed at 2025-01-18T15:12:27 for a duration of .18 seconds (started at 2025-01-18T15:12:26)
 === DBI Started: ODBCAPTURE/BUILD_PATH.tfk
 
 Table altered.
@@ -801,7 +809,7 @@ Table altered.
 
 Table altered.
 
-=== DBI Completed at 2025-01-07T23:11:48 for a duration of .11 seconds (started at 2025-01-07T23:11:48)
+=== DBI Completed at 2025-01-18T15:12:27 for a duration of .08 seconds (started at 2025-01-18T15:12:27)
 === DBI Started: ODBCAPTURE/DLOAD_CONF.tfk
 
 Table altered.
@@ -809,7 +817,7 @@ Table altered.
 
 Table altered.
 
-=== DBI Completed at 2025-01-07T23:11:48 for a duration of .11 seconds (started at 2025-01-07T23:11:48)
+=== DBI Completed at 2025-01-18T15:12:27 for a duration of .11 seconds (started at 2025-01-18T15:12:27)
 === DBI Started: ODBCAPTURE/OBJECT_CONF.tfk
 
 Table altered.
@@ -820,22 +828,22 @@ Table altered.
 
 Table altered.
 
-=== DBI Completed at 2025-01-07T23:11:48 for a duration of .09 seconds (started at 2025-01-07T23:11:48)
+=== DBI Completed at 2025-01-18T15:12:27 for a duration of .1 seconds (started at 2025-01-18T15:12:27)
 === DBI Started: ODBCAPTURE/ROLE_CONF.tfk
 
 Table altered.
 
-=== DBI Completed at 2025-01-07T23:11:48 for a duration of .05 seconds (started at 2025-01-07T23:11:48)
+=== DBI Completed at 2025-01-18T15:12:27 for a duration of .03 seconds (started at 2025-01-18T15:12:27)
 === DBI Started: ODBCAPTURE/SCHEMA_CONF.tfk
 
 Table altered.
 
-=== DBI Completed at 2025-01-07T23:11:48 for a duration of .03 seconds (started at 2025-01-07T23:11:48)
+=== DBI Completed at 2025-01-18T15:12:27 for a duration of .06 seconds (started at 2025-01-18T15:12:27)
 === DBI Started: ODBCAPTURE/TSPACE_CONF.tfk
 
 Table altered.
 
-=== DBI Completed at 2025-01-07T23:11:48 for a duration of .04 seconds (started at 2025-01-07T23:11:48)
+=== DBI Completed at 2025-01-18T15:12:27 for a duration of .04 seconds (started at 2025-01-18T15:12:27)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table
