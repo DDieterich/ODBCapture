@@ -13,16 +13,16 @@ Synonym created.
 
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbras"
- -) "grbsrc" last loaded on 07-Jan-2025 06:06:39
+ -) "grbsrc" last loaded on 18-Jan-2025 16:08:20
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T06:06:45 for a duration of .17 seconds (started at 2025-01-07T06:06:45)
+=== DBI Completed at 2025-01-18T16:08:25 for a duration of .15 seconds (started at 2025-01-18T16:08:24)
 === DBI Started: ODBCAPTURE/GRAB_RAS.pkssql
 
 Package created.
 
-=== DBI Completed at 2025-01-07T06:06:45 for a duration of .09 seconds (started at 2025-01-07T06:06:45)
+=== DBI Completed at 2025-01-18T16:08:25 for a duration of .06 seconds (started at 2025-01-18T16:08:25)
 === DBI Started: ODBCAPTURE/EXPORTING_RAS_DATA.tbl
 
 Table created.
@@ -42,7 +42,7 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2025-01-07T06:06:45 for a duration of .46 seconds (started at 2025-01-07T06:06:45)
+=== DBI Completed at 2025-01-18T16:08:25 for a duration of .18 seconds (started at 2025-01-18T16:08:25)
 Compile All started
 
 PL/SQL procedure successfully completed.
@@ -55,40 +55,12 @@ View created.
 
 View created.
 
-=== DBI Completed at 2025-01-07T06:06:48 for a duration of .13 seconds (started at 2025-01-07T06:06:48)
-=== DBI Started: ODBCAPTURE/ROLE_CONF.cldr
-
-Disable Triggers and Foreign Keys
-alter table "ODBCAPTURE"."ROLE_CONF" DISABLE constraint "ROLE_CONF_FK1";
-
-PL/SQL procedure successfully completed.
-
-
-sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
-
-
-PL/SQL procedure successfully completed.
-
-=== DBI Completed at 2025-01-07T06:06:49 for a duration of .61 seconds (started at 2025-01-07T06:06:48)
-=== DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
-
-Disable Triggers and Foreign Keys
-alter table "ODBCAPTURE"."SCHEMA_CONF" DISABLE constraint "SCHEMA_CONF_FK1";
-
-PL/SQL procedure successfully completed.
-
-
-sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
-
-
-PL/SQL procedure successfully completed.
-
-=== DBI Completed at 2025-01-07T06:06:50 for a duration of .6 seconds (started at 2025-01-07T06:06:49)
+=== DBI Completed at 2025-01-18T16:08:27 for a duration of .11 seconds (started at 2025-01-18T16:08:27)
 === DBI Started: ODBCAPTURE/GRAB_RAS.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2025-01-07T06:06:50 for a duration of .29 seconds (started at 2025-01-07T06:06:50)
+=== DBI Completed at 2025-01-18T16:08:27 for a duration of .22 seconds (started at 2025-01-18T16:08:27)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table
@@ -102,6 +74,7 @@ Table dropped.
 fix_invalid_public_synonyms
 
 Re-create Invalid Public Synonyms
+CREATE OR REPLACE NONEDITIONABLE PUBLIC SYNONYM "ODBCAPTURE_INSTALLATION_LOGS" for "ADMIN"."ODBCAPTURE_INSTALLATION_LOGS"
 
 PL/SQL procedure successfully completed.
 

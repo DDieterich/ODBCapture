@@ -76,15 +76,15 @@ diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/DLOAD_CONF.
         "NOTES" VARCHAR2(4000 BYTE)                                                                                     |          "NOTES" VARCHAR2(4000 BYTE) COLLATE "USING_NLS_COMP"
    ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                                     |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
 diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/ELEMENT_CONF.tbl grbsrc/ODBCAPTURE/ELEMENT_CONF.tbl
-        "ELEMENT_NAME" VARCHAR2(20 BYTE) NOT NULL ENABLE,                            |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
-        "FILE_EXT1" VARCHAR2(6 BYTE) NOT NULL ENABLE,                                |          "FILE_EXT1" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
-        "FILE_EXT2" VARCHAR2(6 BYTE),                                                |          "FILE_EXT2" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
-        "FILE_EXT3" VARCHAR2(6 BYTE),                                                |          "FILE_EXT3" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
-        "OBJECT_TYPE" VARCHAR2(30 BYTE),                                             |          "OBJECT_TYPE" VARCHAR2(30 BYTE) COLLATE "USING_NLS_COMP", 
-        "NAME_CHECK_OBJECT_TYPE" VARCHAR2(30 BYTE),                                  |          "NAME_CHECK_OBJECT_TYPE" VARCHAR2(30 BYTE) COLLATE "USING_NLS_COMP", 
-        "NOTES" VARCHAR2(1024 BYTE),                                                 |          "NOTES" VARCHAR2(1024 BYTE) COLLATE "USING_NLS_COMP", 
-        "PRE_COMPILE" VARCHAR2(1 BYTE)                                               |          "PRE_COMPILE" VARCHAR2(1 BYTE) COLLATE "USING_NLS_COMP"
-   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                            |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
+        "ELEMENT_NAME" VARCHAR2(20 BYTE) NOT NULL ENABLE,                                                                                      |          "ELEMENT_NAME" VARCHAR2(20 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "FILE_EXT1" VARCHAR2(6 BYTE) NOT NULL ENABLE,                                                                                      |          "FILE_EXT1" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
+        "FILE_EXT2" VARCHAR2(6 BYTE),                                                                                      |          "FILE_EXT2" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "FILE_EXT3" VARCHAR2(6 BYTE),                                                                                      |          "FILE_EXT3" VARCHAR2(6 BYTE) COLLATE "USING_NLS_COMP", 
+        "OBJECT_TYPE" VARCHAR2(30 BYTE),                                                                                      |          "OBJECT_TYPE" VARCHAR2(30 BYTE) COLLATE "USING_NLS_COMP", 
+        "NAME_CHECK_OBJECT_TYPE" VARCHAR2(30 BYTE),                                                                                      |          "NAME_CHECK_OBJECT_TYPE" VARCHAR2(30 BYTE) COLLATE "USING_NLS_COMP", 
+        "PRE_COMPILE" VARCHAR2(1 BYTE),                                                                                      |          "PRE_COMPILE" VARCHAR2(1 BYTE) COLLATE "USING_NLS_COMP", 
+        "NOTES" VARCHAR2(1024 BYTE)                                                                                     |          "NOTES" VARCHAR2(1024 BYTE) COLLATE "USING_NLS_COMP"
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;                                                                                     |     )  DEFAULT COLLATION "USING_NLS_COMP" SEGMENT CREATION IMMEDIATE  LOGGING;
 diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl grbsrc/ODBCAPTURE/METADATA_TRANSFORM_PARAMS.tbl
    (    "NAME" VARCHAR2(30 BYTE) NOT NULL ENABLE,                                                                                      |     (    "NAME" VARCHAR2(30 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 
         "VALUE_TYPE" VARCHAR2(8 BYTE) NOT NULL ENABLE,                                                                                      |          "VALUE_TYPE" VARCHAR2(8 BYTE) COLLATE "USING_NLS_COMP" NOT NULL ENABLE, 

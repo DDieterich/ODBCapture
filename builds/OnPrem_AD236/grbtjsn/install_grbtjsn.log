@@ -15,15 +15,15 @@ Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbtjsn"
 WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
 WARNING: Prerequisite BUILD_TYPE "grbjava" not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) "grbras" last loaded on 07-Jan-2025 06:06:55
- -) "grbsdo" last loaded on 07-Jan-2025 06:07:07
- -) "grbsrc" last loaded on 07-Jan-2025 06:06:39
- -) "grbtst" last loaded on 07-Jan-2025 06:07:38
+ -) "grbras" last loaded on 18-Jan-2025 16:08:31
+ -) "grbsdo" last loaded on 18-Jan-2025 16:08:39
+ -) "grbsrc" last loaded on 18-Jan-2025 16:08:20
+ -) "grbtst" last loaded on 18-Jan-2025 16:09:09
 WARNING: Prerequisite BUILD_TYPE "grbxrep" not found in ODBCAPTURE_INSTALLATION_LOGS table.
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T06:07:43 for a duration of .23 seconds (started at 2025-01-07T06:07:42)
+=== DBI Completed at 2025-01-18T16:09:11 for a duration of .16 seconds (started at 2025-01-18T16:09:11)
 === DBI Started: ODBCAPTURE/GRBTST_JSON.tbl
 
 Table created.
@@ -31,7 +31,7 @@ Table created.
 
 Table altered.
 
-=== DBI Completed at 2025-01-07T06:07:43 for a duration of .18 seconds (started at 2025-01-07T06:07:43)
+=== DBI Completed at 2025-01-18T16:09:12 for a duration of .14 seconds (started at 2025-01-18T16:09:11)
 === DBI Started: ODBCAPTURE/GRBTST_JSON.cldr
 
 Disable Triggers and Foreign Keys
@@ -44,7 +44,7 @@ sqlldr_control=ODBCAPTURE/GRBTST_JSON.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T06:07:47 for a duration of 4.56 seconds (started at 2025-01-07T06:07:43)
+=== DBI Completed at 2025-01-18T16:09:15 for a duration of 2.9 seconds (started at 2025-01-18T16:09:12)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table
