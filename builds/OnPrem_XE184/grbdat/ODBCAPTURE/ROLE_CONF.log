@@ -1,8 +1,9 @@
 
-SQL*Loader: Release 18.0.0.0.0 - Production on Sat Dec 21 10:04:10 2024
+SQL*Loader: Release 18.0.0.0.0 - Production on Sat Jan 18 01:05:15 2025
 Version 18.4.0.0.0
 
 Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.
+
 
 Control File:   ODBCAPTURE/ROLE_CONF.ctl
 Data File:      ODBCAPTURE/ROLE_CONF.csv
@@ -31,7 +32,7 @@ NOTES                                NEXT  1024   ,  O(") CHARACTER
 
 
 Table "ODBCAPTURE"."ROLE_CONF":
-  9 Rows successfully loaded.
+  0 Rows successfully loaded.
   0 Rows not loaded due to data errors.
   0 Rows not loaded because all WHEN clauses were failed.
   0 Rows not loaded because all fields were null.
@@ -41,12 +42,12 @@ Space allocated for bind array:                 293000 bytes(250 rows)
 Read   buffer bytes: 1048576
 
 Total logical records skipped:          1
-Total logical records read:             9
+Total logical records read:             0
 Total logical records rejected:         0
 Total logical records discarded:        0
 
-Run began on Sat Dec 21 10:04:10 2024
-Run ended on Sat Dec 21 10:04:10 2024
+Run began on Sat Jan 18 01:05:15 2025
+Run ended on Sat Jan 18 01:05:15 2025
 
-Elapsed time was:     00:00:00.29
-CPU time was:         00:00:00.24
+Elapsed time was:     00:00:00.31
+CPU time was:         00:00:00.19

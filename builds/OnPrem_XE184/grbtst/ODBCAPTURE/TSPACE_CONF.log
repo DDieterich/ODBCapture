@@ -1,8 +1,9 @@
 
-SQL*Loader: Release 18.0.0.0.0 - Production on Sat Dec 21 10:04:52 2024
+SQL*Loader: Release 18.0.0.0.0 - Production on Sat Jan 18 01:05:28 2025
 Version 18.4.0.0.0
 
 Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.
+
 
 Control File:   ODBCAPTURE/TSPACE_CONF.ctl
 Data File:      ODBCAPTURE/TSPACE_CONF.csv
@@ -44,8 +45,8 @@ Total logical records read:             0
 Total logical records rejected:         0
 Total logical records discarded:        0
 
-Run began on Sat Dec 21 10:04:52 2024
-Run ended on Sat Dec 21 10:04:53 2024
+Run began on Sat Jan 18 01:05:28 2025
+Run ended on Sat Jan 18 01:05:28 2025
 
-Elapsed time was:     00:00:00.25
-CPU time was:         00:00:00.21
+Elapsed time was:     00:00:00.30
+CPU time was:         00:00:00.17

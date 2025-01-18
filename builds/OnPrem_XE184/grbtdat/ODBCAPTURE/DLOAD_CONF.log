@@ -1,8 +1,9 @@
 
-SQL*Loader: Release 18.0.0.0.0 - Production on Sat Dec 21 10:06:50 2024
+SQL*Loader: Release 18.0.0.0.0 - Production on Sat Jan 18 01:07:53 2025
 Version 18.4.0.0.0
 
 Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.
+
 
 Control File:   ODBCAPTURE/DLOAD_CONF.ctl
 Data File:      ODBCAPTURE/DLOAD_CONF.csv
@@ -52,8 +53,8 @@ Total logical records read:            12
 Total logical records rejected:         0
 Total logical records discarded:        0
 
-Run began on Sat Dec 21 10:06:50 2024
-Run ended on Sat Dec 21 10:06:52 2024
+Run began on Sat Jan 18 01:07:53 2025
+Run ended on Sat Jan 18 01:07:54 2025
 
-Elapsed time was:     00:00:01.32
-CPU time was:         00:00:00.22
+Elapsed time was:     00:00:00.47
+CPU time was:         00:00:00.24

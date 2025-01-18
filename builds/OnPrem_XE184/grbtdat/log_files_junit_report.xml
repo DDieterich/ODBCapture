@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbtdat.log" tests="3" errors="0" hostname="XE" id="2" time="5" timestamp="2024-12-21T10:07:01">
+  <testsuite name="install_grbtdat.log" tests="7" errors="0" hostname="XE" id="2" time="18" timestamp="2025-01-18T01:08:07">
     <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
-    <testcase name="./installation_prepare.sql" assertions="31" classname="..sql" status="PASS" time="1">
+    <testcase name="./installation_prepare.sql" assertions="31" classname="..sql" status="PASS" time="3">
       <system-out>
 === DBI Started: ./installation_prepare.sql
 
@@ -21,24 +21,60 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for &quot;grbtdat&quot;
 WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) &quot;grbjava&quot; last loaded on 21-Dec-2024 10:04:14
- -) &quot;grbras&quot; last loaded on 21-Dec-2024 10:04:04
- -) &quot;grbsdo&quot; last loaded on 21-Dec-2024 10:04:22
- -) &quot;grbsrc&quot; last loaded on 21-Dec-2024 10:03:51
- -) &quot;grbtctx&quot; last loaded on 21-Dec-2024 10:06:45
+ -) &quot;grbjava&quot; last loaded on 18-Jan-2025 01:04:51
+ -) &quot;grbras&quot; last loaded on 18-Jan-2025 01:04:44
+ -) &quot;grbsdo&quot; last loaded on 18-Jan-2025 01:04:58
+ -) &quot;grbsrc&quot; last loaded on 18-Jan-2025 01:04:32
+ -) &quot;grbtctx&quot; last loaded on 18-Jan-2025 01:07:36
 WARNING: Prerequisite BUILD_TYPE &quot;grbtend&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
 WARNING: Prerequisite BUILD_TYPE &quot;grbtjsn&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) &quot;grbtjva&quot; last loaded on 21-Dec-2024 10:05:42
- -) &quot;grbtsdo&quot; last loaded on 21-Dec-2024 10:06:12
- -) &quot;grbtst&quot; last loaded on 21-Dec-2024 10:04:59
- -) &quot;grbxrep&quot; last loaded on 21-Dec-2024 10:04:31
+ -) &quot;grbtjva&quot; last loaded on 18-Jan-2025 01:06:19
+ -) &quot;grbtsdo&quot; last loaded on 18-Jan-2025 01:06:54
+ -) &quot;grbtst&quot; last loaded on 18-Jan-2025 01:05:34
+ -) &quot;grbxrep&quot; last loaded on 18-Jan-2025 01:05:06
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-21T10:06:49 for a duration of .5 seconds (started at 2024-12-21T10:06:48)
+=== DBI Completed at 2025-01-18T01:07:44 for a duration of 2.81 seconds (started at 2025-01-18T01:07:42)
       </system-out>
     </testcase>
-    <testcase name="ODBCAPTURE/DLOAD_CONF.cldr" assertions="15" classname="ODBCAPTURE.cldr" status="PASS" time="3">
+    <testcase name="ODBCAPTURE/BUILD_CONF.cldr" assertions="13" classname="ODBCAPTURE.cldr" status="PASS" time="5">
+      <system-out>
+=== DBI Started: ODBCAPTURE/BUILD_CONF.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/BUILD_CONF.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2025-01-18T01:07:50 for a duration of 5.4 seconds (started at 2025-01-18T01:07:44)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/BUILD_PATH.cldr" assertions="15" classname="ODBCAPTURE.cldr" status="PASS" time="2">
+      <system-out>
+=== DBI Started: ODBCAPTURE/BUILD_PATH.cldr
+
+Disable Triggers and Foreign Keys
+alter table &quot;ODBCAPTURE&quot;.&quot;BUILD_PATH&quot; DISABLE constraint &quot;BUILD_PATH_FK1&quot;;
+alter table &quot;ODBCAPTURE&quot;.&quot;BUILD_PATH&quot; DISABLE constraint &quot;BUILD_PATH_FK2&quot;;
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/BUILD_PATH.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2025-01-18T01:07:52 for a duration of 1.92 seconds (started at 2025-01-18T01:07:50)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/DLOAD_CONF.cldr" assertions="15" classname="ODBCAPTURE.cldr" status="PASS" time="2">
       <system-out>
 === DBI Started: ODBCAPTURE/DLOAD_CONF.cldr
 
@@ -54,10 +90,10 @@ sqlldr_control=ODBCAPTURE/DLOAD_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-21T10:06:52 for a duration of 2.84 seconds (started at 2024-12-21T10:06:49)
+=== DBI Completed at 2025-01-18T01:07:54 for a duration of 1.84 seconds (started at 2025-01-18T01:07:52)
       </system-out>
     </testcase>
-    <testcase name="ODBCAPTURE/OBJECT_CONF.cldr" assertions="16" classname="ODBCAPTURE.cldr" status="PASS" time="1">
+    <testcase name="ODBCAPTURE/OBJECT_CONF.cldr" assertions="16" classname="ODBCAPTURE.cldr" status="PASS" time="2">
       <system-out>
 === DBI Started: ODBCAPTURE/OBJECT_CONF.cldr
 
@@ -74,12 +110,48 @@ sqlldr_control=ODBCAPTURE/OBJECT_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-21T10:06:53 for a duration of 1.49 seconds (started at 2024-12-21T10:06:52)
+=== DBI Completed at 2025-01-18T01:07:55 for a duration of 1.82 seconds (started at 2025-01-18T01:07:54)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/ROLE_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="2">
+      <system-out>
+=== DBI Started: ODBCAPTURE/ROLE_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table &quot;ODBCAPTURE&quot;.&quot;ROLE_CONF&quot; DISABLE constraint &quot;ROLE_CONF_FK1&quot;;
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2025-01-18T01:07:57 for a duration of 1.54 seconds (started at 2025-01-18T01:07:55)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/SCHEMA_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="2">
+      <system-out>
+=== DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table &quot;ODBCAPTURE&quot;.&quot;SCHEMA_CONF&quot; DISABLE constraint &quot;SCHEMA_CONF_FK1&quot;;
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2025-01-18T01:07:59 for a duration of 1.71 seconds (started at 2025-01-18T01:07:57)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_sys.log" tests="0" errors="0" hostname="XE" id="3" time="0" timestamp="2024-12-21T10:07:01">
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="XE" id="3" time="0" timestamp="2025-01-18T01:08:07">
   </testsuite>
-  <testsuite name="install_system.log" tests="0" errors="0" hostname="XE" id="1" time="0" timestamp="2024-12-21T10:07:01">
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="XE" id="1" time="0" timestamp="2025-01-18T01:08:07">
   </testsuite>
 </testsuites>
