@@ -1,6 +1,6 @@
 
-SQL*Loader: Release 19.0.0.0.0 - Production on Mon Jan 6 21:22:49 2025
-Version 19.22.0.0.0
+SQL*Loader: Release 23.0.0.0.0 - Production on Sat Jan 18 00:39:09 2025
+Version 23.4.0.24.05
 
 Copyright (c) 1982, 2024, Oracle and/or its affiliates.  All rights reserved.
 
@@ -25,6 +25,8 @@ Insert option in effect for this table: APPEND
 ------------------------------ ---------- ----- ---- ---- ---------------------
 LOAD_DTM                                                  SYSDATE
 BUILD_TYPE                          FIRST    10   ,  O(") CHARACTER            
+CAPVER                                                    CONSTANT
+    Value is 'Dev_V2.1'
 FILE_NAME                            NEXT   512   ,  O(") CHARACTER            
 CONTENTS                          DERIVED     *  EOF      CHARACTER            
     Dynamic LOBFILE.  Filename in field FILE_NAME
@@ -37,7 +39,7 @@ Table "ODBCAPTURE_INSTALLATION_LOGS":
   0 Rows not loaded because all fields were null.
 
 
-Space allocated for bind array:                 131500 bytes(250 rows)
+Space allocated for bind array:                 133750 bytes(250 rows)
 Read   buffer bytes: 1048576
 
 Total logical records skipped:          0
@@ -45,8 +47,8 @@ Total logical records read:            10
 Total logical records rejected:         0
 Total logical records discarded:        0
 
-Run began on Mon Jan 06 21:22:49 2025
-Run ended on Mon Jan 06 21:22:51 2025
+Run began on Sat Jan 18 00:39:09 2025
+Run ended on Sat Jan 18 00:39:10 2025
 
-Elapsed time was:     00:00:01.50
-CPU time was:         00:00:00.15
+Elapsed time was:     00:00:01.25
+CPU time was:         00:00:00.03

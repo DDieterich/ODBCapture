@@ -1,106 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbsdo.log" tests="6" errors="0" hostname="EE213CDB" id="3" time="5" timestamp="2025-01-07T03:23:25">
-    <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
+  <testsuite name="install_grbsdo.log" tests="4" errors="0" hostname="EE213CDB" id="3" time="2" timestamp="2025-01-18T06:39:23">
+    <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
-    <testcase name="./installation_prepare.sql" assertions="20" classname="..sql" status="PASS" time="0">
+    <testcase name="./installation_prepare.sql" assertions="10" classname="..sql" status="PASS" time="0">
       <system-out>
-=== DBI Started: ./installation_prepare.sql
-
-Create Temp Publicly Updateable Table
-
-Table created.
-
-
-Grant succeeded.
-
-
-Synonym created.
-
-
-Check for Prerequisite BUILD_TYPEs
-Prerequisite BUILD_TYPEs for &quot;grbsdo&quot;
- -) &quot;grbsrc&quot; last loaded on 07-Jan-2025 03:22:50
-
-PL/SQL procedure successfully completed.
-
-=== DBI Completed at 2025-01-07T03:23:17 for a duration of .16 seconds (started at 2025-01-07T03:23:17)
+=== DBI Started: ./installation_prepare.sql
+Create Temp Publicly Updateable Table
+Table created.
+Grant succeeded.
+Synonym created.
+Check for Prerequisite BUILD_TYPEs
+Prerequisite BUILD_TYPEs for &quot;grbsdo&quot;
+ -) &quot;grbsrc&quot; last loaded on 18-Jan-2025 06:39:10
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2025-01-18T06:39:20 for a duration of .07 seconds (started at 2025-01-18T06:39:19)
       </system-out>
     </testcase>
-    <testcase name="ODBCAPTURE/GRAB_SDO.pkbsql" assertions="5" classname="ODBCAPTURE.pkbsql" status="PASS" time="0">
+    <testcase name="ODBCAPTURE/GRAB_SDO.pkbsql" assertions="3" classname="ODBCAPTURE.pkbsql" status="PASS" time="0">
       <system-out>
-=== DBI Started: ODBCAPTURE/GRAB_SDO.pkbsql
-
-Package body created.
-
-=== DBI Completed at 2025-01-07T03:23:22 for a duration of .25 seconds (started at 2025-01-07T03:23:21)
+=== DBI Started: ODBCAPTURE/GRAB_SDO.pkbsql
+Package body created.
+=== DBI Completed at 2025-01-18T06:39:22 for a duration of .11 seconds (started at 2025-01-18T06:39:21)
       </system-out>
     </testcase>
-    <testcase name="ODBCAPTURE/GRAB_SDO.pkssql" assertions="5" classname="ODBCAPTURE.pkssql" status="PASS" time="0">
+    <testcase name="ODBCAPTURE/GRAB_SDO.pkssql" assertions="3" classname="ODBCAPTURE.pkssql" status="PASS" time="0">
       <system-out>
-=== DBI Started: ODBCAPTURE/GRAB_SDO.pkssql
-
-Package created.
-
-=== DBI Completed at 2025-01-07T03:23:17 for a duration of .12 seconds (started at 2025-01-07T03:23:17)
+=== DBI Started: ODBCAPTURE/GRAB_SDO.pkssql
+Package created.
+=== DBI Completed at 2025-01-18T06:39:20 for a duration of .11 seconds (started at 2025-01-18T06:39:20)
       </system-out>
     </testcase>
-    <testcase name="ODBCAPTURE/ROLE_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="1">
+    <testcase name="ODBCAPTURE/USER_DEFINED_TYPE_CONF.cldr" assertions="6" classname="ODBCAPTURE.cldr" status="PASS" time="2">
       <system-out>
-=== DBI Started: ODBCAPTURE/ROLE_CONF.cldr
-
-Disable Triggers and Foreign Keys
-alter table &quot;ODBCAPTURE&quot;.&quot;ROLE_CONF&quot; DISABLE constraint &quot;ROLE_CONF_FK1&quot;;
-
-PL/SQL procedure successfully completed.
-
-
-sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
-
-
-PL/SQL procedure successfully completed.
-
-=== DBI Completed at 2025-01-07T03:23:18 for a duration of .65 seconds (started at 2025-01-07T03:23:17)
-      </system-out>
-    </testcase>
-    <testcase name="ODBCAPTURE/SCHEMA_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="1">
-      <system-out>
-=== DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
-
-Disable Triggers and Foreign Keys
-alter table &quot;ODBCAPTURE&quot;.&quot;SCHEMA_CONF&quot; DISABLE constraint &quot;SCHEMA_CONF_FK1&quot;;
-
-PL/SQL procedure successfully completed.
-
-
-sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
-
-
-PL/SQL procedure successfully completed.
-
-=== DBI Completed at 2025-01-07T03:23:19 for a duration of .72 seconds (started at 2025-01-07T03:23:18)
-      </system-out>
-    </testcase>
-    <testcase name="ODBCAPTURE/USER_DEFINED_TYPE_CONF.cldr" assertions="13" classname="ODBCAPTURE.cldr" status="PASS" time="3">
-      <system-out>
-=== DBI Started: ODBCAPTURE/USER_DEFINED_TYPE_CONF.cldr
-
-Disable Triggers and Foreign Keys
-
-PL/SQL procedure successfully completed.
-
-
-sqlldr_control=ODBCAPTURE/USER_DEFINED_TYPE_CONF.ctl
-
-
-PL/SQL procedure successfully completed.
-
-=== DBI Completed at 2025-01-07T03:23:21 for a duration of 2.54 seconds (started at 2025-01-07T03:23:19)
+=== DBI Started: ODBCAPTURE/USER_DEFINED_TYPE_CONF.cldr
+Disable Triggers and Foreign Keys
+PL/SQL procedure successfully completed.
+sqlldr_control=ODBCAPTURE/USER_DEFINED_TYPE_CONF.ctl
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2025-01-18T06:39:21 for a duration of 1.79 seconds (started at 2025-01-18T06:39:20)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_sys.log" tests="0" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2025-01-07T03:23:25">
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2025-01-18T06:39:23">
   </testsuite>
-  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2025-01-07T03:23:25">
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2025-01-18T06:39:23">
   </testsuite>
 </testsuites>
