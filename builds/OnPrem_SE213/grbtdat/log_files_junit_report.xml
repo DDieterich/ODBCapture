@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbtdat.log" tests="3" errors="0" hostname="SE213CDB" id="3" time="0" timestamp="2025-01-07T23:08:20">
+  <testsuite name="install_grbtdat.log" tests="7" errors="0" hostname="SE213CDB" id="3" time="0" timestamp="2025-01-18T16:35:22">
     <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
     <testcase name="./installation_prepare.sql" assertions="21" classname="..sql" status="PASS" time="0">
@@ -13,19 +13,41 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for &quot;grbtdat&quot;
 WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) &quot;grbjava&quot; last loaded on 07-Jan-2025 23:07:19
+ -) &quot;grbjava&quot; last loaded on 18-Jan-2025 16:34:20
 WARNING: Prerequisite BUILD_TYPE &quot;grbras&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) &quot;grbsdo&quot; last loaded on 07-Jan-2025 23:07:23
- -) &quot;grbsrc&quot; last loaded on 07-Jan-2025 23:07:15
- -) &quot;grbtctx&quot; last loaded on 07-Jan-2025 23:08:18
+ -) &quot;grbsdo&quot; last loaded on 18-Jan-2025 16:34:24
+ -) &quot;grbsrc&quot; last loaded on 18-Jan-2025 16:34:17
+ -) &quot;grbtctx&quot; last loaded on 18-Jan-2025 16:35:19
 WARNING: Prerequisite BUILD_TYPE &quot;grbtend&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) &quot;grbtjsn&quot; last loaded on 07-Jan-2025 23:08:00
- -) &quot;grbtjva&quot; last loaded on 07-Jan-2025 23:07:56
- -) &quot;grbtsdo&quot; last loaded on 07-Jan-2025 23:08:07
- -) &quot;grbtst&quot; last loaded on 07-Jan-2025 23:07:40
- -) &quot;grbxrep&quot; last loaded on 07-Jan-2025 23:07:26
+ -) &quot;grbtjsn&quot; last loaded on 18-Jan-2025 16:35:02
+ -) &quot;grbtjva&quot; last loaded on 18-Jan-2025 16:34:57
+ -) &quot;grbtsdo&quot; last loaded on 18-Jan-2025 16:35:09
+ -) &quot;grbtst&quot; last loaded on 18-Jan-2025 16:34:41
+ -) &quot;grbxrep&quot; last loaded on 18-Jan-2025 16:34:26
 PL/SQL procedure successfully completed.
-=== DBI Completed at 2025-01-07T23:08:19 for a duration of .13 seconds (started at 2025-01-07T23:08:18)
+=== DBI Completed at 2025-01-18T16:35:20 for a duration of .14 seconds (started at 2025-01-18T16:35:20)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/BUILD_CONF.cldr" assertions="6" classname="ODBCAPTURE.cldr" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCAPTURE/BUILD_CONF.cldr
+Disable Triggers and Foreign Keys
+PL/SQL procedure successfully completed.
+sqlldr_control=ODBCAPTURE/BUILD_CONF.ctl
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2025-01-18T16:35:20 for a duration of .21 seconds (started at 2025-01-18T16:35:20)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/BUILD_PATH.cldr" assertions="8" classname="ODBCAPTURE.cldr" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCAPTURE/BUILD_PATH.cldr
+Disable Triggers and Foreign Keys
+alter table &quot;ODBCAPTURE&quot;.&quot;BUILD_PATH&quot; DISABLE constraint &quot;BUILD_PATH_FK1&quot;;
+alter table &quot;ODBCAPTURE&quot;.&quot;BUILD_PATH&quot; DISABLE constraint &quot;BUILD_PATH_FK2&quot;;
+PL/SQL procedure successfully completed.
+sqlldr_control=ODBCAPTURE/BUILD_PATH.ctl
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2025-01-18T16:35:20 for a duration of .21 seconds (started at 2025-01-18T16:35:20)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/DLOAD_CONF.cldr" assertions="8" classname="ODBCAPTURE.cldr" status="PASS" time="0">
@@ -37,7 +59,7 @@ alter table &quot;ODBCAPTURE&quot;.&quot;DLOAD_CONF&quot; DISABLE constraint &qu
 PL/SQL procedure successfully completed.
 sqlldr_control=ODBCAPTURE/DLOAD_CONF.ctl
 PL/SQL procedure successfully completed.
-=== DBI Completed at 2025-01-07T23:08:19 for a duration of .23 seconds (started at 2025-01-07T23:08:19)
+=== DBI Completed at 2025-01-18T16:35:20 for a duration of .28 seconds (started at 2025-01-18T16:35:20)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/OBJECT_CONF.cldr" assertions="9" classname="ODBCAPTURE.cldr" status="PASS" time="0">
@@ -50,12 +72,34 @@ alter table &quot;ODBCAPTURE&quot;.&quot;OBJECT_CONF&quot; DISABLE constraint &q
 PL/SQL procedure successfully completed.
 sqlldr_control=ODBCAPTURE/OBJECT_CONF.ctl
 PL/SQL procedure successfully completed.
-=== DBI Completed at 2025-01-07T23:08:19 for a duration of .17 seconds (started at 2025-01-07T23:08:19)
+=== DBI Completed at 2025-01-18T16:35:21 for a duration of .19 seconds (started at 2025-01-18T16:35:20)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/ROLE_CONF.cldr" assertions="7" classname="ODBCAPTURE.cldr" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCAPTURE/ROLE_CONF.cldr
+Disable Triggers and Foreign Keys
+alter table &quot;ODBCAPTURE&quot;.&quot;ROLE_CONF&quot; DISABLE constraint &quot;ROLE_CONF_FK1&quot;;
+PL/SQL procedure successfully completed.
+sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2025-01-18T16:35:21 for a duration of .19 seconds (started at 2025-01-18T16:35:21)
+      </system-out>
+    </testcase>
+    <testcase name="ODBCAPTURE/SCHEMA_CONF.cldr" assertions="7" classname="ODBCAPTURE.cldr" status="PASS" time="0">
+      <system-out>
+=== DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
+Disable Triggers and Foreign Keys
+alter table &quot;ODBCAPTURE&quot;.&quot;SCHEMA_CONF&quot; DISABLE constraint &quot;SCHEMA_CONF_FK1&quot;;
+PL/SQL procedure successfully completed.
+sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2025-01-18T16:35:21 for a duration of .18 seconds (started at 2025-01-18T16:35:21)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_sys.log" tests="0" errors="0" hostname="SE213CDB" id="1" time="0" timestamp="2025-01-07T23:08:20">
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="SE213CDB" id="1" time="0" timestamp="2025-01-18T16:35:22">
   </testsuite>
-  <testsuite name="install_system.log" tests="0" errors="0" hostname="SE213CDB" id="2" time="0" timestamp="2025-01-07T23:08:20">
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="SE213CDB" id="2" time="0" timestamp="2025-01-18T16:35:22">
   </testsuite>
 </testsuites>
