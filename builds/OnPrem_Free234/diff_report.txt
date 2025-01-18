@@ -1,5 +1,5 @@
 diff -drywtNW 172 --suppress-common-lines ../../../grbras/ODBCAPTURE/EXPORTING_RAS_DATA.tbl grbras/ODBCAPTURE/EXPORTING_RAS_DATA.tbl
-   ) ORGANIZATION INDEX NOCOMPRESS ;                                                                                     |     ) ORGANIZATION INDEX NONE;
+   ) ORGANIZATION INDEX NOCOMPRESS ;                                                 |     ) ORGANIZATION INDEX NONE;
 diff -drywtNW 172 --suppress-common-lines ../../../grbsrc/ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl grbsrc/ODBCAPTURE/SCHEMA_OBJECTS_TAB.tbl
    ) ORGANIZATION INDEX NOCOMPRESS ;                                                 |     ) ORGANIZATION INDEX NONE;
 diff -drywtNW 172 --suppress-common-lines ../../../grbtst/RAS_Admin_ODBCTEST.racl grbtst/RAS_Admin_ODBCTEST.racl

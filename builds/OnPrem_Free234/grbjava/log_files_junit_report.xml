@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbjava.log" tests="7" errors="0" hostname="FREE" id="3" time="0" timestamp="2025-01-08T04:33:45">
+  <testsuite name="install_grbjava.log" tests="5" errors="0" hostname="FREE" id="3" time="0" timestamp="2025-01-18T15:35:50">
     <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
     <testcase name="./installation_prepare.sql" assertions="10" classname="..sql" status="PASS" time="0">
@@ -12,23 +12,23 @@ Grant succeeded.
 Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for &quot;grbjava&quot;
- -) &quot;grbsrc&quot; last loaded on 08-Jan-2025 04:33:37
+ -) &quot;grbsrc&quot; last loaded on 18-Jan-2025 15:35:43
 PL/SQL procedure successfully completed.
-=== DBI Completed at 2025-01-08T04:33:42 for a duration of .05 seconds (started at 2025-01-08T04:33:42)
+=== DBI Completed at 2025-01-18T15:35:48 for a duration of .06 seconds (started at 2025-01-18T15:35:48)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/GRAB_JAVA.pkbsql" assertions="3" classname="ODBCAPTURE.pkbsql" status="PASS" time="0">
       <system-out>
 === DBI Started: ODBCAPTURE/GRAB_JAVA.pkbsql
 Package body created.
-=== DBI Completed at 2025-01-08T04:33:43 for a duration of .1 seconds (started at 2025-01-08T04:33:43)
+=== DBI Completed at 2025-01-18T15:35:49 for a duration of .08 seconds (started at 2025-01-18T15:35:49)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/GRAB_JAVA.pkssql" assertions="3" classname="ODBCAPTURE.pkssql" status="PASS" time="0">
       <system-out>
 === DBI Started: ODBCAPTURE/GRAB_JAVA.pkssql
 Package created.
-=== DBI Completed at 2025-01-08T04:33:42 for a duration of .02 seconds (started at 2025-01-08T04:33:42)
+=== DBI Completed at 2025-01-18T15:35:48 for a duration of .03 seconds (started at 2025-01-18T15:35:48)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/PRIV_OBJ_JAVA_FG_VIEW.vw" assertions="4" classname="ODBCAPTURE.vw" status="PASS" time="0">
@@ -36,7 +36,7 @@ Package created.
 === DBI Started: ODBCAPTURE/PRIV_OBJ_JAVA_FG_VIEW.vw
 View created.
 View created.
-=== DBI Completed at 2025-01-08T04:33:43 for a duration of .06 seconds (started at 2025-01-08T04:33:43)
+=== DBI Completed at 2025-01-18T15:35:49 for a duration of .05 seconds (started at 2025-01-18T15:35:49)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/PRIV_SYSOBJ_JAVA_FG_VIEW.vw" assertions="4" classname="ODBCAPTURE.vw" status="PASS" time="0">
@@ -44,29 +44,7 @@ View created.
 === DBI Started: ODBCAPTURE/PRIV_SYSOBJ_JAVA_FG_VIEW.vw
 View created.
 View created.
-=== DBI Completed at 2025-01-08T04:33:43 for a duration of .04 seconds (started at 2025-01-08T04:33:43)
-      </system-out>
-    </testcase>
-    <testcase name="ODBCAPTURE/ROLE_CONF.cldr" assertions="7" classname="ODBCAPTURE.cldr" status="PASS" time="0">
-      <system-out>
-=== DBI Started: ODBCAPTURE/ROLE_CONF.cldr
-Disable Triggers and Foreign Keys
-alter table &quot;ODBCAPTURE&quot;.&quot;ROLE_CONF&quot; DISABLE constraint &quot;ROLE_CONF_FK1&quot;;
-PL/SQL procedure successfully completed.
-sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
-PL/SQL procedure successfully completed.
-=== DBI Completed at 2025-01-08T04:33:43 for a duration of .23 seconds (started at 2025-01-08T04:33:43)
-      </system-out>
-    </testcase>
-    <testcase name="ODBCAPTURE/SCHEMA_CONF.cldr" assertions="7" classname="ODBCAPTURE.cldr" status="PASS" time="0">
-      <system-out>
-=== DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
-Disable Triggers and Foreign Keys
-alter table &quot;ODBCAPTURE&quot;.&quot;SCHEMA_CONF&quot; DISABLE constraint &quot;SCHEMA_CONF_FK1&quot;;
-PL/SQL procedure successfully completed.
-sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
-PL/SQL procedure successfully completed.
-=== DBI Completed at 2025-01-08T04:33:43 for a duration of .26 seconds (started at 2025-01-08T04:33:43)
+=== DBI Completed at 2025-01-18T15:35:49 for a duration of .04 seconds (started at 2025-01-18T15:35:49)
       </system-out>
     </testcase>
     <system-out>
@@ -75,22 +53,22 @@ PL/SQL procedure successfully completed.
 (ODBCAPTURE/GRAB_JAVA.pkssql) Compile All is done.
     </system-out>
   </testsuite>
-  <testsuite name="install_sys.log" tests="1" errors="0" hostname="FREE" id="1" time="0" timestamp="2025-01-08T04:33:45">
+  <testsuite name="install_sys.log" tests="1" errors="0" hostname="FREE" id="1" time="0" timestamp="2025-01-18T15:35:50">
     <testcase name="SYS/ODBCAPTURE_usr.sgrnt" assertions="4" classname="SYS.sgrnt" status="PASS" time="0">
       <system-out>
 === DBI Started: SYS/ODBCAPTURE_usr.sgrnt
 Grant succeeded.
 Grant succeeded.
-=== DBI Completed at 2025-01-08T04:33:42 for a duration of .04 seconds (started at 2025-01-08T04:33:42)
+=== DBI Completed at 2025-01-18T15:35:48 for a duration of .04 seconds (started at 2025-01-18T15:35:48)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_system.log" tests="1" errors="0" hostname="FREE" id="2" time="0" timestamp="2025-01-08T04:33:45">
+  <testsuite name="install_system.log" tests="1" errors="0" hostname="FREE" id="2" time="0" timestamp="2025-01-18T15:35:50">
     <testcase name="SYSTEM/ODBCAPTURE_usr.grnt" assertions="3" classname="SYSTEM.grnt" status="PASS" time="0">
       <system-out>
 === DBI Started: SYSTEM/ODBCAPTURE_usr.grnt
 Grant succeeded.
-=== DBI Completed at 2025-01-08T04:33:42 for a duration of .01 seconds (started at 2025-01-08T04:33:42)
+=== DBI Completed at 2025-01-18T15:35:48 for a duration of .02 seconds (started at 2025-01-18T15:35:48)
       </system-out>
     </testcase>
   </testsuite>

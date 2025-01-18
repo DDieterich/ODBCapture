@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbtjva.log" tests="4" errors="0" hostname="FREE" id="3" time="4" timestamp="2025-01-08T04:34:58">
+  <testsuite name="install_grbtjva.log" tests="4" errors="0" hostname="FREE" id="3" time="4" timestamp="2025-01-18T15:37:04">
     <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
     <testcase name="./installation_prepare.sql" assertions="16" classname="..sql" status="PASS" time="0">
@@ -13,55 +13,55 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for &quot;grbtjva&quot;
 WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) &quot;grbjava&quot; last loaded on 08-Jan-2025 04:33:45
- -) &quot;grbras&quot; last loaded on 08-Jan-2025 04:33:41
- -) &quot;grbsdo&quot; last loaded on 08-Jan-2025 04:33:51
- -) &quot;grbsrc&quot; last loaded on 08-Jan-2025 04:33:37
- -) &quot;grbtst&quot; last loaded on 08-Jan-2025 04:34:11
- -) &quot;grbxrep&quot; last loaded on 08-Jan-2025 04:33:55
+ -) &quot;grbjava&quot; last loaded on 18-Jan-2025 15:35:50
+ -) &quot;grbras&quot; last loaded on 18-Jan-2025 15:35:47
+ -) &quot;grbsdo&quot; last loaded on 18-Jan-2025 15:35:54
+ -) &quot;grbsrc&quot; last loaded on 18-Jan-2025 15:35:43
+ -) &quot;grbtst&quot; last loaded on 18-Jan-2025 15:36:14
+ -) &quot;grbxrep&quot; last loaded on 18-Jan-2025 15:35:57
 PL/SQL procedure successfully completed.
-=== DBI Completed at 2025-01-08T04:34:28 for a duration of .08 seconds (started at 2025-01-08T04:34:28)
+=== DBI Completed at 2025-01-18T15:36:32 for a duration of .15 seconds (started at 2025-01-18T15:36:32)
       </system-out>
     </testcase>
     <testcase name="ODBCTEST/DIR_UTIL.pkbsql" assertions="3" classname="ODBCTEST.pkbsql" status="PASS" time="0">
       <system-out>
 === DBI Started: ODBCTEST/DIR_UTIL.pkbsql
 Package body created.
-=== DBI Completed at 2025-01-08T04:34:32 for a duration of .03 seconds (started at 2025-01-08T04:34:32)
+=== DBI Completed at 2025-01-18T15:36:36 for a duration of .06 seconds (started at 2025-01-18T15:36:36)
       </system-out>
     </testcase>
     <testcase name="ODBCTEST/DIR_UTIL.pkssql" assertions="3" classname="ODBCTEST.pkssql" status="PASS" time="0">
       <system-out>
 === DBI Started: ODBCTEST/DIR_UTIL.pkssql
 Package created.
-=== DBI Completed at 2025-01-08T04:34:28 for a duration of .04 seconds (started at 2025-01-08T04:34:28)
+=== DBI Completed at 2025-01-18T15:36:32 for a duration of .07 seconds (started at 2025-01-18T15:36:32)
       </system-out>
     </testcase>
     <testcase name="ODBCTEST/DirUtil.pjv" assertions="3" classname="ODBCTEST.pjv" status="PASS" time="4">
       <system-out>
 === DBI Started: ODBCTEST/DirUtil.pjv
 Java created.
-=== DBI Completed at 2025-01-08T04:34:32 for a duration of 3.73 seconds (started at 2025-01-08T04:34:28)
+=== DBI Completed at 2025-01-18T15:36:36 for a duration of 4.04 seconds (started at 2025-01-18T15:36:32)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_sys.log" tests="1" errors="0" hostname="FREE" id="1" time="16" timestamp="2025-01-08T04:34:58">
-    <testcase name="SYS/ODBCTEST_usr.sgrnt" assertions="5" classname="SYS.sgrnt" status="PASS" time="16">
+  <testsuite name="install_sys.log" tests="1" errors="0" hostname="FREE" id="1" time="17" timestamp="2025-01-18T15:37:04">
+    <testcase name="SYS/ODBCTEST_usr.sgrnt" assertions="5" classname="SYS.sgrnt" status="PASS" time="17">
       <system-out>
 === DBI Started: SYS/ODBCTEST_usr.sgrnt
 PL/SQL procedure successfully completed.
 PL/SQL procedure successfully completed.
 PL/SQL procedure successfully completed.
-=== DBI Completed at 2025-01-08T04:34:28 for a duration of 16.08 seconds (started at 2025-01-08T04:34:12)
+=== DBI Completed at 2025-01-18T15:36:32 for a duration of 16.71 seconds (started at 2025-01-18T15:36:15)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_system.log" tests="1" errors="0" hostname="FREE" id="2" time="0" timestamp="2025-01-08T04:34:58">
+  <testsuite name="install_system.log" tests="1" errors="0" hostname="FREE" id="2" time="0" timestamp="2025-01-18T15:37:04">
     <testcase name="SYSTEM/ODBCTEST_usr.grnt" assertions="3" classname="SYSTEM.grnt" status="PASS" time="0">
       <system-out>
 === DBI Started: SYSTEM/ODBCTEST_usr.grnt
 Grant succeeded.
-=== DBI Completed at 2025-01-08T04:34:28 for a duration of .03 seconds (started at 2025-01-08T04:34:28)
+=== DBI Completed at 2025-01-18T15:36:32 for a duration of .03 seconds (started at 2025-01-18T15:36:32)
       </system-out>
     </testcase>
   </testsuite>
