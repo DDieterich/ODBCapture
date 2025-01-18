@@ -5,7 +5,7 @@
 function capture_version {
    echo ""
    echo "Capture Version"
-   VERSION_FUNC="${HOME_DIR}/../../grbsrc/ODBCAPTURE/GET_VERSION.func"
+   VERSION_FUNC="${HOME_DIR}/../../grbsrc/ODBCAPTURE/ODBCAPTURE_VERSION.func"
    BRANCH_NAME="$(git rev-parse --abbrev-ref HEAD 2>&1)"
    if [ "$?" != 0 ]
    then
