@@ -82,3 +82,56 @@ All scripts/files are referenced from the Downgrade Folder
     * Run drop_grbsrc_columns.sql
     * drop table "ODBCAPTURE"."USER_DEFINED_TYPE_CONF";
 2. Unfinished ...
+
+
+## Internal Notes
+
+### DLOAD_CONF Table
+* grbdat
+    * Update WHERE_CLAUSE from numbers to lists for BUILD_CONF and BUILD_PATH
+    * Update BUILD_TYPE from grbsrc to grbdat for BUILD_CONF and BUILD_PATH, ROLE_CONF, and SCHEMA_CONF and WHERE_CLAUSE 'grbsrc','grbjava','grbras','grbsdo','grbxrep','grbendp','grbdat'
+    * Remove BUILD_TYPEs 'grbsrc','grbjava','grbras','grbsdo','grbxrep' from ROLE_CONF and SCHEMA_CONF
+    * Update ORDER_BY_COLUMNS removing BUILD_TYPE from ROLE_CONF 
+* grbtdat
+    * Update WHERE_CLAUSE from numbers to lists for BUILD_CONF and BUILD_PATH
+    * Update BUILD_TYPE from grbtst to grbtdat for BUILD_CONF, BUILD_PATH, ROLE_CONF, and SCHEMA_CONF
+    * Add WHERE_CLAUSE members 'grbtctx','grbtjva','grbtjsn','grbtsdo' for ROLE_CONF and SCHEMA_CONF
+    * Update ORDER_BY_COLUMNS removing BUILD_TYPE from ROLE_CONF
+
+### BUILD_CONF Table
+
+* Move list ('grbsrc','grbjava','grbras','grbsdo','grbxrep','grbendp','grbdat') from "grbsrc" to "grbdat"
+* Add .cldr file set to   "grbdat"
+* Add .cldr file set to   "grbtdat"
+* Rem .cldr file set from "grbtst"
+
+### BUILD_PATH Table
+
+* Move list ('grbsrc','grbjava','grbras','grbsdo','grbxrep','grbendp','grbdat') from "grbsrc" to "grbdat"
+* Add .cldr file set to   "grbdat"
+* Add .cldr file set to   "grbtdat"
+* Rem .cldr file set from "grbtst"
+
+### ROLE_CONF Table
+
+* Remove BUILD_TYPE from Primary Key
+* Add .cldr file set to   "grbdat" (Empty)
+* Rem .cldr file set from "grbjava"
+* Rem .cldr file set from "grbras"
+* Rem .cldr file set from "grbsdo"
+* Rem .cldr file set from "grbxrep"
+* Add role members from "grbjava", "grbras", "grbsdo", "grbxrep" to "grbsrc"
+* Add .cldr file set to   "grbtdat"
+* Rem .cldr file set from "grbtst"
+
+### SCHEMA_CONF Table
+
+* Add .cldr file set to   "grbdat" (ODBCapture Schema)
+* Rem .cldr file set from "grbjava"
+* Rem .cldr file set from "grbras"
+* Rem .cldr file set from "grbsdo"
+* Rem .cldr file set from "grbxrep"
+* Add schema members from "grbjava", "grbras", "grbsdo", "grbxrep" to "grbsrc"
+* Rem ODBCapture schema from "grbsrc"
+* Add .cldr file set to   "grbtdat"
+* Rem .cldr file set from "grbtst"
