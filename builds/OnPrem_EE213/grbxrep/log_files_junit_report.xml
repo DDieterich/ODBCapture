@@ -1,60 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbxrep.log" tests="4" errors="0" hostname="EE213CDB" id="3" time="0" timestamp="2025-01-18T06:39:27">
-    <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
+  <testsuite name="install_grbxrep.log" tests="4" errors="0" hostname="EE213CDB" id="3" time="0" timestamp="2025-01-23T06:32:10">
+    <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
-    <testcase name="./installation_prepare.sql" assertions="11" classname="..sql" status="PASS" time="0">
+    <testcase name="./installation_prepare.sql" assertions="20" classname="..sql" status="PASS" time="0">
       <system-out>
-=== DBI Started: ./installation_prepare.sql
-Create Temp Publicly Updateable Table
-Table created.
-Grant succeeded.
-Synonym created.
-Check for Prerequisite BUILD_TYPEs
-Prerequisite BUILD_TYPEs for &quot;grbxrep&quot;
- -) &quot;grbjava&quot; last loaded on 18-Jan-2025 06:39:19
- -) &quot;grbsrc&quot; last loaded on 18-Jan-2025 06:39:10
-PL/SQL procedure successfully completed.
-=== DBI Completed at 2025-01-18T06:39:24 for a duration of .08 seconds (started at 2025-01-18T06:39:24)
+=== DBI Started: ./installation_prepare.sql
+
+Create Temp Publicly Updateable Table
+
+Table created.
+
+
+Grant succeeded.
+
+
+Synonym created.
+
+
+Check for Prerequisite BUILD_TYPEs
+Prerequisite BUILD_TYPEs for &quot;grbxrep&quot;
+ -) &quot;grbsrc&quot; last loaded on 23-Jan-2025 06:31:37
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2025-01-23T06:32:05 for a duration of .16 seconds (started at 2025-01-23T06:32:05)
       </system-out>
     </testcase>
-    <testcase name="ODBCAPTURE/GRAB_XDB_REPO.pkbsql" assertions="3" classname="ODBCAPTURE.pkbsql" status="PASS" time="0">
+    <testcase name="ODBCAPTURE/GRAB_XDB_REPO.pkbsql" assertions="5" classname="ODBCAPTURE.pkbsql" status="PASS" time="0">
       <system-out>
-=== DBI Started: ODBCAPTURE/GRAB_XDB_REPO.pkbsql
-Package body created.
-=== DBI Completed at 2025-01-18T06:39:25 for a duration of .1 seconds (started at 2025-01-18T06:39:25)
+=== DBI Started: ODBCAPTURE/GRAB_XDB_REPO.pkbsql
+
+Package body created.
+
+=== DBI Completed at 2025-01-23T06:32:07 for a duration of .1 seconds (started at 2025-01-23T06:32:07)
       </system-out>
     </testcase>
-    <testcase name="ODBCAPTURE/GRAB_XDB_REPO.pkssql" assertions="3" classname="ODBCAPTURE.pkssql" status="PASS" time="0">
+    <testcase name="ODBCAPTURE/GRAB_XDB_REPO.pkssql" assertions="5" classname="ODBCAPTURE.pkssql" status="PASS" time="0">
       <system-out>
-=== DBI Started: ODBCAPTURE/GRAB_XDB_REPO.pkssql
-Package created.
-=== DBI Completed at 2025-01-18T06:39:24 for a duration of .04 seconds (started at 2025-01-18T06:39:24)
+=== DBI Started: ODBCAPTURE/GRAB_XDB_REPO.pkssql
+
+Package created.
+
+=== DBI Completed at 2025-01-23T06:32:05 for a duration of .07 seconds (started at 2025-01-23T06:32:05)
       </system-out>
     </testcase>
-    <testcase name="ODBCAPTURE/OBJ_INSTALL_XDB_REPO_VIEW.vw" assertions="4" classname="ODBCAPTURE.vw" status="PASS" time="0">
+    <testcase name="ODBCAPTURE/OBJ_INSTALL_XDB_REPO_VIEW.vw" assertions="8" classname="ODBCAPTURE.vw" status="PASS" time="0">
       <system-out>
-=== DBI Started: ODBCAPTURE/OBJ_INSTALL_XDB_REPO_VIEW.vw
-View created.
-View created.
-=== DBI Completed at 2025-01-18T06:39:25 for a duration of .11 seconds (started at 2025-01-18T06:39:25)
+=== DBI Started: ODBCAPTURE/OBJ_INSTALL_XDB_REPO_VIEW.vw
+
+View created.
+
+
+View created.
+
+=== DBI Completed at 2025-01-23T06:32:07 for a duration of .32 seconds (started at 2025-01-23T06:32:07)
       </system-out>
     </testcase>
     <system-out>
-(ODBCAPTURE/GRAB_XDB_REPO.pkssql) Compile All started
-(ODBCAPTURE/GRAB_XDB_REPO.pkssql) PL/SQL procedure successfully completed.
-(ODBCAPTURE/GRAB_XDB_REPO.pkssql) Compile All is done.
+(ODBCAPTURE/GRAB_XDB_REPO.pkssql) Compile All started
+(ODBCAPTURE/GRAB_XDB_REPO.pkssql) 
+(ODBCAPTURE/GRAB_XDB_REPO.pkssql) PL/SQL procedure successfully completed.
+(ODBCAPTURE/GRAB_XDB_REPO.pkssql) 
+(ODBCAPTURE/GRAB_XDB_REPO.pkssql) Compile All is done.
     </system-out>
   </testsuite>
-  <testsuite name="install_sys.log" tests="1" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2025-01-18T06:39:27">
-    <testcase name="SYS/ODBCAPTURE_usr.sgrnt" assertions="3" classname="SYS.sgrnt" status="PASS" time="0">
+  <testsuite name="install_sys.log" tests="1" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2025-01-23T06:32:10">
+    <testcase name="SYS/ODBCAPTURE_usr.sgrnt" assertions="5" classname="SYS.sgrnt" status="PASS" time="0">
       <system-out>
-=== DBI Started: SYS/ODBCAPTURE_usr.sgrnt
-Grant succeeded.
-=== DBI Completed at 2025-01-18T06:39:24 for a duration of .09 seconds (started at 2025-01-18T06:39:24)
+=== DBI Started: SYS/ODBCAPTURE_usr.sgrnt
+
+Grant succeeded.
+
+=== DBI Completed at 2025-01-23T06:32:05 for a duration of .09 seconds (started at 2025-01-23T06:32:05)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2025-01-18T06:39:27">
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2025-01-23T06:32:10">
   </testsuite>
 </testsuites>

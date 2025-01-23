@@ -13,16 +13,16 @@ Synonym created.
 
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbjava"
- -) "grbsrc" last loaded on 18-Jan-2025 06:39:10
+ -) "grbsrc" last loaded on 23-Jan-2025 06:31:37
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-18T06:39:16 for a duration of .09 seconds (started at 2025-01-18T06:39:16)
+=== DBI Completed at 2025-01-23T06:31:49 for a duration of .17 seconds (started at 2025-01-23T06:31:48)
 === DBI Started: ODBCAPTURE/GRAB_JAVA.pkssql
 
 Package created.
 
-=== DBI Completed at 2025-01-18T06:39:16 for a duration of .04 seconds (started at 2025-01-18T06:39:16)
+=== DBI Completed at 2025-01-23T06:31:49 for a duration of .09 seconds (started at 2025-01-23T06:31:49)
 Compile All started
 
 PL/SQL procedure successfully completed.
@@ -35,7 +35,7 @@ View created.
 
 View created.
 
-=== DBI Completed at 2025-01-18T06:39:17 for a duration of .08 seconds (started at 2025-01-18T06:39:17)
+=== DBI Completed at 2025-01-23T06:31:50 for a duration of .15 seconds (started at 2025-01-23T06:31:50)
 === DBI Started: ODBCAPTURE/PRIV_SYSOBJ_JAVA_FG_VIEW.vw
 
 View created.
@@ -43,12 +43,12 @@ View created.
 
 View created.
 
-=== DBI Completed at 2025-01-18T06:39:17 for a duration of .08 seconds (started at 2025-01-18T06:39:17)
+=== DBI Completed at 2025-01-23T06:31:50 for a duration of .12 seconds (started at 2025-01-23T06:31:50)
 === DBI Started: ODBCAPTURE/GRAB_JAVA.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2025-01-18T06:39:17 for a duration of .15 seconds (started at 2025-01-18T06:39:17)
+=== DBI Completed at 2025-01-23T06:31:50 for a duration of .27 seconds (started at 2025-01-23T06:31:50)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table
