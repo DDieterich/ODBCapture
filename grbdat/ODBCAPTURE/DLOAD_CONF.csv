@@ -11,5 +11,5 @@
 "ODBCAPTURE","ROLE_CONF","grbsrc","ROLENAME",,,,"build_type in ('sys','pub')",,
 "ODBCAPTURE","SCHEMA_CONF","grbdat","USERNAME",,,,"build_type in ('grbsrc','grbjava','grbras','grbsdo','grbxrep','grbendp','grbdat')",,
 "ODBCAPTURE","SCHEMA_CONF","grbsrc","USERNAME",,,,"build_type in ('sys','pub')",,
-"ODBCAPTURE","TSPACE_CONF","grbsrc","USERNAME, TSPACE_NAME",,,,"username in (select username from schema_conf where build_type in ('grbsrc'))",,
+"ODBCAPTURE","TSPACE_CONF","grbdat","USERNAME, TSPACE_NAME",,,,"username in (select username from schema_conf where build_type in ('grbsrc','grbjava','grbras','grbsdo','grbxrep','grbendp','grbdat'))",,
 "ODBCAPTURE","USER_DEFINED_TYPE_CONF","grbsdo","TYPE_NAME",,,,"package_name = 'GRAB_SDO'",,
