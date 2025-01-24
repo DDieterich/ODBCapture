@@ -60,18 +60,21 @@ ODBCapture Configuration Data (OCD) defines what database objects and data to ca
     * ELEMENT_CONF
     * METADATA_TRANSFORM_PARAMS
 * Partially Populated
-    * BUILD_CONF - "Sys" and "Pub" Build Layers
-    * BUILD_PATH - "Sys" and "Pub" Build Layers
-    * ROLE_CONF - "Sys" and "Pub" Build Layers
-    * SCHEMA_CONF - "Sys" and "Pub" Build Layers
+    * "Sys" and "Pub" Build Layer Data
+        * BUILD_CONF
+        * BUILD_PATH
+        * ROLE_CONF
+        * SCHEMA_CONF
+    * EXPORTING_RAS_DATA - Installed only with "grbras" Build Layer
     * USER_DEFINED_TYPE_CONF - Data added for "grsdo" Build Layer
 * Empty (Not Populated)
     * DLOAD_CONF
-    * EXPORTING_RAS_DATA - Installed only with "grbras" Build Layer
     * OBJECT_CONF
     * TSPACE_CONF
 
-It is important to note that OCD must be created to save the OCD for each application.  OCD for the ODBCapture application is located in the "grbdat" Build Layer.
+It is important to note that OCD must be created to save the OCD for each application.  For example, OCD for the ODBCapture application is located in the "grbdat" Build Layer.
+
+*Note:* When configuring/adding OCD records to DLOAD_CONF for a new application, a SCHEMA_CONF record must be added with information for the ODBCAPTURE schema.  The ODBCAPTURE record in the grbdat/ODBCAPTURE/SCHEMA_CONF.csv file offers a good starting point.  Be sure to review/update the BUILD_TYPE value in that record.
 
 **Best Practices:**
 
