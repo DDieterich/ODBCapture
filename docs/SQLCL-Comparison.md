@@ -15,9 +15,9 @@
 
 **DRAFT**
 
-This is a comparison between Open Source [ODBCapture](http://ODBCapture.org) and [Oracle's SQL\*cl](https://www.oracle.com/database/sqldeveloper/technologies/sqlcl).
-
 **As Of: January 24, 2025**
+
+This is a comparison between Open Source [ODBCapture](http://ODBCapture.org) and [Oracle's SQL\*cl](https://www.oracle.com/database/sqldeveloper/technologies/sqlcl).
 
 ## Overview
 
