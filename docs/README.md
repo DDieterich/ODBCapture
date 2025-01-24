@@ -5,6 +5,8 @@ ODBCapture is a native PL/SQL application that can be used to capture self-build
 
 This website is intended for user information and usage documentation.  Development guides and design documentation can be found in [the wiki](https://github.com/DDieterich/ODBCapture/wiki)
 
+Click [here for an ODBCapture Example](https://github.com/DDieterich/ODBCapture.demo) using Oracle's Sample Schema.
+
 Click [here for a white paper overview](Capturing-Self-Build.md) on **Capturing Self-Build Scripts**.
 
 Click [here for installation and configuration](Install-and-Config.md)
