@@ -17,7 +17,8 @@
 
 **As Of: January 24, 2025**
 
-This is a comparison between Open Source [ODBCapture](http://ODBCapture.org) and [Oracle's SQL\*cl](https://www.oracle.com/database/sqldeveloper/technologies/sqlcl).
+This is a comparison between Open Source ODBCapture and [Oracle's SQL\*cl](https://www.oracle.com/database/sqldeveloper/technologies/sqlcl).
+
 
 ## Overview
 
@@ -33,7 +34,7 @@ ODBCapture | SQL\*cl | Description
 
 **Source File (Installation Script) Generation**
 
-While both ODBCapture and SQL\*cl create source files from the database, the format and layout of those files is very different.
+While both ODBCapture and SQL\*cl create source files from the database, the format and layout of those files are very different.
 
 ### Features Exclusive to ODBCapture
 
