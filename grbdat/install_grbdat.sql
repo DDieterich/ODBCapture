@@ -35,6 +35,7 @@ set escape ""
 @dbi.sql "ODBCAPTURE/OBJECT_CONF.cldr" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
 @dbi.sql "ODBCAPTURE/ROLE_CONF.cldr" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
 @dbi.sql "ODBCAPTURE/SCHEMA_CONF.cldr" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
+@dbi.sql "ODBCAPTURE/TSPACE_CONF.cldr" "ODBCAPTURE" "&INSTALL_SYSTEM_CONNECT."
 
 ----------------------------------------
 -- Finalize Installation (Includes SPOOL OFF)

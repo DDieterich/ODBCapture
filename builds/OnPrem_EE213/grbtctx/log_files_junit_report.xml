@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbtctx.log" tests="4" errors="0" hostname="EE213CDB" id="3" time="10" timestamp="2025-01-07T03:25:27">
+  <testsuite name="install_grbtctx.log" tests="4" errors="0" hostname="EE213CDB" id="3" time="10" timestamp="2025-01-23T06:34:02">
     <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
     <testcase name="./installation_prepare.sql" assertions="26" classname="..sql" status="PASS" time="0">
@@ -21,16 +21,16 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for &quot;grbtctx&quot;
 WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) &quot;grbjava&quot; last loaded on 07-Jan-2025 03:23:14
- -) &quot;grbras&quot; last loaded on 07-Jan-2025 03:23:04
- -) &quot;grbsdo&quot; last loaded on 07-Jan-2025 03:23:25
- -) &quot;grbsrc&quot; last loaded on 07-Jan-2025 03:22:50
- -) &quot;grbtst&quot; last loaded on 07-Jan-2025 03:24:10
- -) &quot;grbxrep&quot; last loaded on 07-Jan-2025 03:23:35
+ -) &quot;grbjava&quot; last loaded on 23-Jan-2025 06:31:53
+ -) &quot;grbras&quot; last loaded on 23-Jan-2025 06:31:46
+ -) &quot;grbsdo&quot; last loaded on 23-Jan-2025 06:32:03
+ -) &quot;grbsrc&quot; last loaded on 23-Jan-2025 06:31:37
+ -) &quot;grbtst&quot; last loaded on 23-Jan-2025 06:32:50
+ -) &quot;grbxrep&quot; last loaded on 23-Jan-2025 06:32:10
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T03:25:11 for a duration of .23 seconds (started at 2025-01-07T03:25:11)
+=== DBI Completed at 2025-01-23T06:33:48 for a duration of .18 seconds (started at 2025-01-23T06:33:48)
       </system-out>
     </testcase>
     <testcase name="ODBCTEST/CUST_CTX_TEST.cldr" assertions="13" classname="ODBCTEST.cldr" status="PASS" time="3">
@@ -47,7 +47,7 @@ sqlldr_control=ODBCTEST/CUST_CTX_TEST.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T03:25:15 for a duration of 3.49 seconds (started at 2025-01-07T03:25:11)
+=== DBI Completed at 2025-01-23T06:33:51 for a duration of 3.19 seconds (started at 2025-01-23T06:33:48)
       </system-out>
     </testcase>
     <testcase name="ODBCTEST/CUST_CTX_TEST.tbl" assertions="5" classname="ODBCTEST.tbl" status="PASS" time="0">
@@ -56,7 +56,7 @@ PL/SQL procedure successfully completed.
 
 Table created.
 
-=== DBI Completed at 2025-01-07T03:25:11 for a duration of .1 seconds (started at 2025-01-07T03:25:11)
+=== DBI Completed at 2025-01-23T06:33:48 for a duration of .08 seconds (started at 2025-01-23T06:33:48)
       </system-out>
     </testcase>
     <testcase name="ODBCTEST/CUST_CTX_TEST.tidx" assertions="5" classname="ODBCTEST.tidx" status="PASS" time="7">
@@ -65,12 +65,12 @@ Table created.
 
 Index created.
 
-=== DBI Completed at 2025-01-07T03:25:22 for a duration of 7.27 seconds (started at 2025-01-07T03:25:15)
+=== DBI Completed at 2025-01-23T06:33:59 for a duration of 7.35 seconds (started at 2025-01-23T06:33:51)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_sys.log" tests="0" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2025-01-07T03:25:27">
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2025-01-23T06:34:02">
   </testsuite>
-  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2025-01-07T03:25:27">
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2025-01-23T06:34:02">
   </testsuite>
 </testsuites>

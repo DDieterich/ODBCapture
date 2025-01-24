@@ -1,8 +1,9 @@
 
-SQL*Loader: Release 18.0.0.0.0 - Production on Sat Dec 21 10:03:36 2024
+SQL*Loader: Release 18.0.0.0.0 - Production on Sat Jan 18 01:04:18 2025
 Version 18.4.0.0.0
 
 Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.
+
 
 Control File:   ODBCAPTURE/METADATA_TRANSFORM_PARAMS.ctl
 Data File:      ODBCAPTURE/METADATA_TRANSFORM_PARAMS.csv
@@ -44,8 +45,8 @@ Total logical records read:            14
 Total logical records rejected:         0
 Total logical records discarded:        0
 
-Run began on Sat Dec 21 10:03:36 2024
-Run ended on Sat Dec 21 10:03:37 2024
+Run began on Sat Jan 18 01:04:18 2025
+Run ended on Sat Jan 18 01:04:18 2025
 
-Elapsed time was:     00:00:00.34
+Elapsed time was:     00:00:00.33
 CPU time was:         00:00:00.19

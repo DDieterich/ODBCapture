@@ -11,6 +11,6 @@ TRAILING NULLCOLS
    ,FILE_EXT3                      CHAR(6)
    ,OBJECT_TYPE                    CHAR(30)
    ,NAME_CHECK_OBJECT_TYPE         CHAR(30)
-   ,NOTES                          CHAR(1024)
    ,PRE_COMPILE                    CHAR(1)
+   ,NOTES                          CHAR(1024)
    )

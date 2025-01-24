@@ -1,0 +1,2 @@
+
+revoke SELECT on "SYS"."DBA_OBJECT_TABLES" from "ODBCAPTURE";

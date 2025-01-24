@@ -14,21 +14,21 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbtctx"
 WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) "grbjava" last loaded on 07-Jan-2025 03:23:14
- -) "grbras" last loaded on 07-Jan-2025 03:23:04
- -) "grbsdo" last loaded on 07-Jan-2025 03:23:25
- -) "grbsrc" last loaded on 07-Jan-2025 03:22:50
- -) "grbtst" last loaded on 07-Jan-2025 03:24:10
- -) "grbxrep" last loaded on 07-Jan-2025 03:23:35
+ -) "grbjava" last loaded on 23-Jan-2025 06:31:53
+ -) "grbras" last loaded on 23-Jan-2025 06:31:46
+ -) "grbsdo" last loaded on 23-Jan-2025 06:32:03
+ -) "grbsrc" last loaded on 23-Jan-2025 06:31:37
+ -) "grbtst" last loaded on 23-Jan-2025 06:32:50
+ -) "grbxrep" last loaded on 23-Jan-2025 06:32:10
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T03:25:11 for a duration of .23 seconds (started at 2025-01-07T03:25:11)
+=== DBI Completed at 2025-01-23T06:33:48 for a duration of .18 seconds (started at 2025-01-23T06:33:48)
 === DBI Started: ODBCTEST/CUST_CTX_TEST.tbl
 
 Table created.
 
-=== DBI Completed at 2025-01-07T03:25:11 for a duration of .1 seconds (started at 2025-01-07T03:25:11)
+=== DBI Completed at 2025-01-23T06:33:48 for a duration of .08 seconds (started at 2025-01-23T06:33:48)
 === DBI Started: ODBCTEST/CUST_CTX_TEST.cldr
 
 Disable Triggers and Foreign Keys
@@ -41,12 +41,12 @@ sqlldr_control=ODBCTEST/CUST_CTX_TEST.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T03:25:15 for a duration of 3.49 seconds (started at 2025-01-07T03:25:11)
+=== DBI Completed at 2025-01-23T06:33:51 for a duration of 3.19 seconds (started at 2025-01-23T06:33:48)
 === DBI Started: ODBCTEST/CUST_CTX_TEST.tidx
 
 Index created.
 
-=== DBI Completed at 2025-01-07T03:25:22 for a duration of 7.27 seconds (started at 2025-01-07T03:25:15)
+=== DBI Completed at 2025-01-23T06:33:59 for a duration of 7.35 seconds (started at 2025-01-23T06:33:51)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table

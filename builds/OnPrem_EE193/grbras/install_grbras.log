@@ -13,16 +13,16 @@ Synonym created.
 
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbras"
- -) "grbsrc" last loaded on 07-Jan-2025 23:11:53
+ -) "grbsrc" last loaded on 18-Jan-2025 15:12:33
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T23:11:56 for a duration of .08 seconds (started at 2025-01-07T23:11:56)
+=== DBI Completed at 2025-01-18T15:12:36 for a duration of .14 seconds (started at 2025-01-18T15:12:36)
 === DBI Started: ODBCAPTURE/GRAB_RAS.pkssql
 
 Package created.
 
-=== DBI Completed at 2025-01-07T23:11:56 for a duration of .04 seconds (started at 2025-01-07T23:11:56)
+=== DBI Completed at 2025-01-18T15:12:36 for a duration of .06 seconds (started at 2025-01-18T15:12:36)
 === DBI Started: ODBCAPTURE/EXPORTING_RAS_DATA.tbl
 
 Table created.
@@ -42,7 +42,7 @@ Comment created.
 
 Comment created.
 
-=== DBI Completed at 2025-01-07T23:11:56 for a duration of .1 seconds (started at 2025-01-07T23:11:56)
+=== DBI Completed at 2025-01-18T15:12:36 for a duration of .1 seconds (started at 2025-01-18T15:12:36)
 Compile All started
 
 PL/SQL procedure successfully completed.
@@ -55,40 +55,12 @@ View created.
 
 View created.
 
-=== DBI Completed at 2025-01-07T23:11:57 for a duration of .08 seconds (started at 2025-01-07T23:11:57)
-=== DBI Started: ODBCAPTURE/ROLE_CONF.cldr
-
-Disable Triggers and Foreign Keys
-alter table "ODBCAPTURE"."ROLE_CONF" DISABLE constraint "ROLE_CONF_FK1";
-
-PL/SQL procedure successfully completed.
-
-
-sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
-
-
-PL/SQL procedure successfully completed.
-
-=== DBI Completed at 2025-01-07T23:11:57 for a duration of .32 seconds (started at 2025-01-07T23:11:57)
-=== DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
-
-Disable Triggers and Foreign Keys
-alter table "ODBCAPTURE"."SCHEMA_CONF" DISABLE constraint "SCHEMA_CONF_FK1";
-
-PL/SQL procedure successfully completed.
-
-
-sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
-
-
-PL/SQL procedure successfully completed.
-
-=== DBI Completed at 2025-01-07T23:11:58 for a duration of .3 seconds (started at 2025-01-07T23:11:57)
+=== DBI Completed at 2025-01-18T15:12:37 for a duration of .12 seconds (started at 2025-01-18T15:12:37)
 === DBI Started: ODBCAPTURE/GRAB_RAS.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2025-01-07T23:11:58 for a duration of .21 seconds (started at 2025-01-07T23:11:58)
+=== DBI Completed at 2025-01-18T15:12:37 for a duration of .19 seconds (started at 2025-01-18T15:12:37)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table

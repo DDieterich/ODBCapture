@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbxrep.log" tests="6" errors="0" hostname="EE213CDB" id="3" time="2" timestamp="2025-01-07T03:23:35">
+  <testsuite name="install_grbxrep.log" tests="4" errors="0" hostname="EE213CDB" id="3" time="0" timestamp="2025-01-23T06:32:10">
     <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
-    <testcase name="./installation_prepare.sql" assertions="21" classname="..sql" status="PASS" time="0">
+    <testcase name="./installation_prepare.sql" assertions="20" classname="..sql" status="PASS" time="0">
       <system-out>
 === DBI Started: ./installation_prepare.sql
 
@@ -20,12 +20,11 @@ Synonym created.
 
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for &quot;grbxrep&quot;
- -) &quot;grbjava&quot; last loaded on 07-Jan-2025 03:23:14
- -) &quot;grbsrc&quot; last loaded on 07-Jan-2025 03:22:50
+ -) &quot;grbsrc&quot; last loaded on 23-Jan-2025 06:31:37
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T03:23:28 for a duration of .18 seconds (started at 2025-01-07T03:23:28)
+=== DBI Completed at 2025-01-23T06:32:05 for a duration of .16 seconds (started at 2025-01-23T06:32:05)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/GRAB_XDB_REPO.pkbsql" assertions="5" classname="ODBCAPTURE.pkbsql" status="PASS" time="0">
@@ -34,7 +33,7 @@ PL/SQL procedure successfully completed.
 
 Package body created.
 
-=== DBI Completed at 2025-01-07T03:23:32 for a duration of .31 seconds (started at 2025-01-07T03:23:31)
+=== DBI Completed at 2025-01-23T06:32:07 for a duration of .1 seconds (started at 2025-01-23T06:32:07)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/GRAB_XDB_REPO.pkssql" assertions="5" classname="ODBCAPTURE.pkssql" status="PASS" time="0">
@@ -43,7 +42,7 @@ Package body created.
 
 Package created.
 
-=== DBI Completed at 2025-01-07T03:23:28 for a duration of .09 seconds (started at 2025-01-07T03:23:28)
+=== DBI Completed at 2025-01-23T06:32:05 for a duration of .07 seconds (started at 2025-01-23T06:32:05)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/OBJ_INSTALL_XDB_REPO_VIEW.vw" assertions="8" classname="ODBCAPTURE.vw" status="PASS" time="0">
@@ -55,43 +54,7 @@ View created.
 
 View created.
 
-=== DBI Completed at 2025-01-07T03:23:30 for a duration of .18 seconds (started at 2025-01-07T03:23:29)
-      </system-out>
-    </testcase>
-    <testcase name="ODBCAPTURE/ROLE_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="1">
-      <system-out>
-=== DBI Started: ODBCAPTURE/ROLE_CONF.cldr
-
-Disable Triggers and Foreign Keys
-alter table &quot;ODBCAPTURE&quot;.&quot;ROLE_CONF&quot; DISABLE constraint &quot;ROLE_CONF_FK1&quot;;
-
-PL/SQL procedure successfully completed.
-
-
-sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
-
-
-PL/SQL procedure successfully completed.
-
-=== DBI Completed at 2025-01-07T03:23:30 for a duration of .71 seconds (started at 2025-01-07T03:23:30)
-      </system-out>
-    </testcase>
-    <testcase name="ODBCAPTURE/SCHEMA_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="1">
-      <system-out>
-=== DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
-
-Disable Triggers and Foreign Keys
-alter table &quot;ODBCAPTURE&quot;.&quot;SCHEMA_CONF&quot; DISABLE constraint &quot;SCHEMA_CONF_FK1&quot;;
-
-PL/SQL procedure successfully completed.
-
-
-sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
-
-
-PL/SQL procedure successfully completed.
-
-=== DBI Completed at 2025-01-07T03:23:31 for a duration of 1 seconds (started at 2025-01-07T03:23:30)
+=== DBI Completed at 2025-01-23T06:32:07 for a duration of .32 seconds (started at 2025-01-23T06:32:07)
       </system-out>
     </testcase>
     <system-out>
@@ -102,17 +65,17 @@ PL/SQL procedure successfully completed.
 (ODBCAPTURE/GRAB_XDB_REPO.pkssql) Compile All is done.
     </system-out>
   </testsuite>
-  <testsuite name="install_sys.log" tests="1" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2025-01-07T03:23:35">
+  <testsuite name="install_sys.log" tests="1" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2025-01-23T06:32:10">
     <testcase name="SYS/ODBCAPTURE_usr.sgrnt" assertions="5" classname="SYS.sgrnt" status="PASS" time="0">
       <system-out>
 === DBI Started: SYS/ODBCAPTURE_usr.sgrnt
 
 Grant succeeded.
 
-=== DBI Completed at 2025-01-07T03:23:28 for a duration of .14 seconds (started at 2025-01-07T03:23:28)
+=== DBI Completed at 2025-01-23T06:32:05 for a duration of .09 seconds (started at 2025-01-23T06:32:05)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2025-01-07T03:23:35">
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2025-01-23T06:32:10">
   </testsuite>
 </testsuites>

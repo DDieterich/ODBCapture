@@ -14,21 +14,49 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbtdat"
 WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) "grbjava" last loaded on 07-Jan-2025 03:23:14
- -) "grbras" last loaded on 07-Jan-2025 03:23:04
- -) "grbsdo" last loaded on 07-Jan-2025 03:23:25
- -) "grbsrc" last loaded on 07-Jan-2025 03:22:50
- -) "grbtctx" last loaded on 07-Jan-2025 03:25:27
+ -) "grbjava" last loaded on 23-Jan-2025 06:31:53
+ -) "grbras" last loaded on 23-Jan-2025 06:31:46
+ -) "grbsdo" last loaded on 23-Jan-2025 06:32:03
+ -) "grbsrc" last loaded on 23-Jan-2025 06:31:37
+ -) "grbtctx" last loaded on 23-Jan-2025 06:34:02
 WARNING: Prerequisite BUILD_TYPE "grbtend" not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) "grbtjsn" last loaded on 07-Jan-2025 03:24:50
- -) "grbtjva" last loaded on 07-Jan-2025 03:24:40
- -) "grbtsdo" last loaded on 07-Jan-2025 03:25:07
- -) "grbtst" last loaded on 07-Jan-2025 03:24:10
- -) "grbxrep" last loaded on 07-Jan-2025 03:23:35
+ -) "grbtjsn" last loaded on 23-Jan-2025 06:33:30
+ -) "grbtjva" last loaded on 23-Jan-2025 06:33:21
+ -) "grbtsdo" last loaded on 23-Jan-2025 06:33:46
+ -) "grbtst" last loaded on 23-Jan-2025 06:32:50
+ -) "grbxrep" last loaded on 23-Jan-2025 06:32:10
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T03:25:29 for a duration of .22 seconds (started at 2025-01-07T03:25:29)
+=== DBI Completed at 2025-01-23T06:34:05 for a duration of .25 seconds (started at 2025-01-23T06:34:05)
+=== DBI Started: ODBCAPTURE/BUILD_CONF.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/BUILD_CONF.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2025-01-23T06:34:07 for a duration of 1.15 seconds (started at 2025-01-23T06:34:05)
+=== DBI Started: ODBCAPTURE/BUILD_PATH.cldr
+
+Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."BUILD_PATH" DISABLE constraint "BUILD_PATH_FK1";
+alter table "ODBCAPTURE"."BUILD_PATH" DISABLE constraint "BUILD_PATH_FK2";
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/BUILD_PATH.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2025-01-23T06:34:08 for a duration of 1.15 seconds (started at 2025-01-23T06:34:07)
 === DBI Started: ODBCAPTURE/DLOAD_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -43,7 +71,7 @@ sqlldr_control=ODBCAPTURE/DLOAD_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T03:25:30 for a duration of .74 seconds (started at 2025-01-07T03:25:29)
+=== DBI Completed at 2025-01-23T06:34:10 for a duration of 2.02 seconds (started at 2025-01-23T06:34:08)
 === DBI Started: ODBCAPTURE/OBJECT_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -59,7 +87,35 @@ sqlldr_control=ODBCAPTURE/OBJECT_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T03:25:31 for a duration of .94 seconds (started at 2025-01-07T03:25:30)
+=== DBI Completed at 2025-01-23T06:34:12 for a duration of 2.19 seconds (started at 2025-01-23T06:34:10)
+=== DBI Started: ODBCAPTURE/ROLE_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."ROLE_CONF" DISABLE constraint "ROLE_CONF_FK1";
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2025-01-23T06:34:13 for a duration of .66 seconds (started at 2025-01-23T06:34:12)
+=== DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
+
+Disable Triggers and Foreign Keys
+alter table "ODBCAPTURE"."SCHEMA_CONF" DISABLE constraint "SCHEMA_CONF_FK1";
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2025-01-23T06:34:13 for a duration of .66 seconds (started at 2025-01-23T06:34:13)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table

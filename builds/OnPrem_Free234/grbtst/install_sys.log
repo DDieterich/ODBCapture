@@ -2,7 +2,7 @@
 
 Role created.
 
-=== DBI Completed at 2025-01-08T04:34:01 for a duration of .02 seconds (started at 2025-01-08T04:34:01)
+=== DBI Completed at 2025-01-18T15:36:05 for a duration of .02 seconds (started at 2025-01-18T15:36:05)
 === DBI Started: SYS/ODBCTEST.user
 
 User created.
@@ -23,12 +23,12 @@ XS Admin Cloud Grant "PROVISION" to "ODBCTEST"
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-08T04:34:01 for a duration of .1 seconds (started at 2025-01-08T04:34:01)
+=== DBI Completed at 2025-01-18T15:36:05 for a duration of .15 seconds (started at 2025-01-18T15:36:05)
 === DBI Started: SYS/host1.hacl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-08T04:34:01 for a duration of .17 seconds (started at 2025-01-08T04:34:01)
+=== DBI Completed at 2025-01-18T15:36:05 for a duration of .19 seconds (started at 2025-01-18T15:36:05)
 === DBI Started: SYS/host2.hacl
 
 PL/SQL procedure successfully completed.
@@ -36,19 +36,19 @@ PL/SQL procedure successfully completed.
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-08T04:34:01 for a duration of .07 seconds (started at 2025-01-08T04:34:01)
+=== DBI Completed at 2025-01-18T15:36:05 for a duration of .07 seconds (started at 2025-01-18T15:36:05)
 === DBI Started: SYS/odbctest_host.hacl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-08T04:34:01 for a duration of .04 seconds (started at 2025-01-08T04:34:01)
+=== DBI Completed at 2025-01-18T15:36:05 for a duration of .04 seconds (started at 2025-01-18T15:36:05)
 === DBI Started: SYS/_opt_install_files_oracle_wallet.wacl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-08T04:34:02 for a duration of .03 seconds (started at 2025-01-08T04:34:01)
+=== DBI Completed at 2025-01-18T15:36:05 for a duration of .02 seconds (started at 2025-01-18T15:36:05)
 === DBI Started: SYS/_var_opt_install_files_oracle_wallet.wacl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-08T04:34:02 for a duration of .02 seconds (started at 2025-01-08T04:34:02)
+=== DBI Completed at 2025-01-18T15:36:06 for a duration of .02 seconds (started at 2025-01-18T15:36:05)

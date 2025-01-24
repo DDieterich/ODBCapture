@@ -13,44 +13,16 @@ Synonym created.
 
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbsdo"
- -) "grbsrc" last loaded on 07-Jan-2025 03:22:50
+ -) "grbsrc" last loaded on 23-Jan-2025 06:31:37
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T03:23:17 for a duration of .16 seconds (started at 2025-01-07T03:23:17)
+=== DBI Completed at 2025-01-23T06:31:55 for a duration of .18 seconds (started at 2025-01-23T06:31:55)
 === DBI Started: ODBCAPTURE/GRAB_SDO.pkssql
 
 Package created.
 
-=== DBI Completed at 2025-01-07T03:23:17 for a duration of .12 seconds (started at 2025-01-07T03:23:17)
-=== DBI Started: ODBCAPTURE/ROLE_CONF.cldr
-
-Disable Triggers and Foreign Keys
-alter table "ODBCAPTURE"."ROLE_CONF" DISABLE constraint "ROLE_CONF_FK1";
-
-PL/SQL procedure successfully completed.
-
-
-sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
-
-
-PL/SQL procedure successfully completed.
-
-=== DBI Completed at 2025-01-07T03:23:18 for a duration of .65 seconds (started at 2025-01-07T03:23:17)
-=== DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
-
-Disable Triggers and Foreign Keys
-alter table "ODBCAPTURE"."SCHEMA_CONF" DISABLE constraint "SCHEMA_CONF_FK1";
-
-PL/SQL procedure successfully completed.
-
-
-sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
-
-
-PL/SQL procedure successfully completed.
-
-=== DBI Completed at 2025-01-07T03:23:19 for a duration of .72 seconds (started at 2025-01-07T03:23:18)
+=== DBI Completed at 2025-01-23T06:31:56 for a duration of .1 seconds (started at 2025-01-23T06:31:55)
 === DBI Started: ODBCAPTURE/USER_DEFINED_TYPE_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -63,12 +35,12 @@ sqlldr_control=ODBCAPTURE/USER_DEFINED_TYPE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-07T03:23:21 for a duration of 2.54 seconds (started at 2025-01-07T03:23:19)
+=== DBI Completed at 2025-01-23T06:32:00 for a duration of 4.44 seconds (started at 2025-01-23T06:31:56)
 === DBI Started: ODBCAPTURE/GRAB_SDO.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2025-01-07T03:23:22 for a duration of .25 seconds (started at 2025-01-07T03:23:21)
+=== DBI Completed at 2025-01-23T06:32:00 for a duration of .3 seconds (started at 2025-01-23T06:32:00)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table

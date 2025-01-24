@@ -42,7 +42,6 @@ declare
    end;
 begin
    dbms_output.put_line('Prerequisite BUILD_TYPEs for "grbxrep"');
-   do_it('grbjava');
    do_it('grbsrc');
 end;
 /

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbsdo.log" tests="6" errors="0" hostname="XE" id="3" time="3" timestamp="2024-12-21T10:04:22">
+  <testsuite name="install_grbsdo.log" tests="4" errors="0" hostname="XE" id="3" time="1" timestamp="2025-01-18T01:04:58">
     <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
     <testcase name="./installation_prepare.sql" assertions="20" classname="..sql" status="PASS" time="0">
@@ -20,11 +20,11 @@ Synonym created.
 
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for &quot;grbsdo&quot;
- -) &quot;grbsrc&quot; last loaded on 21-Dec-2024 10:03:51
+ -) &quot;grbsrc&quot; last loaded on 18-Jan-2025 01:04:32
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-21T10:04:17 for a duration of .14 seconds (started at 2024-12-21T10:04:17)
+=== DBI Completed at 2025-01-18T01:04:54 for a duration of .14 seconds (started at 2025-01-18T01:04:54)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/GRAB_SDO.pkbsql" assertions="5" classname="ODBCAPTURE.pkbsql" status="PASS" time="0">
@@ -33,7 +33,7 @@ PL/SQL procedure successfully completed.
 
 Package body created.
 
-=== DBI Completed at 2024-12-21T10:04:20 for a duration of .2 seconds (started at 2024-12-21T10:04:19)
+=== DBI Completed at 2025-01-18T01:04:56 for a duration of .21 seconds (started at 2025-01-18T01:04:55)
       </system-out>
     </testcase>
     <testcase name="ODBCAPTURE/GRAB_SDO.pkssql" assertions="5" classname="ODBCAPTURE.pkssql" status="PASS" time="0">
@@ -42,46 +42,10 @@ Package body created.
 
 Package created.
 
-=== DBI Completed at 2024-12-21T10:04:17 for a duration of .13 seconds (started at 2024-12-21T10:04:17)
+=== DBI Completed at 2025-01-18T01:04:54 for a duration of .12 seconds (started at 2025-01-18T01:04:54)
       </system-out>
     </testcase>
-    <testcase name="ODBCAPTURE/ROLE_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="0">
-      <system-out>
-=== DBI Started: ODBCAPTURE/ROLE_CONF.cldr
-
-Disable Triggers and Foreign Keys
-alter table &quot;ODBCAPTURE&quot;.&quot;ROLE_CONF&quot; DISABLE constraint &quot;ROLE_CONF_FK1&quot;;
-
-PL/SQL procedure successfully completed.
-
-
-sqlldr_control=ODBCAPTURE/ROLE_CONF.ctl
-
-
-PL/SQL procedure successfully completed.
-
-=== DBI Completed at 2024-12-21T10:04:17 for a duration of .44 seconds (started at 2024-12-21T10:04:17)
-      </system-out>
-    </testcase>
-    <testcase name="ODBCAPTURE/SCHEMA_CONF.cldr" assertions="14" classname="ODBCAPTURE.cldr" status="PASS" time="1">
-      <system-out>
-=== DBI Started: ODBCAPTURE/SCHEMA_CONF.cldr
-
-Disable Triggers and Foreign Keys
-alter table &quot;ODBCAPTURE&quot;.&quot;SCHEMA_CONF&quot; DISABLE constraint &quot;SCHEMA_CONF_FK1&quot;;
-
-PL/SQL procedure successfully completed.
-
-
-sqlldr_control=ODBCAPTURE/SCHEMA_CONF.ctl
-
-
-PL/SQL procedure successfully completed.
-
-=== DBI Completed at 2024-12-21T10:04:18 for a duration of .53 seconds (started at 2024-12-21T10:04:17)
-      </system-out>
-    </testcase>
-    <testcase name="ODBCAPTURE/USER_DEFINED_TYPE_CONF.cldr" assertions="13" classname="ODBCAPTURE.cldr" status="PASS" time="2">
+    <testcase name="ODBCAPTURE/USER_DEFINED_TYPE_CONF.cldr" assertions="13" classname="ODBCAPTURE.cldr" status="PASS" time="1">
       <system-out>
 === DBI Started: ODBCAPTURE/USER_DEFINED_TYPE_CONF.cldr
 
@@ -95,12 +59,12 @@ sqlldr_control=ODBCAPTURE/USER_DEFINED_TYPE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2024-12-21T10:04:19 for a duration of 1.61 seconds (started at 2024-12-21T10:04:18)
+=== DBI Completed at 2025-01-18T01:04:55 for a duration of 1.36 seconds (started at 2025-01-18T01:04:54)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_sys.log" tests="0" errors="0" hostname="XE" id="1" time="0" timestamp="2024-12-21T10:04:22">
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="XE" id="1" time="0" timestamp="2025-01-18T01:04:58">
   </testsuite>
-  <testsuite name="install_system.log" tests="0" errors="0" hostname="XE" id="2" time="0" timestamp="2024-12-21T10:04:22">
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="XE" id="2" time="0" timestamp="2025-01-18T01:04:58">
   </testsuite>
 </testsuites>

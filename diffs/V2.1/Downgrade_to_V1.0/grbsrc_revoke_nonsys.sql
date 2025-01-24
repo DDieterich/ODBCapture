@@ -1,0 +1,2 @@
+
+revoke EXECUTE ANY TYPE from "ODBCAPTURE";
