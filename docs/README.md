@@ -22,6 +22,8 @@ Existing tools like TOAD, PL/SQL Developer, and SQL\*Developer can create "sourc
 
 Existing database source code is handled by Liquibase and Flyway which are "diff" engines.  These "diff" engines simply track changes to a database.  Rarely is the source code from these "diff" engines ever used to create a database from nothing.  Typically, the database source code from these "diff" engines require some existing database to get started.
 
+Oracle has released its "Project" command in their SQL\*cl tool.  Along with the expected diff engine for Liquibase, it also creates installation scripts for source code and data from the database.  A comparison of SQL\*cl is included [here](SQLCL-Comparison.md)
+
 ### What's different?
 
 ODBCapture is not a "diff" engine.  ODBCapture is unique in its ability to create Oracle database build scripts that can create different "flavors" of Oracle databases from a common set of source code.
