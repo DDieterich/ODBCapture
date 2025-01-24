@@ -4,7 +4,8 @@
 
 ## Overview:
 
-Resolved Issues:
+### Resolved Issues
+
 * Z0013: DISTINCT is required instead of GROUP BY
 * Z0018: grpdat incorrectly set in DLOAD_CONF.csv
 * Z0019: Add FileName RegExp Filter to FH2.show_file
@@ -18,26 +19,37 @@ Resolved Issues:
 * Z0030: XDB Schema Capture Not Implemented
 * Z0031: XDB Repository Deprecated
 * Z0032: Need Source Code Version Updates
+* Z0033: ODBCAPTURE_INSTALLATION_LOGS Table Updates for Upgrades
 
-Added User/Custom Objects/Types:
+### Added User/Custom Objects/Types
+
 * Add User Defined Type Conf Table
 * Add Filler Column After User Types
 * Change User Type Terminator
 * Add PostLoad UNISTR
 * Add PreCompile Flag
 
-Data Loading Support:
+### Data Loading Support
+
 * SQL*Loader Updates for NLS
 * Add Variable Loading Method to SQL*Loader Control File
 * Split Out GRAB_DATA Package
 * Add XML Schema Capture
 * Add cnt to Binary/UNISTR Decode
 
-New Optional Build Types:
+### New Optional Build Types
+
 * grbsdo - Spatial Data Option
 * grbxrep - XML DB Repository
 
-Maintenance:
+### Simplifiy Application Deployment
+
+* Moved Schemas and Roles to "grbsrc" and "grbdat"
+* Moved TSPACE_CONF data to "grbdat"
+* Removed redundant BUILD_PATH
+
+### Maintenance
+
 * Update Invalid Filename Characters Check/Fix
 
 
