@@ -24,7 +24,7 @@ This is a comparison between Open Source ODBCapture and [Oracle's SQL\*cl](https
 
  ODBCapture | SQL\*cl    | Description
 ------------|------------|-------------
- Yes        | Yes        | Source File (Installation Script) Generation
+ Yes        | Yes        | DBMS_METADATA for DDL/DCL Script Generation
  Yes        | Yes        | Separate Scripts for Each Schema/Object
  Yes        | Yes        | System Generated Database Object Filtering
  Yes        | Yes        | Install Multiple Integrated Users/Schemas
@@ -39,6 +39,7 @@ This is a comparison between Open Source ODBCapture and [Oracle's SQL\*cl](https
  Yes        | .          | SQL\*Plus/Windows Special Character Handling
  Yes        | .          | US7ASCII Conversion of all Data and Scripts
  Yes        | .          | CSV Formated Data Files
+ Yes        | .          | Stored Configuration of Data Filters
  Yes        | .          | Foreign Key DISABLE for Data Loading
  Yes        | .          | Table Trigger DISABLE for Data Loading
  Yes        | .          | Table Loading of Installation Log Files
@@ -59,7 +60,7 @@ This is a comparison between Open Source ODBCapture and [Oracle's SQL\*cl](https
 
 ODBCapture and SQL\*cl have similar goals for source code files.  Additionally, both track the version of scripts installed into a database.
 
-* *Source File (Installation Script) Generation*
+* *DBMS_METADATA for DDL/DCL Script Generation*
 * *Separate Scripts for Each Schema/Object*
 * *System Generated Database Object Filtering*
 * *Install Multiple Integrated Users/Schemas*
@@ -88,9 +89,10 @@ ODBCapture accounts for many potential problems with the contents of installatio
 * *SQL\*Plus/Windows Special Character Handling*
 * *US7ASCII Conversion of all Data and Scripts*
 
-ODBCapture uses the CSV format for data loading, substantially easing the editing of the data files.
+ODBCapture uses the CSV format for data loading, substantially easing the editing of the data files.  ODBCapture also stores the data filters that create these data files as part of the OCD (ODBCapture Configuration Data) in the database.
 
 * *CSV Formated Data Files*
+* *Stored Configuration of Data Filters*
 
 ODBCapture accomodates dependent object restrictions during data loading.
 
