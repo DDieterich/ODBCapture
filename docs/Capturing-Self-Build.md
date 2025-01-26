@@ -167,7 +167,7 @@ The following is a description of the ODBCapture implementation and how it compl
 
 DBMS_METADATA has become a popular package for creating DDL (and DCL) from an Oracle database.  The ODBCapture implementation uses DBMS_METADATA.get_ddl wherever possible to provde generic functionality for build script capture.
 
-The DBMS_SQL package provides an interface to use dynamic SQL to parse any data query statement using PL/SQL.  The ODBCapture implementation uses DBMS_SQL to create the comprehensive data loader (cldr) script, with SQL*Loader Control File and CSV Database file.  The "cldr" script includes pre-load processing, like dropping specific foreign key constraints, and post-load processing, like translating data loaded in the database.
+The DBMS_SQL package provides an interface to use dynamic SQL to parse any data query statement using PL/SQL.  The ODBCapture implementation uses DBMS_SQL to create the comprehensive data loader (cldr) script, with SQL\*Loader Control File and CSV Database file.  The "cldr" script includes pre-load processing, like dropping specific foreign key constraints, and post-load processing, like translating data loaded in the database.
 
 
 ### Tool Configuration
@@ -234,7 +234,7 @@ Some care must be taken in supporting source code between these combinations of 
 * New database versions drop old data types, like DICOM.
 * Standard Edition does not support Oracle RAS (Real Application Security).
 * OCI and On-Premises differ in feature/function support.
-* The APEX specific database service on OCI (not listed above) can't run SQL*loader in the load scripts.
+* The APEX specific database service on OCI (not listed above) can't run SQL\*loader in the load scripts.
 * Exadata can require major index and other performance changes to database source code.
 
 Some accomodations for this complexity include:
@@ -253,7 +253,7 @@ All build scripts are added to a ZIP File created in a BLOB in the "ZIP_FILES" t
 * UTL_FILE write (using GRAB_SCRIPTS.write_scripts procedure)
 * APEX GUI Application
 * SQL-Developer
-* SQL*Plus CLOB Variable (Base 64 Encoded)
+* SQL\*Plus CLOB Variable (Base 64 Encoded)
 
 
 **Long Line Folding**

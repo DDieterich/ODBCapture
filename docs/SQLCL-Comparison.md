@@ -26,6 +26,7 @@ This is a comparison between Open Source ODBCapture and [Oracle's SQL\*cl](https
 ------------|------------|-------------
  Yes        | Yes        | DBMS_METADATA for DDL/DCL Script Generation
  Yes        | Yes        | Separate Scripts for Each Schema/Object
+ Yes        | Yes        | Create Folder Structure for Scripts
  Yes        | Yes        | System Generated Database Object Filtering
  Yes        | Yes        | Install Multiple Integrated Users/Schemas
  Yes        | Yes        | Multiple Oracle DB Versions/Editions/Options
@@ -49,6 +50,7 @@ This is a comparison between Open Source ODBCapture and [Oracle's SQL\*cl](https
  Yes        | .          | Complete ZIP File Created in Database
  Yes        | .          | Internal to the Database (Nothing External)
  .          | Yes        | Generate Diff Scripts, Liquibase Integration
+ .          | Yes        | Create Scripts Directly in File System
  .          | Yes        | Generate Artifact with Project Status
  .          | Yes        | Deploy/Verify Diff Scripts to Target Database
 
@@ -62,6 +64,7 @@ ODBCapture and SQL\*cl have similar goals for source code files.  Additionally, 
 
 * *DBMS_METADATA for DDL/DCL Script Generation*
 * *Separate Scripts for Each Schema/Object*
+* *Create Folder Structure for Scripts*
 * *System Generated Database Object Filtering*
 * *Install Multiple Integrated Users/Schemas*
 * *Multiple Oracle DB Versions/Editions/Options*
@@ -115,13 +118,16 @@ ODBCapture can be presented to the DBAs for installation on a production databas
 
 ODBCapture procedures can be executed by the DBAs to generate source code and configuration data from the production database.  DBAs can download and provide the resulting ZIP file to the developers for source code audit processing.
 
+*NOTE:* The [capture_files.sql](https://github.com/DDieterich/ODBCapture/blob/main/builds/util/capture_files.sql) SQL script can be used for source code capture if the ODBCAPTURE_INSTALLATION_LOGS table has been created and includes records for all the needed BUILD TYPES.  This SQL script runs correctly in SQL\*Plus, but will require Base64 decoding before it can be unzipped.
+
 * *Complete ZIP File Created in Database*
 * *Internal to the Database (Nothing External)*
 
 
-### Features Exclusive to SQL*cl
+### Features Exclusive to SQL\*cl
 
 * *Generate Diff Scripts, Liquibase Integration* - ODBCapture does not generate diff scripts or integrate with Liquibase.  Currently, this functionality is out-of-scope.
+* *Create Scripts Directly in File System* - SQL\*cl creates folders and files directly in the file system while ODBCapture includes folders and files in the generated Zip file.  Extra steps are required to download and "unzip" the Zip file.
 * *Generate Artifact with Project Status* - ODBCapture does not create artifacts that show a project's status.  Instead, ODBCapture creates tailored reports for each set of scripts that can be run during installation to report status information.
 * *Deploy/Verify Diff Scripts to Target Database* - ODBCapture does not deploy or verify installation.  The generated installation scripts are independent of ODBCapture and are fully self-contained.
 
