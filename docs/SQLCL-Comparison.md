@@ -138,11 +138,11 @@ Many companies have enacted highly restrictive security policies for their produ
 
 ## Supported Database Data Types
 
-In SQL\*cl, capturing source code data, like sample data, is done running queries that generate INSERT statements.  These insert statements are then copy/pasted into source code files in the repository.  There is no documentation found regarding Database Data Types supported by the SQL\*cl INSERT statement generation.
+Queries are used in SQL\*cl to capture source code data (ex. sample data).  There are several "sqlformat" options availalable for the output of those queries. In the SQL\*cl User Guide, an example is given where the "sqlformat" INSERT is used to generate/capture data from the database.  In [Step 8 of Ticket 1](https://docs.oracle.com/en/database/oracle/sql-developer-command-line/24.3/sqcug/quick-start.html#GUID-C8DDB9DF-FDCD-4249-A956-D3C87432FBBC), the documentation says, "... copy and paste the following statements to the end of the file and then save the file."  However, there is no documentation found regarding Database Data Types supported by the SQL\*cl "sqlformat" output formatting".  Sample data and queries were created to check basic functionality of these data types using SQL\*cl.
 
 *Notes:*
-* \* - No Natural Language Character Set conversion to neutral format
-* \*\* - Data captured is not usable without additional database queries
+* \* - No Character Set conversions to transportable format are performed.
+* \*\* - Data captured is not usable without additional database queries.
 
  ODBCapture | SQL\*cl    | Database Data Type
 ------------|------------|----------------------
@@ -150,19 +150,19 @@ In SQL\*cl, capturing source code data, like sample data, is done running querie
  .          | Yes        | BINARY_FLOAT
  Yes        | Yes\*\*    | BLOB
  Yes        | Yes\*\*    | BFILE
- Yes        | Yes        | CHAR
- Yes        | Yes        | CLOB
+ Yes        | Yes\*      | CHAR
+ Yes        | Yes\*      | CLOB
  Yes        | Yes        | DATE
  Yes        | Yes        | INTERVAL_DAY_TO_SECOND
  Yes        | Yes        | INTERVAL_YEAR_TO_MONTH
- Yes        | Yes        | JSON
- .          | Yes        | LONG
+ Yes        | Yes\*      | JSON
+ .          | Yes\*      | LONG
  .          | Yes        | LONG RAW
  .          | ?          | MLSLABEL
- Yes        | Yes*       | NCHAR
- Yes        | Yes*       | NCLOB
+ Yes        | Yes\*      | NCHAR
+ Yes        | Yes\*      | NCLOB
  Yes        | Yes        | NUMBER
- Yes        | Yes*       | NVARCHAR
+ Yes        | Yes\*      | NVARCHAR
  Yes        | Yes        | RAW
  .          | Yes        | ROWID
  Yes        | Yes        | TIMESTAMP
@@ -170,8 +170,8 @@ In SQL\*cl, capturing source code data, like sample data, is done running querie
  Yes        | Yes        | TIMESTAMP_WITH_TZ
  .          | ?          | UROWID
  Yes        | Yes\*\*    | User Defined Object Types (Limited)
- Yes        | Yes        | VARCHAR2
- Yes        | Yes        | XMLTYPE
+ Yes        | Yes\*      | VARCHAR2
+ Yes        | Yes\*      | XMLTYPE
 
 
 ## Supported Database Object Types
