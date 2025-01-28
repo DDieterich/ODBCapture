@@ -5,6 +5,7 @@
 
 This is a comparison between Open Source ODBCapture and [Oracle's SQL\*cl](https://www.oracle.com/database/sqldeveloper/technologies/sqlcl).
 
+*NOTE: Both tools are complex and currently being enhanced.  Any errors in this comparison are not intentional and will be corrected upon notice.*
 
 ## Overview
 
