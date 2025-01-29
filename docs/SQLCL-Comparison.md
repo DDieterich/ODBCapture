@@ -268,3 +268,227 @@ Database Object Types supported by the SQL\*cl `Project Export` command can be f
  Yes        | .          | XS_ROLE_GRANT
  .          | .          | XS_SECURITY_CLASS
  Yes        | .          | XS_USER
+
+## Appendix A - Sample Schema Folder/File Structure from SQL\*cl
+
+**Commands Used:**
+
+```
+docker run --rm -it --entrypoint /bin/bash container-registry.oracle.com/database/sqlcl:24.3.2
+   # https://github.com/oracle/docker-images/issues/2210
+   export JAVA_TOOL_OPTIONS="-Doracle.net.disableOob=true"
+   mkdir ss
+   cd ss
+   sql -nolog
+      connect -savepwd -save c1 sys/password@localhost:1521/DEVPDB as sysdba
+      project init -schemas HR,OE,PM -con c1
+      project export
+      exit
+   exit
+```
+
+**File/Folder Structure:**
+
+```
+src/
+  database/
+    README.md
+    hr/
+      comments/
+        countries.sql
+        departments.sql
+        employees.sql
+        job_history.sql
+        jobs.sql
+        locations.sql
+        regions.sql
+      indexes/
+        dept_location_ix.sql
+        emp_department_ix.sql
+        emp_job_ix.sql
+        emp_manager_ix.sql
+        emp_name_ix.sql
+        jhist_department_ix.sql
+        jhist_employee_ix.sql
+        jhist_job_ix.sql
+        loc_city_ix.sql
+        loc_country_ix.sql
+        loc_state_province_ix.sql
+      object_grants/
+        object_grants_as_grantor.hr.table.countries.sql
+        object_grants_as_grantor.hr.table.departments.sql
+        object_grants_as_grantor.hr.table.employees.sql
+        object_grants_as_grantor.hr.table.job_history.sql
+        object_grants_as_grantor.hr.table.jobs.sql
+        object_grants_as_grantor.hr.table.locations.sql
+      procedures/
+        add_job_history.sql
+        secure_dml.sql
+      ref_constraints/
+        countr_reg_fk.sql
+        dept_loc_fk.sql
+        dept_mgr_fk.sql
+        emp_dept_fk.sql
+        emp_job_fk.sql
+        emp_manager_fk.sql
+        jhist_dept_fk.sql
+        jhist_emp_fk.sql
+        jhist_job_fk.sql
+        loc_c_id_fk.sql
+      sequences/
+        departments_seq.sql
+        employees_seq.sql
+        locations_seq.sql
+      tables/
+        countries.sql
+        departments.sql
+        employees.sql
+        job_history.sql
+        jobs.sql
+        locations.sql
+        regions.sql
+      triggers/
+        secure_employees.sql
+        update_job_history.sql
+      views/
+        emp_details_view.sql
+    oe/
+      comments/
+        customers.sql
+        inventories.sql
+        order_items.sql
+        orders.sql
+        product_descriptions.sql
+        product_information.sql
+        warehouses.sql
+      functions/
+        get_phone_number_f.sql
+      indexes/
+        cust_account_manager_ix.sql
+        cust_email_ix.sql
+        cust_lname_ix.sql
+        inv_product_ix.sql
+        item_order_ix.sql
+        item_product_ix.sql
+        ord_customer_ix.sql
+        ord_order_date_ix.sql
+        ord_sales_rep_ix.sql
+        order_items_uk.sql
+        prod_name_ix.sql
+        prod_supplier_ix.sql
+        'sys_fk0000075797n00008$.sql'
+        'sys_fk0000075797n00010$.sql'
+        whs_location_ix.sql
+      object_grants/
+        object_grants_as_grantor.oe.table.customers.sql
+        object_grants_as_grantor.oe.table.inventories.sql
+        object_grants_as_grantor.oe.table.order_items.sql
+        object_grants_as_grantor.oe.table.orders.sql
+        object_grants_as_grantor.oe.table.product_descriptions.sql
+        object_grants_as_grantor.oe.table.product_information.sql
+        object_grants_as_grantor.oe.table.warehouses.sql
+      ref_constraints/
+        customers_account_manager_fk.sql
+        inventories_product_id_fk.sql
+        inventories_warehouses_fk.sql
+        order_items_order_id_fk.sql
+        order_items_product_id_fk.sql
+        orders_customer_id_fk.sql
+        orders_sales_rep_fk.sql
+        pd_product_id_fk.sql
+        warehouses_location_fk.sql
+      sequences/
+        orders_seq.sql
+      synonyms/
+        countries.sql
+        departments.sql
+        employees.sql
+        job_history.sql
+        jobs.sql
+        locations.sql
+      tables/
+        categories_tab.sql
+        customers.sql
+        inventories.sql
+        order_items.sql
+        orders.sql
+        product_descriptions.sql
+        product_information.sql
+        promotions.sql
+        purchaseorder.sql
+        warehouses.sql
+      triggers/
+        insert_ord_line.sql
+        orders_items_trg.sql
+        orders_trg.sql
+        'purchaseorder$xd.sql'
+      type_bodies/
+        catalog_typ.sql
+        composite_category_typ.sql
+        leaf_category_typ.sql
+      type_specs/
+        action_t.sql
+        action_v.sql
+        actions_t.sql
+        catalog_typ.sql
+        category_typ.sql
+        composite_category_typ.sql
+        corporate_customer_typ.sql
+        cust_address_typ.sql
+        customer_typ.sql
+        inventory_list_typ.sql
+        inventory_typ.sql
+        leaf_category_typ.sql
+        lineitem_t.sql
+        lineitem_v.sql
+        lineitems_t.sql
+        order_item_list_typ.sql
+        order_item_typ.sql
+        order_list_typ.sql
+        order_typ.sql
+        part_t.sql
+        phone_list_typ.sql
+        product_information_typ.sql
+        product_ref_list_typ.sql
+        purchaseorder_t.sql
+        rejection_t.sql
+        shipping_instructions_t.sql
+        subcategory_ref_list_typ.sql
+        'sys_yoid0000075921$.sql'
+        'sys_yoid0000075922$.sql'
+        'sys_yoid0000075923$.sql'
+        'sys_yoid0000075925$.sql'
+        'sys_yoid0000075928$.sql'
+        warehouse_typ.sql
+      views/
+        account_managers.sql
+        bombay_inventory.sql
+        customers_view.sql
+        oc_corporate_customers.sql
+        oc_customers.sql
+        oc_inventories.sql
+        oc_orders.sql
+        oc_product_information.sql
+        orders_view.sql
+        product_prices.sql
+        products.sql
+        sydney_inventory.sql
+        toronto_inventory.sql
+    pm/
+      indexes/
+        'sys_fk0000075860n00007$.sql'
+      ref_constraints/
+        printmedia_fk.sql
+      tables/
+        print_media.sql
+      type_specs/
+        adheader_typ.sql
+        textdoc_tab.sql
+        textdoc_typ.sql
+    sys/
+      object_grants/
+        object_grants_as_grantor.sys.directory.media_dir.sql
+        object_grants_as_grantor.sys.directory.ss_oe_xmldir.sql
+        object_grants_as_grantor.sys.directory.subdir.sql
+        object_grants_as_grantor.sys.package.dbms_stats.sql
+```
