@@ -1,0 +1,27 @@
+
+--
+--  Create ODBCTEST.UNISTR_CLOBS Table
+--
+
+set define off
+
+
+--DBMS_METADATA:ODBCTEST.UNISTR_CLOBS
+
+  CREATE TABLE "ODBCTEST"."UNISTR_CLOBS" 
+   (	"NOTES" VARCHAR2(100 BYTE), 
+	"TEST_NCLOB" NCLOB
+   ) SEGMENT CREATION IMMEDIATE  LOGGING;
+
+--  Comments
+
+--DBMS_METADATA:ODBCTEST.UNISTR_CLOBS
+
+
+--  Grants
+
+
+--  Synonyms
+
+
+set define on

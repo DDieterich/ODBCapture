@@ -1,0 +1,67 @@
+
+--
+--  Create ODBCTEST.HTML_TO_UNISTR Function
+--
+
+set define off
+
+
+--DBMS_METADATA:ODBCTEST.HTML_TO_UNISTR
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "ODBCTEST"."HTML_TO_UNISTR" 
+      (in_html_entity  varchar2)
+   return varchar2
+as
+begin
+   -- &#x10000; --> \D800\DC00
+   -- &#x323af; --> \D888\DFAF
+   if    substr(in_html_entity,1,3) != '&#x'
+      OR substr(in_html_entity,-1,1) != ';'
+   then
+      raise_application_error (-20000, 'Bad Form: ' || in_html_entity);
+   end if;
+   return '\' ||
+      to_char                 -- Convert NUMBER to HEX String
+         (trunc               -- Remove Last 6 bits from NUMBER (Bit Shift)
+            (to_number        -- Convert from HEX String to NUMBER
+               (substr        -- Strip the Leading and Trailing Characters
+                  (in_html_entity
+                  ,4          -- "4" is character after '&#x'
+                  ,length
+                     (in_html_entity)
+                     -4 - 1)  -- "4" is character after '&#x' and "1" is the ';'
+               ,'XXXXXXXX')
+            / 64)             -- 6 bits: 2^6
+            + 55296 - 64      -- "55296" is "xD800" and "64" is a fixed offset
+         ,'FMXXXX') ||
+      '\' ||
+      case upper(substr(in_html_entity,-4,1))
+         when '0' then 'DC'
+         when '4' then 'DC'
+         when '8' then 'DC'
+         when 'C' then 'DC'
+         when '1' then 'DD'
+         when '5' then 'DD'
+         when '9' then 'DD'
+         when 'D' then 'DD'
+         when '2' then 'DE'
+         when '6' then 'DE'
+         when 'A' then 'DE'
+         when 'E' then 'DE'
+         when '3' then 'DF'
+         when '7' then 'DF'
+         when 'B' then 'DF'
+         when 'F' then 'DF'
+         end ||
+      upper(substr(in_html_entity,-3,2));
+end html_to_unistr;
+/
+
+
+--  Grants
+
+
+--  Synonyms
+
+
+set define on

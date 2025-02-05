@@ -1,0 +1,138 @@
+
+--
+--  Comprehensive Data Loader script for ODBCTEST.UNISTR_CLOBS data
+--
+-- Command Line Parameters:
+--   1 - SYSTEM/password@TNSALIAS
+--       i.e. pass the username and password for the SYSTEM user
+--            and the TNSALIAS for the connection to the database.
+--       The Data Load installation requires this connection information.
+--
+
+prompt
+prompt Disable Triggers and Foreign Keys
+declare
+   procedure run_sql (in_sql in varchar2) is begin
+      dbms_output.put_line(in_sql || ';');
+      execute immediate in_sql;
+   exception when others then
+      dbms_output.put_line('-- ' || SQLERRM || CHR(10));
+   end run_sql;
+begin
+   for buff in (select owner, trigger_name
+                 from  dba_triggers
+                 where table_owner = 'ODBCTEST'
+                  and  table_name = 'UNISTR_CLOBS'
+                 order by owner, trigger_name)
+   loop
+      run_sql('alter trigger "' || buff.owner        || '"' ||
+                           '."' || buff.trigger_name || '" DISABLE');
+   end loop;
+   for buff in (select constraint_name
+                 from  dba_constraints
+                 where constraint_type = 'R'
+                  and  owner = 'ODBCTEST'
+                  and  table_name = 'UNISTR_CLOBS'
+                 order by constraint_name)
+   loop
+      run_sql('alter table "ODBCTEST"."UNISTR_CLOBS"' ||
+              ' DISABLE constraint "' || buff.constraint_name || '"');
+   end loop;
+   for buff in (select owner, index_name
+                 from  dba_indexes
+                 where index_type = 'DOMAIN'
+                  and  table_owner = 'ODBCTEST'
+                  and  table_name = 'UNISTR_CLOBS'
+                 order by owner, index_name)
+   loop
+      run_sql('alter index "' || buff.owner || '"."' || buff.index_name || '"' ||
+              ' DISABLE');
+   end loop;
+end;
+/
+
+-- Additional file extensions
+--   .bad - Bad Records
+--   .dsc - Discard Records
+--   .log - Log File
+
+prompt
+prompt sqlldr_control=ODBCTEST/UNISTR_CLOBS.ctl
+host sqlldr '&1.' control=ODBCTEST/UNISTR_CLOBS.ctl data=ODBCTEST/UNISTR_CLOBS.csv log=ODBCTEST/UNISTR_CLOBS.log silent=HEADER,FEEDBACK
+
+begin
+   if '&_RC.' != '0' then
+      raise_application_error(-20000, 'Control file "ODBCTEST/UNISTR_CLOBS.ctl" returned error: &_RC.');
+   end if;
+end;
+/
+
+declare
+   g_nclob  nclob;
+   cnt      pls_integer := 0;
+   -- Convert UNISTR encoding to National Character Set
+   function unistr_decode(in_nclob in nclob) return nclob
+   is
+      MAXLEN    number := 16000;
+      l_nclob   nclob;
+      len       number := length(in_nclob);
+      subpos    number := 1;
+      slashpos  number;
+   begin
+      while subpos <= len - MAXLEN
+      loop
+         -- Search for "\" characters in the last 5 positions
+         slashpos := instr(substr(in_nclob,subpos+MAXLEN-5),'\');
+         if slashpos > 0
+         then
+            -- Check for another slash 5 characters before
+            if substr(in_nclob,subpos+MAXLEN-5+slashpos-5,1) = '\'
+            then
+               -- Check the slashpos - 5 for a Unicode Supplemental Character
+               if    substr(in_nclob,subpos+MAXLEN-5+slashpos-5+1,2) in ('D8','D9','DA','DB')
+                 AND substr(in_nclob,subpos+MAXLEN-5+slashpos-5+3,1) between '0' AND '9'
+                 AND substr(in_nclob,subpos+MAXLEN-5+slashpos-5+4,1) between '0' AND '9'
+               then
+                  -- Unicode Supplemental Character Found, cut off before previous slash
+                  l_nclob := l_nclob || UNISTR(to_char(substr(in_nclob,subpos,MAXLEN-5+slashpos-5-1)));
+                  subpos := subpos + MAXLEN-5+slashpos-5-1;
+               else
+                  -- Unicode Supplemental Character Not Found, good to grab up to the slashpos
+                  l_nclob := l_nclob || UNISTR(to_char(substr(in_nclob,subpos,MAXLEN-5+slashpos-1)));
+                  subpos := subpos + MAXLEN-5+slashpos-1;
+               end if;
+            else
+               -- No previous slash found, good to grab up to, but not including, slashpos
+               l_nclob := l_nclob || UNISTR(to_char(substr(in_nclob,subpos,MAXLEN-5+slashpos-1)));
+               subpos := subpos + MAXLEN-5+slashpos-1;
+            end if;
+         else
+            -- OK to grab MAXLEN string
+            l_nclob := l_nclob || UNISTR(to_char(substr(in_nclob,subpos,MAXLEN)));
+            subpos := subpos + MAXLEN;
+         end if;
+      end loop;
+      return l_nclob || UNISTR(to_char(substr(in_nclob,subpos,MAXLEN)));
+   end unistr_decode;
+begin
+   dbms_output.put_line('Decode UNISTR Data');
+   dbms_output.put_line('------------------');
+   -- Decode UNISTR Data for column TEST_NCLOB
+   for buff in (select ROWID RID, "TEST_NCLOB"
+                 from  "ODBCTEST"."UNISTR_CLOBS"
+                 where "TEST_NCLOB" is not null
+                 for update of "TEST_NCLOB")
+   loop
+      g_nclob := unistr_decode(buff."TEST_NCLOB");
+      -- This overwrites the UNISTR Encoded String with the original UNICODE data
+      update "ODBCTEST"."UNISTR_CLOBS"
+        set  "TEST_NCLOB" = g_nclob
+       where rowid = buff.rid;
+      cnt := cnt + 1;
+   end loop;
+   dbms_output.put_line(cnt || ' "UNISTR_CLOBS" updates.');
+end;
+/
+
+commit;
+

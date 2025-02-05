@@ -120,34 +120,57 @@ is
    hxstr  varchar2(20);
    acode  number;
    len    number := length(in_nclob);
+   pos    number := 1;
    oclob  clob;
 begin
-   for i in 1 .. len
+   while pos <= len
    loop
-      acode := ascii(substr(in_nclob,i,1));
+      acode := ascii(substr(in_nclob,pos,4));  -- Allowance for 4 byte characters
       case
       when acode > 127
       then
          hxstr := to_char(acode,'FM0000000X');
          If acode > 65535
          then
-            -- Unicode Supplemental Characters
-            oclob := oclob || '\' || substr(hxstr,1,4) || '\' || substr(hxstr,5,4);
+            if acode < 16777216
+            then
+               raise_application_error(-20000, 'Unable to handle 3-byte character encoding');
+            else
+               -- Unicode Supplemental Characters
+               oclob := oclob || '\' || substr(hxstr,1,4) || '\' || substr(hxstr,5,4);
+               pos := pos + 4;
+            end if;
          else
             -- Unicode Characters
             oclob := oclob ||                             '\' || substr(hxstr,5,4);
+            if acode < 256
+            then
+               pos := pos + 1;
+            else
+               pos := pos + 2;
+            end if;
          end if;
       when acode = 92 -- "\" Character
       then
          -- Escape the "\" Character
          oclob := oclob || '\\';
+         pos := pos + 1;
       else
          -- US7ASCII Character
          oclob := oclob || chr(acode);
+         pos := pos + 1;
       end case;
    end loop;
    return oclob;
+exception when OTHERS then
+   raise_application_error(-20000, 'UNISTR Encoding Error. len: ' || len   ||
+                                                        ', pos: ' || pos   ||
+                                                      ', acode: ' || acode ||
+                                                      ', hxstr: ' || hxstr || LF ||
+                                                                  SQLERRM  || LF ||
+                                             dbms_utility.format_error_backtrace );
 end unistr_encode;
+
 
 ------------------------------------------------------------
 -- Split g_clob_buff into multiple lines
@@ -1218,7 +1241,52 @@ procedure sql_unistr_decode
 is
 begin
    fh2.script_put_line(in_fh, 'declare');
-   fh2.script_put_line(in_fh, '   cnt    pls_integer := 0;');
+   fh2.script_put_line(in_fh, '   g_nclob  nclob;');
+   fh2.script_put_line(in_fh, '   cnt      pls_integer := 0;');
+   fh2.script_put_line(in_fh, '   -- Convert UNISTR encoding to National Character Set');
+   fh2.script_put_line(in_fh, '   function unistr_decode(in_nclob in nclob) return nclob');
+   fh2.script_put_line(in_fh, '   is');
+   fh2.script_put_line(in_fh, '      MAXLEN    number := 16000;');
+   fh2.script_put_line(in_fh, '      l_nclob   nclob;');
+   fh2.script_put_line(in_fh, '      len       number := length(in_nclob);');
+   fh2.script_put_line(in_fh, '      subpos    number := 1;');
+   fh2.script_put_line(in_fh, '      slashpos  number;');
+   fh2.script_put_line(in_fh, '   begin');
+   fh2.script_put_line(in_fh, '      while subpos <= len - MAXLEN');
+   fh2.script_put_line(in_fh, '      loop');
+   fh2.script_put_line(in_fh, '         -- Search for "\" characters in the last 5 positions');
+   fh2.script_put_line(in_fh, '         slashpos := instr(substr(in_nclob,subpos+MAXLEN-5),''\'');');
+   fh2.script_put_line(in_fh, '         if slashpos > 0');
+   fh2.script_put_line(in_fh, '         then');
+   fh2.script_put_line(in_fh, '            -- Check for another slash 5 characters before');
+   fh2.script_put_line(in_fh, '            if substr(in_nclob,subpos+MAXLEN-5+slashpos-5,1) = ''\''');
+   fh2.script_put_line(in_fh, '            then');
+   fh2.script_put_line(in_fh, '               -- Check the slashpos - 5 for a Unicode Supplemental Character');
+   fh2.script_put_line(in_fh, '               if    substr(in_nclob,subpos+MAXLEN-5+slashpos-5+1,2) in (''D8'',''D9'',''DA'',''DB'')');
+   fh2.script_put_line(in_fh, '                 AND substr(in_nclob,subpos+MAXLEN-5+slashpos-5+3,1) between ''0'' AND ''9''');
+   fh2.script_put_line(in_fh, '                 AND substr(in_nclob,subpos+MAXLEN-5+slashpos-5+4,1) between ''0'' AND ''9''');
+   fh2.script_put_line(in_fh, '               then');
+   fh2.script_put_line(in_fh, '                  -- Unicode Supplemental Character Found, cut off before previous slash');
+   fh2.script_put_line(in_fh, '                  l_nclob := l_nclob || UNISTR(to_char(substr(in_nclob,subpos,MAXLEN-5+slashpos-5-1)));');
+   fh2.script_put_line(in_fh, '                  subpos := subpos + MAXLEN-5+slashpos-5-1;');
+   fh2.script_put_line(in_fh, '               else');
+   fh2.script_put_line(in_fh, '                  -- Unicode Supplemental Character Not Found, good to grab up to the slashpos');
+   fh2.script_put_line(in_fh, '                  l_nclob := l_nclob || UNISTR(to_char(substr(in_nclob,subpos,MAXLEN-5+slashpos-1)));');
+   fh2.script_put_line(in_fh, '                  subpos := subpos + MAXLEN-5+slashpos-1;');
+   fh2.script_put_line(in_fh, '               end if;');
+   fh2.script_put_line(in_fh, '            else');
+   fh2.script_put_line(in_fh, '               -- No previous slash found, good to grab up to, but not including, slashpos');
+   fh2.script_put_line(in_fh, '               l_nclob := l_nclob || UNISTR(to_char(substr(in_nclob,subpos,MAXLEN-5+slashpos-1)));');
+   fh2.script_put_line(in_fh, '               subpos := subpos + MAXLEN-5+slashpos-1;');
+   fh2.script_put_line(in_fh, '            end if;');
+   fh2.script_put_line(in_fh, '         else');
+   fh2.script_put_line(in_fh, '            -- OK to grab MAXLEN string');
+   fh2.script_put_line(in_fh, '            l_nclob := l_nclob || UNISTR(to_char(substr(in_nclob,subpos,MAXLEN)));');
+   fh2.script_put_line(in_fh, '            subpos := subpos + MAXLEN;');
+   fh2.script_put_line(in_fh, '         end if;');
+   fh2.script_put_line(in_fh, '      end loop;');
+   fh2.script_put_line(in_fh, '      return l_nclob || UNISTR(to_char(substr(in_nclob,subpos,MAXLEN)));');
+   fh2.script_put_line(in_fh, '   end unistr_decode;');
    fh2.script_put_line(in_fh, 'begin');
    fh2.script_put_line(in_fh, '   dbms_output.put_line(''Decode UNISTR Data'');');
    fh2.script_put_line(in_fh, '   dbms_output.put_line(''------------------'');');
@@ -1228,13 +1296,14 @@ begin
    fh2.script_put_line(in_fh, '                 where "' || in_colname || '" is not null');
    fh2.script_put_line(in_fh, '                 for update of "' || in_colname || '")');
    fh2.script_put_line(in_fh, '   loop');
+   fh2.script_put_line(in_fh, '      g_nclob := unistr_decode(buff."' || in_colname || '");');
    fh2.script_put_line(in_fh, '      -- This overwrites the UNISTR Encoded String with the original UNICODE data');
    fh2.script_put_line(in_fh, '      update "' || GRAB_SCRIPTS.g_schema_name || '"."' || in_tabname || '"');
-   fh2.script_put_line(in_fh, '        set  "' || in_colname || '" = UNISTR(to_char("' || in_colname || '"))');
+   fh2.script_put_line(in_fh, '        set  "' || in_colname || '" = g_nclob');
    fh2.script_put_line(in_fh, '       where rowid = buff.rid;');
    fh2.script_put_line(in_fh, '      cnt := cnt + 1;');
    fh2.script_put_line(in_fh, '   end loop;');
-   fh2.script_put_line(in_fh, '   dbms_output.put_line(cnt || '' "AD_FLTEXTN" updates.'');');
+   fh2.script_put_line(in_fh, '   dbms_output.put_line(cnt || '' "' || in_tabname || '" updates.'');');
    fh2.script_put_line(in_fh, 'end;');
    fh2.script_put_line(in_fh, '/');
    fh2.script_put_line(in_fh, '');

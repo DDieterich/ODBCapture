@@ -1,0 +1,10 @@
+OPTIONS (SKIP=1)
+LOAD DATA
+INTO TABLE "ODBCTEST"."UNISTR_CLOBS"
+APPEND
+FIELDS CSV WITH EMBEDDED
+TRAILING NULLCOLS
+   (NOTES                          CHAR(100)
+      -- NCLOB data must be decoded with UNISTR after loading
+   ,TEST_NCLOB                     CHAR(5242880)
+   )

@@ -11,3 +11,5 @@
 "ODBCAPTURE","TSPACE_CONF","grbtst","USERNAME, TSPACE_NAME",,,,"username in (select username from schema_conf where build_type in ('grbtst'))",,
 "ODBCTEST","CUST_CTX_TEST","grbtctx","CUST_ID",,,,,,
 "ODBCTEST","SDO_COLA_MARKETS","grbtsdo","MKT_ID",,,,,,
+"ODBCTEST","UNISTR_CLOBS","grbtst","NOTES",,,,,,
+"ODBCTEST","UNISTR_LIST","grbtst","UNISTR_CHR",,,,,,
