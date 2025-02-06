@@ -78,41 +78,61 @@ declare
       len       number := length(in_nclob);
       subpos    number := 1;
       slashpos  number;
+      numchars  number;
    begin
       while subpos <= len - MAXLEN
       loop
-         -- Search for "\" characters in the last 5 positions
-         slashpos := instr(substr(in_nclob,subpos+MAXLEN-5),'\');
+         -- Search for "\" characters in the last 5 positions before MAXLEN
+         slashpos := instr(substr(in_nclob, subpos-1 + MAXLEN-4, 5), '\');
          if slashpos > 0
          then
-            -- Check for another slash 5 characters before
-            if substr(in_nclob,subpos+MAXLEN-5+slashpos-5,1) = '\'
+            -- Check for Escape Character before slashpos (another slash)
+            if    slashpos = 1
+              AND substr(in_nclob, subpos-1 + MAXLEN-4-1, 1) = '\'
             then
-               -- Check the slashpos - 5 for a Unicode Supplemental Character
-               if    substr(in_nclob,subpos+MAXLEN-5+slashpos-5+1,2) in ('D8','D9','DA','DB')
-                 AND substr(in_nclob,subpos+MAXLEN-5+slashpos-5+3,1) between '0' AND '9'
-                 AND substr(in_nclob,subpos+MAXLEN-5+slashpos-5+4,1) between '0' AND '9'
-               then
-                  -- Unicode Supplemental Character Found, cut off before previous slash
-                  l_nclob := l_nclob || UNISTR(to_char(substr(in_nclob,subpos,MAXLEN-5+slashpos-5-1)));
-                  subpos := subpos + MAXLEN-5+slashpos-5-1;
-               else
-                  -- Unicode Supplemental Character Not Found, good to grab up to the slashpos
-                  l_nclob := l_nclob || UNISTR(to_char(substr(in_nclob,subpos,MAXLEN-5+slashpos-1)));
-                  subpos := subpos + MAXLEN-5+slashpos-1;
-               end if;
+               -- Escape Character Found Before, cut off before Escape Character
+               numchars := MAXLEN-4 - 1 - 1;
+               l_nclob := l_nclob || UNISTR(to_char(substr(in_nclob, subpos, numchars)));
+            -- Check for Escape Character after slashpos (another slash)
+            elsif substr(in_nclob, subpos-1 + MAXLEN-4 + slashpos-1 + 1, 1) = '\'
+            then
+               -- Escape Character Found After, cut off before slashpos
+               numchars := MAXLEN-4 + slashpos-1 - 1;
+               l_nclob := l_nclob || UNISTR(to_char(substr(in_nclob, subpos, numchars)));
+            -- Check the slashpos - 5 (+1 Character) for a "Unescaped" Unicode Supplemental Character
+            elsif regexp_like(substr(in_nclob, subpos-1 + MAXLEN-4 + slashpos-1 - 5, 6)
+                             ,'^[^\][\]D(8|9|A|B)[0-9][0-9]$')
+                             --   ^          - Anchored to start of line
+                             --   [^\]       - Not a backslash character
+                             --   [\]        - A backslash character
+                             --   D(8|9|A|B) - Either D8, D9, DA, or DB
+                             --   [0-9][0-9] - 2 digit number
+                             --   $          - Anchored to end of line
+            then
+               -- Unicode Supplemental Character Found, Cut off before Supplemental
+               numchars := MAXLEN-4 + slashpos-1 - 5 - 1;
+               l_nclob := l_nclob || UNISTR(to_char(substr(in_nclob, subpos, numchars)));
             else
-               -- No previous slash found, good to grab up to, but not including, slashpos
-               l_nclob := l_nclob || UNISTR(to_char(substr(in_nclob,subpos,MAXLEN-5+slashpos-1)));
-               subpos := subpos + MAXLEN-5+slashpos-1;
+               -- No Escape Character or Supplemental Character found, Cut off before slashpos
+               numchars := MAXLEN-4 + slashpos-1 - 1;
+               l_nclob := l_nclob || UNISTR(to_char(substr(in_nclob, subpos, numchars)));
             end if;
          else
-            -- OK to grab MAXLEN string
-            l_nclob := l_nclob || UNISTR(to_char(substr(in_nclob,subpos,MAXLEN)));
-            subpos := subpos + MAXLEN;
+            -- Cut off at MAXLEN
+            numchars := MAXLEN;
+            l_nclob := l_nclob || UNISTR(to_char(substr(in_nclob, subpos, numchars)));
          end if;
+         subpos := subpos + numchars;
       end loop;
-      return l_nclob || UNISTR(to_char(substr(in_nclob,subpos,MAXLEN)));
+      return l_nclob || UNISTR(to_char(substr(in_nclob, subpos, MAXLEN)));
+   exception when OTHERS then
+      raise_application_error(-20000, 'UNISTR Encoding Error. len: ' || len      ||
+                                                        ', subpos: ' || subpos   ||
+                                                      ', slashpos: ' || slashpos ||
+                                                      ', numchars: ' || numchars ||
+                                                           ', cnt: ' || cnt      || CHR(10) ||
+                                                                        SQLERRM  || CHR(10) ||
+                                                        dbms_utility.format_error_backtrace );
    end unistr_decode;
 begin
    dbms_output.put_line('Decode UNISTR Data');
