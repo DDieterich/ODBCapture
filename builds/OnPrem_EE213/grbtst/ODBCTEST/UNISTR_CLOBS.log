@@ -1,12 +1,12 @@
 
-SQL*Loader: Release 23.0.0.0.0 - Production on Wed Feb 5 22:46:17 2025
+SQL*Loader: Release 23.0.0.0.0 - Production on Wed Feb 5 22:46:19 2025
 Version 23.4.0.24.05
 
 Copyright (c) 1982, 2024, Oracle and/or its affiliates.  All rights reserved.
 
-Control File:   ODBCAPTURE/TSPACE_CONF.ctl
-Data File:      ODBCAPTURE/TSPACE_CONF.csv
-  Bad File:     ODBCAPTURE/TSPACE_CONF.bad
+Control File:   ODBCTEST/UNISTR_CLOBS.ctl
+Data File:      ODBCTEST/UNISTR_CLOBS.csv
+  Bad File:     ODBCTEST/UNISTR_CLOBS.bad
   Discard File:  none specified
  
  (Allow all discards)
@@ -18,34 +18,35 @@ Bind array:     250 rows, maximum of 1048576 bytes
 Continuation:    none specified
 Path used:      Conventional
 Silent options: FEEDBACK
-Table "ODBCAPTURE"."TSPACE_CONF", loaded from every logical record.
+Table "ODBCTEST"."UNISTR_CLOBS", loaded from every logical record.
 Insert option in effect for this table: APPEND
 TRAILING NULLCOLS option in effect
 
    Column Name                  Position   Len  Term Encl Datatype
 ------------------------------ ---------- ----- ---- ---- ---------------------
-USERNAME                            FIRST   128   ,  O(") CHARACTER            
-TSPACE_NAME                          NEXT    30   ,  O(") CHARACTER            
-TS_QUOTA                             NEXT    10   ,  O(") CHARACTER            
+NOTES                               FIRST   100   ,  O(") CHARACTER            
+TEST_NCLOB                           NEXT *****   ,  O(") CHARACTER            
+    Maximum field length is 5242880
 
+value used for ROWS parameter changed from 250 to 1
 
-Table "ODBCAPTURE"."TSPACE_CONF":
-  0 Rows successfully loaded.
+Table "ODBCTEST"."UNISTR_CLOBS":
+  7 Rows successfully loaded.
   0 Rows not loaded due to data errors.
   0 Rows not loaded because all WHEN clauses were failed.
   0 Rows not loaded because all fields were null.
 
 
-Space allocated for bind array:                  43500 bytes(250 rows)
-Read   buffer bytes: 1048576
+Space allocated for bind array:                5242986 bytes(1 rows)
+Read   buffer bytes: 5242990
 
 Total logical records skipped:          1
-Total logical records read:             0
+Total logical records read:             7
 Total logical records rejected:         0
 Total logical records discarded:        0
 
-Run began on Wed Feb 05 22:46:17 2025
-Run ended on Wed Feb 05 22:46:17 2025
+Run began on Wed Feb 05 22:46:19 2025
+Run ended on Wed Feb 05 22:46:23 2025
 
-Elapsed time was:     00:00:00.24
-CPU time was:         00:00:00.03
+Elapsed time was:     00:00:04.50
+CPU time was:         00:00:00.42

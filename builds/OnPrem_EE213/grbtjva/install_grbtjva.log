@@ -14,31 +14,31 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbtjva"
 WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) "grbjava" last loaded on 23-Jan-2025 06:31:53
- -) "grbras" last loaded on 23-Jan-2025 06:31:46
- -) "grbsdo" last loaded on 23-Jan-2025 06:32:03
- -) "grbsrc" last loaded on 23-Jan-2025 06:31:37
- -) "grbtst" last loaded on 23-Jan-2025 06:32:50
- -) "grbxrep" last loaded on 23-Jan-2025 06:32:10
+ -) "grbjava" last loaded on 06-Feb-2025 04:45:50
+ -) "grbras" last loaded on 06-Feb-2025 04:45:46
+ -) "grbsdo" last loaded on 06-Feb-2025 04:45:55
+ -) "grbsrc" last loaded on 06-Feb-2025 04:45:40
+ -) "grbtst" last loaded on 06-Feb-2025 04:46:53
+ -) "grbxrep" last loaded on 06-Feb-2025 04:46:00
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-23T06:33:05 for a duration of .22 seconds (started at 2025-01-23T06:33:05)
+=== DBI Completed at 2025-02-06T04:47:08 for a duration of .12 seconds (started at 2025-02-06T04:47:08)
 === DBI Started: ODBCTEST/DIR_UTIL.pkssql
 
 Package created.
 
-=== DBI Completed at 2025-01-23T06:33:06 for a duration of .06 seconds (started at 2025-01-23T06:33:05)
+=== DBI Completed at 2025-02-06T04:47:08 for a duration of .04 seconds (started at 2025-02-06T04:47:08)
 === DBI Started: ODBCTEST/DirUtil.pjv
 
 Java created.
 
-=== DBI Completed at 2025-01-23T06:33:08 for a duration of 2.52 seconds (started at 2025-01-23T06:33:06)
+=== DBI Completed at 2025-02-06T04:47:09 for a duration of 1 seconds (started at 2025-02-06T04:47:08)
 === DBI Started: ODBCTEST/DIR_UTIL.pkbsql
 
 Package body created.
 
-=== DBI Completed at 2025-01-23T06:33:08 for a duration of .06 seconds (started at 2025-01-23T06:33:08)
+=== DBI Completed at 2025-02-06T04:47:09 for a duration of .09 seconds (started at 2025-02-06T04:47:09)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table
