@@ -125,7 +125,7 @@ is
 begin
    while pos <= len
    loop
-      acode := ascii(substr(in_nclob,pos,4));  -- Allowance for 4 byte characters
+      acode := ascii(substr(in_nclob,pos,2));  -- Allowance for multi-byte characters
       case
       when acode > 127
       then
@@ -138,17 +138,12 @@ begin
             else
                -- Unicode Supplemental Characters
                oclob := oclob || '\' || substr(hxstr,1,4) || '\' || substr(hxstr,5,4);
-               pos := pos + 4;
+               pos := pos + 2;    -- Must advance 2 positions for Unicoe Supplemental Characters
             end if;
          else
             -- Unicode Characters
-            oclob := oclob ||                             '\' || substr(hxstr,5,4);
-            if acode < 256
-            then
-               pos := pos + 1;
-            else
-               pos := pos + 2;
-            end if;
+            oclob := oclob || '\' || substr(hxstr,5,4);
+            pos := pos + 1;
          end if;
       when acode = 92 -- "\" Character
       then
