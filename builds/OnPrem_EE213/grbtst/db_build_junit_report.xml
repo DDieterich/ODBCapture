@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="ODBCAPTURE_schema_build" tests="110" failures="0" time="0" timestamp="2025-01-23T06:30:34">
+  <testsuite name="ODBCAPTURE_schema_build" tests="110" failures="0" time="0" timestamp="2025-02-06T04:44:36">
     <testcase name="FUNCTION:db_object_status" classname="ODBCAPTURE.ODBCAPTURE_VERSION" time="0"/>
     <testcase name="INDEX:db_object_status" classname="ODBCAPTURE.BUILD_CONF_NK1" time="0"/>
     <testcase name="INDEX:db_object_status" classname="ODBCAPTURE.BUILD_CONF_PK" time="0"/>
@@ -111,5 +111,16 @@
     <testcase name="VIEW:db_object_status" classname="ODBCAPTURE.PRIV_SYSOBJ_PRIVILEGES_VIEW" time="0"/>
     <testcase name="VIEW:db_object_status" classname="ODBCAPTURE.PRIV_SYSTEM_PRIVILEGES_VIEW" time="0"/>
     <testcase name="VIEW:db_object_status" classname="ODBCAPTURE.UOR_INSTALL_VIEW" time="0"/>
+   </testsuite>
+  <testsuite name="ODBCTEST_schema_build" tests="9" failures="0" time="0" timestamp="2025-02-06T04:46:12">
+    <testcase name="FUNCTION:db_object_status" classname="ODBCTEST.HTML_TO_UNISTR" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.SYS_IL0000075945C00002$$" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.UNISTR_LIST_ID1" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.UNISTR_LIST_UK1" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.UNISTR_LIST_UK2" time="0"/>
+    <testcase name="INDEX:db_object_status" classname="ODBCTEST.UNISTR_LIST_UK3" time="0"/>
+    <testcase name="LOB:db_object_status" classname="ODBCTEST.SYS_LOB0000075945C00002$$" time="0"/>
+    <testcase name="TABLE:db_object_status" classname="ODBCTEST.UNISTR_CLOBS" time="0"/>
+    <testcase name="TABLE:db_object_status" classname="ODBCTEST.UNISTR_LIST" time="0"/>
    </testsuite>
 </testsuites>

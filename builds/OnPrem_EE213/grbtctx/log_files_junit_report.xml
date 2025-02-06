@@ -1,76 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbtctx.log" tests="4" errors="0" hostname="EE213CDB" id="3" time="10" timestamp="2025-01-23T06:34:02">
-    <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
+  <testsuite name="install_grbtctx.log" tests="4" errors="0" hostname="EE213CDB" id="3" time="8" timestamp="2025-02-06T04:47:46">
+    <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
-    <testcase name="./installation_prepare.sql" assertions="26" classname="..sql" status="PASS" time="0">
+    <testcase name="./installation_prepare.sql" assertions="16" classname="..sql" status="PASS" time="0">
       <system-out>
-=== DBI Started: ./installation_prepare.sql
-
-Create Temp Publicly Updateable Table
-
-Table created.
-
-
-Grant succeeded.
-
-
-Synonym created.
-
-
-Check for Prerequisite BUILD_TYPEs
-Prerequisite BUILD_TYPEs for &quot;grbtctx&quot;
-WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) &quot;grbjava&quot; last loaded on 23-Jan-2025 06:31:53
- -) &quot;grbras&quot; last loaded on 23-Jan-2025 06:31:46
- -) &quot;grbsdo&quot; last loaded on 23-Jan-2025 06:32:03
- -) &quot;grbsrc&quot; last loaded on 23-Jan-2025 06:31:37
- -) &quot;grbtst&quot; last loaded on 23-Jan-2025 06:32:50
- -) &quot;grbxrep&quot; last loaded on 23-Jan-2025 06:32:10
-
-PL/SQL procedure successfully completed.
-
-=== DBI Completed at 2025-01-23T06:33:48 for a duration of .18 seconds (started at 2025-01-23T06:33:48)
+=== DBI Started: ./installation_prepare.sql
+Create Temp Publicly Updateable Table
+Table created.
+Grant succeeded.
+Synonym created.
+Check for Prerequisite BUILD_TYPEs
+Prerequisite BUILD_TYPEs for &quot;grbtctx&quot;
+WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
+ -) &quot;grbjava&quot; last loaded on 06-Feb-2025 04:45:50
+ -) &quot;grbras&quot; last loaded on 06-Feb-2025 04:45:46
+ -) &quot;grbsdo&quot; last loaded on 06-Feb-2025 04:45:55
+ -) &quot;grbsrc&quot; last loaded on 06-Feb-2025 04:45:40
+ -) &quot;grbtst&quot; last loaded on 06-Feb-2025 04:46:53
+ -) &quot;grbxrep&quot; last loaded on 06-Feb-2025 04:46:00
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2025-02-06T04:47:36 for a duration of .12 seconds (started at 2025-02-06T04:47:36)
       </system-out>
     </testcase>
-    <testcase name="ODBCTEST/CUST_CTX_TEST.cldr" assertions="13" classname="ODBCTEST.cldr" status="PASS" time="3">
+    <testcase name="ODBCTEST/CUST_CTX_TEST.cldr" assertions="6" classname="ODBCTEST.cldr" status="PASS" time="2">
       <system-out>
-=== DBI Started: ODBCTEST/CUST_CTX_TEST.cldr
-
-Disable Triggers and Foreign Keys
-
-PL/SQL procedure successfully completed.
-
-
-sqlldr_control=ODBCTEST/CUST_CTX_TEST.ctl
-
-
-PL/SQL procedure successfully completed.
-
-=== DBI Completed at 2025-01-23T06:33:51 for a duration of 3.19 seconds (started at 2025-01-23T06:33:48)
+=== DBI Started: ODBCTEST/CUST_CTX_TEST.cldr
+Disable Triggers and Foreign Keys
+PL/SQL procedure successfully completed.
+sqlldr_control=ODBCTEST/CUST_CTX_TEST.ctl
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2025-02-06T04:47:38 for a duration of 1.97 seconds (started at 2025-02-06T04:47:36)
       </system-out>
     </testcase>
-    <testcase name="ODBCTEST/CUST_CTX_TEST.tbl" assertions="5" classname="ODBCTEST.tbl" status="PASS" time="0">
+    <testcase name="ODBCTEST/CUST_CTX_TEST.tbl" assertions="3" classname="ODBCTEST.tbl" status="PASS" time="0">
       <system-out>
-=== DBI Started: ODBCTEST/CUST_CTX_TEST.tbl
-
-Table created.
-
-=== DBI Completed at 2025-01-23T06:33:48 for a duration of .08 seconds (started at 2025-01-23T06:33:48)
+=== DBI Started: ODBCTEST/CUST_CTX_TEST.tbl
+Table created.
+=== DBI Completed at 2025-02-06T04:47:36 for a duration of .05 seconds (started at 2025-02-06T04:47:36)
       </system-out>
     </testcase>
-    <testcase name="ODBCTEST/CUST_CTX_TEST.tidx" assertions="5" classname="ODBCTEST.tidx" status="PASS" time="7">
+    <testcase name="ODBCTEST/CUST_CTX_TEST.tidx" assertions="3" classname="ODBCTEST.tidx" status="PASS" time="6">
       <system-out>
-=== DBI Started: ODBCTEST/CUST_CTX_TEST.tidx
-
-Index created.
-
-=== DBI Completed at 2025-01-23T06:33:59 for a duration of 7.35 seconds (started at 2025-01-23T06:33:51)
+=== DBI Started: ODBCTEST/CUST_CTX_TEST.tidx
+Index created.
+=== DBI Completed at 2025-02-06T04:47:44 for a duration of 5.91 seconds (started at 2025-02-06T04:47:38)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_sys.log" tests="0" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2025-01-23T06:34:02">
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2025-02-06T04:47:46">
   </testsuite>
-  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2025-01-23T06:34:02">
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2025-02-06T04:47:46">
   </testsuite>
 </testsuites>

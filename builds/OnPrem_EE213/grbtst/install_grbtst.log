@@ -14,15 +14,20 @@ Synonym created.
 Check for Prerequisite BUILD_TYPEs
 Prerequisite BUILD_TYPEs for "grbtst"
 WARNING: Prerequisite BUILD_TYPE "grbendp" not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) "grbjava" last loaded on 23-Jan-2025 06:31:53
- -) "grbras" last loaded on 23-Jan-2025 06:31:46
- -) "grbsdo" last loaded on 23-Jan-2025 06:32:03
- -) "grbsrc" last loaded on 23-Jan-2025 06:31:37
- -) "grbxrep" last loaded on 23-Jan-2025 06:32:10
+ -) "grbjava" last loaded on 06-Feb-2025 04:45:50
+ -) "grbras" last loaded on 06-Feb-2025 04:45:46
+ -) "grbsdo" last loaded on 06-Feb-2025 04:45:55
+ -) "grbsrc" last loaded on 06-Feb-2025 04:45:40
+ -) "grbxrep" last loaded on 06-Feb-2025 04:46:00
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-23T06:32:33 for a duration of .26 seconds (started at 2025-01-23T06:32:33)
+=== DBI Completed at 2025-02-06T04:46:12 for a duration of .11 seconds (started at 2025-02-06T04:46:12)
+=== DBI Started: ODBCTEST/HTML_TO_UNISTR.func
+
+Function created.
+
+=== DBI Completed at 2025-02-06T04:46:12 for a duration of .06 seconds (started at 2025-02-06T04:46:12)
 === DBI Started: ODBCAPTURE/GRBTST__NAME.tbl
 
 Table created.
@@ -39,12 +44,22 @@ Grant succeeded.
 
 Grant succeeded.
 
-=== DBI Completed at 2025-01-23T06:32:33 for a duration of .61 seconds (started at 2025-01-23T06:32:33)
+=== DBI Completed at 2025-02-06T04:46:12 for a duration of .11 seconds (started at 2025-02-06T04:46:12)
 === DBI Started: ODBCAPTURE/GRBTST_IMAGE.tbl
 
 Table created.
 
-=== DBI Completed at 2025-01-23T06:32:34 for a duration of .07 seconds (started at 2025-01-23T06:32:33)
+=== DBI Completed at 2025-02-06T04:46:12 for a duration of .05 seconds (started at 2025-02-06T04:46:12)
+=== DBI Started: ODBCTEST/UNISTR_CLOBS.tbl
+
+Table created.
+
+=== DBI Completed at 2025-02-06T04:46:12 for a duration of .43 seconds (started at 2025-02-06T04:46:12)
+=== DBI Started: ODBCTEST/UNISTR_LIST.tbl
+
+Table created.
+
+=== DBI Completed at 2025-02-06T04:46:12 for a duration of .04 seconds (started at 2025-02-06T04:46:12)
 === DBI Started: ODBCAPTURE/GRBTST__NAME.cldr
 
 Disable Triggers and Foreign Keys
@@ -57,7 +72,7 @@ sqlldr_control=ODBCAPTURE/GRBTST__NAME.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-23T06:32:37 for a duration of 3.51 seconds (started at 2025-01-23T06:32:34)
+=== DBI Completed at 2025-02-06T04:46:14 for a duration of 1.73 seconds (started at 2025-02-06T04:46:12)
 === DBI Started: ODBCAPTURE/GRBTST_IMAGE.cldr
 
 Disable Triggers and Foreign Keys
@@ -79,7 +94,7 @@ PL/SQL procedure successfully completed.
 
 Commit complete.
 
-=== DBI Completed at 2025-01-23T06:32:42 for a duration of 4.84 seconds (started at 2025-01-23T06:32:37)
+=== DBI Completed at 2025-02-06T04:46:17 for a duration of 2.59 seconds (started at 2025-02-06T04:46:14)
 === DBI Started: ODBCAPTURE/TSPACE_CONF.cldr
 
 Disable Triggers and Foreign Keys
@@ -93,7 +108,56 @@ sqlldr_control=ODBCAPTURE/TSPACE_CONF.ctl
 
 PL/SQL procedure successfully completed.
 
-=== DBI Completed at 2025-01-23T06:32:42 for a duration of .57 seconds (started at 2025-01-23T06:32:42)
+=== DBI Completed at 2025-02-06T04:46:17 for a duration of .32 seconds (started at 2025-02-06T04:46:17)
+=== DBI Started: ODBCTEST/UNISTR_CLOBS.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCTEST/UNISTR_CLOBS.ctl
+
+
+PL/SQL procedure successfully completed.
+
+Decode UNISTR Data
+------------------
+7 "UNISTR_CLOBS" updates.
+
+PL/SQL procedure successfully completed.
+
+
+Commit complete.
+
+=== DBI Completed at 2025-02-06T04:46:26 for a duration of 9.12 seconds (started at 2025-02-06T04:46:17)
+=== DBI Started: ODBCTEST/UNISTR_LIST.cldr
+
+Disable Triggers and Foreign Keys
+
+PL/SQL procedure successfully completed.
+
+
+sqlldr_control=ODBCTEST/UNISTR_LIST.ctl
+
+
+PL/SQL procedure successfully completed.
+
+=== DBI Completed at 2025-02-06T04:46:35 for a duration of 9.24 seconds (started at 2025-02-06T04:46:26)
+=== DBI Started: ODBCTEST/UNISTR_LIST.tidx
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+=== DBI Completed at 2025-02-06T04:46:46 for a duration of 10.91 seconds (started at 2025-02-06T04:46:35)
 === DBI Started: ./installation_finalize.sql
 
 Drop Temp Publicly Updateable Table

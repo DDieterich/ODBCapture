@@ -1,70 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="install_grbtjsn.log" tests="3" errors="0" hostname="EE213CDB" id="3" time="4" timestamp="2025-01-23T06:33:30">
-    <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
+  <testsuite name="install_grbtjsn.log" tests="3" errors="0" hostname="EE213CDB" id="3" time="2" timestamp="2025-02-06T04:47:26">
+    <testcase name="./installation_finalize.sql" assertions="" classname="..sql" status="PASS" time="">
     </testcase>
-    <testcase name="./installation_prepare.sql" assertions="26" classname="..sql" status="PASS" time="0">
+    <testcase name="./installation_prepare.sql" assertions="16" classname="..sql" status="PASS" time="0">
       <system-out>
-=== DBI Started: ./installation_prepare.sql
-
-Create Temp Publicly Updateable Table
-
-Table created.
-
-
-Grant succeeded.
-
-
-Synonym created.
-
-
-Check for Prerequisite BUILD_TYPEs
-Prerequisite BUILD_TYPEs for &quot;grbtjsn&quot;
-WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
- -) &quot;grbjava&quot; last loaded on 23-Jan-2025 06:31:53
- -) &quot;grbras&quot; last loaded on 23-Jan-2025 06:31:46
- -) &quot;grbsdo&quot; last loaded on 23-Jan-2025 06:32:03
- -) &quot;grbsrc&quot; last loaded on 23-Jan-2025 06:31:37
- -) &quot;grbtst&quot; last loaded on 23-Jan-2025 06:32:50
- -) &quot;grbxrep&quot; last loaded on 23-Jan-2025 06:32:10
-
-PL/SQL procedure successfully completed.
-
-=== DBI Completed at 2025-01-23T06:33:23 for a duration of .18 seconds (started at 2025-01-23T06:33:23)
+=== DBI Started: ./installation_prepare.sql
+Create Temp Publicly Updateable Table
+Table created.
+Grant succeeded.
+Synonym created.
+Check for Prerequisite BUILD_TYPEs
+Prerequisite BUILD_TYPEs for &quot;grbtjsn&quot;
+WARNING: Prerequisite BUILD_TYPE &quot;grbendp&quot; not found in ODBCAPTURE_INSTALLATION_LOGS table.
+ -) &quot;grbjava&quot; last loaded on 06-Feb-2025 04:45:50
+ -) &quot;grbras&quot; last loaded on 06-Feb-2025 04:45:46
+ -) &quot;grbsdo&quot; last loaded on 06-Feb-2025 04:45:55
+ -) &quot;grbsrc&quot; last loaded on 06-Feb-2025 04:45:40
+ -) &quot;grbtst&quot; last loaded on 06-Feb-2025 04:46:53
+ -) &quot;grbxrep&quot; last loaded on 06-Feb-2025 04:46:00
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2025-02-06T04:47:22 for a duration of .12 seconds (started at 2025-02-06T04:47:22)
       </system-out>
     </testcase>
-    <testcase name="ODBCAPTURE/GRBTST_JSON.cldr" assertions="13" classname="ODBCAPTURE.cldr" status="PASS" time="4">
+    <testcase name="ODBCAPTURE/GRBTST_JSON.cldr" assertions="6" classname="ODBCAPTURE.cldr" status="PASS" time="2">
       <system-out>
-=== DBI Started: ODBCAPTURE/GRBTST_JSON.cldr
-
-Disable Triggers and Foreign Keys
-
-PL/SQL procedure successfully completed.
-
-
-sqlldr_control=ODBCAPTURE/GRBTST_JSON.ctl
-
-
-PL/SQL procedure successfully completed.
-
-=== DBI Completed at 2025-01-23T06:33:27 for a duration of 3.76 seconds (started at 2025-01-23T06:33:23)
+=== DBI Started: ODBCAPTURE/GRBTST_JSON.cldr
+Disable Triggers and Foreign Keys
+PL/SQL procedure successfully completed.
+sqlldr_control=ODBCAPTURE/GRBTST_JSON.ctl
+PL/SQL procedure successfully completed.
+=== DBI Completed at 2025-02-06T04:47:24 for a duration of 2.09 seconds (started at 2025-02-06T04:47:22)
       </system-out>
     </testcase>
-    <testcase name="ODBCAPTURE/GRBTST_JSON.tbl" assertions="8" classname="ODBCAPTURE.tbl" status="PASS" time="0">
+    <testcase name="ODBCAPTURE/GRBTST_JSON.tbl" assertions="4" classname="ODBCAPTURE.tbl" status="PASS" time="0">
       <system-out>
-=== DBI Started: ODBCAPTURE/GRBTST_JSON.tbl
-
-Table created.
-
-
-Table altered.
-
-=== DBI Completed at 2025-01-23T06:33:23 for a duration of .15 seconds (started at 2025-01-23T06:33:23)
+=== DBI Started: ODBCAPTURE/GRBTST_JSON.tbl
+Table created.
+Table altered.
+=== DBI Completed at 2025-02-06T04:47:22 for a duration of .1 seconds (started at 2025-02-06T04:47:22)
       </system-out>
     </testcase>
   </testsuite>
-  <testsuite name="install_sys.log" tests="0" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2025-01-23T06:33:30">
+  <testsuite name="install_sys.log" tests="0" errors="0" hostname="EE213CDB" id="1" time="0" timestamp="2025-02-06T04:47:26">
   </testsuite>
-  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2025-01-23T06:33:30">
+  <testsuite name="install_system.log" tests="0" errors="0" hostname="EE213CDB" id="2" time="0" timestamp="2025-02-06T04:47:26">
   </testsuite>
 </testsuites>
